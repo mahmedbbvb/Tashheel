@@ -1,0 +1,2410 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Critical Thinking - Lecture 1: Definition and Concepts | منصة تسهيل</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-gradient: linear-gradient(135deg, #f0f7ff 0%, #eef2ff 50%, #f8fafc 100%);
+    --card-bg: #ffffff;
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --text-muted: #64748b;
+    --primary: #2563eb;
+    --primary-light: #eff6ff;
+    --primary-dark: #1d4ed8;
+    --accent: #6366f1;
+    --accent-light: #e0e7ff;
+    --success: #059669;
+    --success-bg: #ecfdf5;
+    --success-border: #a7f3d0;
+    --warning: #d97706;
+    --warning-bg: #fffbeb;
+    --danger: #dc2626;
+    --danger-bg: #fef2f2;
+    --border-color: #e2e8f0;
+    --shadow-sm: 0 1px 4px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 18px rgba(0,0,0,0.06);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+  }
+
+  [data-theme="dark"] {
+    --bg-gradient: linear-gradient(135deg, #0b1120 0%, #111827 50%, #0f172a 100%);
+    --card-bg: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --primary: #38bdf8;
+    --primary-light: rgba(56, 189, 248, 0.12);
+    --primary-dark: #0284c7;
+    --accent: #818cf8;
+    --accent-light: rgba(129, 140, 248, 0.15);
+    --success: #34d399;
+    --success-bg: rgba(52, 211, 153, 0.12);
+    --success-border: rgba(52, 211, 153, 0.3);
+    --warning: #fbbf24;
+    --warning-bg: rgba(251, 191, 36, 0.12);
+    --danger: #f87171;
+    --danger-bg: rgba(248, 113, 113, 0.12);
+    --border-color: #334155;
+    --shadow-sm: 0 1px 4px rgba(0,0,0,0.3);
+    --shadow-md: 0 4px 18px rgba(0,0,0,0.4);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.6);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Cairo', 'Segoe UI', Tahoma, Arial, sans-serif;
+    line-height: 1.9;
+    background: var(--bg-gradient);
+    color: var(--text-primary);
+    min-height: 100vh;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  .icon {
+    display: inline-block;
+    vertical-align: middle;
+    stroke-width: 2;
+    fill: none;
+    stroke: currentColor;
+    flex-shrink: 0;
+  }
+
+  /* Fixed Navigation Top Bar */
+  .top-nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-sm);
+  }
+  .nav-left, .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--primary-light);
+    color: var(--primary);
+    border: 1px solid var(--border-color);
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 13.5px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .back-btn:hover {
+    background: var(--primary);
+    color: white;
+  }
+  .nav-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .theme-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .theme-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+
+  /* Reading Progress Bar */
+  .progress-bar-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: transparent;
+    z-index: 9999;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #2563eb, #6366f1, #10b981);
+    width: 0%;
+    transition: width 0.2s ease;
+  }
+
+  .container {
+    max-width: 920px;
+    margin: auto;
+    padding: 24px 20px 80px;
+  }
+
+  /* Quick Navigation chips */
+  .quick-nav {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 4px 2px 14px;
+    margin-bottom: 20px;
+    scrollbar-width: thin;
+  }
+  .quick-chip {
+    white-space: nowrap;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .quick-chip:hover {
+    background: var(--primary-light);
+    color: var(--primary);
+    border-color: var(--primary);
+  }
+
+  /* Hero Section */
+  .hero-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    padding: 36px 32px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-md);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--primary-light);
+    color: var(--primary);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .hero-title {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+  .hero-sub {
+    font-size: 16px;
+    color: var(--text-muted);
+    margin-bottom: 18px;
+    font-weight: 500;
+  }
+  .hero-tags {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .hero-tag {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12.5px;
+    color: var(--text-secondary);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* Section Card */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: rgba(37, 99, 235, 0.3);
+  }
+
+  .section-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    background: var(--primary-light);
+    color: var(--primary);
+    font-weight: 800;
+    font-size: 15px;
+    margin-left: 10px;
+  }
+
+  h2 {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+  }
+  h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 20px 0 10px;
+  }
+  h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 12px 0 6px;
+  }
+  p {
+    font-size: 15.5px;
+    color: var(--text-secondary);
+    margin-bottom: 14px;
+    line-height: 1.9;
+  }
+
+  .en {
+    font-family: 'Inter', sans-serif;
+    direction: ltr;
+    display: inline-block;
+    font-weight: 700;
+    color: var(--primary);
+  }
+
+  /* Audio Button */
+  .audio-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-light);
+    border: 1px solid rgba(37, 99, 235, 0.2);
+    color: var(--primary);
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    cursor: pointer;
+    vertical-align: middle;
+    margin: 0 4px;
+    transition: all 0.2s ease;
+    padding: 0;
+  }
+  .audio-btn:hover {
+    background: var(--primary);
+    color: #ffffff;
+    transform: scale(1.15);
+  }
+  .audio-btn svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+  }
+
+  /* Highlights & Callouts */
+  .highlight {
+    background: var(--primary-light);
+    border-right: 4px solid var(--primary);
+    padding: 18px 20px;
+    border-radius: 12px;
+    margin: 16px 0;
+    color: var(--text-primary);
+    font-size: 15.5px;
+    line-height: 1.8;
+  }
+
+  .key {
+    background: var(--success-bg);
+    border: 1px solid var(--success-border);
+    border-right: 4px solid var(--success);
+    padding: 18px 20px;
+    border-radius: 12px;
+    margin: 16px 0;
+    color: var(--text-primary);
+    font-size: 15.5px;
+  }
+  .key-header {
+    font-weight: 700;
+    color: var(--success);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .warning-box {
+    background: var(--warning-bg);
+    border: 1px solid rgba(217, 119, 6, 0.3);
+    border-right: 4px solid var(--warning);
+    padding: 18px 20px;
+    border-radius: 12px;
+    margin: 16px 0;
+    color: var(--text-primary);
+    font-size: 15.5px;
+  }
+
+  /* Responsive Grids */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 18px 0;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 18px 0;
+  }
+  .grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin: 18px 0;
+  }
+
+  .info-box {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 18px 20px;
+    transition: all 0.2s ease;
+  }
+  .info-box:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+  }
+  .info-box.positive {
+    border-top: 4px solid var(--success);
+  }
+  .info-box.negative {
+    border-top: 4px solid var(--danger);
+  }
+
+  /* Term row */
+  .term {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    transition: all 0.2s ease;
+  }
+  .term:hover {
+    border-color: var(--primary);
+    box-shadow: var(--shadow-sm);
+  }
+  .term-content {
+    flex: 1;
+  }
+  .term-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .term-desc {
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  /* Step flow */
+  .step-row {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    margin: 14px 0;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 16px 18px;
+    transition: 0.2s;
+  }
+  .step-row:hover {
+    border-color: var(--primary);
+  }
+  .step-num {
+    min-width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    background: var(--primary);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  /* Interactive Questions System */
+  .question {
+    background: var(--card-bg);
+    border: 1.5px solid var(--border-color);
+    border-radius: 18px;
+    padding: 22px;
+    margin: 24px 0 16px;
+    box-shadow: var(--shadow-sm);
+    transition: border-color 0.2s ease;
+  }
+  .question:hover {
+    border-color: rgba(37, 99, 235, 0.4);
+  }
+  .question-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .q-badge {
+    background: #fef3c7;
+    color: #92400e;
+    font-size: 12.5px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .q-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-translate {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #fef3c7;
+    border: 1px solid #fde68a;
+    color: #92400e;
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-size: 12.5px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s ease;
+  }
+  .btn-translate:hover {
+    background: #fde68a;
+    transform: translateY(-1px);
+  }
+  .btn-translate svg {
+    stroke: currentColor;
+    flex-shrink: 0;
+  }
+  .btn-translate-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #fef3c7;
+    border: 1.5px solid #fde68a;
+    color: #92400e;
+    padding: 7px 16px;
+    border-radius: 10px;
+    font-size: 13.5px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s ease;
+    margin-bottom: 16px;
+  }
+  .btn-translate-all:hover {
+    background: #fde68a;
+    transform: translateY(-1px);
+  }
+  .q-text {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+  .q-text.en-text {
+    font-family: 'Inter', sans-serif;
+    direction: ltr;
+    text-align: left;
+    font-size: 16px;
+    letter-spacing: -0.01em;
+  }
+  .q-translation {
+    display: none;
+    background: #fffbeb;
+    border-right: 4px solid #f59e0b;
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin: 10px 0 16px;
+    font-size: 14.5px;
+    color: #78350f;
+    line-height: 1.8;
+  }
+  .q-translation.show {
+    display: block;
+    animation: fadeIn 0.25s ease;
+  }
+  .mcq-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .mcq-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--card-bg);
+    border: 1.5px solid var(--border-color);
+    border-radius: 12px;
+    padding: 12px 18px;
+    font-size: 14.5px;
+    font-family: 'Inter', system-ui, sans-serif;
+    direction: ltr;
+    text-align: left;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%;
+  }
+  .mcq-option:hover {
+    border-color: var(--primary);
+    background: var(--primary-light);
+    color: var(--primary);
+  }
+  .mcq-option.selected-correct {
+    background: var(--success-bg) !important;
+    border-color: var(--success) !important;
+    color: var(--success) !important;
+    font-weight: 700;
+  }
+  .mcq-option.selected-wrong {
+    background: var(--danger-bg) !important;
+    border-color: var(--danger) !important;
+    color: var(--danger) !important;
+    font-weight: 700;
+  }
+
+  .mcq-result {
+    display: none;
+    margin-top: 14px;
+    padding: 16px;
+    border-radius: 12px;
+    font-size: 14px;
+    line-height: 1.8;
+    animation: fadeIn 0.25s ease-in-out;
+  }
+  .mcq-result.show {
+    display: block;
+  }
+  .correct-msg {
+    background: var(--success-bg);
+    border: 1px solid var(--success-border);
+    color: var(--text-primary);
+  }
+  .wrong-msg {
+    background: var(--danger-bg);
+    border: 1px solid rgba(220, 38, 38, 0.3);
+    color: var(--text-primary);
+  }
+  .result-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 800;
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+  .correct-msg .result-title { color: var(--success); }
+  .wrong-msg .result-title { color: var(--danger); }
+  .result-explanation {
+    margin-top: 6px;
+    color: var(--text-secondary);
+  }
+  .result-hint {
+    margin-top: 10px;
+    font-size: 12.5px;
+    color: var(--text-muted);
+  }
+
+  .btn-reset {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 12px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-family: inherit;
+    transition: 0.2s;
+  }
+  .btn-reset:hover {
+    background: var(--border-color);
+    color: var(--text-primary);
+  }
+
+  /* Comprehensive Quiz Tracker */
+  .quiz-tracker-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 28px 24px;
+    margin-bottom: 24px;
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+  }
+  .quiz-score-val {
+    font-size: 44px;
+    font-weight: 800;
+    color: #38bdf8;
+    margin: 8px 0;
+  }
+  .quiz-progress {
+    width: 100%;
+    height: 10px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 999px;
+    overflow: hidden;
+    margin: 16px 0 10px;
+  }
+  .quiz-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #38bdf8, #818cf8, #34d399);
+    transition: width 0.3s ease;
+  }
+
+  /* Glossary Section */
+  .glossary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 14px;
+    margin-top: 18px;
+  }
+  .glossary-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    transition: all 0.2s ease;
+  }
+  .glossary-item:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+  }
+  .glossary-term {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 14.5px;
+    color: var(--primary);
+  }
+  .glossary-ar {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  /* Modal */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(4px);
+    z-index: 99999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .modal-box {
+    background: var(--card-bg);
+    border-radius: 24px;
+    padding: 36px 30px;
+    max-width: 440px;
+    width: 100%;
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-color);
+    animation: popIn 0.3s ease;
+  }
+  .modal-box h3 {
+    font-size: 24px;
+    color: var(--success);
+    margin-bottom: 8px;
+  }
+  .modal-close-btn {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    padding: 10px 28px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-family: inherit;
+  }
+
+  /* Developer Footer */
+  .dev-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 28px 24px;
+    text-align: center;
+    margin-top: 36px;
+    box-shadow: var(--shadow-sm);
+  }
+  .dev-name {
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+  }
+  .dev-sub {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+  .whatsapp-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #25d366;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 9px 22px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 700;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+  }
+  .whatsapp-link:hover {
+    background: #20ba5a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(37, 211, 102, 0.35);
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes popIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  @media (max-width: 768px) {
+    .grid-2, .grid-3, .grid-4 {
+      grid-template-columns: 1fr;
+    }
+    .hero-title {
+      font-size: 24px;
+    }
+    .hero-card {
+      padding: 26px 20px;
+    }
+    .card {
+      padding: 22px 18px;
+    }
+    .top-nav {
+      padding: 10px 16px;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <!-- Top Progress Bar -->
+  <div class="progress-bar-fixed">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+
+  <!-- Sticky Top Navigation -->
+  <nav class="top-nav">
+    <div class="nav-left">
+      <a href="../index.html" class="back-btn">
+        <svg viewBox="0 0 24 24" class="icon" width="16" height="16"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        <span>المحاضرات</span>
+      </a>
+      <span class="nav-title">Critical Thinking — Lecture 1</span>
+    </div>
+    <div class="nav-right">
+      <button class="theme-btn" onclick="toggleTheme()" title="تبديل الوضع الليلي / النهاري">
+        <svg viewBox="0 0 24 24" class="icon" width="18" height="18" id="themeIcon">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <!-- Hero Card -->
+    <header class="hero-card">
+      <div class="hero-badge">
+        <svg viewBox="0 0 24 24" class="icon" width="14" height="14"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4M12 8h.01"></path></svg>
+        <span>متطلب جامعي إجباري (Compulsory University Requirement)</span>
+      </div>
+      <h1 class="hero-title">Critical Thinking (التفكير النقدي)</h1>
+      <p class="hero-sub">Lecture 1: Definition and Concepts — شرح تفاعلي شامل ومبسط مع نطق المصطلحات واختبارات قياس الفهم</p>
+      <div class="hero-tags">
+        <span class="hero-tag">🧠 Analysis, Evaluation & Inference</span>
+        <span class="hero-tag">📖 Thinker's Lexicon</span>
+        <span class="hero-tag">🔍 The EEE Process</span>
+        <span class="hero-tag">🎯 10 Interactive Quizzes</span>
+      </div>
+    </header>
+
+    <!-- Quick Navigation Chips -->
+    <div class="quick-nav">
+      <a href="#sec-definition" class="quick-chip">1. التعريف</a>
+      <a href="#sec-life" class="quick-chip">2. في حياتك</a>
+      <a href="#sec-skills" class="quick-chip">3. المهارات الأساسية</a>
+      <a href="#sec-involved" class="quick-chip">4. عناصر التفكير</a>
+      <a href="#sec-thinkers" class="quick-chip">5. مقارنة المفكرين</a>
+      <a href="#sec-benefits" class="quick-chip">6. الفوائد</a>
+      <a href="#sec-lexicon" class="quick-chip">7. قاموس المفكر</a>
+      <a href="#sec-problems" class="quick-chip">8. مشكلات القرار</a>
+      <a href="#sec-process" class="quick-chip">9. عملية EEE</a>
+      <a href="#sec-career" class="quick-chip">10. اختيار المهنة</a>
+      <a href="#sec-final-quiz" class="quick-chip">📝 الاختبار الشامل</a>
+    </div>
+
+    <!-- Section 1: Definition -->
+    <section class="card" id="sec-definition">
+      <h2><span class="section-badge">1</span> ما هو التفكير النقدي؟ (Definition & Concept)</h2>
+      <div class="highlight">
+        <strong>التعريف الأكاديمي المباشر:</strong>
+        <p style="margin-top:6px">
+          <span class="en">Critical Thinking</span>
+          <button class="audio-btn" onclick="playAudio('critical_thinking')" title="استمع لنطق Critical Thinking"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+          is the ability to <strong>analyze facts objectively</strong>
+          <button class="audio-btn" onclick="playAudio('objectively')" title="استمع لنطق Objectively"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+          and <strong>form a judgment</strong>.
+        </p>
+        <p style="color:var(--text-secondary);font-size:14.5px;margin-top:4px">
+          هو القدرة على <strong>تحليل الحقائق بموضوعية تامة</strong> وتكوين حكم سليم مبني على المنطق والدليل وليس على الهوى أو الانفعال.
+        </p>
+      </div>
+
+      <div class="grid-2">
+        <div class="info-box">
+          <h4>💡 التفكير بوضوح وعقلانية</h4>
+          <p>
+            With critical thinking we can think <strong>clearly and rationally</strong>
+            <button class="audio-btn" onclick="playAudio('rationally')" title="استمع لنطق Rationally"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+            — التفكير دون تشويش وبعيداً عن التحيزات الشخصية.
+          </p>
+        </div>
+        <div class="info-box">
+          <h4>🎯 فاعلية القرار وحل المشكلات</h4>
+          <p>
+            It allows us to perform <strong>problem solving</strong> and <strong>decision making</strong> more effectively — الوصول لأفضل الحلول وأنسب القرارات.
+          </p>
+        </div>
+      </div>
+
+      <!-- Question 1 -->
+      <div class="question" data-qid="q1">
+        <div class="question-header">
+          <span class="q-badge">Quick Check 1</span>
+          <div class="q-actions">
+            <button class="btn-translate" onclick="toggleTranslation(this)">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l6 6M4 14l6-6 2-3M2 5h12M7 2h1M22 22l-5-10-5 10M14 18h6"/></svg>
+              <span>ترجمة</span>
+            </button>
+            <button class="btn-reset" onclick="resetQuestion(this)">↺</button>
+          </div>
+        </div>
+        <div class="q-text en-text">
+          According to the lecture, what is the exact definition of Critical Thinking?
+        </div>
+        <div class="q-translation">
+          <strong>ترجمة السؤال:</strong> وفقاً للمحاضرة، ما هو التعريف الدقيق للتفكير النقدي (Critical Thinking)؟
+          <div style="font-size:13px;color:#92400e;margin-top:4px">
+            أ) حفظ وتكرار المعلومات دون مناقشة | ب) القدرة على تحليل الحقائق بموضوعية وتكوين حكم سليم | ج) الاعتماد التام على الحدس والمشاعر | د) اتخاذ قرارات متسرعة دون تحليل
+          </div>
+        </div>
+        <div class="inline-mcq" data-correct="1" data-explanations='[
+          "غير صحيح؛ حفظ وتكرار المعلومات دون تمحيص يعتبر تلقيناً سلبياً وليس تفكيراً نقدياً.",
+          "صحيح تماماً! التفكير النقدي هو القدرة على تحليل الحقائق بموضوعية وتكوين حكم سليم (The ability to analyze facts objectively and form a judgment).",
+          "غير صحيح؛ التفكير النقدي يعتمد على الدليل والمنطق وليس على الحدس والمشاعر.",
+          "غير صحيح؛ اتخاذ القرارات دون فحص الأدلة هو Snap Decisions وهو من عيوب التفكير."
+        ]'>
+          <div class="mcq-options">
+            <button class="mcq-option" onclick="checkAnswer(this, 0)">
+              <span>A) Memorizing and repeating information without questioning</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 1)">
+              <span>B) The ability to analyze facts objectively and form a judgment</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 2)">
+              <span>C) Relying purely on intuition and emotional feelings</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 3)">
+              <span>D) Making instant decisions without analyzing data</span>
+              <span>←</span>
+            </button>
+          </div>
+          <div class="mcq-result"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Critical Thinking in Life -->
+    <section class="card" id="sec-life">
+      <h2><span class="section-badge">2</span> التفكير النقدي في مناحي حياتك (In Your Life)</h2>
+      <p>التفكير النقدي ليس مجرد مادة نظرية للامتحان؛ بل هو مهارة حيوية تُمارس في 3 أبعاد رئيسية في حياتنا اليومية:</p>
+
+      <div class="grid-3">
+        <div class="info-box">
+          <div style="font-size:24px;margin-bottom:8px">🥗</div>
+          <h4>الحياة الشخصية (Personal Life)</h4>
+          <p style="font-size:14px;color:var(--text-muted)">سؤال محوري:</p>
+          <p><strong>What is a healthy diet?</strong><br>ما هو النظام الغذائي الصحي الحقيقي المناسب لجسمي بعيداً عن إعلانات الترند والدعاية؟</p>
+        </div>
+
+        <div class="info-box">
+          <div style="font-size:24px;margin-bottom:8px">💼</div>
+          <h4>الحياة المهنية (Professional Life)</h4>
+          <p style="font-size:14px;color:var(--text-muted)">سؤال محوري:</p>
+          <p><strong>How can we improve our product?</strong><br>كيف نطور خدماتنا ومنتجاتنا في العمل بناءً على تقييم دقيق لاحتياجات العملاء وتفادي الأخطاء؟</p>
+        </div>
+
+        <div class="info-box">
+          <div style="font-size:24px;margin-bottom:8px">🎓</div>
+          <h4>الحياة الأكاديمية (Academic Life)</h4>
+          <p style="font-size:14px;color:var(--text-muted)">سؤال محوري:</p>
+          <p><strong>Which major should I choose and why?</strong><br>أي تخصص جامعي يجب أن أختاره ولماذا؟ بناءً على قدراتي وطموحي وليس تقليداً للأصدقاء.</p>
+        </div>
+      </div>
+
+      <div class="key">
+        <div class="key-header">💡 خلاصة جوهرية:</div>
+        التفكير النقدي يُمكّنك من مواجهة كل خيار في حياتك بالتحليل والوزن الدقيق للإيجابيات والسلبيات، بدلاً من اتخاذ قرارات عشوائية نندم عليها لاحقاً.
+      </div>
+    </section>
+
+    <!-- Section 3: Core Skills -->
+    <section class="card" id="sec-skills">
+      <h2><span class="section-badge">3</span> مهارات التفكير النقدي الثلاث الأساسية (Core Skills)</h2>
+      <p>يقوم التفكير النقدي على <strong>ثلاث مهارات متتالية</strong> تشكل دورة التفكير السليم:</p>
+
+      <div class="step-row">
+        <div class="step-num">1</div>
+        <div>
+          <h4>
+            التحليل (<span class="en">Analysis</span>
+            <button class="audio-btn" onclick="playAudio('analysis')" title="استمع لنطق Analysis"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>)
+          </h4>
+          <p>
+            <strong>فهم بنية الحجة وتفكيكها:</strong> نستخدم التحليل عند قراءة نص أو الاستماع لشخص ما، لنفهم بدقة: ما هي أجزاء كلامه؟ وما الرسالة التي يريد إيصالها؟
+          </p>
+        </div>
+      </div>
+
+      <div class="step-row">
+        <div class="step-num">2</div>
+        <div>
+          <h4>
+            التقييم (<span class="en">Evaluation</span>
+            <button class="audio-btn" onclick="playAudio('evaluation')" title="استمع لنطق Evaluation"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>)
+          </h4>
+          <p>
+            <strong>وزن قوة الأدلة:</strong> نستخدم التقييم لنقرر هل نقبل هذا الادعاء أم نرفضه، بالاعتماد على مدى قوة وموثوقية الأدلة المقدمة لدعمه.
+          </p>
+        </div>
+      </div>
+
+      <div class="step-row">
+        <div class="step-num">3</div>
+        <div>
+          <h4>
+            الاستنتاج (<span class="en">Inference</span>
+            <button class="audio-btn" onclick="playAudio('inference')" title="استمع لنطق Inference"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>)
+          </h4>
+          <p>
+            <strong>الوصول إلى النتيجة:</strong> نجمع المعلومات التي قمنا بتقييمها وتأكدنا من قوتها، لنصل في النهاية إلى خلاصة منطقية وحكم نهائي للحجة.
+          </p>
+        </div>
+      </div>
+
+      <div class="highlight">
+        <strong>⚠️ قاعدة ذهبية للحفظ للامتحان:</strong>
+        <div style="font-size:17px;font-weight:700;color:var(--primary);margin-top:6px">
+          Analysis ➔ Evaluation ➔ Inference
+        </div>
+        (أحلل أولاً ➔ ثم أقيّم الأدلة ➔ ثم أستنتج الحكم النهائي).
+      </div>
+
+      <!-- Question 2 -->
+      <div class="question" data-qid="q2">
+        <div class="question-header">
+          <span class="q-badge">Quick Check 2</span>
+          <div class="q-actions">
+            <button class="btn-translate" onclick="toggleTranslation(this)">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l6 6M4 14l6-6 2-3M2 5h12M7 2h1M22 22l-5-10-5 10M14 18h6"/></svg>
+              <span>ترجمة</span>
+            </button>
+            <button class="btn-reset" onclick="resetQuestion(this)">↺</button>
+          </div>
+        </div>
+        <div class="q-text en-text">
+          Which critical thinking skill is used to decide whether to accept a claim based on the strength of support provided?
+        </div>
+        <div class="q-translation">
+          <strong>ترجمة السؤال:</strong> ما هي مهارة التفكير النقدي المستخدمة لتقرير قبول أو رفض ادعاء ما بناءً على قوة الأدلة الداعمة له؟
+          <div style="font-size:13px;color:#92400e;margin-top:4px">
+            أ) التحليل (Analysis) | ب) الاستنتاج (Inference) | ج) التقييم (Evaluation) | د) الافتراض (Assumption)
+          </div>
+        </div>
+        <div class="inline-mcq" data-correct="2" data-explanations='[
+          "غير صحيح؛ Analysis هو تفكيك الحجة وفهم تركيبها.",
+          "غير صحيح؛ Inference هو استخلاص النتيجة النهائية بعد تقييم الأدلة.",
+          "صحيح تماماً! Evaluation (التقييم) هو فحص قوة الدعم والأدلة لقبول الادعاء أو رفضه.",
+          "غير صحيح؛ Assumption هو الافتراض المسلم به دون برهان وليس مهارة تقييم."
+        ]'>
+          <div class="mcq-options">
+            <button class="mcq-option" onclick="checkAnswer(this, 0)">
+              <span>A) Analysis</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 1)">
+              <span>B) Inference</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 2)">
+              <span>C) Evaluation</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 3)">
+              <span>D) Assumption</span>
+              <span>←</span>
+            </button>
+          </div>
+          <div class="mcq-result"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: What is Involved -->
+    <section class="card" id="sec-involved">
+      <h2><span class="section-badge">4</span> عناصر التفكير النقدي الثمانية (What is Involved?)</h2>
+      <p>عند معالجة أي قضية أو مشكلة بتفكير نقدي، يتفاعل في ذهنك <strong>8 عناصر محورية</strong>:</p>
+
+      <div class="grid-2">
+        <div class="term">
+          <div class="term-content">
+            <div class="term-name">
+              1. Question
+              <button class="audio-btn" onclick="playAudio('question')" title="استمع لنطق Question"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+            </div>
+            <div class="term-desc"><strong>السؤال:</strong> ما الذي يُسأل عنه تحديداً وبدقة؟ (What is being asked?)</div>
+          </div>
+        </div>
+
+        <div class="term">
+          <div class="term-content">
+            <div class="term-name">
+              2. Purpose
+              <button class="audio-btn" onclick="playAudio('purpose')" title="استمع لنطق Purpose"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+            </div>
+            <div class="term-desc"><strong>الهدف:</strong> لماذا أريد الإجابة؟ وما الغاية منها؟ (Why do I want the answer?)</div>
+          </div>
+        </div>
+
+        <div class="term">
+          <div class="term-content">
+            <div class="term-name">
+              3. Point of View
+              <button class="audio-btn" onclick="playAudio('point_of_view')" title="استمع لنطق Point of View"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+            </div>
+            <div class="term-desc"><strong>وجهة النظر:</strong> من أي زاوية ورؤية أنظر للسؤال؟ (Where do I stand to look?)</div>
+          </div>
+        </div>
+
+        <div class="term">
+          <div class="term-content">
+            <div class="term-name">
+              4. Information
+              <button class="audio-btn" onclick="playAudio('information')" title="استمع لنطق Information"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+            </div>
+            <div class="term-desc"><strong>المعلومات:</strong> ما هي البيانات والحقائق المتاحة لدي؟ (What data do I have?)</div>
+          </div>
+        </div>
+
+        <div class="term">
+          <div class="term-content">
+            <div class="term-name">
+              5. Concepts
+              <button class="audio-btn" onclick="playAudio('concepts')" title="استمع لنطق Concepts"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+            </div>
+            <div class="term-desc"><strong>المفاهيم:</strong> ما هي الأفكار والنظريات المعنية؟ (What ideas are involved?)</div>
+          </div>
+        </div>
+
+        <div class="term">
+          <div class="term-content">
+            <div class="term-name">
+              6. Assumptions
+              <button class="audio-btn" onclick="playAudio('assumptions')" title="استمع لنطق Assumptions"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+            </div>
+            <div class="term-desc"><strong>الافتراضات:</strong> ما الأشياء التي أسلّم بها كبديهيات؟ (What am I taking for granted?)</div>
+          </div>
+        </div>
+
+        <div class="term">
+          <div class="term-content">
+            <div class="term-name">
+              7. Inferences
+              <button class="audio-btn" onclick="playAudio('inference')" title="استمع لنطق Inferences"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+            </div>
+            <div class="term-desc"><strong>الاستنتاجات:</strong> ما هي الخلاصات التي أتوصل إليها؟ (What conclusions am I drawing?)</div>
+          </div>
+        </div>
+
+        <div class="term">
+          <div class="term-content">
+            <div class="term-name">
+              8. Consequences
+              <button class="audio-btn" onclick="playAudio('consequences')" title="استمع لنطق Consequences"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+            </div>
+            <div class="term-desc"><strong>الآثار المترتبة:</strong> ما تبعات وتأثيرات هذا السؤال أو القرار؟ (What are the implications?)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Thinkers Comparison -->
+    <section class="card" id="sec-thinkers">
+      <h2><span class="section-badge">5</span> مقارنة: المفكر الناقد مقابل غير الناقد</h2>
+      <p>المقارنة الجوهرية بين عقلية المفكر الناقد وعقلية الشخص المتسرع غير الناقد:</p>
+
+      <div class="grid-2">
+        <!-- Critical Thinkers -->
+        <div class="info-box positive">
+          <h4 style="color:var(--success);display:flex;align-items:center;gap:6px">
+            <span>✅ المفكرون الناقدون</span>
+            <span class="en">(Critical Thinkers)</span>
+            <button class="audio-btn" onclick="playAudio('critical_thinkers')" title="استمع لنطق Critical Thinkers"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+          </h4>
+          <ul style="padding-right:20px;font-size:14.5px;color:var(--text-secondary);margin-top:10px;line-height:2">
+            <li><strong>يعترف بحدود معرفته:</strong> (Acknowledge personal limitations).</li>
+            <li><strong>يرى المشكلات كتحديات ممتعة:</strong> (See problems as exciting challenges).</li>
+            <li><strong>هدفه الفهم وليس المكابرة:</strong> (Have understanding as a goal).</li>
+            <li><strong>يستخدم الأدلة للحكم:</strong> (Use evidence to make judgments).</li>
+            <li><strong>يهتم بأفكار وآراء الآخرين:</strong> (Interested in others' ideas).</li>
+            <li><strong>يشكك في الآراء المتطرفة:</strong> (Skeptical of extreme views).</li>
+            <li><strong>يفكر قبل أن يتصرف:</strong> (Think before acting).</li>
+            <li><strong>يتجنب الانقياد للعاطفة:</strong> (Avoid emotionalism).</li>
+            <li><strong>يحافظ على عقل منفتح:</strong> (Keep an open mind).</li>
+          </ul>
+        </div>
+
+        <!-- Uncritical Thinkers -->
+        <div class="info-box negative">
+          <h4 style="color:var(--danger);display:flex;align-items:center;gap:6px">
+            <span>❌ غير الناقدين</span>
+            <span class="en">(Uncritical Thinkers)</span>
+            <button class="audio-btn" onclick="playAudio('uncritical_thinkers')" title="استمع لنطق Uncritical Thinkers"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+          </h4>
+          <ul style="padding-right:20px;font-size:14.5px;color:var(--text-secondary);margin-top:10px;line-height:2">
+            <li><strong>يتظاهر بمعرفة ما يجهله:</strong> (Pretend to know more than they do).</li>
+            <li><strong>ينزعج ويتأفف من المشكلات:</strong> (Get annoyed by problems).</li>
+            <li><strong>متسرع وقليل الصبر:</strong> (Are impatient).</li>
+            <li><strong>يحكم بالانطباع والحدس السريع:</strong> (Judge on first impressions).</li>
+            <li><strong>يركز فقط على رأيه الشخصي:</strong> (Focus on their own opinions).</li>
+            <li><strong>يبحث فقط عمن يوافقه الرأي:</strong> (Look only for ideas like their own).</li>
+            <li><strong>تقوده المشاعر قبل العقل:</strong> (Guided by feelings rather than thoughts).</li>
+            <li><strong>يدعي أن التفكير يسبب له صداعاً!</strong> (Claim that thinking gives them a headache).</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Question 3 -->
+      <div class="question" data-qid="q3">
+        <div class="question-header">
+          <span class="q-badge">Quick Check 3</span>
+          <div class="q-actions">
+            <button class="btn-translate" onclick="toggleTranslation(this)">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l6 6M4 14l6-6 2-3M2 5h12M7 2h1M22 22l-5-10-5 10M14 18h6"/></svg>
+              <span>ترجمة</span>
+            </button>
+            <button class="btn-reset" onclick="resetQuestion(this)">↺</button>
+          </div>
+        </div>
+        <div class="q-text en-text">
+          Which of the following characteristics distinguishes a Critical Thinker from an Uncritical Thinker?
+        </div>
+        <div class="q-translation">
+          <strong>ترجمة السؤال:</strong> أي من الخصائص التالية تُميّز المفكر الناقد (Critical Thinker) عن غيره؟
+          <div style="font-size:13px;color:#92400e;margin-top:4px">
+            أ) الحكم بالانطباع الأول والحدس | ب) رؤية المشكلات كتحديات ممتعة واستخدام الأدلة للأحكام | ج) التظاهر بالمعرفة | د) الانزعاج من الآراء المخالفة
+          </div>
+        </div>
+        <div class="inline-mcq" data-correct="1" data-explanations='[
+          "غير صحيح؛ الحكم بالانطباع الأول (First impressions) من سمات غير الناقدين المتسرعين.",
+          "صحيح تماماً! المفكر الناقد يرى المشكلات كتحديات ممتعة (Exciting challenges) ويسعى لفهمها وحلها بالأدلة والبراهين.",
+          "غير صحيح؛ الادعاء بمعرفة كل شيء والتظاهر بالكمال هو صفة صريحة لـ Uncritical Thinkers.",
+          "غير صحيح؛ البحث فقط عن الأفكار المتطابقة هو تحيز تأكيدي يمارسه غير الناقدين."
+        ]'>
+          <div class="mcq-options">
+            <button class="mcq-option" onclick="checkAnswer(this, 0)">
+              <span>A) Judging solely on first impressions and intuition</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 1)">
+              <span>B) Seeing problems as exciting challenges and using evidence to make judgments</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 2)">
+              <span>C) Pretending to know more than they actually do</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 3)">
+              <span>D) Focusing only on their own opinions and getting annoyed by problems</span>
+              <span>←</span>
+            </button>
+          </div>
+          <div class="mcq-result"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Benefits -->
+    <section class="card" id="sec-benefits">
+      <h2><span class="section-badge">6</span> فوائد التفكير النقدي (Benefits of Critical Thinking)</h2>
+      <p>يمنحك إتقان التفكير النقدي قدرات عقلية متميزة تشمل <strong>10 فوائد كبرى</strong>:</p>
+
+      <div class="grid-2">
+        <div class="term"><div class="term-content"><div class="term-name">1. Think independently</div><div class="term-desc">التفكير باستقلالية وحرية دون التبعية العمياء للآخرين.</div></div></div>
+        <div class="term"><div class="term-content"><div class="term-name">2. Make better decisions</div><div class="term-desc">اتخاذ قرارات صائبة ومدروسة في مختلف جوانب الحياة.</div></div></div>
+        <div class="term"><div class="term-content"><div class="term-name">3. Deal with change effectively</div><div class="term-desc">التعامل مع المتغيرات والمفاجآت بسرعة ومرونة وفاعلية.</div></div></div>
+        <div class="term"><div class="term-content"><div class="term-name">4. Solve problems systematically</div><div class="term-desc">حل المشكلات بأسلوب منهجي علمي منظم خطوة بخطوة.</div></div></div>
+        <div class="term"><div class="term-content"><div class="term-name">5. Think more creatively</div><div class="term-desc">التفكير الإبداعي والخروج بحلول ذكية غير مألوفة.</div></div></div>
+        <div class="term"><div class="term-content"><div class="term-name">6. Increase self-reflection</div><div class="term-desc">تعزيز محاسبة ومراجعة النفس والانفتاح على التطوير المستمر.</div></div></div>
+        <div class="term"><div class="term-content"><div class="term-name">7. Detect inconsistencies</div><div class="term-desc">اكتشاف التناقضات والأخطاء الشائعة في حجج المتحدثين.</div></div></div>
+        <div class="term"><div class="term-content"><div class="term-name">8. Recognize biases</div><div class="term-desc">إدراك الافتراضات المسبقة والتحيزات الشخصية وتجاوزها.</div></div></div>
+        <div class="term"><div class="term-content"><div class="term-name">9. Identify relevance</div><div class="term-desc">فرز الأفكار الجوهرية المهمة وفصلها عما لا يرتبط بالموضوع.</div></div></div>
+        <div class="term"><div class="term-content"><div class="term-name">10. Well-reasoned conclusions</div><div class="term-desc">الوصول إلى استنتاجات وحلول مبنية على حجج متينة ومقنعة.</div></div></div>
+      </div>
+    </section>
+
+    <!-- Section 7: Lexicon -->
+    <section class="card" id="sec-lexicon">
+      <h2><span class="section-badge">7</span> قاموس المفكر (A Thinker's Lexicon)</h2>
+      <p>مصطلحات المحاضرة الأساسية التي يجب على الطالب معرفتها بدقة وتمييز الفروق الدقيقة بينها:</p>
+
+      <div class="grid-2">
+        <div class="info-box">
+          <div class="term-name">
+            Fact
+            <button class="audio-btn" onclick="playAudio('fact')" title="استمع لنطق Fact"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+          </div>
+          <p><strong>حقيقة:</strong> A truth that cannot be disputed — حقيقة ثابتة مثبتة بالدليل القاطع لا تقبل الجدال.</p>
+        </div>
+
+        <div class="info-box">
+          <div class="term-name">
+            Opinion
+            <button class="audio-btn" onclick="playAudio('opinion')" title="استمع لنطق Opinion"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+          </div>
+          <p><strong>رأي:</strong> A personal view or belief — وجهة نظر أو معتقد شخصي يختلف من فرد لآخر.</p>
+        </div>
+
+        <div class="info-box">
+          <div class="term-name">
+            Claim
+            <button class="audio-btn" onclick="playAudio('claim')" title="استمع لنطق Claim"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+          </div>
+          <p><strong>ادعاء:</strong> To assert as a fact whether it is or not — التأكيد على شيء كأنه حقيقة سواء كان حقيقة فعلاً أم لا.</p>
+        </div>
+
+        <div class="info-box">
+          <div class="term-name">
+            Argument
+            <button class="audio-btn" onclick="playAudio('argument')" title="استمع لنطق Argument"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+          </div>
+          <p><strong>حجة:</strong> A set of claims to support an assertion — مجموعة ادعاءات وأسباب تُساق معاً لدعم وتأييد فكرة معينة.</p>
+        </div>
+
+        <div class="info-box">
+          <div class="term-name">
+            Assumption
+            <button class="audio-btn" onclick="playAudio('assumption')" title="استمع لنطق Assumption"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+          </div>
+          <p><strong>افتراض:</strong> An inference that is believed to be true — أمر نعتبره صحيحاً ومسلّماً به دون وجود دليل حاسم.</p>
+        </div>
+
+        <div class="info-box">
+          <div class="term-name">
+            Inference
+            <button class="audio-btn" onclick="playAudio('inference')" title="استمع لنطق Inference"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+          </div>
+          <p><strong>استنتاج:</strong> A judgment based on evidence — حكم أو خلاصة مبنية بالكامل على دليل ملموس.</p>
+        </div>
+
+        <div class="info-box">
+          <div class="term-name">
+            Validity
+            <button class="audio-btn" onclick="playAudio('validity')" title="استمع لنطق Validity"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+          </div>
+          <p><strong>الصحة / الصدق:</strong> Truthful, well-founded — شيء صادق ومؤسس على أرضية وقواعد منطقية صلبة.</p>
+        </div>
+
+        <div class="info-box">
+          <div class="term-name">
+            Plausible
+            <button class="audio-btn" onclick="playAudio('plausible')" title="استمع لنطق Plausible"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+          </div>
+          <p><strong>معقول ومقبول:</strong> Logical and believable, credible — أمر يتوافق مع العقل ويستحق التصديق والقبول.</p>
+        </div>
+      </div>
+
+      <!-- Question 4 -->
+      <div class="question" data-qid="q4">
+        <div class="question-header">
+          <span class="q-badge">Quick Check 4</span>
+          <div class="q-actions">
+            <button class="btn-translate" onclick="toggleTranslation(this)">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l6 6M4 14l6-6 2-3M2 5h12M7 2h1M22 22l-5-10-5 10M14 18h6"/></svg>
+              <span>ترجمة</span>
+            </button>
+            <button class="btn-reset" onclick="resetQuestion(this)">↺</button>
+          </div>
+        </div>
+        <div class="q-text en-text">
+          According to the thinker's lexicon, what is the key difference between a Fact and a Claim?
+        </div>
+        <div class="q-translation">
+          <strong>ترجمة السؤال:</strong> حسب قاموس المفكر، ما الفرق الجوهري بين الحقيقة (Fact) والادعاء (Claim)؟
+          <div style="font-size:13px;color:#92400e;margin-top:4px">
+            أ) الحقيقة لا تقبل الجدال، بينما الادعاء تأكيد قد يكون صحيحاً أو خاطئاً | ب) الادعاء حقيقة مطلقة والـ Fact مجرد رأي | ج) كلاهما متطابقان | د) الـ Fact افتراض دون دليل والادعاء حكم نهائي
+          </div>
+        </div>
+        <div class="inline-mcq" data-correct="0" data-explanations='[
+          "صحيح تماماً! Fact حقيقة ثابتة ومؤكدة بالدليل (A truth that cannot be disputed)، بينما Claim هو مجرد تأكيد وادعاء قد يكون صحيحاً أو كاذباً (To assert as a fact whether it is or not).",
+          "غير صحيح؛ العكس تماماً، الادعاء يحتاج لإثبات.",
+          "غير صحيح؛ الرأي الشخصي هو Opinion، بينما Fact حقيقة موضوعية ثابتة.",
+          "غير صحيح؛ الافتراض المسلم به هو Assumption."
+        ]'>
+          <div class="mcq-options">
+            <button class="mcq-option" onclick="checkAnswer(this, 0)">
+              <span>A) A Fact cannot be disputed, while a Claim is asserted as a fact whether it is true or not</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 1)">
+              <span>B) A Claim is an absolute truth, while a Fact is a temporary personal opinion</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 2)">
+              <span>C) Both terms represent identical personal beliefs without any distinction</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 3)">
+              <span>D) A Fact is an unproven assumption, while a Claim is a finalized conclusion</span>
+              <span>←</span>
+            </button>
+          </div>
+          <div class="mcq-result"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 8: Decision Problems -->
+    <section class="card" id="sec-problems">
+      <h2><span class="section-badge">8</span> أربع مشكلات شائعة في اتخاذ القرار (Decision-Making Problems)</h2>
+      <p>يقع الكثير من الناس في <strong>4 فخاخ فكرية شائعة</strong> تؤدي لقرارات خاطئة ومؤسفة:</p>
+
+      <div class="grid-2">
+        <div class="info-box negative">
+          <h4>
+            1. Snap Decisions (القرارات المتسرعة)
+            <button class="audio-btn" onclick="playAudio('snap_decisions')" title="استمع لنطق Snap Decisions"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+          </h4>
+          <p><strong>العلاج الذهبي:</strong> <span class="en">"Don't jump to conclusions!"</span></p>
+          <p style="font-size:14px;color:var(--text-secondary)">
+            لا تقفز مباشرة إلى الاستنتاجات والأحكام قبل أن تتأكد من فحص وجمع كل المعطيات الكافية.
+          </p>
+        </div>
+
+        <div class="info-box negative">
+          <h4>
+            2. Narrow Thinking (التفكير الضيق والمحدود)
+            <button class="audio-btn" onclick="playAudio('narrow_thinking')" title="استمع لنطق Narrow Thinking"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+          </h4>
+          <p><strong>العلاج الذهبي:</strong> <span class="en">"Broaden your vistas!"</span></p>
+          <p style="font-size:14px;color:var(--text-secondary)">
+            وسّع آفاقك وزوايا رؤيتك؛ لا تحصر نفسك في خيار واحد أو منظور وحيد للأمور.
+          </p>
+        </div>
+
+        <div class="info-box negative">
+          <h4>
+            3. Sprawling Thinking (التفكير المتشعب والتشتت)
+            <button class="audio-btn" onclick="playAudio('sprawling_thinking')" title="استمع لنطق Sprawling Thinking"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+          </h4>
+          <p><strong>العلاج الذهبي:</strong> <span class="en">"Don't beat around the bush!"</span></p>
+          <p style="font-size:14px;color:var(--text-secondary)">
+            لا تلف وتدور ولا تتشعب في تفاصيل جانبية تافهة تشتتك عن المشكلة الأصلية.
+          </p>
+        </div>
+
+        <div class="info-box negative">
+          <h4>
+            4. Fuzzy Thinking (التفكير الضبابي وغير الواضح)
+            <button class="audio-btn" onclick="playAudio('fuzzy_thinking')" title="استمع لنطق Fuzzy Thinking"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+          </h4>
+          <p><strong>العلاج الذهبي:</strong> <span class="en">"Keep it sharp! Keep it relevant!"</span></p>
+          <p style="font-size:14px;color:var(--text-secondary)">
+            حافظ على تركيزك حاداً ومحدداً ومرتبطاً دائماً بصلب الموضوع.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 9: EEE Process -->
+    <section class="card" id="sec-process">
+      <h2><span class="section-badge">9</span> عملية التفكير النقدي الثلاثية (The EEE Process)</h2>
+      <p>تنقسم عملية التفكير النقدي المتكاملة إلى <strong>ثلاث مراحل متتابعة تبدأ بحرف E</strong>:</p>
+
+      <div class="grid-3">
+        <div class="info-box" style="border-top:4px solid var(--primary)">
+          <h4>
+            1. Examine (افحص)
+            <button class="audio-btn" onclick="playAudio('examine')" title="استمع لنطق Examine"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+          </h4>
+          <ul style="padding-right:18px;font-size:14px;color:var(--text-secondary);margin-top:8px">
+            <li><strong>Identify the issue:</strong> تحديد المشكلة بدقة.</li>
+            <li><strong>Collect information:</strong> جمع البيانات والحقائق اللازمة.</li>
+          </ul>
+        </div>
+
+        <div class="info-box" style="border-top:4px solid var(--accent)">
+          <h4>
+            2. Explore (استكشف)
+            <button class="audio-btn" onclick="playAudio('explore')" title="استمع لنطق Explore"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+          </h4>
+          <ul style="padding-right:18px;font-size:14px;color:var(--text-secondary);margin-top:8px">
+            <li><strong>Uncover assumptions:</strong> كشف الافتراضات والتحيزات.</li>
+            <li><strong>Interpret information:</strong> تفسير وتحليل البيانات.</li>
+            <li><strong>Brainstorm alternatives:</strong> ابتكار حلول وتفسيرات بديلة.</li>
+          </ul>
+        </div>
+
+        <div class="info-box" style="border-top:4px solid var(--success)">
+          <h4>
+            3. Evaluate (قيّم)
+            <button class="audio-btn" onclick="playAudio('evaluate')" title="استمع لنطق Evaluate"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+          </h4>
+          <ul style="padding-right:18px;font-size:14px;color:var(--text-secondary);margin-top:8px">
+            <li><strong>Assess explanations:</strong> تقييم الحلول والتفسيرات المطروحة.</li>
+            <li><strong>Reach a conclusion:</strong> التوصل للقرار والنتيجة النهائية.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="highlight">
+        <strong>حفظ المراحل الثلاث للامتحان:</strong>
+        <p style="font-weight:700;color:var(--primary);margin-top:4px">Examine ➔ Explore ➔ Evaluate</p>
+        (افحص ➔ استكشف ➔ قيّم).
+      </div>
+    </section>
+
+    <!-- Section 10: Career Example -->
+    <section class="card" id="sec-career">
+      <h2><span class="section-badge">10</span> تطبيق واقعي: اختيار المستقبل المهني (Choosing the Career)</h2>
+      <p>طرحت المحاضرة مثالاً عملياً يمس حياة كل طالب: <strong>اختيار المسار الوظيفي أو التخصص الجامعي</strong>.</p>
+      <p>يواجه كل منا حيرة بين مسارات وظيفية مختلفة، أو الاختيار بين دراسة تقليدية وبرنامج أونلاين. كل خيار أمامه إيجابيات وسلبيات:</p>
+
+      <div class="highlight">
+        <span class="en">Pros and Cons</span>
+        <button class="audio-btn" onclick="playAudio('pros_and_cons')" title="استمع لنطق Pros and Cons"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        — التفكير النقدي يُمكّننا من <strong>وزن الإيجابيات (Pros) والسلبيات (Cons)</strong> لكل خيار بدقة، واختيار البديل الذي يحقق أكبر قدر من المنافع بأقل عيوب.
+      </div>
+
+      <h4>كيف تطبق التفكير النقدي لاختيار مسارك؟ (How to do this?)</h4>
+      <div class="step-row"><div class="step-num">1</div><div><strong>اكتب قائمة بالخيارات:</strong> حدد البدائل المتاحة أمامك بوضوح.</div></div>
+      <div class="step-row"><div class="step-num">2</div><div><strong>سجل الإيجابيات (Pros):</strong> اكتب مميزات ومنافع كل مسار على حدة.</div></div>
+      <div class="step-row"><div class="step-num">3</div><div><strong>سجل السلبيات (Cons):</strong> دوّن تكاليف وعيوب ومخاطر كل مسار.</div></div>
+      <div class="step-row"><div class="step-num">4</div><div><strong>حلل القائمة بموضوعية:</strong> قارن بينها دون الانجراف وراء العاطفة اللحظية.</div></div>
+      <div class="step-row"><div class="step-num">5</div><div><strong>تجنب التأثر الأعمى بالأصدقاء:</strong> كل إنسان له قدرات وطموحات مختلفة؛ ما يناسب غيرك قد لا يناسبك مطلقاً!</div></div>
+
+      <div class="warning-box">
+        <strong>⚠️ تحذير المحاضرة الهام:</strong>
+        كثير من الطلاب يختارون مسارهم بناءً على رغبة أصدقائهم أو ضغط المحيطين بهم! المحاضرة تؤكد أن معتقداتك ورغباتك وطموحاتك فريدة ومستقلة، ولذلك تحتاج إلى التفكير النقدي لاختيار ما يبنيك شخصياً.
+      </div>
+    </section>
+
+    <!-- Comprehensive Final Quiz -->
+    <section class="card" id="sec-final-quiz">
+      <h2><span class="section-badge">📝</span> الاختبار الشامل للمحاضرة (10 أسئلة تقييم)</h2>
+      <p>اختبر استيعابك الكامل لجميع مفاهيم المحاضرة؛ ستحصل على تقييم فوري مع شرح علمي دقيق لأسباب صحة وخطأ كل خيار:</p>
+
+      <!-- Tracker Live Card -->
+      <!-- Tracker Live Card -->
+      <div class="quiz-tracker-card">
+        <div>لوحة تقييم استيعابك للمحاضرة</div>
+        <div class="quiz-score-val" id="quizScoreText">0 / 10</div>
+        <div class="quiz-progress"><div class="quiz-progress-bar" id="quizProgressBar"></div></div>
+        <div style="font-size:14px;color:#94a3b8" id="quizFeedback">أجب عن الأسئلة أدناه لقياس فهمك</div>
+      </div>
+
+      <!-- Translate All Button -->
+      <div style="display:flex;justify-content:flex-end;margin-bottom:12px">
+        <button class="btn-translate-all" onclick="toggleAllTranslations(this)">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l6 6M4 14l6-6 2-3M2 5h12M7 2h1M22 22l-5-10-5 10M14 18h6"/></svg>
+          <span>ترجمة جميع الأسئلة</span>
+        </button>
+      </div>
+
+      <!-- Q1 -->
+      <div class="question" data-qid="fin_q1">
+        <div class="question-header">
+          <span class="q-badge">Question 1 of 10</span>
+          <div class="q-actions">
+            <button class="btn-translate" onclick="toggleTranslation(this)">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l6 6M4 14l6-6 2-3M2 5h12M7 2h1M22 22l-5-10-5 10M14 18h6"/></svg>
+              <span>ترجمة</span>
+            </button>
+            <button class="btn-reset" onclick="resetQuestion(this)">↺</button>
+          </div>
+        </div>
+        <div class="q-text en-text">
+          1. What is the correct sequence of the three core critical thinking skills?
+        </div>
+        <div class="q-translation">
+          <strong>ترجمة السؤال:</strong> ما هو الترتيب الصحيح للمهارات الأساسية الثلاث للتفكير النقدي؟
+          <div style="font-size:13px;color:#92400e;margin-top:4px">
+            أ) التحليل ➔ التقييم ➔ الاستنتاج | ب) الاستنتاج ➔ التحليل ➔ التقييم | ج) التقييم ➔ الاستنتاج ➔ التحليل | د) التحليل ➔ الاستنتاج ➔ التقييم
+          </div>
+        </div>
+        <div class="inline-mcq" data-correct="0" data-explanations='[
+          "إجابة ممتازة وصحيحة! الترتيب العلمي هو التحليل أولاً (Analysis) ثم تقييم الأدلة (Evaluation) ثم الخروج بالاستنتاج (Inference).",
+          "غير صحيح؛ لا يمكن الاستنتاج قبل التحليل والتقييم.",
+          "غير صحيح؛ التقييم يحتاج تحليلاً وفهماً لبنية الحجة أولاً.",
+          "غير صحيح؛ الترتيب يبدأ دائماً بالتحليل."
+        ]'>
+          <div class="mcq-options">
+            <button class="mcq-option" onclick="checkAnswer(this, 0)">
+              <span>A) Analysis ➔ Evaluation ➔ Inference</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 1)">
+              <span>B) Inference ➔ Analysis ➔ Evaluation</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 2)">
+              <span>C) Evaluation ➔ Inference ➔ Analysis</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 3)">
+              <span>D) Analysis ➔ Inference ➔ Evaluation</span>
+              <span>←</span>
+            </button>
+          </div>
+          <div class="mcq-result"></div>
+        </div>
+      </div>
+
+      <!-- Q2 -->
+      <div class="question" data-qid="fin_q2">
+        <div class="question-header">
+          <span class="q-badge">Question 2 of 10</span>
+          <div class="q-actions">
+            <button class="btn-translate" onclick="toggleTranslation(this)">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l6 6M4 14l6-6 2-3M2 5h12M7 2h1M22 22l-5-10-5 10M14 18h6"/></svg>
+              <span>ترجمة</span>
+            </button>
+            <button class="btn-reset" onclick="resetQuestion(this)">↺</button>
+          </div>
+        </div>
+        <div class="q-text en-text">
+          2. What are the three parts of the critical thinking process (The EEE Process)?
+        </div>
+        <div class="q-translation">
+          <strong>ترجمة السؤال:</strong> ما هي المراحل الثلاث التي تتكون منها عملية التفكير النقدي (The EEE Process)؟
+          <div style="font-size:13px;color:#92400e;margin-top:4px">
+            أ) التنفيذ ➔ الشرح ➔ التقييم | ب) الفحص (Examine) ➔ الاستكشاف (Explore) ➔ التقييم (Evaluate) | ج) التقدير ➔ التجربة ➔ الإنهاء | د) الفحص ➔ الاستبعاد ➔ الفرض
+          </div>
+        </div>
+        <div class="inline-mcq" data-correct="1" data-explanations='[
+          "غير صحيح؛ Execution و Explain ليست من أركان عملية EEE في المحاضرة.",
+          "صحيح تماماً! مراحل EEE هي: Examine (افحص)، Explore (استكشف)، و Evaluate (قيّم).",
+          "غير صحيح؛ الـ EEE محددة بدقة في المحاضرة بـ Examine و Explore و Evaluate.",
+          "غير صحيح؛ الـ Elimination ليس مرحلة من مراحل العملية."
+        ]'>
+          <div class="mcq-options">
+            <button class="mcq-option" onclick="checkAnswer(this, 0)">
+              <span>A) Execute ➔ Explain ➔ Evaluate</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 1)">
+              <span>B) Examine ➔ Explore ➔ Evaluate</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 2)">
+              <span>C) Estimate ➔ Experiment ➔ End</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 3)">
+              <span>D) Examine ➔ Eliminate ➔ Enforce</span>
+              <span>←</span>
+            </button>
+          </div>
+          <div class="mcq-result"></div>
+        </div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="question" data-qid="fin_q3">
+        <div class="question-header">
+          <span class="q-badge">Question 3 of 10</span>
+          <div class="q-actions">
+            <button class="btn-translate" onclick="toggleTranslation(this)">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l6 6M4 14l6-6 2-3M2 5h12M7 2h1M22 22l-5-10-5 10M14 18h6"/></svg>
+              <span>ترجمة</span>
+            </button>
+            <button class="btn-reset" onclick="resetQuestion(this)">↺</button>
+          </div>
+        </div>
+        <div class="q-text en-text">
+          3. Which lexicon term is defined as: "A truth that cannot be disputed"?
+        </div>
+        <div class="q-translation">
+          <strong>ترجمة السؤال:</strong> أي مصطلح يُعرّف بأنه "حقيقة لا يمكن الاعتراض عليها والجدال فيها"؟
+          <div style="font-size:13px;color:#92400e;margin-top:4px">
+            أ) Opinion (الرأي) | ب) Claim (الادعاء) | ج) Fact (الحقيقة) | د) Assumption (الافتراض)
+          </div>
+        </div>
+        <div class="inline-mcq" data-correct="2" data-explanations='[
+          "غير صحيح؛ Opinion هو رأي شخصي يحتمل الخلاف.",
+          "غير صحيح؛ Claim هو مجرد ادعاء قد يكون صادقاً أو كاذباً.",
+          "صحيح تماماً! Fact هي الحقيقة الثابتة والمبرهنة التي لا يمكن الاعتراض عليها (A truth that cannot be disputed).",
+          "غير صحيح؛ Assumption هو مجرد افتراض نسلم بصحته دون دليل قطعي."
+        ]'>
+          <div class="mcq-options">
+            <button class="mcq-option" onclick="checkAnswer(this, 0)">
+              <span>A) Opinion</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 1)">
+              <span>B) Claim</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 2)">
+              <span>C) Fact</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 3)">
+              <span>D) Assumption</span>
+              <span>←</span>
+            </button>
+          </div>
+          <div class="mcq-result"></div>
+        </div>
+      </div>
+
+      <!-- Q4 -->
+      <div class="question" data-qid="fin_q4">
+        <div class="question-header">
+          <span class="q-badge">Question 4 of 10</span>
+          <div class="q-actions">
+            <button class="btn-translate" onclick="toggleTranslation(this)">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l6 6M4 14l6-6 2-3M2 5h12M7 2h1M22 22l-5-10-5 10M14 18h6"/></svg>
+              <span>ترجمة</span>
+            </button>
+            <button class="btn-reset" onclick="resetQuestion(this)">↺</button>
+          </div>
+        </div>
+        <div class="q-text en-text">
+          4. Which term is defined as: "Logical and believable, credible"?
+        </div>
+        <div class="q-translation">
+          <strong>ترجمة السؤال:</strong> أي مصطلح يعني: "منطقي، معقول ومقبول للتصديق"؟
+          <div style="font-size:13px;color:#92400e;margin-top:4px">
+            أ) الصدق والصحة (Validity) | ب) الاستنتاج (Inference) | ج) الحجة (Argument) | د) المعقول والمقبول (Plausible)
+          </div>
+        </div>
+        <div class="inline-mcq" data-correct="3" data-explanations='[
+          "غير صحيح؛ Validity تعني الصدق والصحة المتينة (Truthful, well-founded).",
+          "غير صحيح؛ Inference هو الحكم المستخلص بناءً على الدليل.",
+          "غير صحيح؛ Argument هو مجموعة الادعاءات لدعم فكرة.",
+          "صحيح تماماً! Plausible يعني الشيء المعقول والمنطقي القابل للتصديق والقبول (Logical and believable, credible)."
+        ]'>
+          <div class="mcq-options">
+            <button class="mcq-option" onclick="checkAnswer(this, 0)">
+              <span>A) Validity</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 1)">
+              <span>B) Inference</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 2)">
+              <span>C) Argument</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 3)">
+              <span>D) Plausible</span>
+              <span>←</span>
+            </button>
+          </div>
+          <div class="mcq-result"></div>
+        </div>
+      </div>
+
+      <!-- Q5 -->
+      <div class="question" data-qid="fin_q5">
+        <div class="question-header">
+          <span class="q-badge">Question 5 of 10</span>
+          <div class="q-actions">
+            <button class="btn-translate" onclick="toggleTranslation(this)">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l6 6M4 14l6-6 2-3M2 5h12M7 2h1M22 22l-5-10-5 10M14 18h6"/></svg>
+              <span>ترجمة</span>
+            </button>
+            <button class="btn-reset" onclick="resetQuestion(this)">↺</button>
+          </div>
+        </div>
+        <div class="q-text en-text">
+          5. What common decision-making problem has the golden advice: "Don't jump to conclusions!"?
+        </div>
+        <div class="q-translation">
+          <strong>ترجمة السؤال:</strong> ما هي مشكلة اتخاذ القرار التي علاجها الذهبي: "لا تقفز إلى الاستنتاجات!"؟
+          <div style="font-size:13px;color:#92400e;margin-top:4px">
+            أ) القرارات المتسرعة (Snap decisions) | ب) التفكير الضيق (Narrow thinking) | ج) التفكير المتشعب (Sprawling thinking) | د) التفكير الضبابي (Fuzzy thinking)
+          </div>
+        </div>
+        <div class="inline-mcq" data-correct="0" data-explanations='[
+          "صحيح تماماً! Snap Decisions هي القرارات اللحظية المتعجلة التي تقفز للنتائج دون تمحيص.",
+          "غير صحيح؛ Narrow Thinking علاجه وسع آفاقك (Broaden your vistas).",
+          "غير صحيح؛ Sprawling Thinking علاجه لا تلف وتدور (Don&apos;t beat around the bush).",
+          "غير صحيح؛ Fuzzy Thinking علاجه حافظ على الدقة والتركيز (Keep it sharp)."
+        ]'>
+          <div class="mcq-options">
+            <button class="mcq-option" onclick="checkAnswer(this, 0)">
+              <span>A) Snap decisions</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 1)">
+              <span>B) Narrow thinking</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 2)">
+              <span>C) Sprawling thinking</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 3)">
+              <span>D) Fuzzy thinking</span>
+              <span>←</span>
+            </button>
+          </div>
+          <div class="mcq-result"></div>
+        </div>
+      </div>
+
+      <!-- Q6 -->
+      <div class="question" data-qid="fin_q6">
+        <div class="question-header">
+          <span class="q-badge">Question 6 of 10</span>
+          <div class="q-actions">
+            <button class="btn-translate" onclick="toggleTranslation(this)">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l6 6M4 14l6-6 2-3M2 5h12M7 2h1M22 22l-5-10-5 10M14 18h6"/></svg>
+              <span>ترجمة</span>
+            </button>
+            <button class="btn-reset" onclick="resetQuestion(this)">↺</button>
+          </div>
+        </div>
+        <div class="q-text en-text">
+          6. Which of the following behaviors is characteristic of an Uncritical Thinker?
+        </div>
+        <div class="q-translation">
+          <strong>ترجمة السؤال:</strong> أي من السلوكيات التالية تعتبر من سمات الشخص غير النقدي (Uncritical Thinker)؟
+          <div style="font-size:13px;color:#92400e;margin-top:4px">
+            أ) الاعتراف بالحدود الشخصية | ب) التشكيك في الآراء المتطرفة | ج) الانقياد بالمشاعر بدلاً من الأفكار | د) التفكير بتأنٍ قبل التصرف
+          </div>
+        </div>
+        <div class="inline-mcq" data-correct="2" data-explanations='[
+          "غير صحيح؛ الاعتراف بحدود المعرفة صفة راقية للمفكر الناقد.",
+          "غير صحيح؛ التشكيك في التطرف صفة للمفكر الناقد لحماية عقله من الانحراف.",
+          "صحيح تماماً! الشخص غير النقدي تقوده المشاعر اللحظية بدلاً من التفكير المنطقي (Are guided by feelings rather than thoughts).",
+          "غير صحيح؛ التفكير قبل التصرف هو جوهر التفكير الناقد."
+        ]'>
+          <div class="mcq-options">
+            <button class="mcq-option" onclick="checkAnswer(this, 0)">
+              <span>A) Acknowledging personal limitations</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 1)">
+              <span>B) Being skeptical of extreme views</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 2)">
+              <span>C) Being guided by feelings rather than thoughts</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 3)">
+              <span>D) Thinking carefully before acting</span>
+              <span>←</span>
+            </button>
+          </div>
+          <div class="mcq-result"></div>
+        </div>
+      </div>
+
+      <!-- Q7 -->
+      <div class="question" data-qid="fin_q7">
+        <div class="question-header">
+          <span class="q-badge">Question 7 of 10</span>
+          <div class="q-actions">
+            <button class="btn-translate" onclick="toggleTranslation(this)">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l6 6M4 14l6-6 2-3M2 5h12M7 2h1M22 22l-5-10-5 10M14 18h6"/></svg>
+              <span>ترجمة</span>
+            </button>
+            <button class="btn-reset" onclick="resetQuestion(this)">↺</button>
+          </div>
+        </div>
+        <div class="q-text en-text">
+          7. What is an inference that is believed to be true or taken for granted without proof?
+        </div>
+        <div class="q-translation">
+          <strong>ترجمة السؤال:</strong> ما هو الاستنتاج الذي يُعتقد بصحته ويُسلّم به (Taking for granted) دون إثبات؟
+          <div style="font-size:13px;color:#92400e;margin-top:4px">
+            أ) الحقيقة (Fact) | ب) الافتراض (Assumption) | ج) الحجة (Argument) | د) الصدق والصحة (Validity)
+          </div>
+        </div>
+        <div class="inline-mcq" data-correct="1" data-explanations='[
+          "غير صحيح؛ Fact مثبتة بدليل قاطع.",
+          "صحيح تماماً! Assumption (الافتراض) هو اعتقاد مسبق يُسلّم به المرء دون برهان واضح (An inference that is believed to be true).",
+          "غير صحيح؛ Argument هي حجة مدعومة بأدلة وادعاءات.",
+          "غير صحيح؛ Validity تعني صدق وموثوقية الشيء."
+        ]'>
+          <div class="mcq-options">
+            <button class="mcq-option" onclick="checkAnswer(this, 0)">
+              <span>A) Fact</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 1)">
+              <span>B) Assumption</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 2)">
+              <span>C) Argument</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 3)">
+              <span>D) Validity</span>
+              <span>←</span>
+            </button>
+          </div>
+          <div class="mcq-result"></div>
+        </div>
+      </div>
+
+      <!-- Q8 -->
+      <div class="question" data-qid="fin_q8">
+        <div class="question-header">
+          <span class="q-badge">Question 8 of 10</span>
+          <div class="q-actions">
+            <button class="btn-translate" onclick="toggleTranslation(this)">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l6 6M4 14l6-6 2-3M2 5h12M7 2h1M22 22l-5-10-5 10M14 18h6"/></svg>
+              <span>ترجمة</span>
+            </button>
+            <button class="btn-reset" onclick="resetQuestion(this)">↺</button>
+          </div>
+        </div>
+        <div class="q-text en-text">
+          8. In which phase of the EEE process do we "Uncover assumptions & Brainstorm alternative solutions"?
+        </div>
+        <div class="q-translation">
+          <strong>ترجمة السؤال:</strong> في أي مرحلة من مراحل عملية EEE نقوم بكشف الافتراضات وابتكار حلول وتفسيرات بديلة؟
+          <div style="font-size:13px;color:#92400e;margin-top:4px">
+            أ) مرحلة الفحص (Examine) | ب) مرحلة الاستكشاف (Explore) | ج) مرحلة التقييم (Evaluate) | د) مرحلة التنفيذ (Execute)
+          </div>
+        </div>
+        <div class="inline-mcq" data-correct="1" data-explanations='[
+          "غير صحيح؛ Examine مخصصة لتحديد المشكلة وجمع البيانات.",
+          "صحيح تماماً! مرحلة Explore (الاستكشاف) هي التي يتم فيها كشف الافتراضات وتوليد واقتراح الحلول البديلة (Brainstorm alternative explanations).",
+          "غير صحيح؛ Evaluate هي تقييم الحلول للوصول إلى النتيجة النهائية.",
+          "غير صحيح؛ Execute ليس من مراحل EEE."
+        ]'>
+          <div class="mcq-options">
+            <button class="mcq-option" onclick="checkAnswer(this, 0)">
+              <span>A) Examine phase</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 1)">
+              <span>B) Explore phase</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 2)">
+              <span>C) Evaluate phase</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 3)">
+              <span>D) Execute phase</span>
+              <span>←</span>
+            </button>
+          </div>
+          <div class="mcq-result"></div>
+        </div>
+      </div>
+
+      <!-- Q9 -->
+      <div class="question" data-qid="fin_q9">
+        <div class="question-header">
+          <span class="q-badge">Question 9 of 10</span>
+          <div class="q-actions">
+            <button class="btn-translate" onclick="toggleTranslation(this)">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l6 6M4 14l6-6 2-3M2 5h12M7 2h1M22 22l-5-10-5 10M14 18h6"/></svg>
+              <span>ترجمة</span>
+            </button>
+            <button class="btn-reset" onclick="resetQuestion(this)">↺</button>
+          </div>
+        </div>
+        <div class="q-text en-text">
+          9. What is the best method to apply critical thinking when choosing a career path?
+        </div>
+        <div class="q-translation">
+          <strong>ترجمة السؤال:</strong> ما هي أفضل طريقة لتطبيق التفكير النقدي عند اختيار المسار المهني (Career path)؟
+          <div style="font-size:13px;color:#92400e;margin-top:4px">
+            أ) قبول أول وظيفة مباشرة دون تقييم | ب) تقليد اختيارات الأصدقاء عشوائياً | ج) كتابة ومقارنة الإيجابيات والسلبيات (Pros and Cons) وفق أهدافك وقدراتك | د) ترك القرار للصدفة والحظ
+          </div>
+        </div>
+        <div class="inline-mcq" data-correct="2" data-explanations='[
+          "غير صحيح؛ التسرع في الاختيار يؤدي لخيارات خاطئة.",
+          "غير صحيح؛ المحاضرة حذرت صراحة من تقليد الأصدقاء لأن قدرات وطموحات كل فرد مختلفة.",
+          "صحيح تماماً! كتابة وتحليل الإيجابيات والسلبيات (Pros and Cons) بموضوعية وفق أهداف وقدرات الفرد دون الانجراف خلف اختيارات الآخرين.",
+          "غير صحيح؛ التفكير النقدي يبنى على تحليل الحقائق وليس على الصدفة والقرعة."
+        ]'>
+          <div class="mcq-options">
+            <button class="mcq-option" onclick="checkAnswer(this, 0)">
+              <span>A) Accepting the first available job without evaluating options</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 1)">
+              <span>B) Following friends choices blindly regardless of your own desires</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 2)">
+              <span>C) Listing and analyzing the Pros and Cons according to personal ambitions</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 3)">
+              <span>D) Leaving the career decision entirely to luck and random chance</span>
+              <span>←</span>
+            </button>
+          </div>
+          <div class="mcq-result"></div>
+        </div>
+      </div>
+
+      <!-- Q10 -->
+      <div class="question" data-qid="fin_q10">
+        <div class="question-header">
+          <span class="q-badge">Question 10 of 10</span>
+          <div class="q-actions">
+            <button class="btn-translate" onclick="toggleTranslation(this)">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l6 6M4 14l6-6 2-3M2 5h12M7 2h1M22 22l-5-10-5 10M14 18h6"/></svg>
+              <span>ترجمة</span>
+            </button>
+            <button class="btn-reset" onclick="resetQuestion(this)">↺</button>
+          </div>
+        </div>
+        <div class="q-text en-text">
+          10. What does the skill of Analysis mean when reading a text or listening to an argument?
+        </div>
+        <div class="q-translation">
+          <strong>ترجمة السؤال:</strong> ماذا تعني مهارة التحليل (Analysis) عند قراءة نص أو الاستماع لحجة؟
+          <div style="font-size:13px;color:#92400e;margin-top:4px">
+            أ) محاولة فهم بنية وتركيب الحجة واستيعاب ما يُقال | ب) رفض أفكار المتحدث مسبقاً | ج) الحكم النهائي بقبول الادعاء | د) القفز مباشرة للاستنتاج دون قراءة التفاصيل
+          </div>
+        </div>
+        <div class="inline-mcq" data-correct="0" data-explanations='[
+          "صحيح تماماً! Analysis هو محاولة فهم تركيب وبنية الحجة وما يريد المتحدث قوله بدقة (Try to understand the structure of the argument).",
+          "غير صحيح؛ رفض الادعاء فوراً انغلاق فكري وتسرع.",
+          "غير صحيح؛ تقييم قوة الأدلة هو مهارة Evaluation.",
+          "غير صحيح؛ الوصول للنتيجة هو مهارة Inference."
+        ]'>
+          <div class="mcq-options">
+            <button class="mcq-option" onclick="checkAnswer(this, 0)">
+              <span>A) Trying to understand the structure of the argument and what is being said</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 1)">
+              <span>B) Rejecting the speaker ideas before hearing the full explanation</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 2)">
+              <span>C) Making a final judgment on whether to accept the claim</span>
+              <span>←</span>
+            </button>
+            <button class="mcq-option" onclick="checkAnswer(this, 3)">
+              <span>D) Jumping directly to a conclusion without reading the details</span>
+              <span>←</span>
+            </button>
+          </div>
+          <div class="mcq-result"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 11: Glossary -->
+    <section class="card" id="sec-full-lexicon">
+      <h2><span class="section-badge">📚</span> قاموس مصطلحات المحاضرة الصوتي الشامل</h2>
+      <p>استمع للنطق الإنجليزي السليم لجميع المصطلحات بضغطة زر:</p>
+
+      <div class="glossary-grid">
+        <div class="glossary-item">
+          <div><div class="glossary-term">Critical Thinking</div><div class="glossary-ar">التفكير النقدي</div></div>
+          <button class="audio-btn" onclick="playAudio('critical_thinking')" title="استمع"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        </div>
+
+        <div class="glossary-item">
+          <div><div class="glossary-term">Analysis</div><div class="glossary-ar">التحليل</div></div>
+          <button class="audio-btn" onclick="playAudio('analysis')" title="استمع"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        </div>
+
+        <div class="glossary-item">
+          <div><div class="glossary-term">Evaluation</div><div class="glossary-ar">التقييم</div></div>
+          <button class="audio-btn" onclick="playAudio('evaluation')" title="استمع"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        </div>
+
+        <div class="glossary-item">
+          <div><div class="glossary-term">Inference</div><div class="glossary-ar">الاستنتاج</div></div>
+          <button class="audio-btn" onclick="playAudio('inference')" title="استمع"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        </div>
+
+        <div class="glossary-item">
+          <div><div class="glossary-term">Fact</div><div class="glossary-ar">حقيقة لا تقبل الجدال</div></div>
+          <button class="audio-btn" onclick="playAudio('fact')" title="استمع"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        </div>
+
+        <div class="glossary-item">
+          <div><div class="glossary-term">Opinion</div><div class="glossary-ar">رأي / معتقد شخصي</div></div>
+          <button class="audio-btn" onclick="playAudio('opinion')" title="استمع"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        </div>
+
+        <div class="glossary-item">
+          <div><div class="glossary-term">Claim</div><div class="glossary-ar">ادعاء وتأكيد</div></div>
+          <button class="audio-btn" onclick="playAudio('claim')" title="استمع"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        </div>
+
+        <div class="glossary-item">
+          <div><div class="glossary-term">Argument</div><div class="glossary-ar">حجة ومجموعة ادعاءات</div></div>
+          <button class="audio-btn" onclick="playAudio('argument')" title="استمع"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        </div>
+
+        <div class="glossary-item">
+          <div><div class="glossary-term">Assumption</div><div class="glossary-ar">افتراض دون دليل قطعي</div></div>
+          <button class="audio-btn" onclick="playAudio('assumption')" title="استمع"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        </div>
+
+        <div class="glossary-item">
+          <div><div class="glossary-term">Validity</div><div class="glossary-ar">الصحة والصدق المتين</div></div>
+          <button class="audio-btn" onclick="playAudio('validity')" title="استمع"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        </div>
+
+        <div class="glossary-item">
+          <div><div class="glossary-term">Plausible</div><div class="glossary-ar">معقول ومقبول منطقياً</div></div>
+          <button class="audio-btn" onclick="playAudio('plausible')" title="استمع"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        </div>
+
+        <div class="glossary-item">
+          <div><div class="glossary-term">Snap Decisions</div><div class="glossary-ar">القرارات المتسرعة</div></div>
+          <button class="audio-btn" onclick="playAudio('snap_decisions')" title="استمع"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        </div>
+
+        <div class="glossary-item">
+          <div><div class="glossary-term">Narrow Thinking</div><div class="glossary-ar">التفكير الضيق</div></div>
+          <button class="audio-btn" onclick="playAudio('narrow_thinking')" title="استمع"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        </div>
+
+        <div class="glossary-item">
+          <div><div class="glossary-term">Sprawling Thinking</div><div class="glossary-ar">التفكير المتشعب والتشتت</div></div>
+          <button class="audio-btn" onclick="playAudio('sprawling_thinking')" title="استمع"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        </div>
+
+        <div class="glossary-item">
+          <div><div class="glossary-term">Fuzzy Thinking</div><div class="glossary-ar">التفكير الضبابي</div></div>
+          <button class="audio-btn" onclick="playAudio('fuzzy_thinking')" title="استمع"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        </div>
+
+        <div class="glossary-item">
+          <div><div class="glossary-term">Pros and Cons</div><div class="glossary-ar">المميزات والعيوب</div></div>
+          <button class="audio-btn" onclick="playAudio('pros_and_cons')" title="استمع"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Developer & Contact Footer -->
+    <section class="dev-card">
+      <p style="font-size:15px;color:var(--text-secondary);max-width:650px;margin:0 auto 16px;line-height:1.8">
+        صُممت منصة تسهيل لمساعدة زملائي الطلاب وتيسير رحلتهم الدراسية، من خلال تبسيط المواد الدراسية وجعلها أكثر وضوحاً وسهولة في الفهم والاستيعاب.. بالتوفيق والنجاح للجميع دائماً.
+      </p>
+      <div class="dev-name">محمد أحمد راضي</div>
+      <div class="dev-sub">طالب في طب الأسنان</div>
+      <a href="https://wa.me/201211648437" target="_blank" rel="noopener noreferrer" class="whatsapp-link">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+          <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.04 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.53 7.37C9.37 7.37 9.1 7.43 8.87 7.68C8.64 7.93 8 8.53 8 9.75C8 10.97 8.89 12.15 9.01 12.31C9.14 12.47 10.74 14.95 13.2 16C13.79 16.26 14.24 16.41 14.6 16.53C15.19 16.72 15.73 16.69 16.15 16.63C16.63 16.56 17.62 16.03 17.82 15.45C18.03 14.87 18.03 14.38 17.97 14.27C17.91 14.17 17.75 14.11 17.5 13.99C17.26 13.86 16.06 13.27 15.83 13.19C15.61 13.11 15.45 13.07 15.28 13.31C15.12 13.56 14.67 14.11 14.53 14.27C14.39 14.43 14.25 14.45 14.01 14.33C13.76 14.21 12.98 13.95 12.06 13.13C11.34 12.49 10.86 11.7 10.72 11.46C10.58 11.21 10.71 11.08 10.83 10.96C10.94 10.85 11.08 10.67 11.2 10.53C11.33 10.39 11.37 10.29 11.45 10.13C11.53 9.96 11.49 9.82 11.43 9.7C11.37 9.58 10.9 8.44 10.7 7.97C10.51 7.5 10.32 7.57 10.16 7.56C10.03 7.56 9.87 7.37 9.53 7.37Z"/>
+        </svg>
+        <span>تواصل عبر واتساب (01211648437)</span>
+      </a>
+    </section>
+
+  </div>
+
+  <!-- Celebration Modal -->
+  <div class="modal-overlay" id="celebrationModal">
+    <div class="modal-box">
+      <div style="font-size:52px;margin-bottom:12px">🎉</div>
+      <h3>مبارك! الدرجة الكاملة 10 / 10</h3>
+      <p style="color:var(--text-secondary);font-size:15px;line-height:1.7;margin-top:8px">
+        أداء استثنائي! لقد أجبت عن كافة أسئلة التفكير النقدي بشكل صحيح وأثبتت استيعابك الكامل للمحاضرة الأولى.
+      </p>
+      <button class="modal-close-btn" onclick="closeModal()">إغلاق ومواصلة المراجعة</button>
+    </div>
+  </div>
+
+<script>
+// Dark / Light Theme Toggle
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+  updateThemeIcon(newTheme);
+}
+
+function updateThemeIcon(theme) {
+  const icon = document.getElementById('themeIcon');
+  if (theme === 'dark') {
+    icon.innerHTML = '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
+  } else {
+    icon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+  }
+}
+
+// Init saved theme
+const savedTheme = localStorage.getItem('theme') || 'light';
+document.documentElement.setAttribute('data-theme', savedTheme);
+updateThemeIcon(savedTheme);
+
+// Scroll Progress Bar
+window.addEventListener('scroll', () => {
+  const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = (winScroll / height) * 100;
+  document.getElementById('progressFill').style.width = scrolled + '%';
+});
+
+// Audio Player
+function playAudio(term) {
+  const audio = new Audio(`audio/${term}.mp3`);
+  audio.play().catch(e => console.log('Audio playback error:', e));
+}
+
+// Final Quiz Live Tracker
+const finalQuizResults = {};
+let modalShown = false;
+
+function updateQuizScore() {
+  const scoreText = document.getElementById('quizScoreText');
+  const progressBar = document.getElementById('quizProgressBar');
+  const feedback = document.getElementById('quizFeedback');
+  const totalQuestions = 10;
+
+  let correctCount = 0;
+  for (let i = 1; i <= totalQuestions; i++) {
+    if (finalQuizResults[`fin_q${i}`] === true) {
+      correctCount++;
+    }
+  }
+
+  scoreText.textContent = `${correctCount} / ${totalQuestions}`;
+  const pct = (correctCount / totalQuestions) * 100;
+  progressBar.style.width = `${pct}%`;
+
+  if (correctCount === 0) {
+    feedback.textContent = 'أجب عن الأسئلة أدناه لقياس فهمك';
+  } else if (correctCount < 5) {
+    feedback.textContent = 'بداية جيدة، واصل الإجابة';
+  } else if (correctCount < 8) {
+    feedback.textContent = 'أداء رائع، اقتربت من الدرجة الكاملة!';
+  } else if (correctCount < 10) {
+    feedback.textContent = 'مستوى ممتاز، تبقى القليل!';
+  } else {
+    feedback.textContent = 'الدرجة الكاملة 10 / 10 🌟 مبهر!';
+    if (!modalShown) {
+      modalShown = true;
+      document.getElementById('celebrationModal').style.display = 'flex';
+    }
+  }
+}
+
+// Interactive MCQ Checker
+function checkAnswer(button, selectedIndex) {
+  const mcqContainer = button.closest('.inline-mcq');
+  const questionCard = button.closest('.question');
+  const correctIndex = parseInt(mcqContainer.getAttribute('data-correct'));
+  const explanations = JSON.parse(mcqContainer.getAttribute('data-explanations') || '[]');
+  const options = mcqContainer.querySelectorAll('.mcq-option');
+  const resultDiv = mcqContainer.querySelector('.mcq-result');
+
+  options.forEach(opt => {
+    opt.classList.remove('selected-correct', 'selected-wrong');
+  });
+
+  const isCorrect = (selectedIndex === correctIndex);
+  const qid = questionCard.getAttribute('data-qid');
+  const optText = button.querySelector('span:first-child').textContent.trim();
+  const explanation = explanations[selectedIndex] || '';
+
+  if (isCorrect) {
+    button.classList.add('selected-correct');
+    resultDiv.className = 'mcq-result show correct-msg';
+    resultDiv.innerHTML = `
+      <div class="result-title">
+        <svg viewBox="0 0 24 24" class="icon" width="18" height="18"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        <span>إجابة صحيحة (${optText})</span>
+      </div>
+      <div class="result-explanation">
+        <strong>الشرح الأكاديمي:</strong>
+        <p>${explanation}</p>
+      </div>
+      <div class="result-hint">يمكنك الضغط على الخيارات الأخرى لمعرفة سبب خطئها واستكشاف السؤال.</div>
+    `;
+    if (qid && qid.startsWith('fin_')) {
+      finalQuizResults[qid] = true;
+      updateQuizScore();
+    }
+  } else {
+    button.classList.add('selected-wrong');
+    resultDiv.className = 'mcq-result show wrong-msg';
+    resultDiv.innerHTML = `
+      <div class="result-title">
+        <svg viewBox="0 0 24 24" class="icon" width="18" height="18"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+        <span>اختيار غير صحيح (${optText})</span>
+      </div>
+      <div class="result-explanation">
+        <strong>سبب خطأ هذا الاختيار:</strong>
+        <p>${explanation}</p>
+      </div>
+      <div class="result-hint">جرب اختياراً آخر لمعرفة الإجابة الصحيحة وأسباب بقية الخيارات.</div>
+    `;
+    if (qid && qid.startsWith('fin_')) {
+      finalQuizResults[qid] = false;
+      updateQuizScore();
+    }
+  }
+}
+
+// Reset single question
+function resetQuestion(btn) {
+  const mcqContainer = btn.closest('.question').querySelector('.inline-mcq');
+  const questionCard = btn.closest('.question');
+  const options = mcqContainer.querySelectorAll('.mcq-option');
+  const resultDiv = mcqContainer.querySelector('.mcq-result');
+
+  options.forEach(opt => {
+    opt.classList.remove('selected-correct', 'selected-wrong');
+  });
+
+  resultDiv.className = 'mcq-result';
+  resultDiv.innerHTML = '';
+
+  const qid = questionCard.getAttribute('data-qid');
+  if (qid && qid.startsWith('fin_')) {
+    delete finalQuizResults[qid];
+    updateQuizScore();
+  }
+}
+
+// Translation Toggle Functions
+function toggleTranslation(btn) {
+  const qCard = btn.closest('.question');
+  const transBox = qCard.querySelector('.q-translation');
+  transBox.classList.toggle('show');
+  const isShown = transBox.classList.contains('show');
+  btn.querySelector('span').textContent = isShown ? 'إخفاء الترجمة' : 'ترجمة';
+}
+
+function toggleAllTranslations(btn) {
+  const allTrans = document.querySelectorAll('.q-translation');
+  const allBtns = document.querySelectorAll('.btn-translate span');
+  const anyHidden = Array.from(allTrans).some(el => !el.classList.contains('show'));
+
+  allTrans.forEach(el => {
+    if (anyHidden) el.classList.add('show');
+    else el.classList.remove('show');
+  });
+
+  allBtns.forEach(span => {
+    span.textContent = anyHidden ? 'إخفاء الترجمة' : 'ترجمة';
+  });
+
+  btn.querySelector('span').textContent = anyHidden ? 'إخفاء كل الترجمات' : 'ترجمة جميع الأسئلة';
+}
+
+function closeModal() {
+  document.getElementById('celebrationModal').style.display = 'none';
+}
+</script>
+
+</body>
+</html>
