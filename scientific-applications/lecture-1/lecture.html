@@ -1,0 +1,2507 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scientific Applications of Computers - Lecture 1: Introduction to Computer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-gradient: linear-gradient(135deg, #f0f7ff 0%, #eef2ff 50%, #f8fafc 100%);
+    --card-bg: #ffffff;
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --text-muted: #64748b;
+    --primary: #2563eb;
+    --primary-light: #eff6ff;
+    --primary-dark: #1d4ed8;
+    --accent: #6366f1;
+    --accent-light: #e0e7ff;
+    --success: #059669;
+    --success-bg: #ecfdf5;
+    --success-border: #a7f3d0;
+    --warning: #d97706;
+    --warning-bg: #fffbeb;
+    --danger: #dc2626;
+    --danger-bg: #fef2f2;
+    --border-color: #e2e8f0;
+    --shadow-sm: 0 1px 4px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 18px rgba(0,0,0,0.06);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+  }
+
+  [data-theme="dark"] {
+    --bg-gradient: linear-gradient(135deg, #0b1120 0%, #111827 50%, #0f172a 100%);
+    --card-bg: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --primary: #38bdf8;
+    --primary-light: rgba(56, 189, 248, 0.12);
+    --primary-dark: #0284c7;
+    --accent: #818cf8;
+    --accent-light: rgba(129, 140, 248, 0.15);
+    --success: #34d399;
+    --success-bg: rgba(52, 211, 153, 0.12);
+    --success-border: rgba(52, 211, 153, 0.3);
+    --warning: #fbbf24;
+    --warning-bg: rgba(251, 191, 36, 0.12);
+    --danger: #f87171;
+    --danger-bg: rgba(248, 113, 113, 0.12);
+    --border-color: #334155;
+    --shadow-sm: 0 1px 4px rgba(0,0,0,0.3);
+    --shadow-md: 0 4px 18px rgba(0,0,0,0.4);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.6);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Cairo', 'Segoe UI', Tahoma, Arial, sans-serif;
+    line-height: 1.9;
+    background: var(--bg-gradient);
+    color: var(--text-primary);
+    min-height: 100vh;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  .icon {
+    display: inline-block;
+    vertical-align: middle;
+    stroke-width: 2;
+    fill: none;
+    stroke: currentColor;
+    flex-shrink: 0;
+  }
+
+  /* Fixed Navigation Top Bar */
+  .top-nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-sm);
+  }
+  .nav-left, .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--primary-light);
+    color: var(--primary);
+    border: 1px solid var(--border-color);
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 13.5px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .back-btn:hover {
+    background: var(--primary);
+    color: white;
+  }
+  .nav-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .theme-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .theme-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+
+  /* Reading Progress Bar */
+  .progress-bar-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: transparent;
+    z-index: 9999;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #2563eb, #6366f1, #10b981);
+    width: 0%;
+    transition: width 0.2s ease;
+  }
+
+  .container {
+    max-width: 920px;
+    margin: auto;
+    padding: 24px 20px 80px;
+  }
+
+  /* Quick Navigation chips */
+  .quick-nav {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 4px 2px 14px;
+    margin-bottom: 20px;
+    scrollbar-width: thin;
+  }
+  .quick-chip {
+    white-space: nowrap;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-sm);
+  }
+  .quick-chip:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    transform: translateY(-2px);
+  }
+
+  /* Cards */
+  .card {
+    background: var(--card-bg);
+    border-radius: 18px;
+    padding: 26px 28px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+  }
+
+  .hero-card {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(99, 102, 241, 0.05));
+    border: 1.5px solid rgba(37, 99, 235, 0.25);
+    text-align: center;
+    padding: 36px 24px;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--primary-light);
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .hero-title {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+  }
+  .hero-sub {
+    font-size: 15px;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto 18px;
+    line-height: 1.6;
+  }
+  .hero-meta {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: var(--text-secondary);
+    border-top: 1px solid var(--border-color);
+    padding-top: 14px;
+  }
+
+  h2 {
+    color: var(--primary);
+    padding-bottom: 12px;
+    margin-bottom: 18px;
+    font-size: 21px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .section-badge {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  h3 {
+    color: var(--text-primary);
+    margin: 18px 0 10px;
+    font-size: 17px;
+    font-weight: 700;
+  }
+
+  /* Term highlight */
+  .term {
+    background: var(--primary-light);
+    border-right: 4px solid var(--primary);
+    padding: 14px 18px;
+    border-radius: 12px;
+    margin: 14px 0;
+  }
+  .en {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    color: var(--primary);
+    font-size: 16px;
+    direction: ltr;
+    display: inline-block;
+  }
+
+  /* Audio buttons for terms */
+  .audio-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    margin: 0 6px;
+    vertical-align: middle;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+  }
+  .audio-btn svg {
+    width: 13px;
+    height: 13px;
+    fill: currentColor;
+    pointer-events: none;
+  }
+  .audio-btn:hover {
+    transform: scale(1.15);
+  }
+  .audio-btn.playing {
+    background: linear-gradient(135deg, var(--success), #047857);
+    animation: pulse 0.6s ease-in-out infinite alternate;
+  }
+  @keyframes pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.15); }
+  }
+
+  /* Visual Flowchart Box */
+  .flowchart-box {
+    background: var(--card-bg);
+    border: 1.5px solid var(--border-color);
+    border-radius: 16px;
+    padding: 20px 14px;
+    margin: 18px 0;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+  }
+  .flow-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .flow-node {
+    background: var(--primary-light);
+    border: 1.5px solid var(--border-color);
+    border-radius: 12px;
+    padding: 12px 14px;
+    min-width: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 13.5px;
+    transition: transform 0.2s;
+  }
+  .flow-node.highlight {
+    border-color: var(--primary);
+    box-shadow: 0 4px 14px rgba(37,99,235,0.15);
+  }
+  .flow-node strong {
+    color: var(--text-primary);
+  }
+  .flow-data-badge {
+    font-size: 11px;
+    background: var(--card-bg);
+    padding: 2px 8px;
+    border-radius: 6px;
+    color: var(--primary);
+    font-weight: 700;
+    border: 1px solid var(--border-color);
+  }
+  .flow-arrow {
+    font-size: 20px;
+    color: var(--primary);
+    font-weight: 800;
+    padding: 0 2px;
+  }
+  .flow-storage-node {
+    margin-top: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .storage-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--accent-light);
+    color: var(--accent);
+    padding: 8px 18px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    border: 1px solid rgba(99,102,241,0.25);
+  }
+
+  /* Responsive Table Wrapper */
+  .table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    margin: 16px 0;
+  }
+  .table-wrap table {
+    margin: 0;
+    border: none;
+    min-width: 480px;
+  }
+
+  /* Comparison Mobile-Friendly Cards */
+  .compare-mobile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 18px 0;
+  }
+  .compare-card {
+    background: var(--card-bg);
+    border: 1.5px solid var(--border-color);
+    border-radius: 16px;
+    padding: 20px 18px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease;
+  }
+  .compare-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  .compare-data {
+    border-top: 4px solid var(--primary);
+  }
+  .compare-info {
+    border-top: 4px solid var(--success);
+  }
+  .compare-ram {
+    border-top: 4px solid var(--warning);
+  }
+  .compare-ram .compare-row {
+    background: var(--warning-bg);
+    border-color: rgba(217, 119, 6, 0.15);
+  }
+  .compare-rom {
+    border-top: 4px solid var(--accent);
+  }
+  .compare-rom .compare-row {
+    background: var(--accent-light);
+    border-color: rgba(99, 102, 241, 0.15);
+  }
+  .compare-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 14px;
+  }
+  .compare-header-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .compare-icon {
+    font-size: 26px;
+    line-height: 1;
+  }
+  .compare-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+    color: var(--text-primary);
+  }
+  .compare-subtitle {
+    font-size: 12px;
+    color: var(--text-muted);
+    display: block;
+    margin-top: 2px;
+  }
+  .compare-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex-grow: 1;
+  }
+  .compare-row {
+    background: var(--primary-light);
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 13.5px;
+    line-height: 1.7;
+    border: 1px solid rgba(37,99,235,0.1);
+  }
+  .compare-info .compare-row {
+    background: var(--success-bg);
+    border-color: rgba(5,150,105,0.12);
+  }
+  .compare-label {
+    display: block;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 3px;
+    font-size: 13px;
+  }
+  .compare-row p {
+    margin: 0;
+    color: var(--text-secondary);
+  }
+  .compare-divider {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    margin: -4px 0;
+  }
+  .divider-badge {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--accent);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 12.5px;
+    font-weight: 700;
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* Key box */
+  .key {
+    background: var(--success-bg);
+    border: 1px solid var(--success-border);
+    border-right: 4px solid var(--success);
+    padding: 14px 18px;
+    border-radius: 12px;
+    margin: 16px 0;
+    color: var(--text-primary);
+  }
+  .key-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--success);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  /* Grid layouts */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 14px;
+    margin: 16px 0;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin: 16px 0;
+  }
+  .info-box {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: var(--shadow-sm);
+  }
+  .info-box h4 {
+    color: var(--primary);
+    margin-bottom: 6px;
+    font-size: 15.5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+  }
+  th {
+    background: var(--primary-light);
+    color: var(--primary);
+    padding: 12px 16px;
+    text-align: right;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border-color);
+  }
+  td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 14.5px;
+  }
+  tr:last-child td { border-bottom: none; }
+
+  /* In-topic Question Card */
+  .question {
+    background: var(--warning-bg);
+    border: 1px solid rgba(217, 119, 6, 0.25);
+    border-right: 4px solid var(--warning);
+    padding: 18px 20px;
+    border-radius: 14px;
+    margin: 20px 0;
+  }
+  .q-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  .q-english {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+    direction: ltr;
+    text-align: left;
+    line-height: 1.6;
+    flex-grow: 1;
+  }
+  .q-speech-btn {
+    background: var(--primary-light);
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    border-radius: 8px;
+    padding: 4px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: inherit;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.2s;
+  }
+  .q-speech-btn:hover {
+    background: var(--primary);
+    color: white;
+  }
+  .q-arabic-toggle {
+    background: linear-gradient(135deg, var(--warning), #b45309);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 5px 12px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    margin: 8px 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+  }
+  .q-arabic-toggle:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(217, 119, 6, 0.25);
+  }
+  .q-arabic-text {
+    display: none;
+    background: rgba(217, 119, 6, 0.1);
+    border-right: 3px solid var(--warning);
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin: 10px 0;
+    color: var(--text-primary);
+    font-size: 14px;
+  }
+  .q-arabic-text.show {
+    display: block;
+    animation: fadeIn 0.25s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* MCQ Options */
+  .inline-mcq {
+    margin: 12px 0 4px;
+  }
+  .mcq-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    text-align: left;
+    direction: ltr;
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    padding: 11px 16px;
+    margin: 8px 0;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-sm);
+  }
+  .mcq-option:hover {
+    border-color: var(--accent);
+    background: var(--accent-light);
+    transform: translateX(3px);
+  }
+  .mcq-option.selected-correct {
+    background: var(--success-bg) !important;
+    border-color: var(--success) !important;
+    color: var(--success) !important;
+  }
+  .mcq-option.selected-wrong {
+    background: var(--danger-bg) !important;
+    border-color: var(--danger) !important;
+    color: var(--danger) !important;
+    animation: shake 0.35s ease;
+  }
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    50% { transform: translateX(4px); }
+    75% { transform: translateX(-2px); }
+  }
+
+  .opt-badge {
+    font-size: 11px;
+    padding: 2px 7px;
+    border-radius: 5px;
+    font-weight: 700;
+    display: none;
+  }
+  .mcq-option.selected-correct .opt-badge {
+    display: inline-block;
+    background: var(--success);
+    color: white;
+  }
+  .mcq-option.selected-wrong .opt-badge {
+    display: inline-block;
+    background: var(--danger);
+    color: white;
+  }
+
+  /* Result & Explanation Box */
+  .mcq-result {
+    margin-top: 12px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 1.8;
+    display: none;
+  }
+  .mcq-result.show {
+    display: block;
+    animation: fadeIn 0.25s ease;
+  }
+  .mcq-result.correct-msg {
+    background: var(--success-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--success);
+  }
+  .mcq-result.wrong-msg {
+    background: var(--danger-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--danger);
+  }
+  .result-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .correct-msg .result-title { color: var(--success); }
+  .wrong-msg .result-title { color: var(--danger); }
+  .result-explanation {
+    margin: 8px 0;
+    padding-top: 6px;
+    border-top: 1px dashed rgba(0,0,0,0.12);
+  }
+  .explanation-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .result-hint {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    margin-top: 6px;
+  }
+
+  .mcq-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 10px;
+  }
+  .reset-btn {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    border-radius: 8px;
+    padding: 5px 12px;
+    font-size: 12.5px;
+    font-family: inherit;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.2s;
+  }
+  .reset-btn:hover {
+    background: var(--border-color);
+    color: var(--text-primary);
+  }
+
+  /* Score Dashboard */
+  .quiz-dashboard {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: white;
+    border-radius: 18px;
+    padding: 24px;
+    margin: 20px 0 26px;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .score-item h4 {
+    font-size: 13px;
+    opacity: 0.8;
+    margin-bottom: 4px;
+  }
+  .score-val {
+    font-family: 'Inter', sans-serif;
+    font-size: 34px;
+    font-weight: 800;
+    color: #38bdf8;
+  }
+  .score-feedback {
+    font-size: 14px;
+    background: rgba(255,255,255,0.12);
+    padding: 6px 18px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* Glossary */
+  .glossary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .glossary-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.2s ease;
+  }
+  .glossary-item:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+  }
+  .glossary-term {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--text-primary);
+  }
+  .glossary-ar {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  /* Developer Footer Card */
+  .dev-card {
+    background: var(--card-bg);
+    border: 1.5px solid var(--border-color);
+    border-radius: 18px;
+    padding: 24px;
+    text-align: center;
+    margin-top: 40px;
+    box-shadow: var(--shadow-sm);
+  }
+  .dev-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+  .dev-sub {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+  }
+  .whatsapp-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #25d366;
+    color: white;
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+  }
+  .whatsapp-link:hover {
+    background-color: #20ba5a;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+  }
+
+  /* Modal Celebration */
+  #celebrationModal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(4px);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .modal-box {
+    background: var(--card-bg);
+    border-radius: 24px;
+    padding: 36px 28px;
+    max-width: 440px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    animation: popUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  @keyframes popUp {
+    from { opacity: 0; transform: scale(0.85); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  /* Comprehensive Mobile Responsive Styles */
+  @media (max-width: 680px) {
+    body { font-size: 14.5px; }
+    .container { padding: 12px 10px 60px; max-width: 100%; }
+    .card { padding: 18px 14px; border-radius: 14px; margin-bottom: 16px; }
+    .hero-card { padding: 24px 14px; }
+    .hero-title { font-size: 20px; line-height: 1.3; }
+    .hero-sub { font-size: 13.5px; margin-bottom: 12px; }
+    .top-nav { padding: 8px 12px; }
+    .nav-title { font-size: 12.5px; max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .back-btn { padding: 5px 10px; font-size: 12.5px; }
+    
+    h2 { font-size: 17px; gap: 8px; margin-bottom: 14px; }
+    .section-badge { width: 28px; height: 28px; font-size: 12px; border-radius: 8px; }
+    h3 { font-size: 15.5px; margin: 14px 0 8px; }
+    
+    .quick-nav {
+      gap: 6px;
+      padding: 4px 0 10px;
+      margin-bottom: 14px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .quick-nav::-webkit-scrollbar { display: none; }
+    .quick-chip { font-size: 11.5px; padding: 5px 12px; }
+
+    .term { padding: 12px 14px; border-radius: 10px; font-size: 14px; }
+    .audio-btn { width: 32px; height: 32px; margin: 0 4px; }
+    
+    .grid-2, .grid-3 { grid-template-columns: 1fr; gap: 10px; }
+    .info-box { padding: 14px; }
+    
+    .q-header { flex-direction: column; align-items: stretch; gap: 8px; }
+    .q-speech-btn { align-self: flex-start; }
+    .mcq-option { padding: 11px 12px; font-size: 13.5px; min-height: 48px; }
+    .q-english { font-size: 14px; }
+    
+    .quiz-dashboard { flex-direction: column; padding: 18px 14px; gap: 14px; }
+    .score-val { font-size: 28px; }
+    .score-feedback { font-size: 13px; width: 100%; justify-content: center; }
+    
+    .glossary-grid { grid-template-columns: 1fr; gap: 8px; }
+    .glossary-item { padding: 10px 12px; }
+
+    .flow-row { gap: 6px; }
+    .flow-node { min-width: 95px; padding: 8px 10px; font-size: 12px; }
+    .flow-data-badge { font-size: 10px; padding: 2px 6px; }
+    .flow-arrow { font-size: 16px; }
+    .storage-badge { font-size: 12px; padding: 6px 14px; }
+
+    .compare-mobile-grid { grid-template-columns: 1fr; gap: 14px; }
+    .compare-card { padding: 16px 14px; }
+    .compare-row { padding: 10px 12px; font-size: 13px; }
+
+    .modal-box { padding: 26px 18px; border-radius: 18px; }
+  }
+
+/* ===== Responsive flowchart fix ===== */
+.flowchart-box {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+.flow-row {
+  width: 100%;
+}
+.flow-node {
+  min-width: 0;
+  flex: 1 1 0;
+  max-width: 240px;
+  overflow-wrap: anywhere;
+}
+.flow-node strong {
+  overflow-wrap: anywhere;
+  word-break: normal;
+  text-align: center;
+}
+.flow-data-badge {
+  max-width: 100%;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+.flow-arrow {
+  flex: 0 0 auto;
+}
+
+/* Small screens: make the process a clean vertical flow */
+@media (max-width: 700px) {
+  .flowchart-box {
+    padding: 16px 10px;
+  }
+  .flow-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .flow-node {
+    width: min(100%, 320px);
+    max-width: 320px;
+    flex: none;
+    padding: 11px 12px;
+  }
+  .flow-arrow {
+    transform: rotate(90deg);
+    line-height: 1;
+    padding: 2px 0;
+  }
+  .flow-storage-node {
+    margin-top: 10px;
+  }
+  .storage-badge {
+    width: min(100%, 320px);
+    justify-content: center;
+    text-align: center;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+  }
+}
+
+/* Extra-small phones */
+@media (max-width: 380px) {
+  .flowchart-box {
+    padding-left: 7px;
+    padding-right: 7px;
+  }
+  .flow-node,
+  .storage-badge {
+    width: 100%;
+    max-width: 100%;
+  }
+  .flow-node strong {
+    font-size: 13px;
+  }
+  .flow-data-badge,
+  .storage-badge {
+    font-size: 11px;
+  }
+}
+
+/* ===== Clean A4 PDF output ===== */
+@page {
+  size: A4;
+  margin: 12mm 11mm 14mm;
+}
+@media print {
+  html, body {
+    background: #fff !important;
+    color: #111827 !important;
+    font-size: 10.5pt;
+  }
+  body {
+    min-height: auto;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .progress-bar-fixed,
+  .top-nav,
+  .audio-btn,
+  .q-speech-btn,
+  .q-arabic-toggle,
+  .reset-btn,
+  .mcq-result,
+  #celebrationModal {
+    display: none !important;
+  }
+  .container {
+    max-width: none;
+    padding: 0;
+  }
+  .quick-nav {
+    display: none;
+  }
+  .card {
+    box-shadow: none !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom: 10mm;
+  }
+  .hero-card {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+  .flowchart-box,
+  .term,
+  .key,
+  .question,
+  .info-box,
+  .table-wrap {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .flowchart-box {
+    overflow: visible;
+  }
+  .flow-row {
+    flex-wrap: nowrap;
+  }
+  .flow-node {
+    min-width: 0;
+    max-width: 31%;
+    padding: 9px 8px;
+    font-size: 10pt;
+  }
+  .flow-data-badge {
+    font-size: 8.5pt;
+  }
+  .flow-arrow {
+    font-size: 16pt;
+  }
+  .storage-badge {
+    font-size: 9pt;
+  }
+  table {
+    font-size: 9pt;
+  }
+  th, td {
+    padding: 7px 8px;
+  }
+  h2 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+  .q-arabic-text {
+    display: block !important;
+  }
+  .mcq-option {
+    cursor: default;
+  }
+  a {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<!-- Progress Bar -->
+<div class="progress-bar-fixed"><div class="progress-fill" id="progressFill"></div></div>
+
+<!-- Top Navigation -->
+<nav class="top-nav">
+  <div class="nav-left">
+    <a href="../index.html" class="back-btn">← المحاضرات</a>
+    <span class="nav-title">CSE012 — Lecture 01</span>
+  </div>
+  <div class="nav-right">
+    <button class="theme-btn" id="themeToggleBtn" onclick="toggleTheme()" title="تبديل الوضع الليلي / النهاري">
+      <svg class="icon" viewBox="0 0 24 24" width="18" height="18"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- Quick Navigation Chips -->
+  <div class="quick-nav">
+    <a href="#what-is-computer" class="quick-chip">💻 ما هو الكمبيوتر؟</a>
+    <a href="#data-vs-info" class="quick-chip">📊 Data vs Information</a>
+    <a href="#it-ict" class="quick-chip">🌐 IT & ICT</a>
+    <a href="#info-system" class="quick-chip">⚙️ نظام المعلومات</a>
+    <a href="#software" class="quick-chip">💿 Software</a>
+    <a href="#types-computers" class="quick-chip">🖥️ أنواع الحواسيب</a>
+    <a href="#cpu-memory" class="quick-chip">🧠 المعالج والذاكرة</a>
+    <a href="#storage-io" class="quick-chip">💾 التخزين والإدخال/الإخراج</a>
+    <a href="#networks" class="quick-chip">🌍 الإنترنت والشبكات</a>
+    <a href="#final-quiz" class="quick-chip">📝 الاختبار الشامل (10 أسئلة)</a>
+    <a href="#glossary" class="quick-chip">📖 قاموس النطق الصوتي</a>
+  </div>
+
+  <!-- Title Card -->
+  <div class="card hero-card">
+    <div class="hero-badge">CSE012 • Lecture 01</div>
+    <h1 class="hero-title">Introduction to Computer</h1>
+    <p class="hero-sub">مقدمة شاملة ومبسطة في أساسيات الحاسب الآلي مع نطق المصطلحات واختبارات تفاعلية فورية</p>
+  </div>
+
+  <!-- Section 1: What is a Computer? -->
+  <section class="card" id="what-is-computer">
+    <h2><span class="section-badge">1</span> ما هو الكمبيوتر؟ (What is a Computer?)</h2>
+    
+    <p>بأبسط تعريف ممكن:</p>
+    <div class="term">
+      <span class="en">Computer</span>
+      <button class="audio-btn" onclick="playAudio('computer')" title="استمع للنطق الصوتي">
+        <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+      </button>
+      — آلة إلكترونية تعمل وفق تعليمات مخزنة بذاكرتها، تستقبل <strong>البيانات (Input)</strong>، وتعالجها <strong>(Process)</strong>، لتنتج <strong>معلومات مفيدة (Output)</strong>، مع إمكانية <strong>حفظ النتائج (Storage)</strong> لاستخدامها لاحقاً.
+    </div>
+
+    <div class="flowchart-box">
+      <div class="flow-row">
+        <div class="flow-node">
+          <strong>Input Devices</strong>
+          <span class="flow-data-badge">Data (بيانات خام)</span>
+        </div>
+        <div class="flow-arrow">➔</div>
+        <div class="flow-node highlight">
+          <strong>Processing (CPU)</strong>
+          <span class="flow-data-badge">معالجة وتحويل</span>
+        </div>
+        <div class="flow-arrow">➔</div>
+        <div class="flow-node">
+          <strong>Output Devices</strong>
+          <span class="flow-data-badge">Information (معلومات)</span>
+        </div>
+      </div>
+      <div class="flow-storage-node">
+        <span style="font-size:18px;color:var(--accent)">⬇️</span>
+        <div class="storage-badge">💾 <strong>Storage Devices</strong> (حفظ وتخزين النتائج)</div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="info-box">
+        <h4>1. المدخلات (Input) <button class="audio-btn" onclick="playAudio('input')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></h4>
+        <p>البيانات الخام والتعليمات التي تدخلها للكمبيوتر عبر لوحة المفاتيح أو الفأرة أو الميكروفون.</p>
+      </div>
+      <div class="info-box">
+        <h4>2. المعالجة (Process) <button class="audio-btn" onclick="playAudio('process')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></h4>
+        <p>العمليات الحسابية والمنطقية التي يقوم بها المعالج لتحويل البيانات إلى شيء ذي معنى.</p>
+      </div>
+      <div class="info-box">
+        <h4>3. المخرجات (Output) <button class="audio-btn" onclick="playAudio('output')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></h4>
+        <p>النتيجة النهائية المعروضة على الشاشة أو المطبوعة في ورقة ليستفيد منها الإنسان.</p>
+      </div>
+      <div class="info-box">
+        <h4>4. التخزين (Storage) <button class="audio-btn" onclick="playAudio('storage')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></h4>
+        <p>الاحتفاظ بالبيانات والمعلومات في وسائط التخزين (مثل القرص الصلب) بشكل دائم.</p>
+      </div>
+    </div>
+
+    <div class="key">
+      <div class="key-header">💡 التشبيه اليومي البسيط:</div>
+      تخيل أنك في مطعم: المكونات الخام (الخضار واللحم) هي <strong>Data</strong>، الطباخ في المطبخ يقوم بـ <strong>Processing</strong>، الوجبة الجاهزة الشهية هي <strong>Information</strong>، وحفظ المتبقي في الثلاجة هو <strong>Storage</strong>!
+    </div>
+
+    <!-- Quick Check Question 1 -->
+    <div class="question" data-qid="q-check-1">
+      <div class="q-header">
+        <div class="q-english">Basically, a computer transforms ______ into ______.</div>
+        <button class="q-speech-btn" onclick="speakText('Basically, a computer transforms data into information.')">🔊 استمع</button>
+      </div>
+      <button class="q-arabic-toggle" onclick="toggleArabic(this)">عرض الترجمة بالعربية</button>
+      <div class="q-arabic-text">بشكل أساسي، يقوم الكمبيوتر بتحويل ______ إلى ______.</div>
+
+      <div class="inline-mcq" data-correct="0" data-explanations='[
+        "صحيح! الوظيفة الجوهرية للحاسب هي تحويل البيانات الخام (Data) إلى معلومات ذات فائدة ومعنى (Information).",
+        "غير صحيح؛ العكس هو الصحيح، فالبيانات هي المدخلات والمعلومات هي المخرجات.",
+        "غير صحيح؛ البرمجيات تتحكم في العتاد، لكن عملية التحويل للمحتوى هي Data إلى Information.",
+        "غير صحيح؛ أجهزة الإخراج لا تتحول لأجهزة إدخال."
+      ]'>
+        <button class="mcq-option" onclick="checkAnswer(this, 0)"><span>A) data into information</span><span class="opt-badge">صحيح</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this, 1)"><span>B) information into data</span><span class="opt-badge">خطأ</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this, 2)"><span>C) hardware into software</span><span class="opt-badge">خطأ</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this, 3)"><span>D) output into input</span><span class="opt-badge">خطأ</span></button>
+        <div class="mcq-result"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Data vs Information -->
+  <section class="card" id="data-vs-info">
+    <h2><span class="section-badge">2</span> البيانات مقابل المعلومات (Data vs. Information)</h2>
+
+    <p>هذا من أهم الأسئلة الأساسية في امتحانات الحاسب الآلي:</p>
+
+    <!-- Mobile-Optimized Comparison Cards -->
+    <div class="compare-mobile-grid">
+      <!-- Card 1: Data -->
+      <div class="compare-card compare-data">
+        <div class="compare-card-header">
+          <div class="compare-header-info">
+            <span class="compare-icon">📁</span>
+            <div>
+              <h3 class="compare-title">البيانات الخام (<span class="en">Data</span>)</h3>
+              <span class="compare-subtitle">مدخلات أولية غير معالجة (Unprocessed)</span>
+            </div>
+          </div>
+          <button class="audio-btn" onclick="playAudio('data')" title="استمع لنطق Data"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        </div>
+        <div class="compare-body">
+          <div class="compare-row">
+            <span class="compare-label">📌 التعريف الأساسي:</span>
+            <p>مجموعة من العناصر والحقائق الخام غير المنظمة وغير المعالجة (<strong>Unprocessed items</strong>).</p>
+          </div>
+          <div class="compare-row">
+            <span class="compare-label">📋 الأشكال والأنواع:</span>
+            <p>أرقام، نصوص، صور، فيديو، تسجيلات صوتية مجردة بدون سياق واضح.</p>
+          </div>
+          <div class="compare-row">
+            <span class="compare-label">💡 القيمة والفهم:</span>
+            <p>صعبة الفهم بمفردها ولا تكفي لاتخاذ قرار (مثال: مجرد الرقم <code>95</code> لا يعني شيئاً لوحده).</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Divider / Process Badge -->
+      <div class="compare-divider">
+        <div class="divider-badge">⚙️ المعالجة (Processing) ➔</div>
+      </div>
+
+      <!-- Card 2: Information -->
+      <div class="compare-card compare-info">
+        <div class="compare-card-header">
+          <div class="compare-header-info">
+            <span class="compare-icon">📊</span>
+            <div>
+              <h3 class="compare-title">المعلومات المفيدة (<span class="en">Information</span>)</h3>
+              <span class="compare-subtitle">مخرجات مرتبة ومفهومة (Processed)</span>
+            </div>
+          </div>
+          <button class="audio-btn" onclick="playAudio('information')" title="استمع لنطق Information"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        </div>
+        <div class="compare-body">
+          <div class="compare-row">
+            <span class="compare-label">📌 التعريف الأساسي:</span>
+            <p>بيانات تمت معالجتها وتنظيمها وهيكلتها لتوصيل معرفة أو حقائق واضحة (<strong>Processed data</strong>).</p>
+          </div>
+          <div class="compare-row">
+            <span class="compare-label">📋 الأشكال والأنواع:</span>
+            <p>تقارير ملخصة، فواتير حسابية، رسوم بيانية، إحصائيات ذات دلالة عملية.</p>
+          </div>
+          <div class="compare-row">
+            <span class="compare-label">💡 القيمة والفهم:</span>
+            <p>واضحة وقابلة للتفسير وتساعد في اتخاذ قرار (مثال: <code>درجة الطالب 95% ممتاز</code>).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="key">
+      <div class="key-header">🧾 مثال السوبر ماركت (من السلايد 8):</div>
+      عندما يمرر الكاشير الباركود ويقرأ "صودا 1.49$، شيبس 0.99$" فهذه <strong>Data (مدخلات)</strong>.<br>
+      يقوم الكاشير بالضغط على زر الحساب ليجمع الأسعار ويحسب الضريبة والباقي، فهذه <strong>Processing (معالجة)</strong>.<br>
+      تطبع <strong>فاتورة الشراء (Receipt)</strong> موضحة الإجمالي والمتبقي فهذه <strong>Information (مخرجات مفيدة)</strong>!
+    </div>
+  </section>
+
+  <!-- Section 3: IT and ICT -->
+  <section class="card" id="it-ict">
+    <h2><span class="section-badge">3</span> تكنولوجيا المعلومات والاتصالات (IT & ICT)</h2>
+
+    <div class="term">
+      <span class="en">Information Technology (IT)</span>
+      <button class="audio-btn" onclick="playAudio('information_technology')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      <br>
+      يشير إلى استخدام أنظمة الكمبيوتر، والبرمجيات، والشبكات، ومصادر التكنولوجيا لـ: <strong>تخزين (Store)</strong>، و<strong>معالجة (Process)</strong>، و<strong>نقل (Transmit)</strong>، و<strong>تأمين (Secure)</strong>، و<strong>إدارة (Manage)</strong> البيانات والمعلومات الرقمية.
+    </div>
+
+    <div class="term" style="border-right-color:var(--accent)">
+      <span class="en">Information and Communication Technology (ICT)</span>
+      <button class="audio-btn" onclick="playAudio('ict')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      <br>
+      هو امتداد لمصطلح IT، ولكنه يركز بشكل خاص على دمج تكنولوجيا الاتصالات السلكية واللاسلكية (Telecommunications) مثل الـ <strong>Wi-Fi</strong> والـ <strong>Bluetooth</strong> وشبكات نقل الصوت والصورة والتحكم بالأجهزة عن بعد.
+    </div>
+  </section>
+
+  <!-- Section 4: Parts of an Information System -->
+  <section class="card" id="info-system">
+    <h2><span class="section-badge">4</span> أجزاء نظام المعلومات (6 Key Components)</h2>
+    <p>يتكون نظام المعلومات <span class="en">Information System</span> <button class="audio-btn" onclick="playAudio('information_system')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button> من <strong>6 أجزاء متكاملة</strong> لا غنى عنها:</p>
+
+    <div class="grid-3">
+      <div class="info-box" style="border-top:3px solid #f43f5e">
+        <h4>1. الأشخاص (People) <button class="audio-btn" onclick="playAudio('people')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></h4>
+        <p>هم <strong>المستخدمون النهائيون (End-users)</strong>، وهم <strong>أهم جزء في أي نظام معلومات</strong> على الإطلاق؛ لأن الهدف النهائي لأي نظام هو جعل الإنسان أكثر إنتاجية وكفاءة.</p>
+      </div>
+
+      <div class="info-box" style="border-top:3px solid #8b5cf6">
+        <h4>2. الإجراءات (Procedures) <button class="audio-btn" onclick="playAudio('procedures')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></h4>
+        <p>القواعد والتعليمات الإرشادية التي يجب اتباعها عند استخدام الأجهزة والبرامج والبيانات، وتكون موثقة في أدلة التشغيل (Manuals) المكتوبة بواسطة الخبراء.</p>
+      </div>
+
+      <div class="info-box" style="border-top:3px solid #06b6d4">
+        <h4>3. البرمجيات (Software) <button class="audio-btn" onclick="playAudio('software')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></h4>
+        <p>البرامج والتعليمات التي توجه الحاسب لتنفيذ المهام المطلوبة ومعالجة البيانات بالشكل المرغوب فيه.</p>
+      </div>
+
+      <div class="info-box" style="border-top:3px solid #3b82f6">
+        <h4>4. العتاد (Hardware) <button class="audio-btn" onclick="playAudio('hardware')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></h4>
+        <p>المكونات والأجهزة الإلكترونية الملموسة (مثل الشاشة، لوحة المفاتيح، الصندوق، المعالج).</p>
+      </div>
+
+      <div class="info-box" style="border-top:3px solid #10b981">
+        <h4>5. البيانات (Data) <button class="audio-btn" onclick="playAudio('data')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></h4>
+        <p>الحقائق الخام غير المنظمة التي يقوم النظام بمعالجتها لإنتاج المعلومات المفيدة.</p>
+      </div>
+
+      <div class="info-box" style="border-top:3px solid #f59e0b">
+        <h4>6. الإنترنت (Internet) <button class="audio-btn" onclick="playAudio('internet')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></h4>
+        <p>شبكة الاتصال والربط العالمية التي تتيح مشاركة وتبادل البيانات والمصادر بين أجهزة الكمبيوتر حول العالم.</p>
+      </div>
+    </div>
+
+    <!-- Quick Check Question 2 -->
+    <div class="question" data-qid="q-check-2">
+      <div class="q-header">
+        <div class="q-english">What is the most important part of any information system?</div>
+        <button class="q-speech-btn" onclick="speakText('What is the most important part of any information system?')">🔊 استمع</button>
+      </div>
+      <button class="q-arabic-toggle" onclick="toggleArabic(this)">عرض الترجمة بالعربية</button>
+      <div class="q-arabic-text">ما هو الجزء الأكثر أهمية في أي نظام معلومات؟</div>
+
+      <div class="inline-mcq" data-correct="2" data-explanations='[
+        "غير صحيح؛ العتاد مهم لكنه أداة صامتة بدون الإنسان الذي يشغله ويستفيد منه.",
+        "غير صحيح؛ البرمجيات وسيلة للمعالجة وليست الهدف الأساسي للنظام.",
+        "صحيح تماماً! الأشخاص (المستخدمون النهائيون - End-users) هم الجزء الأكثر أهمية؛ لأن هدف النظام بأكمله هو خدمتهم وزيادة إنتاجيتهم.",
+        "غير صحيح؛ البيانات مجرد مدخلات."
+      ]'>
+        <button class="mcq-option" onclick="checkAnswer(this, 0)"><span>A) Hardware</span><span class="opt-badge">خطأ</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this, 1)"><span>B) Software</span><span class="opt-badge">خطأ</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this, 2)"><span>C) People (End-users)</span><span class="opt-badge">صحيح</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this, 3)"><span>D) Data</span><span class="opt-badge">خطأ</span></button>
+        <div class="mcq-result"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Software -->
+  <section class="card" id="software">
+    <h2><span class="section-badge">5</span> البرمجيات (Software / Programs)</h2>
+    <p>البرمجيات هي مجموعة التعليمات التي تأمر الكمبيوتر بكيفية معالجة البيانات، وتنقسم لنوعين أساسيين:</p>
+
+    <div class="grid-2">
+      <div class="info-box">
+        <h3>1. برمجيات النظام (<span class="en">System Software</span> <button class="audio-btn" onclick="playAudio('system_software')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>)</h3>
+        <p>هي البرامج التي يستخدمها الكمبيوتر في الخلفية لإدارة موارده وتسهيل تواصل البرامج التطبيقية مع العتاد، ومن أهم أمثلتها:</p>
+        <ul style="margin:10px 20px">
+          <li><strong>نظام التشغيل (<span class="en">Operating System</span> <button class="audio-btn" onclick="playAudio('operating_system')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>):</strong> ينسق موارد الجهاز، ويوفر واجهة المستخدم (GUI)، ويشغل التطبيقات (أمثلة: Windows, macOS, Android, Linux).</li>
+          <li><strong>البرامج الخدمية (<span class="en">Utilities</span> <button class="audio-btn" onclick="playAudio('utilities')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>):</strong> برامج تؤدي مهام صيانة محددة لإدارة الموارد، مثل: برامج مكافحة الفيروسات (Antivirus)، وحذف البيانات، وإلغاء تجزئة القرص (Disk defragmentation).</li>
+        </ul>
+      </div>
+
+      <div class="info-box">
+        <h3>2. البرمجيات التطبيقية (<span class="en">Application Software</span> <button class="audio-btn" onclick="playAudio('application_software')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>)</h3>
+        <p>هي البرامج التي يستخدمها المستخدم النهائي (End-user) لأداء مهامه المفيدة، وتشمل:</p>
+        <ul style="margin:10px 20px">
+          <li><strong>تطبيقات عامة (General-Purpose):</strong> مثل المتصفحات (Browsers كـ Chrome)، ومعالجة النصوص (Word Processor)، والجداول (Excel).</li>
+          <li><strong>تطبيقات متخصصة (Specialized):</strong> مثل تصميم المواقع وبرامج الرسوميات المتقدمة.</li>
+          <li><strong>تطبيقات الهواتف (Apps):</strong> تطبيقات الموبايل والتواصل الاجتماعي.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: Types of Computers -->
+  <section class="card" id="types-computers">
+    <h2><span class="section-badge">6</span> أنواع أجهزة الكمبيوتر (Types of Computers)</h2>
+    <p>تُصنف أجهزة الكمبيوتر بحسب الحجم، والسرعة، والقدرة على المعالجة إلى 4 فئات رئيسية:</p>
+
+    <div class="grid-2">
+      <div class="info-box">
+        <h4>1. الحواسيب الفائقة (<span class="en">Supercomputers</span> <button class="audio-btn" onclick="playAudio('supercomputer')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>)</h4>
+        <p><strong>الأسرع والأقوى على الإطلاق!</strong> تستطيع معالجة أكثر من <strong>كوادريليون عملية ($10^{15}$ تعليمة) في الثانية الواحدة</strong>. تعتمد على المعالجات المتوازية (Parallel processors)، وتستخدم في المحاكاة العلمية والمهام الرياضية المعقدة جداً (تنفيذ مهمة كبرى واحدة في الوقت ذاته).</p>
+      </div>
+
+      <div class="info-box">
+        <h4>2. الحواسيب الكبيرة (<span class="en">Mainframes</span> <button class="audio-btn" onclick="playAudio('mainframe')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>)</h4>
+        <p>أجهزة ضخمة وقوية ومكلفة، مصممة للمؤسسات الكبرى (كالبنوك وشركات الطيران). ميزتها الجوهرية: <strong>خدمة آلاف المستخدمين المتصلين في نفس اللحظة ينفذون نفس نوع المهمة</strong> (مثل سحب الأموال من ماكينات الـ ATM وحجز تذاكر الطيران).</p>
+      </div>
+
+      <div class="info-box">
+        <h4>3. الخوادم والحوسبة السحابية (<span class="en">Servers</span> <button class="audio-btn" onclick="playAudio('server')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>)</h4>
+        <p>الخادم يتحكم بالوصول لموارد العتاد والبرمجيات ويوفر تخزيناً مركزياً. ومثالها الضخم: <strong>الحوسبة السحابية (<span class="en">Cloud Computing</span> <button class="audio-btn" onclick="playAudio('cloud_computing')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>)</strong> وهي شبكة عملاقة من الخوادم تمكن ملايين المستخدمين حول العالم من تنفيذ مهام مختلفة ومتنوعة في نفس اللحظة.</p>
+      </div>
+
+      <div class="info-box">
+        <h4>4. الحواسيب الشخصية (<span class="en">Personal Computers - PCs</span>)</h4>
+        <p>أجهزة الاستخدام الفردي اليومي، وتشمل 5 أشكال: أجهزة المكتب (Desktop)، اللابتوب (Laptop)، الأجهزة اللوحية (Tablets)، الهواتف الذكية (Smartphones)، والأجهزة القابلة للارتداء (Wearables كالساعات الذكية).</p>
+      </div>
+    </div>
+
+    <!-- Quick Check Question 3 -->
+    <div class="question" data-qid="q-check-3">
+      <div class="q-header">
+        <div class="q-english">Which computer type is specifically used for processing airline reservation systems and ATM transactions for thousands of simultaneous users?</div>
+        <button class="q-speech-btn" onclick="speakText('Which computer type is specifically used for processing airline reservation systems and ATM transactions for thousands of simultaneous users?')">🔊 استمع</button>
+      </div>
+      <button class="q-arabic-toggle" onclick="toggleArabic(this)">عرض الترجمة بالعربية</button>
+      <div class="q-arabic-text">أي نوع من أجهزة الكمبيوتر يُستخدم خصيصاً لمعالجة أنظمة حجز الطيران ومعاملات الصراف الآلي لآلاف المستخدمين في نفس الوقت؟</div>
+
+      <div class="inline-mcq" data-correct="1" data-explanations='[
+        "غير صحيح؛ Supercomputers تركز على المحاكاة العلمية والمهام الرياضية المعقدة لمهمة واحدة كبرى.",
+        "صحيح! Mainframes هي الأجهزة العملاقة المصممة للمؤسسات لمعالجة كميات بيانات هائلة وخدمة آلاف المستخدمين ينفذون نفس المعاملة (كـ ATM والطيران).",
+        "غير صحيح؛ أجهزة الكمبيوتر الشخصية للاستخدام الفردي ولا تتحمل آلاف المستخدمين معاً.",
+        "غير صحيح؛ الأجهزة القابلة للارتداء مثل الساعات لا تعالج معاملات البنوك الكبرى."
+      ]'>
+        <button class="mcq-option" onclick="checkAnswer(this, 0)"><span>A) Supercomputer</span><span class="opt-badge">خطأ</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this, 1)"><span>B) Mainframe computer</span><span class="opt-badge">صحيح</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this, 2)"><span>C) Personal computer</span><span class="opt-badge">خطأ</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this, 3)"><span>D) Wearables</span><span class="opt-badge">خطأ</span></button>
+        <div class="mcq-result"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 7: CPU & Memory -->
+  <section class="card" id="cpu-memory">
+    <h2><span class="section-badge">7</span> المعالج والذاكرة (CPU & Memory)</h2>
+
+    <div class="term">
+      <span class="en">Central Processing Unit (CPU)</span>
+      <button class="audio-btn" onclick="playAudio('central_processing_unit')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      أو الـ <span class="en">Microprocessor</span>
+      <button class="audio-btn" onclick="playAudio('microprocessor')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      <br>
+      هو <strong>"عقل الكمبيوتر" (The Brain of the Computer)</strong>، ومسؤول عن التحكم في العمليات وتوجيهها. ويتكون في معمارية الحاسب من <strong>3 أجزاء رئيسية</strong>:
+    </div>
+
+    <div class="grid-3">
+      <div class="info-box">
+        <h4>1. وحدة التحكم (<span class="en">Control Unit</span> <button class="audio-btn" onclick="playAudio('control_unit')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>)</h4>
+        <p>تتحكم في جميع وظائف الجهاز وتوجه حركة البيانات وتفاعل الأجهزة مع بعضها البعض (مثل شرطي المرور أو المايسترو).</p>
+      </div>
+
+      <div class="info-box">
+        <h4>2. وحدة الحساب والمنطق (<span class="en">ALU</span> <button class="audio-btn" onclick="playAudio('arithmetic_logic_unit')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>)</h4>
+        <p>مسؤولة عن تنفيذ كل العمليات الحسابية (+, −, ×, ÷) والمقارنات المنطقية (أكبر من، أصغر من، يساوي).</p>
+      </div>
+
+      <div class="info-box">
+        <h4>3. وحدة الذاكرة (<span class="en">Memory Unit</span>)</h4>
+        <p>تحتفظ بالبيانات والتعليمات النشطة التي يحتاجها المعالج فوراً للعمل.</p>
+      </div>
+    </div>
+
+    <h3>الفرق الجوهري بين الذاكرة RAM والذاكرة ROM:</h3>
+    <!-- Mobile-Optimized Comparison Cards for RAM vs ROM -->
+    <div class="compare-mobile-grid">
+      <!-- Card 1: RAM -->
+      <div class="compare-card compare-ram">
+        <div class="compare-card-header">
+          <div class="compare-header-info">
+            <span class="compare-icon">⚡</span>
+            <div>
+              <h3 class="compare-title">ذاكرة الوصول العشوائي (<span class="en">RAM</span>)</h3>
+              <span class="compare-subtitle">ذاكرة مؤقتة ومتطايرة (Volatile)</span>
+            </div>
+          </div>
+          <button class="audio-btn" onclick="playAudio('ram')" title="استمع لنطق RAM"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        </div>
+        <div class="compare-body">
+          <div class="compare-row">
+            <span class="compare-label">⚡ طبيعة التخزين:</span>
+            <p><strong>مؤقتة ومتطايرة (Volatile):</strong> تفقد جميع محتوياتها بمجرد انقطاع أو إيقاف تشغيل الكهرباء.</p>
+          </div>
+          <div class="compare-row">
+            <span class="compare-label">🎯 الوظيفة الأساسية:</span>
+            <p>تحفظ البرامج والبيانات والملفات المفتوحة قيد الاستخدام المباشر والنشط للمعالج.</p>
+          </div>
+          <div class="compare-row">
+            <span class="compare-label">🔄 القراءة والكتابة:</span>
+            <p>يمكن القراءة منها والكتابة عليها وتعديل محتواها باستمرار وبسرعة فائقة.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: ROM -->
+      <div class="compare-card compare-rom">
+        <div class="compare-card-header">
+          <div class="compare-header-info">
+            <span class="compare-icon">🔒</span>
+            <div>
+              <h3 class="compare-title">ذاكرة القراءة فقط (<span class="en">ROM</span>)</h3>
+              <span class="compare-subtitle">ذاكرة دائمة وغير متطايرة (Non-volatile)</span>
+            </div>
+          </div>
+          <button class="audio-btn" onclick="playAudio('rom')" title="استمع لنطق ROM"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        </div>
+        <div class="compare-body">
+          <div class="compare-row">
+            <span class="compare-label">🔒 طبيعة التخزين:</span>
+            <p><strong>دائمة وغير متطايرة (Non-volatile):</strong> تحتفظ ببياناتها ثابتة ولا تفقد شيئاً عند انقطاع الكهرباء.</p>
+          </div>
+          <div class="compare-row">
+            <span class="compare-label">🎯 الوظيفة الأساسية:</span>
+            <p>تحتفظ بتعليمات الإقلاع والتشغيل المبدئي للكمبيوتر (برامج بدء التشغيل BIOS / Booting).</p>
+          </div>
+          <div class="compare-row">
+            <span class="compare-label">📖 القراءة والكتابة:</span>
+            <p>للقراءة فقط (Read Only) في الاستخدام العادي، لا يمكن للمستخدم مسحها أو الكتابة عليها بالخطأ.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 8: Storage and I/O Devices -->
+  <section class="card" id="storage-io">
+    <h2><span class="section-badge">8</span> وحدات التخزين الثانوي والإدخال/الإخراج</h2>
+
+    <h3>1. التخزين الثانوي (<span class="en">Secondary Storage</span> <button class="audio-btn" onclick="playAudio('secondary_storage')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>)</h3>
+    <p>يحتفظ بالبيانات والبرامج حتى بعد إيقاف تشغيل الكمبيوتر، ويشمل نوعين رئيسيين:</p>
+
+    <div class="grid-2">
+      <div class="info-box">
+        <h4>محركات الأقراص الصلبة الساكنة (<span class="en">SSD</span> <button class="audio-btn" onclick="playAudio('ssd')" title="نطق SSD"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>)</h4>
+        <p><strong>لا تحتوي على أي أجزاء متحركة (No moving parts)</strong>، لذلك هي: أسرع بكثير، أكثر موثوقية وأماناً للبيانات، وتستهلك طاقة أقل.</p>
+      </div>
+
+      <div class="info-box">
+        <h4>الأقراص الصلبة التقليدية (<span class="en">HDD</span> <button class="audio-btn" onclick="playAudio('hdd')" title="نطق HDD"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>)</h4>
+        <p>تعتمد على أسطوانات مغناطيسية دوارة، وأبطأ في نقل البيانات من الـ SSD.</p>
+      </div>
+    </div>
+
+    <div class="key">
+      <div class="key-header">💿 الأقراص الضوئية (Optical Discs):</div>
+      تستخدم تقنية <strong>الليزر (Laser technology)</strong> لقراءة وكتابة البيانات، وتشمل: الـ CD والـ DVD والـ Blu-ray.
+    </div>
+
+    <h3>2. أجهزة الإدخال والإخراج (I/O Devices):</h3>
+    <div class="grid-2">
+      <div class="info-box">
+        <h4>أجهزة الإدخال (Input Devices)</h4>
+        <p>تترجم بيانات الإنسان إلى لغة يفهمها الكمبيوتر:</p>
+        <ul style="margin:8px 20px">
+          <li>Keyboard (لوحة المفاتيح)</li>
+          <li>Mouse (الفأرة)</li>
+          <li>Microphone (الميكروفون)</li>
+          <li>Scanner (الماسح الضوئي)</li>
+          <li>Webcams (كاميرا الويب)</li>
+        </ul>
+      </div>
+      <div class="info-box">
+        <h4>أجهزة الإخراج (Output Devices)</h4>
+        <p>تترجم بيانات الكمبيوتر إلى معلومات صالحة للاستخدام البشري:</p>
+        <ul style="margin:8px 20px">
+          <li>Monitor / Display (الشاشة)</li>
+          <li>Printer (الطابعة)</li>
+          <li>Speakers (السماعات)</li>
+          <li>Projector (جهاز العرض)</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>3. أجهزة الاتصال (<span class="en">Communication Devices</span>)</h3>
+    <p>تمنح أجهزة الكمبيوتر القدرة على التواصل مع أجهزة أخرى، مثل <strong>المودم (<span class="en">Modem</span> <button class="audio-btn" onclick="playAudio('modem')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>)</strong> الذي يقوم بتعديل إشارات الصوت والفيديو لنقلها عبر الإنترنت.</p>
+  </section>
+
+  <!-- Section 9: Networks and Internet -->
+  <section class="card" id="networks">
+    <h2><span class="section-badge">9</span> الإنترنت والشبكات والوظائف في IT</h2>
+
+    <div class="grid-2">
+      <div class="info-box">
+        <h4>الشبكة (<span class="en">Network</span> <button class="audio-btn" onclick="playAudio('network')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>)</h4>
+        <p>نظام اتصالات يربط جهازين أو أكثر معاً بهدف مشاركة الموارد والبيانات.</p>
+      </div>
+      <div class="info-box">
+        <h4>الاتصالية (<span class="en">Connectivity</span> <button class="audio-btn" onclick="playAudio('connectivity')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>)</h4>
+        <p>المفهوم القائم على مشاركة وتبادل المعلومات بين الأجهزة.</p>
+      </div>
+    </div>
+
+    <div class="term">
+      <span class="en">Internet</span>
+      <button class="audio-btn" onclick="playAudio('internet')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      — <strong>أكبر شبكة على الإطلاق في العالم</strong>؛ وهي شبكة عالمية من الشبكات تربط ملايين الحواسيب حول كوكب الأرض. بينما الويب (<span class="en">Web</span>) يوفر واجهة وسائط متعددة لمصادر الإنترنت.
+    </div>
+
+    <h3 style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+      وظائف في تكنولوجيا المعلومات (<span class="en">Careers in IT</span>)
+      <button class="audio-btn" onclick="playAudio('careers_in_it')" title="استمع لنطق Careers in IT">
+        <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+      </button>
+    </h3>
+    <div class="grid-3">
+      <div class="info-box">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:4px">
+          <strong>Webmaster</strong>
+          <button class="audio-btn" onclick="playAudio('webmaster')" title="استمع لنطق Webmaster"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        </div>
+        <small style="color:var(--text-muted)">تطوير وصيانة مواقع الويب ومواردها.</small>
+      </div>
+
+      <div class="info-box">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:4px">
+          <strong>Software Engineer</strong>
+          <button class="audio-btn" onclick="playAudio('software_engineer')" title="استمع لنطق Software Engineer"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        </div>
+        <small style="color:var(--text-muted)">تحليل احتياجات المستخدمين وبناء البرامج التطبيقية.</small>
+      </div>
+
+      <div class="info-box">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:4px">
+          <strong>Computer Technician</strong>
+          <button class="audio-btn" onclick="playAudio('computer_technician')" title="استمع لنطق Computer Technician"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        </div>
+        <small style="color:var(--text-muted)">تركيب وإصلاح وفحص مكونات وأجهزة الكمبيوتر.</small>
+      </div>
+
+      <div class="info-box">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:4px">
+          <strong>Network Administrator</strong>
+          <button class="audio-btn" onclick="playAudio('network_administrator')" title="استمع لنطق Network Administrator"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        </div>
+        <small style="color:var(--text-muted)">إنشاء وصيانة وإدارة شبكات الكمبيوتر وحمايتها.</small>
+      </div>
+
+      <div class="info-box">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:4px">
+          <strong>Computer Support Specialist</strong>
+          <button class="audio-btn" onclick="playAudio('computer_support_specialist')" title="استمع لنطق Computer Support Specialist"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        </div>
+        <small style="color:var(--text-muted)">تقديم الدعم الفني والمساعدة للمستخدمين والعملاء.</small>
+      </div>
+
+      <div class="info-box">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:4px">
+          <strong>Technical Writer</strong>
+          <button class="audio-btn" onclick="playAudio('technical_writer')" title="استمع لنطق Technical Writer"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        </div>
+        <small style="color:var(--text-muted)">إعداد وتأليف أدلة الاستخدام والتقارير الفنية والعلمية.</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Comprehensive Final Quiz ================= -->
+  <section class="card" id="final-quiz">
+    <h2><span class="section-badge">10</span> الاختبار التفاعلي الشامل (10 أسئلة)</h2>
+    <p>اختبر استيعابك لكامل تفاصيل المحاضرة. كل سؤال يحتوي على شرح طبي وفني مفصل لسبب صحة أو خطأ كل خيار، مع إمكانية تجربة الخيارات بحرية تامة:</p>
+
+    <!-- Score Dashboard -->
+    <div class="quiz-dashboard">
+      <div class="score-item">
+        <h4>النتيجة الحالية</h4>
+        <div class="score-val" id="scoreDisplay">0 / 10</div>
+      </div>
+      <div class="score-item">
+        <h4>النسبة المئوية</h4>
+        <div class="score-val" id="scorePercent">0%</div>
+      </div>
+      <div class="score-feedback" id="scoreFeedbackText">
+        <span>ابدأ بحل الأسئلة لتسجيل نتيجتك</span>
+      </div>
+    </div>
+
+    <!-- Question 1 -->
+    <div class="question" data-qid="q1">
+      <div class="q-header">
+        <div class="q-english">1. What is the fundamental difference between Data and Information?</div>
+        <button class="q-speech-btn" onclick="speakText('What is the fundamental difference between Data and Information?')">🔊 استمع</button>
+      </div>
+      <button class="q-arabic-toggle" onclick="toggleArabic(this)">عرض الترجمة بالعربية</button>
+      <div class="q-arabic-text">ما هو الفارق الجوهري بين البيانات (Data) والمعلومات (Information)؟</div>
+
+      <div class="inline-mcq" data-correct="1" data-explanations='[
+        "غير صحيح؛ العكس هو الصحيح، فالبيانات هي الخام وغير المعالجة.",
+        "صحيح! Data هي عناصر خام وغير معالجة (Unprocessed items)، بينما Information هي بيانات تمت معالجتها وترتيبها لتكتسب معنى ومعرفة (Processed data).",
+        "غير صحيح؛ البيانات لا تقتصر على الأرقام بل تشمل النصوص والصور والفيديو والأصوات.",
+        "غير صحيح؛ كلاهما أشكال من المحتوى الرقمي وليس أجهزة مادية."
+      ]'>
+        <button class="mcq-option" onclick="checkAnswer(this, 0)"><span>A) Data is processed, while Information is unprocessed</span><span class="opt-badge">خطأ</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this, 1)"><span>B) Data is raw unprocessed items, while Information is processed meaningful data</span><span class="opt-badge">صحيح</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this, 2)"><span>C) Data only includes numbers, while Information includes images</span><span class="opt-badge">خطأ</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this, 3)"><span>D) Data is hardware, while Information is software</span><span class="opt-badge">خطأ</span></button>
+        <div class="mcq-result"></div>
+        <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)">↺ إعادة المحاولة</button></div>
+      </div>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="question" data-qid="q2">
+      <div class="q-header">
+        <div class="q-english">2. In an Information System, who are considered the "People"?</div>
+        <button class="q-speech-btn" onclick="speakText('In an Information System, who are considered the People?')">🔊 استمع</button>
+      </div>
+      <button class="q-arabic-toggle" onclick="toggleArabic(this)">عرض الترجمة بالعربية</button>
+      <div class="q-arabic-text">في نظام المعلومات، من هم المقصودون بـ "الأشخاص" (People)؟</div>
+
+      <div class="inline-mcq" data-correct="2" data-explanations='[
+        "غير صحيح؛ ليس فقط من يصنع العتاد في المصانع.",
+        "غير صحيح؛ ليس مهندسو الشبكات فقط.",
+        "صحيح! People في نظام المعلومات هم المستخدمون النهائيون (End-users) وهم العنصر الأهم لأن النظام صُمم لزيادة إنتاجيتهم.",
+        "غير صحيح؛ مصممو ألعاب الفيديو فئة جزئية وليست التعريف العام."
+      ]'>
+        <button class="mcq-option" onclick="checkAnswer(this, 0)"><span>A) Only hardware manufacturers</span><span class="opt-badge">خطأ</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this, 1)"><span>B) Only network engineers</span><span class="opt-badge">خطأ</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this, 2)"><span>C) The end-users who use the system to be more productive</span><span class="opt-badge">صحيح</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this, 3)"><span>D) Only video game developers</span><span class="opt-badge">خطأ</span></button>
+        <div class="mcq-result"></div>
+        <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)">↺ إعادة المحاولة</button></div>
+      </div>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="question" data-qid="q3">
+      <div class="q-header">
+        <div class="q-english">3. An Antivirus program is classified under which category of software?</div>
+        <button class="q-speech-btn" onclick="speakText('An Antivirus program is classified under which category of software?')">🔊 استمع</button>
+      </div>
+      <button class="q-arabic-toggle" onclick="toggleArabic(this)">عرض الترجمة بالعربية</button>
+      <div class="q-arabic-text">برنامج مضاد الفيروسات (Antivirus) يُصنف تحت أي فئة من فئات البرمجيات؟</div>
+
+      <div class="inline-mcq" data-correct="0" data-explanations='[
+        "صحيح! برامج الحماية من الفيروسات تصنف كـ Utilities (برامج خدمية) وهي جزء من System Software لأنها تدير وتحمي موارد الكمبيوتر.",
+        "غير صحيح؛ معالجات الكلمات كـ Word هي Application Software وليست Utilities.",
+        "غير صحيح؛ نظام التشغيل هو الأساس لتشغيل الجهاز وتقديم الواجهة بينما مضاد الفيروسات أداة صيانة مساعدة (Utility).",
+        "غير صحيح؛ مضاد الفيروسات برنامج سوفتوير وليس عتاداً مادياً."
+      ]'>
+        <button class="mcq-option" onclick="checkAnswer(this, 0)"><span>A) Utilities (System Software)</span><span class="opt-badge">صحيح</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this, 1)"><span>B) Word Processing (Application Software)</span><span class="opt-badge">خطأ</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this, 2)"><span>C) Operating System</span><span class="opt-badge">خطأ</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this, 3)"><span>D) Computer Hardware</span><span class="opt-badge">خطأ</span></button>
+        <div class="mcq-result"></div>
+        <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)">↺ إعادة المحاولة</button></div>
+      </div>
+    </div>
+
+    <!-- Question 4 -->
+    <div class="question" data-qid="q4">
+      <div class="q-header">
+        <div class="q-english">4. Which type of computer can process more than 1 quadrillion instructions in a single second and uses parallel processors?</div>
+        <button class="q-speech-btn" onclick="speakText('Which type of computer can process more than 1 quadrillion instructions in a single second and uses parallel processors?')">🔊 استمع</button>
+      </div>
+      <button class="q-arabic-toggle" onclick="toggleArabic(this)">عرض الترجمة بالعربية</button>
+      <div class="q-arabic-text">أي نوع من أجهزة الكمبيوتر يستطيع معالجة أكثر من 1 كوادريليون تعليمة في الثانية الواحدة ويستخدم معالجات متوازية؟</div>
+
+      <div class="inline-mcq" data-correct="2" data-explanations='[
+        "غير صحيح؛ الحاسوب المكتبي العادي يعالج ملايين إلى مليارات العمليات فقط.",
+        "غير صحيح؛ Mainframe مصمم لخدمة آلاف المستخدمين في البنوك والطيران وليس للمحاكاة الفائقة بكوادريليون عملية.",
+        "صحيح تماماً! الحواسيب الفائقة (Supercomputers) هي الأسرع والأقوى وقدرتها تتجاوز 10^15 تعليمة بالثانية وتستخدم في المحاكاة الرياضية والعلمية.",
+        "غير صحيح؛ السيرفر يوفر خدمات شبكية وتخزيناً مركزياً."
+      ]'>
+        <button class="mcq-option" onclick="checkAnswer(this, 0)"><span>A) Desktop PC</span><span class="opt-badge">خطأ</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this, 1)"><span>B) Mainframe</span><span class="opt-badge">خطأ</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this, 2)"><span>C) Supercomputer</span><span class="opt-badge">صحيح</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this, 3)"><span>D) Tablet</span><span class="opt-badge">خطأ</span></button>
+        <div class="mcq-result"></div>
+        <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)">↺ إعادة المحاولة</button></div>
+      </div>
+    </div>
+
+    <!-- Question 5 -->
+    <div class="question" data-qid="q5">
+      <div class="q-header">
+        <div class="q-english">5. Which part of the CPU is responsible for executing arithmetic operations (+, -) and logical comparisons?</div>
+        <button class="q-speech-btn" onclick="speakText('Which part of the CPU is responsible for executing arithmetic operations and logical comparisons?')">🔊 استمع</button>
+      </div>
+      <button class="q-arabic-toggle" onclick="toggleArabic(this)">عرض الترجمة بالعربية</button>
+      <div class="q-arabic-text">أي جزء من المعالج (CPU) مسؤول عن تنفيذ العمليات الحسابية (+, -) والمقارنات المنطقية؟</div>
+
+      <div class="inline-mcq" data-correct="1" data-explanations='[
+        "غير صحيح؛ Control Unit توجه وتدير الوظائف وتنسق تفاعل الأجهزة ولا تجري الحسابات.",
+        "صحيح! ALU تعني Arithmetic Logic Unit (وحدة الحساب والمنطق) وهي المسؤولة عن الجمع والطرح والمقارنات المنطقية.",
+        "غير صحيح؛ الـ ROM ذاكرة قراءة فقط وليست جزء المعالجة الحسابية.",
+        "غير صحيح؛ القرص الصلب وسيلة تخزين ثانوية."
+      ]'>
+        <button class="mcq-option" onclick="checkAnswer(this, 0)"><span>A) Control Unit (CU)</span><span class="opt-badge">خطأ</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this, 1)"><span>B) Arithmetic Logic Unit (ALU)</span><span class="opt-badge">صحيح</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this, 2)"><span>C) ROM</span><span class="opt-badge">خطأ</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this, 3)"><span>D) Hard Disk</span><span class="opt-badge">خطأ</span></button>
+        <div class="mcq-result"></div>
+        <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)">↺ إعادة المحاولة</button></div>
+      </div>
+    </div>
+
+    <!-- Question 6 -->
+    <div class="question" data-qid="q6">
+      <div class="q-header">
+        <div class="q-english">6. What happens to the data stored in RAM when the computer power is turned off?</div>
+        <button class="q-speech-btn" onclick="speakText('What happens to the data stored in RAM when the computer power is turned off?')">🔊 استمع</button>
+      </div>
+      <button class="q-arabic-toggle" onclick="toggleArabic(this)">عرض الترجمة بالعربية</button>
+      <div class="q-arabic-text">ماذا يحدث للبيانات المخزنة في الـ RAM عند إيقاف تشغيل الكمبيوتر وانقطاع الكهرباء؟</div>
+
+      <div class="inline-mcq" data-correct="2" data-explanations='[
+        "غير صحيح؛ الـ RAM لا تحفظ البيانات بشكل دائم.",
+        "غير صحيح؛ لا تنتقل تلقائياً للـ ROM.",
+        "صحيح! ذاكرة الـ RAM مؤقتة ومتطايرة (Volatile / Temporary)، وتُفقد بياناتها فور إغلاق الجهاز أو انقطاع التيار الكهربائي.",
+        "غير صحيح؛ التخزين السحابي يتطلب أمراً بالحفظ والمزامنة عبر الإنترنت."
+      ]'>
+        <button class="mcq-option" onclick="checkAnswer(this, 0)"><span>A) It is permanently saved forever</span><span class="opt-badge">خطأ</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this, 1)"><span>B) It is moved directly to ROM</span><span class="opt-badge">خطأ</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this, 2)"><span>C) It is lost completely (Volatile memory)</span><span class="opt-badge">صحيح</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this, 3)"><span>D) It is uploaded to Cloud automatically</span><span class="opt-badge">خطأ</span></button>
+        <div class="mcq-result"></div>
+        <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)">↺ إعادة المحاولة</button></div>
+      </div>
+    </div>
+
+    <!-- Question 7 -->
+    <div class="question" data-qid="q7">
+      <div class="q-header">
+        <div class="q-english">7. Which of the following is considered an Input Device?</div>
+        <button class="q-speech-btn" onclick="speakText('Which of the following is considered an Input Device?')">🔊 استمع</button>
+      </div>
+      <button class="q-arabic-toggle" onclick="toggleArabic(this)">عرض الترجمة بالعربية</button>
+      <div class="q-arabic-text">أيٌّ مما يلي يُعد من أجهزة الإدخال (Input Device)؟</div>
+
+      <div class="inline-mcq" data-correct="0" data-explanations='[
+        "صحيح! لوحة المفاتيح (Keyboard) والماسح الضوئي (Scanner) والميكروفون أجهزة إدخال تنقل البيانات من المستخدم للحاسب.",
+        "غير صحيح؛ الشاشة (Monitor) تعرض النتائج وبالتالي هي جهاز إخراج (Output).",
+        "غير صحيح؛ الطابعة (Printer) تخرج المستندات على الورق (Output).",
+        "غير صحيح؛ السماعات (Speakers) تخرج الصوت للمستخدم (Output)."
+      ]'>
+        <button class="mcq-option" onclick="checkAnswer(this, 0)"><span>A) Keyboard and Scanner</span><span class="opt-badge">صحيح</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this, 1)"><span>B) Display Monitor</span><span class="opt-badge">خطأ</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this, 2)"><span>C) Paper Printer</span><span class="opt-badge">خطأ</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this, 3)"><span>D) Audio Speakers</span><span class="opt-badge">خطأ</span></button>
+        <div class="mcq-result"></div>
+        <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)">↺ إعادة المحاولة</button></div>
+      </div>
+    </div>
+
+    <!-- Question 8 -->
+    <div class="question" data-qid="q8">
+      <div class="q-header">
+        <div class="q-english">8. What is a key advantage of Solid-State Storage (SSD) over traditional Hard Disk (HDD)?</div>
+        <button class="q-speech-btn" onclick="speakText('What is a key advantage of Solid-State Storage SSD over traditional Hard Disk HDD?')">🔊 استمع</button>
+      </div>
+      <button class="q-arabic-toggle" onclick="toggleArabic(this)">عرض الترجمة بالعربية</button>
+      <div class="q-arabic-text">ما هي الميزة الجوهرية لوحدات التخزين الساكنة (SSD) مقارنة بالأقراص الصلبة التقليدية (HDD)؟</div>
+
+      <div class="inline-mcq" data-correct="1" data-explanations='[
+        "غير صحيح؛ الـ SSD لا تعتمد على الليزر، فالأقراص الضوئية (Optical) هي التي تعتمد على الليزر.",
+        "صحيح! الـ SSD لا تحتوي على أجزاء ميكانيكية متحركة (No moving parts)، مما يجعلها أسرع بكثير، وأكثر تحملاً للصدمات وموثوقية، وتستهلك طاقة أقل.",
+        "غير صحيح؛ الـ SSD ليست ذاكرة مؤقتة بل تخزين ثانوي دائم يحتفظ بالبيانات بعد إغلاق الجهاز.",
+        "غير صحيح؛ الـ SSD أسرع بكثير وليست أبطأ."
+      ]'>
+        <button class="mcq-option" onclick="checkAnswer(this, 0)"><span>A) It relies on optical laser technology</span><span class="opt-badge">خطأ</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this, 1)"><span>B) It has no moving parts, is more reliable, and requires less power</span><span class="opt-badge">صحيح</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this, 2)"><span>C) It loses data when power is turned off</span><span class="opt-badge">خطأ</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this, 3)"><span>D) It is much slower than HDD</span><span class="opt-badge">خطأ</span></button>
+        <div class="mcq-result"></div>
+        <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)">↺ إعادة المحاولة</button></div>
+      </div>
+    </div>
+
+    <!-- Question 9 -->
+    <div class="question" data-qid="q9">
+      <div class="q-header">
+        <div class="q-english">9. What device provides the ability for personal computers to communicate over the Internet by modifying audio/video data?</div>
+        <button class="q-speech-btn" onclick="speakText('What device provides the ability for personal computers to communicate over the Internet by modifying audio video data?')">🔊 استمع</button>
+      </div>
+      <button class="q-arabic-toggle" onclick="toggleArabic(this)">عرض الترجمة بالعربية</button>
+      <div class="q-arabic-text">ما هو الجهاز الذي يمنح الحواسيب الشخصية القدرة على التواصل عبر الإنترنت من خلال تعديل إشارات البيانات والصوت والفيديو؟</div>
+
+      <div class="inline-mcq" data-correct="0" data-explanations='[
+        "صحيح! المودم (Modem) هو جهاز الاتصال الذي يعدل إشارات البيانات والصوت والصورة لتلائم النقل عبر الشبكة والإنترنت.",
+        "غير صحيح؛ الشاشة جهاز إخراج لعرض الصورة.",
+        "غير صحيح؛ الميكروبروسيسور يعالج البيانات داخل الجهاز ولا يربطه بالإنترنت بمفرده.",
+        "غير صحيح؛ لوحة المفاتيح لإدخال النصوص فقط."
+      ]'>
+        <button class="mcq-option" onclick="checkAnswer(this, 0)"><span>A) Modem</span><span class="opt-badge">صحيح</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this, 1)"><span>B) Monitor</span><span class="opt-badge">خطأ</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this, 2)"><span>C) Microprocessor</span><span class="opt-badge">خطأ</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this, 3)"><span>D) Keyboard</span><span class="opt-badge">خطأ</span></button>
+        <div class="mcq-result"></div>
+        <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)">↺ إعادة المحاولة</button></div>
+      </div>
+    </div>
+
+    <!-- Question 10 -->
+    <div class="question" data-qid="q10">
+      <div class="q-header">
+        <div class="q-english">10. The Internet is best defined as:</div>
+        <button class="q-speech-btn" onclick="speakText('The Internet is best defined as:')">🔊 استمع</button>
+      </div>
+      <button class="q-arabic-toggle" onclick="toggleArabic(this)">عرض الترجمة بالعربية</button>
+      <div class="q-arabic-text">الإنترنت يُعرّف بأفضل صورة على أنه:</div>
+
+      <div class="inline-mcq" data-correct="3" data-explanations='[
+        "غير صحيح؛ البرنامج التطبيقي شيء والإنترنت شبكة عالمية.",
+        "غير صحيح؛ الحواسيب الفائقة أجهزة مستقلة وليست شبكة الإنترنت.",
+        "غير صحيح؛ نظام التشغيل يدير جهازاً واحداً أو شبكة محلية.",
+        "صحيح! الإنترنت (Internet) هو شبكة عالمية ضخمة تربط ملايين الحواسيب والشبكات حول العالم (A worldwide collection of networks)."
+      ]'>
+        <button class="mcq-option" onclick="checkAnswer(this, 0)"><span>A) A single application software program</span><span class="opt-badge">خطأ</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this, 1)"><span>B) A supercomputer located in one country</span><span class="opt-badge">خطأ</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this, 2)"><span>C) An embedded operating system</span><span class="opt-badge">خطأ</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this, 3)"><span>D) A worldwide collection of networks that connects millions of computers</span><span class="opt-badge">صحيح</span></button>
+        <div class="mcq-result"></div>
+        <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)">↺ إعادة المحاولة</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 11: Audio Glossary -->
+  <section class="card" id="glossary">
+    <h2><span class="section-badge">11</span> قاموس النطق الصوتي للمصطلحات (Glossary)</h2>
+    <p>جميع مصطلحات المحاضرة التقنية مسجلة بنطق صوتي أمريكي أصلي واضح. اضغط على أيقونة الصوت للاستماع:</p>
+
+    <div class="glossary-grid">
+      <div class="glossary-item">
+        <div><div class="glossary-term">Computer</div><div class="glossary-ar">الحاسب الآلي</div></div>
+        <button class="audio-btn" onclick="playAudio('computer')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+
+      <div class="glossary-item">
+        <div><div class="glossary-term">Input</div><div class="glossary-ar">المدخلات</div></div>
+        <button class="audio-btn" onclick="playAudio('input')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+
+      <div class="glossary-item">
+        <div><div class="glossary-term">Process</div><div class="glossary-ar">المعالجة</div></div>
+        <button class="audio-btn" onclick="playAudio('process')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+
+      <div class="glossary-item">
+        <div><div class="glossary-term">Output</div><div class="glossary-ar">المخرجات</div></div>
+        <button class="audio-btn" onclick="playAudio('output')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+
+      <div class="glossary-item">
+        <div><div class="glossary-term">Storage</div><div class="glossary-ar">التخزين</div></div>
+        <button class="audio-btn" onclick="playAudio('storage')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+
+      <div class="glossary-item">
+        <div><div class="glossary-term">Data</div><div class="glossary-ar">البيانات الخام</div></div>
+        <button class="audio-btn" onclick="playAudio('data')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+
+      <div class="glossary-item">
+        <div><div class="glossary-term">Information</div><div class="glossary-ar">المعلومات المفيدة</div></div>
+        <button class="audio-btn" onclick="playAudio('information')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+
+      <div class="glossary-item">
+        <div><div class="glossary-term">Information Technology</div><div class="glossary-ar">تكنولوجيا المعلومات</div></div>
+        <button class="audio-btn" onclick="playAudio('information_technology')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+
+      <div class="glossary-item">
+        <div><div class="glossary-term">ICT</div><div class="glossary-ar">تكنولوجيا المعلومات والاتصالات</div></div>
+        <button class="audio-btn" onclick="playAudio('ict')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+
+      <div class="glossary-item">
+        <div><div class="glossary-term">Information System</div><div class="glossary-ar">نظام المعلومات</div></div>
+        <button class="audio-btn" onclick="playAudio('information_system')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+
+      <div class="glossary-item">
+        <div><div class="glossary-term">People</div><div class="glossary-ar">المستخدمون النهائيون</div></div>
+        <button class="audio-btn" onclick="playAudio('people')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+
+      <div class="glossary-item">
+        <div><div class="glossary-term">Procedures</div><div class="glossary-ar">الإجراءات والتعليمات</div></div>
+        <button class="audio-btn" onclick="playAudio('procedures')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+
+      <div class="glossary-item">
+        <div><div class="glossary-term">Software</div><div class="glossary-ar">البرمجيات</div></div>
+        <button class="audio-btn" onclick="playAudio('software')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+
+      <div class="glossary-item">
+        <div><div class="glossary-term">Hardware</div><div class="glossary-ar">العتاد والمكونات المادية</div></div>
+        <button class="audio-btn" onclick="playAudio('hardware')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+
+      <div class="glossary-item">
+        <div><div class="glossary-term">System Software</div><div class="glossary-ar">برمجيات النظام</div></div>
+        <button class="audio-btn" onclick="playAudio('system_software')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+
+      <div class="glossary-item">
+        <div><div class="glossary-term">Application Software</div><div class="glossary-ar">البرمجيات التطبيقية</div></div>
+        <button class="audio-btn" onclick="playAudio('application_software')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+
+      <div class="glossary-item">
+        <div><div class="glossary-term">Operating System</div><div class="glossary-ar">نظام التشغيل</div></div>
+        <button class="audio-btn" onclick="playAudio('operating_system')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+
+      <div class="glossary-item">
+        <div><div class="glossary-term">Utilities</div><div class="glossary-ar">البرامج الخدمية المساعدة</div></div>
+        <button class="audio-btn" onclick="playAudio('utilities')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+
+      <div class="glossary-item">
+        <div><div class="glossary-term">Central Processing Unit</div><div class="glossary-ar">وحدة المعالجة المركزية (عقل الجهاز)</div></div>
+        <button class="audio-btn" onclick="playAudio('central_processing_unit')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+
+      <div class="glossary-item">
+        <div><div class="glossary-term">Microprocessor</div><div class="glossary-ar">المعالج الدقيق</div></div>
+        <button class="audio-btn" onclick="playAudio('microprocessor')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+
+      <div class="glossary-item">
+        <div><div class="glossary-term">Control Unit</div><div class="glossary-ar">وحدة التحكم</div></div>
+        <button class="audio-btn" onclick="playAudio('control_unit')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+
+      <div class="glossary-item">
+        <div><div class="glossary-term">Arithmetic Logic Unit</div><div class="glossary-ar">وحدة الحساب والمنطق</div></div>
+        <button class="audio-btn" onclick="playAudio('arithmetic_logic_unit')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+
+      <div class="glossary-item">
+        <div><div class="glossary-term">RAM</div><div class="glossary-ar">ذاكرة الوصول العشوائي (مؤقتة)</div></div>
+        <button class="audio-btn" onclick="playAudio('ram')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+
+      <div class="glossary-item">
+        <div><div class="glossary-term">ROM</div><div class="glossary-ar">ذاكرة القراءة فقط (دائمة)</div></div>
+        <button class="audio-btn" onclick="playAudio('rom')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+
+      <div class="glossary-item">
+        <div><div class="glossary-term">Supercomputer</div><div class="glossary-ar">الحاسوب الفائق</div></div>
+        <button class="audio-btn" onclick="playAudio('supercomputer')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+
+      <div class="glossary-item">
+        <div><div class="glossary-term">Mainframe</div><div class="glossary-ar">الحاسوب الكبير (للمؤسسات)</div></div>
+        <button class="audio-btn" onclick="playAudio('mainframe')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+
+      <div class="glossary-item">
+        <div><div class="glossary-term">Server</div><div class="glossary-ar">الخادم</div></div>
+        <button class="audio-btn" onclick="playAudio('server')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+
+      <div class="glossary-item">
+        <div><div class="glossary-term">Cloud Computing</div><div class="glossary-ar">الحوسبة السحابية</div></div>
+        <button class="audio-btn" onclick="playAudio('cloud_computing')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+
+      <div class="glossary-item">
+        <div><div class="glossary-term">Secondary Storage</div><div class="glossary-ar">التخزين الثانوي الدائم</div></div>
+        <button class="audio-btn" onclick="playAudio('secondary_storage')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+
+      <div class="glossary-item">
+        <div><div class="glossary-term">SSD (Solid State Drive)</div><div class="glossary-ar">محرك الحالة الصلبة الساكنة (SSD)</div></div>
+        <button class="audio-btn" onclick="playAudio('ssd')" title="نطق SSD"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+
+      <div class="glossary-item">
+        <div><div class="glossary-term">HDD (Hard Disk Drive)</div><div class="glossary-ar">القرص الصلب الميكانيكي (HDD)</div></div>
+        <button class="audio-btn" onclick="playAudio('hdd')" title="نطق HDD"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+
+      <div class="glossary-item">
+        <div><div class="glossary-term">Modem</div><div class="glossary-ar">المودم (معدل الإشارات)</div></div>
+        <button class="audio-btn" onclick="playAudio('modem')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+
+      <div class="glossary-item">
+        <div><div class="glossary-term">Network</div><div class="glossary-ar">الشبكة</div></div>
+        <button class="audio-btn" onclick="playAudio('network')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+
+      <div class="glossary-item">
+        <div><div class="glossary-term">Connectivity</div><div class="glossary-ar">الاتصالية ومشاركة البيانات</div></div>
+        <button class="audio-btn" onclick="playAudio('connectivity')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+
+      <div class="glossary-item">
+        <div><div class="glossary-term">Internet</div><div class="glossary-ar">شبكة الإنترنت العالمية</div></div>
+        <button class="audio-btn" onclick="playAudio('internet')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+
+      <div class="glossary-item">
+        <div><div class="glossary-term">Careers in IT</div><div class="glossary-ar">وظائف تكنولوجيا المعلومات</div></div>
+        <button class="audio-btn" onclick="playAudio('careers_in_it')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+
+      <div class="glossary-item">
+        <div><div class="glossary-term">Webmaster</div><div class="glossary-ar">مسؤول ومطور الويب</div></div>
+        <button class="audio-btn" onclick="playAudio('webmaster')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+
+      <div class="glossary-item">
+        <div><div class="glossary-term">Software Engineer</div><div class="glossary-ar">مهندس برمجيات</div></div>
+        <button class="audio-btn" onclick="playAudio('software_engineer')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+
+      <div class="glossary-item">
+        <div><div class="glossary-term">Computer Technician</div><div class="glossary-ar">فني صيانة حاسب</div></div>
+        <button class="audio-btn" onclick="playAudio('computer_technician')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+
+      <div class="glossary-item">
+        <div><div class="glossary-term">Network Administrator</div><div class="glossary-ar">مدير ومسؤول الشبكات</div></div>
+        <button class="audio-btn" onclick="playAudio('network_administrator')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+
+      <div class="glossary-item">
+        <div><div class="glossary-term">Computer Support Specialist</div><div class="glossary-ar">أخصائي الدعم الفني</div></div>
+        <button class="audio-btn" onclick="playAudio('computer_support_specialist')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+
+      <div class="glossary-item">
+        <div><div class="glossary-term">Technical Writer</div><div class="glossary-ar">كاتب ومؤلف تقني</div></div>
+        <button class="audio-btn" onclick="playAudio('technical_writer')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Developer & Contact Section -->
+  <section class="dev-card">
+    <p style="font-size:15px;color:var(--text-secondary);max-width:650px;margin:0 auto 16px;line-height:1.8">
+      صُممت منصة تسهيل لمساعدة زملائي الطلاب وتيسير رحلتهم الدراسية، من خلال تبسيط المواد الدراسية وجعلها أكثر وضوحاً وسهولة في الفهم والاستيعاب.. بالتوفيق والنجاح للجميع دائماً.
+    </p>
+    <div class="dev-name">محمد أحمد راضي</div>
+    <div class="dev-sub">طالب في طب الأسنان</div>
+    <a href="https://wa.me/201211648437" target="_blank" rel="noopener noreferrer" class="whatsapp-link">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.04 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.53 7.37C9.37 7.37 9.1 7.43 8.87 7.68C8.64 7.93 8 8.53 8 9.75C8 10.97 8.89 12.15 9.01 12.31C9.14 12.47 10.74 14.95 13.2 16C13.79 16.26 14.24 16.41 14.6 16.53C15.19 16.72 15.73 16.69 16.15 16.63C16.63 16.56 17.62 16.03 17.82 15.45C18.03 14.87 18.03 14.38 17.97 14.27C17.91 14.17 17.75 14.11 17.5 13.99C17.26 13.86 16.06 13.27 15.83 13.19C15.61 13.11 15.45 13.07 15.28 13.31C15.12 13.56 14.67 14.11 14.53 14.27C14.39 14.43 14.25 14.45 14.01 14.33C13.76 14.21 12.98 13.95 12.06 13.13C11.34 12.49 10.86 11.7 10.72 11.46C10.58 11.21 10.71 11.08 10.83 10.96C10.94 10.85 11.08 10.67 11.2 10.53C11.33 10.39 11.37 10.29 11.45 10.13C11.53 9.96 11.49 9.82 11.43 9.7C11.37 9.58 10.9 8.44 10.7 7.97C10.51 7.5 10.32 7.57 10.16 7.56C10.03 7.56 9.87 7.37 9.53 7.37Z"/>
+      </svg>
+      <span>تواصل عبر واتساب (01211648437)</span>
+    </a>
+  </section>
+
+</div>
+
+<!-- Celebration Modal -->
+<div id="celebrationModal">
+  <div class="modal-box">
+    <div style="font-size:48px;margin-bottom:10px">🏆</div>
+    <h2 style="color:var(--success);margin-bottom:8px">أداء ممتاز 10 / 10</h2>
+    <p style="font-size:15px;line-height:1.7;color:var(--text-secondary);margin-bottom:20px">
+      تهانينا! لقد أجبت على جميع أسئلة الاختبار الـ 10 بشكل صحيح ودقيق، وأتقنت جميع مفاهيم المحاضرة الأولى بنجاح.
+    </p>
+    <button class="back-btn" style="background:var(--success);color:white;border:none;margin:auto" onclick="closeModal()">
+      إغلاق ومتابعة المراجعة
+    </button>
+  </div>
+</div>
+
+<script>
+// ================= Audio Player (Local MP3s) =================
+let currentAudio = null;
+
+function playAudio(filename) {
+  const btn = event.currentTarget;
+  if (currentAudio) {
+    currentAudio.pause();
+    document.querySelectorAll('.audio-btn.playing').forEach(b => b.classList.remove('playing'));
+  }
+
+  const audio = new Audio('audio/' + filename + '.mp3');
+  currentAudio = audio;
+  btn.classList.add('playing');
+
+  audio.addEventListener('ended', () => {
+    btn.classList.remove('playing');
+    currentAudio = null;
+  });
+
+  audio.addEventListener('error', () => {
+    btn.classList.remove('playing');
+    currentAudio = null;
+    alert('لم يتم العثور على ملف الصوت المحلي: audio/' + filename + '.mp3');
+  });
+
+  audio.play();
+}
+
+// ================= English Web Speech API =================
+function speakText(text) {
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'en-US';
+    utterance.rate = 0.9;
+    window.speechSynthesis.speak(utterance);
+  } else {
+    alert('خاصية نطق النصوص غير مدعومة في متصفحك.');
+  }
+}
+
+// ================= Theme Toggle (Light / Dark) =================
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+  updateThemeButton(newTheme);
+}
+
+function updateThemeButton(theme) {
+  const btn = document.getElementById('themeToggleBtn');
+  if (!btn) return;
+  if (theme === 'dark') {
+    btn.innerHTML = `<svg class="icon" viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
+    btn.setAttribute('title', 'الوضع النهاري');
+  } else {
+    btn.innerHTML = `<svg class="icon" viewBox="0 0 24 24" width="18" height="18"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+    btn.setAttribute('title', 'الوضع الليلي');
+  }
+}
+
+// Init theme on load
+(function() {
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  updateThemeButton(savedTheme);
+})();
+
+// Scroll progress bar
+window.addEventListener('scroll', () => {
+  const winScroll = document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = (winScroll / height) * 100;
+  const bar = document.getElementById('progressFill');
+  if (bar) bar.style.width = scrolled + '%';
+});
+
+// ================= Arabic Translation Toggle =================
+function toggleArabic(btn) {
+  const arabicText = btn.nextElementSibling;
+  arabicText.classList.toggle('show');
+  const isShow = arabicText.classList.contains('show');
+  btn.textContent = isShow ? 'إخفاء الترجمة' : 'عرض الترجمة بالعربية';
+}
+
+// ================= Interactive Quiz Engine =================
+const quizResults = {};
+const TOTAL_QUIZ_QUESTIONS = 10;
+let modalShown = false;
+
+function updateQuizScore() {
+  let correctCount = 0;
+  for (let qid in quizResults) {
+    if (quizResults[qid] === true) correctCount++;
+  }
+
+  const scoreDisplay = document.getElementById('scoreDisplay');
+  const scorePercent = document.getElementById('scorePercent');
+  const scoreFeedbackText = document.getElementById('scoreFeedbackText');
+
+  if (scoreDisplay) scoreDisplay.textContent = correctCount + ' / ' + TOTAL_QUIZ_QUESTIONS;
+
+  const pct = Math.round((correctCount / TOTAL_QUIZ_QUESTIONS) * 100);
+  if (scorePercent) scorePercent.textContent = pct + '%';
+
+  if (scoreFeedbackText) {
+    if (correctCount === 0) {
+      scoreFeedbackText.textContent = 'ابدأ بحل الأسئلة لاختبار استيعابك';
+    } else if (correctCount < 5) {
+      scoreFeedbackText.textContent = 'بداية جيدة، واصل الإجابة';
+    } else if (correctCount < 8) {
+      scoreFeedbackText.textContent = 'أداء رائع، اقتربت من الدرجة الكاملة';
+    } else if (correctCount < 10) {
+      scoreFeedbackText.textContent = 'مستوى ممتاز، تبقى القليل!';
+    } else {
+      scoreFeedbackText.textContent = 'الدرجة الكاملة 10 / 10 🌟';
+      if (!modalShown) {
+        modalShown = true;
+        document.getElementById('celebrationModal').style.display = 'flex';
+      }
+    }
+  }
+}
+
+function checkAnswer(button, selectedIndex) {
+  const mcqContainer = button.closest('.inline-mcq');
+  const questionCard = button.closest('.question');
+  const correctIndex = parseInt(mcqContainer.getAttribute('data-correct'));
+  const explanations = JSON.parse(mcqContainer.getAttribute('data-explanations') || '[]');
+  const options = mcqContainer.querySelectorAll('.mcq-option');
+  const resultDiv = mcqContainer.querySelector('.mcq-result');
+
+  // Reset previously highlighted options in this question
+  options.forEach(opt => {
+    opt.classList.remove('selected-correct', 'selected-wrong');
+  });
+
+  const isCorrect = (selectedIndex === correctIndex);
+  const qid = questionCard.getAttribute('data-qid');
+  const optText = button.querySelector('span:first-child').textContent.trim();
+  const explanation = explanations[selectedIndex] || '';
+
+  if (isCorrect) {
+    button.classList.add('selected-correct');
+    resultDiv.className = 'mcq-result show correct-msg';
+    resultDiv.innerHTML = `
+      <div class="result-title">
+        <svg viewBox="0 0 24 24" class="icon" width="18" height="18"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        <span>إجابة صحيحة (${optText})</span>
+      </div>
+      <div class="result-explanation">
+        <div class="explanation-title">
+          <svg viewBox="0 0 24 24" class="icon" width="15" height="15"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+          <strong>الشرح العلمي:</strong>
+        </div>
+        <p>${explanation}</p>
+      </div>
+      <div class="result-hint">يمكنك الضغط على أي خيار آخر لمعرفة سبب خطئه واستكشاف السؤال.</div>
+    `;
+    if (qid) quizResults[qid] = true;
+  } else {
+    button.classList.add('selected-wrong');
+    resultDiv.className = 'mcq-result show wrong-msg';
+    resultDiv.innerHTML = `
+      <div class="result-title">
+        <svg viewBox="0 0 24 24" class="icon" width="18" height="18"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+        <span>اختيار غير صحيح (${optText})</span>
+      </div>
+      <div class="result-explanation">
+        <div class="explanation-title">
+          <svg viewBox="0 0 24 24" class="icon" width="15" height="15"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+          <strong>سبب خطأ هذا الاختيار:</strong>
+        </div>
+        <p>${explanation}</p>
+      </div>
+      <div class="result-hint">يمكنك الضغط على أي خيار آخر لتجربة إجابة بديلة ومعرفة أسباب باقي الخيارات.</div>
+    `;
+    if (qid) quizResults[qid] = false;
+  }
+
+  if (qid) {
+    updateQuizScore();
+  }
+}
+
+function resetQuestion(btn) {
+  const mcqContainer = btn.closest('.inline-mcq');
+  const questionCard = btn.closest('.question');
+  const options = mcqContainer.querySelectorAll('.mcq-option');
+  const resultDiv = mcqContainer.querySelector('.mcq-result');
+
+  options.forEach(opt => {
+    opt.classList.remove('selected-correct', 'selected-wrong');
+  });
+
+  resultDiv.className = 'mcq-result';
+  resultDiv.innerHTML = '';
+
+  const qid = questionCard.getAttribute('data-qid');
+  if (qid) {
+    delete quizResults[qid];
+    updateQuizScore();
+  }
+}
+
+function closeModal() {
+  document.getElementById('celebrationModal').style.display = 'none';
+}
+</script>
+
+</body>
+</html>
