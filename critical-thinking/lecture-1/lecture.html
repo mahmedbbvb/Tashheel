@@ -372,6 +372,117 @@
     font-size: 15.5px;
   }
 
+  /* Real-life Analogy Box */
+  .analogy-box {
+    background: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-right: 4px solid #6366f1;
+    padding: 16px 20px;
+    border-radius: 12px;
+    margin: 16px 0;
+    color: var(--text-primary);
+    font-size: 14.5px;
+    line-height: 1.8;
+  }
+  [data-theme="dark"] .analogy-box {
+    background: rgba(99, 102, 241, 0.08);
+    border-color: rgba(99, 102, 241, 0.3);
+  }
+  .analogy-title {
+    font-weight: 700;
+    color: #4f46e5;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  [data-theme="dark"] .analogy-title {
+    color: #818cf8;
+  }
+
+  /* Assessment Banner */
+  .assessment-card {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), rgba(99, 102, 241, 0.08));
+    border: 1.5px solid #dbeafe;
+    border-radius: 16px;
+    padding: 22px 24px;
+    margin-bottom: 24px;
+  }
+  [data-theme="dark"] .assessment-card {
+    background: rgba(30, 41, 59, 0.6);
+    border-color: #334155;
+  }
+  .assessment-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16.5px;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 6px;
+  }
+  .assessment-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 14px;
+  }
+  @media (max-width: 768px) {
+    .assessment-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .assessment-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: var(--shadow-sm);
+  }
+  .assessment-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+
+  /* Quick Recap Card */
+  .recap-card {
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: #f8fafc;
+    border-radius: 18px;
+    padding: 26px 24px;
+    margin-bottom: 28px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid #334155;
+  }
+  .recap-title {
+    font-size: 19px;
+    font-weight: 800;
+    color: #38bdf8;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .recap-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .recap-item {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 14.5px;
+    line-height: 1.7;
+  }
+  .recap-item strong {
+    color: #facc15;
+  }
+
   /* Responsive Grids */
   .grid-2 {
     display: grid;
@@ -907,6 +1018,40 @@
       </div>
     </header>
 
+    <!-- Course Assessment Banner (متطلبات المادة الجامعية) -->
+    <div class="assessment-card">
+      <div class="assessment-header">
+        <span style="font-size:22px">📋</span>
+        <span>نظام تقييم المادة الجامعي (Course Assessment)</span>
+      </div>
+      <p style="font-size:14px;color:var(--text-secondary);margin:4px 0 12px">
+        وفقاً للائحة متطلب التفكير النقدي بالجامعة، يُطلب من كل طالب تحقيق المتطلبات التالية خلال الفصل الدراسي:
+      </p>
+      <div class="assessment-grid">
+        <div class="assessment-item">
+          <span class="assessment-icon">📁</span>
+          <div>
+            <strong>تسليم مشروعين (Two Projects)</strong>
+            <div style="font-size:12.5px;color:var(--text-muted)">تقديم مشروعين تطبيقيين خلال الترم</div>
+          </div>
+        </div>
+        <div class="assessment-item">
+          <span class="assessment-icon">✍️</span>
+          <div>
+            <strong>حل أسئلة كل محاضرة (Lecture Questions)</strong>
+            <div style="font-size:12.5px;color:var(--text-muted)">إجابة التكليفات والأسئلة الدورية للمحاضرات</div>
+          </div>
+        </div>
+        <div class="assessment-item">
+          <span class="assessment-icon">📝</span>
+          <div>
+            <strong>أداء كويزين على الأقل (Two Quizzes)</strong>
+            <div style="font-size:12.5px;color:var(--text-muted)">اجتياز اختبارين قصيرين على الأقل خلال الفصل</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Quick Navigation Chips -->
     <div class="quick-nav">
       <a href="#sec-definition" class="quick-chip">1. التعريف</a>
@@ -919,6 +1064,7 @@
       <a href="#sec-problems" class="quick-chip">8. مشكلات القرار</a>
       <a href="#sec-process" class="quick-chip">9. عملية EEE</a>
       <a href="#sec-career" class="quick-chip">10. اختيار المهنة</a>
+      <a href="#sec-recap" class="quick-chip">⚡ كبسولة 60 ثانية</a>
       <a href="#sec-final-quiz" class="quick-chip">📝 الاختبار الشامل</a>
     </div>
 
@@ -954,6 +1100,22 @@
             It allows us to perform <strong>problem solving</strong> and <strong>decision making</strong> more effectively — الوصول لأفضل الحلول وأنسب القرارات.
           </p>
         </div>
+      </div>
+
+      <!-- Real-life Analogy Box -->
+      <div class="analogy-box">
+        <div class="analogy-title">
+          <span>🧠</span>
+          <span>ببساطة شديدة.. كيف تفهم التفكير النقدي في ثوانٍ؟</span>
+        </div>
+        <p>
+          التفكير النقدي باختصار هو <strong>ألا تكون مثل «الإسفنجة»</strong> تمتص كل ما يقال لك كأنه حقيقة مسلم بها! بل تفحص المعلومة، وتتأكد من مصدرها ودليلها، ثم تحكم بعقلك.
+        </p>
+        <p style="margin-top:6px;font-size:13.5px;color:var(--text-secondary)">
+          <strong>مثال واقعي:</strong> لو قال لك زميلك: «المحاضرة القادمة ملغية تماماً!»..
+          <br>• <strong>غير الناقد:</strong> يصدق فوراً ويغلق الدفتر ويغادر الكلية (تسرع وانفعال).
+          <br>• <strong>المفكر الناقد:</strong> يتوقف ويسأل بموضوعية: «أين إعلان الدكتور الرسمي؟ هل تأكدنا من إدارة القسم؟».. هذا التأني والبحث عن الدليل هو جوهر التفكير النقدي!
+        </p>
       </div>
 
       <!-- Question 1 -->
@@ -1090,6 +1252,20 @@
           Analysis ➔ Evaluation ➔ Inference
         </div>
         (أحلل أولاً ➔ ثم أقيّم الأدلة ➔ ثم أستنتج الحكم النهائي).
+      </div>
+
+      <!-- Real-life Analogy Box -->
+      <div class="analogy-box">
+        <div class="analogy-title">
+          <span>🩺</span>
+          <span>تشبيه عملي من واقع المجال الطبي يرسخ المهارات الثلاث:</span>
+        </div>
+        <p>تخيل أنك طبيب في عيادتك وجاءك مريض يشكو من ألم حاد في أسنانه:</p>
+        <ul style="padding-right:20px;margin-top:6px;line-height:1.9">
+          <li><strong>1. التحليل (Analysis):</strong> تستمع لشكوى المريض وتفحص السن بدقة لفهم بنية المشكلة وأين مكان الألم بالضبط وما الذي يعنيه.</li>
+          <li><strong>2. التقييم (Evaluation):</strong> تفحص صورة الأشعة السينية (X-ray) وتقيّم قوة الدليل: هل التسوس وصل لغرفة العصب فعلاً أم لا يزال في طبقة العاج؟</li>
+          <li><strong>3. الاستنتاج (Inference):</strong> تخرج بالقرار والعلاج النهائي: «بناءً على الأشعة والفحص، يحتاج السن لعلاج جذور وليس حشواً بسيطاً».</li>
+        </ul>
       </div>
 
       <!-- Question 2 -->
@@ -1356,7 +1532,10 @@
             Fact
             <button class="audio-btn" onclick="playAudio('fact')" title="استمع لنطق Fact"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
           </div>
-          <p><strong>حقيقة:</strong> A truth that cannot be disputed — حقيقة ثابتة مثبتة بالدليل القاطع لا تقبل الجدال.</p>
+          <p><strong>حقيقة:</strong> A truth that cannot be disputed — حقيقة ثابتة ومثبتة بالدليل القاطع لا تقبل الجدال.</p>
+          <div style="font-size:13px;color:var(--text-muted);margin-top:6px;background:rgba(0,0,0,0.03);padding:6px 10px;border-radius:6px">
+            📌 <em>مثال:</em> «الإنسان البالغ يمتلك 32 سناً دائم» أو «الماء يغلي عند 100° مئوية».
+          </div>
         </div>
 
         <div class="info-box">
@@ -1365,6 +1544,9 @@
             <button class="audio-btn" onclick="playAudio('opinion')" title="استمع لنطق Opinion"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
           </div>
           <p><strong>رأي:</strong> A personal view or belief — وجهة نظر أو معتقد شخصي يختلف من فرد لآخر.</p>
+          <div style="font-size:13px;color:var(--text-muted);margin-top:6px;background:rgba(0,0,0,0.03);padding:6px 10px;border-radius:6px">
+            📌 <em>مثال:</em> «تخصص طب الأسنان هو أمتع مجال في الجامعة» (انطباع شخصي وليس حقيقة ملزمة للجميع).
+          </div>
         </div>
 
         <div class="info-box">
@@ -1373,6 +1555,9 @@
             <button class="audio-btn" onclick="playAudio('claim')" title="استمع لنطق Claim"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
           </div>
           <p><strong>ادعاء:</strong> To assert as a fact whether it is or not — التأكيد على شيء كأنه حقيقة سواء كان حقيقة فعلاً أم لا.</p>
+          <div style="font-size:13px;color:var(--text-muted);margin-top:6px;background:rgba(0,0,0,0.03);padding:6px 10px;border-radius:6px">
+            📌 <em>مثال:</em> إعلان يقول: «هذا المشروب يجعلك تحفظ المحاضرة في 5 دقائق!» (ادعاء يحتاج بحثاً وإثباتاً).
+          </div>
         </div>
 
         <div class="info-box">
@@ -1381,6 +1566,9 @@
             <button class="audio-btn" onclick="playAudio('argument')" title="استمع لنطق Argument"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
           </div>
           <p><strong>حجة:</strong> A set of claims to support an assertion — مجموعة ادعاءات وأسباب تُساق معاً لدعم وتأييد فكرة معينة.</p>
+          <div style="font-size:13px;color:var(--text-muted);margin-top:6px;background:rgba(0,0,0,0.03);padding:6px 10px;border-radius:6px">
+            📌 <em>مثال:</em> «يجب تنظيف الأسنان بالخيط (ادعاء) لأن الفرشاة لا تصل لبين الأسنان وتتراكم البكتيريا (حجة مدعمة بأدلة)».
+          </div>
         </div>
 
         <div class="info-box">
@@ -1389,6 +1577,9 @@
             <button class="audio-btn" onclick="playAudio('assumption')" title="استمع لنطق Assumption"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
           </div>
           <p><strong>افتراض:</strong> An inference that is believed to be true — أمر نعتبره صحيحاً ومسلّماً به دون وجود دليل حاسم.</p>
+          <div style="font-size:13px;color:var(--text-muted);margin-top:6px;background:rgba(0,0,0,0.03);padding:6px 10px;border-radius:6px">
+            📌 <em>مثال:</em> «المريض لا يتألم، إذن أسنانه سليمة 100%» (افتراض قد يكون غير صحيح لأن التسوس يبدأ بلا ألم).
+          </div>
         </div>
 
         <div class="info-box">
@@ -1397,6 +1588,9 @@
             <button class="audio-btn" onclick="playAudio('inference')" title="استمع لنطق Inference"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
           </div>
           <p><strong>استنتاج:</strong> A judgment based on evidence — حكم أو خلاصة مبنية بالكامل على دليل ملموس.</p>
+          <div style="font-size:13px;color:var(--text-muted);margin-top:6px;background:rgba(0,0,0,0.03);padding:6px 10px;border-radius:6px">
+            📌 <em>مثال:</em> «رأيت ظلاً معتماً في صورة الأشعة عند جذر السن، فاستنتجت وجود التهاب ذروي».
+          </div>
         </div>
 
         <div class="info-box">
@@ -1405,6 +1599,9 @@
             <button class="audio-btn" onclick="playAudio('validity')" title="استمع لنطق Validity"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
           </div>
           <p><strong>الصحة / الصدق:</strong> Truthful, well-founded — شيء صادق ومؤسس على أرضية وقواعد منطقية صلبة.</p>
+          <div style="font-size:13px;color:var(--text-muted);margin-top:6px;background:rgba(0,0,0,0.03);padding:6px 10px;border-radius:6px">
+            📌 <em>مثال:</em> حجة بحث علمي معتمد في مجلة طبية محكمة ذات مصداقية وقواعد رصينة.
+          </div>
         </div>
 
         <div class="info-box">
@@ -1413,6 +1610,9 @@
             <button class="audio-btn" onclick="playAudio('plausible')" title="استمع لنطق Plausible"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
           </div>
           <p><strong>معقول ومقبول:</strong> Logical and believable, credible — أمر يتوافق مع العقل ويستحق التصديق والقبول.</p>
+          <div style="font-size:13px;color:var(--text-muted);margin-top:6px;background:rgba(0,0,0,0.03);padding:6px 10px;border-radius:6px">
+            📌 <em>مثال:</em> تفسير منطقي وقابل للتصديق لتأخر المحاضرة بسبب عطل مفاجئ في شبكة الكلية.
+          </div>
         </div>
       </div>
 
@@ -1481,6 +1681,9 @@
           <p style="font-size:14px;color:var(--text-secondary)">
             لا تقفز مباشرة إلى الاستنتاجات والأحكام قبل أن تتأكد من فحص وجمع كل المعطيات الكافية.
           </p>
+          <div style="font-size:12.5px;color:var(--text-muted);margin-top:6px;background:rgba(0,0,0,0.03);padding:6px 10px;border-radius:6px">
+            ⚠️ <em>مثال:</em> شراء ملزمة أو جهاز فوري لمجرد سماع جملة إعلانية براقة دون دراسة البدائل.
+          </div>
         </div>
 
         <div class="info-box negative">
@@ -1492,6 +1695,9 @@
           <p style="font-size:14px;color:var(--text-secondary)">
             وسّع آفاقك وزوايا رؤيتك؛ لا تحصر نفسك في خيار واحد أو منظور وحيد للأمور.
           </p>
+          <div style="font-size:12.5px;color:var(--text-muted);margin-top:6px;background:rgba(0,0,0,0.03);padding:6px 10px;border-radius:6px">
+            ⚠️ <em>مثال:</em> تفكير أبيض أو أسود: «إما أن أحصل على امتياز أو أنني طالب فاشل ولا أصلح للكلية».
+          </div>
         </div>
 
         <div class="info-box negative">
@@ -1503,6 +1709,9 @@
           <p style="font-size:14px;color:var(--text-secondary)">
             لا تلف وتدور ولا تتشعب في تفاصيل جانبية تافهة تشتتك عن المشكلة الأصلية.
           </p>
+          <div style="font-size:12.5px;color:var(--text-muted);margin-top:6px;background:rgba(0,0,0,0.03);padding:6px 10px;border-radius:6px">
+            ⚠️ <em>مثال:</em> أثناء اجتماع لمناقشة مشروع جامعي مهم، يتم تضييع ساعة ونصف في نقاش ألوان الخطوط والغلاف!
+          </div>
         </div>
 
         <div class="info-box negative">
@@ -1514,6 +1723,9 @@
           <p style="font-size:14px;color:var(--text-secondary)">
             حافظ على تركيزك حاداً ومحدداً ومرتبطاً دائماً بصلب الموضوع.
           </p>
+          <div style="font-size:12.5px;color:var(--text-muted);margin-top:6px;background:rgba(0,0,0,0.03);padding:6px 10px;border-radius:6px">
+            ⚠️ <em>مثال:</em> وضع خطة غائمة: «أنا سأبدأ أذاكر كويس وأتحسن وخلاص» دون تحديد جدول زمني وساعات دقيقة.
+          </div>
         </div>
       </div>
     </section>
@@ -1591,12 +1803,43 @@
       </div>
     </section>
 
+    <!-- Quick Recap Cheat Sheet -->
+    <div class="recap-card" id="sec-recap">
+      <div class="recap-title">
+        <span>⚡</span>
+        <span>كبسولة المحاضرة في 60 ثانية (Quick Revision Cheat Sheet)</span>
+      </div>
+      <p style="font-size:14px;color:#94a3b8;margin-bottom:14px">
+        راجع هذه النقاط الذهبية الخمس سريعاً قبل بدء الاختبار النهائي لتضمن الدرجة الكاملة:
+      </p>
+      <div class="recap-list">
+        <div class="recap-item">
+          <strong>1. تعريف التفكير النقدي:</strong> القدرة على تحليل الحقائق بموضوعية وتكوين حكم سليم (Analyze facts objectively & form a judgment) لحل المشكلات واتخاذ القرار بوضوح وعقلانية.
+        </div>
+        <div class="recap-item">
+          <strong>2. مهارات التفكير الثلاث المتتالية:</strong> التحليل ➔ التقييم ➔ الاستنتاج (Analysis ➔ Evaluation ➔ Inference).
+        </div>
+        <div class="recap-item">
+          <strong>3. مراحل التفكير الثلاث (The EEE Process):</strong> افحص ➔ استكشف ➔ قيّم (Examine ➔ Explore ➔ Evaluate).
+        </div>
+        <div class="recap-item">
+          <strong>4. المفكر الناقد مقابل غير الناقد:</strong> المفكر الناقد منفتح، يعترف بحدوده، يرى المشاكل كتحديات ممتعة، ويستند للأدلة.. بينما غير الناقد متسرع، تقوده العواطف، ويدعي أن التفكير يسبب له صداعاً!
+        </div>
+        <div class="recap-item">
+          <strong>5. مشاكل القرار الأربعة وعلاجها:</strong> 
+          <br>• Snap decisions ➔ Don't jump to conclusions!
+          <br>• Narrow thinking ➔ Broaden your vistas!
+          <br>• Sprawling thinking ➔ Don't beat around the bush!
+          <br>• Fuzzy thinking ➔ Keep it sharp! Keep it relevant!
+        </div>
+      </div>
+    </div>
+
     <!-- Comprehensive Final Quiz -->
     <section class="card" id="sec-final-quiz">
       <h2><span class="section-badge">📝</span> الاختبار الشامل للمحاضرة (10 أسئلة تقييم)</h2>
       <p>اختبر استيعابك الكامل لجميع مفاهيم المحاضرة؛ ستحصل على تقييم فوري مع شرح علمي دقيق لأسباب صحة وخطأ كل خيار:</p>
 
-      <!-- Tracker Live Card -->
       <!-- Tracker Live Card -->
       <div class="quiz-tracker-card">
         <div>لوحة تقييم استيعابك للمحاضرة</div>
