@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>لوحة نتائج اختبارات الفسيولوجي — منصة تسهيل</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --primary-light: #eff6ff;
+    --success: #16a34a;
+    --success-bg: #f0fdf4;
+    --warning: #d97706;
+    --warning-bg: #fffbeb;
+    --danger: #dc2626;
+    --danger-bg: #fef2f2;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --bg-page: #f8fafc;
+    --card-bg: #ffffff;
+    --border: #e2e8f0;
+    --gold: #f59e0b;
+    --silver: #94a3b8;
+    --bronze: #b45309;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+    --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+    --shadow-lg: 0 10px 30px rgba(0,0,0,0.12);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-page);
+    color: var(--text-main);
+    min-height: 100vh;
+    direction: rtl;
+    line-height: 1.6;
+    padding-bottom: 60px;
+  }
+
+  .container {
+    max-width: 1050px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+
+  /* ── Header ── */
+  .dash-header {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 26px 30px;
+    margin-bottom: 24px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .logo-icon {
+    width: 52px;
+    height: 52px;
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 26px;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+  }
+
+  .header-titles h1 {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text-main);
+  }
+
+  .header-titles p {
+    font-size: 13.5px;
+    color: var(--text-muted);
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 16px;
+    border-radius: 10px;
+    font-size: 13.5px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: #ffffff;
+    color: var(--text-main);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn:hover {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+  }
+  .btn-primary {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+  }
+  .btn-primary:hover {
+    background: var(--primary-dark);
+    color: white;
+  }
+  .btn-success {
+    background: #16a34a;
+    color: white;
+    border-color: #16a34a;
+  }
+  .btn-success:hover {
+    background: #15803d;
+    color: white;
+  }
+  .btn-danger {
+    color: var(--danger);
+  }
+  .btn-danger:hover {
+    background: var(--danger-bg);
+    border-color: #fca5a5;
+  }
+
+  /* ── Stats Grid ── */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+
+  .stat-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+  }
+
+  .stat-icon.blue { background: #eff6ff; color: #2563eb; }
+  .stat-icon.green { background: #f0fdf4; color: #16a34a; }
+  .stat-icon.purple { background: #faf5ff; color: #9333ea; }
+  .stat-icon.amber { background: #fffbeb; color: #d97706; }
+
+  .stat-val {
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--text-main);
+    line-height: 1.1;
+  }
+
+  .stat-label {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+
+  /* ── Filter & Search Bar ── */
+  .toolbar-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .search-box {
+    flex: 1;
+    min-width: 240px;
+    position: relative;
+  }
+
+  .search-input {
+    width: 100%;
+    padding: 10px 14px 10px 38px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    transition: 0.2s;
+  }
+  .search-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    pointer-events: none;
+  }
+
+  .filter-group {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    padding: 7px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: 0.15s;
+  }
+  .filter-btn.active, .filter-btn:hover {
+    background: #f1f5f9;
+    color: var(--primary);
+    border-color: var(--primary);
+  }
+
+  /* ── Leaderboard Table ── */
+  .table-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+  }
+
+  .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: right;
+  }
+
+  thead {
+    background: #f8fafc;
+    border-bottom: 1.5px solid var(--border);
+  }
+
+  th {
+    padding: 14px 18px;
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--text-muted);
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+  }
+
+  td {
+    padding: 16px 18px;
+    font-size: 14px;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: middle;
+  }
+
+  tr:hover td {
+    background: #fafcff;
+  }
+
+  /* Rank Badges */
+  .rank-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 13px;
+    font-weight: 800;
+    background: #f1f5f9;
+    color: #475569;
+  }
+
+  .rank-pill.gold {
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+    color: #92400e;
+    box-shadow: 0 2px 6px rgba(245, 158, 11, 0.3);
+  }
+  .rank-pill.silver {
+    background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+    color: #334155;
+    box-shadow: 0 2px 6px rgba(148, 163, 184, 0.3);
+  }
+  .rank-pill.bronze {
+    background: linear-gradient(135deg, #ffedd5, #fed7aa);
+    color: #9a3412;
+    box-shadow: 0 2px 6px rgba(180, 83, 9, 0.3);
+  }
+
+  .student-name-cell {
+    font-weight: 800;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .score-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 800;
+    font-size: 15px;
+    color: var(--primary);
+  }
+
+  .percent-bar-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 110px;
+  }
+
+  .percent-bar-track {
+    flex: 1;
+    height: 7px;
+    background: #e2e8f0;
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .percent-bar-fill {
+    height: 100%;
+    border-radius: 999px;
+    transition: width 0.3s;
+  }
+
+  .fill-green { background: #16a34a; }
+  .fill-blue { background: #2563eb; }
+  .fill-amber { background: #f59e0b; }
+  .fill-red { background: #ef4444; }
+
+  .wrong-tags {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    max-width: 220px;
+  }
+
+  .wrong-tag {
+    background: #fee2e2;
+    color: #991b1b;
+    padding: 2px 7px;
+    border-radius: 6px;
+    font-size: 11.5px;
+    font-weight: 700;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  .perfect-tag {
+    background: #dcfce7;
+    color: #166534;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .time-cell {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  /* Empty State */
+  .empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    color: var(--text-muted);
+  }
+  .empty-state-icon {
+    font-size: 48px;
+    margin-bottom: 12px;
+  }
+
+  /* ── Modal for Answers Sheet ── */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(4px);
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .modal-box {
+    background: #ffffff;
+    border-radius: 20px;
+    max-width: 680px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 28px;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border);
+  }
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .modal-close {
+    background: #f1f5f9;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #475569;
+  }
+
+  /* Raw JSON Viewer Drawer */
+  .json-drawer {
+    display: none;
+    background: #0f172a;
+    color: #38bdf8;
+    border-radius: 16px;
+    padding: 20px;
+    margin-top: 24px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 13px;
+    direction: ltr;
+    text-align: left;
+    max-height: 400px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    box-shadow: var(--shadow-md);
+  }
+
+  /* Hidden file input for import */
+  #importInput { display: none; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <header class="dash-header">
+    <div class="header-left">
+      <div class="logo-icon">📊</div>
+      <div class="header-titles">
+        <h1>لوحة نتائج اختبارات الفسيولوجي</h1>
+        <p>Physiology Lecture 1 • سجل الدرجات مرتبة تنازلياً من الأعلى إلى الأقل</p>
+      </div>
+    </div>
+    
+    <div class="header-actions">
+      <a href="physiology_lecture_1_quiz.html" class="btn btn-primary">
+        ✍️ الذهاب لصفحة الامتحان
+      </a>
+      <button class="btn btn-success" onclick="downloadJSON()">
+        📥 تحميل ملف results.json
+      </button>
+      <button class="btn" onclick="exportToCSV()">
+        📄 تصدير Excel (CSV)
+      </button>
+      <button class="btn" onclick="document.getElementById('importInput').click()">
+        📤 استيراد results.json
+      </button>
+      <button class="btn" onclick="toggleJSONViewer()">
+        { } عرض كود JSON
+      </button>
+      <button class="btn" onclick="loadAllResults(true)" title="تحديث البيانات">
+        🔄 تحديث
+      </button>
+      <input type="file" id="importInput" accept=".json" onchange="importJSON(event)" />
+    </div>
+  </header>
+
+  <!-- Stats Grid -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon blue">👥</div>
+      <div>
+        <div class="stat-val" id="statTotalStudents">0</div>
+        <div class="stat-label">إجمالي الطلاب الممتحنين</div>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon green">🏆</div>
+      <div>
+        <div class="stat-val" id="statTopScore">0 / 20</div>
+        <div class="stat-label">أعلى درجة مسجلة</div>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon purple">📈</div>
+      <div>
+        <div class="stat-val" id="statAvgScore">0%</div>
+        <div class="stat-label">متوسط درجات الدفعة</div>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon amber">🎯</div>
+      <div>
+        <div class="stat-val" id="statPassRate">0%</div>
+        <div class="stat-label">نسبة النجاح (≥60%)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search & Filter Toolbar -->
+  <div class="toolbar-card">
+    <div class="search-box">
+      <input 
+        type="text" 
+        id="searchInput" 
+        class="search-input" 
+        placeholder="ابحث باسم الطالب..." 
+        oninput="applyFilterAndSearch()"
+      />
+      <span class="search-icon">🔍</span>
+    </div>
+
+    <div class="filter-group">
+      <button class="filter-btn active" data-filter="all" onclick="setFilter('all', this)">الكل</button>
+      <button class="filter-btn" data-filter="excellent" onclick="setFilter('excellent', this)">ممتاز (≥90%)</button>
+      <button class="filter-btn" data-filter="verygood" onclick="setFilter('verygood', this)">جيد جداً (75-89%)</button>
+      <button class="filter-btn" data-filter="good" onclick="setFilter('good', this)">جيد (60-74%)</button>
+      <button class="filter-btn" data-filter="needreview" onclick="setFilter('needreview', this)">يحتاج مراجعة (&lt;60%)</button>
+    </div>
+  </div>
+
+  <!-- Leaderboard Table Card -->
+  <div class="table-card">
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:70px">الترتيب</th>
+            <th>اسم الطالب</th>
+            <th>النتيجة</th>
+            <th>النسبة المئوية</th>
+            <th>الأسئلة الخاطئة</th>
+            <th>تاريخ الامتحان</th>
+            <th style="text-align:center">التفاصيل</th>
+          </tr>
+        </thead>
+        <tbody id="leaderboardBody">
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+    </div>
+
+    <div id="emptyState" class="empty-state" style="display:none;">
+      <div class="empty-state-icon">📋</div>
+      <h3 style="font-size:18px;margin-bottom:6px">لا توجد نتائج مسجلة حتى الآن</h3>
+      <p style="font-size:14px">عندما يقوم الطلاب بأداء الامتحان، ستظهر النتائج هنا مرتبة تنازلياً تلقائياً.</p>
+    </div>
+  </div>
+
+  <!-- Raw JSON Viewer -->
+  <div id="jsonViewer" class="json-drawer"></div>
+
+</div>
+
+<!-- Modal: Student Answer Details -->
+<div id="detailsModal" class="modal-overlay" onclick="closeModalOnBg(event)">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div>
+        <h3 id="modalStudentName" style="font-size:18px;font-weight:800;color:var(--text-main)"></h3>
+        <p id="modalStudentScore" style="font-size:13px;color:var(--text-muted)"></p>
+      </div>
+      <button class="modal-close" onclick="closeModal()">×</button>
+    </div>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+let allResultsData = [];
+let currentFilter = 'all';
+
+// Load Results from Server API & LocalStorage
+async function loadAllResults(isManualRefresh = false) {
+  let combinedResults = [];
+
+  // 1. Try fetching from Vercel / Local API
+  try {
+    const res = await fetch('/api/results');
+    if (res.ok) {
+      const serverData = await res.json();
+      if (Array.isArray(serverData)) {
+        combinedResults.push(...serverData);
+      }
+    }
+  } catch (err) {
+    console.log("Server API not reachable or static fallback");
+  }
+
+  // 2. Fetch from LocalStorage
+  try {
+    const localData = JSON.parse(localStorage.getItem('tashheel_physiology_quiz_results') || '[]');
+    if (Array.isArray(localData)) {
+      combinedResults.push(...localData);
+    }
+  } catch (err) {
+    console.error("LocalStorage error", err);
+  }
+
+  // 3. Remove duplicates by ID or (Name + Score + Date)
+  const uniqueMap = new Map();
+  combinedResults.forEach(item => {
+    if (!item) return;
+    const key = item.id || `${item.name}_${item.score}_${item.date}`;
+    if (!uniqueMap.has(key)) {
+      uniqueMap.set(key, item);
+    }
+  });
+
+  allResultsData = Array.from(uniqueMap.values());
+
+  // 4. Sort from Highest to Lowest Score (بالترتيب من حيث أعلى نتيجة إلى أقل نتيجة)
+  allResultsData.sort((a, b) => {
+    if (b.score !== a.score) {
+      return b.score - a.score; // Descending by score
+    }
+    return (b.timestamp || 0) - (a.timestamp || 0); // If tied, newer first
+  });
+
+  updateStats();
+  applyFilterAndSearch();
+  updateJSONViewerContent();
+
+  if (isManualRefresh) {
+    showToast("✅ تم تحديث بيانات نتائج الامتحانات بنجاح!");
+  }
+}
+
+// Update Top Statistics
+function updateStats() {
+  const total = allResultsData.length;
+  document.getElementById("statTotalStudents").textContent = total;
+
+  if (total === 0) {
+    document.getElementById("statTopScore").textContent = "0 / 20";
+    document.getElementById("statAvgScore").textContent = "0%";
+    document.getElementById("statPassRate").textContent = "0%";
+    return;
+  }
+
+  const topScore = Math.max(...allResultsData.map(r => r.score || 0));
+  document.getElementById("statTopScore").textContent = `${topScore} / 20`;
+
+  const totalPoints = allResultsData.reduce((sum, r) => sum + (r.score || 0), 0);
+  const avgPercent = Math.round((totalPoints / (total * 20)) * 100);
+  document.getElementById("statAvgScore").textContent = `${avgPercent}%`;
+
+  const passedCount = allResultsData.filter(r => (r.percentage || 0) >= 60).length;
+  const passRate = Math.round((passedCount / total) * 100);
+  document.getElementById("statPassRate").textContent = `${passRate}%`;
+}
+
+// Render Leaderboard Table
+function renderTable(results) {
+  const tbody = document.getElementById("leaderboardBody");
+  const emptyState = document.getElementById("emptyState");
+
+  tbody.innerHTML = "";
+
+  if (results.length === 0) {
+    emptyState.style.display = "block";
+    return;
+  }
+
+  emptyState.style.display = "none";
+
+  results.forEach((item, index) => {
+    const tr = document.createElement("tr");
+
+    // Rank Medal / Pill
+    let rankBadge = `<span class="rank-pill">${index + 1}</span>`;
+    if (index === 0) rankBadge = `<span class="rank-pill gold" title="المركز الأول 🥇">🥇 1</span>`;
+    else if (index === 1) rankBadge = `<span class="rank-pill silver" title="المركز الثاني 🥈">🥈 2</span>`;
+    else if (index === 2) rankBadge = `<span class="rank-pill bronze" title="المركز الثالث 🥉">🥉 3</span>`;
+
+    // Percentage color
+    const pct = item.percentage || 0;
+    let fillClass = "fill-blue";
+    if (pct >= 90) fillClass = "fill-green";
+    else if (pct >= 75) fillClass = "fill-blue";
+    else if (pct >= 60) fillClass = "fill-amber";
+    else fillClass = "fill-red";
+
+    // Wrong Questions tags
+    let wrongHtml = "";
+    if (!item.wrongQuestions || item.wrongQuestions.length === 0) {
+      wrongHtml = `<span class="perfect-tag">✨ الدرجة كاملة (20/20)</span>`;
+    } else {
+      wrongHtml = `<div class="wrong-tags">` + 
+        item.wrongQuestions.map(qNum => `<span class="wrong-tag">س ${qNum}</span>`).join('') +
+        `</div>`;
+    }
+
+    tr.innerHTML = `
+      <td>${rankBadge}</td>
+      <td>
+        <div class="student-name-cell">
+          <span>${escapeHtml(item.name)}</span>
+        </div>
+      </td>
+      <td>
+        <span class="score-badge">${item.score} / ${item.total || 20}</span>
+      </td>
+      <td>
+        <div class="percent-bar-wrap">
+          <div class="percent-bar-track">
+            <div class="percent-bar-fill ${fillClass}" style="width:${pct}%"></div>
+          </div>
+          <span style="font-weight:700;font-size:13px">${pct}%</span>
+        </div>
+      </td>
+      <td>${wrongHtml}</td>
+      <td class="time-cell">${item.date || '—'}</td>
+      <td style="text-align:center">
+        <button class="btn" style="padding:5px 12px;font-size:12.5px" onclick="openDetails('${item.id}')">
+          👁️ عرض
+        </button>
+      </td>
+    `;
+
+    tbody.appendChild(tr);
+  });
+}
+
+// Filter and Search Logic
+function applyFilterAndSearch() {
+  const query = document.getElementById("searchInput").value.trim().toLowerCase();
+
+  let filtered = allResultsData.filter(item => {
+    // Search by name
+    const matchesName = !query || (item.name && item.name.toLowerCase().includes(query));
+
+    // Filter by tier
+    const pct = item.percentage || 0;
+    let matchesFilter = true;
+    if (currentFilter === 'excellent') matchesFilter = pct >= 90;
+    else if (currentFilter === 'verygood') matchesFilter = pct >= 75 && pct < 90;
+    else if (currentFilter === 'good') matchesFilter = pct >= 60 && pct < 75;
+    else if (currentFilter === 'needreview') matchesFilter = pct < 60;
+
+    return matchesName && matchesFilter;
+  });
+
+  renderTable(filtered);
+}
+
+function setFilter(filterType, btn) {
+  currentFilter = filterType;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  applyFilterAndSearch();
+}
+
+// Open Details Modal
+function openDetails(recordId) {
+  const item = allResultsData.find(r => r.id === recordId);
+  if (!item) return;
+
+  document.getElementById("modalStudentName").textContent = `ورقة إجابات الطالب: ${item.name}`;
+  document.getElementById("modalStudentScore").textContent = `النتيجة: ${item.score} من ${item.total || 20} (${item.percentage}%) • التاريخ: ${item.date}`;
+
+  const bodyEl = document.getElementById("modalBody");
+  bodyEl.innerHTML = "";
+
+  if (!item.wrongDetails || item.wrongDetails.length === 0) {
+    bodyEl.innerHTML = `
+      <div style="background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:20px;border-radius:12px;text-align:center;font-weight:700">
+        🎉 ما شاء الله! الطالب أجاب على جميع الأسئلة العشرين بشكل صحيح دون أي خطأ!
+      </div>
+    `;
+  } else {
+    bodyEl.innerHTML = `<h4 style="font-size:15px;margin-bottom:12px;color:var(--danger)">الأسئلة التي أخطأ فيها الطالب (${item.wrongDetails.length} أسئلة):</h4>`;
+    
+    item.wrongDetails.forEach(w => {
+      const box = document.createElement("div");
+      box.style.background = "#fffafa";
+      box.style.border = "1px solid #fecaca";
+      box.style.borderRadius = "12px";
+      box.style.padding = "14px";
+      box.style.marginBottom = "10px";
+      box.style.fontSize = "13.5px";
+
+      box.innerHTML = `
+        <div style="font-weight:800;color:#991b1b;margin-bottom:4px">سؤال ${w.questionNumber}:</div>
+        <div style="direction:ltr;text-align:left;font-family:'Inter',sans-serif;margin-bottom:8px;font-weight:600">${w.question}</div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;direction:ltr;text-align:left;font-family:'Inter',sans-serif">
+          <span style="background:#fee2e2;color:#991b1b;padding:4px 8px;border-radius:6px;font-weight:700">❌ إجابة الطالب: ${w.studentAnswer}</span>
+          <span style="background:#dcfce7;color:#166534;padding:4px 8px;border-radius:6px;font-weight:700">✅ الإجابة الصحيحة: ${w.correctAnswer}</span>
+        </div>
+      `;
+      bodyEl.appendChild(box);
+    });
+  }
+
+  document.getElementById("detailsModal").style.display = "flex";
+}
+
+function closeModal() {
+  document.getElementById("detailsModal").style.display = "none";
+}
+
+function closeModalOnBg(e) {
+  if (e.target.id === 'detailsModal') closeModal();
+}
+
+// Download formatted results.json
+function downloadJSON() {
+  const jsonStr = JSON.stringify(allResultsData, null, 2);
+  const blob = new Blob([jsonStr], { type: "application/json;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `results_${new Date().toISOString().slice(0,10)}.json`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  showToast("📥 تم تحميل ملف results.json بنجاح!");
+}
+
+// Export to CSV
+function exportToCSV() {
+  if (allResultsData.length === 0) {
+    alert("لا توجد بيانات لتصديرها");
+    return;
+  }
+
+  let csvContent = "\uFEFFالترتيب,اسم الطالب,الدرجة,إجمالي الأسئلة,النسبة المئوية,أرقام الأسئلة الخاطئة,تاريخ الامتحان\n";
+  allResultsData.forEach((r, i) => {
+    const wrongStr = (r.wrongQuestions || []).join(' - ');
+    csvContent += `"${i + 1}","${r.name}","${r.score}","${r.total || 20}","${r.percentage}%","${wrongStr}","${r.date}"\n`;
+  });
+
+  const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `نتائج_امتحان_الفسيولوجي_${new Date().toISOString().slice(0,10)}.csv`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  showToast("📊 تم تصدير ملف الإكسيل (CSV) بنجاح!");
+}
+
+// Import JSON file
+function importJSON(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function(evt) {
+    try {
+      const importedData = JSON.parse(evt.target.result);
+      if (Array.isArray(importedData)) {
+        // Merge with current LocalStorage
+        const local = JSON.parse(localStorage.getItem('tashheel_physiology_quiz_results') || '[]');
+        const combined = [...local, ...importedData];
+        localStorage.setItem('tashheel_physiology_quiz_results', JSON.stringify(combined));
+        loadAllResults(true);
+        showToast(`✅ تم استيراد ودمج ${importedData.length} نتيجة بنجاح!`);
+      } else {
+        alert("الملف لا يحتوي على مصفوفة نتائج صالحة");
+      }
+    } catch (err) {
+      alert("خطأ في قراءة ملف الـ JSON: " + err.message);
+    }
+  };
+  reader.readAsText(file);
+}
+
+// Toggle Raw JSON Viewer
+function toggleJSONViewer() {
+  const viewer = document.getElementById("jsonViewer");
+  if (viewer.style.display === "block") {
+    viewer.style.display = "none";
+  } else {
+    viewer.style.display = "block";
+    updateJSONViewerContent();
+    viewer.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+function updateJSONViewerContent() {
+  const viewer = document.getElementById("jsonViewer");
+  viewer.textContent = JSON.stringify(allResultsData, null, 2);
+}
+
+// Utility: Simple Toast
+function showToast(msg) {
+  const toast = document.createElement("div");
+  toast.textContent = msg;
+  toast.style.position = "fixed";
+  toast.style.bottom = "24px";
+  toast.style.left = "50%";
+  toast.style.transform = "translateX(-50%)";
+  toast.style.background = "#0f172a";
+  toast.style.color = "#ffffff";
+  toast.style.padding = "12px 24px";
+  toast.style.borderRadius = "12px";
+  toast.style.fontSize = "14px";
+  toast.style.fontWeight = "700";
+  toast.style.zIndex = "9999";
+  toast.style.boxShadow = "0 8px 24px rgba(0,0,0,0.25)";
+  document.body.appendChild(toast);
+  setTimeout(() => {
+    toast.remove();
+  }, 3200);
+}
+
+function escapeHtml(str) {
+  if (!str) return '';
+  return str.replace(/[&<>'"]/g, 
+    tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+  );
+}
+
+// Initial load
+window.addEventListener("DOMContentLoaded", () => {
+  loadAllResults();
+});
+</script>
+
+</body>
+</html>
