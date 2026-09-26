@@ -990,9 +990,11 @@ function escapeHtml(str) {
 }
 
 // Initial load
-window.addEventListener("DOMContentLoaded", () => {
+if (document.readyState === "loading") {
+  window.addEventListener("DOMContentLoaded", () => loadAllResults());
+} else {
   loadAllResults();
-});
+}
 </script>
 
 </body>
