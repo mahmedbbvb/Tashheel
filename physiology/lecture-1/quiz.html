@@ -738,18 +738,24 @@ const explanations = {
 
 const SESSION_STORAGE_KEY = "tashheel_physio_quiz_session_v1";
 
+// Clean any old local browser results
+try {
+  localStorage.removeItem("tashheel_physiology_quiz_results");
+  localStorage.removeItem(SESSION_STORAGE_KEY);
+} catch (e) {}
+
 function persistSession(updates) {
   try {
-    const raw = localStorage.getItem(SESSION_STORAGE_KEY);
+    const raw = sessionStorage.getItem(SESSION_STORAGE_KEY);
     const curr = raw ? JSON.parse(raw) : {};
     const merged = { ...curr, ...updates };
-    localStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(merged));
+    sessionStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(merged));
   } catch (e) {}
 }
 
 function getSession() {
   try {
-    const raw = localStorage.getItem(SESSION_STORAGE_KEY);
+    const raw = sessionStorage.getItem(SESSION_STORAGE_KEY);
     return raw ? JSON.parse(raw) : null;
   } catch (e) {
     return null;
@@ -758,7 +764,9 @@ function getSession() {
 
 function clearSession() {
   try {
+    sessionStorage.removeItem(SESSION_STORAGE_KEY);
     localStorage.removeItem(SESSION_STORAGE_KEY);
+    localStorage.removeItem("tashheel_physiology_quiz_results");
   } catch (e) {}
 }
 
@@ -952,11 +960,11 @@ function submitExam() {
     allResults: allResults
   };
 
-  // Save to LocalStorage
-  saveResultToLocalStorage(examResultData);
-
-  // Send to Server quietly in background (without displaying any message)
+  // Send to Server quietly in background to central cloud database
   saveResultToServer(examResultData);
+
+  // Clean any old local browser results
+  try { localStorage.removeItem("tashheel_physiology_quiz_results"); } catch (e) {}
 
   // Persist session state as 'result'
   persistSession({
@@ -972,18 +980,6 @@ function submitExam() {
   // Render Result Screen
   showResultScreen(score, percentage, allResults, wrongQuestions);
   window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-// Save to LocalStorage
-function saveResultToLocalStorage(resultData) {
-  try {
-    const key = "tashheel_physiology_quiz_results";
-    const existing = JSON.parse(localStorage.getItem(key) || "[]");
-    existing.push(resultData);
-    localStorage.setItem(key, JSON.stringify(existing));
-  } catch (e) {
-    console.error("LocalStorage save error", e);
-  }
 }
 
 // Save to Server API (writes to results.json quietly in background)

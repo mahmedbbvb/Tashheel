@@ -621,10 +621,13 @@
       <button class="btn" onclick="toggleJSONViewer()">
         عرض كود JSON
       </button>
-      <button class="btn" onclick="loadAllResults(true)" title="تحديث البيانات">
+      <button class="btn" onclick="loadAllResults(true)" title="تحديث النتائج">
         تحديث
       </button>
-      <button class="btn" onclick="adminLogout()" style="background:#fee2e2;color:#991b1b;border-color:#fca5a5" title="قفل الصفحة">
+      <button class="btn" onclick="clearAllRecords()" style="background:#fee2e2;color:#991b1b;border-color:#fca5a5" title="مسح جميع السجلات">
+        مسح جميع السجلات
+      </button>
+      <button class="btn" onclick="adminLogout()" style="background:#f1f5f9;color:#334155;border-color:#cbd5e1" title="قفل الصفحة">
         قفل الصفحة
       </button>
       <input type="file" id="importInput" accept=".json" onchange="importJSON(event)" />
@@ -737,11 +740,11 @@
 let allResultsData = [];
 let currentFilter = 'all';
 
-// Load Results from Server API & LocalStorage
+// Load Results strictly from Central Cloud Database (Upstash)
 async function loadAllResults(isManualRefresh = false) {
   let combinedResults = [];
 
-  // 1. Try fetching from Vercel / Local API
+  // Fetch only from Central Cloud Database
   try {
     const res = await fetch('/api/results');
     if (res.ok) {
@@ -751,20 +754,10 @@ async function loadAllResults(isManualRefresh = false) {
       }
     }
   } catch (err) {
-    console.log("Server API not reachable or static fallback");
+    console.log("Error loading cloud results", err);
   }
 
-  // 2. Fetch from LocalStorage
-  try {
-    const localData = JSON.parse(localStorage.getItem('tashheel_physiology_quiz_results') || '[]');
-    if (Array.isArray(localData)) {
-      combinedResults.push(...localData);
-    }
-  } catch (err) {
-    console.error("LocalStorage error", err);
-  }
-
-  // 3. Remove duplicates by ID or (Name + Score + Date)
+  // Remove duplicates by ID or (Name + Score + Date)
   const uniqueMap = new Map();
   combinedResults.forEach(item => {
     if (!item) return;
@@ -1016,16 +1009,21 @@ function importJSON(e) {
   if (!file) return;
 
   const reader = new FileReader();
-  reader.onload = function(evt) {
+  reader.onload = async function(evt) {
     try {
       const importedData = JSON.parse(evt.target.result);
       if (Array.isArray(importedData)) {
-        // Merge with current LocalStorage
-        const local = JSON.parse(localStorage.getItem('tashheel_physiology_quiz_results') || '[]');
-        const combined = [...local, ...importedData];
-        localStorage.setItem('tashheel_physiology_quiz_results', JSON.stringify(combined));
-        loadAllResults(true);
-        showToast(`تم استيراد ودمج ${importedData.length} نتيجة بنجاح`);
+        for (const item of importedData) {
+          try {
+            await fetch('/api/save-result', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(item)
+            });
+          } catch (e) {}
+        }
+        await loadAllResults(true);
+        showToast(`تم استيراد ${importedData.length} نتيجة وحفظها بالسيرفر بنجاح`);
       } else {
         alert("الملف لا يحتوي على مصفوفة نتائج صالحة");
       }
@@ -1034,6 +1032,33 @@ function importJSON(e) {
     }
   };
   reader.readAsText(file);
+}
+
+// Clear all records from cloud database
+async function clearAllRecords() {
+  const confirmed = confirm("هل أنت متأكد من مسح جميع سجلات ونتائج الامتحانات؟ لن يمكن استرجاعها بعد ذلك.");
+  if (!confirmed) return;
+
+  try {
+    const res = await fetch('/api/results', {
+      method: 'DELETE'
+    });
+    const result = await res.json();
+    if (res.ok && result.success) {
+      allResultsData = [];
+      try {
+        localStorage.removeItem('tashheel_physiology_quiz_results');
+      } catch (e) {}
+      renderTable([]);
+      updateStats();
+      updateJSONViewerContent();
+      showToast("تم مسح جميع سجلات الامتحانات بنجاح");
+    } else {
+      alert("حدث خطأ أثناء المسح: " + (result.error || "خطأ غير معروف"));
+    }
+  } catch (err) {
+    alert("تعذر الاتصال بالسيرفر لمسح السجلات: " + err.message);
+  }
 }
 
 // Toggle Raw JSON Viewer
