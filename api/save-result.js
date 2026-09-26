@@ -46,9 +46,15 @@ export default async function handler(req, res) {
 
     if (kvUrl && kvToken) {
       try {
-        const pushRes = await fetch(`${kvUrl}/lpush/tashheel_exam_results/${encodeURIComponent(JSON.stringify(record))}`, {
-          headers: { Authorization: `Bearer ${kvToken}` }
+        const pushRes = await fetch(kvUrl, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${kvToken}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(["LPUSH", "tashheel_exam_results", JSON.stringify(record)])
         });
+
         if (pushRes.ok) {
           return res.status(200).json({
             success: true,

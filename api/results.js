@@ -30,8 +30,13 @@ export default async function handler(req, res) {
 
   try {
     if (kvUrl && kvToken) {
-      const kvRes = await fetch(`${kvUrl}/lrange/tashheel_exam_results/0/-1`, {
-        headers: { Authorization: `Bearer ${kvToken}` }
+      const kvRes = await fetch(kvUrl, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${kvToken}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(["LRANGE", "tashheel_exam_results", 0, -1])
       });
       if (kvRes.ok) {
         const json = await kvRes.json();
