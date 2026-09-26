@@ -497,16 +497,108 @@
 
   /* Hidden file input for import */
   #importInput { display: none; }
+
+  /* Admin Auth Protection */
+  .auth-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--bg-page);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    padding: 20px;
+  }
+
+  .auth-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 36px 30px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-lg);
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+  }
+
+  .auth-badge {
+    display: inline-block;
+    background: #eff6ff;
+    color: var(--primary);
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+
+  .auth-card h2 {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    color: var(--text-main);
+  }
+
+  .auth-card p {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    margin-bottom: 22px;
+    line-height: 1.6;
+  }
+
+  .auth-input {
+    width: 100%;
+    padding: 14px 18px;
+    font-size: 16px;
+    border-radius: 12px;
+    border: 1.5px solid var(--border);
+    outline: none;
+    text-align: center;
+    font-family: inherit;
+    transition: 0.2s;
+  }
+  .auth-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  }
 </style>
 </head>
 <body>
 
-<div class="container">
+<!-- Admin Protection Screen -->
+<div id="authOverlay" class="auth-overlay">
+  <div class="auth-card">
+    <div class="auth-badge">خاص بالمعلم فقط</div>
+    <h2>لوحة نتائج الامتحانات</h2>
+    <p>هذه الصفحة مخصصة للمعلم ومحمية برمز مرور سري لمنع دخول الطلاب.</p>
+
+    <form onsubmit="handleAdminLogin(event)">
+      <div style="margin-bottom: 16px;">
+        <input 
+          type="password" 
+          id="adminPasswordInput" 
+          class="auth-input" 
+          placeholder="أدخل كلمة المرور" 
+          required 
+          autofocus 
+        />
+      </div>
+      <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px; font-size: 15px; font-weight: 800; border-radius: 12px;">
+        دخول لوحة التحكم
+      </button>
+      <div id="authErrorMsg" style="color: var(--danger); font-size: 13px; font-weight: 700; margin-top: 12px; display: none;">
+        كلمة المرور غير صحيحة، يرجى المحاولة مجدداً.
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="container" id="dashboardContent" style="display: none;">
 
   <!-- Header -->
   <header class="dash-header">
     <div class="header-left">
-      <div class="logo-icon">📊</div>
+      <div class="logo-icon" style="font-weight:900;font-size:18px;">نتائج</div>
       <div class="header-titles">
         <h1>لوحة نتائج اختبارات الفسيولوجي</h1>
         <p>Physiology Lecture 1 • سجل الدرجات مرتبة تنازلياً من الأعلى إلى الأقل</p>
@@ -515,22 +607,28 @@
     
     <div class="header-actions">
       <a href="physiology_lecture_1_quiz.html" class="btn btn-primary">
-        ✍️ الذهاب لصفحة الامتحان
+        صفحة الامتحان
       </a>
       <button class="btn btn-success" onclick="downloadJSON()">
-        📥 تحميل ملف results.json
+        تحميل ملف results.json
       </button>
       <button class="btn" onclick="exportToCSV()">
-        📄 تصدير Excel (CSV)
+        تصدير Excel (CSV)
       </button>
       <button class="btn" onclick="document.getElementById('importInput').click()">
-        📤 استيراد results.json
+        استيراد results.json
       </button>
       <button class="btn" onclick="toggleJSONViewer()">
-        { } عرض كود JSON
+        عرض كود JSON
       </button>
-      <button class="btn" onclick="loadAllResults(true)" title="تحديث البيانات">
-        🔄 تحديث
+      <button class="btn" onclick="loadAllResults(true)" title="تحديث النتائج">
+        تحديث
+      </button>
+      <button class="btn" onclick="clearAllRecords()" style="background:#fee2e2;color:#991b1b;border-color:#fca5a5" title="مسح جميع السجلات">
+        مسح جميع السجلات
+      </button>
+      <button class="btn" onclick="adminLogout()" style="background:#f1f5f9;color:#334155;border-color:#cbd5e1" title="قفل الصفحة">
+        قفل الصفحة
       </button>
       <input type="file" id="importInput" accept=".json" onchange="importJSON(event)" />
     </div>
@@ -539,7 +637,7 @@
   <!-- Stats Grid -->
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-icon blue">👥</div>
+      <div class="stat-icon blue" style="font-weight:800;font-size:13px">العدد</div>
       <div>
         <div class="stat-val" id="statTotalStudents">0</div>
         <div class="stat-label">إجمالي الطلاب الممتحنين</div>
@@ -547,7 +645,7 @@
     </div>
 
     <div class="stat-card">
-      <div class="stat-icon green">🏆</div>
+      <div class="stat-icon green" style="font-weight:800;font-size:13px">الأعلى</div>
       <div>
         <div class="stat-val" id="statTopScore">0 / 20</div>
         <div class="stat-label">أعلى درجة مسجلة</div>
@@ -555,7 +653,7 @@
     </div>
 
     <div class="stat-card">
-      <div class="stat-icon purple">📈</div>
+      <div class="stat-icon purple" style="font-weight:800;font-size:13px">المعدل</div>
       <div>
         <div class="stat-val" id="statAvgScore">0%</div>
         <div class="stat-label">متوسط درجات الدفعة</div>
@@ -563,7 +661,7 @@
     </div>
 
     <div class="stat-card">
-      <div class="stat-icon amber">🎯</div>
+      <div class="stat-icon amber" style="font-weight:800;font-size:13px">النسبة</div>
       <div>
         <div class="stat-val" id="statPassRate">0%</div>
         <div class="stat-label">نسبة النجاح (≥60%)</div>
@@ -581,7 +679,6 @@
         placeholder="ابحث باسم الطالب..." 
         oninput="applyFilterAndSearch()"
       />
-      <span class="search-icon">🔍</span>
     </div>
 
     <div class="filter-group">
@@ -615,7 +712,6 @@
     </div>
 
     <div id="emptyState" class="empty-state" style="display:none;">
-      <div class="empty-state-icon">📋</div>
       <h3 style="font-size:18px;margin-bottom:6px">لا توجد نتائج مسجلة حتى الآن</h3>
       <p style="font-size:14px">عندما يقوم الطلاب بأداء الامتحان، ستظهر النتائج هنا مرتبة تنازلياً تلقائياً.</p>
     </div>
@@ -644,11 +740,11 @@
 let allResultsData = [];
 let currentFilter = 'all';
 
-// Load Results from Server API & LocalStorage
+// Load Results strictly from Central Cloud Database (Upstash)
 async function loadAllResults(isManualRefresh = false) {
   let combinedResults = [];
 
-  // 1. Try fetching from Vercel / Local API
+  // Fetch only from Central Cloud Database
   try {
     const res = await fetch('/api/results');
     if (res.ok) {
@@ -658,20 +754,10 @@ async function loadAllResults(isManualRefresh = false) {
       }
     }
   } catch (err) {
-    console.log("Server API not reachable or static fallback");
+    console.log("Error loading cloud results", err);
   }
 
-  // 2. Fetch from LocalStorage
-  try {
-    const localData = JSON.parse(localStorage.getItem('tashheel_physiology_quiz_results') || '[]');
-    if (Array.isArray(localData)) {
-      combinedResults.push(...localData);
-    }
-  } catch (err) {
-    console.error("LocalStorage error", err);
-  }
-
-  // 3. Remove duplicates by ID or (Name + Score + Date)
+  // Remove duplicates by ID or (Name + Score + Date)
   const uniqueMap = new Map();
   combinedResults.forEach(item => {
     if (!item) return;
@@ -696,7 +782,7 @@ async function loadAllResults(isManualRefresh = false) {
   updateJSONViewerContent();
 
   if (isManualRefresh) {
-    showToast("✅ تم تحديث بيانات نتائج الامتحانات بنجاح!");
+    showToast("تم تحديث بيانات نتائج الامتحانات بنجاح");
   }
 }
 
@@ -743,9 +829,9 @@ function renderTable(results) {
 
     // Rank Medal / Pill
     let rankBadge = `<span class="rank-pill">${index + 1}</span>`;
-    if (index === 0) rankBadge = `<span class="rank-pill gold" title="المركز الأول 🥇">🥇 1</span>`;
-    else if (index === 1) rankBadge = `<span class="rank-pill silver" title="المركز الثاني 🥈">🥈 2</span>`;
-    else if (index === 2) rankBadge = `<span class="rank-pill bronze" title="المركز الثالث 🥉">🥉 3</span>`;
+    if (index === 0) rankBadge = `<span class="rank-pill gold" title="المركز الأول">1</span>`;
+    else if (index === 1) rankBadge = `<span class="rank-pill silver" title="المركز الثاني">2</span>`;
+    else if (index === 2) rankBadge = `<span class="rank-pill bronze" title="المركز الثالث">3</span>`;
 
     // Percentage color
     const pct = item.percentage || 0;
@@ -758,7 +844,7 @@ function renderTable(results) {
     // Wrong Questions tags
     let wrongHtml = "";
     if (!item.wrongQuestions || item.wrongQuestions.length === 0) {
-      wrongHtml = `<span class="perfect-tag">✨ الدرجة كاملة (20/20)</span>`;
+      wrongHtml = `<span class="perfect-tag">الدرجة كاملة (20/20)</span>`;
     } else {
       wrongHtml = `<div class="wrong-tags">` + 
         item.wrongQuestions.map(qNum => `<span class="wrong-tag">س ${qNum}</span>`).join('') +
@@ -787,7 +873,7 @@ function renderTable(results) {
       <td class="time-cell">${item.date || '—'}</td>
       <td style="text-align:center">
         <button class="btn" style="padding:5px 12px;font-size:12.5px" onclick="openDetails('${item.id}')">
-          👁️ عرض
+          عرض
         </button>
       </td>
     `;
@@ -839,7 +925,7 @@ function openDetails(recordId) {
   if (!item.wrongDetails || item.wrongDetails.length === 0) {
     bodyEl.innerHTML = `
       <div style="background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:20px;border-radius:12px;text-align:center;font-weight:700">
-        🎉 ما شاء الله! الطالب أجاب على جميع الأسئلة العشرين بشكل صحيح دون أي خطأ!
+        الطالب أجاب على جميع الأسئلة العشرين بشكل صحيح دون أي خطأ.
       </div>
     `;
   } else {
@@ -858,8 +944,8 @@ function openDetails(recordId) {
         <div style="font-weight:800;color:#991b1b;margin-bottom:4px">سؤال ${w.questionNumber}:</div>
         <div style="direction:ltr;text-align:left;font-family:'Inter',sans-serif;margin-bottom:8px;font-weight:600">${w.question}</div>
         <div style="display:flex;gap:12px;flex-wrap:wrap;direction:ltr;text-align:left;font-family:'Inter',sans-serif">
-          <span style="background:#fee2e2;color:#991b1b;padding:4px 8px;border-radius:6px;font-weight:700">❌ إجابة الطالب: ${w.studentAnswer}</span>
-          <span style="background:#dcfce7;color:#166534;padding:4px 8px;border-radius:6px;font-weight:700">✅ الإجابة الصحيحة: ${w.correctAnswer}</span>
+          <span style="background:#fee2e2;color:#991b1b;padding:4px 8px;border-radius:6px;font-weight:700">إجابة الطالب: ${w.studentAnswer}</span>
+          <span style="background:#dcfce7;color:#166534;padding:4px 8px;border-radius:6px;font-weight:700">الإجابة الصحيحة: ${w.correctAnswer}</span>
         </div>
       `;
       bodyEl.appendChild(box);
@@ -889,7 +975,7 @@ function downloadJSON() {
   a.click();
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
-  showToast("📥 تم تحميل ملف results.json بنجاح!");
+  showToast("تم تحميل ملف results.json بنجاح");
 }
 
 // Export to CSV
@@ -914,7 +1000,7 @@ function exportToCSV() {
   a.click();
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
-  showToast("📊 تم تصدير ملف الإكسيل (CSV) بنجاح!");
+  showToast("تم تصدير ملف الإكسيل (CSV) بنجاح");
 }
 
 // Import JSON file
@@ -923,16 +1009,21 @@ function importJSON(e) {
   if (!file) return;
 
   const reader = new FileReader();
-  reader.onload = function(evt) {
+  reader.onload = async function(evt) {
     try {
       const importedData = JSON.parse(evt.target.result);
       if (Array.isArray(importedData)) {
-        // Merge with current LocalStorage
-        const local = JSON.parse(localStorage.getItem('tashheel_physiology_quiz_results') || '[]');
-        const combined = [...local, ...importedData];
-        localStorage.setItem('tashheel_physiology_quiz_results', JSON.stringify(combined));
-        loadAllResults(true);
-        showToast(`✅ تم استيراد ودمج ${importedData.length} نتيجة بنجاح!`);
+        for (const item of importedData) {
+          try {
+            await fetch('/api/save-result', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(item)
+            });
+          } catch (e) {}
+        }
+        await loadAllResults(true);
+        showToast(`تم استيراد ${importedData.length} نتيجة وحفظها بالسيرفر بنجاح`);
       } else {
         alert("الملف لا يحتوي على مصفوفة نتائج صالحة");
       }
@@ -941,6 +1032,33 @@ function importJSON(e) {
     }
   };
   reader.readAsText(file);
+}
+
+// Clear all records from cloud database
+async function clearAllRecords() {
+  const confirmed = confirm("هل أنت متأكد من مسح جميع سجلات ونتائج الامتحانات؟ لن يمكن استرجاعها بعد ذلك.");
+  if (!confirmed) return;
+
+  try {
+    const res = await fetch('/api/results', {
+      method: 'DELETE'
+    });
+    const result = await res.json();
+    if (res.ok && result.success) {
+      allResultsData = [];
+      try {
+        localStorage.removeItem('tashheel_physiology_quiz_results');
+      } catch (e) {}
+      renderTable([]);
+      updateStats();
+      updateJSONViewerContent();
+      showToast("تم مسح جميع سجلات الامتحانات بنجاح");
+    } else {
+      alert("حدث خطأ أثناء المسح: " + (result.error || "خطأ غير معروف"));
+    }
+  } catch (err) {
+    alert("تعذر الاتصال بالسيرفر لمسح السجلات: " + err.message);
+  }
 }
 
 // Toggle Raw JSON Viewer
@@ -989,10 +1107,50 @@ function escapeHtml(str) {
   );
 }
 
-// Initial load
-window.addEventListener("DOMContentLoaded", () => {
+// Admin Authentication (Password Protection)
+const ADMIN_PASSCODE = "admin2026"; // كلمة المرور الخاصة بالمعلم
+
+function checkAdminAuth() {
+  if (sessionStorage.getItem("tashheel_admin_auth") === "granted") {
+    unlockDashboard();
+  } else {
+    document.getElementById("authOverlay").style.display = "flex";
+    document.getElementById("dashboardContent").style.display = "none";
+  }
+}
+
+function handleAdminLogin(e) {
+  if (e) e.preventDefault();
+  const input = document.getElementById("adminPasswordInput");
+  const err = document.getElementById("authErrorMsg");
+  if (input.value.trim() === ADMIN_PASSCODE) {
+    sessionStorage.setItem("tashheel_admin_auth", "granted");
+    err.style.display = "none";
+    unlockDashboard();
+  } else {
+    err.style.display = "block";
+    input.focus();
+    input.select();
+  }
+}
+
+function unlockDashboard() {
+  document.getElementById("authOverlay").style.display = "none";
+  document.getElementById("dashboardContent").style.display = "block";
   loadAllResults();
-});
+}
+
+function adminLogout() {
+  sessionStorage.removeItem("tashheel_admin_auth");
+  window.location.reload();
+}
+
+// Initial load: Check auth first
+if (document.readyState === "loading") {
+  window.addEventListener("DOMContentLoaded", () => checkAdminAuth());
+} else {
+  checkAdminAuth();
+}
 </script>
 
 </body>

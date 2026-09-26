@@ -203,6 +203,168 @@
       transform: translateY(-1px);
       box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
     }
+
+    /* ── Hero Timetable Button ── */
+    .hero-timetable-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #ffffff;
+      color: #1e40af;
+      border: 1.5px solid #bfdbfe;
+      padding: 10px 22px;
+      border-radius: 999px;
+      font-size: 14.5px;
+      font-weight: 700;
+      font-family: inherit;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(37, 99, 235, 0.08);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .hero-timetable-btn:hover {
+      background: #eff6ff;
+      border-color: #2563eb;
+      color: #1d4ed8;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(37, 99, 235, 0.16);
+    }
+
+    /* ── Banners Wrapper ── */
+    .banners-wrapper {
+      width: 100%;
+      max-width: 780px;
+      margin: 32px auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .quick-banner {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      transition: all 0.2s ease;
+    }
+
+    .quick-banner.timetable-banner {
+      border: 1.5px solid #e2e8f0;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+    }
+
+    .quick-banner.timetable-banner:hover {
+      border-color: #cbd5e1;
+      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.08);
+      transform: translateY(-1px);
+    }
+
+    .quick-banner.exam-banner {
+      border: 1.5px solid #dbeafe;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.06);
+    }
+
+    .banner-info {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-align: right;
+    }
+
+    .banner-icon-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    .banner-icon-badge.timetable-badge {
+      background: #eff6ff;
+      color: #1e40af;
+      border: 1px solid #dbeafe;
+    }
+
+    .banner-icon-badge.exam-badge {
+      background: #eff6ff;
+      color: #2563eb;
+    }
+
+    .banner-text-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .banner-title {
+      font-weight: 800;
+      font-size: 15.5px;
+      color: #0f172a;
+    }
+
+    .banner-desc {
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.5;
+    }
+
+    .btn-timetable-action {
+      background: #1e3a8a;
+      color: #ffffff;
+      padding: 9px 20px;
+      border-radius: 10px;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 13.5px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 8px rgba(30, 58, 138, 0.2);
+    }
+
+    .btn-timetable-action:hover {
+      background: #172554;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(30, 58, 138, 0.3);
+    }
+
+    .btn-exam-action {
+      background: #2563eb;
+      color: #ffffff;
+      padding: 9px 18px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 13.5px;
+      display: inline-block;
+      transition: all 0.2s ease;
+    }
+
+    .btn-exam-action:hover {
+      background: #1d4ed8;
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 520px) {
+      .quick-banner {
+        padding: 16px;
+      }
+      .btn-timetable-action {
+        width: 100%;
+        justify-content: center;
+      }
+    }
   </style>
 </head>
 <body>
@@ -212,6 +374,19 @@
 
     <h1 class="hero-title">منصة تسهيل التعليمية</h1>
     <p class="hero-desc">اختر المادة لبدء المذاكرة.. شروحات مبسطة، نطق للمصطلحات، واختبارات تفاعلية</p>
+
+    <!-- Quick Timetable Action Button -->
+    <div style="margin-top: 16px;">
+      <a href="dental_timetable.html" class="hero-timetable-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        <span>جدول الاسبوع</span>
+      </a>
+    </div>
 
     <div class="cards-grid">
       <!-- Physiology Card -->
@@ -254,17 +429,44 @@
       </a>
     </div>
 
-    <!-- Quick Exam & Results Banner -->
-    <div style="max-width:760px;margin:32px auto 0;background:#ffffff;border:1.5px solid #dbeafe;border-radius:18px;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;box-shadow:0 4px 14px rgba(37,99,235,0.06)">
-      <div style="display:flex;align-items:center;gap:14px">
-        <div style="width:44px;height:44px;background:#eff6ff;color:#2563eb;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;flex-shrink:0">اختبار</div>
-        <div>
-          <div style="font-weight:800;font-size:15.5px;color:#0f172a">امتحان الفسيولوجي الشامل (Physiology Exam 1)</div>
-          <div style="font-size:13px;color:#64748b">20 سؤال MCQ بالاسم مع تصحيح فوري وشروحات طبية ولوحة نتائج</div>
+    <!-- Quick Actions & Banners -->
+    <div class="banners-wrapper">
+      <!-- Timetable Banner -->
+      <div class="quick-banner timetable-banner">
+        <div class="banner-info">
+          <div class="banner-icon-badge timetable-badge">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+          </div>
+          <div class="banner-text-content">
+            <div class="banner-title">جدول المحاضرات والسكاشن الأسبوعي (Level 1)</div>
+            <div class="banner-desc">مواعيد القاعات، المحاضرات العامة، وتوزيع معامل وسكاشن المجموعات</div>
+          </div>
+        </div>
+        <div class="banner-actions">
+          <a href="dental_timetable.html" class="btn-timetable-action">
+            <span>جدول الاسبوع</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
         </div>
       </div>
-      <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <a href="physiology_lecture_1_quiz.html" style="background:#2563eb;color:#ffffff;padding:9px 18px;border-radius:10px;text-decoration:none;font-weight:700;font-size:13.5px">دخول الامتحان</a>
+
+      <!-- Quick Exam & Results Banner -->
+      <div class="quick-banner exam-banner">
+        <div class="banner-info">
+          <div class="banner-icon-badge exam-badge">اختبار</div>
+          <div class="banner-text-content">
+            <div class="banner-title">امتحان الفسيولوجي الشامل (Physiology Exam 1)</div>
+            <div class="banner-desc">20 سؤال MCQ بالاسم مع تصحيح فوري وشروحات طبية ولوحة نتائج</div>
+          </div>
+        </div>
+        <div class="banner-actions">
+          <a href="physiology_lecture_1_quiz.html" class="btn-exam-action">دخول الامتحان</a>
+        </div>
       </div>
     </div>
   </main>

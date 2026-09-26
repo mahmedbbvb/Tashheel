@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>جدول طب الأسنان - Level 1 | منصة تسهيل</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Cairo', 'Inter', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+      color: #0f172a;
+      min-height: 100vh;
+      padding-bottom: 40px;
+    }
+
+    /* Top Bar */
+    .top-nav {
+      background: #ffffff;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 760px;
+      margin: 0 auto 24px;
+      border-radius: 0 0 16px 16px;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.03);
+    }
+    .nav-brand {
+      font-weight: 800;
+      font-size: 16px;
+      color: #1e3a8a;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #eff6ff;
+      color: #2563eb;
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 700;
+      padding: 7px 14px;
+      border-radius: 10px;
+      border: 1px solid #dbeafe;
+      transition: all 0.2s ease;
+    }
+    .back-btn:hover {
+      background: #2563eb;
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .container {
+      width: min(720px, 94%);
+      margin: 0 auto;
+    }
+    .header-box {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    h1 {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 6px;
+      color: #1e3a8a;
+    }
+    .header-desc {
+      font-size: 14px;
+      color: #64748b;
+      font-weight: 600;
+    }
+
+    .days {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .day-btn {
+      border: 1px solid #e2e8f0;
+      padding: 12px 6px;
+      border-radius: 12px;
+      background: #ffffff;
+      color: #334155;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 700;
+      font-family: inherit;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.03);
+    }
+    .day-btn:hover {
+      background: #eff6ff;
+      color: #1d4ed8;
+      border-color: #bfdbfe;
+    }
+    .day-btn.active {
+      background: #1e3a8a;
+      color: #ffffff;
+      border-color: #1e3a8a;
+      box-shadow: 0 4px 12px rgba(30, 58, 138, 0.25);
+    }
+    .schedule {
+      display: none;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .schedule.active {
+      display: flex;
+    }
+    .item {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 16px 20px;
+      border: 1.5px solid #e2e8f0;
+      border-right: 4px solid #b08a3c;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      text-align: right;
+    }
+    .item-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 2px;
+      flex-wrap: wrap;
+    }
+    .time {
+      font-weight: 800;
+      color: #1e3a8a;
+      font-size: 13.5px;
+      background: #eff6ff;
+      padding: 3px 10px;
+      border-radius: 6px;
+      direction: ltr;
+      display: inline-block;
+    }
+    .subject {
+      font-size: 16.5px;
+      font-weight: 800;
+      color: #0f172a;
+      font-family: 'Inter', 'Cairo', sans-serif;
+    }
+    .type {
+      display: inline-block;
+      padding: 3px 9px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .lecture {
+      background: #e0f2fe;
+      color: #0369a1;
+      border: 1px solid #bae6fd;
+    }
+    .section {
+      background: #fef3c7;
+      color: #92400e;
+      border: 1px solid #fde68a;
+    }
+
+    .details {
+      color: #64748b;
+      line-height: 1.6;
+      font-size: 13.5px;
+      font-weight: 600;
+    }
+    .note {
+      background: #fffbeb;
+      border: 1px solid #fef3c7;
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin-top: 18px;
+      font-size: 13.5px;
+      color: #92400e;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      line-height: 1.6;
+    }
+    @media (max-width: 520px) {
+      .days {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 4px;
+      }
+      .day-btn {
+        padding: 9px 2px;
+        font-size: 12.5px;
+        border-radius: 8px;
+      }
+      .item {
+        padding: 14px 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="top-nav">
+  <div class="nav-brand">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+      <line x1="16" y1="2" x2="16" y2="6"></line>
+      <line x1="8" y1="2" x2="8" y2="6"></line>
+      <line x1="3" y1="10" x2="21" y2="10"></line>
+    </svg>
+    <span>منصة تسهيل | جدول الأسبوع</span>
+  </div>
+  <a href="index.html" class="back-btn">
+    <span>← العودة للرئيسية</span>
+  </a>
+</div>
+
+<div class="container">
+  <div class="header-box">
+    <h1>جدول طب الأسنان - Level 1</h1>
+    <p class="header-desc">مواعيد المحاضرات والقاعات وتوزيع معامل وسكاشن المجموعات</p>
+  </div>
+
+  <div class="days">
+    <button class="day-btn active" data-day="sunday" onclick="showDay('sunday', this)">الأحد</button>
+    <button class="day-btn" data-day="monday" onclick="showDay('monday', this)">الاثنين</button>
+    <button class="day-btn" data-day="tuesday" onclick="showDay('tuesday', this)">الثلاثاء</button>
+    <button class="day-btn" data-day="wednesday" onclick="showDay('wednesday', this)">الأربعاء</button>
+    <button class="day-btn" data-day="thursday" onclick="showDay('thursday', this)">الخميس</button>
+  </div>
+
+  <div id="sunday" class="schedule active">
+    <div class="item">
+      <div class="item-header">
+        <div class="time">12:00 - 2:00</div>
+        <div class="type lecture">محاضرة</div>
+      </div>
+      <div class="subject">General Histology</div>
+      <div class="details">الكود: BMS122 — القاعة: K102</div>
+    </div>
+    <div class="item">
+      <div class="item-header">
+        <div class="time">2:00 - 4:00</div>
+        <div class="type lecture">محاضرة</div>
+      </div>
+      <div class="subject">General Anatomy</div>
+      <div class="details">الكود: BMS112 — القاعة: K102</div>
+    </div>
+    <div class="item">
+      <div class="item-header">
+        <div class="time">4:00 - 6:00</div>
+        <div class="type lecture">محاضرة</div>
+      </div>
+      <div class="subject">Entrepreneurship</div>
+      <div class="details">القاعة: K102</div>
+    </div>
+  </div>
+
+  <div id="monday" class="schedule">
+    <div class="item">
+      <div class="item-header">
+        <div class="time">11:00 - 1:00</div>
+        <div class="type lecture">محاضرة</div>
+      </div>
+      <div class="subject">Dental Biomaterials I</div>
+      <div class="details">الكود: PDD131 — القاعة: K102</div>
+    </div>
+    <div class="item">
+      <div class="item-header">
+        <div class="time">1:00 - 3:00</div>
+        <div class="type section">سكشن / Lab</div>
+      </div>
+      <div class="subject">Dental Biomaterials I Lab</div>
+      <div class="details">المجموعات: G8 + G9 + G10 + G7 + G6</div>
+    </div>
+    <div class="item">
+      <div class="item-header">
+        <div class="time">1:00 - 3:00</div>
+        <div class="type section">سكشن / Lab</div>
+      </div>
+      <div class="subject">Dental Anatomy I Lab</div>
+      <div class="details">المجموعة: G3 — المعمل: M302 / M303</div>
+    </div>
+    <div class="item">
+      <div class="item-header">
+        <div class="time">3:00 - 4:00</div>
+        <div class="type lecture">محاضرة</div>
+      </div>
+      <div class="subject">Dental Anatomy I</div>
+      <div class="details">الكود: BDS121 — القاعة: K102</div>
+    </div>
+    <div class="item">
+      <div class="item-header">
+        <div class="time">4:00 - 6:00</div>
+        <div class="type lecture">محاضرة</div>
+      </div>
+      <div class="subject">Biophysics</div>
+      <div class="details">الكود: PHY261 — القاعة: K102</div>
+    </div>
+  </div>
+
+  <div id="tuesday" class="schedule">
+    <div class="item">
+      <div class="item-header">
+        <div class="time">9:00 - 11:00</div>
+        <div class="type section">سكشن / Lab</div>
+      </div>
+      <div class="subject">Dental Anatomy I Lab</div>
+      <div class="details">المجموعات: G7 + G10 — المعمل: M302 / M303</div>
+    </div>
+    <div class="item">
+      <div class="item-header">
+        <div class="time">11:00 - 1:00</div>
+        <div class="type section">سكشن / Lab</div>
+      </div>
+      <div class="subject">Dental Anatomy I Lab</div>
+      <div class="details">المجموعة: G8 — المعمل: M302 / M303</div>
+    </div>
+    <div class="item">
+      <div class="item-header">
+        <div class="time">11:00 - 1:00</div>
+        <div class="type section">سكشن / Lab</div>
+      </div>
+      <div class="subject">Dental Biomaterials I Lab</div>
+      <div class="details">المجموعات: G1 + G2 + G3 + G4 + G5 — المعمل: K301</div>
+    </div>
+    <div class="item">
+      <div class="item-header">
+        <div class="time">1:00 - 3:00</div>
+        <div class="type lecture">محاضرة</div>
+      </div>
+      <div class="subject">General Physiology I</div>
+      <div class="details">الكود: BMS132 — القاعة: K102</div>
+    </div>
+    <div class="item">
+      <div class="item-header">
+        <div class="time">3:00 - 5:00</div>
+        <div class="type section">سكشن / Lab</div>
+      </div>
+      <div class="subject">Dental Anatomy I Lab</div>
+      <div class="details">المجموعة: G1 — المعمل: M302 / M303</div>
+    </div>
+  </div>
+
+  <div id="wednesday" class="schedule">
+    <div class="item">
+      <div class="item-header">
+        <div class="time">11:00 - 1:00</div>
+        <div class="type section">سكشن / Lab</div>
+      </div>
+      <div class="subject">Dental Anatomy I Lab</div>
+      <div class="details">المجموعات: G6 + G9 — المعمل: M302 / M303</div>
+    </div>
+    <div class="item">
+      <div class="item-header">
+        <div class="time">3:00 - 5:00</div>
+        <div class="type section">سكشن / Lab</div>
+      </div>
+      <div class="subject">Dental Anatomy I Lab</div>
+      <div class="details">المجموعات: G4 + G5 — المعمل: M302 / M303</div>
+    </div>
+  </div>
+
+  <div id="thursday" class="schedule">
+    <div class="item">
+      <div class="item-header">
+        <div class="time">8:00 - 10:00</div>
+        <div class="type lecture">محاضرة</div>
+      </div>
+      <div class="subject">Scientific Applications of Computers</div>
+      <div class="details">القاعة: G102</div>
+    </div>
+    <div class="item">
+      <div class="item-header">
+        <div class="time">10:00 - 12:00</div>
+        <div class="type section">سكشن / Lab</div>
+      </div>
+      <div class="subject">Dental Anatomy I Lab</div>
+      <div class="details">المجموعة: G2 — المعمل: M302 / M303</div>
+    </div>
+    <div class="item">
+      <div class="item-header">
+        <div class="time">2:00 - 4:00</div>
+        <div class="type lecture">محاضرة</div>
+      </div>
+      <div class="subject">Critical Thinking</div>
+      <div class="details">القاعة: K102</div>
+    </div>
+  </div>
+
+  <div class="note">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+    <div>المحاضرات العامة لجميع الطلاب، والـ Lab / Section يحضر فيه الجروب المحدد فقط.</div>
+  </div>
+</div>
+
+<script>
+function showDay(day, button) {
+  document.querySelectorAll('.schedule').forEach(el => el.classList.remove('active'));
+  const target = document.getElementById(day);
+  if (target) target.classList.add('active');
+
+  document.querySelectorAll('.day-btn').forEach(btn => btn.classList.remove('active'));
+  if (button) button.classList.add('active');
+}
+
+// Auto-select current day of week (Sunday to Thursday)
+(function initCurrentDay() {
+  const dayNum = new Date().getDay(); // 0: Sunday, 1: Monday, 2: Tuesday, 3: Wednesday, 4: Thursday, 5: Friday, 6: Saturday
+  const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday'];
+  const defaultDay = (dayNum >= 0 && dayNum <= 4) ? days[dayNum] : 'sunday';
+  const targetBtn = document.querySelector(`.day-btn[data-day="${defaultDay}"]`);
+  if (targetBtn) {
+    showDay(defaultDay, targetBtn);
+  }
+})();
+</script>
+</body>
+</html>
