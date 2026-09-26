@@ -10,14 +10,26 @@ export default async function handler(req, res) {
   }
 
   // 1. If Vercel KV / Upstash Redis is connected
-  const kvUrl = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
-  const kvToken = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
+  const kvUrl = process.env.STORAGE_REST_API_URL || 
+                process.env.KV_REST_API_URL || 
+                process.env.UPSTASH_REDIS_REST_URL ||
+                process.env.STORAGE_URL;
+
+  const kvToken = process.env.STORAGE_REST_API_TOKEN || 
+                  process.env.KV_REST_API_TOKEN || 
+                  process.env.UPSTASH_REDIS_REST_TOKEN ||
+                  process.env.STORAGE_TOKEN;
 
   if (req.method === 'DELETE') {
     if (kvUrl && kvToken) {
       try {
-        await fetch(`${kvUrl}/del/tashheel_exam_results`, {
-          headers: { Authorization: `Bearer ${kvToken}` }
+        await fetch(kvUrl, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${kvToken}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(["DEL", "tashheel_exam_results"])
         });
       } catch (e) {}
     }
