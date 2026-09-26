@@ -506,7 +506,7 @@
   <!-- Header -->
   <header class="dash-header">
     <div class="header-left">
-      <div class="logo-icon">📊</div>
+      <div class="logo-icon" style="font-weight:900;font-size:18px;">نتائج</div>
       <div class="header-titles">
         <h1>لوحة نتائج اختبارات الفسيولوجي</h1>
         <p>Physiology Lecture 1 • سجل الدرجات مرتبة تنازلياً من الأعلى إلى الأقل</p>
@@ -515,22 +515,22 @@
     
     <div class="header-actions">
       <a href="physiology_lecture_1_quiz.html" class="btn btn-primary">
-        ✍️ الذهاب لصفحة الامتحان
+        صفحة الامتحان
       </a>
       <button class="btn btn-success" onclick="downloadJSON()">
-        📥 تحميل ملف results.json
+        تحميل ملف results.json
       </button>
       <button class="btn" onclick="exportToCSV()">
-        📄 تصدير Excel (CSV)
+        تصدير Excel (CSV)
       </button>
       <button class="btn" onclick="document.getElementById('importInput').click()">
-        📤 استيراد results.json
+        استيراد results.json
       </button>
       <button class="btn" onclick="toggleJSONViewer()">
-        { } عرض كود JSON
+        عرض كود JSON
       </button>
       <button class="btn" onclick="loadAllResults(true)" title="تحديث البيانات">
-        🔄 تحديث
+        تحديث
       </button>
       <input type="file" id="importInput" accept=".json" onchange="importJSON(event)" />
     </div>
@@ -539,7 +539,7 @@
   <!-- Stats Grid -->
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-icon blue">👥</div>
+      <div class="stat-icon blue" style="font-weight:800;font-size:13px">العدد</div>
       <div>
         <div class="stat-val" id="statTotalStudents">0</div>
         <div class="stat-label">إجمالي الطلاب الممتحنين</div>
@@ -547,7 +547,7 @@
     </div>
 
     <div class="stat-card">
-      <div class="stat-icon green">🏆</div>
+      <div class="stat-icon green" style="font-weight:800;font-size:13px">الأعلى</div>
       <div>
         <div class="stat-val" id="statTopScore">0 / 20</div>
         <div class="stat-label">أعلى درجة مسجلة</div>
@@ -555,7 +555,7 @@
     </div>
 
     <div class="stat-card">
-      <div class="stat-icon purple">📈</div>
+      <div class="stat-icon purple" style="font-weight:800;font-size:13px">المعدل</div>
       <div>
         <div class="stat-val" id="statAvgScore">0%</div>
         <div class="stat-label">متوسط درجات الدفعة</div>
@@ -563,7 +563,7 @@
     </div>
 
     <div class="stat-card">
-      <div class="stat-icon amber">🎯</div>
+      <div class="stat-icon amber" style="font-weight:800;font-size:13px">النسبة</div>
       <div>
         <div class="stat-val" id="statPassRate">0%</div>
         <div class="stat-label">نسبة النجاح (≥60%)</div>

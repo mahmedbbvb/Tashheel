@@ -46,139 +46,39 @@
     width: 100%;
     margin: 0 auto;
     padding: 24px 16px 60px;
-  }
-
-  /* ── Header ── */
-  .quiz-header {
-    background: var(--card-bg);
-    border-radius: 20px;
-    padding: 24px 28px;
-    margin-bottom: 24px;
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow-sm);
+    flex: 1;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 16px;
+    flex-direction: column;
   }
 
-  .header-left {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-
-  .logo-icon {
-    width: 48px;
-    height: 48px;
-    background: linear-gradient(135deg, #2563eb, #4f46e5);
-    border-radius: 14px;
+  /* ── Initial Screen: ONLY Name Input and Start Button ── */
+  .start-wrapper {
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    font-size: 24px;
+    min-height: 70vh;
   }
 
-  .header-titles h1 {
-    font-size: 20px;
-    font-weight: 800;
-    color: var(--text-main);
-  }
-
-  .header-titles p {
-    font-size: 13.5px;
-    color: var(--text-muted);
-  }
-
-  .nav-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: #f1f5f9;
-    border: 1px solid var(--border);
-    padding: 8px 14px;
-    border-radius: 10px;
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--text-main);
-    text-decoration: none;
-    transition: 0.2s;
-  }
-  .nav-btn:hover {
-    background: #e2e8f0;
-    color: var(--primary);
-  }
-
-  /* ── Student Start Screen ── */
   .start-card {
     background: var(--card-bg);
-    border-radius: 24px;
-    padding: 40px 32px;
+    border-radius: 20px;
+    padding: 32px 26px;
     border: 1px solid var(--border);
     box-shadow: var(--shadow-md);
-    text-align: center;
-    max-width: 580px;
-    margin: 30px auto;
-  }
-
-  .start-icon {
-    font-size: 54px;
-    margin-bottom: 12px;
-  }
-
-  .start-card h2 {
-    font-size: 24px;
-    font-weight: 800;
-    margin-bottom: 8px;
-    color: var(--text-main);
-  }
-
-  .start-card p {
-    font-size: 14.5px;
-    color: var(--text-muted);
-    margin-bottom: 24px;
-  }
-
-  .exam-info-chips {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-bottom: 26px;
-  }
-
-  .info-chip {
-    background: #f8fafc;
-    border: 1px solid var(--border);
-    padding: 8px 14px;
-    border-radius: 10px;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text-main);
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
   }
 
   .form-group {
-    text-align: right;
-    margin-bottom: 22px;
-  }
-
-  .form-label {
-    display: block;
-    font-size: 14px;
-    font-weight: 700;
-    margin-bottom: 8px;
-    color: var(--text-main);
+    margin-bottom: 16px;
   }
 
   .form-input {
     width: 100%;
-    padding: 14px 16px;
-    font-size: 15px;
+    padding: 14px 18px;
+    font-size: 16px;
     font-family: inherit;
     border: 1.5px solid var(--border);
     border-radius: 12px;
@@ -186,6 +86,7 @@
     color: var(--text-main);
     transition: 0.2s;
     outline: none;
+    text-align: center;
   }
 
   .form-input:focus {
@@ -195,34 +96,30 @@
 
   .btn-start {
     width: 100%;
-    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    background: var(--primary);
     color: white;
     border: none;
-    padding: 15px;
+    padding: 14px;
     font-size: 16px;
     font-weight: 800;
-    border-radius: 14px;
+    border-radius: 12px;
     cursor: pointer;
     transition: all 0.2s;
     font-family: inherit;
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
   }
-  .btn-start:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
-  }
-  .btn-start:disabled {
-    background: #cbd5e1;
-    cursor: not-allowed;
-    box-shadow: none;
+  .btn-start:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
   }
 
   /* ── Exam In-Progress Screen ── */
   .exam-bar {
     position: sticky;
-    top: 16px;
+    top: 14px;
     z-index: 99;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.96);
     backdrop-filter: blur(8px);
     border-radius: 16px;
     padding: 14px 20px;
@@ -237,10 +134,7 @@
   }
 
   .student-badge {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: 700;
+    font-weight: 800;
     font-size: 14.5px;
     color: var(--primary);
   }
@@ -273,9 +167,9 @@
   /* Question Cards */
   .question-card {
     background: var(--card-bg);
-    border-radius: 18px;
-    padding: 24px;
-    margin-bottom: 18px;
+    border-radius: 16px;
+    padding: 22px;
+    margin-bottom: 16px;
     border: 1.5px solid var(--border);
     box-shadow: var(--shadow-sm);
     transition: all 0.2s;
@@ -286,57 +180,53 @@
   }
 
   .question-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 12px;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
   }
 
   .q-number {
     background: #eff6ff;
     color: var(--primary);
-    padding: 4px 10px;
-    border-radius: 8px;
-    font-size: 12.5px;
+    padding: 3px 9px;
+    border-radius: 6px;
+    font-size: 12px;
     font-weight: 800;
-    letter-spacing: 0.5px;
+    font-family: 'Inter', system-ui, sans-serif;
   }
 
   .q-title {
     font-family: 'Inter', system-ui, sans-serif;
     direction: ltr;
     text-align: left;
-    font-size: 16.5px;
+    font-size: 16px;
     font-weight: 600;
     color: #1e293b;
     line-height: 1.5;
-    flex: 1;
+    margin-top: 8px;
   }
 
   .options-list {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 9px;
     direction: ltr;
     text-align: left;
     font-family: 'Inter', system-ui, sans-serif;
+    margin-top: 14px;
   }
 
   .option-label {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 12px 16px;
+    padding: 11px 15px;
     border: 1.5px solid #e2e8f0;
-    border-radius: 12px;
+    border-radius: 10px;
     cursor: pointer;
     transition: all 0.15s ease;
     background: #ffffff;
     font-size: 14.5px;
     font-weight: 500;
     color: #334155;
-    position: relative;
     user-select: none;
   }
 
@@ -347,8 +237,8 @@
 
   .option-label input[type="radio"] {
     accent-color: var(--primary);
-    width: 17px;
-    height: 17px;
+    width: 16px;
+    height: 16px;
     cursor: pointer;
   }
 
@@ -361,61 +251,61 @@
 
   /* Submit Button */
   .submit-bar {
-    margin-top: 28px;
+    margin-top: 26px;
     text-align: center;
   }
 
   .btn-submit {
-    background: linear-gradient(135deg, #16a34a, #15803d);
+    background: #16a34a;
     color: white;
     border: none;
-    padding: 16px 40px;
-    font-size: 17px;
+    padding: 15px 36px;
+    font-size: 16.5px;
     font-weight: 800;
-    border-radius: 14px;
+    border-radius: 12px;
     cursor: pointer;
     transition: all 0.2s;
-    box-shadow: 0 4px 14px rgba(22, 163, 74, 0.25);
     font-family: inherit;
-    min-width: 260px;
+    min-width: 240px;
   }
   .btn-submit:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(22, 163, 74, 0.35);
+    background: #15803d;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(22, 163, 74, 0.3);
   }
 
   /* ── Result & Correction Screen ── */
   .result-card {
     background: var(--card-bg);
-    border-radius: 24px;
-    padding: 36px 28px;
+    border-radius: 20px;
+    padding: 32px 24px;
     border: 1px solid var(--border);
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-md);
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 26px;
     animation: fadeIn 0.3s ease;
   }
 
   .score-circle {
-    width: 110px;
-    height: 110px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     margin: 0 auto 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #eff6ff, #dbeafe);
+    background: #eff6ff;
     border: 4px solid var(--primary);
   }
 
   .score-circle.perfect {
-    background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+    background: #f0fdf4;
     border-color: var(--success);
   }
 
   .score-num {
-    font-size: 32px;
+    font-size: 30px;
     font-weight: 900;
     color: var(--primary);
     line-height: 1;
@@ -425,34 +315,20 @@
   }
 
   .score-total {
-    font-size: 13px;
+    font-size: 12.5px;
     color: var(--text-muted);
     font-weight: 700;
   }
 
   .result-title {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 800;
     margin-bottom: 6px;
   }
 
   .result-subtitle {
-    font-size: 15px;
+    font-size: 14.5px;
     color: var(--text-muted);
-    margin-bottom: 18px;
-  }
-
-  .saved-alert {
-    background: #ecfdf5;
-    border: 1px solid #a7f3d0;
-    color: #065f46;
-    padding: 10px 16px;
-    border-radius: 12px;
-    font-size: 13.5px;
-    font-weight: 700;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
     margin-bottom: 24px;
   }
 
@@ -466,11 +342,11 @@
   .action-btn {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 12px 22px;
-    border-radius: 12px;
+    justify-content: center;
+    padding: 11px 22px;
+    border-radius: 10px;
     font-weight: 700;
-    font-size: 14.5px;
+    font-size: 14px;
     text-decoration: none;
     cursor: pointer;
     border: none;
@@ -487,13 +363,12 @@
   .btn-view-results {
     background: var(--primary);
     color: white;
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
   }
   .btn-view-results:hover { background: var(--primary-dark); }
 
   /* Detailed Correction Section */
   .corrections-section {
-    margin-top: 32px;
+    margin-top: 28px;
     text-align: right;
   }
 
@@ -501,17 +376,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
     flex-wrap: wrap;
     gap: 10px;
   }
 
   .section-header h3 {
-    font-size: 19px;
+    font-size: 18px;
     font-weight: 800;
-    display: flex;
-    align-items: center;
-    gap: 8px;
   }
 
   .toggle-filter-btn {
@@ -520,7 +392,7 @@
     padding: 6px 14px;
     border-radius: 8px;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
     font-family: inherit;
     color: var(--text-muted);
@@ -529,9 +401,9 @@
 
   .correction-card {
     background: var(--card-bg);
-    border-radius: 16px;
-    padding: 20px;
-    margin-bottom: 16px;
+    border-radius: 14px;
+    padding: 18px;
+    margin-bottom: 14px;
     border: 1.5px solid var(--border);
     box-shadow: var(--shadow-sm);
   }
@@ -550,11 +422,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
 
   .q-badge-status {
-    padding: 4px 10px;
+    padding: 3px 9px;
     border-radius: 6px;
     font-size: 12px;
     font-weight: 800;
@@ -573,25 +445,25 @@
     direction: ltr;
     text-align: left;
     font-weight: 600;
-    font-size: 15.5px;
+    font-size: 15px;
     color: #1e293b;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
   }
 
   .answers-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 10px;
-    margin-bottom: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 9px;
+    margin-bottom: 14px;
     font-family: 'Inter', system-ui, sans-serif;
     direction: ltr;
     text-align: left;
   }
 
   .ans-box {
-    padding: 10px 14px;
-    border-radius: 10px;
-    font-size: 14px;
+    padding: 9px 12px;
+    border-radius: 8px;
+    font-size: 13.5px;
     font-weight: 600;
   }
   .ans-user-wrong {
@@ -608,44 +480,39 @@
   /* Medical Explanation Box */
   .medical-explanation {
     background: #f8fafc;
-    border-right: 4px solid var(--primary);
-    border-radius: 10px;
-    padding: 14px 16px;
+    border-right: 3px solid var(--primary);
+    border-radius: 8px;
+    padding: 12px 14px;
     margin-top: 10px;
-    font-size: 14px;
+    font-size: 13.5px;
     line-height: 1.8;
   }
 
   .explanation-title {
     font-weight: 800;
     color: var(--primary);
-    font-size: 13.5px;
-    margin-bottom: 4px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    font-size: 13px;
+    margin-bottom: 3px;
   }
 
   .medical-terms {
     margin-top: 8px;
     padding-top: 8px;
     border-top: 1px dashed #cbd5e1;
-    font-size: 12.5px;
+    font-size: 12px;
     color: #475569;
     font-weight: 600;
   }
 
   @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
+    from { opacity: 0; transform: translateY(8px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* Responsive */
   @media (max-width: 640px) {
-    .quiz-header { flex-direction: column; align-items: flex-start; }
     .exam-bar { flex-direction: column; align-items: flex-start; }
     .result-actions { flex-direction: column; width: 100%; }
-    .action-btn { width: 100%; justify-content: center; }
+    .action-btn { width: 100%; }
   }
 </style>
 </head>
@@ -653,58 +520,27 @@
 
 <div class="container">
 
-  <!-- Header -->
-  <header class="quiz-header">
-    <div class="header-left">
-      <div class="logo-icon">🧠</div>
-      <div class="header-titles">
-        <h1>امتحان الفسيولوجي — المحاضرة الأولى</h1>
-        <p>Somatic Nervous System • اختبار شامل 20 سؤالاً مع التصحيح الفوري</p>
-      </div>
-    </div>
-    <div>
-      <a href="../../results.html" class="nav-btn" title="لوحة نتائج الطلاب">
-        📊 نتائج الامتحانات
-      </a>
-      <a href="../index.html" class="nav-btn">
-        ← قائمة المحاضرات
-      </a>
-    </div>
-  </header>
-
-  <!-- SCREEN 1: Name Input (Start Screen) -->
-  <div id="startScreen" class="start-card">
-    <div class="start-icon">📝</div>
-    <h2>مرحباً بك في اختبار الفسيولوجي</h2>
-    <p>المحاضرة الأولى: الجهاز العصبي الجسدي والمسارات الحركية والحسية</p>
-
-    <div class="exam-info-chips">
-      <div class="info-chip"><span>🎯</span> 20 سؤال اختيار من متعدد</div>
-      <div class="info-chip"><span>⏱️</span> بدون وقت محدد</div>
-      <div class="info-chip"><span>🩺</span> شروحات بالمصطلحات الطبية</div>
-    </div>
-
-    <form id="startForm" onsubmit="startExam(event)">
-      <div class="form-group">
-        <label for="studentName" class="form-label">اكتب اسمك كاملاً لبدء الامتحان: <span style="color:var(--danger)">*</span></label>
-        <input 
-          type="text" 
-          id="studentName" 
-          class="form-input" 
-          placeholder="مثال: محمد أحمد علي..." 
-          required 
-          autocomplete="name"
-          oninput="checkNameInput(this)"
-        />
-        <div style="font-size:12px;color:var(--text-muted);margin-top:6px">
-          * سيتم تسجيل نتيجتك وحفظها في ملف نتائج الامتحانات (results.json) باسمك.
+  <!-- SCREEN 1: ONLY Name Input and Start Exam Button -->
+  <div id="startScreen" class="start-wrapper">
+    <div class="start-card">
+      <form id="startForm" onsubmit="startExam(event)">
+        <div class="form-group">
+          <input 
+            type="text" 
+            id="studentName" 
+            class="form-input" 
+            placeholder="الاسم" 
+            required 
+            autocomplete="name"
+            autofocus
+          />
         </div>
-      </div>
 
-      <button type="submit" id="startBtn" class="btn-start" disabled>
-        🚀 ابدأ الامتحان الآن
-      </button>
-    </form>
+        <button type="submit" id="startBtn" class="btn-start">
+          بدء الامتحان
+        </button>
+      </form>
+    </div>
   </div>
 
   <!-- SCREEN 2: Exam In-Progress (Hidden by default) -->
@@ -712,12 +548,12 @@
     
     <div class="exam-bar">
       <div class="student-badge">
-        <span>👤 الطالب:</span>
+        <span>الطالب: </span>
         <span id="activeStudentName"></span>
       </div>
       <div class="exam-stats">
         <div>تمت الإجابة: <span id="answeredCount" style="color:var(--primary);font-weight:800">0</span> / 20</div>
-        <div>⏱️ الوقت: <span id="examTimer">00:00</span></div>
+        <div>الوقت: <span id="examTimer">00:00</span></div>
       </div>
       <div class="progress-wrap">
         <div id="progressFill" class="progress-fill"></div>
@@ -729,7 +565,7 @@
 
     <div class="submit-bar">
       <button type="button" class="btn-submit" onclick="submitExam()">
-        ✓ تسليم الامتحان وإنهاء الاختبار
+        تسليم الامتحان وإنهاء الاختبار
       </button>
     </div>
   </div>
@@ -746,28 +582,17 @@
       <div class="result-title" id="resultGreeting">نتيجتك في الامتحان</div>
       <div class="result-subtitle" id="resultSubtext"></div>
 
-      <div class="saved-alert" id="saveStatus">
-        <span>💾</span>
-        <span>جاري حفظ النتيجة في ملف results.json...</span>
-      </div>
-
       <div class="result-actions">
         <button type="button" class="action-btn btn-retake" onclick="resetExam()">
-          🔄 إعادة الامتحان
+          إعادة الامتحان
         </button>
-        <a href="results.html" class="action-btn btn-view-results">
-          📊 فتح لوحة نتائج الامتحانات وترتيب الطلاب
-        </a>
       </div>
     </div>
 
     <!-- Detailed Corrections Section -->
     <div class="corrections-section">
       <div class="section-header">
-        <h3>
-          <span>🩺</span>
-          <span>تصحيح الأسئلة والشرح الطبي بالعربية</span>
-        </h3>
+        <h3>تصحيح الأسئلة والشرح الطبي بالعربية</h3>
         <div>
           <button class="toggle-filter-btn" id="filterToggleBtn" onclick="toggleCorrectionFilter()">
             عرض الأسئلة الخاطئة فقط
@@ -807,7 +632,7 @@ const questions = [
   ["Which statement is CORRECT?", ["Somatic = Involuntary","Autonomic = Voluntary","Somatic uses one motor neuron","Autonomic uses no ganglion"], "C"]
 ];
 
-// Rich Arabic Explanations & Medical Terms
+// Rich Arabic Explanations & Medical Terms (Zero Emojis)
 const explanations = {
   0: {
     rule: "وظيفة الجهاز العصبي الجسدي (Somatic Nervous System)",
@@ -911,27 +736,54 @@ const explanations = {
   }
 };
 
+const SESSION_STORAGE_KEY = "tashheel_physio_quiz_session_v1";
+
+function persistSession(updates) {
+  try {
+    const raw = localStorage.getItem(SESSION_STORAGE_KEY);
+    const curr = raw ? JSON.parse(raw) : {};
+    const merged = { ...curr, ...updates };
+    localStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(merged));
+  } catch (e) {}
+}
+
+function getSession() {
+  try {
+    const raw = localStorage.getItem(SESSION_STORAGE_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch (e) {
+    return null;
+  }
+}
+
+function clearSession() {
+  try {
+    localStorage.removeItem(SESSION_STORAGE_KEY);
+  } catch (e) {}
+}
+
 let currentStudentName = "";
 let examStartTime = 0;
 let timerInterval = null;
 let onlyShowWrong = false;
 let lastExamResult = null;
 
-// Validate Name Input
-function checkNameInput(input) {
-  const btn = document.getElementById("startBtn");
-  btn.disabled = input.value.trim().length < 3;
-}
-
 // Start Exam
 function startExam(e) {
-  e.preventDefault();
+  if (e) e.preventDefault();
   const nameInput = document.getElementById("studentName");
   currentStudentName = nameInput.value.trim();
 
-  if (currentStudentName.length < 3) return;
+  if (currentStudentName.length < 2) {
+    nameInput.focus();
+    nameInput.setCustomValidity("يرجى إدخال الاسم للبدء");
+    nameInput.reportValidity();
+    return;
+  }
+  nameInput.setCustomValidity("");
 
   document.getElementById("startScreen").style.display = "none";
+  document.getElementById("resultScreen").style.display = "none";
   document.getElementById("examScreen").style.display = "block";
   document.getElementById("activeStudentName").textContent = currentStudentName;
 
@@ -939,6 +791,13 @@ function startExam(e) {
 
   examStartTime = Date.now();
   timerInterval = setInterval(updateTimer, 1000);
+
+  persistSession({
+    screen: "exam",
+    studentName: currentStudentName,
+    startTime: examStartTime,
+    answers: {}
+  });
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
@@ -987,8 +846,10 @@ function renderQuestions() {
 // Select Option Interaction
 function selectOption(qIndex, letter) {
   const card = document.getElementById(`qCard_${qIndex}`);
-  const labels = card.querySelectorAll(".option-label");
-  labels.forEach(l => l.classList.remove("selected"));
+  if (card) {
+    const labels = card.querySelectorAll(".option-label");
+    labels.forEach(l => l.classList.remove("selected"));
+  }
 
   const targetLabel = document.getElementById(`optLabel_${qIndex}_${letter}`);
   if (targetLabel) {
@@ -998,6 +859,12 @@ function selectOption(qIndex, letter) {
   }
 
   updateProgress();
+
+  // Persist selected answer to session
+  const session = getSession() || {};
+  const currentAnswers = session.answers || {};
+  currentAnswers[qIndex] = letter;
+  persistSession({ answers: currentAnswers });
 }
 
 // Update Progress Bar
@@ -1024,7 +891,7 @@ function submitExam() {
 
   if (answeredCount < questions.length) {
     const remaining = questions.length - answeredCount;
-    const confirmSubmit = confirm(`تنبيه: يوجد ${remaining} سؤال لم تقم بالإجابة عليها بعد!\n\nهل أنت متأكد من رغبتك في تسليم الامتحان الآن؟`);
+    const confirmSubmit = confirm(`تنبيه: يوجد ${remaining} سؤال لم تقم بالإجابة عليها بعد.\n\nهل تريد تسليم الامتحان بالتأكيد؟`);
     if (!confirmSubmit) return;
   }
 
@@ -1074,7 +941,7 @@ function submitExam() {
     score: score,
     total: questions.length,
     percentage: percentage,
-    wrongQuestions: wrongQuestions, // أرقام الأسئلة التي أخطأ فيها
+    wrongQuestions: wrongQuestions,
     wrongDetails: wrongDetails,
     date: dateStr,
     timestamp: Date.now()
@@ -1088,11 +955,23 @@ function submitExam() {
   // Save to LocalStorage
   saveResultToLocalStorage(examResultData);
 
-  // Send to Server (results.json)
+  // Send to Server quietly in background (without displaying any message)
   saveResultToServer(examResultData);
+
+  // Persist session state as 'result'
+  persistSession({
+    screen: "result",
+    studentName: currentStudentName,
+    score: score,
+    percentage: percentage,
+    allResults: allResults,
+    wrongQuestions: wrongQuestions,
+    onlyShowWrong: false
+  });
 
   // Render Result Screen
   showResultScreen(score, percentage, allResults, wrongQuestions);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 // Save to LocalStorage
@@ -1107,33 +986,22 @@ function saveResultToLocalStorage(resultData) {
   }
 }
 
-// Save to Server API (writes to results.json)
+// Save to Server API (writes to results.json quietly in background)
 async function saveResultToServer(resultData) {
-  const statusEl = document.getElementById("saveStatus");
-  statusEl.innerHTML = `<span>⏳</span><span>جاري حفظ النتيجة في ملف results.json...</span>`;
-
   try {
-    const response = await fetch('/api/save-result', {
+    await fetch('/api/save-result', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(resultData)
     });
-
-    if (response.ok) {
-      statusEl.className = "saved-alert";
-      statusEl.innerHTML = `<span>✅</span><span>تم حفظ نتيجتك بنجاح في ملف <strong>results.json</strong> وعلى الخادم!</span>`;
-    } else {
-      throw new Error("Server responded with error status");
-    }
   } catch (err) {
-    // If running statically without local node/python server
-    statusEl.className = "saved-alert";
-    statusEl.innerHTML = `<span>✅</span><span>تم حفظ النتيجة محلياً بنجاح! يمكنك تحميل ملف results.json من لوحة النتائج.</span>`;
+    // Fail silently in background
   }
 }
 
 // Show Result Screen
 function showResultScreen(score, percentage, allResults, wrongQuestions) {
+  document.getElementById("startScreen").style.display = "none";
   document.getElementById("examScreen").style.display = "none";
   document.getElementById("resultScreen").style.display = "block";
 
@@ -1151,17 +1019,17 @@ function showResultScreen(score, percentage, allResults, wrongQuestions) {
   const subtext = document.getElementById("resultSubtext");
 
   if (percentage === 100) {
-    greeting.textContent = `🎉 ما شاء الله يا ${currentStudentName}! الدرجة الكاملة!`;
-    subtext.textContent = "أداء ممتاز وخالٍ من أي خطأ.. استيعابك للمحاضرة بنسبة 100%.";
+    greeting.textContent = `الدرجة كاملة، أحسنت يا ${currentStudentName}!`;
+    subtext.textContent = "إجاباتك صحيحة بالكامل بنسبة 100%.";
   } else if (percentage >= 85) {
-    greeting.textContent = `🔥 أحسنت جداً يا ${currentStudentName}!`;
-    subtext.textContent = `حصلت على ${score} من 20 (${percentage}%) — أداء رائع ومتميز جداً!`;
+    greeting.textContent = `أداء ممتاز يا ${currentStudentName}!`;
+    subtext.textContent = `حصلت على ${score} من 20 (${percentage}%)`;
   } else if (percentage >= 60) {
-    greeting.textContent = `👏 نتيجة جيدة يا ${currentStudentName}!`;
-    subtext.textContent = `حصلت على ${score} من 20 (${percentage}%) — نجحت في الامتحان، وراجع تصحيح الأخطاء أدناه لتثبيت المعلومة.`;
+    greeting.textContent = `نتيجة جيدة يا ${currentStudentName}`;
+    subtext.textContent = `حصلت على ${score} من 20 (${percentage}%) - راجع تصحيح الأسئلة أدناه.`;
   } else {
-    greeting.textContent = `📚 فرصة للتعلم والتحسين يا ${currentStudentName}!`;
-    subtext.textContent = `حصلت على ${score} من 20 (${percentage}%) — راجع الشروحات الطبية أدناه وأعد الاختبار مرة أخرى.`;
+    greeting.textContent = `فرصة للمراجعة والتحسين يا ${currentStudentName}`;
+    subtext.textContent = `حصلت على ${score} من 20 (${percentage}%) - راجع الشروحات الطبية وأعد المحاولة.`;
   }
 
   renderCorrections(allResults, onlyShowWrong);
@@ -1177,8 +1045,8 @@ function renderCorrections(allResults, onlyWrong) {
 
   if (itemsToShow.length === 0) {
     container.innerHTML = `
-      <div style="background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:24px;border-radius:16px;text-align:center;font-weight:700">
-        🌟 رائع! لا توجد أي أسئلة خاطئة في هذا الاختبار. كل إجاباتك صحيحة تماماً!
+      <div style="background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:20px;border-radius:12px;text-align:center;font-weight:700">
+        جميع إجاباتك صحيحة تماماً في هذا الاختبار.
       </div>
     `;
     return;
@@ -1193,9 +1061,9 @@ function renderCorrections(allResults, onlyWrong) {
 
     card.innerHTML = `
       <div class="correction-header">
-        <span style="font-weight:800;font-size:14px">السؤال ${item.questionNumber} من 20</span>
+        <span style="font-weight:800;font-size:13.5px">السؤال ${item.questionNumber} من 20</span>
         <span class="q-badge-status ${item.isCorrect ? 'status-correct' : 'status-wrong'}">
-          ${item.isCorrect ? '✓ إجابة صحيحة' : '✗ إجابة خاطئة'}
+          ${item.isCorrect ? 'إجابة صحيحة' : 'إجابة خاطئة'}
         </span>
       </div>
 
@@ -1204,21 +1072,18 @@ function renderCorrections(allResults, onlyWrong) {
       <div class="answers-grid">
         ${!item.isCorrect ? `
           <div class="ans-box ans-user-wrong">
-            ❌ إجابتك: <strong>${item.studentAnswer}</strong>
+            إجابتك: <strong>${item.studentAnswer}</strong>
           </div>
         ` : ''}
         <div class="ans-box ans-correct-key">
-          ✅ الإجابة الصحيحة: <strong>${item.correctAnswer}) ${item.options[item.correctAnswer.charCodeAt(0) - 65]}</strong>
+          الإجابة الصحيحة: <strong>${item.correctAnswer}) ${item.options[item.correctAnswer.charCodeAt(0) - 65]}</strong>
         </div>
       </div>
 
       <div class="medical-explanation">
-        <div class="explanation-title">
-          <span>🩺</span>
-          <span>${exp.rule}:</span>
-        </div>
+        <div class="explanation-title">${exp.rule}:</div>
         <p>${exp.ar}</p>
-        ${exp.terms ? `<div class="medical-terms">📌 مصطلحات طبية: ${exp.terms}</div>` : ''}
+        ${exp.terms ? `<div class="medical-terms">مصطلحات طبية: ${exp.terms}</div>` : ''}
       </div>
     `;
 
@@ -1233,19 +1098,87 @@ function toggleCorrectionFilter() {
   const btn = document.getElementById("filterToggleBtn");
   btn.textContent = onlyShowWrong ? "عرض جميع الأسئلة العشرين" : "عرض الأسئلة الخاطئة فقط";
   renderCorrections(lastExamResult.allResults, onlyShowWrong);
+  persistSession({ onlyShowWrong: onlyShowWrong });
 }
 
 // Reset Exam
 function resetExam() {
   if (confirm("هل تريد إعادة أداء الامتحان من جديد؟")) {
-    document.getElementById("resultScreen").style.display = "none";
-    document.getElementById("startScreen").style.display = "block";
-    document.getElementById("studentName").value = "";
-    document.getElementById("startBtn").disabled = true;
+    clearSession();
+    clearInterval(timerInterval);
     lastExamResult = null;
+    currentStudentName = "";
+
+    document.getElementById("resultScreen").style.display = "none";
+    document.getElementById("examScreen").style.display = "none";
+    document.getElementById("startScreen").style.display = "flex";
+
+    const nameInput = document.getElementById("studentName");
+    if (nameInput) {
+      nameInput.value = "";
+      nameInput.focus();
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }
+
+// Restore active session on page reload (stay on the same screen)
+function initFromSession() {
+  const session = getSession();
+  if (!session || !session.screen) return;
+
+  if (session.screen === "exam" && session.studentName) {
+    currentStudentName = session.studentName;
+    examStartTime = session.startTime || Date.now();
+
+    document.getElementById("startScreen").style.display = "none";
+    document.getElementById("resultScreen").style.display = "none";
+    document.getElementById("examScreen").style.display = "block";
+    document.getElementById("activeStudentName").textContent = currentStudentName;
+
+    renderQuestions();
+
+    // Re-check previously chosen answers
+    if (session.answers) {
+      Object.entries(session.answers).forEach(([qIdx, letter]) => {
+        const targetLabel = document.getElementById(`optLabel_${qIdx}_${letter}`);
+        if (targetLabel) {
+          targetLabel.classList.add("selected");
+          const radio = targetLabel.querySelector('input[type="radio"]');
+          if (radio) radio.checked = true;
+        }
+      });
+    }
+
+    updateProgress();
+    updateTimer();
+    timerInterval = setInterval(updateTimer, 1000);
+  } else if (session.screen === "result" && session.allResults) {
+    currentStudentName = session.studentName || "";
+    onlyShowWrong = !!session.onlyShowWrong;
+
+    lastExamResult = {
+      data: {
+        name: currentStudentName,
+        score: session.score,
+        total: questions.length,
+        percentage: session.percentage,
+        wrongQuestions: session.wrongQuestions
+      },
+      allResults: session.allResults
+    };
+
+    const btn = document.getElementById("filterToggleBtn");
+    if (btn) {
+      btn.textContent = onlyShowWrong ? "عرض جميع الأسئلة العشرين" : "عرض الأسئلة الخاطئة فقط";
+    }
+
+    showResultScreen(session.score, session.percentage, session.allResults, session.wrongQuestions);
+  }
+}
+
+// Restore state when page loads
+initFromSession();
 </script>
 
 </body>
