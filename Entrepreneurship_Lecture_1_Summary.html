@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entrepreneurship & Innovation - Lecture 1 Summary | د. محمد البغدادي</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-gradient: linear-gradient(135deg, #f0fdfa 0%, #f1f5f9 50%, #f8fafc 100%);
+    --card-bg: #ffffff;
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --text-muted: #64748b;
+    --primary: #0f766e;
+    --primary-light: #f0fdfa;
+    --primary-border: #ccfbf1;
+    --primary-dark: #115e59;
+    --accent: #2563eb;
+    --accent-light: #eff6ff;
+    --success: #16a34a;
+    --success-bg: #f0fdf4;
+    --success-border: #bbf7d0;
+    --warning: #d97706;
+    --warning-bg: #fffbeb;
+    --warning-border: #fde68a;
+    --border-color: #e2e8f0;
+    --shadow-sm: 0 1px 4px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 18px rgba(0,0,0,0.06);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.09);
+  }
+
+  [data-theme="dark"] {
+    --bg-gradient: linear-gradient(135deg, #042f2e 0%, #0f172a 50%, #022c22 100%);
+    --card-bg: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --primary: #14b8a6;
+    --primary-light: rgba(20, 184, 166, 0.12);
+    --primary-border: rgba(20, 184, 166, 0.25);
+    --primary-dark: #0d9488;
+    --accent: #38bdf8;
+    --accent-light: rgba(56, 189, 248, 0.12);
+    --success: #34d399;
+    --success-bg: rgba(52, 211, 153, 0.12);
+    --success-border: rgba(52, 211, 153, 0.3);
+    --warning: #fbbf24;
+    --warning-bg: rgba(251, 191, 36, 0.12);
+    --warning-border: rgba(251, 191, 36, 0.3);
+    --border-color: #334155;
+    --shadow-sm: 0 1px 4px rgba(0,0,0,0.3);
+    --shadow-md: 0 4px 18px rgba(0,0,0,0.4);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.6);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Cairo', 'Segoe UI', Tahoma, Arial, sans-serif;
+    line-height: 1.9;
+    background: var(--bg-gradient);
+    color: var(--text-primary);
+    min-height: 100vh;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  .container {
+    max-width: 940px;
+    margin: auto;
+    padding: 24px 20px 80px;
+  }
+
+  /* Sticky Top Bar */
+  .top-nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-sm);
+  }
+  .nav-left, .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--primary-light);
+    color: var(--primary);
+    border: 1px solid var(--primary-border);
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 13.5px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .back-btn:hover {
+    background: var(--primary);
+    color: white;
+  }
+  .theme-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .theme-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+
+  /* Cards */
+  .card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 26px 28px;
+    margin-bottom: 26px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+  }
+
+  .hero-card {
+    background: linear-gradient(135deg, rgba(15, 118, 110, 0.08), rgba(37, 99, 235, 0.05));
+    border: 1.5px solid rgba(15, 118, 110, 0.25);
+    text-align: center;
+    padding: 36px 24px;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--primary-light);
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 12.5px;
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+  .hero-title {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+  .hero-sub {
+    font-size: 15px;
+    color: var(--text-muted);
+    max-width: 680px;
+    margin: 0 auto 18px;
+    line-height: 1.6;
+  }
+
+  h2 {
+    color: var(--primary);
+    padding-bottom: 12px;
+    margin-bottom: 18px;
+    font-size: 21px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .section-badge {
+    background: linear-gradient(135deg, var(--primary), #0d9488);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  h3 {
+    color: var(--text-primary);
+    margin: 20px 0 10px;
+    font-size: 17.5px;
+    font-weight: 700;
+  }
+
+  /* Term highlight badge & audio */
+  .term-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--primary-light);
+    border: 1px solid var(--primary-border);
+    color: var(--primary);
+    border-radius: 8px;
+    padding: 2px 10px;
+    font-weight: 800;
+    direction: ltr;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+  }
+
+  .audio-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    vertical-align: middle;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 6px rgba(15, 118, 110, 0.25);
+    flex-shrink: 0;
+  }
+  .audio-btn svg {
+    width: 12px;
+    height: 12px;
+    fill: currentColor;
+    pointer-events: none;
+  }
+  .audio-btn:hover {
+    transform: scale(1.15);
+    background: var(--primary-dark);
+  }
+  .audio-btn.playing {
+    background: linear-gradient(135deg, var(--success), #047857);
+    animation: pulse 0.6s ease-in-out infinite alternate;
+  }
+
+  @keyframes pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.18); }
+  }
+
+  /* Callout Boxes */
+  .simple-box {
+    background: var(--success-bg);
+    border-right: 4px solid var(--success);
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    color: var(--text-secondary);
+  }
+  .simple-box strong { color: var(--success); }
+
+  .important-box {
+    background: var(--warning-bg);
+    border-right: 4px solid var(--warning);
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    color: var(--text-secondary);
+  }
+  .important-box strong { color: var(--warning); }
+
+  .memory-box {
+    background: var(--primary-light);
+    border: 2px dashed var(--primary);
+    border-radius: 14px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  /* Comparison Grid */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 18px 0;
+  }
+  .compare-box {
+    background: var(--card-bg);
+    border: 1.5px solid var(--border-color);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: var(--shadow-sm);
+  }
+  .compare-box.highlight {
+    border-color: var(--primary);
+    background: var(--primary-light);
+  }
+  .compare-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .compare-title {
+    font-size: 16.5px;
+    font-weight: 800;
+    color: var(--primary);
+  }
+
+  /* Cards Grids */
+  .grid-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+    margin: 18px 0;
+  }
+  .item-card {
+    background: var(--card-bg);
+    border: 1.5px solid var(--border-color);
+    border-radius: 16px;
+    padding: 18px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.2s ease;
+  }
+  .item-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  .item-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .item-card-title {
+    font-size: 15.5px;
+    font-weight: 800;
+    color: var(--text-primary);
+  }
+
+  /* Checkpoint MCQ Box */
+  .checkpoint-box {
+    background: #f8fafc;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 16px;
+    padding: 20px;
+    margin-top: 22px;
+  }
+  .checkpoint-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  .checkpoint-badge {
+    background: var(--primary);
+    color: white;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 800;
+  }
+  .checkpoint-question {
+    font-weight: 800;
+    font-size: 15px;
+    color: var(--text-primary);
+    margin-bottom: 14px;
+  }
+  .mcq-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .mcq-option {
+    background: var(--card-bg);
+    border: 1.5px solid var(--border-color);
+    border-radius: 10px;
+    padding: 10px 14px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: right;
+  }
+  .mcq-option:hover {
+    border-color: var(--primary);
+    background: var(--primary-light);
+  }
+  .mcq-option.correct {
+    background: #dcfce7 !important;
+    border-color: #16a34a !important;
+    color: #166534 !important;
+  }
+  .mcq-option.wrong {
+    background: #fee2e2 !important;
+    border-color: #dc2626 !important;
+    color: #991b1b !important;
+  }
+  .mcq-explanation {
+    display: none;
+    margin-top: 12px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    font-size: 13.5px;
+    line-height: 1.6;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    color: #166534;
+  }
+
+  /* Table */
+  .table-wrapper {
+    overflow-x: auto;
+    margin: 18px 0;
+    border-radius: 14px;
+    border: 1px solid var(--border-color);
+  }
+  .lexicon-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  .lexicon-table th {
+    background: var(--primary-light);
+    color: var(--primary);
+    padding: 12px 16px;
+    text-align: right;
+    font-weight: 800;
+    border-bottom: 1.5px solid var(--border-color);
+  }
+  .lexicon-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-secondary);
+  }
+
+  /* Final Exam Quiz */
+  .quiz-container {
+    background: var(--card-bg);
+    border-radius: 20px;
+    border: 2px solid var(--primary);
+    padding: 28px;
+    margin: 30px 0;
+    box-shadow: var(--shadow-lg);
+  }
+  .quiz-final-q {
+    background: #f8fafc;
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 18px;
+  }
+  .quiz-final-title {
+    font-weight: 800;
+    font-size: 15.5px;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    display: flex;
+    gap: 8px;
+  }
+  .quiz-final-num {
+    background: var(--primary-light);
+    color: var(--primary);
+    border: 1px solid var(--primary-border);
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 13.5px;
+    flex-shrink: 0;
+  }
+  .btn-submit-exam {
+    background: linear-gradient(135deg, var(--primary), #0d9488);
+    color: white;
+    padding: 12px 32px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 800;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    box-shadow: 0 4px 14px rgba(15, 118, 110, 0.3);
+    transition: all 0.2s ease;
+  }
+  .btn-submit-exam:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(15, 118, 110, 0.4);
+  }
+  .exam-result-card {
+    display: none;
+    margin-top: 24px;
+    padding: 24px;
+    background: var(--primary-light);
+    border: 2px solid var(--primary);
+    border-radius: 16px;
+    text-align: center;
+  }
+  .exam-score-big {
+    font-size: 38px;
+    font-weight: 900;
+    color: var(--primary);
+    margin-bottom: 8px;
+  }
+
+  footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: var(--text-muted);
+    font-size: 13.5px;
+    border-top: 1px solid var(--border-color);
+    margin-top: 40px;
+  }
+
+  @media (max-width: 650px) {
+    .container { padding: 16px 14px 60px; }
+    .card { padding: 20px 16px; }
+    .hero-title { font-size: 22px; }
+    h2 { font-size: 18.5px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <div class="nav-left">
+    <a href="index.html" class="back-btn">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      <span>الرئيسية</span>
+    </a>
+    <span style="font-weight:700;font-size:14.5px;">Entrepreneurship & Innovation (MGT222)</span>
+  </div>
+  <div class="nav-right">
+    <button class="theme-btn" id="themeToggleBtn" onclick="toggleTheme()" title="تبديل المظهر">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- Hero Header -->
+  <section class="card hero-card">
+    <div class="hero-badge">Compulsory University Requirement • MGT222 • Dr. Mohamed Alboghdady</div>
+    <h1 class="hero-title">تلخيص المحاضرة الأولى: مقدمة في ريادة الأعمال وعقلية رائد الأعمال</h1>
+    <p class="hero-sub">Lecture 1: Introduction and Mind-set — شرح مبسط جداً بأمثلة عملية، مصطلحات ناطقة، أسئلة MCQ بعد كل فقرة، واختبار شامل في النهاية.</p>
+  </section>
+
+  <!-- 1. Difference Between Innovation & Entrepreneurship -->
+  <section class="card">
+    <h2>
+      <span class="section-badge">1</span>
+      الفرق بين Innovation و Entrepreneurship
+    </h2>
+    <p>
+      الابتكار
+      <span class="term-badge">Innovation
+        <button class="audio-btn" onclick="playAudio('innovation')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </span>
+      وريادة الأعمال
+      <span class="term-badge">Entrepreneurship
+        <button class="audio-btn" onclick="playAudio('entrepreneurship')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </span>:
+    </p>
+    <ul>
+      <li><strong>Innovation (الابتكار):</strong> هو توليد فكرة جديدة أو تطوير منتج/خدمة قائمة لإضافة قيمة. إنه نقطة الانطلاق (Starting point).</li>
+      <li><strong>Entrepreneurship (ريادة الأعمال):</strong> هي تحويل تلك الفكرة العظيمة إلى مشروع تجاري واقعي مع تحمل المخاطرة والمسؤولية الكاملة.</li>
+    </ul>
+
+    <div class="simple-box">
+      <strong>مثال مبسط:</strong> ابتكار تطبيق لحجز مواعيد الأسنان أونلاين هو (Innovation). أما تأسيس الشركة وضخ رأس المال والتعاقد مع العيادات وتحمل الربح والخسارة هو (Entrepreneurship).
+    </div>
+
+    <!-- Checkpoint MCQ 1 -->
+    <div class="checkpoint-box">
+      <div class="checkpoint-header">
+        <span class="checkpoint-badge">سؤال MCQ على الجزئية 1</span>
+      </div>
+      <div class="checkpoint-question">ما هي الوظيفة الأساسية لريادة الأعمال (Entrepreneurship) مقارنة بالابتكار؟</div>
+      <div class="mcq-options">
+        <div class="mcq-option" onclick="checkMCQ(this, false, 'ce1')">أ) الاكتفاء بالتفكير دون تطبيق</div>
+        <div class="mcq-option" onclick="checkMCQ(this, true, 'ce1')">ب) تحويل الفكرة المبتكرة إلى مشروع تجاري قائم مع تحمل المخاطر</div>
+        <div class="mcq-option" onclick="checkMCQ(this, false, 'ce1')">ج) بيع الشركة فور ظهور أول فكرة</div>
+      </div>
+      <div class="mcq-explanation" id="ce1">الإجابة (ب)؛ ريادة الأعمال هي الجسر الذي ينقل الفكرة إلى واقع تجاري في السوق.</div>
+    </div>
+  </section>
+
+  <!-- 2. Innovation Examples -->
+  <section class="card">
+    <h2>
+      <span class="section-badge">2</span>
+      أمثلة كبرى الشركات العالمية على الابتكار (Apple, Amazon, Salesforce, LG)
+    </h2>
+    <div class="grid-cards">
+      <div class="item-card">
+        <div class="item-card-header">
+          <span class="item-card-title">Apple</span>
+          <button class="audio-btn" onclick="playAudio('apple')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        </div>
+        <p>ابتكار الآيفون والتطبيقات اللمسية والنظام المتكامل.</p>
+      </div>
+
+      <div class="item-card">
+        <div class="item-card-header">
+          <span class="item-card-title">Amazon</span>
+          <button class="audio-btn" onclick="playAudio('amazon')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        </div>
+        <p>ابتكار التجارة الإلكترونية السريعة وخدمات السحاب (AWS).</p>
+      </div>
+
+      <div class="item-card">
+        <div class="item-card-header">
+          <span class="item-card-title">Salesforce</span>
+          <button class="audio-btn" onclick="playAudio('salesforce')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        </div>
+        <p>ابتكار أنظمة خدمة العملاء السحابية (CRM) عبر الويب.</p>
+      </div>
+
+      <div class="item-card">
+        <div class="item-card-header">
+          <span class="item-card-title">LG</span>
+          <button class="audio-btn" onclick="playAudio('lg')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        </div>
+        <p>ابتكار شاشات العرض المتقدمة والأجهزة الذكية.</p>
+      </div>
+    </div>
+
+    <!-- Checkpoint MCQ 2 -->
+    <div class="checkpoint-box">
+      <div class="checkpoint-header">
+        <span class="checkpoint-badge">سؤال MCQ على الجزئية 2</span>
+      </div>
+      <div class="checkpoint-question">أي من الشركات التالية ذُكرت في السلايدز كمثال على الابتكار السحابي في إدارة علاقات العملاء (CRM)؟</div>
+      <div class="mcq-options">
+        <div class="mcq-option" onclick="checkMCQ(this, true, 'ce2')">أ) Salesforce</div>
+        <div class="mcq-option" onclick="checkMCQ(this, false, 'ce2')">ب) Ford</div>
+        <div class="mcq-option" onclick="checkMCQ(this, false, 'ce2')">ج) Nokia</div>
+      </div>
+      <div class="mcq-explanation" id="ce2">الإجابة (أ)؛ Salesforce هي الرائدة في ابتكار برمجيات CRM السحابية المذكورة بالمحاضرة.</div>
+    </div>
+  </section>
+
+  <!-- 3. Walt Disney Story -->
+  <section class="card">
+    <h2>
+      <span class="section-badge">3</span>
+      قصة والت ديزني (Walt Disney)
+      <button class="audio-btn" onclick="playAudio('walt_disney')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+    </h2>
+    <p>
+      تأسست شركة ديزني عام 1923. بدأ والت ديزني حياته كموظف في جريدة، وتم <strong>فصله وطرده بدعوى أنه يفتقر للخيال والإبداع (Lacked imagination)</strong>! لكنه وثق في موهبته بالرسم وأسس استوديو خاص به وحوّل أفكاره لإمبراطورية ديزني العالمية.
+    </p>
+
+    <!-- Checkpoint MCQ 3 -->
+    <div class="checkpoint-box">
+      <div class="checkpoint-header">
+        <span class="checkpoint-badge">سؤال MCQ على الجزئية 3</span>
+      </div>
+      <div class="checkpoint-question">ما هي العبرة الأساسية من قصة والت ديزني المذكورة بالمحاضرة؟</div>
+      <div class="mcq-options">
+        <div class="mcq-option" onclick="checkMCQ(this, false, 'ce3')">أ) التراجع عن الأحلام بمجرد أول رفض</div>
+        <div class="mcq-option" onclick="checkMCQ(this, true, 'ce3')">ب) الثقة بالنفس والمثابرة والجرأة على تأسيس عمل خاص رغم التشكيك الأولي</div>
+        <div class="mcq-option" onclick="checkMCQ(this, false, 'ce3')">ج) العمل في الصحافة أكثر ربحية من الرسوم المتحركة</div>
+      </div>
+      <div class="mcq-explanation" id="ce3">الإجابة (ب)؛ ديزني حوّل الرفض الأولي إلى دافع لتأسيس كيانه الخاص بنجاح أسطوري.</div>
+    </div>
+  </section>
+
+  <!-- 4. Entrepreneur vs Manager -->
+  <section class="card">
+    <h2>
+      <span class="section-badge">4</span>
+      مقارنة: Entrepreneur مقابل Manager
+    </h2>
+    <div class="table-wrapper">
+      <table class="lexicon-table">
+        <thead>
+          <tr>
+            <th>وجه المقارنة</th>
+            <th>رائد الأعمال (Entrepreneur)</th>
+            <th>المدير (Manager)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>الرؤية والمخاطرة</strong></td>
+            <td>صاحب رؤية ويتحمل كافة المخاطر المالية</td>
+            <td>يعمل براتب ولا يتحمل أي مخاطر مالية</td>
+          </tr>
+          <tr>
+            <td><strong>الدافع الأساسي</strong></td>
+            <td>الإنجازات وصنع أثر (Achievements)</td>
+            <td>السلطة ونفوذ المنصب (Power)</td>
+          </tr>
+          <tr>
+            <td><strong>المكافأة</strong></td>
+            <td>أرباح المشروع (Profit)</td>
+            <td>المرتب الشهري من المؤسسة (Salary)</td>
+          </tr>
+          <tr>
+            <td><strong>أسلوب العمل</strong></td>
+            <td>غير رسمي، مرن، وعفوي (Informal and casual)</td>
+            <td>رسمي جداً ومقيد باللوائح (Very formal)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Checkpoint MCQ 4 -->
+    <div class="checkpoint-box">
+      <div class="checkpoint-header">
+        <span class="checkpoint-badge">سؤال MCQ على الجزئية 4</span>
+      </div>
+      <div class="checkpoint-question">ما هو المقابل أو المكافأة (Reward) التي يجنيها رائد الأعمال مقابل مجهوده؟</div>
+      <div class="mcq-options">
+        <div class="mcq-option" onclick="checkMCQ(this, true, 'ce4')">أ) أرباح مشروعه (Profit)</div>
+        <div class="mcq-option" onclick="checkMCQ(this, false, 'ce4')">ب) راتب حكومي مضمون ثابت</div>
+        <div class="mcq-option" onclick="checkMCQ(this, false, 'ce4')">ج) شهادة تقدير فقط</div>
+      </div>
+      <div class="mcq-explanation" id="ce4">الإجابة (أ)؛ السلايد نص على: "Reward for all the efforts is profit he earns from the enterprise".</div>
+    </div>
+  </section>
+
+  <!-- 5. Four Key Elements -->
+  <section class="card">
+    <h2>
+      <span class="section-badge">5</span>
+      العناصر الأربعة الأساسية لريادة الأعمال (Four Key Elements)
+    </h2>
+    <div class="grid-cards">
+      <div class="item-card">
+        <div class="item-card-title">1. Innovation (الابتكار)</div>
+        <p>استغلال الفرص في السوق وتجاوز التهديدات.</p>
+      </div>
+      <div class="item-card">
+        <div class="item-card-title">2. Risk-Taking (تحمل المخاطر)</div>
+        <p>إدارة المشروع وتحمل المخاطر منفرداً.</p>
+      </div>
+      <div class="item-card">
+        <div class="item-card-title">3. Vision (الرؤية)</div>
+        <p>القوة الدافعة واستشراف المستقبل.</p>
+      </div>
+      <div class="item-card">
+        <div class="item-card-title">4. Organization (التنظيم)</div>
+        <p>مهارات تنظيمية فائقة لإدارة الموظفين والعمليات.</p>
+      </div>
+    </div>
+
+    <!-- Checkpoint MCQ 5 -->
+    <div class="checkpoint-box">
+      <div class="checkpoint-header">
+        <span class="checkpoint-badge">سؤال MCQ على الجزئية 5</span>
+      </div>
+      <div class="checkpoint-question">العنصر الذي يمثل "الطاقة المحركة للعمل ورسم ملامح المستقبل" هو:</div>
+      <div class="mcq-options">
+        <div class="mcq-option" onclick="checkMCQ(this, false, 'ce5')">أ) Organization</div>
+        <div class="mcq-option" onclick="checkMCQ(this, true, 'ce5')">ب) Vision (الرؤية)</div>
+        <div class="mcq-option" onclick="checkMCQ(this, false, 'ce5')">ج) Risk-taking</div>
+      </div>
+      <div class="mcq-explanation" id="ce5">الإجابة (ب)؛ Vision هي "the energy that drives the business forward by using the foresight".</div>
+    </div>
+  </section>
+
+  <!-- 6. Hadia Ghalib Case Study -->
+  <section class="card">
+    <h2>
+      <span class="section-badge">6</span>
+      حالة مصرية: هدية غالب (Hadia Ghalib)
+      <button class="audio-btn" onclick="playAudio('hadia_ghalib')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+    </h2>
+    <p>
+      مؤسسة GPH وعلامة Hadia Ghalib، اعتمدت على التسويق عبر المؤثرين
+      <span class="term-badge">Influencer Marketing
+        <button class="audio-btn" onclick="playAudio('influencer_marketing')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </span>
+      (2.4 مليون متابع)، وأطلقت في أبريل 2022 خط ملابس سباحة محتشمة
+      <span class="term-badge">Modest Clothing Line
+        <button class="audio-btn" onclick="playAudio('modest_clothing_line')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </span>
+      لتلبية حاجة واضحة في السوق.
+    </p>
+
+    <!-- Checkpoint MCQ 6 -->
+    <div class="checkpoint-box">
+      <div class="checkpoint-header">
+        <span class="checkpoint-badge">سؤال MCQ على الجزئية 6</span>
+      </div>
+      <div class="checkpoint-question">ما هي استراتيجية التسويق الرئيسية التي اعتمدت عليها هدية غالب في انتشار علامتها؟</div>
+      <div class="mcq-options">
+        <div class="mcq-option" onclick="checkMCQ(this, true, 'ce6')">أ) Influencer marketing (التسويق عبر المؤثرين)</div>
+        <div class="mcq-option" onclick="checkMCQ(this, false, 'ce6')">ب) إعلانات الصحف الورقية القديمة</div>
+        <div class="mcq-option" onclick="checkMCQ(this, false, 'ce6')">ج) الاتصال العشوائي بالهاتف</div>
+      </div>
+      <div class="mcq-explanation" id="ce6">الإجابة (أ)؛ السلايد ذكر: "seeks influencer marketing, and reaches 2.4 million followers".</div>
+    </div>
+  </section>
+
+  <!-- 7. The 7 Types of Entrepreneurs -->
+  <section class="card">
+    <h2>
+      <span class="section-badge">7</span>
+      الأنواع السبعة لرواد الأعمال (The 7 Types)
+    </h2>
+    <div class="grid-cards">
+      <div class="item-card"><span class="item-card-title">1. Idealist</span>: مبدع وخيالي تحركه أحلامه.</div>
+      <div class="item-card"><span class="item-card-title">2. Optimistic</span>: إيجابي ويرى نصف الكوب الممتلئ.</div>
+      <div class="item-card"><span class="item-card-title">3. Hard Worker</span>: يعمل لساعات طويلة ويبذل أقصى جهد.</div>
+      <div class="item-card"><span class="item-card-title">4. Improver</span>: هدفه تحسين العالم بمشروع أخلاقي.</div>
+      <div class="item-card"><span class="item-card-title">5. Visionary</span>: صاحب الرؤية الأصلية وقارئ المستقبل.</div>
+      <div class="item-card"><span class="item-card-title">6. Analyst</span>: يحلل المشاكل ويبحث عن الحل الأقل كلفة.</div>
+      <div class="item-card"><span class="item-card-title">7. Juggler</span>: يدير كل تفاصيل المشروع وفواتيره بنفسه.</div>
+    </div>
+
+    <!-- Checkpoint MCQ 7 -->
+    <div class="checkpoint-box">
+      <div class="checkpoint-header">
+        <span class="checkpoint-badge">سؤال MCQ على الجزئية 7</span>
+      </div>
+      <div class="checkpoint-question">رائد الأعمال الذي لا يفضل تعيين مساعدين كثيرين ويدير التمويل وسداد الفواتير بنفسه يُسمى:</div>
+      <div class="mcq-options">
+        <div class="mcq-option" onclick="checkMCQ(this, false, 'ce7')">أ) Visionary</div>
+        <div class="mcq-option" onclick="checkMCQ(this, true, 'ce7')">ب) Juggler</div>
+        <div class="mcq-option" onclick="checkMCQ(this, false, 'ce7')">ج) Improver</div>
+      </div>
+      <div class="mcq-explanation" id="ce7">الإجابة (ب)؛ Juggler هو الذي يدير كل شيء بنفسه "handles everything from finance to daily bills".</div>
+    </div>
+  </section>
+
+  <!-- 8. Successful Medical Ideas -->
+  <section class="card">
+    <h2>
+      <span class="section-badge">8</span>
+      مشروعات طبية وعيادات أسنان ناجحة
+    </h2>
+    <ul>
+      <li><strong>Dental Clinic</strong>: عيادة ومراكز تجميل وجراحة الأسنان.</li>
+      <li><strong>Retail Pharmacy</strong>: صيدلية بيع بالتجزئة واستشارات دوائية.</li>
+      <li><strong>Ambulance Services</strong>: خدمات إسعاف ونقل طبي مجهز.</li>
+      <li><strong>Sports Center</strong>: مراكز لياقة بدنية وتأهيل وعلاج طبيعي.</li>
+      <li><strong>Herbal Products</strong>: تصنيع وتعبئة مستخلصات عشبية طبيعية.</li>
+      <li><strong>Slimming & Beauty Clinics</strong>: مراكز سمنة ونحت قوام وتجميل.</li>
+    </ul>
+
+    <!-- Checkpoint MCQ 8 -->
+    <div class="checkpoint-box">
+      <div class="checkpoint-header">
+        <span class="checkpoint-badge">سؤال MCQ على الجزئية 8</span>
+      </div>
+      <div class="checkpoint-question">أي مما يلي يعد من المشروعات الطبية الريادية المذكورة بالسلايدز لطلاب طب الأسنان والعلوم الطبية؟</div>
+      <div class="mcq-options">
+        <div class="mcq-option" onclick="checkMCQ(this, true, 'ce8')">أ) عيادة أسنان (Dental clinic) وخدمات إسعاف (Ambulance services)</div>
+        <div class="mcq-option" onclick="checkMCQ(this, false, 'ce8')">ب) ورشة تصليح قطارات</div>
+        <div class="mcq-option" onclick="checkMCQ(this, false, 'ce8')">ج) مصنع صلب وأسمنت</div>
+      </div>
+      <div class="mcq-explanation" id="ce8">الإجابة (أ)؛ السلايد تضمن 8 أفكار طبية وصحية واعدة من ضمنها عيادات الأسنان والإسعاف والصيدليات.</div>
+    </div>
+  </section>
+
+  <!-- Final 10-Question Comprehensive Assessment Quiz -->
+  <section class="quiz-container">
+    <h2>
+      <span class="section-badge">Q</span>
+      الاختبار الختامي الشامل للمحاضرة الأولى (10 أسئلة MCQ)
+    </h2>
+    <p style="margin-bottom: 20px;">أجب عن الأسئلة ثم اضغط "تصحيح الامتحان وحساب النتيجة" لمعرفة درجتك الفورية وتفسير كل سؤال:</p>
+
+    <form id="summaryExamForm" onsubmit="event.preventDefault(); gradeSummaryExam();">
+      <!-- Q1 -->
+      <div class="quiz-final-q">
+        <div class="quiz-final-title"><span class="quiz-final-num">1</span> ما هي نقطة البداية (Starting Point) لريادة الأعمال؟</div>
+        <div class="mcq-options">
+          <label class="mcq-option"><input type="radio" name="sq1" value="A"> أ) الاقتراض البنكي العشوائي</label>
+          <label class="mcq-option"><input type="radio" name="sq1" value="B"> ب) الابتكار (Innovation) وخلق الأفكار القيمة</label>
+          <label class="mcq-option"><input type="radio" name="sq1" value="C"> ج) شراء شركة منافسة فاشلة</label>
+        </div>
+      </div>
+
+      <!-- Q2 -->
+      <div class="quiz-final-q">
+        <div class="quiz-final-title"><span class="quiz-final-num">2</span> ماذا يفعل الابتكار بالنمط التقليدي القديم للشركات (Status quo)؟</div>
+        <div class="mcq-options">
+          <label class="mcq-option"><input type="radio" name="sq2" value="A"> أ) يكسر الجمود ويشجع على التخلي عن الأسلوب التقليدي</label>
+          <label class="mcq-option"><input type="radio" name="sq2" value="B"> ب) يفرضه إجبارياً على الموظفين</label>
+          <label class="mcq-option"><input type="radio" name="sq2" value="C"> ج) يقلل الأرباح ويوقف الاستثمار</label>
+        </div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="quiz-final-q">
+        <div class="quiz-final-title"><span class="quiz-final-num">3</span> ما هو الدافع الرئيسي (Motivation) لرائد الأعمال مقابل المدير وفقاً للمحاضرة؟</div>
+        <div class="mcq-options">
+          <label class="mcq-option"><input type="radio" name="sq3" value="A"> أ) رائد الأعمال دافعه الإنجاز (Achievements) والمدير دافعه السلطة والمنصب (Power)</label>
+          <label class="mcq-option"><input type="radio" name="sq3" value="B"> ب) كلاهما دافعهما فقط العمل الروتيني</label>
+          <label class="mcq-option"><input type="radio" name="sq3" value="C"> ج) المدير دافعه المخاطرة ورائد الأعمال دافعه الراتب</label>
+        </div>
+      </div>
+
+      <!-- Q4 -->
+      <div class="quiz-final-q">
+        <div class="quiz-final-title"><span class="quiz-final-num">4</span> كيف يُكافأ رائد الأعمال (Reward) مقابل مجهوده؟</div>
+        <div class="mcq-options">
+          <label class="mcq-option"><input type="radio" name="sq4" value="A"> أ) براتب شهري ثابت من الحكومة</label>
+          <label class="mcq-option"><input type="radio" name="sq4" value="B"> ب) بالأرباح التي يجنيها من المشروع (Profit)</label>
+          <label class="mcq-option"><input type="radio" name="sq4" value="C"> ج) بمعاش مبكر فقط</label>
+        </div>
+      </div>
+
+      <!-- Q5 -->
+      <div class="quiz-final-q">
+        <div class="quiz-final-title"><span class="quiz-final-num">5</span> أي من الخيارات الآتية يمثل العناصر الأربعة الأساسية لريادة الأعمال؟</div>
+        <div class="mcq-options">
+          <label class="mcq-option"><input type="radio" name="sq5" value="A"> أ) Innovation, Risk-Taking, Vision, Organization</label>
+          <label class="mcq-option"><input type="radio" name="sq5" value="B"> ب) Routine, Power, Salary, Safety</label>
+          <label class="mcq-option"><input type="radio" name="sq5" value="C"> ج) Debt, Taxes, Penalties, Inflation</label>
+        </div>
+      </div>
+
+      <!-- Q6 -->
+      <div class="quiz-final-q">
+        <div class="quiz-final-title"><span class="quiz-final-num">6</span> لماذا طُرد والت ديزني من وظيفته الأولى بالجريدة؟</div>
+        <div class="mcq-options">
+          <label class="mcq-option"><input type="radio" name="sq6" value="A"> أ) لادعاء رئيسه أنه يفتقر للقدرة على التخيل والإبداع</label>
+          <label class="mcq-option"><input type="radio" name="sq6" value="B"> ب) لعدم معرفته بكتابة المقالات</label>
+          <label class="mcq-option"><input type="radio" name="sq6" value="C"> ج) لسرقته لوحات فنية</label>
+        </div>
+      </div>
+
+      <!-- Q7 -->
+      <div class="quiz-final-q">
+        <div class="quiz-final-title"><span class="quiz-final-num">7</span> رائد الأعمال المسمى (Analyst) يتميز بـ:</div>
+        <div class="mcq-options">
+          <label class="mcq-option"><input type="radio" name="sq7" value="A"> أ) التفكير المنطقي والبحث عن الحلول الأقل كلفة والأكثر ملاءمة</label>
+          <label class="mcq-option"><input type="radio" name="sq7" value="B"> ب) التسرع في اتخاذ القرارات دون حسابات</label>
+          <label class="mcq-option"><input type="radio" name="sq7" value="C"> ج) تجنب التعامل مع أي تعقيدات تجارية</label>
+        </div>
+      </div>
+
+      <!-- Q8 -->
+      <div class="quiz-final-q">
+        <div class="quiz-final-title"><span class="quiz-final-num">8</span> رائد الأعمال المسمى (Improver) يتميز بـ:</div>
+        <div class="mcq-options">
+          <label class="mcq-option"><input type="radio" name="sq8" value="A"> أ) البحث عن أعلى ربح حتى لو كان غير أخلاقي</label>
+          <label class="mcq-option"><input type="radio" name="sq8" value="B"> ب) امتلاك قضية نبيلة لتحسين العالم والالتزام بالأخلاق في مشروعه</label>
+          <label class="mcq-option"><input type="radio" name="sq8" value="C"> ج) إغلاق المشروع بعد شهر واحد</label>
+        </div>
+      </div>
+
+      <!-- Q9 -->
+      <div class="quiz-final-q">
+        <div class="quiz-final-title"><span class="quiz-final-num">9</span> ما هو المشروع الذي أطلقته رائدة الأعمال المصرية هدية غالب في أبريل 2022؟</div>
+        <div class="mcq-options">
+          <label class="mcq-option"><input type="radio" name="sq9" value="A"> أ) خط ملابس سباحة محتشمة (Modest clothing line)</label>
+          <label class="mcq-option"><input type="radio" name="sq9" value="B"> ب) مستشفى خاص لجراحة الأسنان</label>
+          <label class="mcq-option"><input type="radio" name="sq9" value="C"> ج) شركة طيران خاصة</label>
+        </div>
+      </div>
+
+      <!-- Q10 -->
+      <div class="quiz-final-q">
+        <div class="quiz-final-title"><span class="quiz-final-num">10</span> كم تبلغ نسبة الامتحان النهائي في توزيع درجات مقرر MGT222؟</div>
+        <div class="mcq-options">
+          <label class="mcq-option"><input type="radio" name="sq10" value="A"> أ) 15%</label>
+          <label class="mcq-option"><input type="radio" name="sq10" value="B"> ب) 50%</label>
+          <label class="mcq-option"><input type="radio" name="sq10" value="C"> ج) 35%</label>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top:20px;">
+        <button type="button" class="btn-submit-exam" onclick="gradeSummaryExam()">تصحيح الامتحان وحساب النتيجة</button>
+      </div>
+    </form>
+
+    <div class="exam-result-card" id="summaryResultCard">
+      <div class="exam-score-big" id="summaryScoreText">0 / 10</div>
+      <div style="font-size: 18px; font-weight: 800; color: var(--text-primary); margin-bottom: 10px;" id="summaryFeedbackText"></div>
+      <p style="font-size: 14.5px; color: var(--text-secondary);" id="summaryDetailText"></p>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  منصة تسهيل التعليمية • ملخص ريادة الأعمال والابتكار (MGT222) • د. محمد البغدادي
+</footer>
+
+<script>
+// ================= Audio Player =================
+let currentAudio = null;
+
+function playAudio(filename) {
+  if (currentAudio) {
+    currentAudio.pause();
+    document.querySelectorAll('.audio-btn.playing').forEach(b => b.classList.remove('playing'));
+  }
+
+  const btn = window.event ? window.event.currentTarget : null;
+  const audio = new Audio('entrepreneurship/lecture-1/audio/' + filename + '.mp3');
+  currentAudio = audio;
+
+  if (btn) btn.classList.add('playing');
+
+  audio.addEventListener('ended', () => {
+    if (btn) btn.classList.remove('playing');
+    currentAudio = null;
+  });
+
+  audio.addEventListener('error', () => {
+    if (btn) btn.classList.remove('playing');
+    currentAudio = null;
+    alert('ملف الصوت متاح في مسار entrepreneurship/lecture-1/audio/' + filename + '.mp3');
+  });
+
+  audio.play().catch(() => {
+    if (btn) btn.classList.remove('playing');
+    currentAudio = null;
+  });
+}
+
+// ================= Theme Toggle =================
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+}
+
+// ================= Section Checkpoint Check =================
+function checkMCQ(optionEl, isCorrect, explId) {
+  const container = optionEl.closest('.checkpoint-box');
+  container.querySelectorAll('.mcq-option').forEach(opt => {
+    opt.classList.remove('correct', 'wrong');
+  });
+
+  if (isCorrect) {
+    optionEl.classList.add('correct');
+  } else {
+    optionEl.classList.add('wrong');
+  }
+
+  const expl = document.getElementById(explId);
+  if (expl) expl.style.display = 'block';
+}
+
+// ================= Final Exam Grading (10 Questions) =================
+const SUMMARY_ANSWERS = {
+  sq1: 'B',
+  sq2: 'A',
+  sq3: 'A',
+  sq4: 'B',
+  sq5: 'A',
+  sq6: 'A',
+  sq7: 'A',
+  sq8: 'B',
+  sq9: 'A',
+  sq10: 'B'
+};
+
+function gradeSummaryExam() {
+  let score = 0;
+  let total = 10;
+
+  for (let i = 1; i <= total; i++) {
+    const qName = 'sq' + i;
+    const selected = document.querySelector(`input[name="${qName}"]:checked`);
+    const qBox = document.querySelector(`input[name="${qName}"]`).closest('.quiz-final-q');
+    
+    qBox.querySelectorAll('.mcq-option').forEach(l => {
+      l.classList.remove('correct', 'wrong');
+    });
+
+    const correctVal = SUMMARY_ANSWERS[qName];
+    if (selected) {
+      if (selected.value === correctVal) {
+        score++;
+        selected.closest('.mcq-option').classList.add('correct');
+      } else {
+        selected.closest('.mcq-option').classList.add('wrong');
+        const correctRadio = qBox.querySelector(`input[name="${qName}"][value="${correctVal}"]`);
+        if (correctRadio) correctRadio.closest('.mcq-option').classList.add('correct');
+      }
+    } else {
+      const correctRadio = qBox.querySelector(`input[name="${qName}"][value="${correctVal}"]`);
+      if (correctRadio) correctRadio.closest('.mcq-option').classList.add('correct');
+    }
+  }
+
+  const resultCard = document.getElementById('summaryResultCard');
+  const scoreText = document.getElementById('summaryScoreText');
+  const feedbackText = document.getElementById('summaryFeedbackText');
+  const detailText = document.getElementById('summaryDetailText');
+
+  resultCard.style.display = 'block';
+  scoreText.textContent = `${score} / ${total} (${(score/total)*100}%)`;
+
+  if (score >= 9) {
+    feedbackText.textContent = "ممتاز جداً! استيعاب كامل لجميع نقاط المحاضرة";
+    feedbackText.style.color = "#16a34a";
+  } else if (score >= 7) {
+    feedbackText.textContent = "جيد جداً! راجع الأسئلة الموضحة باللون الأحمر";
+    feedbackText.style.color = "#0f766e";
+  } else {
+    feedbackText.textContent = "يرجى إعادة قراءة الملخص وملاحظة الفروق بين المصطلحات";
+    feedbackText.style.color = "#d97706";
+  }
+
+  detailText.textContent = `نتيجتك هي ${score} إجابات صحيحة من 10. تم تظليل الإجابات الصحيحة باللون الأخضر.`;
+  resultCard.scrollIntoView({ behavior: 'smooth' });
+}
+
+// Initial Theme Check
+(function initTheme() {
+  const saved = localStorage.getItem('theme') || 'light';
+  document.documentElement.setAttribute('data-theme', saved);
+})();
+</script>
+
+</body>
+</html>

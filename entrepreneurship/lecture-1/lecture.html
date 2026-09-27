@@ -1,0 +1,2039 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entrepreneurship - Lecture 1 | ريادة الأعمال - المحاضرة الأولى</title>
+<style>
+  :root {
+    --bg-gradient: linear-gradient(135deg, #f0fff4 0%, #e8f5e9 50%, #f0fdf4 100%);
+    --card-bg: #ffffff;
+    --text-primary: #1f2937;
+    --text-secondary: #4b5563;
+    --text-muted: #6b7280;
+    --primary: #16a34a;
+    --primary-light: #f0fdf4;
+    --primary-dark: #15803d;
+    --accent: #0ea5e9;
+    --accent-light: #e0f2fe;
+    --success: #059669;
+    --success-bg: #ecfdf5;
+    --success-border: #a7f3d0;
+    --warning: #d97706;
+    --warning-bg: #fffbeb;
+    --danger: #dc2626;
+    --danger-bg: #fef2f2;
+    --border-color: #e5e7eb;
+    --shadow-sm: 0 1px 4px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 18px rgba(0,0,0,0.06);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+  }
+
+  [data-theme="dark"] {
+    --bg-gradient: linear-gradient(135deg, #071a0e 0%, #0d1f14 50%, #0a1810 100%);
+    --card-bg: #1a2e1f;
+    --text-primary: #f3f4f6;
+    --text-secondary: #d1d5db;
+    --text-muted: #9ca3af;
+    --primary: #4ade80;
+    --primary-light: rgba(74, 222, 128, 0.12);
+    --primary-dark: #22c55e;
+    --accent: #38bdf8;
+    --accent-light: rgba(56, 189, 248, 0.15);
+    --success: #34d399;
+    --success-bg: rgba(52, 211, 153, 0.12);
+    --success-border: rgba(52, 211, 153, 0.3);
+    --warning: #fbbf24;
+    --warning-bg: rgba(251, 191, 36, 0.12);
+    --danger: #f87171;
+    --danger-bg: rgba(248, 113, 113, 0.12);
+    --border-color: #2d4a35;
+    --shadow-sm: 0 1px 4px rgba(0,0,0,0.3);
+    --shadow-md: 0 4px 18px rgba(0,0,0,0.4);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.6);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+    line-height: 1.9;
+    background: var(--bg-gradient);
+    color: var(--text-primary);
+    min-height: 100vh;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  .icon {
+    display: inline-block;
+    vertical-align: middle;
+    stroke-width: 2;
+    fill: none;
+    stroke: currentColor;
+    flex-shrink: 0;
+  }
+
+  /* Floating Theme Toggle */
+  .theme-floating-btn {
+    position: fixed;
+    top: 16px;
+    left: 18px;
+    z-index: 9999;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+    transition: all 0.25s ease;
+  }
+  .theme-floating-btn:hover {
+    transform: scale(1.12);
+    border-color: var(--primary);
+    color: var(--primary);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+  }
+
+  /* Reading Progress Bar */
+  .progress-bar-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: transparent;
+    z-index: 9998;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #16a34a, #0ea5e9, #8b5cf6);
+    width: 0%;
+    transition: width 0.3s ease;
+  }
+
+  .container {
+    max-width: 960px;
+    margin: auto;
+    padding: 24px 20px 80px;
+  }
+
+  /* Page Header */
+  .page-header {
+    background: linear-gradient(135deg, #16a34a, #0ea5e9);
+    border-radius: 20px;
+    padding: 28px 32px;
+    margin-bottom: 22px;
+    color: white;
+    box-shadow: 0 8px 30px rgba(22,163,74,0.3);
+  }
+  .header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.2);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .page-header h1 {
+    font-size: 26px;
+    font-weight: 800;
+    margin-bottom: 6px;
+  }
+  .page-header p {
+    font-size: 14.5px;
+    opacity: 0.88;
+  }
+
+  /* Quick Navigation chips */
+  .quick-nav {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 4px 2px 14px;
+    margin-bottom: 16px;
+    scrollbar-width: thin;
+  }
+  .quick-chip {
+    white-space: nowrap;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-sm);
+  }
+  .quick-chip:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    transform: translateY(-2px);
+  }
+
+  /* Cards */
+  .card {
+    background: var(--card-bg);
+    border-radius: 18px;
+    padding: 26px 28px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+    transition: box-shadow 0.2s ease;
+  }
+
+  h2 {
+    color: var(--primary);
+    padding-bottom: 12px;
+    margin-bottom: 18px;
+    font-size: 21px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .section-badge {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  h3 {
+    color: var(--text-primary);
+    margin: 16px 0 10px;
+    font-size: 17px;
+    font-weight: 700;
+  }
+
+  /* Term highlight */
+  .term {
+    background: var(--primary-light);
+    border-right: 4px solid var(--primary);
+    padding: 14px 18px;
+    border-radius: 12px;
+    margin: 14px 0;
+    transition: all 0.2s ease;
+  }
+  .en {
+    font-weight: 800;
+    color: var(--primary);
+    font-size: 16.5px;
+    direction: ltr;
+    display: inline-block;
+  }
+
+  /* Diagram box */
+  .diagram {
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: #4ade80;
+    padding: 16px;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 700;
+    margin: 16px 0;
+    direction: ltr;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    border: 1px solid rgba(74,222,128,0.2);
+    line-height: 2;
+  }
+
+  /* Key box */
+  .key {
+    background: var(--success-bg);
+    border: 1px solid var(--success-border);
+    border-right: 4px solid var(--success);
+    padding: 14px 18px;
+    border-radius: 12px;
+    margin: 16px 0;
+    color: var(--text-primary);
+  }
+  .key-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--success);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  /* Traits Grid */
+  .traits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 12px;
+    margin-top: 14px;
+  }
+  .trait-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 14px 16px;
+    transition: all 0.2s ease;
+    border-right: 4px solid var(--primary);
+  }
+  .trait-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary);
+  }
+  .trait-en {
+    font-weight: 800;
+    color: var(--primary);
+    font-size: 15px;
+    direction: ltr;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .trait-pronunciation {
+    font-size: 12.5px;
+    color: var(--accent);
+    margin-bottom: 4px;
+    font-style: italic;
+  }
+  .trait-ar {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+  }
+
+  /* Question Card */
+  .question {
+    background: var(--warning-bg);
+    border: 1px solid rgba(217, 119, 6, 0.25);
+    border-right: 4px solid var(--warning);
+    padding: 18px 20px;
+    border-radius: 14px;
+    margin: 16px 0;
+  }
+  .q-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  .q-english {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: var(--text-primary);
+    direction: ltr;
+    text-align: left;
+    line-height: 1.6;
+    flex-grow: 1;
+  }
+  .q-speech-btn {
+    background: var(--primary-light);
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    border-radius: 8px;
+    padding: 4px 10px;
+    font-size: 12.5px;
+    cursor: pointer;
+    font-family: inherit;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s;
+  }
+  .q-speech-btn:hover {
+    background: var(--primary);
+    color: white;
+  }
+  .q-arabic-toggle {
+    background: linear-gradient(135deg, var(--warning), #b45309);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 14px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 600;
+    margin: 8px 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.25s ease;
+  }
+  .q-arabic-toggle:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(217, 119, 6, 0.3);
+  }
+  .q-arabic-text {
+    display: none;
+    background: rgba(217, 119, 6, 0.1);
+    border-right: 3px solid var(--warning);
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin: 10px 0;
+    color: var(--text-primary);
+    font-size: 14px;
+  }
+  .q-arabic-text.show {
+    display: block;
+    animation: fadeIn 0.25s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Audio buttons */
+  .audio-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    margin: 0 6px;
+    vertical-align: middle;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 6px rgba(22,163,74,0.25);
+  }
+  .audio-btn svg {
+    width: 14px;
+    height: 14px;
+    pointer-events: none;
+  }
+  .audio-btn:hover {
+    transform: scale(1.15);
+  }
+  .audio-btn.playing {
+    background: linear-gradient(135deg, var(--success), #047857);
+    animation: pulse 0.6s ease-in-out infinite alternate;
+  }
+  @keyframes pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.15); }
+  }
+
+  /* MCQ Options */
+  .inline-mcq {
+    margin: 12px 0 4px;
+  }
+  .mcq-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    text-align: left;
+    direction: ltr;
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    padding: 11px 16px;
+    margin: 8px 0;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--text-primary);
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-sm);
+  }
+  .mcq-option:hover {
+    border-color: var(--primary);
+    background: var(--primary-light);
+    transform: translateX(3px);
+  }
+  .mcq-option.selected-correct {
+    background: var(--success-bg) !important;
+    border-color: var(--success) !important;
+    color: var(--success) !important;
+    box-shadow: 0 3px 10px rgba(5,150,105,0.15) !important;
+  }
+  .mcq-option.selected-wrong {
+    background: var(--danger-bg) !important;
+    border-color: var(--danger) !important;
+    color: var(--danger) !important;
+    animation: shake 0.4s ease;
+    box-shadow: 0 3px 10px rgba(220,38,38,0.15) !important;
+  }
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    50% { transform: translateX(4px); }
+    75% { transform: translateX(-2px); }
+  }
+
+  .opt-badge {
+    font-size: 11.5px;
+    padding: 2px 7px;
+    border-radius: 5px;
+    font-weight: 700;
+    display: none;
+  }
+  .mcq-option.selected-correct .opt-badge {
+    display: inline-block;
+    background: var(--success);
+    color: white;
+  }
+  .mcq-option.selected-wrong .opt-badge {
+    display: inline-block;
+    background: var(--danger);
+    color: white;
+  }
+
+  /* MCQ Result */
+  .mcq-result {
+    margin-top: 12px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 1.8;
+    display: none;
+  }
+  .mcq-result.show {
+    display: block;
+    animation: fadeIn 0.25s ease;
+  }
+  .mcq-result.correct-msg {
+    background: var(--success-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--success);
+  }
+  .mcq-result.wrong-msg {
+    background: var(--danger-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--danger);
+  }
+  .result-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .correct-msg .result-title { color: var(--success); }
+  .wrong-msg .result-title { color: var(--danger); }
+  .result-explanation {
+    margin: 8px 0;
+    padding-top: 6px;
+    border-top: 1px dashed rgba(0,0,0,0.12);
+  }
+  .result-hint {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    margin-top: 6px;
+  }
+
+  .mcq-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 10px;
+  }
+  .reset-btn {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    border-radius: 8px;
+    padding: 5px 12px;
+    font-size: 12.5px;
+    font-family: inherit;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.2s;
+  }
+  .reset-btn:hover {
+    background: var(--border-color);
+    color: var(--text-primary);
+  }
+
+  /* Score Dashboard */
+  .quiz-dashboard {
+    background: linear-gradient(135deg, #1e293b, #334155);
+    color: white;
+    border-radius: 16px;
+    padding: 20px 24px;
+    margin: 18px 0 24px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    text-align: center;
+  }
+  .score-item h4 {
+    font-size: 13px;
+    opacity: 0.8;
+    margin-bottom: 4px;
+  }
+  .score-val {
+    font-size: 32px;
+    font-weight: 800;
+    color: #4ade80;
+  }
+  .score-feedback {
+    font-size: 14px;
+    background: rgba(255,255,255,0.12);
+    padding: 6px 16px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* Comparison Table */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 14px;
+  }
+  .compare-table th {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+    padding: 12px 16px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 15px;
+  }
+  .compare-table th:first-child { border-radius: 12px 0 0 0; }
+  .compare-table th:last-child { border-radius: 0 12px 0 0; }
+  .compare-table td {
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--border-color);
+    text-align: center;
+    vertical-align: middle;
+  }
+  .compare-table tr:nth-child(even) td {
+    background: var(--primary-light);
+  }
+  .compare-table .feature-col {
+    font-weight: 700;
+    color: var(--primary);
+    text-align: right;
+    direction: rtl;
+  }
+
+  /* Glossary */
+  .glossary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .glossary-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.2s ease;
+  }
+  .glossary-item:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+  }
+  .glossary-info {
+    flex-grow: 1;
+    font-size: 13.5px;
+  }
+  .glossary-info strong {
+    color: var(--primary);
+    display: block;
+    font-size: 14.5px;
+    direction: ltr;
+  }
+  .glossary-pronunciation {
+    font-size: 11.5px;
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  /* Example boxes */
+  .example-box {
+    background: var(--accent-light);
+    border-right: 4px solid var(--accent);
+    padding: 14px 18px;
+    border-radius: 12px;
+    margin: 14px 0;
+  }
+  .example-title {
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* Celebration Modal */
+  #celebrationModal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(6px);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .modal-box {
+    background: var(--card-bg);
+    color: var(--text-primary);
+    border-radius: 20px;
+    padding: 32px 28px;
+    max-width: 440px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    animation: scaleUp 0.3s ease;
+  }
+  @keyframes scaleUp {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+  .modal-icon-wrap {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 14px;
+    background: var(--success-bg);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .modal-box h2 {
+    color: var(--success);
+    justify-content: center;
+    border: none;
+    font-size: 22px;
+    padding-bottom: 0;
+    margin-bottom: 10px;
+  }
+
+  /* Responsive */
+  @media(max-width: 640px) {
+    .container { padding: 14px 12px 60px; }
+    .card { padding: 18px 14px; }
+    h2 { font-size: 18px; }
+    .glossary-grid { grid-template-columns: 1fr; }
+    .traits-grid { grid-template-columns: 1fr; }
+    .page-header h1 { font-size: 20px; }
+    .compare-table { font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Reading Progress Bar -->
+<div class="progress-bar-fixed">
+  <div class="progress-fill" id="progressFill"></div>
+</div>
+
+<!-- Floating Dark Mode Button -->
+<button class="theme-floating-btn" onclick="toggleTheme()" id="themeToggleBtn" title="الوضع الليلي">
+  <svg class="icon" viewBox="0 0 24 24" width="20" height="20"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+</button>
+
+<div class="container">
+
+<!-- Page Header -->
+<div class="page-header">
+  <div class="header-badge">
+    <svg class="icon" viewBox="0 0 24 24" width="14" height="14"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+    Entrepreneurship — Lecture 1
+  </div>
+  <h1>🚀 ريادة الأعمال — المحاضرة الأولى</h1>
+  <p>مفهوم ريادة الأعمال، صفات رائد الأعمال، الفرق بينه وبين المدير، وكيفية التعرف على الفرص التجارية</p>
+</div>
+
+<!-- Quick Navigation Chips -->
+<div class="quick-nav">
+  <a href="#sec1" class="quick-chip">1. ما هي ريادة الأعمال؟</a>
+  <a href="#sec2" class="quick-chip">2. رائد الأعمال vs المدير</a>
+  <a href="#sec3" class="quick-chip">3. صفات رائد الأعمال</a>
+  <a href="#sec4" class="quick-chip">4. أنواع رواد الأعمال</a>
+  <a href="#sec5" class="quick-chip">5. Business Model</a>
+  <a href="#sec6" class="quick-chip">6. أمثلة ناجحة</a>
+  <a href="#sec7" class="quick-chip">7. فرص العمل الصيدلي</a>
+  <a href="#sec8" class="quick-chip">8. ملخص 5 نقاط</a>
+  <a href="#sec9" class="quick-chip">9. الاختبار (10 أسئلة)</a>
+  <a href="#sec10" class="quick-chip">10. قاموس المصطلحات</a>
+</div>
+
+<!-- ================= Section 1 ================= -->
+<section class="card" id="sec1">
+  <h2><span class="section-badge">1</span> ما هي ريادة الأعمال؟</h2>
+
+  <div class="term">
+    <span class="en">Entrepreneurship</span>
+    <button class="audio-btn" onclick="playAudio('entrepreneurship')" title="استمع للنطق"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg></button><br>
+    <strong>المعنى:</strong> ريادة الأعمال | <strong>النطق:</strong> إنتريبرينيورشيب<br>
+    هي عملية إنشاء، تطوير، وإدارة مشروع تجاري جديد بهدف تحقيق قيمة اقتصادية من خلال الابتكار واستغلال الفرص التجارية.
+  </div>
+
+  <div class="term">
+    <span class="en">Entrepreneur</span>
+    <button class="audio-btn" onclick="playAudio('entrepreneur')" title="استمع للنطق"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button><br>
+    <strong>المعنى:</strong> رائد الأعمال | <strong>النطق:</strong> إنتريبرينيور<br>
+    هو الشخص الذي يرى فرصاً في السوق حيث يرى غيره مشاكل، ويتحمل المخاطر لإنشاء مشروع ناجح يخلق قيمة مضافة.
+  </div>
+
+  <div class="term">
+    <span class="en">Innovation</span>
+    <button class="audio-btn" onclick="playAudio('innovation')" title="استمع للنطق"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button><br>
+    <strong>المعنى:</strong> الابتكار | <strong>النطق:</strong> إنوفيشن<br>
+    تقديم حلول جديدة أو تحسين موجودة بطرق مبدعة تلبي احتياجات السوق أو تخلق احتياجات جديدة.
+  </div>
+
+  <div class="term">
+    <span class="en">Economic Value</span>
+    <button class="audio-btn" onclick="playAudio('economic_value')" title="استمع للنطق"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button><br>
+    <strong>المعنى:</strong> القيمة الاقتصادية | <strong>النطق:</strong> إيكونوميك فاليو<br>
+    الربح أو المنفعة الاقتصادية التي يخلقها المشروع للمالك والمجتمع.
+  </div>
+
+  <div class="key">
+    <div class="key-header">
+      <svg class="icon" viewBox="0 0 24 24" width="16" height="16"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+      <span>المعادلة الأساسية:</span>
+    </div>
+    Entrepreneurship = Innovation + Risk-Taking + Economic Value Creation
+  </div>
+
+  <!-- Quick Question 1 -->
+  <div class="question">
+    <div class="q-header">
+      <div class="q-english">Quick Question: What is the core of Entrepreneurship?</div>
+      <button class="q-speech-btn" onclick="speakText('What is the core of Entrepreneurship?')">
+        <svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+        <span>استمع</span>
+      </button>
+    </div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)">
+      <svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg>
+      <span>عرض السؤال بالعربية</span>
+    </button>
+    <div class="q-arabic-text">ما هو جوهر ريادة الأعمال؟</div>
+
+    <div class="inline-mcq" data-correct="1" data-explanations='[
+      "العمل لساعات طويلة ليس جوهر ريادة الأعمال. الريادة تتعلق بالابتكار وخلق قيمة، مش مجرد العمل الشاق.",
+      "إجابة ممتازة! جوهر ريادة الأعمال هو الابتكار (Innovation) + تحمّل المخاطرة (Risk-Taking) + خلق قيمة اقتصادية (Economic Value). الثلاثة عناصر دول هم أساس أي مشروع ريادي ناجح.",
+      "الحصول على أموال هو نتيجة ريادة الأعمال الناجحة لكن مش جوهرها. كتير من رواد الأعمال بيبدؤوا بأموال قليلة."
+    ]'>
+      <button class="mcq-option" onclick="checkAnswer(this, 0)">
+        <span>A) Working long hours</span>
+        <span class="opt-badge">اختيارك</span>
+      </button>
+      <button class="mcq-option" onclick="checkAnswer(this, 1)">
+        <span>B) Innovation + Risk-Taking + Economic Value</span>
+        <span class="opt-badge">اختيارك</span>
+      </button>
+      <button class="mcq-option" onclick="checkAnswer(this, 2)">
+        <span>C) Getting money from investors</span>
+        <span class="opt-badge">اختيارك</span>
+      </button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions">
+        <button class="reset-btn" onclick="resetQuestion(this)">
+          <svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
+          <span>إعادة المحاولة</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= Section 2 ================= -->
+<section class="card" id="sec2">
+  <h2><span class="section-badge">2</span> رائد الأعمال vs المدير</h2>
+
+  <p>من أهم الفروق في ريادة الأعمال، الفرق بين <strong>رائد الأعمال (Entrepreneur)</strong> والـ<strong>مدير (Manager)</strong>:</p>
+
+  <div class="term">
+    <span class="en">Manager</span>
+    <button class="audio-btn" onclick="playAudio('manager')" title="استمع للنطق"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button><br>
+    <strong>المعنى:</strong> المدير | <strong>النطق:</strong> مانيجَر<br>
+    شخص يدير موارد وموظفين موجودين مسبقاً في مؤسسة قائمة لتحقيق أهداف محددة.
+  </div>
+
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>الخاصية</th>
+        <th>Entrepreneur (رائد أعمال)</th>
+        <th>Manager (مدير)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="feature-col">المخاطرة</td>
+        <td>يتحمل المخاطر بنفسه ✅</td>
+        <td>يتجنب المخاطر ❌</td>
+      </tr>
+      <tr>
+        <td class="feature-col">الابتكار</td>
+        <td>يبتكر ويغيّر 💡</td>
+        <td>يطبق الأنظمة الموجودة 📋</td>
+      </tr>
+      <tr>
+        <td class="feature-col">التفكير</td>
+        <td>رؤية مستقبلية بعيدة 🔭</td>
+        <td>تنفيذ الخطط الحالية ⚙️</td>
+      </tr>
+      <tr>
+        <td class="feature-col">المكافأة</td>
+        <td>ربح غير محدود 💰</td>
+        <td>راتب ثابت 💼</td>
+      </tr>
+      <tr>
+        <td class="feature-col">صاحب المشروع؟</td>
+        <td>نعم، هو المالك 🏆</td>
+        <td>لا، يعمل لآخرين 👔</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="term">
+    <span class="en">Small Business</span>
+    <button class="audio-btn" onclick="playAudio('small_business')" title="استمع للنطق"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button><br>
+    <strong>المعنى:</strong> الأعمال الصغيرة | <strong>النطق:</strong> سمول بيزنِس<br>
+    مشروع صغير الحجم يعمل في السوق المحلية، وغالباً يكون رائد الأعمال هو المدير أيضاً في نفس الوقت.
+  </div>
+
+  <!-- Quick Question 2 -->
+  <div class="question">
+    <div class="q-header">
+      <div class="q-english">Quick Question: What is the KEY difference between an Entrepreneur and a Manager?</div>
+      <button class="q-speech-btn" onclick="speakText('What is the KEY difference between an Entrepreneur and a Manager?')">
+        <svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+        <span>استمع</span>
+      </button>
+    </div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)">
+      <svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg>
+      <span>عرض السؤال بالعربية</span>
+    </button>
+    <div class="q-arabic-text">ما هو الفرق الرئيسي بين رائد الأعمال والمدير؟</div>
+
+    <div class="inline-mcq" data-correct="0" data-explanations='[
+      "إجابة صحيحة تماماً! الفرق الرئيسي هو أن رائد الأعمال (Entrepreneur) يتحمل المخاطر الشخصية ويمتلك المشروع، بينما المدير (Manager) يدير موارد موجودة مسبقاً براتب ثابت.",
+      "كلاهما قد يكونا يعملان بجد. العمل الجاد صفة مشتركة وليست الفرق الرئيسي.",
+      "المدير قد يكون تعليمه أعلى أو أقل. التعليم ليس الفارق الأساسي هنا."
+    ]'>
+      <button class="mcq-option" onclick="checkAnswer(this, 0)">
+        <span>A) Entrepreneur takes risks and owns the business</span>
+        <span class="opt-badge">اختيارك</span>
+      </button>
+      <button class="mcq-option" onclick="checkAnswer(this, 1)">
+        <span>B) Entrepreneur works harder than a manager</span>
+        <span class="opt-badge">اختيارك</span>
+      </button>
+      <button class="mcq-option" onclick="checkAnswer(this, 2)">
+        <span>C) Entrepreneur has higher education</span>
+        <span class="opt-badge">اختيارك</span>
+      </button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions">
+        <button class="reset-btn" onclick="resetQuestion(this)">
+          <svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
+          <span>إعادة المحاولة</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= Section 3 ================= -->
+<section class="card" id="sec3">
+  <h2><span class="section-badge">3</span> صفات رائد الأعمال الناجح</h2>
+
+  <p>رائد الأعمال الناجح يتميز بمجموعة من الصفات الجوهرية. هذه هي أبرزها:</p>
+
+  <div class="traits-grid">
+    <div class="trait-card">
+      <span class="trait-en">Innovative <button class="audio-btn" onclick="playAudio('innovative')" style="width:22px;height:22px"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button></span>
+      <span class="trait-pronunciation">إنوفيتِف</span>
+      <span class="trait-ar">🔥 مبتكر — يقدم أفكاراً جديدة باستمرار</span>
+    </div>
+    <div class="trait-card">
+      <span class="trait-en">Risk Taker <button class="audio-btn" onclick="playAudio('risk_taker')" style="width:22px;height:22px"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button></span>
+      <span class="trait-pronunciation">ريسك تيكَر</span>
+      <span class="trait-ar">⚡ يتحمل المخاطرة المحسوبة بشجاعة</span>
+    </div>
+    <div class="trait-card">
+      <span class="trait-en">Visionary <button class="audio-btn" onclick="playAudio('visionary')" style="width:22px;height:22px"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button></span>
+      <span class="trait-pronunciation">فيجِنَري</span>
+      <span class="trait-ar">🔭 يرى المستقبل ويرسم رؤية واضحة</span>
+    </div>
+    <div class="trait-card">
+      <span class="trait-en">Leader <button class="audio-btn" onclick="playAudio('leader')" style="width:22px;height:22px"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button></span>
+      <span class="trait-pronunciation">ليدَر</span>
+      <span class="trait-ar">👑 قائد يوجّه الفريق ويلهمه</span>
+    </div>
+    <div class="trait-card">
+      <span class="trait-en">Persistent <button class="audio-btn" onclick="playAudio('persistent')" style="width:22px;height:22px"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button></span>
+      <span class="trait-pronunciation">بيرسيستَنت</span>
+      <span class="trait-ar">💪 مثابر — لا يستسلم أمام العقبات</span>
+    </div>
+    <div class="trait-card">
+      <span class="trait-en">Resilient <button class="audio-btn" onclick="playAudio('resilient')" style="width:22px;height:22px"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button></span>
+      <span class="trait-pronunciation">ريزيليَنت</span>
+      <span class="trait-ar">🌱 قادر على الصمود والتعافي من الإخفاق</span>
+    </div>
+    <div class="trait-card">
+      <span class="trait-en">Optimistic <button class="audio-btn" onclick="playAudio('optimistic')" style="width:22px;height:22px"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button></span>
+      <span class="trait-pronunciation">أوبتيميستِك</span>
+      <span class="trait-ar">☀️ متفائل — يرى الفرص في كل تحدٍّ</span>
+    </div>
+    <div class="trait-card">
+      <span class="trait-en">Hard Worker <button class="audio-btn" onclick="playAudio('hard_worker')" style="width:22px;height:22px"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button></span>
+      <span class="trait-pronunciation">هارد ووركَر</span>
+      <span class="trait-ar">⚙️ مجتهد — يعمل بدأب وإخلاص</span>
+    </div>
+    <div class="trait-card">
+      <span class="trait-en">Ethical <button class="audio-btn" onclick="playAudio('ethical')" style="width:22px;height:22px"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button></span>
+      <span class="trait-pronunciation">إثيكَل</span>
+      <span class="trait-ar">⚖️ أخلاقي — يلتزم بالمبادئ والقيم</span>
+    </div>
+    <div class="trait-card">
+      <span class="trait-en">Decisive <button class="audio-btn" onclick="playAudio('decisiveness')" style="width:22px;height:22px"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button></span>
+      <span class="trait-pronunciation">ديسيسِف</span>
+      <span class="trait-ar">✅ حازم في اتخاذ القرارات بسرعة وثقة</span>
+    </div>
+    <div class="trait-card">
+      <span class="trait-en">Competitive Spirit <button class="audio-btn" onclick="playAudio('competitive_spirit')" style="width:22px;height:22px"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button></span>
+      <span class="trait-pronunciation">كومبيتيتِف سبيريت</span>
+      <span class="trait-ar">🏆 روح تنافسية — يسعى دوماً للتفوق</span>
+    </div>
+    <div class="trait-card">
+      <span class="trait-en">Accountable <button class="audio-btn" onclick="playAudio('accountability')" style="width:22px;height:22px"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button></span>
+      <span class="trait-pronunciation">أكاونتَبِل</span>
+      <span class="trait-ar">📊 مسؤول — يتحمل نتائج قراراته</span>
+    </div>
+  </div>
+
+  <div class="key">
+    <div class="key-header">
+      <svg class="icon" viewBox="0 0 24 24" width="16" height="16"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+      <span>أهم 4 صفات يجب حفظها للامتحان:</span>
+    </div>
+    <strong>1. Innovative</strong> — مبتكر 💡 |
+    <strong>2. Risk Taker</strong> — متحمّل للمخاطر ⚡ |
+    <strong>3. Visionary</strong> — صاحب رؤية 🔭 |
+    <strong>4. Persistent</strong> — مثابر 💪
+  </div>
+
+  <!-- Quick Question 3 -->
+  <div class="question">
+    <div class="q-header">
+      <div class="q-english">Quick Question: An entrepreneur who doesn't give up after failure is called:</div>
+      <button class="q-speech-btn" onclick="speakText('An entrepreneur who does not give up after failure is called:')">
+        <svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+        <span>استمع</span>
+      </button>
+    </div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)">
+      <svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg>
+      <span>عرض السؤال بالعربية</span>
+    </button>
+    <div class="q-arabic-text">رائد الأعمال الذي لا يستسلم بعد الفشل يوصف بـ:</div>
+
+    <div class="inline-mcq" data-correct="2" data-explanations='[
+      "Optimistic معناها متفائل، أي يرى الأمور بإيجابية، لكن المعنى المقصود هنا هو عدم الاستسلام وليس التفاؤل فقط.",
+      "Innovative معناها مبتكر يقدم أفكاراً جديدة، لكنها لا تصف الصمود أمام الفشل تحديداً.",
+      "إجابة ممتازة! Persistent معناها مثابر، أي الشخص الذي يواصل المحاولة ولا يستسلم رغم العقبات والإخفاقات. هذه الصفة هي عمود فقري نجاح أي رائد أعمال."
+    ]'>
+      <button class="mcq-option" onclick="checkAnswer(this, 0)">
+        <span>A) Optimistic</span>
+        <span class="opt-badge">اختيارك</span>
+      </button>
+      <button class="mcq-option" onclick="checkAnswer(this, 1)">
+        <span>B) Innovative</span>
+        <span class="opt-badge">اختيارك</span>
+      </button>
+      <button class="mcq-option" onclick="checkAnswer(this, 2)">
+        <span>C) Persistent</span>
+        <span class="opt-badge">اختيارك</span>
+      </button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions">
+        <button class="reset-btn" onclick="resetQuestion(this)">
+          <svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
+          <span>إعادة المحاولة</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= Section 4 ================= -->
+<section class="card" id="sec4">
+  <h2><span class="section-badge">4</span> أنواع رواد الأعمال</h2>
+
+  <p>الدكتورة <strong>Hadia Ghalib</strong>
+  <button class="audio-btn" onclick="playAudio('hadia_ghalib')" title="استمع للنطق"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+  قسّمت رواد الأعمال إلى أنواع بناءً على أسلوب تفكيرهم وعملهم:</p>
+
+  <div class="traits-grid">
+    <div class="trait-card">
+      <span class="trait-en">Idealist <button class="audio-btn" onclick="playAudio('idealist')" style="width:22px;height:22px"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button></span>
+      <span class="trait-pronunciation">آيديَليست</span>
+      <span class="trait-ar">💭 المثالي — يطمح لتغيير العالم بمبادئه النبيلة</span>
+    </div>
+    <div class="trait-card">
+      <span class="trait-en">Analyst <button class="audio-btn" onclick="playAudio('analyst')" style="width:22px;height:22px"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button></span>
+      <span class="trait-pronunciation">أنالِست</span>
+      <span class="trait-ar">📊 المحلل — يعتمد على البيانات والأرقام في قراراته</span>
+    </div>
+    <div class="trait-card">
+      <span class="trait-en">Juggler <button class="audio-btn" onclick="playAudio('juggler')" style="width:22px;height:22px"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button></span>
+      <span class="trait-pronunciation">جاجلَر</span>
+      <span class="trait-ar">🤹 المتعدد المهام — يدير أكثر من مشروع في نفس الوقت</span>
+    </div>
+    <div class="trait-card">
+      <span class="trait-en">Improver <button class="audio-btn" onclick="playAudio('improver')" style="width:22px;height:22px"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button></span>
+      <span class="trait-pronunciation">إمبروفَر</span>
+      <span class="trait-ar">⬆️ المحسّن — يطوّر ما هو موجود بدلاً من الاختراع من الصفر</span>
+    </div>
+    <div class="trait-card">
+      <span class="trait-en">Visionary <button class="audio-btn" onclick="playAudio('visionary')" style="width:22px;height:22px"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button></span>
+      <span class="trait-pronunciation">فيجِنَري</span>
+      <span class="trait-ar">🔭 صاحب الرؤية — يرى ما لا يراه الآخرون ويقود التغيير</span>
+    </div>
+  </div>
+
+  <div class="key">
+    <div class="key-header">
+      <svg class="icon" viewBox="0 0 24 24" width="16" height="16"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+      <span>ملاحظة مهمة:</span>
+    </div>
+    رائد الأعمال الناجح قد يجمع أكثر من نوع في شخصيته. مثلاً: <strong>Walt Disney</strong> كان Visionary + Idealist + Improver في نفس الوقت!
+  </div>
+
+  <!-- Quick Question 4 -->
+  <div class="question">
+    <div class="q-header">
+      <div class="q-english">Quick Question: An entrepreneur who improves existing products rather than inventing new ones is called:</div>
+      <button class="q-speech-btn" onclick="speakText('An entrepreneur who improves existing products rather than inventing new ones is called:')">
+        <svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+        <span>استمع</span>
+      </button>
+    </div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)">
+      <svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg>
+      <span>عرض السؤال بالعربية</span>
+    </button>
+    <div class="q-arabic-text">رائد الأعمال الذي يحسّن المنتجات الموجودة بدلاً من اختراع منتجات جديدة يسمى:</div>
+
+    <div class="inline-mcq" data-correct="1" data-explanations='[
+      "Analyst يعتمد على تحليل البيانات والأرقام في قراراته. هو يحلل وليس يحسّن بالضرورة.",
+      "إجابة صحيحة ممتازة! Improver هو رائد الأعمال الذي يأخذ منتجات أو خدمات موجودة ويطورها ويحسّنها، مثل كثير من شركات التكنولوجيا.",
+      "Juggler هو من يدير مشاريع متعددة في وقت واحد، وهذا لا علاقة له بتحسين المنتجات."
+    ]'>
+      <button class="mcq-option" onclick="checkAnswer(this, 0)">
+        <span>A) Analyst</span>
+        <span class="opt-badge">اختيارك</span>
+      </button>
+      <button class="mcq-option" onclick="checkAnswer(this, 1)">
+        <span>B) Improver</span>
+        <span class="opt-badge">اختيارك</span>
+      </button>
+      <button class="mcq-option" onclick="checkAnswer(this, 2)">
+        <span>C) Juggler</span>
+        <span class="opt-badge">اختيارك</span>
+      </button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions">
+        <button class="reset-btn" onclick="resetQuestion(this)">
+          <svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
+          <span>إعادة المحاولة</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= Section 5 ================= -->
+<section class="card" id="sec5">
+  <h2><span class="section-badge">5</span> نموذج العمل التجاري</h2>
+
+  <div class="term">
+    <span class="en">Business Model</span>
+    <button class="audio-btn" onclick="playAudio('business_model')" title="استمع للنطق"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button><br>
+    <strong>المعنى:</strong> نموذج العمل التجاري | <strong>النطق:</strong> بيزنِس مودِل<br>
+    الإطار الشامل الذي يوضح كيف يخلق المشروع قيمة ويوصلها للعميل ويكسب منها ربحاً.
+  </div>
+
+  <div class="term">
+    <span class="en">Business Plan</span>
+    <button class="audio-btn" onclick="playAudio('business_plan')" title="استمع للنطق"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button><br>
+    <strong>المعنى:</strong> خطة العمل | <strong>النطق:</strong> بيزنِس بلان<br>
+    وثيقة مفصّلة تشرح كيف سيعمل المشروع، وتشمل: الأهداف، التمويل، التسويق، والخطط المستقبلية.
+  </div>
+
+  <div class="term">
+    <span class="en">Feasibility Study</span>
+    <button class="audio-btn" onclick="playAudio('feasibility_study')" title="استمع للنطق"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button><br>
+    <strong>المعنى:</strong> دراسة الجدوى | <strong>النطق:</strong> فيزَبيليتي ستَدي<br>
+    تحليل شامل يحدد ما إذا كان المشروع قابلاً للتطبيق والنجاح قبل البدء فيه.
+  </div>
+
+  <div class="term">
+    <span class="en">Profitability</span>
+    <button class="audio-btn" onclick="playAudio('profitability')" title="استمع للنطق"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button><br>
+    <strong>المعنى:</strong> الربحية | <strong>النطق:</strong> بروفيتَبيليتي<br>
+    مدى قدرة المشروع على تحقيق أرباح مستدامة على المدى الطويل.
+  </div>
+
+  <div class="diagram">
+    Customer Needs → Business Idea → Business Model → Business Plan → Feasibility Study → Launch 🚀
+  </div>
+
+  <div class="key">
+    <div class="key-header">
+      <svg class="icon" viewBox="0 0 24 24" width="16" height="16"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+      <span>المصطلحات التخطيطية الأساسية:</span>
+    </div>
+    • <strong>Market Opportunities</strong>
+    <button class="audio-btn" onclick="playAudio('market_opportunities')" style="width:22px;height:22px"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+    = الفرص السوقية — ثغرات في السوق يمكن استغلالها<br>
+    • <strong>Customer Needs</strong>
+    <button class="audio-btn" onclick="playAudio('customer_needs')" style="width:22px;height:22px"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+    = احتياجات العميل — نقطة البداية لأي فكرة ناجحة<br>
+    • <strong>Vision and Passion</strong>
+    <button class="audio-btn" onclick="playAudio('vision_and_passion')" style="width:22px;height:22px"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+    = الرؤية والشغف — وقود رائد الأعمال الحقيقي
+  </div>
+
+  <!-- Quick Question 5 -->
+  <div class="question">
+    <div class="q-header">
+      <div class="q-english">Quick Question: What is done BEFORE starting a business to check if it will succeed?</div>
+      <button class="q-speech-btn" onclick="speakText('What is done before starting a business to check if it will succeed?')">
+        <svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+        <span>استمع</span>
+      </button>
+    </div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)">
+      <svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg>
+      <span>عرض السؤال بالعربية</span>
+    </button>
+    <div class="q-arabic-text">ماذا يُعمل قبل البدء في مشروع للتحقق من إمكانية نجاحه؟</div>
+
+    <div class="inline-mcq" data-correct="2" data-explanations='[
+      "Business Plan هي خطة العمل التفصيلية التي تأتي بعد التأكد من إمكانية النجاح، وليست الأداة التي تحدد هذه الإمكانية.",
+      "Business Model هو نموذج كيف يكسب المشروع المال، وهو جزء من التخطيط العام وليس أداة قياس الجدوى.",
+      "إجابة صحيحة! Feasibility Study (دراسة الجدوى) هي الأداة التي تُجرى قبل البدء لتحديد إمكانية النجاح، وتشمل: الدراسة المالية، السوقية، والتقنية."
+    ]'>
+      <button class="mcq-option" onclick="checkAnswer(this, 0)">
+        <span>A) Business Plan</span>
+        <span class="opt-badge">اختيارك</span>
+      </button>
+      <button class="mcq-option" onclick="checkAnswer(this, 1)">
+        <span>B) Business Model</span>
+        <span class="opt-badge">اختيارك</span>
+      </button>
+      <button class="mcq-option" onclick="checkAnswer(this, 2)">
+        <span>C) Feasibility Study</span>
+        <span class="opt-badge">اختيارك</span>
+      </button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions">
+        <button class="reset-btn" onclick="resetQuestion(this)">
+          <svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
+          <span>إعادة المحاولة</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= Section 6 ================= -->
+<section class="card" id="sec6">
+  <h2><span class="section-badge">6</span> أمثلة على رواد الأعمال الناجحين</h2>
+
+  <p>المحاضرة تذكر أمثلة واقعية لتوضيح مفاهيم ريادة الأعمال:</p>
+
+  <div class="example-box">
+    <div class="example-title">
+      🎬 Walt Disney
+      <button class="audio-btn" onclick="playAudio('walt_disney')" style="width:22px;height:22px"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+    </div>
+    <strong>النوع:</strong> Visionary + Idealist + Improver<br>
+    رُفض أكثر من 300 مرة قبل أن ينجح. لم يستسلم وحوّل أحلامه لأكبر إمبراطورية ترفيه في العالم.<br>
+    <strong>الدرس:</strong> المثابرة (Persistence) + الرؤية (Vision) = النجاح الكبير
+  </div>
+
+  <div class="example-box">
+    <div class="example-title">
+      🍎 Apple
+      <button class="audio-btn" onclick="playAudio('apple')" style="width:22px;height:22px"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+    </div>
+    <strong>النوع:</strong> Innovative + Visionary<br>
+    ستيف جوبز لم يبتكر الهاتف من الصفر، لكنه حوّل التكنولوجيا إلى تجربة إنسانية استثنائية.<br>
+    <strong>الدرس:</strong> Innovation ليست اختراع جديد فقط، بل تحسين التجربة بطريقة مختلفة
+  </div>
+
+  <div class="example-box">
+    <div class="example-title">
+      🛒 Amazon
+      <button class="audio-btn" onclick="playAudio('amazon')" style="width:22px;height:22px"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+    </div>
+    <strong>النوع:</strong> Analyst + Visionary<br>
+    جيف بيزوس بدأ ببيع الكتب على الإنترنت ثم تحوّل لأكبر متجر إلكتروني في العالم.<br>
+    <strong>الدرس:</strong> ابدأ صغيراً، فكّر كبيراً، وافهم Customer Needs
+  </div>
+
+  <div class="example-box">
+    <div class="example-title">
+      ☁️ Salesforce + LG
+      <button class="audio-btn" onclick="playAudio('salesforce')" style="width:22px;height:22px"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <button class="audio-btn" onclick="playAudio('lg')" style="width:22px;height:22px"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+    </div>
+    أمثلة على شركات نجحت بتحديد Market Opportunities بدقة والاستجابة السريعة لتغيرات السوق.
+  </div>
+
+  <!-- Quick Question 6 -->
+  <div class="question">
+    <div class="q-header">
+      <div class="q-english">Quick Question: Walt Disney is a perfect example of which entrepreneur type?</div>
+      <button class="q-speech-btn" onclick="speakText('Walt Disney is a perfect example of which entrepreneur type?')">
+        <svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+        <span>استمع</span>
+      </button>
+    </div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)">
+      <svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg>
+      <span>عرض السؤال بالعربية</span>
+    </button>
+    <div class="q-arabic-text">والت ديزني مثال مثالي على أي نوع من رواد الأعمال؟</div>
+
+    <div class="inline-mcq" data-correct="0" data-explanations='[
+      "إجابة صحيحة! والت ديزني هو نموذج Visionary بامتياز — رأى عالماً من الخيال والترفيه قبل أن يوجد، وتحدى الرفض أكثر من 300 مرة حتى حقق رؤيته.",
+      "Analyst يعتمد على الأرقام والبيانات. ديزني اشتهر بالإبداع والخيال أكثر من التحليل الرقمي.",
+      "Juggler يدير مشاريع متعددة. ديزني ركّز على بناء إمبراطورية ترفيه واحدة متكاملة."
+    ]'>
+      <button class="mcq-option" onclick="checkAnswer(this, 0)">
+        <span>A) Visionary</span>
+        <span class="opt-badge">اختيارك</span>
+      </button>
+      <button class="mcq-option" onclick="checkAnswer(this, 1)">
+        <span>B) Analyst</span>
+        <span class="opt-badge">اختيارك</span>
+      </button>
+      <button class="mcq-option" onclick="checkAnswer(this, 2)">
+        <span>C) Juggler</span>
+        <span class="opt-badge">اختيارك</span>
+      </button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions">
+        <button class="reset-btn" onclick="resetQuestion(this)">
+          <svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
+          <span>إعادة المحاولة</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= Section 7 ================= -->
+<section class="card" id="sec7">
+  <h2><span class="section-badge">7</span> فرص العمل الريادي في المجال الصيدلي</h2>
+
+  <p>المحاضرة تقدم أمثلة عملية على المشاريع الريادية في المجال الصيدلي والصحي:</p>
+
+  <div class="traits-grid">
+    <div class="trait-card">
+      <span class="trait-en">Retail Pharmacy Store <button class="audio-btn" onclick="playAudio('retail_pharmacy_store')" style="width:22px;height:22px"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button></span>
+      <span class="trait-pronunciation">ريتيل فارمَسي ستور</span>
+      <span class="trait-ar">💊 صيدلية بيع بالتجزئة — المشروع الكلاسيكي للصيادلة</span>
+    </div>
+    <div class="trait-card">
+      <span class="trait-en">Dental Clinic <button class="audio-btn" onclick="playAudio('dental_clinic')" style="width:22px;height:22px"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button></span>
+      <span class="trait-pronunciation">دِنتَل كلينِك</span>
+      <span class="trait-ar">🦷 عيادة أسنان — مشروع صحي متخصص</span>
+    </div>
+    <div class="trait-card">
+      <span class="trait-en">Ambulance Services <button class="audio-btn" onclick="playAudio('ambulance_services')" style="width:22px;height:22px"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button></span>
+      <span class="trait-pronunciation">أمبيولَنس سيرفيسيز</span>
+      <span class="trait-ar">🚑 خدمات الإسعاف — مشروع طبي طارئ</span>
+    </div>
+    <div class="trait-card">
+      <span class="trait-en">Sports Center <button class="audio-btn" onclick="playAudio('sports_center')" style="width:22px;height:22px"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button></span>
+      <span class="trait-pronunciation">سبورتس سِنتَر</span>
+      <span class="trait-ar">🏋️ مركز رياضي — صحة وترفيه</span>
+    </div>
+    <div class="trait-card">
+      <span class="trait-en">Herbal Products Manufacturing <button class="audio-btn" onclick="playAudio('herbal_products_manufacturing')" style="width:22px;height:22px"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button></span>
+      <span class="trait-pronunciation">هيربَل برودَكتس مانيوفاكتشَرينج</span>
+      <span class="trait-ar">🌿 تصنيع منتجات عشبية</span>
+    </div>
+    <div class="trait-card">
+      <span class="trait-en">Slimming Center <button class="audio-btn" onclick="playAudio('slimming_center')" style="width:22px;height:22px"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button></span>
+      <span class="trait-pronunciation">سليمينج سِنتَر</span>
+      <span class="trait-ar">⚖️ مركز تخسيس — سوق متنامٍ</span>
+    </div>
+    <div class="trait-card">
+      <span class="trait-en">Beauty Clinic <button class="audio-btn" onclick="playAudio('beauty_clinic')" style="width:22px;height:22px"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button></span>
+      <span class="trait-pronunciation">بيوتي كلينِك</span>
+      <span class="trait-ar">💆 عيادة تجميل — طلب متزايد</span>
+    </div>
+    <div class="trait-card">
+      <span class="trait-en">Body Shaping Clinic <button class="audio-btn" onclick="playAudio('body_shaping_clinic')" style="width:22px;height:22px"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button></span>
+      <span class="trait-pronunciation">بودي شيبينج كلينِك</span>
+      <span class="trait-ar">💪 عيادة تشكيل الجسم</span>
+    </div>
+    <div class="trait-card">
+      <span class="trait-en">Modest Clothing Line <button class="audio-btn" onclick="playAudio('modest_clothing_line')" style="width:22px;height:22px"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button></span>
+      <span class="trait-pronunciation">موديست كلوثينج لاين</span>
+      <span class="trait-ar">👗 خط ملابس محتشمة — سوق كبير وغير مشبع</span>
+    </div>
+  </div>
+
+  <div class="term">
+    <span class="en">Influencer Marketing</span>
+    <button class="audio-btn" onclick="playAudio('influencer_marketing')" title="استمع للنطق"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button><br>
+    <strong>المعنى:</strong> تسويق المؤثرين | <strong>النطق:</strong> إنفلوينسَر ماركيتينج<br>
+    استخدام أشخاص مؤثرين على السوشيال ميديا للترويج للمنتجات والخدمات، وهو أسلوب تسويقي حديث وفعّال.
+  </div>
+
+  <!-- Quick Question 7 -->
+  <div class="question">
+    <div class="q-header">
+      <div class="q-english">Quick Question: Which of the following is considered a pharmaceutical entrepreneurship opportunity?</div>
+      <button class="q-speech-btn" onclick="speakText('Which of the following is considered a pharmaceutical entrepreneurship opportunity?')">
+        <svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+        <span>استمع</span>
+      </button>
+    </div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)">
+      <svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg>
+      <span>عرض السؤال بالعربية</span>
+    </button>
+    <div class="q-arabic-text">أيٌّ مما يلي يُعدّ فرصة ريادية في المجال الصيدلي؟</div>
+
+    <div class="inline-mcq" data-correct="1" data-explanations='[
+      "Restaurant هو مشروع ترفيهي غذائي وليس صيدلانياً، رغم أنه قد يشمل عناصر صحية.",
+      "إجابة صحيحة ممتازة! Herbal Products Manufacturing (تصنيع المنتجات العشبية) هو مشروع صيدلي/صحي بامتياز، ذُكر في المحاضرة كمثال على الفرص الريادية للصيادلة.",
+      "Software Company هي شركة تقنية وليست صيدلانية، رغم إمكانية دمجهما في التكنولوجيا الصحية."
+    ]'>
+      <button class="mcq-option" onclick="checkAnswer(this, 0)">
+        <span>A) Restaurant</span>
+        <span class="opt-badge">اختيارك</span>
+      </button>
+      <button class="mcq-option" onclick="checkAnswer(this, 1)">
+        <span>B) Herbal Products Manufacturing</span>
+        <span class="opt-badge">اختيارك</span>
+      </button>
+      <button class="mcq-option" onclick="checkAnswer(this, 2)">
+        <span>C) Software Company</span>
+        <span class="opt-badge">اختيارك</span>
+      </button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions">
+        <button class="reset-btn" onclick="resetQuestion(this)">
+          <svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
+          <span>إعادة المحاولة</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= Section 8 ================= -->
+<section class="card" id="sec8">
+  <h2><span class="section-badge">8</span> ملخص المحاضرة في 5 نقاط رئيسية</h2>
+
+  <div class="key">
+    <div class="key-header">
+      <svg class="icon" viewBox="0 0 24 24" width="16" height="16"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+      <span>5 نقاط أساسية للامتحان:</span>
+    </div>
+    <ol style="margin-right:20px;margin-top:8px;line-height:2.2">
+      <li><strong>Entrepreneurship = Innovation + Risk-Taking + Value:</strong> ريادة الأعمال ليست مجرد بيع وشراء، بل ابتكار وتحمّل مخاطر وخلق قيمة.</li>
+      <li><strong>Entrepreneur ≠ Manager:</strong> الفرق الجوهري أن رائد الأعمال يمتلك المشروع ويتحمل المخاطر، بينما المدير يدير ويتقاضى راتباً.</li>
+      <li><strong>أهم صفات رائد الأعمال:</strong> Innovative + Risk Taker + Visionary + Persistent + Resilient + Ethical.</li>
+      <li><strong>أنواع رواد الأعمال:</strong> Idealist, Analyst, Juggler, Improver, Visionary — والناجح يجمع أكثر من نوع.</li>
+      <li><strong>Feasibility Study قبل البدء:</strong> دراسة الجدوى ضرورية للتحقق من إمكانية نجاح المشروع قبل أي استثمار.</li>
+    </ol>
+  </div>
+
+  <div class="diagram">
+    Mindset 🧠 → Vision 🔭 → Plan 📋 → Action 🚀 → Feedback 🔄 → Growth 📈
+  </div>
+</section>
+
+<!-- ================= Section 9 - Interactive Quiz ================= -->
+<section class="card" id="sec9">
+  <h2><span class="section-badge">9</span> الاختبار التفاعلي الشامل (10 أسئلة)</h2>
+  <p style="color:var(--text-muted);font-size:14px;margin-bottom:14px">
+    اختر الإجابة لكل سؤال. إذا أخطأت سيوضح لك فوراً سبب خطأ هذا الخيار بالتفصيل.
+  </p>
+
+  <!-- Quiz Dashboard -->
+  <div class="quiz-dashboard">
+    <div class="score-item">
+      <h4>النتيجة الحالية</h4>
+      <div class="score-val" id="scoreDisplay">0 / 10</div>
+    </div>
+    <div class="score-item">
+      <h4>النسبة المئوية</h4>
+      <div class="score-val" id="scorePercent">0%</div>
+    </div>
+    <div class="score-feedback" id="scoreFeedback">
+      <svg class="icon" viewBox="0 0 24 24" width="16" height="16"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      <span id="scoreFeedbackText">ابدأ بحل الأسئلة لاختبار فهمك</span>
+    </div>
+  </div>
+
+  <!-- Q1 -->
+  <div class="question quiz-q" data-qid="1">
+    <div class="q-header">
+      <div class="q-english">1. Which of the following best defines Entrepreneurship?</div>
+      <button class="q-speech-btn" onclick="speakText('Which of the following best defines Entrepreneurship?')">
+        <svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+        <span>استمع</span>
+      </button>
+    </div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)">
+      <svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg>
+      <span>عرض السؤال بالعربية</span>
+    </button>
+    <div class="q-arabic-text">أيٌّ مما يلي يُعرّف ريادة الأعمال بأفضل شكل؟</div>
+    <div class="inline-mcq" data-correct="2" data-explanations='[
+      "العمل بشكل دائم في نفس المشروع قد يكون وصفاً للإدارة التقليدية وليس ريادة الأعمال.",
+      "نسخ أفكار الآخرين عكس الابتكار، وهو نقيض ريادة الأعمال الحقيقية.",
+      "إجابة صحيحة! ريادة الأعمال = ابتكار + مخاطرة محسوبة + خلق قيمة اقتصادية. هذا هو التعريف الشامل والدقيق الذي تتضمنه المحاضرة."
+    ]'>
+      <button class="mcq-option" onclick="checkAnswer(this, 0)"><span>A) Working permanently in one place</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this, 1)"><span>B) Copying others' business ideas</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this, 2)"><span>C) Innovating, taking risks, and creating economic value</span><span class="opt-badge">اختيارك</span></button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>إعادة تعيين السؤال</span></button></div>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="question quiz-q" data-qid="2">
+    <div class="q-header">
+      <div class="q-english">2. What makes an Entrepreneur different from a Manager?</div>
+      <button class="q-speech-btn" onclick="speakText('What makes an Entrepreneur different from a Manager?')">
+        <svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+        <span>استمع</span>
+      </button>
+    </div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)">
+      <svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg>
+      <span>عرض السؤال بالعربية</span>
+    </button>
+    <div class="q-arabic-text">ما الذي يميز رائد الأعمال عن المدير؟</div>
+    <div class="inline-mcq" data-correct="0" data-explanations='[
+      "إجابة صحيحة! رائد الأعمال يتحمل المخاطر الشخصية ويمتلك المشروع وأرباحه وخسائره، بينما المدير يدير موارد الآخرين مقابل راتب ثابت.",
+      "كلا الطرفين قد يحمل مؤهلات دراسية. التعليم ليس معيار التمييز الرئيسي.",
+      "الاثنان قد يعملان في مجالات مختلفة. نوع العمل ليس المعيار الأساسي للتمييز."
+    ]'>
+      <button class="mcq-option" onclick="checkAnswer(this, 0)"><span>A) Entrepreneur owns the business and bears personal risks</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this, 1)"><span>B) Entrepreneur has more degrees</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this, 2)"><span>C) Entrepreneur works in a different field</span><span class="opt-badge">اختيارك</span></button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>إعادة تعيين السؤال</span></button></div>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="question quiz-q" data-qid="3">
+    <div class="q-header">
+      <div class="q-english">3. Creativity and new ideas are best described by the term:</div>
+      <button class="q-speech-btn" onclick="speakText('Creativity and new ideas are best described by the term:')">
+        <svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+        <span>استمع</span>
+      </button>
+    </div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)">
+      <svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg>
+      <span>عرض السؤال بالعربية</span>
+    </button>
+    <div class="q-arabic-text">الإبداع وتقديم الأفكار الجديدة يصفه مصطلح:</div>
+    <div class="inline-mcq" data-correct="1" data-explanations='[
+      "Leadership (القيادة) تعني توجيه الآخرين وإلهامهم، وليس تقديم أفكار إبداعية جديدة بالضرورة.",
+      "إجابة صحيحة! Innovation (الابتكار) هو المصطلح الذي يصف تقديم أفكار وحلول جديدة ومبدعة، وهو أحد أعمدة ريادة الأعمال.",
+      "Management (الإدارة) هو تنظيم وتوجيه الموارد، وليس الإبداع بالمعنى الدقيق."
+    ]'>
+      <button class="mcq-option" onclick="checkAnswer(this, 0)"><span>A) Leadership</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this, 1)"><span>B) Innovation</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this, 2)"><span>C) Management</span><span class="opt-badge">اختيارك</span></button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>إعادة تعيين السؤال</span></button></div>
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="question quiz-q" data-qid="4">
+    <div class="q-header">
+      <div class="q-english">4. An entrepreneur who manages multiple projects simultaneously is called a:</div>
+      <button class="q-speech-btn" onclick="speakText('An entrepreneur who manages multiple projects simultaneously is called a:')">
+        <svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+        <span>استمع</span>
+      </button>
+    </div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)">
+      <svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg>
+      <span>عرض السؤال بالعربية</span>
+    </button>
+    <div class="q-arabic-text">رائد الأعمال الذي يدير مشاريع متعددة في نفس الوقت يُسمى:</div>
+    <div class="inline-mcq" data-correct="2" data-explanations='[
+      "Idealist هو المثالي الذي يسعى لتغيير العالم بمبادئه، وليس من يدير مشاريع متعددة.",
+      "Analyst هو الذي يعتمد على البيانات والأرقام في قراراته.",
+      "إجابة صحيحة! Juggler (حرفياً: مشعوذ الأطباق) هو وصف مجازي لرائد الأعمال القادر على إدارة مشاريع أو مهام متعددة في نفس الوقت."
+    ]'>
+      <button class="mcq-option" onclick="checkAnswer(this, 0)"><span>A) Idealist</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this, 1)"><span>B) Analyst</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this, 2)"><span>C) Juggler</span><span class="opt-badge">اختيارك</span></button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>إعادة تعيين السؤال</span></button></div>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="question quiz-q" data-qid="5">
+    <div class="q-header">
+      <div class="q-english">5. A Feasibility Study is conducted:</div>
+      <button class="q-speech-btn" onclick="speakText('A Feasibility Study is conducted:')">
+        <svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+        <span>استمع</span>
+      </button>
+    </div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)">
+      <svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg>
+      <span>عرض السؤال بالعربية</span>
+    </button>
+    <div class="q-arabic-text">دراسة الجدوى تُجرى:</div>
+    <div class="inline-mcq" data-correct="0" data-explanations='[
+      "إجابة صحيحة! دراسة الجدوى (Feasibility Study) تُجرى دائماً قبل البدء في المشروع لتحديد ما إذا كان قابلاً للتطبيق والنجاح، وتشمل الجانب المالي والتسويقي والتقني.",
+      "بعد البدء يكون الوقت قد فات للتراجع بدون خسائر. الدراسة ضرورة قبل البدء.",
+      "في منتصف المشروع قد تُجرى مراجعات، لكن دراسة الجدوى الرئيسية تكون قبل البداية."
+    ]'>
+      <button class="mcq-option" onclick="checkAnswer(this, 0)"><span>A) Before starting the project</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this, 1)"><span>B) After the project succeeds</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this, 2)"><span>C) In the middle of the project</span><span class="opt-badge">اختيارك</span></button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>إعادة تعيين السؤال</span></button></div>
+    </div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="question quiz-q" data-qid="6">
+    <div class="q-header">
+      <div class="q-english">6. An entrepreneur who bounces back from failures is described as:</div>
+      <button class="q-speech-btn" onclick="speakText('An entrepreneur who bounces back from failures is described as:')">
+        <svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+        <span>استمع</span>
+      </button>
+    </div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)">
+      <svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg>
+      <span>عرض السؤال بالعربية</span>
+    </button>
+    <div class="q-arabic-text">رائد الأعمال الذي يتعافى ويعود من الإخفاقات يوصف بـ:</div>
+    <div class="inline-mcq" data-correct="1" data-explanations='[
+      "Decisive (حازم) تعني سرعة اتخاذ القرارات بثقة، وليس القدرة على التعافي من الفشل.",
+      "إجابة صحيحة! Resilient (متصامد/مرن) تعني القدرة على التعافي والعودة بعد الإخفاقات والأزمات. هذه الصفة حيوية لأن معظم رواد الأعمال يواجهون إخفاقات قبل النجاح.",
+      "Ethical (أخلاقي) تعني الالتزام بالقيم والمبادئ، وهي صفة مهمة لكنها لا تصف التعافي من الفشل."
+    ]'>
+      <button class="mcq-option" onclick="checkAnswer(this, 0)"><span>A) Decisive</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this, 1)"><span>B) Resilient</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this, 2)"><span>C) Ethical</span><span class="opt-badge">اختيارك</span></button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>إعادة تعيين السؤال</span></button></div>
+    </div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="question quiz-q" data-qid="7">
+    <div class="q-header">
+      <div class="q-english">7. The Business Model explains:</div>
+      <button class="q-speech-btn" onclick="speakText('The Business Model explains:')">
+        <svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+        <span>استمع</span>
+      </button>
+    </div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)">
+      <svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg>
+      <span>عرض السؤال بالعربية</span>
+    </button>
+    <div class="q-arabic-text">نموذج العمل (Business Model) يشرح:</div>
+    <div class="inline-mcq" data-correct="0" data-explanations='[
+      "إجابة صحيحة! Business Model هو الإطار الذي يوضح كيف يخلق المشروع قيمة للعميل ويحولها لربح، أي: من أين يأتي الربح؟ وكيف؟ وما هو عرض القيمة؟",
+      "الرواتب جزء من تكاليف التشغيل، وليست هي محور Business Model.",
+      "عدد الموظفين هو قرار هيكلي وليس ما يصفه Business Model."
+    ]'>
+      <button class="mcq-option" onclick="checkAnswer(this, 0)"><span>A) How the business creates value and earns profit</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this, 1)"><span>B) The salaries of employees</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this, 2)"><span>C) The number of employees needed</span><span class="opt-badge">اختيارك</span></button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>إعادة تعيين السؤال</span></button></div>
+    </div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="question quiz-q" data-qid="8">
+    <div class="q-header">
+      <div class="q-english">8. Risk-Taking in entrepreneurship means:</div>
+      <button class="q-speech-btn" onclick="speakText('Risk-Taking in entrepreneurship means:')">
+        <svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+        <span>استمع</span>
+      </button>
+    </div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)">
+      <svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg>
+      <span>عرض السؤال بالعربية</span>
+    </button>
+    <div class="q-arabic-text">المخاطرة في ريادة الأعمال تعني:</div>
+    <div class="inline-mcq" data-correct="1" data-explanations='[
+      "المقامرة عشوائية وبلا دراسة. رائد الأعمال الحقيقي يأخذ مخاطر محسوبة ومدروسة.",
+      "إجابة صحيحة! Risk-Taking في ريادة الأعمال يعني تحمّل مخاطر محسوبة ومدروسة بناءً على تحليل دقيق للسوق والفرص والموارد المتاحة، وليس مغامرة عشوائية.",
+      "تجنب المخاطر تماماً يعني عدم اتخاذ أي قرارات جريئة، وهذا لا يتوافق مع روح ريادة الأعمال."
+    ]'>
+      <button class="mcq-option" onclick="checkAnswer(this, 0)"><span>A) Gambling without thinking</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this, 1)"><span>B) Taking calculated risks based on analysis</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this, 2)"><span>C) Avoiding all risks completely</span><span class="opt-badge">اختيارك</span></button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>إعادة تعيين السؤال</span></button></div>
+    </div>
+  </div>
+
+  <!-- Q9 -->
+  <div class="question quiz-q" data-qid="9">
+    <div class="q-header">
+      <div class="q-english">9. Which is an example of Market Opportunity in the pharmaceutical field?</div>
+      <button class="q-speech-btn" onclick="speakText('Which is an example of Market Opportunity in the pharmaceutical field?')">
+        <svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+        <span>استمع</span>
+      </button>
+    </div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)">
+      <svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg>
+      <span>عرض السؤال بالعربية</span>
+    </button>
+    <div class="q-arabic-text">أيٌّ من التالي مثال على فرصة سوقية في المجال الصيدلي؟</div>
+    <div class="inline-mcq" data-correct="2" data-explanations='[
+      "Car dealership (معرض سيارات) مجال تجاري عام وليس صيدلياً.",
+      "Fashion design (تصميم أزياء) مجال إبداعي وليس صيدلانياً.",
+      "إجابة صحيحة! Retail Pharmacy Store (صيدلية بيع بالتجزئة) هو مثال كلاسيكي ومباشر على الفرص الريادية في المجال الصيدلي الذي ذكرته المحاضرة."
+    ]'>
+      <button class="mcq-option" onclick="checkAnswer(this, 0)"><span>A) Car dealership</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this, 1)"><span>B) Fashion design</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this, 2)"><span>C) Retail Pharmacy Store</span><span class="opt-badge">اختيارك</span></button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>إعادة تعيين السؤال</span></button></div>
+    </div>
+  </div>
+
+  <!-- Q10 -->
+  <div class="question quiz-q" data-qid="10">
+    <div class="q-header">
+      <div class="q-english">10. The MINDSET of an entrepreneur focuses on:</div>
+      <button class="q-speech-btn" onclick="speakText('The MINDSET of an entrepreneur focuses on:')">
+        <svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+        <span>استمع</span>
+      </button>
+    </div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)">
+      <svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg>
+      <span>عرض السؤال بالعربية</span>
+    </button>
+    <div class="q-arabic-text">عقلية رائد الأعمال (Mindset) تركز على:</div>
+    <div class="inline-mcq" data-correct="1" data-explanations='[
+      "التعلق بالماضي نقيض عقلية ريادة الأعمال. رائد الأعمال يتطلع للمستقبل دائماً.",
+      "إجابة ممتازة! عقلية رائد الأعمال (Entrepreneurial Mindset) تركز على رؤية الفرص في كل مكان، وإيجاد الحلول للمشاكل، والتفكير المستقبلي الإبداعي بدلاً من التركيز على العوائق.",
+      "الاكتفاء بالحالة الراهنة يعني عدم التطوير والنمو، وهو عكس عقلية رائد الأعمال تماماً."
+    ]'>
+      <button class="mcq-option" onclick="checkAnswer(this, 0)"><span>A) Looking back at past experiences only</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this, 1)"><span>B) Seeing opportunities and solving problems creatively</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this, 2)"><span>C) Being satisfied with current situation</span><span class="opt-badge">اختيارك</span></button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>إعادة تعيين السؤال</span></button></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= Section 10 - Glossary ================= -->
+<section class="card" id="sec10">
+  <h2><span class="section-badge">10</span> قاموس مصطلحات المحاضرة</h2>
+  <p style="color:var(--text-muted);font-size:14px;margin-bottom:14px">
+    اضغط زر الصوت 🔊 بجانب أي مصطلح للاستماع لنطقه الصحيح
+  </p>
+
+  <div class="glossary-grid">
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('entrepreneurship')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Entrepreneurship</strong><span class="glossary-pronunciation"></span>ريادة الأعمال</div>
+    </div>
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('entrepreneur')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Entrepreneur</strong><span class="glossary-pronunciation"></span>رائد الأعمال</div>
+    </div>
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('innovation')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Innovation</strong><span class="glossary-pronunciation"></span>الابتكار</div>
+    </div>
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('manager')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Manager</strong><span class="glossary-pronunciation"></span>المدير</div>
+    </div>
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('risk_taking')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Risk-Taking</strong><span class="glossary-pronunciation"></span>تحمّل المخاطر</div>
+    </div>
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('leadership')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Leadership</strong><span class="glossary-pronunciation"></span>القيادة</div>
+    </div>
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('motivation')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Motivation</strong><span class="glossary-pronunciation"></span>الدافعية / الحافز</div>
+    </div>
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('vision')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Vision</strong><span class="glossary-pronunciation"></span>الرؤية</div>
+    </div>
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('strategy')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Strategy</strong><span class="glossary-pronunciation"></span>الاستراتيجية</div>
+    </div>
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('planning')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Planning</strong><span class="glossary-pronunciation"></span>التخطيط</div>
+    </div>
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('business_model')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Business Model</strong><span class="glossary-pronunciation"></span>نموذج العمل</div>
+    </div>
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('business_plan')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Business Plan</strong><span class="glossary-pronunciation"></span>خطة العمل</div>
+    </div>
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('feasibility_study')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Feasibility Study</strong><span class="glossary-pronunciation"></span>دراسة الجدوى</div>
+    </div>
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('market_opportunities')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Market Opportunities</strong><span class="glossary-pronunciation"></span>الفرص السوقية</div>
+    </div>
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('customer_needs')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Customer Needs</strong><span class="glossary-pronunciation"></span>احتياجات العميل</div>
+    </div>
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('economic_value')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Economic Value</strong><span class="glossary-pronunciation"></span>القيمة الاقتصادية</div>
+    </div>
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('profitability')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Profitability</strong><span class="glossary-pronunciation"></span>الربحية</div>
+    </div>
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('mindset')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Mindset</strong><span class="glossary-pronunciation"></span>طريقة التفكير / العقلية</div>
+    </div>
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('creativity')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Creativity</strong><span class="glossary-pronunciation"></span>الإبداع</div>
+    </div>
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('decision_making')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Decision-Making</strong><span class="glossary-pronunciation"></span>اتخاذ القرار</div>
+    </div>
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('management')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Management</strong><span class="glossary-pronunciation"></span>الإدارة</div>
+    </div>
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('organization')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Organization</strong><span class="glossary-pronunciation"></span>التنظيم / المنظمة</div>
+    </div>
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('accountability')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Accountability</strong><span class="glossary-pronunciation"></span>المساءلة / المسؤولية</div>
+    </div>
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('influencer_marketing')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Influencer Marketing</strong><span class="glossary-pronunciation"></span>تسويق المؤثرين</div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /container -->
+
+<!-- Celebration Modal -->
+<div id="celebrationModal" style="display:flex;display:none;">
+  <div class="modal-box">
+    <div class="modal-icon-wrap">
+      <svg class="icon" viewBox="0 0 24 24" width="32" height="32" style="color:#059669"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    </div>
+    <h2>🎉 ممتاز! أحسنت!</h2>
+    <p style="color:var(--text-secondary);margin-bottom:16px" id="modalMsg">أجبت على جميع الأسئلة بشكل صحيح!</p>
+    <button onclick="document.getElementById('celebrationModal').style.display='none'" style="background:linear-gradient(135deg,#16a34a,#0ea5e9);color:white;border:none;border-radius:10px;padding:10px 24px;font-size:15px;font-weight:700;cursor:pointer;">حسناً 👍</button>
+  </div>
+</div>
+
+<script>
+  // ========== THEME ==========
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
+
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  }
+
+  // ========== PROGRESS BAR ==========
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    document.getElementById('progressFill').style.width = pct + '%';
+  });
+
+  // ========== AUDIO ==========
+  const AUDIO_DIR = 'audio/';
+  let currentAudioBtn = null;
+  let currentAudio = null;
+
+  function playAudio(name) {
+    if (currentAudio && !currentAudio.paused) {
+      currentAudio.pause();
+      if (currentAudioBtn) currentAudioBtn.classList.remove('playing');
+      if (currentAudio._name === name) { currentAudio = null; currentAudioBtn = null; return; }
+    }
+    const audio = new Audio(AUDIO_DIR + name + '.mp3');
+    audio._name = name;
+    const btns = document.querySelectorAll(`.audio-btn[onclick*="'${name}'"]`);
+    const btn = btns[0] || null;
+    if (btn) { btn.classList.add('playing'); currentAudioBtn = btn; }
+    audio.play().catch(() => {});
+    audio.onended = () => { if (btn) btn.classList.remove('playing'); };
+    audio.onerror = () => { if (btn) btn.classList.remove('playing'); };
+    currentAudio = audio;
+  }
+
+  function speakText(text) {
+    if (!window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'en-US';
+    u.rate = 0.85;
+    window.speechSynthesis.speak(u);
+  }
+
+  // ========== ARABIC TOGGLE ==========
+  function toggleArabic(btn) {
+    const box = btn.nextElementSibling;
+    const shown = box.classList.contains('show');
+    box.classList.toggle('show', !shown);
+    btn.querySelector('span').textContent = shown ? 'عرض السؤال بالعربية' : 'إخفاء الترجمة';
+  }
+
+  // ========== MCQ QUIZ SCORE ==========
+  let totalCorrect = 0;
+  let totalAnswered = 0;
+  const TOTAL_QUIZ_QS = 10;
+
+  function updateScore(isCorrect) {
+    if (isCorrect) totalCorrect++;
+    totalAnswered++;
+    document.getElementById('scoreDisplay').textContent = totalCorrect + ' / ' + TOTAL_QUIZ_QS;
+    const pct = Math.round((totalCorrect / TOTAL_QUIZ_QS) * 100);
+    document.getElementById('scorePercent').textContent = pct + '%';
+    let feedback = 'واصل الحل 💪';
+    if (totalAnswered === TOTAL_QUIZ_QS) {
+      if (pct === 100) { feedback = 'ممتاز! إجاباتك كلها صحيحة 🏆'; showCelebration(totalCorrect, TOTAL_QUIZ_QS); }
+      else if (pct >= 80) feedback = 'أحسنت! نتيجة رائعة 🌟';
+      else if (pct >= 60) feedback = 'جيد! راجع النقاط الضعيفة 📚';
+      else feedback = 'راجع المحاضرة مرة أخرى 💡';
+    }
+    document.getElementById('scoreFeedbackText').textContent = feedback;
+  }
+
+  function showCelebration(correct, total) {
+    document.getElementById('modalMsg').textContent = `نتيجتك: ${correct} من ${total} — ${Math.round((correct/total)*100)}% 🎓`;
+    const modal = document.getElementById('celebrationModal');
+    modal.style.display = 'flex';
+  }
+
+  // ========== MCQ ANSWER CHECK ==========
+  function checkAnswer(btn, chosenIdx) {
+    const mcq = btn.closest('.inline-mcq');
+    if (mcq.dataset.answered) return;
+    mcq.dataset.answered = '1';
+    const correct = parseInt(mcq.dataset.correct);
+    const explanations = JSON.parse(mcq.dataset.explanations);
+    const isCorrect = chosenIdx === correct;
+    const allBtns = mcq.querySelectorAll('.mcq-option');
+    allBtns.forEach((b, i) => { b.style.cursor = 'default'; b.onclick = null; });
+    btn.classList.add(isCorrect ? 'selected-correct' : 'selected-wrong');
+    if (!isCorrect) allBtns[correct].classList.add('selected-correct');
+    const resultDiv = mcq.querySelector('.mcq-result');
+    const isQuizQ = !!btn.closest('.quiz-q');
+    if (isQuizQ) updateScore(isCorrect);
+    resultDiv.className = 'mcq-result show ' + (isCorrect ? 'correct-msg' : 'wrong-msg');
+    resultDiv.innerHTML = `
+      <div class="result-title">
+        <svg class="icon" viewBox="0 0 24 24" width="16" height="16">${isCorrect
+          ? '<polyline points="20 6 9 17 4 12"></polyline>'
+          : '<line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>'}</svg>
+        ${isCorrect ? '✅ إجابة صحيحة!' : '❌ إجابة خاطئة'}
+      </div>
+      <div class="result-explanation">
+        <div class="explanation-title">
+          <svg class="icon" viewBox="0 0 24 24" width="14" height="14"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          التفسير:
+        </div>
+        ${explanations[chosenIdx]}
+      </div>
+      <p class="result-hint">${isCorrect ? '💡 انتقل للسؤال التالي.' : '💡 جرّب الإجابة الصحيحة لتتعلم أكثر.'}</p>
+    `;
+  }
+
+  function resetQuestion(btn) {
+    const mcq = btn.closest('.inline-mcq');
+    delete mcq.dataset.answered;
+    mcq.querySelectorAll('.mcq-option').forEach((b, i) => {
+      b.className = 'mcq-option';
+      b.onclick = (e) => checkAnswer(b, i);
+      b.style.cursor = 'pointer';
+    });
+    const resultDiv = mcq.querySelector('.mcq-result');
+    resultDiv.className = 'mcq-result';
+    resultDiv.innerHTML = '';
+  }
+</script>
+</body>
+</html>
