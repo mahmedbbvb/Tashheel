@@ -365,7 +365,134 @@
         justify-content: center;
       }
     }
-  </style>
+  
+    /* ── WhatsApp First-Time Invite Modal ── */
+    .wa-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(6px);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    .wa-modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .wa-modal-card {
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 24px;
+      max-width: 440px;
+      width: 100%;
+      padding: 34px 26px 26px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.25);
+      transform: scale(0.92) translateY(12px);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .wa-modal-overlay.active .wa-modal-card {
+      transform: scale(1) translateY(0);
+    }
+    .wa-modal-close {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid #e2e8f0;
+      background: #f8fafc;
+      color: #64748b;
+      font-size: 20px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      line-height: 1;
+    }
+    .wa-modal-close:hover {
+      background: #f1f5f9;
+      color: #0f172a;
+    }
+    .wa-modal-icon-wrap {
+      width: 68px;
+      height: 68px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+      box-shadow: 0 10px 22px rgba(37, 211, 102, 0.32);
+    }
+    .wa-modal-title {
+      font-size: 21px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .wa-modal-desc {
+      font-size: 14.5px;
+      color: #64748b;
+      line-height: 1.6;
+      margin-bottom: 22px;
+    }
+    .wa-modal-btn-join {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      background: #25D366;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 700;
+      font-family: inherit;
+      padding: 13px 20px;
+      border-radius: 14px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+      margin-bottom: 10px;
+    }
+    .wa-modal-btn-join:hover {
+      background: #1ebd5a;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.45);
+    }
+    .wa-modal-btn-skip {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      font-size: 13.5px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      padding: 6px 12px;
+      transition: color 0.2s ease;
+    }
+    .wa-modal-btn-skip:hover {
+      color: #475569;
+    }
+
+</style>
 </head>
 <body>
 
@@ -461,6 +588,27 @@
 
     <!-- Quick Actions & Banners -->
     <div class="banners-wrapper">
+      <!-- WhatsApp Group Community Banner -->
+      <div class="quick-banner" style="background: linear-gradient(135deg, rgba(37, 211, 102, 0.08) 0%, rgba(18, 140, 126, 0.04) 100%); border-color: rgba(37, 211, 102, 0.3);">
+        <div class="banner-info">
+          <div class="banner-icon-badge" style="background: #25D366; color: #ffffff; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.04 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.53 7.37C9.37 7.37 9.1 7.43 8.87 7.68C8.64 7.93 8 8.53 8 9.75C8 10.97 8.89 12.15 9.01 12.31C9.14 12.47 10.74 14.95 13.2 16C13.79 16.26 14.24 16.41 14.6 16.53C15.19 16.72 15.73 16.69 16.15 16.63C16.63 16.56 17.62 16.03 17.82 15.45C18.03 14.87 18.03 14.38 17.97 14.27C17.91 14.17 17.75 14.11 17.5 13.99C17.26 13.86 16.06 13.27 15.83 13.19C15.61 13.11 15.45 13.07 15.28 13.31C15.12 13.56 14.67 14.11 14.53 14.27C14.39 14.43 14.25 14.45 14.01 14.33C13.76 14.21 12.98 13.95 12.06 13.13C11.34 12.49 10.86 11.7 10.72 11.46C10.58 11.21 10.71 11.08 10.83 10.96C10.94 10.85 11.08 10.67 11.2 10.53C11.33 10.39 11.37 10.29 11.45 10.13C11.53 9.96 11.49 9.82 11.43 9.7C11.37 9.58 10.9 8.44 10.7 7.97C10.51 7.5 10.32 7.57 10.16 7.56C10.03 7.56 9.87 7.37 9.53 7.37Z"/>
+            </svg>
+          </div>
+          <div class="banner-text-content">
+            <div class="banner-title">مجموعة الواتساب الرسمية (لمتابعة كل الأخبار)</div>
+            <div class="banner-desc">انضم لمجموعة الدفعة الرسمية لمتابعة كل التنبيهات وجداول المحاضرات والملخصات أولاً بأول</div>
+          </div>
+        </div>
+        <div class="banner-actions">
+          <a href="https://chat.whatsapp.com/IcNmnx9abkmFnptCpup13B?s=cl&p=a&mlu=4&ilr=4&iam=1" target="_blank" rel="noopener noreferrer" class="btn-timetable-action" style="background:#25D366; color:#ffffff; border:none; box-shadow:0 4px 12px rgba(37, 211, 102, 0.3);">
+            <span>انضمام للمجموعة</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+
       <!-- Timetable Banner -->
       <div class="quick-banner timetable-banner">
         <div class="banner-info">
@@ -519,6 +667,59 @@
       </div>
     </div>
   </footer>
+
+
+  <!-- WhatsApp Group First-Visit Invite Modal -->
+  <div class="wa-modal-overlay" id="waModalOverlay">
+    <div class="wa-modal-card">
+      <button class="wa-modal-close" onclick="closeWaModal()" title="إغلاق">&times;</button>
+      <div class="wa-modal-icon-wrap">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.04 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.53 7.37C9.37 7.37 9.1 7.43 8.87 7.68C8.64 7.93 8 8.53 8 9.75C8 10.97 8.89 12.15 9.01 12.31C9.14 12.47 10.74 14.95 13.2 16C13.79 16.26 14.24 16.41 14.6 16.53C15.19 16.72 15.73 16.69 16.15 16.63C16.63 16.56 17.62 16.03 17.82 15.45C18.03 14.87 18.03 14.38 17.97 14.27C17.91 14.17 17.75 14.11 17.5 13.99C17.26 13.86 16.06 13.27 15.83 13.19C15.61 13.11 15.45 13.07 15.28 13.31C15.12 13.56 14.67 14.11 14.53 14.27C14.39 14.43 14.25 14.45 14.01 14.33C13.76 14.21 12.98 13.95 12.06 13.13C11.34 12.49 10.86 11.7 10.72 11.46C10.58 11.21 10.71 11.08 10.83 10.96C10.94 10.85 11.08 10.67 11.2 10.53C11.33 10.39 11.37 10.29 11.45 10.13C11.53 9.96 11.49 9.82 11.43 9.7C11.37 9.58 10.9 8.44 10.7 7.97C10.51 7.5 10.32 7.57 10.16 7.56C10.03 7.56 9.87 7.37 9.53 7.37Z"/>
+        </svg>
+      </div>
+      <h3 class="wa-modal-title">مجموعة الواتساب الرسمية</h3>
+      <p class="wa-modal-desc">
+        انضم الآن إلى مجموعة الواتساب لمتابعة كل الأخبار، التنبيهات الهامة، جداول المحاضرات، وملخصات المواد الجديدة أولاً بأول فور نزولها.
+      </p>
+      <a href="https://chat.whatsapp.com/IcNmnx9abkmFnptCpup13B?s=cl&p=a&mlu=4&ilr=4&iam=1" target="_blank" rel="noopener noreferrer" class="wa-modal-btn-join" onclick="handleJoinWa()">
+        <span>الانضمام إلى المجموعة الآن</span>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <button class="wa-modal-btn-skip" onclick="closeWaModal()">تخطي ومتابعة التصفح</button>
+    </div>
+  </div>
+
+  <script>
+    function openWaModal() {
+      const modal = document.getElementById('waModalOverlay');
+      if (modal) modal.classList.add('active');
+    }
+
+    function closeWaModal() {
+      const modal = document.getElementById('waModalOverlay');
+      if (modal) modal.classList.remove('active');
+      localStorage.setItem('wa_group_invite_seen', 'true');
+    }
+
+    function handleJoinWa() {
+      localStorage.setItem('wa_group_invite_seen', 'true');
+      closeWaModal();
+    }
+
+    // Show only on the first visit
+    window.addEventListener('DOMContentLoaded', () => {
+      const hasSeen = localStorage.getItem('wa_group_invite_seen');
+      if (!hasSeen) {
+        setTimeout(openWaModal, 700);
+      }
+    });
+
+    // Close on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeWaModal();
+    });
+  </script>
 
 </body>
 </html>
