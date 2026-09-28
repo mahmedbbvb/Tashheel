@@ -1,0 +1,2778 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dental Anatomy I - Lecture 1: Introduction to Dental Anatomy | منصة تسهيل</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-gradient: linear-gradient(135deg, #f0f9ff 0%, #f1f5f9 50%, #f8fafc 100%);
+    --card-bg: #ffffff;
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --text-muted: #64748b;
+    --primary: #0284c7;
+    --primary-light: #f0f9ff;
+    --primary-border: #bae6fd;
+    --primary-dark: #0369a1;
+    --accent: #0f766e;
+    --accent-light: #f0fdfa;
+    --success: #16a34a;
+    --success-bg: #f0fdf4;
+    --warning: #d97706;
+    --warning-bg: #fffbeb;
+    --border-color: #e2e8f0;
+    --shadow-sm: 0 1px 4px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 18px rgba(0,0,0,0.06);
+    --shadow-lg: 0 10px 25px rgba(2, 132, 199, 0.08);
+  }
+
+  [data-theme="dark"] {
+    --bg-gradient: linear-gradient(135deg, #082f49 0%, #0f172a 50%, #032338 100%);
+    --card-bg: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --primary: #38bdf8;
+    --primary-light: rgba(56, 189, 248, 0.12);
+    --primary-border: rgba(56, 189, 248, 0.25);
+    --primary-dark: #0284c7;
+    --accent: #2dd4bf;
+    --accent-light: rgba(45, 212, 191, 0.12);
+    --success: #34d399;
+    --success-bg: rgba(52, 211, 153, 0.12);
+    --warning: #fbbf24;
+    --warning-bg: rgba(251, 191, 36, 0.12);
+    --border-color: #334155;
+    --shadow-sm: 0 1px 4px rgba(0,0,0,0.3);
+    --shadow-md: 0 4px 18px rgba(0,0,0,0.4);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.6);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Cairo', 'Segoe UI', Tahoma, Arial, sans-serif;
+    line-height: 1.9;
+    background: var(--bg-gradient);
+    color: var(--text-primary);
+    min-height: 100vh;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  /* Reading Progress Bar */
+  .progress-bar-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: transparent;
+    z-index: 9999;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #0284c7, #0d9488, #3b82f6);
+    width: 0%;
+    transition: width 0.2s ease;
+  }
+
+  /* Sticky Top Bar */
+  .top-nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-sm);
+  }
+  .nav-left, .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--primary-light);
+    color: var(--primary);
+    border: 1px solid var(--primary-border);
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 13.5px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .back-btn:hover {
+    background: var(--primary);
+    color: white;
+  }
+  .nav-title {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .theme-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .theme-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+
+  /* Main Container */
+  .container {
+    max-width: 940px;
+    margin: auto;
+    padding: 24px 20px 80px;
+  }
+
+  /* Quick Navigation Chips */
+  .quick-nav {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 4px 2px 14px;
+    margin-bottom: 20px;
+    scrollbar-width: thin;
+  }
+  .quick-chip {
+    white-space: nowrap;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-sm);
+  }
+  .quick-chip:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    transform: translateY(-2px);
+  }
+
+  /* Cards */
+  .card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 26px 28px;
+    margin-bottom: 26px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+  }
+
+  .hero-card {
+    background: linear-gradient(135deg, rgba(2, 132, 199, 0.08), rgba(15, 118, 110, 0.05));
+    border: 1.5px solid rgba(2, 132, 199, 0.25);
+    text-align: center;
+    padding: 36px 24px;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--primary-light);
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 12.5px;
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+  .hero-title {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+  .hero-sub {
+    font-size: 15px;
+    color: var(--text-muted);
+    max-width: 680px;
+    margin: 0 auto 18px;
+    line-height: 1.6;
+  }
+  .hero-meta {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: var(--text-secondary);
+    border-top: 1px solid var(--border-color);
+    padding-top: 14px;
+    font-weight: 600;
+  }
+
+  /* Headings */
+  h2 {
+    color: var(--primary);
+    padding-bottom: 12px;
+    margin-bottom: 18px;
+    font-size: 21px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .section-badge {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  h3 {
+    color: var(--text-primary);
+    margin: 20px 0 10px;
+    font-size: 17.5px;
+    font-weight: 700;
+  }
+
+  /* Term Badge & Audio Button */
+  .term-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--primary-light);
+    border: 1px solid var(--primary-border);
+    color: var(--primary);
+    border-radius: 8px;
+    padding: 2px 10px;
+    font-weight: 800;
+    direction: ltr;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+  }
+
+  .audio-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    vertical-align: middle;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 6px rgba(2, 132, 199, 0.25);
+    flex-shrink: 0;
+  }
+  .audio-btn svg {
+    width: 12px;
+    height: 12px;
+    fill: currentColor;
+    pointer-events: none;
+  }
+  .audio-btn:hover {
+    transform: scale(1.15);
+    background: var(--primary-dark);
+  }
+  .audio-btn.playing {
+    background: linear-gradient(135deg, var(--success), #047857);
+    animation: pulse 0.6s ease-in-out infinite alternate;
+  }
+
+  @keyframes pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.18); }
+  }
+
+  /* Callout Boxes */
+  .simple-box {
+    background: var(--success-bg);
+    border-right: 4px solid var(--success);
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    color: var(--text-secondary);
+  }
+  .simple-box strong { color: var(--success); }
+
+  .important-box {
+    background: var(--warning-bg);
+    border-right: 4px solid var(--warning);
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    color: var(--text-secondary);
+  }
+  .important-box strong { color: var(--warning); }
+
+  .memory-box {
+    background: var(--primary-light);
+    border: 2px dashed var(--primary);
+    border-radius: 14px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  /* Comparison Grid */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 18px 0;
+  }
+  .compare-box {
+    background: var(--card-bg);
+    border: 1.5px solid var(--border-color);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: var(--shadow-sm);
+  }
+  .compare-box.highlight {
+    border-color: var(--primary);
+    background: var(--primary-light);
+  }
+  .compare-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .compare-title {
+    font-size: 16.5px;
+    font-weight: 800;
+    color: var(--primary);
+  }
+
+  /* Step Card */
+  .step-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .step-number {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: white;
+    font-weight: 800;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  /* Grid Cards */
+  .grid-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin: 18px 0;
+  }
+  .item-card {
+    background: var(--card-bg);
+    border: 1.5px solid var(--border-color);
+    border-radius: 16px;
+    padding: 18px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.2s ease;
+  }
+  .item-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  .item-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .item-card-title {
+    font-size: 15.5px;
+    font-weight: 800;
+    color: var(--text-primary);
+  }
+
+  /* Image Display Container */
+  .image-box {
+    margin: 20px 0;
+    text-align: center;
+    border: 1.5px solid var(--border-color);
+    border-radius: 16px;
+    overflow: hidden;
+    background: #ffffff;
+    box-shadow: var(--shadow-sm);
+  }
+  .image-box img {
+    width: 100%;
+    max-height: 480px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+  .image-caption {
+    padding: 10px 16px;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    background: var(--primary-light);
+    border-top: 1px solid var(--border-color);
+  }
+
+  /* Lists */
+  ul, ol {
+    padding-right: 24px;
+    margin: 10px 0;
+  }
+  li {
+    margin: 8px 0;
+    color: var(--text-secondary);
+  }
+
+  /* Table */
+  .table-wrapper {
+    overflow-x: auto;
+    margin: 18px 0;
+    border-radius: 14px;
+    border: 1px solid var(--border-color);
+  }
+  .lexicon-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  .lexicon-table th {
+    background: var(--primary-light);
+    color: var(--primary);
+    padding: 12px 16px;
+    text-align: right;
+    font-weight: 800;
+    border-bottom: 1.5px solid var(--border-color);
+  }
+  .lexicon-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-secondary);
+  }
+  .lexicon-table tr:hover td {
+    background: rgba(2, 132, 199, 0.03);
+  }
+
+  /* Floating Scroll Button */
+  .scroll-top-btn {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: white;
+    border: none;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+    z-index: 900;
+    transition: all 0.25s ease;
+  }
+  .scroll-top-btn:hover {
+    transform: translateY(-3px);
+    background: var(--primary-dark);
+  }
+
+  footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: var(--text-muted);
+    font-size: 13.5px;
+    border-top: 1px solid var(--border-color);
+    margin-top: 40px;
+  }
+
+  @media (max-width: 650px) {
+    .container { padding: 16px 14px 60px; }
+    .card { padding: 20px 16px; }
+    .hero-title { font-size: 22px; }
+    h2 { font-size: 18.5px; }
+    .compare-grid, .grid-cards { grid-template-columns: 1fr; }
+  }
+
+  /* ================= Numbered Arches Custom Styles (Side-by-Side everywhere) ================= */
+  .arches-banner {
+    background: linear-gradient(135deg, rgba(2, 132, 199, 0.08), rgba(6, 182, 212, 0.05));
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+  }
+  .arches-badge {
+    display: inline-block;
+    background: var(--primary-light);
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 800;
+  }
+
+  /* The Container: STRICTLY Side-by-Side (2 Columns) on ALL screens! */
+  .image-numbered-container {
+    display: grid;
+    grid-template-columns: 330px 1fr;
+    gap: 24px;
+    align-items: start;
+    width: 100%;
+  }
+
+  .arches-img-wrapper {
+    background: var(--card-bg);
+    border: 1.5px solid var(--border-color);
+    border-radius: 16px;
+    padding: 12px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 75px;
+    z-index: 20;
+  }
+
+  .img-badge-top {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--primary);
+    background: var(--primary-light);
+    padding: 5px 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+
+  .arch-visual-img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    cursor: zoom-in;
+    transition: transform 0.2s ease;
+  }
+  .arch-visual-img:hover {
+    transform: scale(1.02);
+  }
+
+  .img-caption-note {
+    font-size: 11.5px;
+    color: var(--text-dim);
+    margin-top: 8px;
+    line-height: 1.4;
+  }
+  .zoom-hint-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--primary);
+    background: var(--primary-light);
+    border: 1px solid var(--border-color);
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-top: 6px;
+    cursor: pointer;
+  }
+
+  /* Quick Jump Teeth Buttons */
+  .quick-jump-teeth-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    background: var(--primary-light);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 8px 6px;
+    margin-top: 10px;
+  }
+  .jump-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-secondary);
+  }
+  .jump-pills {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .jump-pill {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--primary);
+    font-weight: 800;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .jump-pill:hover, .jump-pill:active {
+    background: var(--primary);
+    color: #ffffff;
+    border-color: var(--primary);
+    transform: scale(1.12);
+  }
+
+  .numbers-breakdown-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    min-width: 0; /* Prevents grid blowout */
+  }
+
+  .tooth-num-card {
+    background: var(--card-bg);
+    border: 1.5px solid var(--border-color);
+    border-radius: 16px;
+    padding: 16px 18px;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s, border-color 0.2s;
+    scroll-margin-top: 85px;
+    word-break: break-word;
+  }
+  .tooth-num-card:hover {
+    border-color: var(--primary);
+  }
+
+  .tooth-card-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .num-indicator {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: #ffffff;
+    font-weight: 900;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(2, 132, 199, 0.35);
+    flex-shrink: 0;
+  }
+  .tooth-head-info {
+    min-width: 0;
+  }
+  .tooth-head-info h4 {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0;
+    line-height: 1.3;
+  }
+  .family-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-top: 3px;
+  }
+  .incisor-tag { background: rgba(56, 189, 248, 0.15); color: #0284c7; }
+  .canine-tag { background: rgba(16, 185, 129, 0.15); color: #059669; }
+  .premolar-tag { background: rgba(245, 158, 11, 0.15); color: #d97706; }
+  .molar-tag { background: rgba(139, 92, 246, 0.15); color: #7c3aed; }
+
+  .jaw-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: var(--bg-main);
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 10px;
+  }
+  .jaw-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    font-size: 13.5px;
+  }
+  .jaw-title {
+    font-weight: 700;
+    color: var(--text-secondary);
+    min-width: 140px;
+  }
+  .ar-name {
+    font-weight: 700;
+    color: var(--primary);
+  }
+
+  .tooth-quick-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 12.5px;
+    color: var(--text-secondary);
+    padding-top: 4px;
+  }
+
+  /* ================= RESPONSIVE: Tablet (<= 900px) ================= */
+  @media (max-width: 900px) {
+    .image-numbered-container {
+      grid-template-columns: 210px 1fr !important;
+      gap: 14px;
+    }
+    .arches-img-wrapper {
+      top: 65px;
+      padding: 8px;
+    }
+    .arch-visual-img {
+      max-width: 195px;
+    }
+    .jaw-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+    }
+    .jaw-title {
+      min-width: auto;
+      width: 100%;
+    }
+    .term-badge {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  /* ================= RESPONSIVE: Mobile Phone (<= 640px) ================= */
+  @media (max-width: 640px) {
+    .container {
+      padding: 10px 6px 60px;
+    }
+    .card {
+      padding: 14px 8px;
+      border-radius: 14px;
+    }
+    .arches-banner {
+      padding: 12px 10px;
+      margin-bottom: 14px;
+    }
+    .arches-banner h3 {
+      font-size: 16px !important;
+    }
+    .arches-banner p {
+      font-size: 13px !important;
+    }
+
+    /* Side-by-Side Grid on Mobile: Column 1 is ~36-38%, Column 2 is ~62-64% */
+    .image-numbered-container {
+      grid-template-columns: 130px 1fr !important;
+      gap: 8px !important;
+    }
+    .arches-img-wrapper {
+      top: 55px !important;
+      padding: 6px !important;
+      border-radius: 10px !important;
+    }
+    .img-badge-top {
+      font-size: 10px !important;
+      padding: 2px 4px !important;
+      margin-bottom: 5px !important;
+      line-height: 1.2;
+    }
+    .arch-visual-img {
+      max-width: 118px !important;
+      border-radius: 6px !important;
+    }
+    .img-caption-note {
+      font-size: 9.5px !important;
+      margin-top: 4px !important;
+      line-height: 1.2;
+    }
+    .zoom-hint-badge {
+      font-size: 9px !important;
+      padding: 1px 5px !important;
+      margin-top: 4px !important;
+    }
+    .quick-jump-teeth-bar {
+      padding: 4px !important;
+      margin-top: 6px !important;
+      gap: 4px !important;
+    }
+    .jump-title {
+      font-size: 9.5px !important;
+    }
+    .jump-pill {
+      width: 23px !important;
+      height: 23px !important;
+      font-size: 11px !important;
+    }
+
+    /* Cards beside image on mobile */
+    .numbers-breakdown-list {
+      gap: 10px !important;
+    }
+    .tooth-num-card {
+      padding: 10px 8px !important;
+      border-radius: 12px !important;
+      scroll-margin-top: 60px !important;
+    }
+    .tooth-card-head {
+      gap: 8px !important;
+      margin-bottom: 8px !important;
+      padding-bottom: 6px !important;
+    }
+    .num-indicator {
+      width: 26px !important;
+      height: 26px !important;
+      font-size: 13px !important;
+    }
+    .tooth-head-info h4 {
+      font-size: 12.5px !important;
+      line-height: 1.3 !important;
+    }
+    .family-tag {
+      font-size: 9px !important;
+      padding: 1px 5px !important;
+    }
+    .jaw-breakdown {
+      padding: 6px 6px !important;
+      gap: 5px !important;
+      margin-bottom: 6px !important;
+    }
+    .jaw-row {
+      font-size: 11.5px !important;
+      gap: 3px !important;
+    }
+    .jaw-title {
+      font-size: 10.5px !important;
+    }
+    .term-badge {
+      font-size: 10.5px !important;
+      padding: 2px 5px !important;
+      width: 100% !important;
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+    }
+    .audio-btn {
+      width: 22px !important;
+      height: 22px !important;
+    }
+    .ar-name {
+      font-size: 10.5px !important;
+    }
+    .tooth-quick-meta {
+      font-size: 10.5px !important;
+      gap: 3px !important;
+      line-height: 1.35 !important;
+    }
+  }
+
+  /* Extra Small Devices (<= 380px) */
+  @media (max-width: 380px) {
+    .image-numbered-container {
+      grid-template-columns: 110px 1fr !important;
+      gap: 6px !important;
+    }
+    .arch-visual-img {
+      max-width: 100px !important;
+    }
+    .jump-pill {
+      width: 20px !important;
+      height: 20px !important;
+      font-size: 10px !important;
+    }
+  }
+
+  /* Lightbox Modal Styles */
+  .image-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.88);
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    box-sizing: border-box;
+  }
+  .image-modal-overlay.active {
+    display: flex;
+  }
+  .image-modal-content {
+    position: relative;
+    max-width: 95vw;
+    max-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .image-modal-content img {
+    max-width: 100%;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
+  .modal-close-btn {
+    position: absolute;
+    top: -14px;
+    left: -14px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    font-size: 20px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  }
+
+
+  /* ================= Mobile-Friendly Comprehensive Review Table ================= */
+  .review-table-container {
+    margin-top: 24px;
+    background: var(--card-bg);
+    border: 1.5px solid var(--border-color);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .review-table-header {
+    background: var(--primary-light);
+    border-bottom: 1.5px solid var(--border-color);
+    padding: 14px 18px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .review-table-title h4 {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0;
+  }
+  .review-table-title p {
+    font-size: 12.5px;
+    color: var(--text-secondary);
+    margin: 2px 0 0;
+  }
+
+  .table-view-toggle {
+    display: inline-flex;
+    background: var(--bg-main);
+    padding: 3px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    gap: 2px;
+  }
+  .t-toggle-btn {
+    padding: 5px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: inherit;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .t-toggle-btn.active {
+    background: var(--primary);
+    color: #ffffff;
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* Table Cards View (Optimized for Mobile) */
+  .review-cards-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+  }
+  .r-card-item {
+    background: var(--bg-main);
+    border: 1.5px solid var(--border-color);
+    border-radius: 14px;
+    padding: 14px;
+    box-shadow: var(--shadow-sm);
+    transition: border-color 0.2s;
+  }
+  .r-card-item:hover {
+    border-color: var(--primary);
+  }
+
+  .r-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .r-card-num-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .r-num-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: #ffffff;
+    font-weight: 900;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .r-family-text {
+    font-size: 13.5px;
+    font-weight: 800;
+    color: var(--text-primary);
+  }
+
+  .r-succedaneous-tag {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 8px;
+    white-space: nowrap;
+  }
+  .tag-succ {
+    background: rgba(16, 185, 129, 0.15);
+    color: #059669;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+  }
+  .tag-non-succ {
+    background: rgba(139, 92, 246, 0.15);
+    color: #7c3aed;
+    border: 1px solid rgba(139, 92, 246, 0.3);
+  }
+
+  .r-jaws-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  @media (max-width: 520px) {
+    .r-jaws-grid {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+  }
+
+  .r-jaw-cell {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 10px;
+  }
+  .r-jaw-caption {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-muted);
+    display: block;
+    margin-bottom: 4px;
+  }
+  .r-jaw-name-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--text-primary);
+  }
+  .r-jaw-ar {
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-top: 3px;
+    display: block;
+  }
+
+  .r-func-box {
+    background: rgba(2, 132, 199, 0.05);
+    border-right: 3px solid var(--primary);
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+  .r-func-box strong {
+    color: var(--primary);
+  }
+
+  /* Traditional Table View */
+  .review-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+  }
+  .review-full-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    min-width: 680px;
+  }
+  .review-full-table th {
+    background: var(--primary-light);
+    color: var(--primary);
+    padding: 12px 14px;
+    text-align: right;
+    font-weight: 800;
+    border-bottom: 1.5px solid var(--border-color);
+    white-space: nowrap;
+  }
+  .review-full-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-secondary);
+  }
+  .review-full-table tr:hover td {
+    background: rgba(2, 132, 199, 0.04);
+  }
+
+  /* Sticky First Column for RTL Table */
+  .review-full-table th:first-child,
+  .review-full-table td:first-child {
+    position: sticky;
+    right: 0;
+    background: var(--card-bg);
+    z-index: 3;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.06);
+  }
+  .review-full-table th:first-child {
+    background: var(--primary-light);
+  }
+
+  .table-swipe-hint {
+    display: none;
+    font-size: 11.5px;
+    color: var(--text-dim);
+    padding: 6px 16px;
+    background: var(--bg-main);
+    border-bottom: 1px solid var(--border-color);
+  }
+  @media (max-width: 768px) {
+    .table-swipe-hint {
+      display: block;
+    }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- Progress Fill Bar -->
+<div class="progress-bar-fixed">
+  <div class="progress-fill" id="progressFill"></div>
+</div>
+
+<!-- Sticky Top Bar -->
+<nav class="top-nav">
+  <div class="nav-left">
+    <a href="../index.html" class="back-btn" title="العودة لقائمة المحاضرات">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      <span>قائمة المحاضرات</span>
+    </a>
+    <span class="nav-title">تشريح الأسنان (BDS121) • المحاضرة 1</span>
+  </div>
+  <div class="nav-right">
+    <button class="theme-btn" id="themeToggleBtn" onclick="toggleTheme()" title="تبديل المظهر">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- Quick Navigation Chips -->
+  <div class="quick-nav">
+    <a href="#step1" class="quick-chip">الخطوة 1: تعريف تشريح الأسنان</a>
+    <a href="#step2" class="quick-chip">الخطوة 2: معالم الفم والتجويف الفمي</a>
+    <a href="#step3" class="quick-chip">الخطوة 3: القوسين السنيين والأرباع</a>
+    <a href="#step-numbered-arches" class="quick-chip" style="border-color:var(--primary);color:var(--primary);">مخطط ترقيم الأسنان (1 إلى 8)</a>
+    <a href="#step4" class="quick-chip">الخطوة 4: عائلات الأسنان الأربعة</a>
+    <a href="#step5" class="quick-chip">الخطوة 5: مراحل وفترات التسنين</a>
+    <a href="#step6" class="quick-chip">الخطوة 6: المعادلة السنية</a>
+    <a href="#step7" class="quick-chip">الخطوة 7: الأسنان البديلة وغير البديلة</a>
+    <a href="#step-lexicon" class="quick-chip">المعجم الصوتي للمصطلحات</a>
+  </div>
+
+
+
+  <!-- STEP 1: What is Dental Anatomy & Main Parts -->
+  <section class="card" id="step1">
+    <div class="step-header">
+      <div class="step-number">1</div>
+      <h2>ما هو علم تشريح الأسنان؟ وما هما الجزآن الأساسيان لكل سن؟</h2>
+    </div>
+
+    <p>
+      علم تشريح الأسنان
+      <span class="term-badge">Dental Anatomy
+        <button class="audio-btn" onclick="playAudio('dental_anatomy')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </span>
+      هو العلم المعني بدراسة مورفولوجيا وشكل وتفاصيل الأسنان في الإنسان
+      <span class="term-badge">Morphology
+        <button class="audio-btn" onclick="playAudio('morphology')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </span>، ويشمل دراسة 5 عناصر رئيسية:
+    </p>
+
+    <ul>
+      <li><strong>شكل وهيئة السن (Shape & Form):</strong> كيف يبدو السن من الخارج؟ وتضاريسه وتعرجاته.</li>
+      <li><strong>لون السن (Color):</strong> درجات بياض وشفافية ونقاء السن الطبيعي.</li>
+      <li><strong>وظيفة السن (Function):</strong> الدور الذي خُلق من أجله (قطع الطعام، تمزيقه، أو طحنه).</li>
+      <li><strong>علاقة الأسنان ببعضها في نفس الفك (Relation to each other in the same jaw):</strong> كيف تتراص وتتلامس الأسنان المجاورة جنباً إلى جنب؟</li>
+      <li><strong>علاقة أسنان الفك العلوي بأسنان الفك السفلي (Relation to teeth in the other jaw):</strong> كيفية إطباق الأسنان العلوية على السفلية أثناء المضغ (Occlusion).</li>
+    </ul>
+
+    <h3>التشريح الظاهري الأساسي: يتكون كل سن من جزأين رئيسيين</h3>
+    <div class="compare-grid">
+      <div class="compare-box highlight">
+        <div class="compare-header">
+          <span class="compare-title">التاج (Crown)</span>
+          <button class="audio-btn" onclick="playAudio('crown')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        </div>
+        <p>هو الجزء العلوي الظاهر والبارز من السن داخل الفم فوق خط اللثة، والمغطى بطبقة المينا البيضاء الصلبة.</p>
+      </div>
+
+      <div class="compare-box">
+        <div class="compare-header">
+          <span class="compare-title">الجذر (Root)</span>
+          <button class="audio-btn" onclick="playAudio('root')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        </div>
+        <p>هو الجزء السفلي المدفون داخل عظم الفك والمثبت داخل اللثة، ومسؤول عن تثبيت السن بقوة في مكانه.</p>
+      </div>
+    </div>
+
+
+
+    <div class="simple-box">
+      <strong>معلومة لغوية سريعة:</strong><br>
+      • سن مفرد =
+      <span class="term-badge">Tooth
+        <button class="audio-btn" onclick="playAudio('tooth')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </span><br>
+      • أسنان جمع =
+      <span class="term-badge">Teeth
+        <button class="audio-btn" onclick="playAudio('teeth')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </span><br>
+      • أصل الكلمة اللاتيني = <strong>Dent</strong>، ومنها اشتق وصف:
+      <span class="term-badge">Dental
+        <button class="audio-btn" onclick="playAudio('dental')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </span> (سِني / طب الأسنان).
+    </div>
+  </section>
+
+  <!-- STEP 2: Orofacial & Oral Cavity Landmarks -->
+  <section class="card" id="step2">
+    <div class="step-header">
+      <div class="step-number">2</div>
+      <h2>معالم الوجه والتجويف الفمي (Orofacial & Oral Cavity Landmarks)</h2>
+    </div>
+
+    <p>
+      قبل دراسة الأسنان المفردة، يجب معرفة معالم الوجه والفم المحيطة بها
+      <span class="term-badge">Oral Cavity
+        <button class="audio-btn" onclick="playAudio('oral_cavity')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </span>:
+    </p>
+
+    <h3>1. الفكان (The Jaws):</h3>
+    <div class="compare-grid">
+      <div class="compare-box highlight">
+        <div class="compare-header">
+          <span class="compare-title">الفك العلوي = Maxilla</span>
+          <button class="audio-btn" onclick="playAudio('maxilla')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        </div>
+        <p>عظم الفك العلوي الثابت في الجمجمة، ويحمل الأسنان العلوية (Maxillary teeth).</p>
+      </div>
+
+      <div class="compare-box">
+        <div class="compare-header">
+          <span class="compare-title">الفك السفلي = Mandible</span>
+          <button class="audio-btn" onclick="playAudio('mandible')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        </div>
+        <p>عظم الفك السفلي المتحرك، ويحمل الأسنان السفلية (Mandibular teeth).</p>
+      </div>
+    </div>
+
+    <h3>2. المعالم التسعة الرئيسية للتجويف الفمي (المذكورة بالسلايد 8 و 9):</h3>
+    <ol>
+      <li><strong>الشفاه (Lip
+        <button class="audio-btn" onclick="playAudio('lip')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>):
+      </strong> الشفة العلوية والسفلية المحيطة بمدخل الفم.</li>
+      <li><strong>لجام الشفة العلوية (Upper labial frenum
+        <button class="audio-btn" onclick="playAudio('upper_labial_frenum')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>):
+      </strong> طية نسيجية في منتصف الشفة العلوية تربطها باللثة فوق القواطع المركزية.</li>
+      <li><strong>الحنك الصلب (Hard palate
+        <button class="audio-btn" onclick="playAudio('hard_palate')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>):
+      </strong> سقف الفم العظمي الأمامي المقابل للسان.</li>
+      <li><strong>الحنك الرخو (Soft palate
+        <button class="audio-btn" onclick="playAudio('soft_palate')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>):
+      </strong> الجزء العضلي الخلفي اللين من سقف الفم.</li>
+      <li><strong>اللهاة (Uvula
+        <button class="audio-btn" onclick="playAudio('uvula')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>):
+      </strong> الزائدة اللحمية المتدلية في نهاية سقف الحلق الرخو.</li>
+      <li><strong>القوس اللساني الحنكي (Glosso-palatine arch
+        <button class="audio-btn" onclick="playAudio('glosso_palatine_arch')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>):
+      </strong> القوس النسيجي الممتد بين الحنك وقاعدة اللسان على جانبي الحلق.</li>
+      <li><strong>لجام اللسان (Lingual frenum
+        <button class="audio-btn" onclick="playAudio('lingual_frenum')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>):
+      </strong> الطية النسيجية التي تربط أسفل اللسان بأرضية الفم (Floor of mouth).</li>
+      <li><strong>لجام الشفة السفلية (Lower labial frenum
+        <button class="audio-btn" onclick="playAudio('lower_labial_frenum')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>):
+      </strong> الطية التي تربط منتصف الشفة السفلية باللثة أمام القواطع السفلية.</li>
+      <li><strong>دهليز الفم (Oral Vestibule
+        <button class="audio-btn" onclick="playAudio('oral_vestibule')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>):
+      </strong> الفراغ والتجويف الواقع بين السطح الخارجي للأسنان وبين الشفاه والخدود من الداخل (Space between teeth & lips/cheek).</li>
+    </ol>
+
+
+  </section>
+
+  <!-- STEP 3: Dental Arches & The 4 Quadrants -->
+  <section class="card" id="step3">
+    <div class="step-header">
+      <div class="step-number">3</div>
+      <h2>القوسين السنيين والأرباع الأربعة (Dental Arches & 4 Quadrants)</h2>
+    </div>
+
+    <p>
+      تتراص وتنتظم الأسنان في الفم داخل قوسين منحنيين يُسميان القوسين السنيين
+      <span class="term-badge">Dental Arch
+        <button class="audio-btn" onclick="playAudio('dental_arch')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </span>:
+    </p>
+
+    <ul>
+      <li><strong>القوس العلوي = Maxillary Dental Arch
+        <button class="audio-btn" onclick="playAudio('maxillary_dental_arch')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>:
+      </strong> يحتوي على أسنان الفك العلوي (Maxillary teeth).</li>
+      <li><strong>القوس السفلي = Mandibular Dental Arch
+        <button class="audio-btn" onclick="playAudio('mandibular_dental_arch')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>:
+      </strong> يحتوي على أسنان الفك السفلي (Mandibular teeth).</li>
+    </ul>
+
+    <h3>خط المنتصف وتقسيم الفم إلى 4 أرباع (The 4 Quadrants):</h3>
+    <p>
+      يمر في منتصف الوجه رأسياً خط تخيلي يُسمى <strong>خط المنتصف
+      <span class="term-badge">Midline
+        <button class="audio-btn" onclick="playAudio('midline')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </span></strong>، ويقوم بتقسيم كل قوس سني إلى نصفين متساويين تماماً (نصف أيمن ونصف أيسر).
+    </p>
+
+    <div class="memory-box">
+      نتيجة لذلك، ينقسم تجويف الفم بالكامل إلى 4 أرباع (4 Quadrants):
+      <ol style="margin-top: 8px;">
+        <li><strong>الربع العلوي الأيمن (Right Maxillary Quadrant):</strong> يضم نصف القوس العلوي من جهة يمين المريض.</li>
+        <li><strong>الربع العلوي الأيسر (Left Maxillary Quadrant):</strong> يضم نصف القوس العلوي من جهة يسار المريض.</li>
+        <li><strong>الربع السفلي الأيمن (Right Mandibular Quadrant):</strong> يضم نصف القوس السفلي من جهة يمين المريض.</li>
+        <li><strong>الربع السفلي الأيسر (Left Mandibular Quadrant):</strong> يضم نصف القوس السفلي من جهة يسار المريض.</li>
+      </ol>
+    </div>
+
+
+    <!-- ================= Section: Numbered Arches Reference ================= -->
+    <div class="numbered-arches-section" id="step-numbered-arches" style="margin-top: 24px;">
+      
+      <div class="arches-banner">
+        <div class="arches-badge">المخطط المعتمد لترقيم الأسنان في الفكين</div>
+        <h3 style="font-size: 20px; font-weight: 800; color: var(--primary); margin: 6px 0 10px;">
+          تسمية وترقيم الأسنان في الفك العلوي والفك السفلي (من رقم 1 إلى 8)
+        </h3>
+        <p style="font-size: 14.5px; color: var(--text-secondary); line-height: 1.6;">
+          وفقاً للصورة التشريحية المعتمدة أدناه، يتم ترقيم الأسنان في كل ربع بدءاً من <strong>خط المنتصف (Midline)</strong> بالرقم <strong>(1)</strong> باتجاه الخلف وصولاً إلى ضرس العقل بالرقم <strong>(8)</strong>:
+        </p>
+      </div>
+
+      <div class="image-numbered-container">
+        
+        <!-- Image Card -->
+        <div class="arches-img-wrapper">
+          <div class="img-badge-top">صورة تشريح الفكين</div>
+          <picture>
+            <source srcset="images/dental_numbered_arches.webp" type="image/webp">
+            <img src="images/dental_numbered_arches.png" alt="ترقيم أسنان الفكين العلوي والسفلي من 1 إلى 8" class="arch-visual-img" id="archRefImg" onclick="openImageModal()">
+          </picture>
+          <div class="zoom-hint-badge" onclick="openImageModal()">اضغط لتكبير الصورة</div>
+          <div class="img-caption-note">
+            ترقيم 1 إلى 8 من خط المنتصف.
+          </div>
+          <!-- Quick Jump Buttons for Mobile & Desktop -->
+          <div class="quick-jump-teeth-bar">
+            <span class="jump-title">انتقال سريع لشرح السن بالصوت:</span>
+            <div class="jump-pills">
+              <a href="#card-tooth-1" class="jump-pill" title="القاطع المركزي">1</a>
+              <a href="#card-tooth-2" class="jump-pill" title="القاطع الجانبي">2</a>
+              <a href="#card-tooth-3" class="jump-pill" title="الناب">3</a>
+              <a href="#card-tooth-4" class="jump-pill" title="الضاحك الأول">4</a>
+              <a href="#card-tooth-5" class="jump-pill" title="الضاحك الثاني">5</a>
+              <a href="#card-tooth-6" class="jump-pill" title="الضرس الأول">6</a>
+              <a href="#card-tooth-7" class="jump-pill" title="الضرس الثاني">7</a>
+              <a href="#card-tooth-8" class="jump-pill" title="ضرس العقل">8</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Numbers Breakdown List -->
+        <div class="numbers-breakdown-list">
+
+          <!-- Tooth 1 -->
+          <div class="tooth-num-card" id="card-tooth-1">
+            <div class="tooth-card-head">
+              <div class="num-indicator">1</div>
+              <div class="tooth-head-info">
+                <h4>القاطع المركزي • Central Incisor</h4>
+                <span class="family-tag incisor-tag">عائلة القواطع (Incisors)</span>
+              </div>
+            </div>
+            <div class="jaw-breakdown">
+              <div class="jaw-row">
+                <span class="jaw-title">في الفك العلوي (Maxilla):</span>
+                <span class="term-badge">Maxillary Central Incisor
+                  <button class="audio-btn" onclick="playAudio('maxillary_central_incisor')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                </span>
+                <span class="ar-name">القاطع المركزي العلوي (الثنية العلوية)</span>
+              </div>
+              <div class="jaw-row">
+                <span class="jaw-title">في الفك السفلي (Mandible):</span>
+                <span class="term-badge">Mandibular Central Incisor
+                  <button class="audio-btn" onclick="playAudio('mandibular_central_incisor')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                </span>
+                <span class="ar-name">القاطع المركزي السفلي (الثنية السفلية)</span>
+              </div>
+            </div>
+            <div class="tooth-quick-meta">
+              <span><strong>الموقع:</strong> أول سن ملاصق لخط المنتصف (Midline) مباشرة.</span>
+              <span><strong>الوظيفة:</strong> قطع وقضم الطعام (Cutting) وجمال الابتسامة ومخارج الحروف.</span>
+              <span><strong>معلومة هامة:</strong> القاطع المركزي السفلي هو أصغر سن دائم في الإنسان.</span>
+            </div>
+          </div>
+
+          <!-- Tooth 2 -->
+          <div class="tooth-num-card" id="card-tooth-2">
+            <div class="tooth-card-head">
+              <div class="num-indicator">2</div>
+              <div class="tooth-head-info">
+                <h4>القاطع الجانبي • Lateral Incisor</h4>
+                <span class="family-tag incisor-tag">عائلة القواطع (Incisors)</span>
+              </div>
+            </div>
+            <div class="jaw-breakdown">
+              <div class="jaw-row">
+                <span class="jaw-title">في الفك العلوي (Maxilla):</span>
+                <span class="term-badge">Maxillary Lateral Incisor
+                  <button class="audio-btn" onclick="playAudio('maxillary_lateral_incisor')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                </span>
+                <span class="ar-name">القاطع الجانبي العلوي (الرباعية العلوية)</span>
+              </div>
+              <div class="jaw-row">
+                <span class="jaw-title">في الفك السفلي (Mandible):</span>
+                <span class="term-badge">Mandibular Lateral Incisor
+                  <button class="audio-btn" onclick="playAudio('mandibular_lateral_incisor')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                </span>
+                <span class="ar-name">القاطع الجانبي السفلي (الرباعية السفلية)</span>
+              </div>
+            </div>
+            <div class="tooth-quick-meta">
+              <span><strong>الموقع:</strong> ثاني سن من خط المنتصف، يقع بين القاطع المركزي والناب.</span>
+              <span><strong>الوظيفة:</strong> قطع وقضم الطعام (Cutting).</span>
+              <span><strong>معلومة هامة:</strong> القاطع الجانبي العلوي أكثر الأسنان تعرضاً للتشكل الوتدي (Peg-shaped).</span>
+            </div>
+          </div>
+
+          <!-- Tooth 3 -->
+          <div class="tooth-num-card" id="card-tooth-3">
+            <div class="tooth-card-head">
+              <div class="num-indicator">3</div>
+              <div class="tooth-head-info">
+                <h4>الناب • Canine (Cuspid)</h4>
+                <span class="family-tag canine-tag">عائلة الأنياب (Canines)</span>
+              </div>
+            </div>
+            <div class="jaw-breakdown">
+              <div class="jaw-row">
+                <span class="jaw-title">في الفك العلوي (Maxilla):</span>
+                <span class="term-badge">Maxillary Canine
+                  <button class="audio-btn" onclick="playAudio('maxillary_canine')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                </span>
+                <span class="ar-name">الناب العلوي (ناب العين)</span>
+              </div>
+              <div class="jaw-row">
+                <span class="jaw-title">في الفك السفلي (Mandible):</span>
+                <span class="term-badge">Mandibular Canine
+                  <button class="audio-btn" onclick="playAudio('mandibular_canine')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                </span>
+                <span class="ar-name">الناب السفلي</span>
+              </div>
+            </div>
+            <div class="tooth-quick-meta">
+              <span><strong>الموقع:</strong> ثالث سن من خط المنتصف، حجر زاوية القوس السني وزاوية الفم.</span>
+              <span><strong>الوظيفة:</strong> تمزيق وتثبيت الطعام وتوجيه حركة الفكين (Tearing & Canine Guidance).</span>
+              <span><strong>معلومة هامة:</strong> يمتلك أطول وأقوى جذر في الفم البشري.</span>
+            </div>
+          </div>
+
+          <!-- Tooth 4 -->
+          <div class="tooth-num-card" id="card-tooth-4">
+            <div class="tooth-card-head">
+              <div class="num-indicator">4</div>
+              <div class="tooth-head-info">
+                <h4>الضاحك الأول • First Premolar (First Bicuspid)</h4>
+                <span class="family-tag premolar-tag">عائلة الضواحك (Premolars)</span>
+              </div>
+            </div>
+            <div class="jaw-breakdown">
+              <div class="jaw-row">
+                <span class="jaw-title">في الفك العلوي (Maxilla):</span>
+                <span class="term-badge">Maxillary First Premolar
+                  <button class="audio-btn" onclick="playAudio('maxillary_first_premolar')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                </span>
+                <span class="ar-name">الضاحك الأول العلوي</span>
+              </div>
+              <div class="jaw-row">
+                <span class="jaw-title">في الفك السفلي (Mandible):</span>
+                <span class="term-badge">Mandibular First Premolar
+                  <button class="audio-btn" onclick="playAudio('mandibular_first_premolar')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                </span>
+                <span class="ar-name">الضاحك الأول السفلي</span>
+              </div>
+            </div>
+            <div class="tooth-quick-meta">
+              <span><strong>الموقع:</strong> رابع سن من خط المنتصف، أول سن خلفي يلي الناب مباشرة.</span>
+              <span><strong>الوظيفة:</strong> تمزيق وسحق وطحن مبدئي للطعام (Tearing & Grinding).</span>
+              <span><strong>معلومة هامة:</strong> سن بديل (Succedaneous) يستبدل الضرس اللبني الأول.</span>
+            </div>
+          </div>
+
+          <!-- Tooth 5 -->
+          <div class="tooth-num-card" id="card-tooth-5">
+            <div class="tooth-card-head">
+              <div class="num-indicator">5</div>
+              <div class="tooth-head-info">
+                <h4>الضاحك الثاني • Second Premolar (Second Bicuspid)</h4>
+                <span class="family-tag premolar-tag">عائلة الضواحك (Premolars)</span>
+              </div>
+            </div>
+            <div class="jaw-breakdown">
+              <div class="jaw-row">
+                <span class="jaw-title">في الفك العلوي (Maxilla):</span>
+                <span class="term-badge">Maxillary Second Premolar
+                  <button class="audio-btn" onclick="playAudio('maxillary_second_premolar')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                </span>
+                <span class="ar-name">الضاحك الثاني العلوي</span>
+              </div>
+              <div class="jaw-row">
+                <span class="jaw-title">في الفك السفلي (Mandible):</span>
+                <span class="term-badge">Mandibular Second Premolar
+                  <button class="audio-btn" onclick="playAudio('mandibular_second_premolar')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                </span>
+                <span class="ar-name">الضاحك الثاني السفلي</span>
+              </div>
+            </div>
+            <div class="tooth-quick-meta">
+              <span><strong>الموقع:</strong> خامس سن من خط المنتصف، يقع بين الضاحك الأول والضرس الأول.</span>
+              <span><strong>الوظيفة:</strong> طحن وسحق الطعام (Grinding).</span>
+              <span><strong>معلومة هامة:</strong> سن بديل (Succedaneous) يستبدل الضرس اللبني الثاني.</span>
+            </div>
+          </div>
+
+          <!-- Tooth 6 -->
+          <div class="tooth-num-card" id="card-tooth-6">
+            <div class="tooth-card-head">
+              <div class="num-indicator">6</div>
+              <div class="tooth-head-info">
+                <h4>الضرس الأول • First Molar (6-Year Molar)</h4>
+                <span class="family-tag molar-tag">عائلة الأضراس (Molars)</span>
+              </div>
+            </div>
+            <div class="jaw-breakdown">
+              <div class="jaw-row">
+                <span class="jaw-title">في الفك العلوي (Maxilla):</span>
+                <span class="term-badge">Maxillary First Molar
+                  <button class="audio-btn" onclick="playAudio('maxillary_first_molar')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                </span>
+                <span class="ar-name">الضرس الأول العلوي (رحى الست سنوات)</span>
+              </div>
+              <div class="jaw-row">
+                <span class="jaw-title">في الفك السفلي (Mandible):</span>
+                <span class="term-badge">Mandibular First Molar
+                  <button class="audio-btn" onclick="playAudio('mandibular_first_molar')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                </span>
+                <span class="ar-name">الضرس الأول السفلي (رحى الست سنوات)</span>
+              </div>
+            </div>
+            <div class="tooth-quick-meta">
+              <span><strong>الموقع:</strong> سادس سن من خط المنتصف، أول وأكبر الأضراس الدائمة.</span>
+              <span><strong>الوظيفة:</strong> حجر الزاوية في الإطباق وطحن الطعام الرئيسي (Cornerstone of Occlusion).</span>
+              <span><strong>معلومة هامة:</strong> سن غير بديل (Non-succedaneous) يبزغ خلف الأسنان اللبنية في عمر 6 سنوات.</span>
+            </div>
+          </div>
+
+          <!-- Tooth 7 -->
+          <div class="tooth-num-card" id="card-tooth-7">
+            <div class="tooth-card-head">
+              <div class="num-indicator">7</div>
+              <div class="tooth-head-info">
+                <h4>الضرس الثاني • Second Molar (12-Year Molar)</h4>
+                <span class="family-tag molar-tag">عائلة الأضراس (Molars)</span>
+              </div>
+            </div>
+            <div class="jaw-breakdown">
+              <div class="jaw-row">
+                <span class="jaw-title">في الفك العلوي (Maxilla):</span>
+                <span class="term-badge">Maxillary Second Molar
+                  <button class="audio-btn" onclick="playAudio('maxillary_second_molar')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                </span>
+                <span class="ar-name">الضرس الثاني العلوي (رحى الـ 12 سنة)</span>
+              </div>
+              <div class="jaw-row">
+                <span class="jaw-title">في الفك السفلي (Mandible):</span>
+                <span class="term-badge">Mandibular Second Molar
+                  <button class="audio-btn" onclick="playAudio('mandibular_second_molar')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                </span>
+                <span class="ar-name">الضرس الثاني السفلي (رحى الـ 12 سنة)</span>
+              </div>
+            </div>
+            <div class="tooth-quick-meta">
+              <span><strong>الموقع:</strong> سابع سن من خط المنتصف، يلي الضرس الأول مباشرة.</span>
+              <span><strong>الوظيفة:</strong> طحن وسحق الطعام الفعال (Grinding).</span>
+              <span><strong>معلومة هامة:</strong> سن غير بديل (Non-succedaneous) يبزغ في عمر 12 سنة.</span>
+            </div>
+          </div>
+
+          <!-- Tooth 8 -->
+          <div class="tooth-num-card" id="card-tooth-8">
+            <div class="tooth-card-head">
+              <div class="num-indicator">8</div>
+              <div class="tooth-head-info">
+                <h4>الضرس الثالث • Third Molar (Wisdom Tooth)</h4>
+                <span class="family-tag molar-tag">عائلة الأضراس (Molars)</span>
+              </div>
+            </div>
+            <div class="jaw-breakdown">
+              <div class="jaw-row">
+                <span class="jaw-title">في الفك العلوي (Maxilla):</span>
+                <span class="term-badge">Maxillary Third Molar
+                  <button class="audio-btn" onclick="playAudio('maxillary_third_molar')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                </span>
+                <span class="ar-name">ضرس العقل العلوي (الرحى الثالثة العلوية)</span>
+              </div>
+              <div class="jaw-row">
+                <span class="jaw-title">في الفك السفلي (Mandible):</span>
+                <span class="term-badge">Mandibular Third Molar
+                  <button class="audio-btn" onclick="playAudio('mandibular_third_molar')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                </span>
+                <span class="ar-name">ضرس العقل السفلي (الرحى الثالثة السفلية)</span>
+              </div>
+            </div>
+            <div class="tooth-quick-meta">
+              <span><strong>الموقع:</strong> ثامن سن من خط المنتصف، أقصى سن خلفي في نهاية القوس السني.</span>
+              <span><strong>الوظيفة:</strong> طحن الطعام (Grinding).</span>
+              <span><strong>معلومة هامة:</strong> آخر سن يبزغ في الإنسان (17-21 سنة)، غير بديل (Non-succedaneous)، وكثيراً ما يكون منطمراً (Impacted).</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      
+      <!-- ================= Quick Summary Comparison Table (Mobile & Desktop) ================= -->
+      <div class="review-table-container" id="reviewTableContainer" style="margin-top: 24px;">
+        
+        <!-- Header Bar with View Switcher -->
+        <div class="review-table-header">
+          <div class="review-table-title">
+            <h4>جدول المراجعة الشامل للأسنان من 1 إلى 8 بين الفك العلوي والفك السفلي</h4>
+            <p>مقارنة مباشرة لجميع الأسنان بالصوت، الوظيفة، والخلافة السنية</p>
+          </div>
+          <div class="table-view-toggle">
+            <button class="t-toggle-btn active" id="btnViewCards" onclick="setTableViewMode('cards')">
+              بطاقات الهاتف
+            </button>
+            <button class="t-toggle-btn" id="btnViewTable" onclick="setTableViewMode('table')">
+              الجدول الأفقي
+            </button>
+          </div>
+        </div>
+
+        <!-- 1. Mobile Cards View (Visible by default on mobile) -->
+        <div class="review-cards-list" id="reviewCardsView">
+
+          <!-- Tooth 1 Card -->
+          <div class="r-card-item">
+            <div class="r-card-head">
+              <div class="r-card-num-badge">
+                <div class="r-num-circle">1</div>
+                <div class="r-family-text">قاطع مركزي • Central Incisor</div>
+              </div>
+              <span class="r-succedaneous-tag tag-succ">بديل (Succedaneous)</span>
+            </div>
+            <div class="r-jaws-grid">
+              <div class="r-jaw-cell">
+                <span class="r-jaw-caption">الفك العلوي (Maxilla):</span>
+                <div class="r-jaw-name-row">
+                  <span>Maxillary Central Incisor</span>
+                  <button class="audio-btn" onclick="playAudio('maxillary_central_incisor')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                </div>
+                <span class="r-jaw-ar">الثنية العلوية (الأعرض في الفم)</span>
+              </div>
+              <div class="r-jaw-cell">
+                <span class="r-jaw-caption">الفك السفلي (Mandible):</span>
+                <div class="r-jaw-name-row">
+                  <span>Mandibular Central Incisor</span>
+                  <button class="audio-btn" onclick="playAudio('mandibular_central_incisor')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                </div>
+                <span class="r-jaw-ar">الثنية السفلية (الأصغر في الفم)</span>
+              </div>
+            </div>
+            <div class="r-func-box">
+              <strong>الوظيفة الأساسية:</strong> قطع وقضم الطعام (Cutting)، دعم الشفاه، مخارج الأصوات والجماليات.
+            </div>
+          </div>
+
+          <!-- Tooth 2 Card -->
+          <div class="r-card-item">
+            <div class="r-card-head">
+              <div class="r-card-num-badge">
+                <div class="r-num-circle">2</div>
+                <div class="r-family-text">قاطع جانبي • Lateral Incisor</div>
+              </div>
+              <span class="r-succedaneous-tag tag-succ">بديل (Succedaneous)</span>
+            </div>
+            <div class="r-jaws-grid">
+              <div class="r-jaw-cell">
+                <span class="r-jaw-caption">الفك العلوي (Maxilla):</span>
+                <div class="r-jaw-name-row">
+                  <span>Maxillary Lateral Incisor</span>
+                  <button class="audio-btn" onclick="playAudio('maxillary_lateral_incisor')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                </div>
+                <span class="r-jaw-ar">الرباعية العلوية (عرضة للشكل الوتدي)</span>
+              </div>
+              <div class="r-jaw-cell">
+                <span class="r-jaw-caption">الفك السفلي (Mandible):</span>
+                <div class="r-jaw-name-row">
+                  <span>Mandibular Lateral Incisor</span>
+                  <button class="audio-btn" onclick="playAudio('mandibular_lateral_incisor')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                </div>
+                <span class="r-jaw-ar">الرباعية السفلية (أعرض قليلاً من الثنية)</span>
+              </div>
+            </div>
+            <div class="r-func-box">
+              <strong>الوظيفة الأساسية:</strong> قطع الطعام وإكمال وظيفة القواطع المركزية.
+            </div>
+          </div>
+
+          <!-- Tooth 3 Card -->
+          <div class="r-card-item">
+            <div class="r-card-head">
+              <div class="r-card-num-badge">
+                <div class="r-num-circle">3</div>
+                <div class="r-family-text">ناب • Canine (Cuspid)</div>
+              </div>
+              <span class="r-succedaneous-tag tag-succ">بديل (Succedaneous)</span>
+            </div>
+            <div class="r-jaws-grid">
+              <div class="r-jaw-cell">
+                <span class="r-jaw-caption">الفك العلوي (Maxilla):</span>
+                <div class="r-jaw-name-row">
+                  <span>Maxillary Canine</span>
+                  <button class="audio-btn" onclick="playAudio('maxillary_canine')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                </div>
+                <span class="r-jaw-ar">الناب العلوي (أطول جذر في الفم)</span>
+              </div>
+              <div class="r-jaw-cell">
+                <span class="r-jaw-caption">الفك السفلي (Mandible):</span>
+                <div class="r-jaw-name-row">
+                  <span>Mandibular Canine</span>
+                  <button class="audio-btn" onclick="playAudio('mandibular_canine')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                </div>
+                <span class="r-jaw-ar">الناب السفلي (أطول جذر في الفك السفلي)</span>
+              </div>
+            </div>
+            <div class="r-func-box">
+              <strong>الوظيفة الأساسية:</strong> تمزيق وتثبيت الطعام وتوجيه حركة الفكين (Canine Guidance).
+            </div>
+          </div>
+
+          <!-- Tooth 4 Card -->
+          <div class="r-card-item">
+            <div class="r-card-head">
+              <div class="r-card-num-badge">
+                <div class="r-num-circle">4</div>
+                <div class="r-family-text">ضاحك أول • First Premolar</div>
+              </div>
+              <span class="r-succedaneous-tag tag-succ">بديل (يستبدل الضرس اللبني 1)</span>
+            </div>
+            <div class="r-jaws-grid">
+              <div class="r-jaw-cell">
+                <span class="r-jaw-caption">الفك العلوي (Maxilla):</span>
+                <div class="r-jaw-name-row">
+                  <span>Maxillary 1st Premolar</span>
+                  <button class="audio-btn" onclick="playAudio('maxillary_first_premolar')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                </div>
+                <span class="r-jaw-ar">الضاحك الأول العلوي (له جذران غالباً)</span>
+              </div>
+              <div class="r-jaw-cell">
+                <span class="r-jaw-caption">الفك السفلي (Mandible):</span>
+                <div class="r-jaw-name-row">
+                  <span>Mandibular 1st Premolar</span>
+                  <button class="audio-btn" onclick="playAudio('mandibular_first_premolar')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                </div>
+                <span class="r-jaw-ar">الضاحك الأول السفلي (حدبة لسانية صغيرة)</span>
+              </div>
+            </div>
+            <div class="r-func-box">
+              <strong>الوظيفة الأساسية:</strong> تمزيق وسحق وطحن مبدئي للطعام (Tearing & Grinding).
+            </div>
+          </div>
+
+          <!-- Tooth 5 Card -->
+          <div class="r-card-item">
+            <div class="r-card-head">
+              <div class="r-card-num-badge">
+                <div class="r-num-circle">5</div>
+                <div class="r-family-text">ضاحك ثان • Second Premolar</div>
+              </div>
+              <span class="r-succedaneous-tag tag-succ">بديل (يستبدل الضرس اللبني 2)</span>
+            </div>
+            <div class="r-jaws-grid">
+              <div class="r-jaw-cell">
+                <span class="r-jaw-caption">الفك العلوي (Maxilla):</span>
+                <div class="r-jaw-name-row">
+                  <span>Maxillary 2nd Premolar</span>
+                  <button class="audio-btn" onclick="playAudio('maxillary_second_premolar')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                </div>
+                <span class="r-jaw-ar">الضاحك الثاني العلوي (حدبتان متساويتان)</span>
+              </div>
+              <div class="r-jaw-cell">
+                <span class="r-jaw-caption">الفك السفلي (Mandible):</span>
+                <div class="r-jaw-name-row">
+                  <span>Mandibular 2nd Premolar</span>
+                  <button class="audio-btn" onclick="playAudio('mandibular_second_premolar')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                </div>
+                <span class="r-jaw-ar">الضاحك الثاني السفلي (غالباً 3 حدبات)</span>
+              </div>
+            </div>
+            <div class="r-func-box">
+              <strong>الوظيفة الأساسية:</strong> طحن وسحق الطعام للمساعدة في المضغ الفعال.
+            </div>
+          </div>
+
+          <!-- Tooth 6 Card -->
+          <div class="r-card-item">
+            <div class="r-card-head">
+              <div class="r-card-num-badge">
+                <div class="r-num-circle">6</div>
+                <div class="r-family-text">ضرس أول • First Molar (رحى الست سنوات)</div>
+              </div>
+              <span class="r-succedaneous-tag tag-non-succ">غير بديل (Non-succedaneous)</span>
+            </div>
+            <div class="r-jaws-grid">
+              <div class="r-jaw-cell">
+                <span class="r-jaw-caption">الفك العلوي (Maxilla):</span>
+                <div class="r-jaw-name-row">
+                  <span>Maxillary 1st Molar</span>
+                  <button class="audio-btn" onclick="playAudio('maxillary_first_molar')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                </div>
+                <span class="r-jaw-ar">أكبر سن علوي (5 حدبات منها كارابيلي و3 جذور)</span>
+              </div>
+              <div class="r-jaw-cell">
+                <span class="r-jaw-caption">الفك السفلي (Mandible):</span>
+                <div class="r-jaw-name-row">
+                  <span>Mandibular 1st Molar</span>
+                  <button class="audio-btn" onclick="playAudio('mandibular_first_molar')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                </div>
+                <span class="r-jaw-ar">أكبر سن سفلي (5 حدبات وجذران عريضان)</span>
+              </div>
+            </div>
+            <div class="r-func-box">
+              <strong>الوظيفة الأساسية:</strong> حجر الزاوية في الإطباق وطحن الطعام الرئيسي (Key of Occlusion).
+            </div>
+          </div>
+
+          <!-- Tooth 7 Card -->
+          <div class="r-card-item">
+            <div class="r-card-head">
+              <div class="r-card-num-badge">
+                <div class="r-num-circle">7</div>
+                <div class="r-family-text">ضرس ثان • Second Molar (رحى الـ 12 سنة)</div>
+              </div>
+              <span class="r-succedaneous-tag tag-non-succ">غير بديل (Non-succedaneous)</span>
+            </div>
+            <div class="r-jaws-grid">
+              <div class="r-jaw-cell">
+                <span class="r-jaw-caption">الفك العلوي (Maxilla):</span>
+                <div class="r-jaw-name-row">
+                  <span>Maxillary 2nd Molar</span>
+                  <button class="audio-btn" onclick="playAudio('maxillary_second_molar')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                </div>
+                <span class="r-jaw-ar">الضرس الثاني العلوي (4 حدبات رئيسية و3 جذور)</span>
+              </div>
+              <div class="r-jaw-cell">
+                <span class="r-jaw-caption">الفك السفلي (Mandible):</span>
+                <div class="r-jaw-name-row">
+                  <span>Mandibular 2nd Molar</span>
+                  <button class="audio-btn" onclick="playAudio('mandibular_second_molar')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                </div>
+                <span class="r-jaw-ar">الضرس الثاني السفلي (نمط الصليب + و4 حدبات)</span>
+              </div>
+            </div>
+            <div class="r-func-box">
+              <strong>الوظيفة الأساسية:</strong> طحن وعجن وسحق الطعام لتسهيل البلع.
+            </div>
+          </div>
+
+          <!-- Tooth 8 Card -->
+          <div class="r-card-item">
+            <div class="r-card-head">
+              <div class="r-card-num-badge">
+                <div class="r-num-circle">8</div>
+                <div class="r-family-text">ضرس ثالث • Third Molar (ضرس العقل)</div>
+              </div>
+              <span class="r-succedaneous-tag tag-non-succ">غير بديل (Non-succedaneous)</span>
+            </div>
+            <div class="r-jaws-grid">
+              <div class="r-jaw-cell">
+                <span class="r-jaw-caption">الفك العلوي (Maxilla):</span>
+                <div class="r-jaw-name-row">
+                  <span>Maxillary 3rd Molar</span>
+                  <button class="audio-btn" onclick="playAudio('maxillary_third_molar')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                </div>
+                <span class="r-jaw-ar">ضرس العقل العلوي (جذور غالباً ملتحمة Fused)</span>
+              </div>
+              <div class="r-jaw-cell">
+                <span class="r-jaw-caption">الفك السفلي (Mandible):</span>
+                <div class="r-jaw-name-row">
+                  <span>Mandibular 3rd Molar</span>
+                  <button class="audio-btn" onclick="playAudio('mandibular_third_molar')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                </div>
+                <span class="r-jaw-ar">ضرس العقل السفلي (أكثر الأسنان انطماراً Impacted)</span>
+              </div>
+            </div>
+            <div class="r-func-box">
+              <strong>الوظيفة الأساسية:</strong> طحن الطعام (يبزغ بين 17-21 سنة).
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 2. Traditional Full Table View (Scrollable with Sticky Column) -->
+        <div class="review-table-wrapper" id="reviewTableView" style="display: none;">
+          <div class="table-swipe-hint">
+            اسحب الجدول أفقياً لرؤية جميع الأعمدة مع زر الاستماع لكل سن
+          </div>
+          <table class="review-full-table">
+            <thead>
+              <tr>
+                <th style="width: 55px; text-align: center;">الرقم</th>
+                <th>النوع والعائلة</th>
+                <th>في الفك العلوي (Maxilla)</th>
+                <th>في الفك السفلي (Mandible)</th>
+                <th>الوظيفة الأساسية</th>
+                <th>الخلافة السنية</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="text-align: center; font-weight: 900; color: var(--primary);">1</td>
+                <td>قاطع (Incisor)</td>
+                <td>
+                  <span class="term-badge" style="margin: 0;">Maxillary Central Incisor
+                    <button class="audio-btn" onclick="playAudio('maxillary_central_incisor')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                  </span>
+                </td>
+                <td>
+                  <span class="term-badge" style="margin: 0;">Mandibular Central Incisor
+                    <button class="audio-btn" onclick="playAudio('mandibular_central_incisor')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                  </span>
+                </td>
+                <td>قطع وقضم الطعام</td>
+                <td><span class="r-succedaneous-tag tag-succ">بديل (Succedaneous)</span></td>
+              </tr>
+              <tr>
+                <td style="text-align: center; font-weight: 900; color: var(--primary);">2</td>
+                <td>قاطع (Incisor)</td>
+                <td>
+                  <span class="term-badge" style="margin: 0;">Maxillary Lateral Incisor
+                    <button class="audio-btn" onclick="playAudio('maxillary_lateral_incisor')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                  </span>
+                </td>
+                <td>
+                  <span class="term-badge" style="margin: 0;">Mandibular Lateral Incisor
+                    <button class="audio-btn" onclick="playAudio('mandibular_lateral_incisor')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                  </span>
+                </td>
+                <td>قطع الطعام</td>
+                <td><span class="r-succedaneous-tag tag-succ">بديل (Succedaneous)</span></td>
+              </tr>
+              <tr>
+                <td style="text-align: center; font-weight: 900; color: var(--primary);">3</td>
+                <td>ناب (Canine)</td>
+                <td>
+                  <span class="term-badge" style="margin: 0;">Maxillary Canine
+                    <button class="audio-btn" onclick="playAudio('maxillary_canine')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                  </span>
+                </td>
+                <td>
+                  <span class="term-badge" style="margin: 0;">Mandibular Canine
+                    <button class="audio-btn" onclick="playAudio('mandibular_canine')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                  </span>
+                </td>
+                <td>تمزيق وتثبيت الطعام</td>
+                <td><span class="r-succedaneous-tag tag-succ">بديل (Succedaneous)</span></td>
+              </tr>
+              <tr>
+                <td style="text-align: center; font-weight: 900; color: var(--primary);">4</td>
+                <td>ضاحك (Premolar)</td>
+                <td>
+                  <span class="term-badge" style="margin: 0;">Maxillary 1st Premolar
+                    <button class="audio-btn" onclick="playAudio('maxillary_first_premolar')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                  </span>
+                </td>
+                <td>
+                  <span class="term-badge" style="margin: 0;">Mandibular 1st Premolar
+                    <button class="audio-btn" onclick="playAudio('mandibular_first_premolar')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                  </span>
+                </td>
+                <td>تمزيق وسحق الطعام</td>
+                <td><span class="r-succedaneous-tag tag-succ">بديل (يستبدل الضرس اللبني 1)</span></td>
+              </tr>
+              <tr>
+                <td style="text-align: center; font-weight: 900; color: var(--primary);">5</td>
+                <td>ضاحك (Premolar)</td>
+                <td>
+                  <span class="term-badge" style="margin: 0;">Maxillary 2nd Premolar
+                    <button class="audio-btn" onclick="playAudio('maxillary_second_premolar')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                  </span>
+                </td>
+                <td>
+                  <span class="term-badge" style="margin: 0;">Mandibular 2nd Premolar
+                    <button class="audio-btn" onclick="playAudio('mandibular_second_premolar')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                  </span>
+                </td>
+                <td>سحق وطحن الطعام</td>
+                <td><span class="r-succedaneous-tag tag-succ">بديل (يستبدل الضرس اللبني 2)</span></td>
+              </tr>
+              <tr>
+                <td style="text-align: center; font-weight: 900; color: var(--primary);">6</td>
+                <td>ضرس (Molar)</td>
+                <td>
+                  <span class="term-badge" style="margin: 0;">Maxillary 1st Molar
+                    <button class="audio-btn" onclick="playAudio('maxillary_first_molar')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                  </span>
+                </td>
+                <td>
+                  <span class="term-badge" style="margin: 0;">Mandibular 1st Molar
+                    <button class="audio-btn" onclick="playAudio('mandibular_first_molar')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                  </span>
+                </td>
+                <td>طحن الطعام وركيزة الإطباق</td>
+                <td><span class="r-succedaneous-tag tag-non-succ">غير بديل (Non-succedaneous)</span></td>
+              </tr>
+              <tr>
+                <td style="text-align: center; font-weight: 900; color: var(--primary);">7</td>
+                <td>ضرس (Molar)</td>
+                <td>
+                  <span class="term-badge" style="margin: 0;">Maxillary 2nd Molar
+                    <button class="audio-btn" onclick="playAudio('maxillary_second_molar')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                  </span>
+                </td>
+                <td>
+                  <span class="term-badge" style="margin: 0;">Mandibular 2nd Molar
+                    <button class="audio-btn" onclick="playAudio('mandibular_second_molar')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                  </span>
+                </td>
+                <td>طحن وسحق الطعام</td>
+                <td><span class="r-succedaneous-tag tag-non-succ">غير بديل (Non-succedaneous)</span></td>
+              </tr>
+              <tr>
+                <td style="text-align: center; font-weight: 900; color: var(--primary);">8</td>
+                <td>ضرس (Molar)</td>
+                <td>
+                  <span class="term-badge" style="margin: 0;">Maxillary 3rd Molar (العقل)
+                    <button class="audio-btn" onclick="playAudio('maxillary_third_molar')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                  </span>
+                </td>
+                <td>
+                  <span class="term-badge" style="margin: 0;">Mandibular 3rd Molar (العقل)
+                    <button class="audio-btn" onclick="playAudio('mandibular_third_molar')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+                  </span>
+                </td>
+                <td>طحن الطعام</td>
+                <td><span class="r-succedaneous-tag tag-non-succ">غير بديل (Non-succedaneous)</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+  <!-- STEP 4: Tooth Types (Four Tooth Families) -->
+  <section class="card" id="step4">
+    <div class="step-header">
+      <div class="step-number">4</div>
+      <h2>عائلات وأنواع الأسنان الأربعة (The Four Tooth Types / Families)</h2>
+    </div>
+
+    <p>
+      خلق الله الأسنان في شكل 4 عائلات رئيسية تنقسم وظيفياً وتشريحياً إلى مجموعتين:
+    </p>
+
+    <h3>المجموعة الأولى: الأسنان الأمامية (Anterior Teeth
+      <button class="audio-btn" onclick="playAudio('anterior_teeth')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>)
+    </h3>
+    <div class="compare-grid">
+      <div class="item-card">
+        <div class="item-card-header">
+          <span class="item-card-title">1. القواطع (Incisors)</span>
+          <button class="audio-btn" onclick="playAudio('incisors')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        </div>
+        <ul>
+          <li>يوجد <strong>قاطعان (Two incisors)</strong> في كل ربع:
+            <br>• قاطع مركزي
+            <span class="term-badge">Central Incisor
+              <button class="audio-btn" onclick="playAudio('central_incisor')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+            </span> مجاور لخط المنتصف.
+            <br>• قاطع جانبي
+            <span class="term-badge">Lateral Incisor
+              <button class="audio-btn" onclick="playAudio('lateral_incisor')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+            </span> بجانبه.
+          </li>
+          <li>المجموع الكلي: 8 قواطع في الفم (4 بالأعلى و 4 بالأسفل).</li>
+          <li><strong>الشكل والوظيفة:</strong> تشبه الإزميل (Chisel-like)، وظيفتها قطع وقضم الطعام (Cutting / Incising).</li>
+        </ul>
+      </div>
+
+      <div class="item-card">
+        <div class="item-card-header">
+          <span class="item-card-title">2. الأنياب (Canines / Cuspids)</span>
+          <button class="audio-btn" onclick="playAudio('canines')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        </div>
+        <ul>
+          <li>يوجد <strong>ناب واحد (One canine)</strong> في كل ربع.</li>
+          <li>المجموع الكلي: 4 أنياب في الفم.</li>
+          <li>تسمى أيضاً <strong>Cuspids</strong> لأنها تمتلك نتوءاً ومدبباً واحداً (One cusp).</li>
+          <li><strong>الشكل والوظيفة:</strong> شكل إسفيني قوي ومدبب (Wedge-like)، وظيفتها تمزيق وقطع الطعام القاسي (Tearing & Cutting).</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>المجموعة الثانية: الأسنان الخلفية (Posterior Teeth
+      <button class="audio-btn" onclick="playAudio('posterior_teeth')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>)
+    </h3>
+    <div class="compare-grid">
+      <div class="item-card">
+        <div class="item-card-header">
+          <span class="item-card-title">3. الضواحك (Premolars / Bicuspids)</span>
+          <button class="audio-btn" onclick="playAudio('premolars')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        </div>
+        <ul>
+          <li>يوجد <strong>ضاحكان (Two premolars)</strong> في كل ربع: الضاحك الأول والضاحك الثاني (First & Second premolars).</li>
+          <li>المجموع الكلي: 8 ضواحك (توجد في الأسنان الدائمة فقط!).</li>
+          <li>تسمى أيضاً <strong>Bicuspids</strong> لأنها تمتلك نتوءين عادةً (Two cusps).</li>
+          <li><strong>الوظيفة:</strong> تمزيق وسحق وطحن مبدئي للطعام (Tearing & Grinding).</li>
+        </ul>
+      </div>
+
+      <div class="item-card">
+        <div class="item-card-header">
+          <span class="item-card-title">4. الأضراس / الطواحن (Molars)</span>
+          <button class="audio-btn" onclick="playAudio('molars')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        </div>
+        <ul>
+          <li>يوجد <strong>ثلاثة أضراس (Three molars)</strong> في كل ربع في الشخص البالغ:
+            <br>• الضرس الأول (First molar)
+            <br>• الضرس الثاني (Second molar)
+            <br>• الضرس الثالث (Third molar / ضرس العقل).
+          </li>
+          <li>المجموع الكلي: 12 ضرساً في الأسنان الدائمة.</li>
+          <li>تسمى <strong>Multicuspid</strong> لأن سطحها العريض يحتوي على نتوءات متعددة (Multiple cusps).</li>
+          <li><strong>الوظيفة الأساسية:</strong> طحن وعجن الطعام تماماً لتسهيل البلع (Grinding).</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 5: Dentition Periods -->
+  <section class="card" id="step5">
+    <div class="step-header">
+      <div class="step-number">5</div>
+      <h2>مراحل وفترات التسنين الثلاث (The Dentition Periods)</h2>
+    </div>
+
+    <p>
+      الإنسان كائن ثنائي التسنين (Diphyodont)، يمر خلال حياته بثلاث مراحل وفترات تسنين واضحة ومحددة زمنياً:
+    </p>
+
+    <!-- Period 1 -->
+    <div class="item-card" style="margin-bottom:16px;">
+      <div class="item-card-header">
+        <span class="item-card-title">1. مرحلة التسنين اللبني / المؤقت (Primary Dentition Period)</span>
+        <button class="audio-btn" onclick="playAudio('primary_dentition')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+      <ul>
+        <li><strong>الأسماء العلمية والشائعة:</strong> تُسمى Deciduous, milk, baby, temporary, predecessors.</li>
+        <li><strong>الفترة الزمنية:</strong> تبدأ من عمر <strong>6 أشهر حتى 6 سنوات</strong> (6 months to 6 years).</li>
+        <li><strong>العدد الإجمالي:</strong> <strong>20 سناً</strong> فقط (10 أسنان بالفك العلوي، و10 أسنان بالفك السفلي).</li>
+        <li><strong>توزيع السنان في كل ربع:</strong> يحتوي كل ربع على 5 أسنان فقط:
+          <br><strong>(2 قواطع + 1 ناب + 2 أضراس)</strong>.
+        </li>
+        <li style="color:#b91c1c; font-weight:700;">ملحوظة هامة جداً: لا توجد ضواحك (Premolars) إطلاقاً في الأسنان اللبنية!</li>
+      </ul>
+    </div>
+
+    <!-- Period 2 -->
+    <div class="item-card" style="margin-bottom:16px;">
+      <div class="item-card-header">
+        <span class="item-card-title">2. مرحلة التسنين المختلط (Mixed Dentition Period)</span>
+        <button class="audio-btn" onclick="playAudio('mixed_dentition')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+      <ul>
+        <li><strong>الاسم الشهير بالسلايدز:</strong> مرحلة البطة القبيحة
+          <span class="term-badge">Ugly duckling stage
+            <button class="audio-btn" onclick="playAudio('ugly_duckling_stage')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+          </span>.
+        </li>
+        <li><strong>الفترة الزمنية:</strong> من عمر <strong>6 سنوات حتى 12 سنة</strong> (6 years to 12 years).</li>
+        <li><strong>ماذا يحدث فيها؟</strong> تتساقط وتبدل الأسنان اللبنية (Deciduous teeth shed) وتبزغ الأسنان الدائمة في مكانها (Permanent teeth erupt). فيحتوي فم الطفل في هذه الفترة على مزيج مشترك من أسنان لبنية وأسنان دائمة في نفس الوقت.</li>
+      </ul>
+    </div>
+
+    <!-- Period 3 -->
+    <div class="item-card">
+      <div class="item-card-header">
+        <span class="item-card-title">3. مرحلة التسنين الدائم (Permanent Dentition Period)</span>
+        <button class="audio-btn" onclick="playAudio('permanent_dentition')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </div>
+      <ul>
+        <li><strong>الاسم العلمي:</strong> Secondary or Adult dentition.</li>
+        <li><strong>الفترة الزمنية:</strong> تبدأ <strong>بعد سن 12 سنة</strong> (After 12 years).</li>
+        <li><strong>العدد الإجمالي:</strong> <strong>32 سناً</strong> (16 سناً في الفك العلوي، و16 سناً في الفك السفلي).</li>
+        <li><strong>توزيع السنان في كل ربع:</strong> يحتوي كل ربع على 8 أسنان:
+          <br><strong>(2 قواطع + 1 ناب + 2 ضواحك + 3 أضراس)</strong>.
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- STEP 6: The Dental Formula -->
+  <section class="card" id="step6">
+    <div class="step-header">
+      <div class="step-number">6</div>
+      <h2>المعادلة السنية (The Dental Formula)</h2>
+    </div>
+
+    <p>
+      المعادلة السنية
+      <span class="term-badge">Dental Formula
+        <button class="audio-btn" onclick="playAudio('dental_formula')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </span>
+      هي تعبير حسابي مختصر يصف عدد وتوزيع أنواع الأسنان في <strong>نصف واحد من تجويف الفم (فوق وتحت)</strong>:
+      <br><em>"It describes the dentition in one half of the oral cavity (upper & lower)"</em>.
+    </p>
+
+    <div class="compare-grid">
+      <!-- Primary Formula -->
+      <div class="compare-box">
+        <div class="compare-header">
+          <span class="compare-title">المعادلة السنية للأسنان اللبنية (Primary Formula)</span>
+        </div>
+        <div style="direction:ltr; text-align:center; font-family:'Inter',sans-serif; font-size:20px; font-weight:800; color:#0284c7; margin:16px 0; background:#f0f9ff; padding:14px; border-radius:12px;">
+          I 2/2 &nbsp;&nbsp; C 1/1 &nbsp;&nbsp; M 2/2 &nbsp; = 10
+        </div>
+        <p><strong>تفسير الرموز:</strong></p>
+        <ul>
+          <li><strong>I 2/2:</strong> قاطعان علويان وقاطعان سفليان (في النصف).</li>
+          <li><strong>C 1/1:</strong> ناب علوي وناب سفلي.</li>
+          <li><strong>M 2/2:</strong> ضرسان علويان وضرسان سفليان.</li>
+          <li><strong>المجموع للنصف = 10 أسنان</strong> &larr; وبضربها في 2 للنصف الآخر يصبح المجموع الكلي للطفل = <strong>20 سناً</strong>.</li>
+        </ul>
+      </div>
+
+      <!-- Permanent Formula -->
+      <div class="compare-box highlight">
+        <div class="compare-header">
+          <span class="compare-title">المعادلة السنية للأسنان الدائمة (Permanent Formula)</span>
+        </div>
+        <div style="direction:ltr; text-align:center; font-family:'Inter',sans-serif; font-size:18px; font-weight:800; color:#0369a1; margin:16px 0; background:#ffffff; border:1px solid #bae6fd; padding:14px; border-radius:12px;">
+          I 2/2 &nbsp;&nbsp; C 1/1 &nbsp;&nbsp; PM 2/2 &nbsp;&nbsp; M 3/3 &nbsp; = 16
+        </div>
+        <p><strong>تفسير الرموز:</strong></p>
+        <ul>
+          <li><strong>I 2/2:</strong> قاطعان علويان وقاطعان سفليان.</li>
+          <li><strong>C 1/1:</strong> ناب علوي وناب سفلي.</li>
+          <li><strong>PM 2/2:</strong> ضاحكان علويان وضاحكان سفليان.</li>
+          <li><strong>M 3/3:</strong> ثلاثة أضراس علوية وثلاثة أضراس سفلية.</li>
+          <li><strong>المجموع للنصف = 16 سناً</strong> &larr; وبضربها في 2 للنصف الآخر يصبح المجموع الكلي للبالغ = <strong>32 سناً</strong>.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 7: Successors vs Predecessors vs Non-Successors -->
+  <section class="card" id="step7">
+    <div class="step-header">
+      <div class="step-number">7</div>
+      <h2>الأسنان البديلة وغير البديلة (Successors & Non-Successors)</h2>
+    </div>
+
+    <p>هذا الجزء هو من أهم النقاط المحورية في امتحانات تشريح الأسنان (صفحة 26 إلى 28 بالسلايدز):</p>
+
+    <h3>1. الأسلاف والأسنان السابقة (Predecessors
+      <button class="audio-btn" onclick="playAudio('predecessors')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>):
+    </h3>
+    <p>
+      <strong>جميع الأسنان اللبنية بدون استثناء تُسمى (Predecessors)</strong>، لأنها تسبق الأسنان الدائمة وتتساقط لتترك مكانها للأسنان الدائمة.
+    </p>
+
+    <h3>2. الأسنان البديلة / الخلفية (Successors or Succedaneous teeth
+      <button class="audio-btn" onclick="playAudio('succedaneous_teeth')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>):
+    </h3>
+    <p>
+      هي الأسنان الدائمة التي تخرج <strong>مكان سن لبني كان موجوداً قبلها وسقط</strong>، وهي تشمل:
+    </p>
+    <ul>
+      <li>القواطع الدائمة (Permanent incisors) &larr; تحل مكان القواطع اللبنية.</li>
+      <li>الأنياب الدائمة (Permanent canines) &larr; تحل مكان الأنياب اللبنية.</li>
+      <li><strong>الضواحك الدائمة (Permanent premolars) &larr; تحل مكان الأضراس اللبنية (Deciduous molars)!</strong></li>
+    </ul>
+
+    <div class="important-box">
+      <strong>قاعدة ذهبية هامة جداً:</strong><br>
+      الضواحك (Premolars) تحل مكان الأضراس اللبنية (Deciduous molars):
+      <br><em>"Premolars (successors) replace deciduous molars (predecessors)"</em>.
+      <br>عدد الأسنان البديلة في الفم = 20 سناً (8 قواطع + 4 أنياب + 8 ضواحك).
+    </div>
+
+    <h3>3. الأسنان غير البديلة (Non-succedaneous / Non-successors
+      <button class="audio-btn" onclick="playAudio('non_succedaneous_teeth')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>):
+    </h3>
+    <p>
+      <strong>الأضراس الدائمة (Permanent Molars):</strong> لا يسبقها أي سن لبني على الإطلاق، بل تبزغ خلف الأسنان اللبنية في الفك مع نموه، ولذلك تسمى أسنان غير بديلة (Non-succedaneous).
+    </p>
+
+    <div class="memory-box">
+      خلاصتان للحفظ الصم للامتحان:
+      <br>1. <strong>"All deciduous teeth are predecessors"</strong> (كل الأسنان اللبنية أسلاف سابقة).
+      <br>2. <strong>"Not all permanent teeth are successors"</strong> (ليست كل الأسنان الدائمة بديلة، لأن الأضراس الدائمة ليست بديلة).
+    </div>
+  </section>
+
+  <!-- STEP 8: Comprehensive Audio Lexicon (60 Terms) -->
+  <section class="card" id="step-lexicon">
+    <div class="step-header">
+      <div class="step-number">8</div>
+      <h2>المعجم الصوتي الشامل لكافة مصطلحات المحاضرة (60 مصطلحاً ناطقاً)</h2>
+    </div>
+
+    <p>استمع للنطق الصوتي الأمريكي الدقيق لأي مصطلح ورد في الصفحات 1 إلى 29 بمجرد الضغط على زر الصوت:</p>
+
+    <div class="table-wrapper">
+      <table class="lexicon-table">
+        <thead>
+          <tr>
+            <th>المصطلح بالإنجليزي</th>
+            <th>النطق</th>
+            <th>المعنى بالعربية</th>
+            <th>التوضيح في المحاضرة</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Dental Anatomy</strong></td>
+            <td><button class="audio-btn" onclick="playAudio('dental_anatomy')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+            <td>تشريح الأسنان</td>
+            <td>علم دراسة شكل وهيئة ووظيفة الأسنان</td>
+          </tr>
+          <tr>
+            <td><strong>Crown</strong></td>
+            <td><button class="audio-btn" onclick="playAudio('crown')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+            <td>تاج السن</td>
+            <td>الجزء الظاهر من السن فوق اللثة</td>
+          </tr>
+          <tr>
+            <td><strong>Root</strong></td>
+            <td><button class="audio-btn" onclick="playAudio('root')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+            <td>جذر السن</td>
+            <td>الجزء المدفون داخل عظم الفك للتثبيت</td>
+          </tr>
+          <tr>
+            <td><strong>Maxilla</strong></td>
+            <td><button class="audio-btn" onclick="playAudio('maxilla')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+            <td>الفك العلوي</td>
+            <td>عظم الفك العلوي الثابت</td>
+          </tr>
+          <tr>
+            <td><strong>Mandible</strong></td>
+            <td><button class="audio-btn" onclick="playAudio('mandible')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+            <td>الفك السفلي</td>
+            <td>عظم الفك السفلي المتحرك</td>
+          </tr>
+          <tr>
+            <td><strong>Dental Arch</strong></td>
+            <td><button class="audio-btn" onclick="playAudio('dental_arch')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+            <td>القوس السني</td>
+            <td>قوس اصطفاف الأسنان العلوي أو السفلي</td>
+          </tr>
+          <tr>
+            <td><strong>Midline</strong></td>
+            <td><button class="audio-btn" onclick="playAudio('midline')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+            <td>خط المنتصف</td>
+            <td>الخط الفاصل بين نصفي الفك الأيمن والأيسر</td>
+          </tr>
+          <tr>
+            <td><strong>Quadrant</strong></td>
+            <td><button class="audio-btn" onclick="playAudio('quadrant')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+            <td>الربع الفمي</td>
+            <td>ربع تجويف الفم (4 أرباع في الفم)</td>
+          </tr>
+          <tr>
+            <td><strong>Oral Vestibule</strong></td>
+            <td><button class="audio-btn" onclick="playAudio('oral_vestibule')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+            <td>دهليز الفم</td>
+            <td>الفراغ الواقع بين الأسنان والشفاه/الخدود</td>
+          </tr>
+          <tr>
+            <td><strong>Hard Palate</strong></td>
+            <td><button class="audio-btn" onclick="playAudio('hard_palate')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+            <td>الحنك الصلب</td>
+            <td>سقف الفم العظمي الأمامي</td>
+          </tr>
+          <tr>
+            <td><strong>Soft Palate</strong></td>
+            <td><button class="audio-btn" onclick="playAudio('soft_palate')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+            <td>الحنك الرخو</td>
+            <td>الجزء العضلي الخلفي من سقف الحلق</td>
+          </tr>
+          <tr>
+            <td><strong>Uvula</strong></td>
+            <td><button class="audio-btn" onclick="playAudio('uvula')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+            <td>اللهاة</td>
+            <td>الزائدة اللحمية المتدلية نهاية الحلق</td>
+          </tr>
+          <tr>
+            <td><strong>Lingual Frenum</strong></td>
+            <td><button class="audio-btn" onclick="playAudio('lingual_frenum')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+            <td>لجام اللسان</td>
+            <td>طية نسيجية تربط أسفل اللسان بأرضية الفم</td>
+          </tr>
+          <tr>
+            <td><strong>Gingiva</strong></td>
+            <td><button class="audio-btn" onclick="playAudio('gingiva')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+            <td>اللثة</td>
+            <td>النسيج الوردي المحيط بأعناق الأسنان</td>
+          </tr>
+          <tr>
+            <td><strong>Incisors</strong></td>
+            <td><button class="audio-btn" onclick="playAudio('incisors')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+            <td>القواطع</td>
+            <td>الأسنان الأمامية كالإزميل لقطع الطعام (2 بكل ربع)</td>
+          </tr>
+          <tr>
+            <td><strong>Canines</strong></td>
+            <td><button class="audio-btn" onclick="playAudio('canines')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+            <td>الأنياب</td>
+            <td>أسنان مدببة بنتوء واحد لتمزيق الطعام (1 بكل ربع)</td>
+          </tr>
+          <tr>
+            <td><strong>Premolars</strong></td>
+            <td><button class="audio-btn" onclick="playAudio('premolars')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+            <td>الضواحك</td>
+            <td>توجد في الدائمة فقط، تحل مكان الأضراس اللبنية</td>
+          </tr>
+          <tr>
+            <td><strong>Molars</strong></td>
+            <td><button class="audio-btn" onclick="playAudio('molars')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+            <td>الأضراس / الطواحن</td>
+            <td>أسنان خلفية عريضة متعددة النتوءات لطحن الطعام</td>
+          </tr>
+          <tr>
+            <td><strong>Primary Dentition</strong></td>
+            <td><button class="audio-btn" onclick="playAudio('primary_dentition')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+            <td>التسنين اللبني المؤقت</td>
+            <td>من 6 أشهر لـ 6 سنوات، عددها 20 سناً</td>
+          </tr>
+          <tr>
+            <td><strong>Mixed Dentition</strong></td>
+            <td><button class="audio-btn" onclick="playAudio('mixed_dentition')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+            <td>التسنين المختلط</td>
+            <td>من 6 إلى 12 سنة (مرحلة البطة القبيحة)</td>
+          </tr>
+          <tr>
+            <td><strong>Permanent Dentition</strong></td>
+            <td><button class="audio-btn" onclick="playAudio('permanent_dentition')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+            <td>التسنين الدائم</td>
+            <td>بعد سن 12 سنة، عددها 32 سناً</td>
+          </tr>
+          <tr>
+            <td><strong>Dental Formula</strong></td>
+            <td><button class="audio-btn" onclick="playAudio('dental_formula')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+            <td>المعادلة السنية</td>
+            <td>وصف لتوزيع الأسنان في نصف تجويف الفم</td>
+          </tr>
+          <tr>
+            <td><strong>Predecessors</strong></td>
+            <td><button class="audio-btn" onclick="playAudio('predecessors')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+            <td>الأسلاف (الأسنان السابقة)</td>
+            <td>كل الأسنان اللبنية أسلاف لأنها تسقط ليخلفها غيرها</td>
+          </tr>
+          <tr>
+            <td><strong>Succedaneous Teeth</strong></td>
+            <td><button class="audio-btn" onclick="playAudio('succedaneous_teeth')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+            <td>الأسنان البديلة / الخلفية</td>
+            <td>الأسنان الدائمة التي تحل محل أسنان لبنية سابقة</td>
+          </tr>
+          <tr>
+            <td><strong>Non-succedaneous Teeth</strong></td>
+            <td><button class="audio-btn" onclick="playAudio('non_succedaneous_teeth')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+            <td>الأسنان غير البديلة</td>
+            <td>الأضراس الدائمة لأنها تبزغ دون أن يسبقها سن لبني</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</div>
+
+<!-- Scroll to Top Button -->
+<button class="scroll-top-btn" id="scrollTopBtn" onclick="scrollToTop()" title="الصعود لأعلى">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+
+<footer>
+  منصة تسهيل التعليمية • تشريح الأسنان (Dental Anatomy I - BDS121) • ملخص تعليمي مبسط ومصوّر للمحاضرة الأولى
+</footer>
+
+<script>
+// ================= Audio Player =================
+let currentAudio = null;
+
+function playAudio(filename) {
+  if (currentAudio) {
+    currentAudio.pause();
+    document.querySelectorAll('.audio-btn.playing').forEach(b => b.classList.remove('playing'));
+  }
+
+  const btn = window.event ? window.event.currentTarget : null;
+  const audio = new Audio('audio/' + filename + '.mp3');
+  currentAudio = audio;
+
+  if (btn) btn.classList.add('playing');
+
+  audio.addEventListener('ended', () => {
+    if (btn) btn.classList.remove('playing');
+    currentAudio = null;
+  });
+
+  audio.addEventListener('error', () => {
+    if (btn) btn.classList.remove('playing');
+    currentAudio = null;
+  });
+
+  audio.play().catch(() => {
+    if (btn) btn.classList.remove('playing');
+    currentAudio = null;
+  });
+}
+
+// ================= Theme Toggle =================
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+  updateThemeButton(newTheme);
+}
+
+function updateThemeButton(theme) {
+  const btn = document.getElementById('themeToggleBtn');
+  if (!btn) return;
+  if (theme === 'dark') {
+    btn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
+    btn.setAttribute('title', 'الوضع النهاري');
+  } else {
+    btn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+    btn.setAttribute('title', 'الوضع الليلي');
+  }
+}
+
+// ================= Progress & Scroll Button =================
+window.addEventListener('scroll', () => {
+  const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+  const fill = document.getElementById('progressFill');
+  if (fill) fill.style.width = scrolled + '%';
+
+  const scrollBtn = document.getElementById('scrollTopBtn');
+  if (scrollBtn) {
+    scrollBtn.style.display = winScroll > 350 ? 'flex' : 'none';
+  }
+});
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Initial Theme Check
+(function initTheme() {
+  const saved = localStorage.getItem('theme') || 'light';
+  document.documentElement.setAttribute('data-theme', saved);
+  updateThemeButton(saved);
+})();
+
+// ================= Image Zoom Modal =================
+function openImageModal() {
+  const modal = document.getElementById('imageModalOverlay');
+  if (modal) modal.classList.add('active');
+}
+
+function closeImageModal() {
+  const modal = document.getElementById('imageModalOverlay');
+  if (modal) modal.classList.remove('active');
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeImageModal();
+});
+
+
+// ================= Review Table View Switcher =================
+function setTableViewMode(mode) {
+  const cardsView = document.getElementById('reviewCardsView');
+  const tableView = document.getElementById('reviewTableView');
+  const btnCards = document.getElementById('btnViewCards');
+  const btnTable = document.getElementById('btnViewTable');
+
+  if (mode === 'cards') {
+    if (cardsView) cardsView.style.display = 'flex';
+    if (tableView) tableView.style.display = 'none';
+    if (btnCards) btnCards.classList.add('active');
+    if (btnTable) btnTable.classList.remove('active');
+    localStorage.setItem('dental_table_view', 'cards');
+  } else {
+    if (cardsView) cardsView.style.display = 'none';
+    if (tableView) tableView.style.display = 'block';
+    if (btnCards) btnCards.classList.remove('active');
+    if (btnTable) btnTable.classList.add('active');
+    localStorage.setItem('dental_table_view', 'table');
+  }
+}
+
+// Initialize Review Table Default based on screen width
+(function initTableView() {
+  const saved = localStorage.getItem('dental_table_view');
+  if (saved) {
+    setTableViewMode(saved);
+  } else {
+    // If mobile / tablet <= 768px, default to cards! If desktop, default to table!
+    if (window.innerWidth <= 768) {
+      setTableViewMode('cards');
+    } else {
+      setTableViewMode('table');
+    }
+  }
+})();
+
+</script>
+
+
+<!-- Image Zoom Modal Lightbox -->
+<div class="image-modal-overlay" id="imageModalOverlay" onclick="closeImageModal()">
+  <div class="image-modal-content" onclick="event.stopPropagation()">
+    <button class="modal-close-btn" onclick="closeImageModal()" title="إغلاق">&times;</button>
+    <picture>
+      <source srcset="images/dental_numbered_arches.webp" type="image/webp">
+      <img src="images/dental_numbered_arches.png" alt="مخطط ترقيم الأسنان عالي الدقة">
+    </picture>
+    <div style="color:#ffffff; font-size:13px; font-weight:700; margin-top:8px; text-align:center;">
+      مخطط ترقيم الأسنان في الفكين العلوي والسفلي (اضغط في أي مكان للإغلاق)
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

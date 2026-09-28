@@ -1,0 +1,17 @@
+# Dental Anatomy - Lecture 1 Image Reference
+# مسار الصورة المعتمدة لترقيم الأسنان في الفكين العلوي والسفلي (Dental Numbered Arches Reference)
+
+================================================================================
+الصورة الأساسية المعتمدة: ترقيم أسنان الفكين العلوي والسفلي (1 إلى 8 من خط المنتصف)
+Image Path: dental-anatomy/lecture-1/images/dental_numbered_arches.webp (و dental_numbered_arches.png)
+Source: مرجع تشريحي معتمد ومزود من المستخدم يوضح القوس السني العلوي (Maxilla) والسفلي (Mandible) مع ترقيم الأسنان بدءاً من خط المنتصف (Midline) من رقم 1 إلى 8 في كل نصف فك (Quadrant).
+
+توزيع الأرقام:
+1: Central Incisor (القاطع المركزي / الثنية)
+2: Lateral Incisor (القاطع الجانبي / الرباعية)
+3: Canine (الناب)
+4: First Premolar (الضاحك الأول)
+5: Second Premolar (الضاحك الثاني)
+6: First Molar (الضرس الأول / رحى الست سنوات)
+7: Second Molar (الضرس الثاني / رحى الـ 12 سنة)
+8: Third Molar (الضرس الثالث / ضرس العقل)

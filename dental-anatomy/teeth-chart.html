@@ -1,0 +1,2235 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مخطط الأسنان التفاعلي | Dental Anatomy Chart</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --font-base: 'Cairo', system-ui, -apple-system, sans-serif;
+      --font-code: 'JetBrains Mono', monospace;
+      
+      --bg-primary: #0b1120;
+      --bg-secondary: #0f172a;
+      --bg-card: #1e293b;
+      --bg-card-hover: #24344d;
+      --border-color: #334155;
+      --border-glow: #0284c7;
+      
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      
+      /* Tooth Family Colors */
+      --col-incisor: #38bdf8;
+      --col-canine: #10b981;
+      --col-premolar: #f59e0b;
+      --col-molar: #a855f7;
+      
+      --col-primary: #0284c7;
+      --col-accent: #06b6d4;
+      
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.4), 0 2px 4px -2px rgba(0,0,0,0.4);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.5), 0 4px 6px -4px rgba(0,0,0,0.5);
+    }
+
+    [data-theme="light"] {
+      --bg-primary: #f1f5f9;
+      --bg-secondary: #ffffff;
+      --bg-card: #ffffff;
+      --bg-card-hover: #f8fafc;
+      --border-color: #cbd5e1;
+      --border-glow: #0284c7;
+      
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-dim: #64748b;
+      
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.25s ease, border-color 0.25s ease, color 0.2s ease;
+    }
+
+    body {
+      font-family: var(--font-base);
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.6;
+    }
+
+    /* Top Navigation Header */
+    .top-header {
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .header-branding {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .header-logo-icon {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, #0284c7 0%, #06b6d4 100%);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      box-shadow: 0 4px 10px rgba(2, 132, 199, 0.3);
+    }
+
+    .header-titles h1 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .header-titles p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.9rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-card);
+      color: var(--text-main);
+      font-family: var(--font-base);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .btn-action:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--col-primary);
+    }
+
+    .btn-action.active {
+      background: var(--col-primary);
+      color: #ffffff;
+      border-color: var(--col-primary);
+    }
+
+    /* Main Container Layout */
+    .app-layout {
+      display: grid;
+      grid-template-columns: 1fr 440px;
+      gap: 1.5rem;
+      padding: 1.5rem;
+      max-width: 1600px;
+      margin: 0 auto;
+      width: 100%;
+      flex: 1;
+    }
+
+    @media (max-width: 1100px) {
+      .app-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Left Section: Odontogram & Controls */
+    .chart-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    /* Filter & Options Bar */
+    .toolbar-box {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .toolbar-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .pill-group {
+      display: inline-flex;
+      background: var(--bg-primary);
+      padding: 4px;
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+      gap: 2px;
+    }
+
+    .pill-btn {
+      padding: 0.4rem 0.85rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      border-radius: 7px;
+      cursor: pointer;
+      font-family: var(--font-base);
+    }
+
+    .pill-btn:hover {
+      color: var(--text-main);
+    }
+
+    .pill-btn.active {
+      background: var(--col-primary);
+      color: #ffffff;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Family Legend Badges */
+    .legend-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .legend-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-dim);
+      margin-left: 0.5rem;
+    }
+
+    .legend-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1px solid transparent;
+      background: var(--bg-primary);
+      color: var(--text-muted);
+    }
+
+    .legend-pill:hover {
+      color: var(--text-main);
+    }
+
+    .legend-pill.active {
+      border-color: currentColor;
+    }
+
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .dot-incisor { background: var(--col-incisor); }
+    .dot-canine { background: var(--col-canine); }
+    .dot-premolar { background: var(--col-premolar); }
+    .dot-molar { background: var(--col-molar); }
+
+    /* Odontogram SVG Viewport */
+    .svg-viewport-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+
+    .svg-container {
+      width: 100%;
+      max-width: 680px;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    /* SVG Teeth Styling */
+    .tooth-node {
+      cursor: pointer;
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .tooth-node .hit-area {
+      fill: transparent;
+    }
+
+    .tooth-node .select-ring {
+      fill: none;
+      stroke: var(--col-accent);
+      stroke-width: 2.5;
+      stroke-dasharray: 4 3;
+      opacity: 0;
+      transition: opacity 0.2s, transform 0.2s;
+      transform-origin: center;
+    }
+
+    .tooth-node .tooth-body {
+      fill: var(--bg-card);
+      stroke: var(--border-color);
+      stroke-width: 1.8;
+      transition: fill 0.2s, stroke 0.2s, stroke-width 0.2s;
+    }
+
+    .tooth-node .tooth-fissure {
+      fill: none;
+      stroke: var(--text-dim);
+      stroke-width: 1.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      opacity: 0.75;
+    }
+
+    .tooth-node .tooth-label {
+      font-family: var(--font-code);
+      font-size: 11px;
+      font-weight: 700;
+      fill: var(--text-main);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* Category Specific Colors */
+    .tooth-node.tooth-incisor .tooth-body { stroke: var(--col-incisor); }
+    .tooth-node.tooth-canine .tooth-body { stroke: var(--col-canine); }
+    .tooth-node.tooth-premolar .tooth-body { stroke: var(--col-premolar); }
+    .tooth-node.tooth-molar .tooth-body { stroke: var(--col-molar); }
+
+    /* Hover States */
+    .tooth-node:hover {
+      transform: scale(1.15) !important;
+    }
+
+    .tooth-node:hover .tooth-body {
+      stroke-width: 2.5;
+      filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.5));
+    }
+
+    /* Selected State */
+    .tooth-node.selected {
+      transform: scale(1.22) !important;
+    }
+
+    .tooth-node.selected .select-ring {
+      opacity: 1;
+      animation: spinRing 8s linear infinite;
+    }
+
+    .tooth-node.selected .tooth-body {
+      fill: rgba(56, 189, 248, 0.22);
+      stroke: var(--col-accent);
+      stroke-width: 2.8;
+      filter: drop-shadow(0 0 10px rgba(6, 182, 212, 0.7));
+    }
+
+    .tooth-node.selected .tooth-label {
+      fill: #ffffff;
+      font-weight: 900;
+    }
+
+    /* Filter Dimming */
+    .tooth-node.dimmed {
+      opacity: 0.2;
+      pointer-events: none;
+    }
+
+    @keyframes spinRing {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* SVG Landmarks & Guides */
+    .arch-guide-line {
+      stroke: var(--border-color);
+      stroke-dasharray: 4 4;
+      opacity: 0.45;
+    }
+
+    .midline-axis {
+      stroke: #0284c7;
+      stroke-dasharray: 5 4;
+      stroke-width: 1.5;
+      opacity: 0.6;
+    }
+
+    .quadrant-box {
+      fill: transparent;
+      stroke: var(--border-color);
+      stroke-dasharray: 3 3;
+      stroke-width: 1;
+      opacity: 0.35;
+      rx: 8;
+    }
+
+    .svg-text-badge {
+      font-family: var(--font-base);
+      font-size: 12px;
+      font-weight: 700;
+      fill: var(--text-dim);
+      user-select: none;
+    }
+
+    .svg-arch-title {
+      font-family: var(--font-base);
+      font-size: 13px;
+      font-weight: 800;
+      fill: var(--col-primary);
+      letter-spacing: 0.05em;
+    }
+
+    /* Right Section: Inspector Card */
+    .inspector-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .inspector-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow-md);
+      position: sticky;
+      top: 5rem;
+    }
+
+    /* Empty Placeholder state */
+    .inspector-empty {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .empty-icon-wrap {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--bg-primary);
+      border: 2px dashed var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-dim);
+    }
+
+    /* Tooth Active Details */
+    .tooth-details {
+      display: none;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .details-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 1rem;
+    }
+
+    .tooth-title-group h2 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.3;
+    }
+
+    .tooth-title-group h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--col-primary);
+      margin-top: 0.25rem;
+    }
+
+    .btn-speak {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      border: none;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      box-shadow: 0 4px 10px rgba(2, 132, 199, 0.35);
+      transition: transform 0.15s, background-color 0.2s;
+    }
+
+    .btn-speak:hover {
+      transform: scale(1.06);
+    }
+
+    .btn-speak:active {
+      transform: scale(0.95);
+    }
+
+    .btn-speak.playing {
+      animation: pulseSpeak 1s infinite alternate;
+    }
+
+    @keyframes pulseSpeak {
+      from { box-shadow: 0 0 0 0 rgba(2, 132, 199, 0.7); }
+      to { box-shadow: 0 0 0 10px rgba(2, 132, 199, 0); }
+    }
+
+    /* System Numbers Badge Bar */
+    .notations-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+      background: var(--bg-primary);
+      padding: 0.75rem;
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+      text-align: center;
+    }
+
+    .notation-item .label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-dim);
+      display: block;
+    }
+
+    .notation-item .val {
+      font-family: var(--font-code);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--col-primary);
+      margin-top: 2px;
+      display: block;
+    }
+
+    /* Badges Ribbon */
+    .badges-ribbon {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .ribbon-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+    }
+
+    .ribbon-tag.tag-arch {
+      color: #38bdf8;
+      border-color: rgba(56, 189, 248, 0.3);
+    }
+
+    .ribbon-tag.tag-type {
+      color: #10b981;
+      border-color: rgba(16, 185, 129, 0.3);
+    }
+
+    .ribbon-tag.tag-quad {
+      color: #f59e0b;
+      border-color: rgba(245, 158, 11, 0.3);
+    }
+
+    /* Info Table Grid */
+    .info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .info-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      background: var(--bg-primary);
+      padding: 0.65rem 0.85rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+    }
+
+    .info-row .info-label {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .info-row .info-value {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    /* Navigation Prev/Next Tooth */
+    .tooth-nav-bar {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .btn-nav {
+      flex: 1;
+      padding: 0.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-primary);
+      color: var(--text-main);
+      font-family: var(--font-base);
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+    }
+
+    .btn-nav:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--col-primary);
+    }
+
+    /* Quick Cards View (Alternate view) */
+    .cards-grid-view {
+      display: none;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .tooth-card-item {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 0.85rem;
+      cursor: pointer;
+      transition: transform 0.15s, border-color 0.2s;
+    }
+
+    .tooth-card-item:hover {
+      transform: translateY(-2px);
+      border-color: var(--col-primary);
+    }
+
+    .tooth-card-item.selected {
+      border-color: var(--col-accent);
+      background: rgba(2, 132, 199, 0.1);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.35rem;
+    }
+
+    .card-num {
+      font-family: var(--font-code);
+      font-weight: 800;
+      color: var(--col-primary);
+      font-size: 1rem;
+    }
+
+    .card-type-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .card-title-en {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.3;
+    }
+
+    .card-title-ar {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.15rem;
+    }
+
+    /* Practice Quiz Mode Overlay / Banner */
+    .quiz-banner {
+      background: linear-gradient(135deg, rgba(2, 132, 199, 0.15) 0%, rgba(6, 182, 212, 0.15) 100%);
+      border: 1px solid rgba(2, 132, 199, 0.3);
+      border-radius: 12px;
+      padding: 0.85rem 1.25rem;
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .quiz-question {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .quiz-score {
+      font-family: var(--font-code);
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: var(--col-accent);
+      background: var(--bg-secondary);
+      padding: 0.3rem 0.6rem;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+    }
+
+    /* Footer */
+    .page-footer {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border-color);
+      padding: 1.25rem 1.5rem;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body data-theme="dark">
+
+  <!-- Header -->
+  <header class="top-header">
+    <div class="header-branding">
+      <div class="header-logo-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2C8.5 2 6 4 6 7c0 2.5 1 5.5 1.5 9 .5 3.5 1.5 5 2.5 5s1.5-2 2-4.5c.5 2.5 1 4.5 2 4.5s2-1.5 2.5-5c.5-3.5 1.5-6.5 1.5-9 0-3-2.5-5-6-5z"/>
+        </svg>
+      </div>
+      <div class="header-titles">
+        <h1>مخطط الأسنان التفاعلي (Interactive Dental Chart)</h1>
+        <p>تشريح الأسنان للفكين العلوي والسفلي مع النطق الصوتي والتصنيف المعتمد</p>
+      </div>
+    </div>
+
+    <div class="header-controls">
+      <!-- Quiz Practice Mode Toggle -->
+      <button class="btn-action" id="btn-quiz-toggle" title="بدء اختبار تحديد السن">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+          <line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+        <span id="quiz-btn-text">اختبار تحديد السن</span>
+      </button>
+
+      <!-- Theme Switcher -->
+      <button class="btn-action" id="theme-toggle" title="تبديل الوضع الليلي / النهاري">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/>
+          <line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/>
+          <line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <span>الوضع</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="app-layout">
+
+    <!-- Left Column: Visual Odontogram & Controls -->
+    <section class="chart-panel">
+
+      <!-- Quiz Banner (Shown during quiz) -->
+      <div class="quiz-banner" id="quiz-banner">
+        <div class="quiz-question" id="quiz-prompt">جاري تحميل السؤال...</div>
+        <div style="display:flex; align-items:center; gap:0.6rem;">
+          <div class="quiz-score" id="quiz-score">النتيجة: 0 / 0</div>
+          <button class="btn-action" id="btn-quiz-exit" style="padding:0.3rem 0.6rem;">إنهاء</button>
+        </div>
+      </div>
+
+      <!-- Toolbar -->
+      <div class="toolbar-box">
+        <!-- Row 1: Dentition & Numbering System -->
+        <div class="toolbar-row">
+          <div style="display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap;">
+            <span class="legend-title">نوع الطاقم:</span>
+            <div class="pill-group" id="dentition-toggle">
+              <button class="pill-btn active" data-dentition="permanent">الأسنان الدائمة (32)</button>
+              <button class="pill-btn" data-dentition="primary">الأسنان اللبنية (20)</button>
+            </div>
+          </div>
+
+          <div style="display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap;">
+            <span class="legend-title">نظام الترقيم:</span>
+            <div class="pill-group" id="notation-toggle">
+              <button class="pill-btn active" data-notation="universal">Universal (#)</button>
+              <button class="pill-btn" data-notation="fdi">FDI الدولي</button>
+              <button class="pill-btn" data-notation="palmer">Palmer</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 2: Family Legend Filters -->
+        <div class="toolbar-row">
+          <div class="legend-row">
+            <span class="legend-title">تصفية الأنواع:</span>
+            <button class="legend-pill active" data-filter="all">
+              <span>الكل</span>
+            </button>
+            <button class="legend-pill" data-filter="incisor">
+              <span class="legend-dot dot-incisor"></span>
+              <span>القواطع (Incisors)</span>
+            </button>
+            <button class="legend-pill" data-filter="canine">
+              <span class="legend-dot dot-canine"></span>
+              <span>الأنياب (Canines)</span>
+            </button>
+            <button class="legend-pill" data-filter="premolar" id="filter-premolar-btn">
+              <span class="legend-dot dot-premolar"></span>
+              <span>الضواحك (Premolars)</span>
+            </button>
+            <button class="legend-pill" data-filter="molar">
+              <span class="legend-dot dot-molar"></span>
+              <span>الأضراس (Molars)</span>
+            </button>
+          </div>
+
+          <!-- Display Mode Toggle (Arch vs Cards) -->
+          <div class="pill-group" id="view-mode-toggle">
+            <button class="pill-btn active" data-view="chart">مخطط الفك</button>
+            <button class="pill-btn" data-view="cards">قائمة البطاقات</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Odontogram SVG Viewport -->
+      <div class="svg-viewport-card" id="odontogram-card">
+        
+        <!-- Orientation Badges (Absolute in viewport) -->
+        <div style="width:100%; display:flex; justify-content:space-between; margin-bottom:0.5rem; font-size:0.78rem; font-weight:700; color:var(--text-dim);">
+          <span style="background:var(--bg-primary); padding:3px 8px; border-radius:6px; border:1px solid var(--border-color);">
+            يمين المريض (Patient's Right)
+          </span>
+          <span style="background:var(--bg-primary); padding:3px 8px; border-radius:6px; border:1px solid var(--border-color);">
+            يسار المريض (Patient's Left)
+          </span>
+        </div>
+
+        <div class="svg-container">
+          <svg viewBox="0 0 760 700" width="100%" height="100%" id="dental-arch-svg">
+            <!-- Background Quadrant Guides -->
+            <!-- Quadrant 1 (UR): Top Left of viewer -->
+            <rect x="40" y="20" width="330" height="290" class="quadrant-box" />
+            <text x="55" y="42" class="svg-text-badge">UR • الربع العلوي الأيمن (Q1)</text>
+
+            <!-- Quadrant 2 (UL): Top Right of viewer -->
+            <rect x="390" y="20" width="330" height="290" class="quadrant-box" />
+            <text x="615" y="42" class="svg-text-badge" text-anchor="end">UL • الربع العلوي الأيسر (Q2)</text>
+
+            <!-- Quadrant 4 (LR): Bottom Left of viewer -->
+            <rect x="40" y="390" width="330" height="290" class="quadrant-box" />
+            <text x="55" y="665" class="svg-text-badge">LR • الربع السفلي الأيمن (Q4)</text>
+
+            <!-- Quadrant 3 (LL): Bottom Right of viewer -->
+            <rect x="390" y="390" width="330" height="290" class="quadrant-box" />
+            <text x="615" y="665" class="svg-text-badge" text-anchor="end">LL • الربع السفلي الأيسر (Q3)</text>
+
+            <!-- Vertical Midline -->
+            <line x1="380" y1="20" x2="380" y2="680" class="midline-axis" />
+            <text x="380" y="16" class="svg-text-badge" text-anchor="middle" fill="#0284c7">خط المنتصف (Midline)</text>
+
+            <!-- Horizontal Arch Divider & Labels -->
+            <line x1="50" y1="350" x2="710" y2="350" class="arch-guide-line" />
+            <rect x="300" y="335" width="160" height="30" rx="15" fill="var(--bg-secondary)" stroke="var(--border-color)" />
+            <text x="380" y="354" text-anchor="middle" class="svg-arch-title">مستوى الإطباق</text>
+
+            <text x="380" y="65" text-anchor="middle" class="svg-arch-title" fill="#38bdf8">الفك العلوي (Maxilla)</text>
+            <text x="380" y="640" text-anchor="middle" class="svg-arch-title" fill="#38bdf8">الفك السفلي (Mandible)</text>
+
+            <!-- Teeth Groups -->
+            <g id="svg-permanent-group">
+              
+        <g class="tooth-node tooth-molar" id="tooth-node-1" data-id="1" data-type="molar" data-arch="maxillary" data-quadrant="UR" transform="translate(152.2, 216.9)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(-68.3)">
+            <path d="M -18,-15 C -9,-18 9,-18 18,-15 C 20,-5 20,5 18,15 C 9,18 -9,18 -18,15 C -20,5 -20,-5 -18,-15 Z" class="tooth-body" />
+            <path d="M -13,0 Q 0,0 13,0 M 0,-11 L 0,11 M -8,-8 L 8,8 M -8,8 L 8,-8" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">1</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-molar" id="tooth-node-2" data-id="2" data-type="molar" data-arch="maxillary" data-quadrant="UR" transform="translate(170.6, 182.2)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(-56.1)">
+            <path d="M -18,-15 C -9,-18 9,-18 18,-15 C 20,-5 20,5 18,15 C 9,18 -9,18 -18,15 C -20,5 -20,-5 -18,-15 Z" class="tooth-body" />
+            <path d="M -13,0 Q 0,0 13,0 M 0,-11 L 0,11 M -8,-8 L 8,8 M -8,8 L 8,-8" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">2</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-molar" id="tooth-node-3" data-id="3" data-type="molar" data-arch="maxillary" data-quadrant="UR" transform="translate(195.0, 152.6)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(-45.2)">
+            <path d="M -18,-15 C -9,-18 9,-18 18,-15 C 20,-5 20,5 18,15 C 9,18 -9,18 -18,15 C -20,5 -20,-5 -18,-15 Z" class="tooth-body" />
+            <path d="M -13,0 Q 0,0 13,0 M 0,-11 L 0,11 M -8,-8 L 8,8 M -8,8 L 8,-8" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">3</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-premolar" id="tooth-node-4" data-id="4" data-type="premolar" data-arch="maxillary" data-quadrant="UR" transform="translate(225.4, 127.0)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(-35.1)">
+            <path d="M -14,-5 C -14,-12 14,-12 14,-5 C 15,4 12,12 0,12 C -12,12 -15,4 -14,-5 Z" class="tooth-body" />
+            <path d="M -9,0 Q 0,1 9,0 M 0,-7 L 0,7" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">4</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-premolar" id="tooth-node-5" data-id="5" data-type="premolar" data-arch="maxillary" data-quadrant="UR" transform="translate(256.6, 108.5)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(-26.5)">
+            <path d="M -14,-5 C -14,-12 14,-12 14,-5 C 15,4 12,12 0,12 C -12,12 -15,4 -14,-5 Z" class="tooth-body" />
+            <path d="M -9,0 Q 0,1 9,0 M 0,-7 L 0,7" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">5</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-canine" id="tooth-node-6" data-id="6" data-type="canine" data-arch="maxillary" data-quadrant="UR" transform="translate(291.0, 94.3)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(-18.4)">
+            <path d="M 0,-11 C 6,-9 12,-4 12,2 C 12,8 8,11 0,11 C -8,11 -12,8 -12,2 C -12,-4 -6,-9 0,-11 Z" class="tooth-body" />
+            <path d="M 0,-10 L 0,4 M -8,0 L 8,0" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">6</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-incisor" id="tooth-node-7" data-id="7" data-type="incisor" data-arch="maxillary" data-quadrant="UR" transform="translate(327.6, 84.8)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(-10.6)">
+            <path d="M -13,-7 C -13,-9 13,-9 13,-7 C 14,-1 12,7 8,8 C 3,9 -3,9 -8,8 C -12,7 -14,-1 -13,-7 Z" class="tooth-body" />
+            <path d="M -9,-3 L 9,-3" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">7</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-incisor" id="tooth-node-8" data-id="8" data-type="incisor" data-arch="maxillary" data-quadrant="UR" transform="translate(360.8, 80.6)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(-3.8)">
+            <path d="M -13,-7 C -13,-9 13,-9 13,-7 C 14,-1 12,7 8,8 C 3,9 -3,9 -8,8 C -12,7 -14,-1 -13,-7 Z" class="tooth-body" />
+            <path d="M -9,-3 L 9,-3" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">8</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-incisor" id="tooth-node-9" data-id="9" data-type="incisor" data-arch="maxillary" data-quadrant="UL" transform="translate(399.2, 80.6)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(3.8)">
+            <path d="M -13,-7 C -13,-9 13,-9 13,-7 C 14,-1 12,7 8,8 C 3,9 -3,9 -8,8 C -12,7 -14,-1 -13,-7 Z" class="tooth-body" />
+            <path d="M -9,-3 L 9,-3" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">9</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-incisor" id="tooth-node-10" data-id="10" data-type="incisor" data-arch="maxillary" data-quadrant="UL" transform="translate(432.4, 84.8)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(10.6)">
+            <path d="M -13,-7 C -13,-9 13,-9 13,-7 C 14,-1 12,7 8,8 C 3,9 -3,9 -8,8 C -12,7 -14,-1 -13,-7 Z" class="tooth-body" />
+            <path d="M -9,-3 L 9,-3" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">10</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-canine" id="tooth-node-11" data-id="11" data-type="canine" data-arch="maxillary" data-quadrant="UL" transform="translate(469.0, 94.3)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(18.4)">
+            <path d="M 0,-11 C 6,-9 12,-4 12,2 C 12,8 8,11 0,11 C -8,11 -12,8 -12,2 C -12,-4 -6,-9 0,-11 Z" class="tooth-body" />
+            <path d="M 0,-10 L 0,4 M -8,0 L 8,0" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">11</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-premolar" id="tooth-node-12" data-id="12" data-type="premolar" data-arch="maxillary" data-quadrant="UL" transform="translate(503.4, 108.5)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(26.5)">
+            <path d="M -14,-5 C -14,-12 14,-12 14,-5 C 15,4 12,12 0,12 C -12,12 -15,4 -14,-5 Z" class="tooth-body" />
+            <path d="M -9,0 Q 0,1 9,0 M 0,-7 L 0,7" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">12</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-premolar" id="tooth-node-13" data-id="13" data-type="premolar" data-arch="maxillary" data-quadrant="UL" transform="translate(534.6, 127.0)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(35.1)">
+            <path d="M -14,-5 C -14,-12 14,-12 14,-5 C 15,4 12,12 0,12 C -12,12 -15,4 -14,-5 Z" class="tooth-body" />
+            <path d="M -9,0 Q 0,1 9,0 M 0,-7 L 0,7" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">13</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-molar" id="tooth-node-14" data-id="14" data-type="molar" data-arch="maxillary" data-quadrant="UL" transform="translate(565.0, 152.6)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(45.2)">
+            <path d="M -18,-15 C -9,-18 9,-18 18,-15 C 20,-5 20,5 18,15 C 9,18 -9,18 -18,15 C -20,5 -20,-5 -18,-15 Z" class="tooth-body" />
+            <path d="M -13,0 Q 0,0 13,0 M 0,-11 L 0,11 M -8,-8 L 8,8 M -8,8 L 8,-8" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">14</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-molar" id="tooth-node-15" data-id="15" data-type="molar" data-arch="maxillary" data-quadrant="UL" transform="translate(589.4, 182.2)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(56.1)">
+            <path d="M -18,-15 C -9,-18 9,-18 18,-15 C 20,-5 20,5 18,15 C 9,18 -9,18 -18,15 C -20,5 -20,-5 -18,-15 Z" class="tooth-body" />
+            <path d="M -13,0 Q 0,0 13,0 M 0,-11 L 0,11 M -8,-8 L 8,8 M -8,8 L 8,-8" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">15</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-molar" id="tooth-node-16" data-id="16" data-type="molar" data-arch="maxillary" data-quadrant="UL" transform="translate(607.8, 216.9)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(68.3)">
+            <path d="M -18,-15 C -9,-18 9,-18 18,-15 C 20,-5 20,5 18,15 C 9,18 -9,18 -18,15 C -20,5 -20,-5 -18,-15 Z" class="tooth-body" />
+            <path d="M -13,0 Q 0,0 13,0 M 0,-11 L 0,11 M -8,-8 L 8,8 M -8,8 L 8,-8" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">16</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-molar" id="tooth-node-17" data-id="17" data-type="molar" data-arch="mandibular" data-quadrant="LL" transform="translate(597.5, 491.7)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(-67.4)">
+            <path d="M -18,-15 C -9,-18 9,-18 18,-15 C 20,-5 20,5 18,15 C 9,18 -9,18 -18,15 C -20,5 -20,-5 -18,-15 Z" class="tooth-body" />
+            <path d="M -13,0 Q 0,0 13,0 M 0,-11 L 0,11 M -8,-8 L 8,8 M -8,8 L 8,-8" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">17</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-molar" id="tooth-node-18" data-id="18" data-type="molar" data-arch="mandibular" data-quadrant="LL" transform="translate(579.5, 524.5)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(-55.2)">
+            <path d="M -18,-15 C -9,-18 9,-18 18,-15 C 20,-5 20,5 18,15 C 9,18 -9,18 -18,15 C -20,5 -20,-5 -18,-15 Z" class="tooth-body" />
+            <path d="M -13,0 Q 0,0 13,0 M 0,-11 L 0,11 M -8,-8 L 8,8 M -8,8 L 8,-8" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">18</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-molar" id="tooth-node-19" data-id="19" data-type="molar" data-arch="mandibular" data-quadrant="LL" transform="translate(555.8, 552.5)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(-44.4)">
+            <path d="M -18,-15 C -9,-18 9,-18 18,-15 C 20,-5 20,5 18,15 C 9,18 -9,18 -18,15 C -20,5 -20,-5 -18,-15 Z" class="tooth-body" />
+            <path d="M -13,0 Q 0,0 13,0 M 0,-11 L 0,11 M -8,-8 L 8,8 M -8,8 L 8,-8" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">19</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-premolar" id="tooth-node-20" data-id="20" data-type="premolar" data-arch="mandibular" data-quadrant="LL" transform="translate(526.4, 576.5)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(-34.3)">
+            <path d="M -14,-5 C -14,-12 14,-12 14,-5 C 15,4 12,12 0,12 C -12,12 -15,4 -14,-5 Z" class="tooth-body" />
+            <path d="M -9,0 Q 0,1 9,0 M 0,-7 L 0,7" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">20</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-premolar" id="tooth-node-21" data-id="21" data-type="premolar" data-arch="mandibular" data-quadrant="LL" transform="translate(494.3, 594.9)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(-25.3)">
+            <path d="M -14,-5 C -14,-12 14,-12 14,-5 C 15,4 12,12 0,12 C -12,12 -15,4 -14,-5 Z" class="tooth-body" />
+            <path d="M -9,0 Q 0,1 9,0 M 0,-7 L 0,7" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">21</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-canine" id="tooth-node-22" data-id="22" data-type="canine" data-arch="mandibular" data-quadrant="LL" transform="translate(461.0, 607.8)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(-17.3)">
+            <path d="M 0,-11 C 6,-9 12,-4 12,2 C 12,8 8,11 0,11 C -8,11 -12,8 -12,2 C -12,-4 -6,-9 0,-11 Z" class="tooth-body" />
+            <path d="M 0,-10 L 0,4 M -8,0 L 8,0" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">22</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-incisor" id="tooth-node-23" data-id="23" data-type="incisor" data-arch="mandibular" data-quadrant="LL" transform="translate(425.7, 616.2)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(-9.5)">
+            <path d="M -13,-7 C -13,-9 13,-9 13,-7 C 14,-1 12,7 8,8 C 3,9 -3,9 -8,8 C -12,7 -14,-1 -13,-7 Z" class="tooth-body" />
+            <path d="M -9,-3 L 9,-3" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">23</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-incisor" id="tooth-node-24" data-id="24" data-type="incisor" data-arch="mandibular" data-quadrant="LL" transform="translate(396.1, 619.5)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(-3.3)">
+            <path d="M -13,-7 C -13,-9 13,-9 13,-7 C 14,-1 12,7 8,8 C 3,9 -3,9 -8,8 C -12,7 -14,-1 -13,-7 Z" class="tooth-body" />
+            <path d="M -9,-3 L 9,-3" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">24</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-incisor" id="tooth-node-25" data-id="25" data-type="incisor" data-arch="mandibular" data-quadrant="LR" transform="translate(363.9, 619.5)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(3.3)">
+            <path d="M -13,-7 C -13,-9 13,-9 13,-7 C 14,-1 12,7 8,8 C 3,9 -3,9 -8,8 C -12,7 -14,-1 -13,-7 Z" class="tooth-body" />
+            <path d="M -9,-3 L 9,-3" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">25</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-incisor" id="tooth-node-26" data-id="26" data-type="incisor" data-arch="mandibular" data-quadrant="LR" transform="translate(334.3, 616.2)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(9.5)">
+            <path d="M -13,-7 C -13,-9 13,-9 13,-7 C 14,-1 12,7 8,8 C 3,9 -3,9 -8,8 C -12,7 -14,-1 -13,-7 Z" class="tooth-body" />
+            <path d="M -9,-3 L 9,-3" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">26</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-canine" id="tooth-node-27" data-id="27" data-type="canine" data-arch="mandibular" data-quadrant="LR" transform="translate(299.0, 607.8)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(17.3)">
+            <path d="M 0,-11 C 6,-9 12,-4 12,2 C 12,8 8,11 0,11 C -8,11 -12,8 -12,2 C -12,-4 -6,-9 0,-11 Z" class="tooth-body" />
+            <path d="M 0,-10 L 0,4 M -8,0 L 8,0" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">27</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-premolar" id="tooth-node-28" data-id="28" data-type="premolar" data-arch="mandibular" data-quadrant="LR" transform="translate(265.7, 594.9)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(25.3)">
+            <path d="M -14,-5 C -14,-12 14,-12 14,-5 C 15,4 12,12 0,12 C -12,12 -15,4 -14,-5 Z" class="tooth-body" />
+            <path d="M -9,0 Q 0,1 9,0 M 0,-7 L 0,7" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">28</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-premolar" id="tooth-node-29" data-id="29" data-type="premolar" data-arch="mandibular" data-quadrant="LR" transform="translate(233.6, 576.5)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(34.3)">
+            <path d="M -14,-5 C -14,-12 14,-12 14,-5 C 15,4 12,12 0,12 C -12,12 -15,4 -14,-5 Z" class="tooth-body" />
+            <path d="M -9,0 Q 0,1 9,0 M 0,-7 L 0,7" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">29</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-molar" id="tooth-node-30" data-id="30" data-type="molar" data-arch="mandibular" data-quadrant="LR" transform="translate(204.2, 552.5)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(44.4)">
+            <path d="M -18,-15 C -9,-18 9,-18 18,-15 C 20,-5 20,5 18,15 C 9,18 -9,18 -18,15 C -20,5 -20,-5 -18,-15 Z" class="tooth-body" />
+            <path d="M -13,0 Q 0,0 13,0 M 0,-11 L 0,11 M -8,-8 L 8,8 M -8,8 L 8,-8" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">30</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-molar" id="tooth-node-31" data-id="31" data-type="molar" data-arch="mandibular" data-quadrant="LR" transform="translate(180.5, 524.5)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(55.2)">
+            <path d="M -18,-15 C -9,-18 9,-18 18,-15 C 20,-5 20,5 18,15 C 9,18 -9,18 -18,15 C -20,5 -20,-5 -18,-15 Z" class="tooth-body" />
+            <path d="M -13,0 Q 0,0 13,0 M 0,-11 L 0,11 M -8,-8 L 8,8 M -8,8 L 8,-8" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">31</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-molar" id="tooth-node-32" data-id="32" data-type="molar" data-arch="mandibular" data-quadrant="LR" transform="translate(162.5, 491.7)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(67.4)">
+            <path d="M -18,-15 C -9,-18 9,-18 18,-15 C 20,-5 20,5 18,15 C 9,18 -9,18 -18,15 C -20,5 -20,-5 -18,-15 Z" class="tooth-body" />
+            <path d="M -13,0 Q 0,0 13,0 M 0,-11 L 0,11 M -8,-8 L 8,8 M -8,8 L 8,-8" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">32</text>
+        </g>
+        
+            </g>
+
+            <g id="svg-primary-group" style="display: none;">
+              
+        <g class="tooth-node tooth-molar" id="tooth-node-A" data-id="A" data-type="molar" data-arch="maxillary" data-quadrant="UR" transform="translate(201.1, 181.0)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(-52.8)">
+            <path d="M -18,-15 C -9,-18 9,-18 18,-15 C 20,-5 20,5 18,15 C 9,18 -9,18 -18,15 C -20,5 -20,-5 -18,-15 Z" class="tooth-body" />
+            <path d="M -13,0 Q 0,0 13,0 M 0,-11 L 0,11 M -8,-8 L 8,8 M -8,8 L 8,-8" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">A</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-molar" id="tooth-node-B" data-id="B" data-type="molar" data-arch="maxillary" data-quadrant="UR" transform="translate(238.4, 144.5)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(-36.5)">
+            <path d="M -18,-15 C -9,-18 9,-18 18,-15 C 20,-5 20,5 18,15 C 9,18 -9,18 -18,15 C -20,5 -20,-5 -18,-15 Z" class="tooth-body" />
+            <path d="M -13,0 Q 0,0 13,0 M 0,-11 L 0,11 M -8,-8 L 8,8 M -8,8 L 8,-8" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">B</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-canine" id="tooth-node-C" data-id="C" data-type="canine" data-arch="maxillary" data-quadrant="UR" transform="translate(279.3, 120.8)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(-23.9)">
+            <path d="M 0,-11 C 6,-9 12,-4 12,2 C 12,8 8,11 0,11 C -8,11 -12,8 -12,2 C -12,-4 -6,-9 0,-11 Z" class="tooth-body" />
+            <path d="M 0,-10 L 0,4 M -8,0 L 8,0" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">C</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-incisor" id="tooth-node-D" data-id="D" data-type="incisor" data-arch="maxillary" data-quadrant="UR" transform="translate(322.0, 106.6)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(-13.1)">
+            <path d="M -13,-7 C -13,-9 13,-9 13,-7 C 14,-1 12,7 8,8 C 3,9 -3,9 -8,8 C -12,7 -14,-1 -13,-7 Z" class="tooth-body" />
+            <path d="M -9,-3 L 9,-3" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">D</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-incisor" id="tooth-node-E" data-id="E" data-type="incisor" data-arch="maxillary" data-quadrant="UR" transform="translate(359.0, 100.8)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(-4.6)">
+            <path d="M -13,-7 C -13,-9 13,-9 13,-7 C 14,-1 12,7 8,8 C 3,9 -3,9 -8,8 C -12,7 -14,-1 -13,-7 Z" class="tooth-body" />
+            <path d="M -9,-3 L 9,-3" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">E</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-incisor" id="tooth-node-F" data-id="F" data-type="incisor" data-arch="maxillary" data-quadrant="UL" transform="translate(401.0, 100.8)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(4.6)">
+            <path d="M -13,-7 C -13,-9 13,-9 13,-7 C 14,-1 12,7 8,8 C 3,9 -3,9 -8,8 C -12,7 -14,-1 -13,-7 Z" class="tooth-body" />
+            <path d="M -9,-3 L 9,-3" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">F</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-incisor" id="tooth-node-G" data-id="G" data-type="incisor" data-arch="maxillary" data-quadrant="UL" transform="translate(438.0, 106.6)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(13.1)">
+            <path d="M -13,-7 C -13,-9 13,-9 13,-7 C 14,-1 12,7 8,8 C 3,9 -3,9 -8,8 C -12,7 -14,-1 -13,-7 Z" class="tooth-body" />
+            <path d="M -9,-3 L 9,-3" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">G</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-canine" id="tooth-node-H" data-id="H" data-type="canine" data-arch="maxillary" data-quadrant="UL" transform="translate(480.7, 120.8)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(23.9)">
+            <path d="M 0,-11 C 6,-9 12,-4 12,2 C 12,8 8,11 0,11 C -8,11 -12,8 -12,2 C -12,-4 -6,-9 0,-11 Z" class="tooth-body" />
+            <path d="M 0,-10 L 0,4 M -8,0 L 8,0" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">H</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-molar" id="tooth-node-I" data-id="I" data-type="molar" data-arch="maxillary" data-quadrant="UL" transform="translate(521.6, 144.5)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(36.5)">
+            <path d="M -18,-15 C -9,-18 9,-18 18,-15 C 20,-5 20,5 18,15 C 9,18 -9,18 -18,15 C -20,5 -20,-5 -18,-15 Z" class="tooth-body" />
+            <path d="M -13,0 Q 0,0 13,0 M 0,-11 L 0,11 M -8,-8 L 8,8 M -8,8 L 8,-8" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">I</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-molar" id="tooth-node-J" data-id="J" data-type="molar" data-arch="maxillary" data-quadrant="UL" transform="translate(558.9, 181.0)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(52.8)">
+            <path d="M -18,-15 C -9,-18 9,-18 18,-15 C 20,-5 20,5 18,15 C 9,18 -9,18 -18,15 C -20,5 -20,-5 -18,-15 Z" class="tooth-body" />
+            <path d="M -13,0 Q 0,0 13,0 M 0,-11 L 0,11 M -8,-8 L 8,8 M -8,8 L 8,-8" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">J</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-molar" id="tooth-node-K" data-id="K" data-type="molar" data-arch="mandibular" data-quadrant="LL" transform="translate(546.1, 529.1)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(-50.0)">
+            <path d="M -18,-15 C -9,-18 9,-18 18,-15 C 20,-5 20,5 18,15 C 9,18 -9,18 -18,15 C -20,5 -20,-5 -18,-15 Z" class="tooth-body" />
+            <path d="M -13,0 Q 0,0 13,0 M 0,-11 L 0,11 M -8,-8 L 8,8 M -8,8 L 8,-8" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">K</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-molar" id="tooth-node-L" data-id="L" data-type="molar" data-arch="mandibular" data-quadrant="LL" transform="translate(508.8, 562.4)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(-34.0)">
+            <path d="M -18,-15 C -9,-18 9,-18 18,-15 C 20,-5 20,5 18,15 C 9,18 -9,18 -18,15 C -20,5 -20,-5 -18,-15 Z" class="tooth-body" />
+            <path d="M -13,0 Q 0,0 13,0 M 0,-11 L 0,11 M -8,-8 L 8,8 M -8,8 L 8,-8" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">L</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-canine" id="tooth-node-M" data-id="M" data-type="canine" data-arch="mandibular" data-quadrant="LL" transform="translate(470.6, 582.7)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(-22.1)">
+            <path d="M 0,-11 C 6,-9 12,-4 12,2 C 12,8 8,11 0,11 C -8,11 -12,8 -12,2 C -12,-4 -6,-9 0,-11 Z" class="tooth-body" />
+            <path d="M 0,-10 L 0,4 M -8,0 L 8,0" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">M</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-incisor" id="tooth-node-N" data-id="N" data-type="incisor" data-arch="mandibular" data-quadrant="LL" transform="translate(431.4, 594.6)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(-12.0)">
+            <path d="M -13,-7 C -13,-9 13,-9 13,-7 C 14,-1 12,7 8,8 C 3,9 -3,9 -8,8 C -12,7 -14,-1 -13,-7 Z" class="tooth-body" />
+            <path d="M -9,-3 L 9,-3" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">N</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-incisor" id="tooth-node-O" data-id="O" data-type="incisor" data-arch="mandibular" data-quadrant="LL" transform="translate(398.0, 599.4)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(-4.1)">
+            <path d="M -13,-7 C -13,-9 13,-9 13,-7 C 14,-1 12,7 8,8 C 3,9 -3,9 -8,8 C -12,7 -14,-1 -13,-7 Z" class="tooth-body" />
+            <path d="M -9,-3 L 9,-3" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">O</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-incisor" id="tooth-node-P" data-id="P" data-type="incisor" data-arch="mandibular" data-quadrant="LR" transform="translate(362.0, 599.4)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(4.1)">
+            <path d="M -13,-7 C -13,-9 13,-9 13,-7 C 14,-1 12,7 8,8 C 3,9 -3,9 -8,8 C -12,7 -14,-1 -13,-7 Z" class="tooth-body" />
+            <path d="M -9,-3 L 9,-3" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">P</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-incisor" id="tooth-node-Q" data-id="Q" data-type="incisor" data-arch="mandibular" data-quadrant="LR" transform="translate(328.6, 594.6)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(12.0)">
+            <path d="M -13,-7 C -13,-9 13,-9 13,-7 C 14,-1 12,7 8,8 C 3,9 -3,9 -8,8 C -12,7 -14,-1 -13,-7 Z" class="tooth-body" />
+            <path d="M -9,-3 L 9,-3" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">Q</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-canine" id="tooth-node-R" data-id="R" data-type="canine" data-arch="mandibular" data-quadrant="LR" transform="translate(289.4, 582.7)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(22.1)">
+            <path d="M 0,-11 C 6,-9 12,-4 12,2 C 12,8 8,11 0,11 C -8,11 -12,8 -12,2 C -12,-4 -6,-9 0,-11 Z" class="tooth-body" />
+            <path d="M 0,-10 L 0,4 M -8,0 L 8,0" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">R</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-molar" id="tooth-node-S" data-id="S" data-type="molar" data-arch="mandibular" data-quadrant="LR" transform="translate(251.2, 562.4)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(34.0)">
+            <path d="M -18,-15 C -9,-18 9,-18 18,-15 C 20,-5 20,5 18,15 C 9,18 -9,18 -18,15 C -20,5 -20,-5 -18,-15 Z" class="tooth-body" />
+            <path d="M -13,0 Q 0,0 13,0 M 0,-11 L 0,11 M -8,-8 L 8,8 M -8,8 L 8,-8" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">S</text>
+        </g>
+        
+
+        <g class="tooth-node tooth-molar" id="tooth-node-T" data-id="T" data-type="molar" data-arch="mandibular" data-quadrant="LR" transform="translate(213.9, 529.1)">
+          <!-- Hit Area -->
+          <circle r="22" class="hit-area" />
+          <!-- Selection Glow Ring -->
+          <circle r="21" class="select-ring" />
+          <!-- Rotated Tooth Anatomy -->
+          <g class="tooth-art" transform="rotate(50.0)">
+            <path d="M -18,-15 C -9,-18 9,-18 18,-15 C 20,-5 20,5 18,15 C 9,18 -9,18 -18,15 C -20,5 -20,-5 -18,-15 Z" class="tooth-body" />
+            <path d="M -13,0 Q 0,0 13,0 M 0,-11 L 0,11 M -8,-8 L 8,8 M -8,8 L 8,-8" class="tooth-fissure" />
+          </g>
+          <!-- Tooth Number Label (Always Horizontal) -->
+          <text class="tooth-label" y="4" text-anchor="middle">T</text>
+        </g>
+        
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Quick Cards Grid View (Hidden by default, shown when toggled) -->
+      <div class="cards-grid-view" id="cards-grid-view">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- Right Column: Inspector Panel -->
+    <aside class="inspector-panel">
+      <div class="inspector-card">
+
+        <!-- Empty State Prompt -->
+        <div class="inspector-empty" id="inspector-empty">
+          <div class="empty-icon-wrap">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="16" x2="12" y2="12"/>
+              <line x1="12" y1="8" x2="12.01" y2="8"/>
+            </svg>
+          </div>
+          <div>
+            <h3 style="font-size:1.05rem; font-weight:700; color:var(--text-main); margin-bottom:0.25rem;">استكشف الأسنان</h3>
+            <p style="font-size:0.85rem;">اضغط على أي سن في الفك العلوي أو السفلي لعرض اسمه الكامل، نظامه، ونطقه الصوتي بالإنجليزية.</p>
+          </div>
+        </div>
+
+        <!-- Active Tooth Details -->
+        <div class="tooth-details" id="tooth-details">
+          
+          <!-- Header: Names & Pronounce button -->
+          <div class="details-header">
+            <div class="tooth-title-group">
+              <h2 id="disp-name-en">Maxillary Right Central Incisor</h2>
+              <h3 id="disp-name-ar">القاطع المركزي العلوي الأيمن</h3>
+              <div style="font-size:0.8rem; color:var(--text-dim); margin-top:2px;" id="disp-aka">الثنية العلوية اليمنى</div>
+            </div>
+
+            <button class="btn-speak" id="btn-speak-tooth" title="استمع للنطق الإنجليزي الصحيح">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+              </svg>
+            </button>
+          </div>
+
+          <!-- 3 Notations Numbers Bar -->
+          <div class="notations-bar">
+            <div class="notation-item">
+              <span class="label">Universal System</span>
+              <span class="val" id="disp-val-universal">#8</span>
+            </div>
+            <div class="notation-item">
+              <span class="label">FDI Two-Digit</span>
+              <span class="val" id="disp-val-fdi">11</span>
+            </div>
+            <div class="notation-item">
+              <span class="label">Palmer Notation</span>
+              <span class="val" id="disp-val-palmer">1┘</span>
+            </div>
+          </div>
+
+          <!-- Tags Ribbon -->
+          <div class="badges-ribbon">
+            <span class="ribbon-tag tag-type" id="disp-tag-type">قاطع (Incisor)</span>
+            <span class="ribbon-tag tag-arch" id="disp-tag-arch">الفك العلوي (Maxilla)</span>
+            <span class="ribbon-tag tag-quad" id="disp-tag-quad">الربع العلوي الأيمن</span>
+          </div>
+
+          <!-- Detailed Anatomical Attributes -->
+          <div class="info-list">
+            <div class="info-row">
+              <div class="info-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                الوظيفة الأساسية (Function)
+              </div>
+              <div class="info-value" id="disp-function">قطع وقضم الطعام ودعم جمال الابتسامة</div>
+            </div>
+
+            <div class="info-row">
+              <div class="info-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
+                الخلافة السنية (Succedaneous Status)
+              </div>
+              <div class="info-value" id="disp-succedaneous">سن بديل (يستبدل القاطع اللبني المركزي E)</div>
+            </div>
+
+            <div class="info-row">
+              <div class="info-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                الحدبات والشكل الإطباقي (Cusps)
+              </div>
+              <div class="info-value" id="disp-cusps">حافة قاطعة عريضة مع ماملونات عند البزوغ</div>
+            </div>
+
+            <div class="info-row">
+              <div class="info-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                الجذور وعمر البزوغ (Roots & Eruption)
+              </div>
+              <div class="info-value">
+                <span id="disp-roots">جذر واحد مخروطي</span> • يبزغ في: <strong id="disp-eruption">7 - 8 سنوات</strong>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <div class="info-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                ملاحظات سريرية وتشريحية
+              </div>
+              <div class="info-value" id="disp-notes" style="font-size:0.84rem; color:var(--text-muted);">
+                أعرض قاطع في الفم البشري وأكثر الأسنان بروزاً وجمالية في الوجه.
+              </div>
+            </div>
+          </div>
+
+          <!-- Prev / Next Navigation -->
+          <div class="tooth-nav-bar">
+            <button class="btn-nav" id="btn-prev-tooth">
+              <span>← السن السابق</span>
+            </button>
+            <button class="btn-nav" id="btn-next-tooth">
+              <span>السن التالي →</span>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </aside>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="page-footer">
+    <p>Dental Anatomy I (BDS121) • مخطط تشريح الأسنان التفاعلي للفكين العلوي والسفلي</p>
+    <p style="margin-top:0.35rem; color:var(--text-dim);">تم التطوير كملف مستقل بالكامل للمراجعة والاختبار السريري</p>
+  </footer>
+
+  <!-- Embedded Datasets and App Logic -->
+  <script>
+    const PERMANENT_TEETH = [{"id": "1", "arch": "maxillary", "quadrant": "UR", "quadrant_num": 1, "quadrant_ar": "الربع العلوي الأيمن (UR)", "type": "molar", "type_ar": "ضرس (رحى)", "universal": "1", "fdi": "18", "palmer": "8┘", "name_en": "Maxillary Right Third Molar", "name_ar": "ضرس العقل العلوي الأيمن (الرحى الثالثة العلوية اليمنى)", "aka": "Upper Right Wisdom Tooth", "aka_ar": "ضرس العقل", "succedaneous": "Non-succedaneous (ليس له سلف لبني)", "predecessor": "لا يوجد (يبزغ خلف الأسنان اللبنية)", "function": "طحن وسحق الطعام (Grinding)", "cusps": "3 إلى 4 حدبات (غالباً غير منتظمة)", "roots": "3 جذور (غالباً ملتحمة Fused roots)", "eruption": "17 - 21 سنة", "notes": "آخر سن يبزغ في القوس السني العلوي، وكثيراً ما يكون منطمراً (Impacted) أو مفقوداً خلقياً.", "coord": {"x": 152.2, "y": 216.9, "rot": -68.3}}, {"id": "2", "arch": "maxillary", "quadrant": "UR", "quadrant_num": 1, "quadrant_ar": "الربع العلوي الأيمن (UR)", "type": "molar", "type_ar": "ضرس (رحى)", "universal": "2", "fdi": "17", "palmer": "7┘", "name_en": "Maxillary Right Second Molar", "name_ar": "الضرس الثاني العلوي الأيمن (الرحى الثانية العلوية اليمنى)", "aka": "12-Year Molar", "aka_ar": "رحى الـ 12 سنة", "succedaneous": "Non-succedaneous (ليس له سلف لبني)", "predecessor": "لا يوجد", "function": "طحن وسحق الطعام (Grinding)", "cusps": "4 حدبات (حدبة حنكية أنسية، دهليزية أنسية، دهليزية وحشية، حنكية وحشية أصغر)", "roots": "3 جذور منفصلة (جذر حنكي وجذران دهليزيان)", "eruption": "12 - 13 سنة", "notes": "يبزغ خلف الضرس الأول، أصغر حجماً منه ولا يحتوي عادة على حدبة كارابيلي.", "coord": {"x": 170.6, "y": 182.2, "rot": -56.1}}, {"id": "3", "arch": "maxillary", "quadrant": "UR", "quadrant_num": 1, "quadrant_ar": "الربع العلوي الأيمن (UR)", "type": "molar", "type_ar": "ضرس (رحى)", "universal": "3", "fdi": "16", "palmer": "6┘", "name_en": "Maxillary Right First Molar", "name_ar": "الضرس الأول العلوي الأيمن (رحى الست سنوات العلوية)", "aka": "6-Year Molar / Cornerstone Molar", "aka_ar": "ضرس الست سنوات (حجر زاوية الإطباق)", "succedaneous": "Non-succedaneous (غير بديل)", "predecessor": "لا يوجد (يبزغ خلف الضرس اللبني الثاني)", "function": "طحن الطعام وركيزة الإطباق الرئيسية (Key of Occlusion)", "cusps": "5 حدبات (4 حدبات رئيسية + حدبة كارابيلي Cusp of Carabelli على الحدبة الحنكية الأنسية)", "roots": "3 جذور قوية ومتباعدة (أقواها الجذر الحنكي Palatal root)", "eruption": "6 - 7 سنوات", "notes": "أكبر سن في الفك العلوي وأول ضرس دائم يبزغ في الفم.", "coord": {"x": 195.0, "y": 152.6, "rot": -45.2}}, {"id": "4", "arch": "maxillary", "quadrant": "UR", "quadrant_num": 1, "quadrant_ar": "الربع العلوي الأيمن (UR)", "type": "premolar", "type_ar": "ضاحك (نواجذ)", "universal": "4", "fdi": "15", "palmer": "5┘", "name_en": "Maxillary Right Second Premolar", "name_ar": "الضاحك الثاني العلوي الأيمن (النواجذ العلوية)", "aka": "Second Bicuspid", "aka_ar": "ذو الشرفتين الثاني", "succedaneous": "Succedaneous (سن بديل)", "predecessor": "يستبدل الضرس اللبني الثاني (Primary Second Molar A)", "function": "تمزيق وطحن وسحق الطعام (Tearing & Grinding)", "cusps": "حدبتان متساويتان في الارتفاع تقريباً (دهليزية وحنكية)", "roots": "جذر واحد غالباً (Single root)", "eruption": "10 - 12 سنة", "notes": "أكثر استدارة من الضاحك الأول وسطحه الإطباقي أكثر انتظاماً.", "coord": {"x": 225.4, "y": 127.0, "rot": -35.1}}, {"id": "5", "arch": "maxillary", "quadrant": "UR", "quadrant_num": 1, "quadrant_ar": "الربع العلوي الأيمن (UR)", "type": "premolar", "type_ar": "ضاحك (نواجذ)", "universal": "5", "fdi": "14", "palmer": "4┘", "name_en": "Maxillary Right First Premolar", "name_ar": "الضاحك الأول العلوي الأيمن", "aka": "First Bicuspid", "aka_ar": "ذو الشرفتين الأول", "succedaneous": "Succedaneous (سن بديل)", "predecessor": "يستبدل الضرس اللبني الأول (Primary First Molar B)", "function": "تمزيق وسحق الطعام للمساعدة في المضغ", "cusps": "حدبتان (الحدبة الدهليزية أكبر وأطول من الحنكية)", "roots": "جذران في معظم الحالات (دهليزي وحنكي - 2 Roots)", "eruption": "10 - 11 سنة", "notes": "يتميز بوجود انخفاض أنسي مميز (Mesial concavity) وثلمة أنسية عبر الحافة الهامشية.", "coord": {"x": 256.6, "y": 108.5, "rot": -26.5}}, {"id": "6", "arch": "maxillary", "quadrant": "UR", "quadrant_num": 1, "quadrant_ar": "الربع العلوي الأيمن (UR)", "type": "canine", "type_ar": "ناب", "universal": "6", "fdi": "13", "palmer": "3┘", "name_en": "Maxillary Right Canine", "name_ar": "الناب العلوي الأيمن", "aka": "Cuspid / Eye Tooth / Cornerstone", "aka_ar": "ناب العين (حجر زاوية القوس السني)", "succedaneous": "Succedaneous (سن بديل)", "predecessor": "يستبدل الناب اللبني الأيمن (Primary Canine C)", "function": "تمزيق وتثبيت الطعام وتوجيه الإطباق (Canine Guidance)", "cusps": "حدبة واحدة مدببة وقوية (Single pointed cusp)", "roots": "جذر واحد سميك وطويل جداً (أطول جذر في الفم البشري)", "eruption": "11 - 12 سنة", "notes": "يدعم زاوية الشفة والوجه عبر البروز النابي (Canine Eminence) وله ثبات استثنائي في العظم.", "coord": {"x": 291.0, "y": 94.3, "rot": -18.4}}, {"id": "7", "arch": "maxillary", "quadrant": "UR", "quadrant_num": 1, "quadrant_ar": "الربع العلوي الأيمن (UR)", "type": "incisor", "type_ar": "قاطع (رباعية)", "universal": "7", "fdi": "12", "palmer": "2┘", "name_en": "Maxillary Right Lateral Incisor", "name_ar": "القاطع الجانبي العلوي الأيمن (الرباعية العلوية اليمنى)", "aka": "Upper Lateral Incisor", "aka_ar": "الرباعية العلوية", "succedaneous": "Succedaneous (سن بديل)", "predecessor": "يستبدل القاطع اللبني الجانبي (Primary Lateral Incisor D)", "function": "قطع وقضم الطعام ودعم جمال الابتسامة ومخارج الحروف", "cusps": "حافة قاطعة (Incisal edge)", "roots": "جذر واحد نحيف أملس ينحني قليلاً نحو الوحشي", "eruption": "8 - 9 سنوات", "notes": "أكثر الأسنان تعرضاً للتشوهات التطورية كالشكل الوتدي (Peg lateral) بعد أضراس العقل.", "coord": {"x": 327.6, "y": 84.8, "rot": -10.6}}, {"id": "8", "arch": "maxillary", "quadrant": "UR", "quadrant_num": 1, "quadrant_ar": "الربع العلوي الأيمن (UR)", "type": "incisor", "type_ar": "قاطع (ثنية)", "universal": "8", "fdi": "11", "palmer": "1┘", "name_en": "Maxillary Right Central Incisor", "name_ar": "القاطع المركزي العلوي الأيمن (الثنية العلوية اليمنى)", "aka": "Upper Central Incisor", "aka_ar": "الثنية العلوية اليمنى", "succedaneous": "Succedaneous (سن بديل)", "predecessor": "يستبدل القاطع اللبني المركزي (Primary Central Incisor E)", "function": "قطع الطعام، دعم الشفة العلوية، مخارج الأصوات وجماليات الابتسامة", "cusps": "حافة قاطعة مستقيمة وعريضة مع 3 حليمات نمو (Mamelons) عند البزوغ", "roots": "جذر واحد مخروطي الشكل", "eruption": "7 - 8 سنوات", "notes": "أعرض وأبرز قاطع في الأسنان البشرية، يلاصق خط المنتصف (Midline) مباشرة.", "coord": {"x": 360.8, "y": 80.6, "rot": -3.8}}, {"id": "9", "arch": "maxillary", "quadrant": "UL", "quadrant_num": 2, "quadrant_ar": "الربع العلوي الأيسر (UL)", "type": "incisor", "type_ar": "قاطع (ثنية)", "universal": "9", "fdi": "21", "palmer": "└1", "name_en": "Maxillary Left Central Incisor", "name_ar": "القاطع المركزي العلوي الأيسر (الثنية العلوية اليسرى)", "aka": "Upper Left Central Incisor", "aka_ar": "الثنية العلوية اليسرى", "succedaneous": "Succedaneous (سن بديل)", "predecessor": "يستبدل القاطع اللبني المركزي الأيسر (Primary Central Incisor F)", "function": "قطع الطعام وجماليات الابتسامة ومخارج الحروف", "cusps": "حافة قاطعة مستقيمة عريضة", "roots": "جذر واحد مخروطي", "eruption": "7 - 8 سنوات", "notes": "ملاصق لخط المنتصف من جهة اليسار، مطابق تماماً للسن المقابل رقم 8.", "coord": {"x": 399.2, "y": 80.6, "rot": 3.8}}, {"id": "10", "arch": "maxillary", "quadrant": "UL", "quadrant_num": 2, "quadrant_ar": "الربع العلوي الأيسر (UL)", "type": "incisor", "type_ar": "قاطع (رباعية)", "universal": "10", "fdi": "22", "palmer": "└2", "name_en": "Maxillary Left Lateral Incisor", "name_ar": "القاطع الجانبي العلوي الأيسر (الرباعية العلوية اليسرى)", "aka": "Upper Left Lateral Incisor", "aka_ar": "الرباعية العلوية اليسرى", "succedaneous": "Succedaneous (سن بديل)", "predecessor": "يستبدل القاطع اللبني الجانبي الأيسر (G)", "function": "قطع وقضم الطعام ودعم الشفة العلوية", "cusps": "حافة قاطعة", "roots": "جذر واحد", "eruption": "8 - 9 سنوات", "notes": "يقع بين القاطع المركزي والناب العلوي الأيسر.", "coord": {"x": 432.4, "y": 84.8, "rot": 10.6}}, {"id": "11", "arch": "maxillary", "quadrant": "UL", "quadrant_num": 2, "quadrant_ar": "الربع العلوي الأيسر (UL)", "type": "canine", "type_ar": "ناب", "universal": "11", "fdi": "23", "palmer": "└3", "name_en": "Maxillary Left Canine", "name_ar": "الناب العلوي الأيسر", "aka": "Upper Left Cuspid", "aka_ar": "الناب العلوي الأيسر", "succedaneous": "Succedaneous (سن بديل)", "predecessor": "يستبدل الناب اللبني الأيسر (H)", "function": "تمزيق الطعام وتوجيه الفك أثناء الحركة الجانبية", "cusps": "حدبة واحدة قوية ومدببة", "roots": "جذر واحد طويل وضخم", "eruption": "11 - 12 سنة", "notes": "الركيزة الأساسية لقوس الفك العلوي الأيسر وداعم تعبيرات الوجه.", "coord": {"x": 469.0, "y": 94.3, "rot": 18.4}}, {"id": "12", "arch": "maxillary", "quadrant": "UL", "quadrant_num": 2, "quadrant_ar": "الربع العلوي الأيسر (UL)", "type": "premolar", "type_ar": "ضاحك (نواجذ)", "universal": "12", "fdi": "24", "palmer": "└4", "name_en": "Maxillary Left First Premolar", "name_ar": "الضاحك الأول العلوي الأيسر", "aka": "First Bicuspid", "aka_ar": "الضاحك الأول الأيسر", "succedaneous": "Succedaneous (سن بديل)", "predecessor": "يستبدل الضرس اللبني الأول الأيسر (I)", "function": "تمزيق وسحق الطعام", "cusps": "حدبتان (دهليزية وحنكية)", "roots": "جذران في معظم الحالات (دهليزي وحنكي)", "eruption": "10 - 11 سنة", "notes": "أول سن خلفي في الربع العلوي الأيسر بعد الناب.", "coord": {"x": 503.4, "y": 108.5, "rot": 26.5}}, {"id": "13", "arch": "maxillary", "quadrant": "UL", "quadrant_num": 2, "quadrant_ar": "الربع العلوي الأيسر (UL)", "type": "premolar", "type_ar": "ضاحك (نواجذ)", "universal": "13", "fdi": "25", "palmer": "└5", "name_en": "Maxillary Left Second Premolar", "name_ar": "الضاحك الثاني العلوي الأيسر", "aka": "Second Bicuspid", "aka_ar": "الضاحك الثاني الأيسر", "succedaneous": "Succedaneous (سن بديل)", "predecessor": "يستبدل الضرس اللبني الثاني الأيسر (J)", "function": "تمزيق وطحن الطعام", "cusps": "حدبتان متساويتان تقريباً", "roots": "جذر واحد غالباً", "eruption": "10 - 12 سنة", "notes": "يقع أمام الضرس الأول العلوي مباشرة.", "coord": {"x": 534.6, "y": 127.0, "rot": 35.1}}, {"id": "14", "arch": "maxillary", "quadrant": "UL", "quadrant_num": 2, "quadrant_ar": "الربع العلوي الأيسر (UL)", "type": "molar", "type_ar": "ضرس (رحى)", "universal": "14", "fdi": "26", "palmer": "└6", "name_en": "Maxillary Left First Molar", "name_ar": "الضرس الأول العلوي الأيسر (رحى الست سنوات)", "aka": "6-Year Molar", "aka_ar": "ضرس الست سنوات العلوي الأيسر", "succedaneous": "Non-succedaneous (غير بديل)", "predecessor": "لا يوجد (يبزغ خلف الأسنان المؤقتة)", "function": "طحن الطعام وركيزة الإطباق الرئيسية", "cusps": "5 حدبات (بما فيها حدبة كارابيلي)", "roots": "3 جذور قوية (حنكي و2 دهليزيان)", "eruption": "6 - 7 سنوات", "notes": "أكبر سن في الربع العلوي الأيسر ومحور استقرار العضة.", "coord": {"x": 565.0, "y": 152.6, "rot": 45.2}}, {"id": "15", "arch": "maxillary", "quadrant": "UL", "quadrant_num": 2, "quadrant_ar": "الربع العلوي الأيسر (UL)", "type": "molar", "type_ar": "ضرس (رحى)", "universal": "15", "fdi": "27", "palmer": "└7", "name_en": "Maxillary Left Second Molar", "name_ar": "الضرس الثاني العلوي الأيسر", "aka": "12-Year Molar", "aka_ar": "ضرس الـ 12 سنة الأيسر", "succedaneous": "Non-succedaneous (غير بديل)", "predecessor": "لا يوجد", "function": "طحن وسحق الطعام", "cusps": "4 حدبات رئيسية", "roots": "3 جذور", "eruption": "12 - 13 سنة", "notes": "يبزغ خلف الضرس الأول في بداية مرحلة المراهقة.", "coord": {"x": 589.4, "y": 182.2, "rot": 56.1}}, {"id": "16", "arch": "maxillary", "quadrant": "UL", "quadrant_num": 2, "quadrant_ar": "الربع العلوي الأيسر (UL)", "type": "molar", "type_ar": "ضرس (رحى)", "universal": "16", "fdi": "28", "palmer": "└8", "name_en": "Maxillary Left Third Molar", "name_ar": "ضرس العقل العلوي الأيسر (الرحى الثالثة العلوية اليسرى)", "aka": "Wisdom Tooth", "aka_ar": "ضرس العقل العلوي الأيسر", "succedaneous": "Non-succedaneous (غير بديل)", "predecessor": "لا يوجد", "function": "طحن وسحق الطعام", "cusps": "3 إلى 4 حدبات", "roots": "3 جذور غالباً ملتحمة", "eruption": "17 - 21 سنة", "notes": "آخر سن في نهاية القوس السني العلوي الأيسر.", "coord": {"x": 607.8, "y": 216.9, "rot": 68.3}}, {"id": "17", "arch": "mandibular", "quadrant": "LL", "quadrant_num": 3, "quadrant_ar": "الربع السفلي الأيسر (LL)", "type": "molar", "type_ar": "ضرس (رحى)", "universal": "17", "fdi": "38", "palmer": "┌8", "name_en": "Mandibular Left Third Molar", "name_ar": "ضرس العقل السفلي الأيسر (الرحى الثالثة السفلية اليسرى)", "aka": "Lower Left Wisdom Tooth", "aka_ar": "ضرس العقل السفلي الأيسر", "succedaneous": "Non-succedaneous (غير بديل)", "predecessor": "لا يوجد", "function": "طحن وسحق الطعام", "cusps": "4 إلى 5 حدبات (غير منتظمة التضاريس)", "roots": "جذران منحنيان نحو الوحشي وغالباً ملتحمان", "eruption": "17 - 21 سنة", "notes": "أكثر سن يتعرض للانطمار المائل أو الأفقي في الفك السفلي.", "coord": {"x": 597.5, "y": 491.7, "rot": -67.4}}, {"id": "18", "arch": "mandibular", "quadrant": "LL", "quadrant_num": 3, "quadrant_ar": "الربع السفلي الأيسر (LL)", "type": "molar", "type_ar": "ضرس (رحى)", "universal": "18", "fdi": "37", "palmer": "┌7", "name_en": "Mandibular Left Second Molar", "name_ar": "الضرس الثاني السفلي الأيسر", "aka": "Lower 12-Year Molar", "aka_ar": "الرحى السفلية الثانية اليسرى", "succedaneous": "Non-succedaneous (غير بديل)", "predecessor": "لا يوجد", "function": "طحن وسحق الطعام", "cusps": "4 حدبات متناظرة (Cross pattern شق متصالب مميز)", "roots": "جذران (أنسي ووحشي)", "eruption": "11 - 13 سنة", "notes": "يتميز بنمط شقوق إطباقية على شكل علامة (+) منتظمة جداً.", "coord": {"x": 579.5, "y": 524.5, "rot": -55.2}}, {"id": "19", "arch": "mandibular", "quadrant": "LL", "quadrant_num": 3, "quadrant_ar": "الربع السفلي الأيسر (LL)", "type": "molar", "type_ar": "ضرس (رحى)", "universal": "19", "fdi": "36", "palmer": "┌6", "name_en": "Mandibular Left First Molar", "name_ar": "الضرس الأول السفلي الأيسر (رحى الست سنوات السفلية)", "aka": "6-Year Molar / Lower Cornerstone", "aka_ar": "ضرس الست سنوات السفلي الأيسر", "succedaneous": "Non-succedaneous (غير بديل)", "predecessor": "لا يوجد", "function": "طحن الطعام والركيزة الرئيسية لإطباق الفك السفلي", "cusps": "5 حدبات مميزة (3 دهليزية و2 لسانية - نمط Y)", "roots": "جذران عريضان وقويان (أنسي ووحشي)", "eruption": "6 - 7 سنوات", "notes": "أكبر سن في الفك السفلي وأول سن دائم يبزغ في القوس السفلي.", "coord": {"x": 555.8, "y": 552.5, "rot": -44.4}}, {"id": "20", "arch": "mandibular", "quadrant": "LL", "quadrant_num": 3, "quadrant_ar": "الربع السفلي الأيسر (LL)", "type": "premolar", "type_ar": "ضاحك (نواجذ)", "universal": "20", "fdi": "35", "palmer": "┌5", "name_en": "Mandibular Left Second Premolar", "name_ar": "الضاحك الثاني السفلي الأيسر", "aka": "Second Bicuspid", "aka_ar": "الضاحك الثاني السفلي الأيسر", "succedaneous": "Succedaneous (سن بديل)", "predecessor": "يستبدل الضرس اللبني الثاني السفلي (K)", "function": "طحن وتمزيق الطعام", "cusps": "غالباً 3 حدبات (حدبة دهليزية كبيرة + حدبتان لسانيتان) بنمط Y الإطباقي", "roots": "جذر واحد مخروطي وقوي", "eruption": "11 - 12 سنة", "notes": "الضاحك الوحيد الذي قد يحتوي على 3 حدبات وله سطح إطباقي مربع الشكل.", "coord": {"x": 526.4, "y": 576.5, "rot": -34.3}}, {"id": "21", "arch": "mandibular", "quadrant": "LL", "quadrant_num": 3, "quadrant_ar": "الربع السفلي الأيسر (LL)", "type": "premolar", "type_ar": "ضاحك (نواجذ)", "universal": "21", "fdi": "34", "palmer": "┌4", "name_en": "Mandibular Left First Premolar", "name_ar": "الضاحك الأول السفلي الأيسر", "aka": "First Bicuspid", "aka_ar": "الضاحك الأول السفلي الأيسر", "succedaneous": "Succedaneous (سن بديل)", "predecessor": "يستبدل الضرس اللبني الأول السفلي (L)", "function": "تمزيق وسحق الطعام", "cusps": "حدبتان (حدبة دهليزية ضخمة حادة + حدبة لسانية صغيرة غير وظيفية تشبه الحليمة)", "roots": "جذر واحد مستقيم", "eruption": "10 - 12 سنة", "notes": "يشبه الناب في تاجه وله انحدار لغوي شديد نحو الداخل.", "coord": {"x": 494.3, "y": 594.9, "rot": -25.3}}, {"id": "22", "arch": "mandibular", "quadrant": "LL", "quadrant_num": 3, "quadrant_ar": "الربع السفلي الأيسر (LL)", "type": "canine", "type_ar": "ناب", "universal": "22", "fdi": "33", "palmer": "┌3", "name_en": "Mandibular Left Canine", "name_ar": "الناب السفلي الأيسر", "aka": "Lower Left Cuspid", "aka_ar": "الناب السفلي الأيسر", "succedaneous": "Succedaneous (سن بديل)", "predecessor": "يستبدل الناب اللبني السفلي الأيسر (M)", "function": "تمزيق الطعام وتوجيه الإطباق السفلي", "cusps": "حدبة واحدة مدببة (أقل حدة من الناب العلوي)", "roots": "جذر واحد طويل جداً (أطول جذر في الفك السفلي)", "eruption": "9 - 10 سنوات", "notes": "يبزغ قبل الضواحك السفلية، تاجه أنحل وأكثر استقامة من الناب العلوي.", "coord": {"x": 461.0, "y": 607.8, "rot": -17.3}}, {"id": "23", "arch": "mandibular", "quadrant": "LL", "quadrant_num": 3, "quadrant_ar": "الربع السفلي الأيسر (LL)", "type": "incisor", "type_ar": "قاطع (رباعية)", "universal": "23", "fdi": "32", "palmer": "┌2", "name_en": "Mandibular Left Lateral Incisor", "name_ar": "القاطع الجانبي السفلي الأيسر (الرباعية السفلية اليسرى)", "aka": "Lower Lateral Incisor", "aka_ar": "الرباعية السفلية اليسرى", "succedaneous": "Succedaneous (سن بديل)", "predecessor": "يستبدل القاطع اللبني الجانبي السفلي (N)", "function": "قطع الطعام مع القواطع العلوية", "cusps": "حافة قاطعة تنحني قليلاً مع استدارة القوس السني", "roots": "جذر واحد مسطح جانبياً", "eruption": "7 - 8 سنوات", "notes": "أكبر حجماً بقليل وأعرض من القاطع المركزي السفلي.", "coord": {"x": 425.7, "y": 616.2, "rot": -9.5}}, {"id": "24", "arch": "mandibular", "quadrant": "LL", "quadrant_num": 3, "quadrant_ar": "الربع السفلي الأيسر (LL)", "type": "incisor", "type_ar": "قاطع (ثنية)", "universal": "24", "fdi": "31", "palmer": "┌1", "name_en": "Mandibular Left Central Incisor", "name_ar": "القاطع المركزي السفلي الأيسر (الثنية السفلية اليسرى)", "aka": "Lower Central Incisor", "aka_ar": "الثنية السفلية اليسرى", "succedaneous": "Succedaneous (سن بديل)", "predecessor": "يستبدل القاطع اللبني المركزي السفلي (O)", "function": "قطع وقضم الطعام", "cusps": "حافة قاطعة مستقيمة متناظرة تماماً", "roots": "جذر واحد نحيف ومضغوط جانبياً", "eruption": "6 - 7 سنوات", "notes": "أصغر سن في الفم الدائم وأول قاطع دائم يبزغ في التجويف الفمي.", "coord": {"x": 396.1, "y": 619.5, "rot": -3.3}}, {"id": "25", "arch": "mandibular", "quadrant": "LR", "quadrant_num": 4, "quadrant_ar": "الربع السفلي الأيمن (LR)", "type": "incisor", "type_ar": "قاطع (ثنية)", "universal": "25", "fdi": "41", "palmer": "1┐", "name_en": "Mandibular Right Central Incisor", "name_ar": "القاطع المركزي السفلي الأيمن (الثنية السفلية اليمنى)", "aka": "Lower Right Central Incisor", "aka_ar": "الثنية السفلية اليمنى", "succedaneous": "Succedaneous (سن بديل)", "predecessor": "يستبدل القاطع اللبني المركزي الأيمن (P)", "function": "قطع وقضم الطعام", "cusps": "حافة قاطعة مستقيمة", "roots": "جذر واحد نحيف", "eruption": "6 - 7 سنوات", "notes": "ملاصق لخط المنتصف من جهة اليمين، أصغر سن في الأسنان الدائمة مع قرينه 24.", "coord": {"x": 363.9, "y": 619.5, "rot": 3.3}}, {"id": "26", "arch": "mandibular", "quadrant": "LR", "quadrant_num": 4, "quadrant_ar": "الربع السفلي الأيمن (LR)", "type": "incisor", "type_ar": "قاطع (رباعية)", "universal": "26", "fdi": "42", "palmer": "2┐", "name_en": "Mandibular Right Lateral Incisor", "name_ar": "القاطع الجانبي السفلي الأيمن (الرباعية السفلية اليمنى)", "aka": "Lower Right Lateral Incisor", "aka_ar": "الرباعية السفلية اليمنى", "succedaneous": "Succedaneous (سن بديل)", "predecessor": "يستبدل القاطع اللبني الجانبي الأيمن (Q)", "function": "قطع وقضم الطعام", "cusps": "حافة قاطعة", "roots": "جذر واحد مسطح جانبياً", "eruption": "7 - 8 سنوات", "notes": "أعرض قليلاً من القاطع المركزي السفلي المجاور له.", "coord": {"x": 334.3, "y": 616.2, "rot": 9.5}}, {"id": "27", "arch": "mandibular", "quadrant": "LR", "quadrant_num": 4, "quadrant_ar": "الربع السفلي الأيمن (LR)", "type": "canine", "type_ar": "ناب", "universal": "27", "fdi": "43", "palmer": "3┐", "name_en": "Mandibular Right Canine", "name_ar": "الناب السفلي الأيمن", "aka": "Lower Right Cuspid", "aka_ar": "الناب السفلي الأيمن", "succedaneous": "Succedaneous (سن بديل)", "predecessor": "يستبدل الناب اللبني السفلي الأيمن (R)", "function": "تمزيق الطعام وتوجيه الإطباق", "cusps": "حدبة واحدة مدببة", "roots": "جذر واحد طويل وقوي", "eruption": "9 - 10 سنوات", "notes": "حجر زاوية القوس السني السفلي الأيمن.", "coord": {"x": 299.0, "y": 607.8, "rot": 17.3}}, {"id": "28", "arch": "mandibular", "quadrant": "LR", "quadrant_num": 4, "quadrant_ar": "الربع السفلي الأيمن (LR)", "type": "premolar", "type_ar": "ضاحك (نواجذ)", "universal": "28", "fdi": "44", "palmer": "4┐", "name_en": "Mandibular Right First Premolar", "name_ar": "الضاحك الأول السفلي الأيمن", "aka": "First Bicuspid", "aka_ar": "الضاحك الأول السفلي الأيمن", "succedaneous": "Succedaneous (سن بديل)", "predecessor": "يستبدل الضرس اللبني الأول السفلي (S)", "function": "تمزيق وسحق الطعام", "cusps": "حدبتان (دهليزية بارزة ولغوية صغيرة)", "roots": "جذر واحد", "eruption": "10 - 12 سنة", "notes": "السطح الإطباقي ينحدر بشدة نحو اللسان.", "coord": {"x": 265.7, "y": 594.9, "rot": 25.3}}, {"id": "29", "arch": "mandibular", "quadrant": "LR", "quadrant_num": 4, "quadrant_ar": "الربع السفلي الأيمن (LR)", "type": "premolar", "type_ar": "ضاحك (نواجذ)", "universal": "29", "fdi": "45", "palmer": "5┐", "name_en": "Mandibular Right Second Premolar", "name_ar": "الضاحك الثاني السفلي الأيمن", "aka": "Second Bicuspid", "aka_ar": "الضاحك الثاني السفلي الأيمن", "succedaneous": "Succedaneous (سن بديل)", "predecessor": "يستبدل الضرس اللبني الثاني السفلي (T)", "function": "طحن وسحق الطعام", "cusps": "غالباً 3 حدبات (واحدة دهليزية واثنتان لسانيتان)", "roots": "جذر واحد قوي", "eruption": "11 - 12 سنة", "notes": "يستبدل أكبر ضرس لبني (Primary 2nd Molar T).", "coord": {"x": 233.6, "y": 576.5, "rot": 34.3}}, {"id": "30", "arch": "mandibular", "quadrant": "LR", "quadrant_num": 4, "quadrant_ar": "الربع السفلي الأيمن (LR)", "type": "molar", "type_ar": "ضرس (رحى)", "universal": "30", "fdi": "46", "palmer": "6┐", "name_en": "Mandibular Right First Molar", "name_ar": "الضرس الأول السفلي الأيمن (رحى الست سنوات)", "aka": "6-Year Molar", "aka_ar": "ضرس الست سنوات السفلي الأيمن", "succedaneous": "Non-succedaneous (غير بديل)", "predecessor": "لا يوجد", "function": "طحن وسحق الطعام والركيزة الرئيسية لعضة الفم", "cusps": "5 حدبات بنمط خماسي مميز", "roots": "جذران عريضان (أنسي ووحشي)", "eruption": "6 - 7 سنوات", "notes": "أكبر سن في الربع السفلي الأيمن وأول سن دائم يبزغ فيه.", "coord": {"x": 204.2, "y": 552.5, "rot": 44.4}}, {"id": "31", "arch": "mandibular", "quadrant": "LR", "quadrant_num": 4, "quadrant_ar": "الربع السفلي الأيمن (LR)", "type": "molar", "type_ar": "ضرس (رحى)", "universal": "31", "fdi": "47", "palmer": "7┐", "name_en": "Mandibular Right Second Molar", "name_ar": "الضرس الثاني السفلي الأيمن", "aka": "12-Year Molar", "aka_ar": "ضرس الـ 12 سنة السفلي الأيمن", "succedaneous": "Non-succedaneous (غير بديل)", "predecessor": "لا يوجد", "function": "طحن وسحق الطعام", "cusps": "4 حدبات متناظرة (Cross shape)", "roots": "جذران", "eruption": "11 - 13 سنة", "notes": "أصغر حجماً من الضرس الأول وبدون الحدبة الخامسة.", "coord": {"x": 180.5, "y": 524.5, "rot": 55.2}}, {"id": "32", "arch": "mandibular", "quadrant": "LR", "quadrant_num": 4, "quadrant_ar": "الربع السفلي الأيمن (LR)", "type": "molar", "type_ar": "ضرس (رحى)", "universal": "32", "fdi": "48", "palmer": "8┐", "name_en": "Mandibular Right Third Molar", "name_ar": "ضرس العقل السفلي الأيمن (الرحى الثالثة السفلية اليمنى)", "aka": "Wisdom Tooth", "aka_ar": "ضرس العقل السفلي الأيمن", "succedaneous": "Non-succedaneous (غير بديل)", "predecessor": "لا يوجد", "function": "طحن وسحق الطعام", "cusps": "4 إلى 5 حدبات", "roots": "جذران غالباً ملتحمان", "eruption": "17 - 21 سنة", "notes": "نهاية القوس السني السفلي الأيمن.", "coord": {"x": 162.5, "y": 491.7, "rot": 67.4}}];
+    const PRIMARY_TEETH = [{"id": "A", "arch": "maxillary", "quadrant": "UR", "type": "molar", "type_ar": "ضرس لبني", "universal": "A", "fdi": "55", "palmer": "E┘", "name_en": "Primary Maxillary Right Second Molar", "name_ar": "الضرس اللبني الثاني العلوي الأيمن", "successor": "يستبدله الضاحك الدائم الثاني #4", "function": "طحن الطعام وحفظ المسافة للضواحك", "eruption": "25 - 33 شهر", "shedding": "10 - 12 سنة", "coord": {"x": 201.1, "y": 181.0, "rot": -52.8}}, {"id": "B", "arch": "maxillary", "quadrant": "UR", "type": "molar", "type_ar": "ضرس لبني", "universal": "B", "fdi": "54", "palmer": "D┘", "name_en": "Primary Maxillary Right First Molar", "name_ar": "الضرس اللبني الأول العلوي الأيمن", "successor": "يستبدله الضاحك الدائم الأول #5", "function": "طحن الطعام", "eruption": "13 - 19 شهر", "shedding": "9 - 11 سنة", "coord": {"x": 238.4, "y": 144.5, "rot": -36.5}}, {"id": "C", "arch": "maxillary", "quadrant": "UR", "type": "canine", "type_ar": "ناب لبني", "universal": "C", "fdi": "53", "palmer": "C┘", "name_en": "Primary Maxillary Right Canine", "name_ar": "الناب اللبني العلوي الأيمن", "successor": "يستبدله الناب الدائم #6", "function": "تمزيق الطعام وتوجيه القوس", "eruption": "16 - 22 شهر", "shedding": "10 - 12 سنة", "coord": {"x": 279.3, "y": 120.8, "rot": -23.9}}, {"id": "D", "arch": "maxillary", "quadrant": "UR", "type": "incisor", "type_ar": "قاطع لبني", "universal": "D", "fdi": "52", "palmer": "B┘", "name_en": "Primary Maxillary Right Lateral Incisor", "name_ar": "القاطع اللبني الجانبي العلوي الأيمن", "successor": "يستبدله القاطع الجانبي الدائم #7", "function": "قطع الطعام", "eruption": "9 - 13 شهر", "shedding": "7 - 8 سنوات", "coord": {"x": 322.0, "y": 106.6, "rot": -13.1}}, {"id": "E", "arch": "maxillary", "quadrant": "UR", "type": "incisor", "type_ar": "قاطع لبني", "universal": "E", "fdi": "51", "palmer": "A┘", "name_en": "Primary Maxillary Right Central Incisor", "name_ar": "القاطع اللبني المركزي العلوي الأيمن", "successor": "يستبدله القاطع المركزي الدائم #8", "function": "قطع الطعام والكلام", "eruption": "8 - 12 شهر", "shedding": "6 - 7 سنوات", "coord": {"x": 359.0, "y": 100.8, "rot": -4.6}}, {"id": "F", "arch": "maxillary", "quadrant": "UL", "type": "incisor", "type_ar": "قاطع لبني", "universal": "F", "fdi": "61", "palmer": "└A", "name_en": "Primary Maxillary Left Central Incisor", "name_ar": "القاطع اللبني المركزي العلوي الأيسر", "successor": "يستبدله القاطع المركزي الدائم #9", "function": "قطع الطعام والكلام", "eruption": "8 - 12 شهر", "shedding": "6 - 7 سنوات", "coord": {"x": 401.0, "y": 100.8, "rot": 4.6}}, {"id": "G", "arch": "maxillary", "quadrant": "UL", "type": "incisor", "type_ar": "قاطع لبني", "universal": "G", "fdi": "62", "palmer": "└B", "name_en": "Primary Maxillary Left Lateral Incisor", "name_ar": "القاطع اللبني الجانبي العلوي الأيسر", "successor": "يستبدله القاطع الجانبي الدائم #10", "function": "قطع الطعام", "eruption": "9 - 13 شهر", "shedding": "7 - 8 سنوات", "coord": {"x": 438.0, "y": 106.6, "rot": 13.1}}, {"id": "H", "arch": "maxillary", "quadrant": "UL", "type": "canine", "type_ar": "ناب لبني", "universal": "H", "fdi": "63", "palmer": "└C", "name_en": "Primary Maxillary Left Canine", "name_ar": "الناب اللبني العلوي الأيسر", "successor": "يستبدله الناب الدائم #11", "function": "تمزيق الطعام", "eruption": "16 - 22 شهر", "shedding": "10 - 12 سنة", "coord": {"x": 480.7, "y": 120.8, "rot": 23.9}}, {"id": "I", "arch": "maxillary", "quadrant": "UL", "type": "molar", "type_ar": "ضرس لبني", "universal": "I", "fdi": "64", "palmer": "└D", "name_en": "Primary Maxillary Left First Molar", "name_ar": "الضرس اللبني الأول العلوي الأيسر", "successor": "يستبدله الضاحك الدائم الأول #12", "function": "طحن الطعام", "eruption": "13 - 19 شهر", "shedding": "9 - 11 سنة", "coord": {"x": 521.6, "y": 144.5, "rot": 36.5}}, {"id": "J", "arch": "maxillary", "quadrant": "UL", "type": "molar", "type_ar": "ضرس لبني", "universal": "J", "fdi": "65", "palmer": "└E", "name_en": "Primary Maxillary Left Second Molar", "name_ar": "الضرس اللبني الثاني العلوي الأيسر", "successor": "يستبدله الضاحك الدائم الثاني #13", "function": "طحن الطعام وحفظ الفراغ", "eruption": "25 - 33 شهر", "shedding": "10 - 12 سنة", "coord": {"x": 558.9, "y": 181.0, "rot": 52.8}}, {"id": "K", "arch": "mandibular", "quadrant": "LL", "type": "molar", "type_ar": "ضرس لبني", "universal": "K", "fdi": "75", "palmer": "┌E", "name_en": "Primary Mandibular Left Second Molar", "name_ar": "الضرس اللبني الثاني السفلي الأيسر", "successor": "يستبدله الضاحك الدائم الثاني #20", "function": "طحن وسحق الطعام", "eruption": "23 - 31 شهر", "shedding": "10 - 12 سنة", "coord": {"x": 546.1, "y": 529.1, "rot": -50.0}}, {"id": "L", "arch": "mandibular", "quadrant": "LL", "type": "molar", "type_ar": "ضرس لبني", "universal": "L", "fdi": "74", "palmer": "┌D", "name_en": "Primary Mandibular Left First Molar", "name_ar": "الضرس اللبني الأول السفلي الأيسر", "successor": "يستبدله الضاحك الدائم الأول #21", "function": "طحن الطعام", "eruption": "14 - 18 شهر", "shedding": "9 - 11 سنة", "coord": {"x": 508.8, "y": 562.4, "rot": -34.0}}, {"id": "M", "arch": "mandibular", "quadrant": "LL", "type": "canine", "type_ar": "ناب لبني", "universal": "M", "fdi": "73", "palmer": "┌C", "name_en": "Primary Mandibular Left Canine", "name_ar": "الناب اللبني السفلي الأيسر", "successor": "يستبدله الناب الدائم #22", "function": "تمزيق الطعام", "eruption": "17 - 23 شهر", "shedding": "9 - 12 سنة", "coord": {"x": 470.6, "y": 582.7, "rot": -22.1}}, {"id": "N", "arch": "mandibular", "quadrant": "LL", "type": "incisor", "type_ar": "قاطع لبني", "universal": "N", "fdi": "72", "palmer": "┌B", "name_en": "Primary Mandibular Left Lateral Incisor", "name_ar": "القاطع اللبني الجانبي السفلي الأيسر", "successor": "يستبدله القاطع الجانبي الدائم #23", "function": "قطع الطعام", "eruption": "10 - 16 شهر", "shedding": "7 - 8 سنوات", "coord": {"x": 431.4, "y": 594.6, "rot": -12.0}}, {"id": "O", "arch": "mandibular", "quadrant": "LL", "type": "incisor", "type_ar": "قاطع لبني", "universal": "O", "fdi": "71", "palmer": "┌A", "name_en": "Primary Mandibular Left Central Incisor", "name_ar": "القاطع اللبني المركزي السفلي الأيسر", "successor": "يستبدله القاطع المركزي الدائم #24", "function": "قطع الطعام", "eruption": "6 - 10 شهور (أول سن يبزغ)", "shedding": "6 - 7 سنوات", "coord": {"x": 398.0, "y": 599.4, "rot": -4.1}}, {"id": "P", "arch": "mandibular", "quadrant": "LR", "type": "incisor", "type_ar": "قاطع لبني", "universal": "P", "fdi": "81", "palmer": "A┐", "name_en": "Primary Mandibular Right Central Incisor", "name_ar": "القاطع اللبني المركزي السفلي الأيمن", "successor": "يستبدله القاطع المركزي الدائم #25", "function": "قطع الطعام (أول سن بزوغاً)", "eruption": "6 - 10 شهور", "shedding": "6 - 7 سنوات", "coord": {"x": 362.0, "y": 599.4, "rot": 4.1}}, {"id": "Q", "arch": "mandibular", "quadrant": "LR", "type": "incisor", "type_ar": "قاطع لبني", "universal": "Q", "fdi": "82", "palmer": "B┐", "name_en": "Primary Mandibular Right Lateral Incisor", "name_ar": "القاطع اللبني الجانبي السفلي الأيمن", "successor": "يستبدله القاطع الجانبي الدائم #26", "function": "قطع الطعام", "eruption": "10 - 16 شهر", "shedding": "7 - 8 سنوات", "coord": {"x": 328.6, "y": 594.6, "rot": 12.0}}, {"id": "R", "arch": "mandibular", "quadrant": "LR", "type": "canine", "type_ar": "ناب لبني", "universal": "R", "fdi": "83", "palmer": "C┐", "name_en": "Primary Mandibular Right Canine", "name_ar": "الناب اللبني السفلي الأيمن", "successor": "يستبدله الناب الدائم #27", "function": "تمزيق الطعام", "eruption": "17 - 23 شهر", "shedding": "9 - 12 سنة", "coord": {"x": 289.4, "y": 582.7, "rot": 22.1}}, {"id": "S", "arch": "mandibular", "quadrant": "LR", "type": "molar", "type_ar": "ضرس لبني", "universal": "S", "fdi": "84", "palmer": "D┐", "name_en": "Primary Mandibular Right First Molar", "name_ar": "الضرس اللبني الأول السفلي الأيمن", "successor": "يستبدله الضاحك الدائم الأول #28", "function": "طحن الطعام", "eruption": "14 - 18 شهر", "shedding": "9 - 11 سنة", "coord": {"x": 251.2, "y": 562.4, "rot": 34.0}}, {"id": "T", "arch": "mandibular", "quadrant": "LR", "type": "molar", "type_ar": "ضرس لبني", "universal": "T", "fdi": "85", "palmer": "E┐", "name_en": "Primary Mandibular Right Second Molar", "name_ar": "الضرس اللبني الثاني السفلي الأيمن", "successor": "يستبدله الضاحك الدائم الثاني #29", "function": "طحن وسحق الطعام", "eruption": "23 - 31 شهر", "shedding": "10 - 12 سنة", "coord": {"x": 213.9, "y": 529.1, "rot": 50.0}}];
+
+    // State
+    let currentDentition = 'permanent'; // 'permanent' | 'primary'
+    let currentNotation = 'universal'; // 'universal' | 'fdi' | 'palmer'
+    let currentFilter = 'all'; // 'all' | 'incisor' | 'canine' | 'premolar' | 'molar'
+    let selectedToothId = null;
+    let autoPronounce = true;
+    let quizMode = false;
+    let quizTargetTooth = null;
+    let quizScore = 0;
+    let quizTotal = 0;
+
+    // DOM Elements
+    const body = document.body;
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const dentitionPills = document.querySelectorAll('#dentition-toggle .pill-btn');
+    const notationPills = document.querySelectorAll('#notation-toggle .pill-btn');
+    const filterPills = document.querySelectorAll('.legend-pill');
+    const viewModePills = document.querySelectorAll('#view-mode-toggle .pill-btn');
+    const permSvgGroup = document.getElementById('svg-permanent-group');
+    const priSvgGroup = document.getElementById('svg-primary-group');
+    const odontogramCard = document.getElementById('odontogram-card');
+    const cardsGridView = document.getElementById('cards-grid-view');
+    const inspectorEmpty = document.getElementById('inspector-empty');
+    const toothDetails = document.getElementById('tooth-details');
+    const btnSpeakTooth = document.getElementById('btn-speak-tooth');
+    const btnPrevTooth = document.getElementById('btn-prev-tooth');
+    const btnNextTooth = document.getElementById('btn-next-tooth');
+    const filterPremolarBtn = document.getElementById('filter-premolar-btn');
+
+    // Quiz elements
+    const btnQuizToggle = document.getElementById('btn-quiz-toggle');
+    const quizBanner = document.getElementById('quiz-banner');
+    const quizPrompt = document.getElementById('quiz-prompt');
+    const quizScoreElem = document.getElementById('quiz-score');
+    const btnQuizExit = document.getElementById('btn-quiz-exit');
+    const quizBtnText = document.getElementById('quiz-btn-text');
+
+    // Display fields
+    const dispNameEn = document.getElementById('disp-name-en');
+    const dispNameAr = document.getElementById('disp-name-ar');
+    const dispAka = document.getElementById('disp-aka');
+    const dispValUniversal = document.getElementById('disp-val-universal');
+    const dispValFdi = document.getElementById('disp-val-fdi');
+    const dispValPalmer = document.getElementById('disp-val-palmer');
+    const dispTagType = document.getElementById('disp-tag-type');
+    const dispTagArch = document.getElementById('disp-tag-arch');
+    const dispTagQuad = document.getElementById('disp-tag-quad');
+    const dispFunction = document.getElementById('disp-function');
+    const dispSuccedaneous = document.getElementById('disp-succedaneous');
+    const dispCusps = document.getElementById('disp-cusps');
+    const dispRoots = document.getElementById('disp-roots');
+    const dispEruption = document.getElementById('disp-eruption');
+    const dispNotes = document.getElementById('disp-notes');
+
+    // Helpers
+    function getActiveDataset() {
+      return currentDentition === 'permanent' ? PERMANENT_TEETH : PRIMARY_TEETH;
+    }
+
+    function findTooth(id) {
+      return getActiveDataset().find(t => t.id === id);
+    }
+
+    // Speech Synthesis
+    function speakText(text) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'en-US';
+        utterance.rate = 0.9;
+        btnSpeakTooth.classList.add('playing');
+        utterance.onend = () => btnSpeakTooth.classList.remove('playing');
+        utterance.onerror = () => btnSpeakTooth.classList.remove('playing');
+
+        const voices = window.speechSynthesis.getVoices();
+        const goodVoice = voices.find(v => v.lang.startsWith('en') && (v.name.includes('Natural') || v.name.includes('Jenny') || v.name.includes('Google') || v.name.includes('Samantha')));
+        if (goodVoice) utterance.voice = goodVoice;
+        window.speechSynthesis.speak(utterance);
+      }
+    }
+
+    // Play Sound Beep for Quiz
+    function playBeep(isSuccess) {
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        if (isSuccess) {
+          osc.frequency.setValueAtTime(587.33, ctx.currentTime); // D5
+          osc.frequency.setValueAtTime(880, ctx.currentTime + 0.1); // A5
+          gain.gain.setValueAtTime(0.15, ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
+          osc.start(ctx.currentTime);
+          osc.stop(ctx.currentTime + 0.3);
+        } else {
+          osc.frequency.setValueAtTime(220, ctx.currentTime); // A3
+          osc.frequency.setValueAtTime(196, ctx.currentTime + 0.1); // G3
+          gain.gain.setValueAtTime(0.2, ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
+          osc.start(ctx.currentTime);
+          osc.stop(ctx.currentTime + 0.3);
+        }
+      } catch (e) {}
+    }
+
+    // Update Number Labels on SVG based on notation
+    function updateSvgLabels() {
+      const dataset = getActiveDataset();
+      dataset.forEach(t => {
+        const node = document.getElementById(`tooth-node-${t.id}`);
+        if (!node) return;
+        const textElem = node.querySelector('.tooth-label');
+        if (!textElem) return;
+
+        if (currentNotation === 'universal') {
+          textElem.textContent = t.universal;
+        } else if (currentNotation === 'fdi') {
+          textElem.textContent = t.fdi;
+        } else if (currentNotation === 'palmer') {
+          textElem.textContent = t.palmer;
+        }
+      });
+    }
+
+    // Select and Inspect a Tooth
+    function selectTooth(id, triggerVoice = true) {
+      const tooth = findTooth(id);
+      if (!tooth) return;
+
+      if (quizMode) {
+        handleQuizAnswer(tooth);
+        return;
+      }
+
+      selectedToothId = id;
+
+      // Update SVG selected state
+      document.querySelectorAll('.tooth-node').forEach(node => {
+        node.classList.remove('selected');
+      });
+
+      const node = document.getElementById(`tooth-node-${id}`);
+      if (node) {
+        node.classList.add('selected');
+      }
+
+      // Update Card List selected state
+      document.querySelectorAll('.tooth-card-item').forEach(card => {
+        card.classList.toggle('selected', card.dataset.id === id);
+      });
+
+      // Show details
+      inspectorEmpty.style.display = 'none';
+      toothDetails.style.display = 'flex';
+
+      dispNameEn.textContent = tooth.name_en;
+      dispNameAr.textContent = tooth.name_ar;
+      dispAka.textContent = tooth.aka || tooth.aka_ar || '';
+      dispValUniversal.textContent = `#${tooth.universal}`;
+      dispValFdi.textContent = tooth.fdi;
+      dispValPalmer.textContent = tooth.palmer;
+
+      dispTagType.textContent = tooth.type_ar;
+      dispTagArch.textContent = tooth.arch === 'maxillary' ? 'الفك العلوي (Maxilla)' : 'الفك السفلي (Mandible)';
+      dispTagQuad.textContent = tooth.quadrant_ar || tooth.quadrant;
+
+      dispFunction.textContent = tooth.function;
+      dispSuccedaneous.textContent = tooth.succedaneous || (tooth.successor ? `لبني • ${tooth.successor}` : '-');
+      dispCusps.textContent = tooth.cusps || (tooth.type === 'incisor' ? 'حافة قاطعة' : tooth.type === 'canine' ? 'حدبة مدببة' : 'حدبات إطباقية');
+      dispRoots.textContent = tooth.roots || (tooth.arch === 'maxillary' && tooth.type === 'molar' ? '3 جذور' : 'جذر إلى جذرين');
+      dispEruption.textContent = tooth.eruption;
+      dispNotes.textContent = tooth.notes || (tooth.shedding ? `عمر السقوط والتبديل: ${tooth.shedding}` : '');
+
+      if (triggerVoice && autoPronounce) {
+        speakText(tooth.name_en);
+      }
+    }
+
+    // Filter Teeth
+    function applyFilter(filter) {
+      currentFilter = filter;
+      filterPills.forEach(pill => pill.classList.toggle('active', pill.dataset.filter === filter));
+
+      const dataset = getActiveDataset();
+      dataset.forEach(t => {
+        const node = document.getElementById(`tooth-node-${t.id}`);
+        if (!node) return;
+        const matches = (filter === 'all' || t.type === filter);
+        node.classList.toggle('dimmed', !matches);
+      });
+
+      renderCardsGrid();
+    }
+
+    // Switch Dentition (Permanent vs Primary)
+    function switchDentition(mode) {
+      currentDentition = mode;
+      dentitionPills.forEach(p => p.classList.toggle('active', p.dataset.dentition === mode));
+
+      if (mode === 'permanent') {
+        permSvgGroup.style.display = '';
+        priSvgGroup.style.display = 'none';
+        filterPremolarBtn.style.display = '';
+      } else {
+        permSvgGroup.style.display = 'none';
+        priSvgGroup.style.display = '';
+        filterPremolarBtn.style.display = 'none';
+        if (currentFilter === 'premolar') {
+          applyFilter('all');
+        }
+      }
+
+      updateSvgLabels();
+      renderCardsGrid();
+
+      // Reset selection or select first
+      const dataset = getActiveDataset();
+      if (dataset.length > 0) {
+        selectTooth(dataset[0].id, false);
+      }
+    }
+
+    // Switch Notation
+    function switchNotation(not) {
+      currentNotation = not;
+      notationPills.forEach(p => p.classList.toggle('active', p.dataset.notation === not));
+      updateSvgLabels();
+      renderCardsGrid();
+    }
+
+    // Render Cards Grid
+    function renderCardsGrid() {
+      const dataset = getActiveDataset();
+      cardsGridView.innerHTML = '';
+
+      dataset.forEach(t => {
+        if (currentFilter !== 'all' && t.type !== currentFilter) return;
+
+        const card = document.createElement('div');
+        card.className = `tooth-card-item ${t.id === selectedToothId ? 'selected' : ''}`;
+        card.dataset.id = t.id;
+
+        let numStr = t.universal;
+        if (currentNotation === 'fdi') numStr = t.fdi;
+        else if (currentNotation === 'palmer') numStr = t.palmer;
+
+        card.innerHTML = `
+          <div class="card-top">
+            <span class="card-num">${numStr}</span>
+            <span class="card-type-badge ribbon-tag tag-${t.type}">${t.type_ar}</span>
+          </div>
+          <div class="card-title-en">${t.name_en}</div>
+          <div class="card-title-ar">${t.name_ar}</div>
+        `;
+
+        card.addEventListener('click', () => selectTooth(t.id, true));
+        cardsGridView.appendChild(card);
+      });
+    }
+
+    // Next / Prev Navigation
+    function navigateTooth(step) {
+      const dataset = getActiveDataset();
+      const idx = dataset.findIndex(t => t.id === selectedToothId);
+      if (idx === -1) return;
+      let nextIdx = (idx + step + dataset.length) % dataset.length;
+      selectTooth(dataset[nextIdx].id, true);
+    }
+
+    // Quiz Mode Logic
+    function startQuiz() {
+      quizMode = true;
+      quizScore = 0;
+      quizTotal = 0;
+      quizBanner.style.display = 'flex';
+      quizBtnText.textContent = 'إيقاف الاختبار';
+      nextQuizQuestion();
+    }
+
+    function stopQuiz() {
+      quizMode = false;
+      quizBanner.style.display = 'none';
+      quizBtnText.textContent = 'اختبار تحديد السن';
+      if (selectedToothId) selectTooth(selectedToothId, false);
+    }
+
+    function nextQuizQuestion() {
+      const dataset = getActiveDataset();
+      const randIdx = Math.floor(Math.random() * dataset.length);
+      quizTargetTooth = dataset[randIdx];
+
+      quizPrompt.innerHTML = `اضغط على: <strong style="color:var(--col-accent);">${quizTargetTooth.name_en}</strong> (${quizTargetTooth.name_ar})`;
+      speakText(`Locate: ${quizTargetTooth.name_en}`);
+    }
+
+    function handleQuizAnswer(clickedTooth) {
+      quizTotal++;
+      if (clickedTooth.id === quizTargetTooth.id) {
+        quizScore++;
+        playBeep(true);
+        quizPrompt.innerHTML = `<span style="color:#10b981; font-weight:800;">إجابة صحيحة وممتازة! أحسنت.</span>`;
+        setTimeout(nextQuizQuestion, 1400);
+      } else {
+        playBeep(false);
+        quizPrompt.innerHTML = `<span style="color:#ef4444; font-weight:700;">غير صحيح! لقد ضغطت على (${clickedTooth.name_en}). حاول مجدداً.</span>`;
+      }
+      quizScoreElem.textContent = `النتيجة: ${quizScore} / ${quizTotal}`;
+    }
+
+    // Event Listeners Initialization
+    document.addEventListener('DOMContentLoaded', () => {
+      // Setup click on SVG teeth
+      document.querySelectorAll('.tooth-node').forEach(node => {
+        node.addEventListener('click', (e) => {
+          const tid = node.getAttribute('data-id');
+          selectTooth(tid, true);
+        });
+      });
+
+      // Dentition Pills
+      dentitionPills.forEach(btn => {
+        btn.addEventListener('click', () => switchDentition(btn.dataset.dentition));
+      });
+
+      // Notation Pills
+      notationPills.forEach(btn => {
+        btn.addEventListener('click', () => switchNotation(btn.dataset.notation));
+      });
+
+      // Filter Pills
+      filterPills.forEach(btn => {
+        btn.addEventListener('click', () => applyFilter(btn.dataset.filter));
+      });
+
+      // View Mode Toggle (Chart vs Cards)
+      viewModePills.forEach(btn => {
+        btn.addEventListener('click', () => {
+          viewModePills.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const view = btn.dataset.view;
+          if (view === 'chart') {
+            odontogramCard.style.display = 'flex';
+            cardsGridView.style.display = 'none';
+          } else {
+            odontogramCard.style.display = 'none';
+            cardsGridView.style.display = 'grid';
+          }
+        });
+      });
+
+      // Speak Button
+      btnSpeakTooth.addEventListener('click', () => {
+        const tooth = findTooth(selectedToothId);
+        if (tooth) speakText(tooth.name_en);
+      });
+
+      // Nav buttons
+      btnPrevTooth.addEventListener('click', () => navigateTooth(-1));
+      btnNextTooth.addEventListener('click', () => navigateTooth(1));
+
+      // Quiz Buttons
+      btnQuizToggle.addEventListener('click', () => {
+        if (quizMode) stopQuiz();
+        else startQuiz();
+      });
+      btnQuizExit.addEventListener('click', stopQuiz);
+
+      // Theme Toggle
+      const savedTheme = localStorage.getItem('dental_chart_theme') || 'dark';
+      body.setAttribute('data-theme', savedTheme);
+      themeToggleBtn.addEventListener('click', () => {
+        const nextTheme = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        body.setAttribute('data-theme', nextTheme);
+        localStorage.setItem('dental_chart_theme', nextTheme);
+      });
+
+      // Initial render & select central incisor #8
+      updateSvgLabels();
+      renderCardsGrid();
+      selectTooth('8', false);
+    });
+  </script>
+</body>
+</html>
