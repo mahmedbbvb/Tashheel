@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Autonomic Nervous System - المحاضرة الثانية | فسيولوجي</title>
+<style>
+  :root {
+    --bg-gradient: linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 50%, #f5f0ff 100%);
+    --card-bg: #ffffff;
+    --text-primary: #1f2937;
+    --text-secondary: #4b5563;
+    --text-muted: #6b7280;
+    --primary: #1769aa;
+    --primary-light: #eef6ff;
+    --primary-dark: #0d4f80;
+    --accent: #6366f1;
+    --accent-light: #e0e7ff;
+    --success: #059669;
+    --success-bg: #ecfdf5;
+    --success-border: #a7f3d0;
+    --warning: #d97706;
+    --warning-bg: #fffbeb;
+    --danger: #dc2626;
+    --danger-bg: #fef2f2;
+    --border-color: #e5e7eb;
+    --shadow-sm: 0 1px 4px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 18px rgba(0,0,0,0.06);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+  }
+  [data-theme="dark"] {
+    --bg-gradient: linear-gradient(135deg, #0b1120 0%, #111827 50%, #0f172a 100%);
+    --card-bg: #1e293b;
+    --text-primary: #f3f4f6;
+    --text-secondary: #d1d5db;
+    --text-muted: #9ca3af;
+    --primary: #38bdf8;
+    --primary-light: rgba(56,189,248,0.12);
+    --primary-dark: #0284c7;
+    --accent: #818cf8;
+    --accent-light: rgba(129,140,248,0.15);
+    --success: #34d399;
+    --success-bg: rgba(52,211,153,0.12);
+    --success-border: rgba(52,211,153,0.3);
+    --warning: #fbbf24;
+    --warning-bg: rgba(251,191,36,0.12);
+    --danger: #f87171;
+    --danger-bg: rgba(248,113,113,0.12);
+    --border-color: #334155;
+    --shadow-sm: 0 1px 4px rgba(0,0,0,0.3);
+    --shadow-md: 0 4px 18px rgba(0,0,0,0.4);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.6);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; line-height: 1.9; background: var(--bg-gradient); color: var(--text-primary); min-height: 100vh; transition: background 0.3s, color 0.3s; }
+  .icon { display:inline-block; vertical-align:middle; stroke-width:2; fill:none; stroke:currentColor; flex-shrink:0; }
+
+  /* Theme btn */
+  .theme-floating-btn { position:fixed; top:16px; left:18px; z-index:9999; width:42px; height:42px; border-radius:50%; background:var(--card-bg); border:1px solid var(--border-color); color:var(--text-primary); display:inline-flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 4px 14px rgba(0,0,0,0.12); transition:all 0.25s; }
+  .theme-floating-btn:hover { transform:scale(1.12); border-color:var(--accent); color:var(--accent); }
+
+  /* Progress */
+  .progress-bar-fixed { position:fixed; top:0; left:0; width:100%; height:3px; background:transparent; z-index:9998; }
+  .progress-fill { height:100%; background:linear-gradient(90deg,#1769aa,#6366f1,#10b981); width:0%; transition:width 0.3s; }
+
+  .container { max-width:960px; margin:auto; padding:24px 20px 80px; }
+
+  /* Header */
+  .lecture-header { background:linear-gradient(135deg,#1e3a8a,#4f46e5); color:white; border-radius:20px; padding:28px 32px; margin-bottom:24px; box-shadow:var(--shadow-lg); position:relative; overflow:hidden; }
+  .lecture-header::before { content:''; position:absolute; top:-40px; right:-40px; width:180px; height:180px; border-radius:50%; background:rgba(255,255,255,0.06); }
+  .lec-badge { display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.3); padding:4px 14px; border-radius:20px; font-size:13px; font-weight:600; margin-bottom:10px; }
+  .lecture-header h1 { font-size:26px; font-weight:800; margin-bottom:6px; line-height:1.3; }
+  .lecture-header p { font-size:14.5px; opacity:0.85; max-width:600px; line-height:1.7; }
+  .lec-stats { display:flex; gap:20px; margin-top:18px; flex-wrap:wrap; }
+  .stat-item { display:flex; align-items:center; gap:6px; background:rgba(255,255,255,0.15); padding:6px 14px; border-radius:10px; font-size:13px; font-weight:600; }
+
+  /* Nav */
+  .quick-nav { display:flex; gap:8px; overflow-x:auto; padding:4px 2px 14px; margin-bottom:16px; scrollbar-width:thin; }
+  .quick-chip { white-space:nowrap; background:var(--card-bg); border:1px solid var(--border-color); color:var(--text-secondary); padding:6px 14px; border-radius:20px; font-size:13px; text-decoration:none; transition:all 0.2s; box-shadow:var(--shadow-sm); }
+  .quick-chip:hover { background:var(--primary); color:white; border-color:var(--primary); transform:translateY(-2px); }
+
+  /* Cards */
+  .card { background:var(--card-bg); border-radius:18px; padding:26px 28px; margin-bottom:20px; box-shadow:var(--shadow-md); border:1px solid var(--border-color); }
+  h2 { color:var(--primary); padding-bottom:12px; margin-bottom:18px; font-size:21px; display:flex; align-items:center; gap:12px; border-bottom:1px solid var(--border-color); }
+  .section-badge { background:linear-gradient(135deg,var(--primary),var(--accent)); color:white; width:32px; height:32px; border-radius:10px; display:inline-flex; align-items:center; justify-content:center; font-size:14px; font-weight:700; flex-shrink:0; }
+  h3 { color:var(--text-primary); margin:16px 0 10px; font-size:17px; font-weight:700; }
+
+  /* Slide images */
+  .slide-img { width:100%; max-height:380px; object-fit:contain; border-radius:14px; border:1px solid var(--border-color); box-shadow:var(--shadow-sm); margin:16px 0; background:#f8fafc; display:block; }
+  .slide-img-caption { text-align:center; font-size:12.5px; color:var(--text-muted); margin-top:-8px; margin-bottom:16px; }
+
+  /* Audio button */
+  .audio-btn { display:inline-flex; align-items:center; justify-content:center; background:linear-gradient(135deg,var(--primary),var(--accent)); color:white; border:none; border-radius:50%; width:28px; height:28px; cursor:pointer; margin:0 6px; vertical-align:middle; transition:all 0.25s; box-shadow:0 2px 6px rgba(23,105,170,0.25); flex-shrink:0; }
+  .audio-btn svg { width:14px; height:14px; pointer-events:none; }
+  .audio-btn:hover { transform:scale(1.15); }
+  .audio-btn.playing { background:linear-gradient(135deg,var(--success),#047857); animation:pulse 0.6s ease-in-out infinite alternate; }
+  @keyframes pulse { from{transform:scale(1);} to{transform:scale(1.15);} }
+
+  /* Terms */
+  .term { background:var(--primary-light); border-right:4px solid var(--primary); padding:14px 18px; border-radius:12px; margin:14px 0; }
+  .en { font-weight:800; color:var(--primary); font-size:16.5px; }
+
+  /* Diagram */
+  .diagram { background:linear-gradient(135deg,#0f172a,#1e293b); color:#38bdf8; padding:16px; border-radius:12px; text-align:center; font-size:15px; font-weight:700; margin:16px 0; direction:ltr; letter-spacing:0.5px; box-shadow:0 4px 16px rgba(0,0,0,0.15); border:1px solid rgba(56,189,248,0.2); }
+
+  /* Key */
+  .key { background:var(--success-bg); border:1px solid var(--success-border); border-right:4px solid var(--success); padding:14px 18px; border-radius:12px; margin:16px 0; color:var(--text-primary); }
+  .key-header { display:flex; align-items:center; gap:8px; color:var(--success); font-weight:700; margin-bottom:6px; }
+
+  /* Note */
+  .note-box { background:var(--warning-bg); border:1px solid rgba(217,119,6,0.25); border-right:4px solid var(--warning); padding:14px 18px; border-radius:12px; margin:14px 0; }
+  .note-header { display:flex; align-items:center; gap:8px; color:var(--warning); font-weight:700; margin-bottom:6px; }
+
+  /* Comparison table */
+  .compare-table { width:100%; border-collapse:separate; border-spacing:0; margin:16px 0; border-radius:12px; overflow:hidden; box-shadow:var(--shadow-sm); }
+  .compare-table th { background:linear-gradient(135deg,var(--primary),var(--accent)); color:white; padding:12px 16px; font-size:14.5px; font-weight:700; text-align:center; }
+  .compare-table td { padding:11px 16px; border-bottom:1px solid var(--border-color); font-size:14px; text-align:center; background:var(--card-bg); transition:background 0.2s; }
+  .compare-table tr:hover td { background:var(--primary-light); }
+  .compare-table tr:last-child td { border-bottom:none; }
+  .compare-table td:first-child { font-weight:700; color:var(--primary); text-align:right; }
+
+  /* Question */
+  .question { background:var(--warning-bg); border:1px solid rgba(217,119,6,0.25); border-right:4px solid var(--warning); padding:18px 20px; border-radius:14px; margin:16px 0; }
+  .q-header { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; margin-bottom:10px; }
+  .q-english { font-size:15.5px; font-weight:700; color:var(--text-primary); direction:ltr; text-align:left; line-height:1.6; flex-grow:1; }
+  .q-speech-btn { background:var(--primary-light); color:var(--primary); border:1px solid var(--primary); border-radius:8px; padding:4px 10px; font-size:12.5px; cursor:pointer; font-family:inherit; flex-shrink:0; display:inline-flex; align-items:center; gap:6px; transition:all 0.2s; }
+  .q-speech-btn:hover { background:var(--primary); color:white; }
+  .q-speech-btn.playing {
+    background: linear-gradient(135deg, var(--success), #047857) !important;
+    color: white !important;
+    border-color: var(--success) !important;
+    animation: pulse 0.6s ease-in-out infinite alternate;
+  }
+  .q-arabic-toggle { background:linear-gradient(135deg,var(--warning),#b45309); color:white; border:none; border-radius:8px; padding:6px 14px; cursor:pointer; font-family:inherit; font-size:12.5px; font-weight:600; margin:8px 0; display:inline-flex; align-items:center; gap:6px; transition:all 0.25s; }
+  .q-arabic-toggle:hover { transform:translateY(-1px); }
+  .q-arabic-text { display:none; background:rgba(217,119,6,0.1); border-right:3px solid var(--warning); padding:10px 14px; border-radius:8px; margin:10px 0; color:var(--text-primary); font-size:14px; }
+  .q-arabic-text.show { display:block; animation:fadeIn 0.25s ease; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(-4px);} to{opacity:1;transform:translateY(0);} }
+
+  /* MCQ */
+  .inline-mcq { margin:12px 0 4px; }
+  .mcq-option { display:flex; align-items:center; justify-content:space-between; width:100%; text-align:left; direction:ltr; background:var(--card-bg); border:2px solid var(--border-color); border-radius:10px; padding:11px 16px; margin:8px 0; cursor:pointer; font-family:inherit; font-size:14.5px; font-weight:600; color:var(--text-primary); transition:all 0.2s; box-shadow:var(--shadow-sm); }
+  .mcq-option:hover { border-color:var(--accent); background:var(--accent-light); transform:translateX(3px); }
+  .mcq-option.selected-correct { background:var(--success-bg)!important; border-color:var(--success)!important; color:var(--success)!important; }
+  .mcq-option.selected-wrong { background:var(--danger-bg)!important; border-color:var(--danger)!important; color:var(--danger)!important; animation:shake 0.4s ease; }
+  @keyframes shake { 0%,100%{transform:translateX(0);} 25%{transform:translateX(-4px);} 50%{transform:translateX(4px);} 75%{transform:translateX(-2px);} }
+  .opt-badge { font-size:11.5px; padding:2px 7px; border-radius:5px; font-weight:700; display:none; }
+  .mcq-option.selected-correct .opt-badge { display:inline-block; background:var(--success); color:white; }
+  .mcq-option.selected-wrong .opt-badge { display:inline-block; background:var(--danger); color:white; }
+  .mcq-result { margin-top:12px; padding:14px 16px; border-radius:10px; font-size:14px; line-height:1.8; display:none; }
+  .mcq-result.show { display:block; animation:fadeIn 0.25s ease; }
+  .mcq-result.correct-msg { background:var(--success-bg); color:var(--text-primary); border:1px solid var(--success); }
+  .mcq-result.wrong-msg { background:var(--danger-bg); color:var(--text-primary); border:1px solid var(--danger); }
+  .result-title { font-size:15px; font-weight:700; margin-bottom:6px; display:flex; align-items:center; gap:8px; }
+  .correct-msg .result-title { color:var(--success); }
+  .wrong-msg .result-title { color:var(--danger); }
+  .result-explanation { margin:8px 0; padding-top:6px; border-top:1px dashed rgba(0,0,0,0.12); }
+  .explanation-title { display:flex; align-items:center; gap:6px; font-weight:700; margin-bottom:4px; }
+  .result-hint { font-size:12.5px; color:var(--text-muted); margin-top:6px; }
+  .mcq-actions { display:flex; gap:10px; align-items:center; margin-top:10px; }
+  .reset-btn { background:var(--card-bg); border:1px solid var(--border-color); color:var(--text-secondary); border-radius:8px; padding:5px 12px; font-size:12.5px; font-family:inherit; cursor:pointer; display:inline-flex; align-items:center; gap:5px; transition:all 0.2s; }
+  .reset-btn:hover { background:var(--border-color); color:var(--text-primary); }
+
+  /* Quiz dashboard */
+  .quiz-dashboard { background:linear-gradient(135deg,#1e293b,#334155); color:white; border-radius:16px; padding:20px 24px; margin:18px 0 24px; box-shadow:0 4px 20px rgba(0,0,0,0.15); display:flex; justify-content:space-around; align-items:center; flex-wrap:wrap; gap:16px; text-align:center; }
+  .score-item h4 { font-size:13px; opacity:0.8; margin-bottom:4px; }
+  .score-val { font-size:32px; font-weight:800; color:#38bdf8; }
+  .score-feedback { font-size:14px; background:rgba(255,255,255,0.12); padding:6px 16px; border-radius:20px; display:flex; align-items:center; gap:6px; }
+
+  /* Glossary */
+  .glossary-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:10px; margin-top:14px; }
+  .glossary-item { background:var(--card-bg); border:1px solid var(--border-color); border-radius:10px; padding:10px 14px; display:flex; align-items:center; gap:10px; transition:all 0.2s; }
+  .glossary-item:hover { border-color:var(--primary); transform:translateY(-2px); }
+  .glossary-info { flex-grow:1; font-size:13.5px; }
+  .glossary-info strong { color:var(--primary); display:block; font-size:14.5px; }
+
+  /* Ganglion cards */
+  .ganglion-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:14px; margin:16px 0; }
+  .ganglion-card { background:var(--card-bg); border:2px solid var(--border-color); border-radius:14px; padding:16px 18px; transition:all 0.25s; box-shadow:var(--shadow-sm); }
+  .ganglion-card:hover { transform:translateY(-3px); box-shadow:var(--shadow-md); }
+  .ganglion-card.g1 { border-color:#3b82f6; }
+  .ganglion-card.g2 { border-color:#8b5cf6; }
+  .ganglion-card.g3 { border-color:#10b981; }
+  .ganglion-card .g-title { font-weight:800; font-size:15px; margin-bottom:8px; direction:ltr; }
+  .g1 .g-title { color:#3b82f6; }
+  .g2 .g-title { color:#8b5cf6; }
+  .g3 .g-title { color:#10b981; }
+  .ganglion-card ul { padding-right:18px; font-size:13.5px; line-height:1.8; }
+
+  /* Effect list */
+  .effect-list { list-style:none; padding:0; margin:14px 0; }
+  .effect-list li { display:flex; align-items:flex-start; gap:10px; padding:10px 14px; border-radius:10px; margin-bottom:8px; background:var(--primary-light); font-size:14.5px; line-height:1.7; border-right:3px solid var(--primary); }
+  .effect-list li .ef-icon { font-size:18px; flex-shrink:0; margin-top:2px; }
+
+  /* Modal */
+  #celebrationModal { display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.6); backdrop-filter:blur(6px); z-index:10000; align-items:center; justify-content:center; padding:20px; }
+  .modal-box { background:var(--card-bg); color:var(--text-primary); border-radius:20px; padding:32px 28px; max-width:440px; text-align:center; box-shadow:0 20px 50px rgba(0,0,0,0.3); animation:scaleUp 0.3s ease; }
+  @keyframes scaleUp { from{transform:scale(0.9);opacity:0;} to{transform:scale(1);opacity:1;} }
+  .modal-icon-wrap { width:64px; height:64px; margin:0 auto 14px; background:var(--success-bg); border-radius:50%; display:flex; align-items:center; justify-content:center; }
+  .modal-box h2 { color:var(--success); justify-content:center; border:none; font-size:22px; padding-bottom:0; margin-bottom:10px; }
+
+  /* Developer */
+  .developer-card { background:var(--card-bg); border:1px solid var(--border-color); border-radius:18px; padding:24px 28px; margin-top:24px; box-shadow:var(--shadow-md); }
+  .dev-container { display:flex; align-items:center; gap:22px; }
+  .dev-avatar { width:90px; height:90px; border-radius:50%; object-fit:cover; border:3px solid var(--primary); box-shadow:0 4px 14px rgba(23,105,170,0.25); display:block; }
+  .dev-badge { display:inline-flex; align-items:center; gap:6px; background:var(--primary-light); color:var(--primary); border:1px solid var(--primary); padding:2px 10px; border-radius:20px; font-size:12px; font-weight:700; margin-bottom:4px; }
+  .dev-name { font-size:21px; font-weight:800; color:var(--text-primary); margin:4px 0; }
+  .dev-role { font-size:14.5px; color:var(--text-muted); display:flex; align-items:center; gap:6px; margin-bottom:12px; }
+  .dev-contact { display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .whatsapp-btn { display:inline-flex; align-items:center; gap:8px; background:#25D366; color:white; text-decoration:none; padding:8px 18px; border-radius:10px; font-size:13.5px; font-weight:700; box-shadow:0 3px 10px rgba(37,211,102,0.3); transition:all 0.25s; }
+  .whatsapp-btn:hover { background:#1ebc59; transform:translateY(-2px); color:white; }
+
+  @media(max-width:640px) {
+    .container { padding:14px 12px 60px; }
+    .card { padding:18px 14px; }
+    h2 { font-size:18px; }
+    .glossary-grid { grid-template-columns:1fr; }
+    .dev-container { flex-direction:column; text-align:center; }
+    .ganglion-grid { grid-template-columns:1fr; }
+    .lecture-header h1 { font-size:20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar-fixed"><div class="progress-fill" id="progressFill"></div></div>
+
+<button class="theme-floating-btn" onclick="toggleTheme()" id="themeToggleBtn" title="الوضع الليلي">
+  <svg class="icon" viewBox="0 0 24 24" width="20" height="20"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+</button>
+
+<div class="container">
+
+<div class="lecture-header">
+  <div class="lec-badge">
+    <svg class="icon" viewBox="0 0 24 24" width="13" height="13"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+    <span>فسيولوجي — المحاضرة الثانية</span>
+  </div>
+  <h1>🧠 الجهاز العصبي الذاتي — Autonomic Nervous System</h1>
+  <p>شرح مبسّط وشامل للشرائح 6 إلى 16 — العقد العصبية، أقسام الجهاز الذاتي، الجهاز السمبثاوي (السمبساوي) والباراسمبثاوي (بارا سمبساوي) وتأثيراتهما على الجسم</p>
+  <div class="lec-stats">
+    <div class="stat-item">📖 11 شريحة شرح</div>
+    <div class="stat-item">❓ 22 سؤال تفاعلي</div>
+    <div class="stat-item">🔊 صوت لكل مصطلح</div>
+    <div class="stat-item">🖼️ صور من المحاضرة</div>
+  </div>
+</div>
+
+<div class="quick-nav">
+  <a href="#sec1" class="quick-chip">1. مراجعة المسار الذاتي</a>
+  <a href="#sec2" class="quick-chip">2. العقد الذاتية</a>
+  <a href="#sec3" class="quick-chip">3. Paravertebral</a>
+  <a href="#sec4" class="quick-chip">4. Collateral & Terminal</a>
+  <a href="#sec5" class="quick-chip">5. أقسام الجهاز الذاتي</a>
+  <a href="#sec6" class="quick-chip">6. منشأ السمبثاوي</a>
+  <a href="#sec7" class="quick-chip">7. السمبثاوي على الرأس</a>
+  <a href="#sec8" class="quick-chip">8. السمبثاوي على القلب</a>
+  <a href="#sec9" class="quick-chip">9. السمبثاوي على الرئة</a>
+  <a href="#sec10" class="quick-chip">10. الاختبار</a>
+  <a href="#sec11" class="quick-chip">11. قاموس المصطلحات</a>
+</div>
+
+<!-- ===== Section 1 ===== -->
+<section class="card" id="sec1">
+  <h2><span class="section-badge">1</span> مراجعة سريعة — مسار الجهاز الذاتي</h2>
+  <p>قبل ما ندخل في التفاصيل، خليني أذكّرك بالصورة الكاملة للمسار الذاتي.</p>
+  <img src="images/image5.png" alt="Autonomic Pathway" class="slide-img">
+  <p class="slide-img-caption">الشريحة 6: المسار الكامل للجهاز الذاتي</p>
+
+  <div class="term">
+    <span class="en">Preganglionic Fiber</span>
+    <button class="audio-btn" onclick="playAudio('preganglionic_fiber')" title="استمع للنطق"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button><br>
+    <strong>المعنى:</strong> الألياف قبل العقدة | <strong>النطق:</strong> بري-جانجليونيك فايبر<br>
+    هي الألياف الخارجة من الـ CNS وتنتهي عند العقدة العصبية.
+  </div>
+
+  <div class="term">
+    <span class="en">Postganglionic Fiber</span>
+    <button class="audio-btn" onclick="playAudio('postganglionic_fiber')" title="استمع للنطق"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button><br>
+    <strong>المعنى:</strong> الألياف بعد العقدة | <strong>النطق:</strong> بوست-جانجليونيك فايبر<br>
+    الألياف من العقدة للعضو المستهدف.
+  </div>
+
+  <div class="term">
+    <span class="en">Varicosity</span>
+    <button class="audio-btn" onclick="playAudio('varicosity')" title="استمع للنطق"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button><br>
+    <strong>المعنى:</strong> تضخمات على طول الألياف | <strong>النطق:</strong> فاريكوسيتي<br>
+    نقاط إفراز الناقلات العصبية على الألياف الـ Postganglionic — زي رشة مطر على العضو!
+  </div>
+
+  <div class="term">
+    <span class="en">Effector Organ</span>
+    <button class="audio-btn" onclick="playAudio('effector_organ')" title="استمع للنطق"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button><br>
+    <strong>المعنى:</strong> العضو المستهدف | <strong>النطق:</strong> إفيكتور أورجان<br>
+    القلب، الغدد، العضلات الملساء — الأعضاء التي تستقبل الأوامر من الجهاز الذاتي.
+  </div>
+
+  <div class="diagram">CNS → Preganglionic Fiber → Autonomic Ganglion → Postganglionic Fiber → Effector Organ</div>
+
+  <div class="key">
+    <div class="key-header"><svg class="icon" viewBox="0 0 24 24" width="16" height="16"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg><span>الفرق الجوهري:</span></div>
+    • <strong>Somatic:</strong> خلية واحدة → عضلة هيكلية (مباشرة)<br>
+    • <strong>Autonomic:</strong> خليتان + Ganglion → أعضاء داخلية
+  </div>
+
+  <div class="question">
+    <div class="q-header">
+      <div class="q-english">Q1: What is the relay station between the two neurons in the Autonomic pathway called?</div>
+      <button class="q-speech-btn" onclick="playAudio('q1')"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg><span>استمع</span></button>
+    </div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)"><svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg><span>عرض السؤال بالعربية</span></button>
+    <div class="q-arabic-text">ما اسم محطة الترحيل الموجودة بين الخليتين في مسار الـ Autonomic؟</div>
+    <div class="inline-mcq" data-correct="1" data-explanations='["Synapse هو نقطة التواصل بين أي خليتين، لكن المحطة الخاصة خارج الـ CNS في المسار الذاتي لها اسم تشريحي محدد.","إجابة ممتازة! Ganglion هي تجمع أجسام الخلايا العصبية خارج الـ CNS وتعمل كمحطة ترحيل (Relay Station).","Effector Organ هو العضو المستهدف النهائي وليس محطة ترحيل."]'>
+      <button class="mcq-option" onclick="checkAnswer(this,0)"><span>A) Synapse</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,1)"><span>B) Ganglion</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,2)"><span>C) Effector Organ</span><span class="opt-badge">اختيارك</span></button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>إعادة المحاولة</span></button></div>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header">
+      <div class="q-english">Q2: The Postganglionic fiber releases neurotransmitter through multiple points called:</div>
+      <button class="q-speech-btn" onclick="playAudio('q2')"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg><span>استمع</span></button>
+    </div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)"><svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg><span>عرض السؤال بالعربية</span></button>
+    <div class="q-arabic-text">الألياف الـ Postganglionic تطلق الناقل العصبي من خلال نقاط متعددة تسمى:</div>
+    <div class="inline-mcq" data-correct="0" data-explanations='["إجابة صحيحة! الـ Varicosities تضخمات صغيرة منتشرة على طول الألياف تطلق الناقل العصبي بصورة منتشرة على مساحة العضو.","Dendrites امتدادات استقبالية للخلية ولا تطلق ناقلات عصبية.","Axon Terminal نهاية واحدة للمحور في الـ Somatic، أما الـ Autonomic فيستخدم Varicosities متعددة."]'>
+      <button class="mcq-option" onclick="checkAnswer(this,0)"><span>A) Varicosities</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,1)"><span>B) Dendrites</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,2)"><span>C) Axon Terminal</span><span class="opt-badge">اختيارك</span></button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>إعادة المحاولة</span></button></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Section 2 ===== -->
+<section class="card" id="sec2">
+  <h2><span class="section-badge">2</span> العقد العصبية الذاتية — Autonomic Ganglia</h2>
+  <img src="images/image6.png" alt="Autonomic Ganglia types" class="slide-img">
+  <p class="slide-img-caption">الشريحة 7: أنواع العقد الذاتية</p>
+
+  <div class="term">
+    <span class="en">Autonomic Ganglia</span>
+    <button class="audio-btn" onclick="playAudio('autonomic_ganglia')" title="استمع للنطق"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button><br>
+    <strong>التعريف:</strong> تجمعات من الخلايا العصبية (<em>Collection of neurons</em>) خارج الـ CNS.<br>
+    <strong>الوظيفة:</strong> مركز توزيع <em>(Distributing Center)</em> للإشارات العصبية.
+  </div>
+
+  <p>للعقد الذاتية <strong>3 أنواع رئيسية</strong>:</p>
+  <div class="ganglion-grid">
+    <div class="ganglion-card g1">
+      <div class="g-title">① Paravertebral Ganglia
+        <button class="audio-btn" onclick="playAudio('paravertebral_ganglia')" title="استمع"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      </div>
+      <ul>
+        <li>على جانبي العمود الفقري</li>
+        <li>Sympathetic فقط</li>
+        <li>تشكّل Sympathetic Chain</li>
+      </ul>
+    </div>
+    <div class="ganglion-card g2">
+      <div class="g-title">② Collateral Ganglia
+        <button class="audio-btn" onclick="playAudio('collateral_ganglia')" title="استمع"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      </div>
+      <ul>
+        <li>في المنتصف بين الحبل الشوكي والأحشاء</li>
+        <li>Sympathetic + Parasympathetic</li>
+      </ul>
+    </div>
+    <div class="ganglion-card g3">
+      <div class="g-title">③ Terminal Ganglia
+        <button class="audio-btn" onclick="playAudio('terminal_ganglia')" title="استمع"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      </div>
+      <ul>
+        <li>بجوار أو داخل الأحشاء</li>
+        <li>Parasympathetic فقط</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="key">
+    <div class="key-header"><svg class="icon" viewBox="0 0 24 24" width="16" height="16"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg><span>قاعدة سريعة:</span></div>
+    • <strong>Paravertebral → Sympathetic فقط</strong><br>
+    • <strong>Collateral → Symp + Parasym</strong><br>
+    • <strong>Terminal → Parasympathetic فقط</strong>
+  </div>
+
+  <div class="question">
+    <div class="q-header">
+      <div class="q-english">Q3: What is the main function of Autonomic Ganglia?</div>
+      <button class="q-speech-btn" onclick="playAudio('q3')"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg><span>استمع</span></button>
+    </div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)"><svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg><span>عرض السؤال بالعربية</span></button>
+    <div class="q-arabic-text">ما الوظيفة الرئيسية للعقد الذاتية؟</div>
+    <div class="inline-mcq" data-correct="1" data-explanations='["إفراز الهرمونات وظيفة الغدد الصماء وليس العقد العصبية.","إجابة ممتازة! العقد الذاتية تعمل كمركز توزيع (Distributing Center) — تستقبل الإشارة من الـ Preganglionic وتوزّعها للـ Postganglionic.","استقبال الإحساس وظيفة الـ Sensory Receptors وليس العقد الذاتية."]'>
+      <button class="mcq-option" onclick="checkAnswer(this,0)"><span>A) Hormone secretion</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,1)"><span>B) Distributing Center for nerve signals</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,2)"><span>C) Receiving sensory input</span><span class="opt-badge">اختيارك</span></button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>إعادة المحاولة</span></button></div>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header">
+      <div class="q-english">Q4: Which ganglia type serves as a relay for Parasympathetic ONLY?</div>
+      <button class="q-speech-btn" onclick="playAudio('q4')"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg><span>استمع</span></button>
+    </div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)"><svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg><span>عرض السؤال بالعربية</span></button>
+    <div class="q-arabic-text">أي نوع عقدة يخدم الجهاز الباراسمبثاوي فقط؟</div>
+    <div class="inline-mcq" data-correct="2" data-explanations='["Paravertebral Ganglia للجهاز السمبثاوي (Sympathetic) فقط.","Collateral Ganglia لكلا الجهازين السمبثاوي والباراسمبثاوي.","إجابة صحيحة! Terminal Ganglia توجد بجوار أو داخل الأحشاء وهي محطة الجهاز الباراسمبثاوي (Parasympathetic) فقط."]'>
+      <button class="mcq-option" onclick="checkAnswer(this,0)"><span>A) Paravertebral Ganglia</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,1)"><span>B) Collateral Ganglia</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,2)"><span>C) Terminal Ganglia</span><span class="opt-badge">اختيارك</span></button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>إعادة المحاولة</span></button></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Section 3 ===== -->
+<section class="card" id="sec3">
+  <h2><span class="section-badge">3</span> Paravertebral Ganglia — العقد الجانبية للعمود الفقري</h2>
+  <img src="images/image7.png" alt="Paravertebral Ganglia" class="slide-img">
+  <p class="slide-img-caption">الشريحة 8: العقد الجانبية والجذع السمبثاوي على العمود الفقري</p>
+
+  <div class="term">
+    <span class="en">Paravertebral Ganglia</span>
+    <button class="audio-btn" onclick="playAudio('paravertebral_ganglia')" title="استمع للنطق"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button><br>
+    <strong>المعنى:</strong> العقد المجاورة للعمود الفقري | <strong>النطق:</strong> بارا-فيرتيبرال جانجليا
+  </div>
+
+  <ul class="effect-list">
+    <li><span class="ef-icon">📍</span><div><strong>المكان:</strong> على كلا جانبي العمود الفقري</div></li>
+    <li><span class="ef-icon">⚡</span><div><strong>الوظيفة:</strong> محطة الترحيل الخاصة بالجهاز السمبثاوي (Sympathetic) فقط</div></li>
+    <li><span class="ef-icon">🔗</span><div><strong>التكوين:</strong>
+      <span class="en">Sympathetic Chain</span>
+      <button class="audio-btn" onclick="playAudio('sympathetic_chain')" title="استمع"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      /
+      <span class="en">Sympathetic Trunk</span>
+      <button class="audio-btn" onclick="playAudio('sympathetic_trunk')" title="استمع"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      — سلسلة متصلة بطول العمود
+    </div></li>
+  </ul>
+
+  <div class="question">
+    <div class="q-header">
+      <div class="q-english">Q5: Where are Paravertebral (Lateral) Ganglia located?</div>
+      <button class="q-speech-btn" onclick="playAudio('q5')"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg><span>استمع</span></button>
+    </div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)"><svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg><span>عرض السؤال بالعربية</span></button>
+    <div class="q-arabic-text">فين بالضبط توجد الـ Paravertebral Ganglia؟</div>
+    <div class="inline-mcq" data-correct="0" data-explanations='["إجابة صحيحة! الـ Paravertebral Ganglia على جانبي العمود الفقري (Both sides of vertebral column) وتكوّن سلسلة تسمى Sympathetic Chain.","داخل الأحشاء موقع Terminal Ganglia.","منتصف الطريق بين الحبل والأحشاء هو موقع Collateral Ganglia."]'>
+      <button class="mcq-option" onclick="checkAnswer(this,0)"><span>A) On both sides of the vertebral column</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,1)"><span>B) Inside the visceral organs</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,2)"><span>C) Midway between spinal cord and viscera</span><span class="opt-badge">اختيارك</span></button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>إعادة المحاولة</span></button></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Section 4 ===== -->
+<section class="card" id="sec4">
+  <h2><span class="section-badge">4</span> Collateral & Terminal Ganglia</h2>
+
+  <h3>① Collateral Ganglia
+    <button class="audio-btn" onclick="playAudio('collateral_ganglia')" title="استمع"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+  </h3>
+  <div class="term">
+    <strong>المكان:</strong> منتصف الطريق بين الحبل الشوكي والأحشاء<br>
+    <strong>الوظيفة:</strong> ترحيل للجهاز السمبثاوي والباراسمبثاوي معاً
+  </div>
+
+  <h3>② Terminal Ganglia
+    <button class="audio-btn" onclick="playAudio('terminal_ganglia')" title="استمع"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+  </h3>
+  <div class="term">
+    <strong>المكان:</strong> بالقرب من أو داخل الأحشاء نفسها<br>
+    <strong>الوظيفة:</strong> ترحيل للجهاز الباراسمبثاوي (Parasympathetic) فقط
+  </div>
+
+  <table class="compare-table">
+    <tr><th>النوع</th><th>المكان</th><th>الترحيل</th></tr>
+    <tr><td>Paravertebral</td><td>على جانبي العمود الفقري</td><td>Sympathetic فقط</td></tr>
+    <tr><td>Collateral</td><td>في المنتصف</td><td>Symp + Parasym</td></tr>
+    <tr><td>Terminal</td><td>بجوار / داخل الأحشاء</td><td>Parasympathetic فقط</td></tr>
+  </table>
+
+  <div class="question">
+    <div class="q-header">
+      <div class="q-english">Q6: Collateral Ganglia serve as relay stations for:</div>
+      <button class="q-speech-btn" onclick="playAudio('q6')"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg><span>استمع</span></button>
+    </div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)"><svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg><span>عرض السؤال بالعربية</span></button>
+    <div class="q-arabic-text">الـ Collateral Ganglia تعمل كمحطة ترحيل لـ:</div>
+    <div class="inline-mcq" data-correct="2" data-explanations='["Sympathetic فقط هو دور الـ Paravertebral Ganglia.","Parasympathetic فقط هو دور الـ Terminal Ganglia.","إجابة صحيحة! الـ Collateral Ganglia تعمل لكلا الجهازين: السمبثاوي والباراسمبثاوي معاً."]'>
+      <button class="mcq-option" onclick="checkAnswer(this,0)"><span>A) Sympathetic only</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,1)"><span>B) Parasympathetic only</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,2)"><span>C) Both Sympathetic & Parasympathetic</span><span class="opt-badge">اختيارك</span></button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>إعادة المحاولة</span></button></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Section 5 ===== -->
+<section class="card" id="sec5">
+  <h2><span class="section-badge">5</span> أقسام الجهاز العصبي الذاتي</h2>
+  <img src="images/image9.png" alt="Sympathetic vs Parasympathetic" class="slide-img">
+  <p class="slide-img-caption">الشريحة 10: مقارنة شاملة بين الجهاز السمبثاوي والباراسمبثاوي</p>
+
+  <div class="term">
+    <span class="en">Sympathetic Nervous System</span>
+    <button class="audio-btn" onclick="playAudio('sympathetic_nervous_system')" title="استمع للنطق"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button><br>
+    <strong>المعنى:</strong> الجهاز العصبي السمبثاوي (السمبساوي) | <strong>النطق:</strong> سيمباثيتيك نيرفَس سيستم<br>
+    يُعرف بـ <strong>"Fight or Flight"</strong>
+    <button class="audio-btn" onclick="playAudio('fight_or_flight')" title="استمع"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+    — جهاز الطوارئ والتحفيز.
+  </div>
+
+  <div class="term">
+    <span class="en">Parasympathetic Nervous System</span>
+    <button class="audio-btn" onclick="playAudio('parasympathetic_nervous_system')" title="استمع للنطق"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button><br>
+    <strong>المعنى:</strong> الجهاز العصبي الباراسمبثاوي (بارا سمبساوي) | <strong>النطق:</strong> بارا-سيمباثيتيك نيرفَس سيستم<br>
+    يُعرف بـ <strong>"Rest and Digest"</strong>
+    <button class="audio-btn" onclick="playAudio('rest_and_digest')" title="استمع"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+    — جهاز الراحة والهضم.
+  </div>
+
+  <img src="images/image14.png" alt="Sympathetic and Parasympathetic full body" class="slide-img">
+  <p class="slide-img-caption">الشريحة 13: المسار الكامل للجهازين وتغذيتهم لأعضاء الجسم</p>
+
+  <div class="key">
+    <div class="key-header"><svg class="icon" viewBox="0 0 24 24" width="16" height="16"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg><span>طريقة التذكر:</span></div>
+    🏃 <strong>Sympathetic = Fight or Flight</strong> (لما تشوف أسد!)<br>
+    😴 <strong>Parasympathetic = Rest and Digest</strong> (لما تنام وتاكل)
+  </div>
+
+  <div class="question">
+    <div class="q-header">
+      <div class="q-english">Q7: Which division of the ANS is known as "Fight or Flight"?</div>
+      <button class="q-speech-btn" onclick="playAudio('q7')"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg><span>استمع</span></button>
+    </div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)"><svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg><span>عرض السؤال بالعربية</span></button>
+    <div class="q-arabic-text">أي قسم من الجهاز الذاتي يُعرف بـ Fight or Flight؟</div>
+    <div class="inline-mcq" data-correct="0" data-explanations='["إجابة ممتازة! الجهاز السمبثاوي (Sympathetic) هو Fight or Flight — يُحضّر الجسم للطوارئ.","الجهاز الباراسمبثاوي هو Rest and Digest."]'>
+      <button class="mcq-option" onclick="checkAnswer(this,0)"><span>A) Sympathetic Nervous System</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,1)"><span>B) Parasympathetic Nervous System</span><span class="opt-badge">اختيارك</span></button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>إعادة المحاولة</span></button></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Section 6 ===== -->
+<section class="card" id="sec6">
+  <h2><span class="section-badge">6</span> منشأ الجهاز السمبثاوي — Sympathetic Origin</h2>
+
+  <div class="term">
+    <span class="en">Thoracolumbar</span>
+    <button class="audio-btn" onclick="playAudio('thoracolumbar')" title="استمع للنطق"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button><br>
+    <strong>المعنى:</strong> صدري-قطني | <strong>النطق:</strong> ثوراكو-لمبار<br>
+    <strong>Thoraco</strong> = كل الفقرات الصدرية (All Thoracic)<br>
+    <strong>Lumbar</strong> = أول 3 فقرات قطنية (L1, L2, L3)
+  </div>
+
+  <div class="diagram">Sympathetic Origin = All Thoracic segments + Upper 3 Lumbar (L1, L2, L3)</div>
+
+  <div class="note-box">
+    <div class="note-header"><svg class="icon" viewBox="0 0 24 24" width="16" height="16"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg><span>نقطة مهمة للامتحان:</span></div>
+    كلمة واحدة تلخص كل شيء: <strong>Thoracolumbar</strong> = صدري + أول 3 قطني
+  </div>
+
+  <div class="question">
+    <div class="q-header">
+      <div class="q-english">Q8: The origin of the Sympathetic Nervous System is described as:</div>
+      <button class="q-speech-btn" onclick="playAudio('q8')"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg><span>استمع</span></button>
+    </div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)"><svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg><span>عرض السؤال بالعربية</span></button>
+    <div class="q-arabic-text">منشأ الجهاز السمبثاوي يوصف بأنه:</div>
+    <div class="inline-mcq" data-correct="1" data-explanations='["Craniosacral هو وصف منشأ الجهاز الباراسمبثاوي (Cranial Nerves + Sacral S2,S3,S4).","إجابة صحيحة! Thoracolumbar = كل الفقرات الصدرية + L1,L2,L3.","Cervicothoracic ليست التسمية الصحيحة لمنشأ الجهاز السمبثاوي."]'>
+      <button class="mcq-option" onclick="checkAnswer(this,0)"><span>A) Craniosacral</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,1)"><span>B) Thoracolumbar</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,2)"><span>C) Cervicothoracic</span><span class="opt-badge">اختيارك</span></button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>إعادة المحاولة</span></button></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Section 7 ===== -->
+<section class="card" id="sec7">
+  <h2><span class="section-badge">7</span> تأثيرات السمبثاوي على الرأس والرقبة</h2>
+
+  <h3>🔵 على العين:</h3>
+  <img src="images/image15.png" alt="Pupil - Mydriasis" class="slide-img" style="max-height:250px;">
+  <p class="slide-img-caption">الشريحة 14: اتساع الحدقة (Mydriasis)</p>
+
+  <ul class="effect-list">
+    <li><span class="ef-icon">👁️</span><div>
+      <strong>اتساع الحدقة —
+        <span class="en">Mydriasis</span>
+        <button class="audio-btn" onclick="playAudio('mydriasis')" title="استمع"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      </strong><br>
+      بسبب انقباض
+      <span class="en">Dilator Pupillae Muscle</span>
+      <button class="audio-btn" onclick="playAudio('dilator_pupillae_muscle')" title="استمع"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+    </div></li>
+    <li><span class="ef-icon">👆</span><div>
+      <strong>ارتفاع الجفن العلوي — توسيع الشق الجفني
+        <span class="en">Palpebral Fissure</span>
+        <button class="audio-btn" onclick="playAudio('palpebral_fissure')" title="استمع"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      </strong>
+    </div></li>
+    <li><span class="ef-icon">💧</span><div>
+      <strong>تقليل إفراز الدموع من الغدة الدمعية —
+        <span class="en">Lacrimal Gland</span>
+        <button class="audio-btn" onclick="playAudio('lacrimal_gland')" title="استمع"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      </strong>
+    </div></li>
+  </ul>
+
+  <h3>💦 على الغدد اللعابية:</h3>
+  <ul class="effect-list">
+    <li><span class="ef-icon">🤤</span><div>
+      <strong>تقليل إفراز اللعاب —
+        <span class="en">Salivary Glands</span>
+        <button class="audio-btn" onclick="playAudio('salivary_glands')" title="استمع"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      </strong><br>
+      ده سبب إن فمك بيبقى جاف لما تكون خايف!
+    </div></li>
+  </ul>
+
+  <div class="question">
+    <div class="q-header">
+      <div class="q-english">Q9: Sympathetic stimulation of the eye causes pupil:</div>
+      <button class="q-speech-btn" onclick="playAudio('q9')"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg><span>استمع</span></button>
+    </div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)"><svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg><span>عرض السؤال بالعربية</span></button>
+    <div class="q-arabic-text">تنشيط الجهاز السمبثاوي يجعل الحدقة:</div>
+    <div class="inline-mcq" data-correct="0" data-explanations='["إجابة صحيحة! الجهاز السمبثاوي يُحفّز Dilator Pupillae فتتسع الحدقة (Mydriasis) لإدخال هواء أكثر في الطوارئ.","تضيق الحدقة (Miosis) تأثير الجهاز الباراسمبثاوي، عكس السمبثاوي تماماً."]'>
+      <button class="mcq-option" onclick="checkAnswer(this,0)"><span>A) Dilatation — Mydriasis (اتساع)</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,1)"><span>B) Constriction — Miosis (تضيق)</span><span class="opt-badge">اختيارك</span></button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>إعادة المحاولة</span></button></div>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header">
+      <div class="q-english">Q10: Why does your mouth become dry when you are scared?</div>
+      <button class="q-speech-btn" onclick="playAudio('q10')"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg><span>استمع</span></button>
+    </div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)"><svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg><span>عرض السؤال بالعربية</span></button>
+    <div class="q-arabic-text">ليه بقفّش فمك لما تكون خايف؟</div>
+    <div class="inline-mcq" data-correct="1" data-explanations='["الجهاز الباراسمبثاوي هو اللي بيزيد إفراز اللعاب (Rest and Digest)، مش السمبثاوي.","إجابة صحيحة! لما تكون خايف الجهاز السمبثاوي ينشّط ويُقلّل إفراز الغدد اللعابية (Decreases Salivary Secretions) فيجف فمك."]'>
+      <button class="mcq-option" onclick="checkAnswer(this,0)"><span>A) Parasympathetic increases salivation</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,1)"><span>B) Sympathetic decreases salivary secretions</span><span class="opt-badge">اختيارك</span></button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>إعادة المحاولة</span></button></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Section 8 ===== -->
+<section class="card" id="sec8">
+  <h2><span class="section-badge">8</span> تأثيرات السمبثاوي على القلب</h2>
+  <img src="images/image18.png" alt="Heart" class="slide-img" style="max-height:250px;">
+  <p class="slide-img-caption">الشريحة 15: القلب — تأثيرات الجهاز السمبثاوي</p>
+
+  <ul class="effect-list">
+    <li><span class="ef-icon">⚡</span><div>زيادة الاستثارة وسرعة التوصيل الكهربائي</div></li>
+    <li><span class="ef-icon">💪</span><div>
+      <strong>التأثير الإيجابي الإينوتروبيك —
+        <span class="en">+Inotropic Effect</span>
+        <button class="audio-btn" onclick="playAudio('inotropic_effect')" title="استمع"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      </strong><br>
+      زيادة <strong>قوة الانقباض</strong> (Increase Force of Contraction)
+    </div></li>
+    <li><span class="ef-icon">🏃</span><div>
+      <strong>التأثير الإيجابي الكرونوتروبيك —
+        <span class="en">+Chronotropic Effect</span>
+        <button class="audio-btn" onclick="playAudio('chronotropic_effect')" title="استمع"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      </strong><br>
+      زيادة <strong>معدل ضربات القلب</strong> (Increase Heart Rate)
+    </div></li>
+    <li><span class="ef-icon">🩺</span><div>
+      <strong>توسيع الأوعية التاجية —
+        <span class="en">Vasodilatation</span>
+        <button class="audio-btn" onclick="playAudio('vasodilatation')" title="استمع"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+        of
+        <span class="en">Coronary Vessels</span>
+        <button class="audio-btn" onclick="playAudio('coronary_vessels')" title="استمع"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      </strong>
+    </div></li>
+  </ul>
+
+  <img src="images/image19.png" alt="Coronary vessels" class="slide-img" style="max-height:240px;">
+  <p class="slide-img-caption">الشريحة 15: الأوعية التاجية التي تتوسع بتأثير السمبثاوي</p>
+
+  <div class="key">
+    <div class="key-header"><svg class="icon" viewBox="0 0 24 24" width="16" height="16"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg><span>كل تأثيرات السمبثاوي على القلب إيجابية +:</span></div>
+    ✅ قوة الانقباض → <strong>تزيد (+Inotropic)</strong><br>
+    ✅ معدل الضربات → <strong>يزيد (+Chronotropic)</strong><br>
+    ✅ التوصيل الكهربائي → <strong>يزيد</strong><br>
+    ✅ الأوعية التاجية → <strong>تتوسع (Vasodilatation)</strong>
+  </div>
+
+  <div class="question">
+    <div class="q-header">
+      <div class="q-english">Q11: Positive Chronotropic Effect means:</div>
+      <button class="q-speech-btn" onclick="playAudio('q11')"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg><span>استمع</span></button>
+    </div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)"><svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg><span>عرض السؤال بالعربية</span></button>
+    <div class="q-arabic-text">التأثير الكرونوتروبيك الإيجابي يعني:</div>
+    <div class="inline-mcq" data-correct="1" data-explanations='["زيادة قوة الانقباض هي +Inotropic وليس +Chronotropic.","إجابة صحيحة! +Chronotropic = زيادة معدل ضربات القلب (Increase Heart Rate). Chrono = وقت/معدل."]'>
+      <button class="mcq-option" onclick="checkAnswer(this,0)"><span>A) Increase Force of Contraction</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,1)"><span>B) Increase Heart Rate</span><span class="opt-badge">اختيارك</span></button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>إعادة المحاولة</span></button></div>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header">
+      <div class="q-english">Q12: What happens to coronary vessels under Sympathetic stimulation?</div>
+      <button class="q-speech-btn" onclick="playAudio('q12')"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg><span>استمع</span></button>
+    </div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)"><svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg><span>عرض السؤال بالعربية</span></button>
+    <div class="q-arabic-text">ماذا يحدث للأوعية التاجية عند تنشيط الجهاز السمبثاوي؟</div>
+    <div class="inline-mcq" data-correct="0" data-explanations='["إجابة صحيحة! السمبثاوي يُسبب Vasodilatation للأوعية التاجية لزيادة الأكسجين لعضلة القلب في الطوارئ.","Vasoconstriction للأوعية التاجية سيحد من الأكسجين — عكس ما يحتاجه الجسم."]'>
+      <button class="mcq-option" onclick="checkAnswer(this,0)"><span>A) Vasodilatation (توسيع)</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,1)"><span>B) Vasoconstriction (تضيق)</span><span class="opt-badge">اختيارك</span></button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>إعادة المحاولة</span></button></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Section 9 ===== -->
+<section class="card" id="sec9">
+  <h2><span class="section-badge">9</span> تأثيرات السمبثاوي على الرئة</h2>
+  <img src="images/image20.png" alt="Lungs" class="slide-img" style="max-height:280px;">
+  <p class="slide-img-caption">الشريحة 16: الرئتان — تأثيرات الجهاز السمبثاوي</p>
+
+  <ul class="effect-list">
+    <li><span class="ef-icon">🌬️</span><div>
+      <strong>توسيع القصبات —
+        <span class="en">Bronchodilatation</span>
+        <button class="audio-btn" onclick="playAudio('bronchodilatation')" title="استمع"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      </strong><br>
+      ارتخاء عضلات القصبة → هواء أكثر → أكسجين أكثر
+    </div></li>
+    <li><span class="ef-icon">🔴</span><div>
+      <strong>تضيق الأوعية الرئوية —
+        <span class="en">Vasoconstriction</span>
+        <button class="audio-btn" onclick="playAudio('vasoconstriction')" title="استمع"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+        of
+        <span class="en">Pulmonary Vessels</span>
+        <button class="audio-btn" onclick="playAudio('pulmonary_vessels')" title="استمع"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      </strong>
+    </div></li>
+  </ul>
+
+  <div class="note-box">
+    <div class="note-header"><svg class="icon" viewBox="0 0 24 24" width="16" height="16"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg><span>تذكّر الفرق في الرئة:</span></div>
+    • <strong>Bronchi → Dilatation</strong> (قصبات تتوسع ✅)<br>
+    • <strong>Pulmonary Vessels → Constriction</strong> (أوعية تتضيق ⚠️)
+  </div>
+
+  <div class="question">
+    <div class="q-header">
+      <div class="q-english">Q13: Sympathetic stimulation causes the bronchi to:</div>
+      <button class="q-speech-btn" onclick="playAudio('q13')"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg><span>استمع</span></button>
+    </div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)"><svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg><span>عرض السؤال بالعربية</span></button>
+    <div class="q-arabic-text">تنشيط الجهاز السمبثاوي يجعل القصبات الهوائية:</div>
+    <div class="inline-mcq" data-correct="1" data-explanations='["Bronchoconstriction تأثير الجهاز الباراسمبثاوي وليس السمبثاوي.","إجابة صحيحة! السمبثاوي يُسبب Bronchodilatation — ارتخاء عضلات القصبات فتتوسع ويدخل هواء أكثر."]'>
+      <button class="mcq-option" onclick="checkAnswer(this,0)"><span>A) Constrict — Bronchoconstriction</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,1)"><span>B) Dilate — Bronchodilatation</span><span class="opt-badge">اختيارك</span></button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>إعادة المحاولة</span></button></div>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header">
+      <div class="q-english">Q14: What is the effect of Sympathetic NS on Pulmonary Blood Vessels?</div>
+      <button class="q-speech-btn" onclick="playAudio('q14')"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg><span>استمع</span></button>
+    </div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)"><svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg><span>عرض السؤال بالعربية</span></button>
+    <div class="q-arabic-text">ما تأثير الجهاز السمبثاوي على الأوعية الرئوية؟</div>
+    <div class="inline-mcq" data-correct="1" data-explanations='["Vasodilatation للأوعية الرئوية هو تأثير السمبثاوي على الأوعية التاجية للقلب، ليس الرئوية.","إجابة صحيحة! الجهاز السمبثاوي يُسبب Vasoconstriction للأوعية الرئوية. لاحظ الفرق: Bronchi → تتوسع ✅ | Vessels → تتضيق ⚠️"]'>
+      <button class="mcq-option" onclick="checkAnswer(this,0)"><span>A) Vasodilatation (توسيع)</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,1)"><span>B) Vasoconstriction (تضيق)</span><span class="opt-badge">اختيارك</span></button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>إعادة المحاولة</span></button></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Section 10 - Quiz ===== -->
+<section class="card" id="sec10">
+  <h2><span class="section-badge">10</span> الاختبار الشامل (8 أسئلة)</h2>
+  <p style="color:var(--text-muted);font-size:14px;margin-bottom:14px">اختبار على كل ما تعلمناه — اختر الإجابة وشوف نتيجتك!</p>
+
+  <div class="quiz-dashboard">
+    <div class="score-item"><h4>النتيجة</h4><div class="score-val" id="scoreDisplay">0 / 8</div></div>
+    <div class="score-item"><h4>النسبة</h4><div class="score-val" id="scorePercent">0%</div></div>
+    <div class="score-feedback" id="scoreFeedback"><svg class="icon" viewBox="0 0 24 24" width="16" height="16"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg><span id="scoreFeedbackText">ابدأ الاختبار</span></div>
+  </div>
+
+  <!-- QZ1 -->
+  <div class="question quiz-q" data-qid="1">
+    <div class="q-header"><div class="q-english">QZ1: The ANS is part of which division?</div><button class="q-speech-btn" onclick="playAudio('qz1')"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg><span>استمع</span></button></div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)"><svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg><span>عرض بالعربية</span></button>
+    <div class="q-arabic-text">الجهاز الذاتي جزء من أي قسم؟</div>
+    <div class="inline-mcq" data-correct="1" data-explanations='["CNS = المخ والحبل الشوكي — مصدر الأوامر وليس الجهاز الذاتي.","إجابة صحيحة! ANS جزء من الجهاز العصبي الطرفي (PNS) وهو القسم اللاإرادي.","Somatic هو القسم الإرادي من الـ PNS وليس الذاتي."]'>
+      <button class="mcq-option" onclick="checkAnswer(this,0)"><span>A) CNS</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,1)"><span>B) PNS (Peripheral Nervous System)</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,2)"><span>C) Somatic Nervous System</span><span class="opt-badge">اختيارك</span></button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>إعادة</span></button></div>
+    </div>
+  </div>
+
+  <!-- QZ2 -->
+  <div class="question quiz-q" data-qid="2">
+    <div class="q-header"><div class="q-english">QZ2: Sympathetic NS is known as:</div><button class="q-speech-btn" onclick="playAudio('qz2')"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg><span>استمع</span></button></div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)"><svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg><span>عرض بالعربية</span></button>
+    <div class="q-arabic-text">الجهاز السمبثاوي يُعرف بـ:</div>
+    <div class="inline-mcq" data-correct="0" data-explanations='["إجابة صحيحة! Sympathetic = Fight or Flight — جهاز الطوارئ.","Rest and Digest هو الجهاز الباراسمبثاوي (Parasympathetic).","Think and Plan ليس وصفاً لأي جهاز عصبي."]'>
+      <button class="mcq-option" onclick="checkAnswer(this,0)"><span>A) Fight or Flight</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,1)"><span>B) Rest and Digest</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,2)"><span>C) Think and Plan</span><span class="opt-badge">اختيارك</span></button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>إعادة</span></button></div>
+    </div>
+  </div>
+
+  <!-- QZ3 -->
+  <div class="question quiz-q" data-qid="3">
+    <div class="q-header"><div class="q-english">QZ3: Which ganglia type is located NEAR or INSIDE the visceral organs?</div><button class="q-speech-btn" onclick="playAudio('qz3')"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg><span>استمع</span></button></div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)"><svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg><span>عرض بالعربية</span></button>
+    <div class="q-arabic-text">أي نوع عقدة بجوار أو داخل الأحشاء؟</div>
+    <div class="inline-mcq" data-correct="2" data-explanations='["Paravertebral على جانبي العمود الفقري.","Collateral في المنتصف بين الحبل والأحشاء.","إجابة صحيحة! Terminal Ganglia بجوار أو داخل الأحشاء — نهاية مسار الـ Parasympathetic."]'>
+      <button class="mcq-option" onclick="checkAnswer(this,0)"><span>A) Paravertebral</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,1)"><span>B) Collateral</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,2)"><span>C) Terminal Ganglia</span><span class="opt-badge">اختيارك</span></button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>إعادة</span></button></div>
+    </div>
+  </div>
+
+  <!-- QZ4 -->
+  <div class="question quiz-q" data-qid="4">
+    <div class="q-header"><div class="q-english">QZ4: Positive Inotropic Effect means:</div><button class="q-speech-btn" onclick="playAudio('qz4')"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg><span>استمع</span></button></div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)"><svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg><span>عرض بالعربية</span></button>
+    <div class="q-arabic-text">التأثير الإينوتروبيك الإيجابي يعني:</div>
+    <div class="inline-mcq" data-correct="0" data-explanations='["إجابة صحيحة! +Inotropic = زيادة قوة انقباض القلب (Force of Contraction). Ino = انقباض.","زيادة معدل الضربات هو +Chronotropic وليس +Inotropic."]'>
+      <button class="mcq-option" onclick="checkAnswer(this,0)"><span>A) Increase Force of Contraction</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,1)"><span>B) Increase Heart Rate</span><span class="opt-badge">اختيارك</span></button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>إعادة</span></button></div>
+    </div>
+  </div>
+
+  <!-- QZ5 -->
+  <div class="question quiz-q" data-qid="5">
+    <div class="q-header"><div class="q-english">QZ5: Sympathetic NS causes the upper eyelid to:</div><button class="q-speech-btn" onclick="playAudio('qz5')"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg><span>استمع</span></button></div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)"><svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg><span>عرض بالعربية</span></button>
+    <div class="q-arabic-text">الجهاز السمبثاوي يجعل الجفن العلوي:</div>
+    <div class="inline-mcq" data-correct="0" data-explanations='["إجابة صحيحة! الجهاز السمبثاوي يرفع الجفن العلوي (Elevation) → يتسع الشق الجفني → عيونك تبقى أكبر في الإثارة.","سقوط الجفن (Ptosis) عكس تأثير الجهاز السمبثاوي."]'>
+      <button class="mcq-option" onclick="checkAnswer(this,0)"><span>A) Elevate (ارتفاع)</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,1)"><span>B) Droop / Ptosis (سقوط)</span><span class="opt-badge">اختيارك</span></button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>إعادة</span></button></div>
+    </div>
+  </div>
+
+  <!-- QZ6 -->
+  <div class="question quiz-q" data-qid="6">
+    <div class="q-header"><div class="q-english">QZ6: Sympathetic origin includes which lumbar segments?</div><button class="q-speech-btn" onclick="playAudio('qz6')"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg><span>استمع</span></button></div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)"><svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg><span>عرض بالعربية</span></button>
+    <div class="q-arabic-text">منشأ الجهاز السمبثاوي يشمل أي الفقرات القطنية؟</div>
+    <div class="inline-mcq" data-correct="1" data-explanations='["L1 فقط غير كافٍ — الجهاز السمبثاوي يشمل أول 3 فقرات قطنية.","إجابة صحيحة! Upper 3 Lumbar = L1, L2, L3 — مع كل الفقرات الصدرية = Thoracolumbar.","All Lumbar (L1-L5) خطأ — الصحيح L1, L2, L3 فقط."]'>
+      <button class="mcq-option" onclick="checkAnswer(this,0)"><span>A) L1 only</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,1)"><span>B) L1, L2, L3 (Upper 3)</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,2)"><span>C) All Lumbar (L1-L5)</span><span class="opt-badge">اختيارك</span></button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>إعادة</span></button></div>
+    </div>
+  </div>
+
+  <!-- QZ7 -->
+  <div class="question quiz-q" data-qid="7">
+    <div class="q-header"><div class="q-english">QZ7: Paravertebral Ganglia form a chain called:</div><button class="q-speech-btn" onclick="playAudio('qz7')"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg><span>استمع</span></button></div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)"><svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg><span>عرض بالعربية</span></button>
+    <div class="q-arabic-text">الـ Paravertebral Ganglia تكوّن سلسلة تسمى:</div>
+    <div class="inline-mcq" data-correct="0" data-explanations='["إجابة صحيحة! الـ Paravertebral Ganglia تكوّن Sympathetic Chain أو Sympathetic Trunk على جانبي العمود الفقري.","Parasympathetic Chain ليس مصطلحاً تشريحياً صحيحاً.","Dorsal Root Ganglion عقدة مختلفة تحتوي على أجسام الخلايا الحسية."]'>
+      <button class="mcq-option" onclick="checkAnswer(this,0)"><span>A) Sympathetic Chain / Trunk</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,1)"><span>B) Parasympathetic Chain</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,2)"><span>C) Dorsal Root Ganglion</span><span class="opt-badge">اختيارك</span></button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>إعادة</span></button></div>
+    </div>
+  </div>
+
+  <!-- QZ8 -->
+  <div class="question quiz-q" data-qid="8">
+    <div class="q-header"><div class="q-english">QZ8: Postganglionic fiber releases neurotransmitter via:</div><button class="q-speech-btn" onclick="playAudio('qz8')"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg><span>استمع</span></button></div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)"><svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg><span>عرض بالعربية</span></button>
+    <div class="q-arabic-text">الألياف Postganglionic تطلق الناقل العصبي عن طريق:</div>
+    <div class="inline-mcq" data-correct="2" data-explanations='["Classical Synapse طريقة تواصل بين الخلايا العصبية، لكن إفراز الناقلات على الأعضاء في الـ Autonomic يختلف.","Axon Hillock منطقة توليد جهد الفعل وليس نقطة إفراز.","إجابة صحيحة! Varicosities تضخمات متعددة على الألياف تضمن توزيع الإفراز على مساحة العضو."]'>
+      <button class="mcq-option" onclick="checkAnswer(this,0)"><span>A) Classical Synapse</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,1)"><span>B) Axon Hillock</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,2)"><span>C) Varicosities</span><span class="opt-badge">اختيارك</span></button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>إعادة</span></button></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Section 11 - Glossary ===== -->
+<section class="card" id="sec11">
+  <h2><span class="section-badge">11</span> قاموس المصطلحات — مع الصوت 🔊</h2>
+  <p style="color:var(--text-muted);font-size:14px;margin-bottom:14px">اضغط على زر الصوت لسماع نطق كل مصطلح:</p>
+
+  <div class="glossary-grid">
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('autonomic_ganglia')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg></button>
+      <div class="glossary-info"><strong>Autonomic Ganglia</strong><span>العقد العصبية الذاتية — مراكز توزيع</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('preganglionic_fiber')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg></button>
+      <div class="glossary-info"><strong>Preganglionic Fiber</strong><span>الألياف قبل العقدة — من CNS للعقدة</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('postganglionic_fiber')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg></button>
+      <div class="glossary-info"><strong>Postganglionic Fiber</strong><span>الألياف بعد العقدة — من العقدة للعضو</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('varicosity')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg></button>
+      <div class="glossary-info"><strong>Varicosity</strong><span>تضخمات إفراز الناقلات العصبية</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('effector_organ')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg></button>
+      <div class="glossary-info"><strong>Effector Organ</strong><span>العضو المستهدف (القلب، الغدد، العضلات الملساء)</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('paravertebral_ganglia')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg></button>
+      <div class="glossary-info"><strong>Paravertebral Ganglia</strong><span>عقد على جانبي العمود — Sympathetic فقط</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('collateral_ganglia')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg></button>
+      <div class="glossary-info"><strong>Collateral Ganglia</strong><span>عقد في المنتصف — Symp + Parasym</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('terminal_ganglia')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg></button>
+      <div class="glossary-info"><strong>Terminal Ganglia</strong><span>عقد نهائية بجوار الأحشاء — Parasym فقط</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('sympathetic_nervous_system')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg></button>
+      <div class="glossary-info"><strong>Sympathetic NS</strong><span>الجهاز السمبثاوي — Fight or Flight</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('parasympathetic_nervous_system')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg></button>
+      <div class="glossary-info"><strong>Parasympathetic NS</strong><span>الجهاز الباراسمبثاوي — Rest and Digest</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('thoracolumbar')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg></button>
+      <div class="glossary-info"><strong>Thoracolumbar</strong><span>منشأ الجهاز السمبثاوي (صدري + L1,L2,L3)</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('sympathetic_chain')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg></button>
+      <div class="glossary-info"><strong>Sympathetic Chain / Trunk</strong><span>سلسلة العقد السمبثاوية على العمود الفقري</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('mydriasis')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg></button>
+      <div class="glossary-info"><strong>Mydriasis</strong><span>اتساع الحدقة — تأثير الجهاز السمبثاوي</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('miosis')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg></button>
+      <div class="glossary-info"><strong>Miosis</strong><span>تضيق الحدقة — تأثير الجهاز الباراسمبثاوي</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('dilator_pupillae_muscle')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg></button>
+      <div class="glossary-info"><strong>Dilator Pupillae Muscle</strong><span>عضلة موسّع الحدقة — ينقبض بتأثير السمبثاوي</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('palpebral_fissure')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg></button>
+      <div class="glossary-info"><strong>Palpebral Fissure</strong><span>الشق الجفني — يتسع بتأثير السمبثاوي</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('lacrimal_gland')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg></button>
+      <div class="glossary-info"><strong>Lacrimal Gland</strong><span>الغدة الدمعية — يقل إفرازها مع السمبثاوي</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('salivary_glands')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg></button>
+      <div class="glossary-info"><strong>Salivary Glands</strong><span>الغدد اللعابية — يقل إفرازها مع السمبثاوي</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('inotropic_effect')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg></button>
+      <div class="glossary-info"><strong>+Inotropic Effect</strong><span>زيادة قوة انقباض القلب</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('chronotropic_effect')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg></button>
+      <div class="glossary-info"><strong>+Chronotropic Effect</strong><span>زيادة معدل ضربات القلب</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('coronary_vessels')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg></button>
+      <div class="glossary-info"><strong>Coronary Vessels</strong><span>الأوعية التاجية — تتوسع مع السمبثاوي</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('vasodilatation')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg></button>
+      <div class="glossary-info"><strong>Vasodilatation</strong><span>توسيع الأوعية الدموية</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('vasoconstriction')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg></button>
+      <div class="glossary-info"><strong>Vasoconstriction</strong><span>تضيق الأوعية الدموية</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('bronchodilatation')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg></button>
+      <div class="glossary-info"><strong>Bronchodilatation</strong><span>توسيع القصبات الهوائية</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('bronchoconstriction')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg></button>
+      <div class="glossary-info"><strong>Bronchoconstriction</strong><span>تضيق القصبات — تأثير الجهاز الباراسمبثاوي</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('pulmonary_vessels')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg></button>
+      <div class="glossary-info"><strong>Pulmonary Vessels</strong><span>الأوعية الرئوية — تتضيق مع السمبثاوي</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('fight_or_flight')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg></button>
+      <div class="glossary-info"><strong>Fight or Flight</strong><span>جهاز الطوارئ — استجابة الجهاز السمبثاوي</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('rest_and_digest')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg></button>
+      <div class="glossary-info"><strong>Rest and Digest</strong><span>جهاز الراحة — استجابة الجهاز الباراسمبثاوي</span></div>
+    </div>
+
+  </div>
+
+  <div class="key" style="margin-top:24px">
+    <div class="key-header"><svg class="icon" viewBox="0 0 24 24" width="16" height="16"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg><span>ملخص المحاضرة في 5 نقاط:</span></div>
+    <ol style="margin-right:20px;margin-top:8px;line-height:2">
+      <li><strong>Ganglia = مركز توزيع</strong> خارج الـ CNS — 3 أنواع (Para, Collateral, Terminal)</li>
+      <li><strong>Paravertebral → Symp فقط</strong> | <strong>Terminal → Parasym فقط</strong></li>
+      <li><strong>Sympathetic = Thoracolumbar</strong> (All Thoracic + L1, L2, L3)</li>
+      <li><strong>على القلب:</strong> +Inotropic ↑ + +Chronotropic ↑ + Coronary Vasodilatation</li>
+      <li><strong>على الرئة:</strong> Bronchodilatation ↑ + Pulmonary Vasoconstriction ↓</li>
+    </ol>
+  </div>
+</section>
+
+<!-- Developer Card -->
+<section class="card developer-card">
+  <div class="dev-container">
+    <div class="dev-avatar-wrap"><img src="developer.png" alt="محمد أحمد راضي" class="dev-avatar"></div>
+    <div class="dev-info">
+      <div class="dev-badge"><svg class="icon" viewBox="0 0 24 24" width="13" height="13"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg><span>المطور</span></div>
+      <h3 class="dev-name">محمد أحمد راضي</h3>
+      <p class="dev-role"><svg class="icon" viewBox="0 0 24 24" width="15" height="15" style="color:var(--primary)"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg><span>طالب في طب أسنان</span></p>
+      <div class="dev-contact">
+        <a href="https://wa.me/201211648437" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">
+          <svg class="icon" viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.04 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/></svg>
+          <span>تواصل عبر واتساب (01211648437)</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- Modal -->
+<div id="celebrationModal">
+  <div class="modal-box">
+    <div class="modal-icon-wrap"><svg viewBox="0 0 24 24" width="36" height="36" class="icon" style="color:var(--success)"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg></div>
+    <h2>🎉 ممتاز! 8 / 8</h2>
+    <p style="margin:14px 0 20px;font-size:15px;line-height:1.7;color:var(--text-secondary)">أجبت على جميع الأسئلة بشكل صحيح!<br>أتقنت مفاهيم الجهاز العصبي الذاتي بنجاح.</p>
+    <button style="background:var(--success);color:white;border:none;padding:9px 24px;font-size:14px;border-radius:10px;cursor:pointer;font-family:inherit" onclick="closeModal()">إغلاق ومتابعة</button>
+  </div>
+</div>
+
+<script>
+// ===== Audio Player =====
+let currentAudio = null;
+
+function playAudio(filename, element) {
+  const btn = element || (typeof event !== 'undefined' && event ? (event.currentTarget || (event.target && event.target.closest ? event.target.closest('button') : null)) : null);
+  if (currentAudio) {
+    currentAudio.pause();
+    document.querySelectorAll('.audio-btn.playing, .q-speech-btn.playing').forEach(b => b.classList.remove('playing'));
+  }
+  const audio = new Audio('audio/' + filename + '.mp3');
+  currentAudio = audio;
+  if (btn) btn.classList.add('playing');
+  audio.addEventListener('ended', () => { 
+    if (btn) btn.classList.remove('playing'); 
+    currentAudio = null; 
+  });
+  audio.addEventListener('error', () => {
+    if (btn) btn.classList.remove('playing');
+    currentAudio = null;
+    console.warn('Audio not found: audio/' + filename + '.mp3');
+  });
+  audio.play();
+}
+
+// ===== Speech =====
+function speakText(text) {
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'en-US'; u.rate = 0.9;
+    window.speechSynthesis.speak(u);
+  }
+}
+
+// ===== Theme =====
+function toggleTheme() {
+  const t = document.documentElement.getAttribute('data-theme');
+  const n = t === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', n);
+  localStorage.setItem('theme', n);
+  updateThemeButton(n);
+}
+function updateThemeButton(theme) {
+  const btn = document.getElementById('themeToggleBtn');
+  if (!btn) return;
+  btn.innerHTML = theme === 'dark'
+    ? `<svg class="icon" viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line></svg>`
+    : `<svg class="icon" viewBox="0 0 24 24" width="20" height="20"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+  btn.setAttribute('title', theme === 'dark' ? 'الوضع النهاري' : 'الوضع الليلي');
+}
+(function(){ const t = localStorage.getItem('theme')||'light'; document.documentElement.setAttribute('data-theme',t); updateThemeButton(t); })();
+
+// ===== Arabic Toggle =====
+function toggleArabic(btn) {
+  const t = btn.nextElementSibling;
+  t.classList.toggle('show');
+  const s = t.classList.contains('show');
+  btn.innerHTML = s
+    ? `<svg viewBox="0 0 24 24" class="icon" width="14" height="14"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>إخفاء الترجمة</span>`
+    : `<svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg><span>عرض السؤال بالعربية</span>`;
+}
+
+// ===== Quiz Engine =====
+const quizResults = {};
+const TOTAL = 8;
+let modalShown = false;
+
+function updateQuizScore() {
+  let c = 0;
+  for (let q in quizResults) if (quizResults[q]) c++;
+  document.getElementById('scoreDisplay').textContent = c + ' / ' + TOTAL;
+  const pct = Math.round((c/TOTAL)*100);
+  document.getElementById('scorePercent').textContent = pct + '%';
+  document.getElementById('progressFill').style.width = pct + '%';
+  const fb = document.getElementById('scoreFeedbackText');
+  if (c===0) fb.textContent = 'ابدأ بحل الأسئلة';
+  else if (c<4) fb.textContent = 'بداية جيدة، واصل!';
+  else if (c<7) fb.textContent = 'أداء متقدم، اقتربت!';
+  else if (c<8) fb.textContent = 'مستوى متميز، سؤال أخير!';
+  else { fb.textContent = 'الدرجة الكاملة 8/8 🎉'; if (!modalShown) { modalShown=true; document.getElementById('celebrationModal').style.display='flex'; } }
+}
+
+function checkAnswer(button, selectedIndex) {
+  const mcq = button.closest('.inline-mcq');
+  const qCard = button.closest('.question');
+  const correct = parseInt(mcq.getAttribute('data-correct'));
+  const explanations = JSON.parse(mcq.getAttribute('data-explanations')||'[]');
+  const options = mcq.querySelectorAll('.mcq-option');
+  const resultDiv = mcq.querySelector('.mcq-result');
+  options.forEach(o => o.classList.remove('selected-correct','selected-wrong'));
+  const isOk = selectedIndex === correct;
+  const qid = qCard.getAttribute('data-qid');
+  const optText = button.querySelector('span:first-child').textContent.trim();
+  const explanation = explanations[selectedIndex]||'';
+  if (isOk) {
+    button.classList.add('selected-correct');
+    resultDiv.className = 'mcq-result show correct-msg';
+    resultDiv.innerHTML = `<div class="result-title"><svg viewBox="0 0 24 24" class="icon" width="18" height="18"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg><span>إجابة صحيحة (${optText})</span></div><div class="result-explanation"><div class="explanation-title"><svg viewBox="0 0 24 24" class="icon" width="15" height="15"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg><strong>الشرح:</strong></div><p>${explanation}</p></div><div class="result-hint">يمكنك الضغط على أي خيار آخر لمعرفة سبب خطئه.</div>`;
+    if (qid) quizResults[qid] = true;
+    updateQuizScore();
+  } else {
+    button.classList.add('selected-wrong');
+    resultDiv.className = 'mcq-result show wrong-msg';
+    resultDiv.innerHTML = `<div class="result-title"><svg viewBox="0 0 24 24" class="icon" width="18" height="18"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg><span>اختيار غير صحيح (${optText})</span></div><div class="result-explanation"><div class="explanation-title"><svg viewBox="0 0 24 24" class="icon" width="15" height="15"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg><strong>سبب الخطأ:</strong></div><p>${explanation}</p></div><div class="result-hint">جرّب اختياراً آخر.</div>`;
+  }
+}
+
+function resetQuestion(btn) {
+  const mcq = btn.closest('.inline-mcq');
+  const qCard = btn.closest('.question');
+  mcq.querySelectorAll('.mcq-option').forEach(o => o.classList.remove('selected-correct','selected-wrong'));
+  const r = mcq.querySelector('.mcq-result'); r.className='mcq-result'; r.innerHTML='';
+  const qid = qCard.getAttribute('data-qid');
+  if (qid && quizResults[qid]) { delete quizResults[qid]; updateQuizScore(); }
+}
+
+function closeModal() { document.getElementById('celebrationModal').style.display='none'; }
+
+// ===== Progress Bar =====
+window.addEventListener('scroll', function() {
+  const ws = document.body.scrollTop || document.documentElement.scrollTop;
+  const h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  document.getElementById('progressFill').style.width = (ws/h*100)+'%';
+});
+</script>
+</body>
+</html>
