@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dental Anatomy I - Lab 1: Tooth Anatomy Terms | منصة تسهيل</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-gradient: linear-gradient(135deg, #f0f9ff 0%, #f1f5f9 50%, #f8fafc 100%);
+    --card-bg: #ffffff;
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --text-muted: #64748b;
+    --primary: #0284c7;
+    --primary-light: #f0f9ff;
+    --primary-border: #bae6fd;
+    --primary-dark: #0369a1;
+    --accent: #0f766e;
+    --accent-light: #f0fdfa;
+    --accent-border: #99f6e4;
+    --success: #16a34a;
+    --success-bg: #f0fdf4;
+    --success-border: #bbf7d0;
+    --warning: #d97706;
+    --warning-bg: #fffbeb;
+    --warning-border: #fde68a;
+    --border-color: #e2e8f0;
+    --shadow-sm: 0 1px 4px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 18px rgba(0,0,0,0.06);
+    --shadow-lg: 0 10px 25px rgba(2, 132, 199, 0.08);
+  }
+
+  [data-theme="dark"] {
+    --bg-gradient: linear-gradient(135deg, #082f49 0%, #0f172a 50%, #032338 100%);
+    --card-bg: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --primary: #38bdf8;
+    --primary-light: rgba(56, 189, 248, 0.12);
+    --primary-border: rgba(56, 189, 248, 0.25);
+    --primary-dark: #0284c7;
+    --accent: #2dd4bf;
+    --accent-light: rgba(45, 212, 191, 0.12);
+    --accent-border: rgba(45, 212, 191, 0.25);
+    --success: #34d399;
+    --success-bg: rgba(52, 211, 153, 0.12);
+    --success-border: rgba(52, 211, 153, 0.3);
+    --warning: #fbbf24;
+    --warning-bg: rgba(251, 191, 36, 0.12);
+    --warning-border: rgba(251, 191, 36, 0.3);
+    --border-color: #334155;
+    --shadow-sm: 0 1px 4px rgba(0,0,0,0.3);
+    --shadow-md: 0 4px 18px rgba(0,0,0,0.4);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.6);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Cairo', 'Segoe UI', Tahoma, Arial, sans-serif;
+    font-size: 16.5px;
+    line-height: 1.9;
+    background: var(--bg-gradient);
+    color: var(--text-primary);
+    min-height: 100vh;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  .icon {
+    display: inline-block;
+    vertical-align: middle;
+    stroke-width: 2;
+    fill: none;
+    stroke: currentColor;
+    flex-shrink: 0;
+  }
+
+  /* Progress bar */
+  .progress-bar-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: transparent;
+    z-index: 9999;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #0284c7, #0f766e, #38bdf8);
+    width: 0%;
+    transition: width 0.2s ease;
+  }
+
+  /* Top Nav */
+  .top-nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-sm);
+  }
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .nav-back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--primary-light);
+    border: 1px solid var(--primary-border);
+    color: var(--primary);
+    padding: 6px 14px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .nav-back-btn:hover {
+    background: var(--primary);
+    color: #ffffff;
+  }
+  .nav-title {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--text-primary);
+  }
+  .theme-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.2s;
+  }
+  .theme-btn:hover {
+    transform: scale(1.1);
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+
+  /* Container */
+  .container {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 24px 20px 80px;
+  }
+
+  /* Header Card */
+  .lab-header {
+    background: linear-gradient(135deg, #0369a1 0%, #0f766e 100%);
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 30px 32px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+  }
+  .lab-header::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+  }
+  .lab-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .lab-header h1 {
+    font-size: 26px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    line-height: 1.35;
+  }
+  .lab-header p {
+    font-size: 15px;
+    opacity: 0.9;
+    max-width: 680px;
+    line-height: 1.7;
+  }
+  .lab-meta {
+    display: flex;
+    gap: 16px;
+    margin-top: 18px;
+    flex-wrap: wrap;
+  }
+  .meta-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.15);
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  /* Quick Nav */
+  .quick-nav {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 4px 2px 14px;
+    margin-bottom: 20px;
+    scrollbar-width: thin;
+  }
+  .quick-chip {
+    white-space: nowrap;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 7px 15px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s;
+    box-shadow: var(--shadow-sm);
+  }
+  .quick-chip:hover {
+    background: var(--primary);
+    color: #ffffff;
+    border-color: var(--primary);
+    transform: translateY(-2px);
+  }
+
+  /* Main Content Cards */
+  .card {
+    background: var(--card-bg);
+    border-radius: 18px;
+    padding: 28px 30px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+  }
+  h2 {
+    color: var(--primary);
+    padding-bottom: 12px;
+    margin-bottom: 18px;
+    font-size: 21px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .badge-num {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: #ffffff;
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  h3 {
+    color: var(--text-primary);
+    margin: 18px 0 10px;
+    font-size: 17.5px;
+    font-weight: 800;
+  }
+
+  /* Audio button */
+  .audio-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    margin: 0 6px;
+    vertical-align: middle;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 6px rgba(2, 132, 199, 0.25);
+    flex-shrink: 0;
+  }
+  .audio-btn svg {
+    width: 14px;
+    height: 14px;
+    pointer-events: none;
+  }
+  .audio-btn:hover {
+    transform: scale(1.15);
+  }
+  .audio-btn.playing {
+    background: linear-gradient(135deg, var(--success), #047857) !important;
+    animation: pulse 0.6s ease-in-out infinite alternate;
+  }
+  @keyframes pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.15); }
+  }
+
+  /* Terms Boxes */
+  .term-card {
+    background: var(--primary-light);
+    border-right: 4px solid var(--primary);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 14px 0;
+    line-height: 1.85;
+  }
+  .term-card.accent {
+    background: var(--accent-light);
+    border-right-color: var(--accent);
+  }
+  .term-card.warning {
+    background: var(--warning-bg);
+    border-right-color: var(--warning);
+  }
+  .term-title {
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+    direction: ltr;
+    text-align: left;
+  }
+  .term-card.accent .term-title {
+    color: var(--accent);
+  }
+  .term-card.warning .term-title {
+    color: var(--warning);
+  }
+
+  /* Slide Image Container */
+  .slide-box {
+    margin: 20px 0;
+    text-align: center;
+  }
+  .slide-img {
+    max-width: 100%;
+    max-height: 420px;
+    border-radius: 14px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    background: #000000;
+    display: block;
+    margin: 0 auto;
+  }
+  .slide-caption {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  /* Notes & Highlights */
+  .note-box {
+    background: var(--warning-bg);
+    border: 1px solid var(--warning-border);
+    border-right: 4px solid var(--warning);
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin: 16px 0;
+  }
+  .note-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--warning);
+    font-weight: 800;
+    font-size: 15px;
+    margin-bottom: 6px;
+  }
+
+  .key-box {
+    background: var(--success-bg);
+    border: 1px solid var(--success-border);
+    border-right: 4px solid var(--success);
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin: 16px 0;
+  }
+  .key-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--success);
+    font-weight: 800;
+    font-size: 15px;
+    margin-bottom: 6px;
+  }
+
+  /* Feature Grid / Cards */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 14px;
+    margin: 16px 0;
+  }
+  .feature-card {
+    background: var(--card-bg);
+    border: 1.5px solid var(--border-color);
+    border-radius: 14px;
+    padding: 18px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.2s ease;
+  }
+  .feature-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--primary);
+    box-shadow: var(--shadow-md);
+  }
+  .feature-title {
+    font-size: 15.5px;
+    font-weight: 800;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+
+  /* Comparison Table */
+  .comparison-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 18px 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+  }
+  .comparison-table th {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: #ffffff;
+    padding: 12px 16px;
+    font-size: 14.5px;
+    font-weight: 800;
+    text-align: center;
+  }
+  .comparison-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 14.5px;
+    text-align: center;
+    background: var(--card-bg);
+  }
+  .comparison-table tr:hover td {
+    background: var(--primary-light);
+  }
+  .comparison-table tr:last-child td {
+    border-bottom: none;
+  }
+  .comparison-table td:first-child {
+    font-weight: 800;
+    color: var(--primary);
+    text-align: right;
+  }
+
+  /* Glossary Grid */
+  .glossary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .glossary-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.2s;
+  }
+  .glossary-item:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+  }
+  .glossary-info {
+    flex-grow: 1;
+    font-size: 13.5px;
+  }
+  .glossary-info strong {
+    color: var(--primary);
+    display: block;
+    font-size: 14.5px;
+    direction: ltr;
+    text-align: right;
+  }
+
+  /* Developer Card */
+  .developer-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 18px;
+    padding: 24px 28px;
+    margin-top: 28px;
+    box-shadow: var(--shadow-md);
+  }
+  .dev-container {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+  }
+  .dev-avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary);
+    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.25);
+    display: block;
+  }
+  .dev-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--primary-light);
+    color: var(--primary);
+    border: 1px solid var(--primary-border);
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .dev-name {
+    font-size: 21px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 4px 0;
+  }
+  .dev-role {
+    font-size: 14.5px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+  .whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #25D366;
+    color: white;
+    text-decoration: none;
+    padding: 8px 18px;
+    border-radius: 10px;
+    font-size: 13.5px;
+    font-weight: 700;
+    box-shadow: 0 3px 10px rgba(37,211,102,0.3);
+    transition: all 0.2s;
+  }
+  .whatsapp-btn:hover {
+    background: #1ebc59;
+    transform: translateY(-2px);
+    color: white;
+  }
+
+  @media(max-width: 640px) {
+    .container { padding: 14px 12px 60px; }
+    .card { padding: 20px 16px; }
+    h2 { font-size: 18.5px; }
+    .lab-header h1 { font-size: 21px; }
+    .dev-container { flex-direction: column; text-align: center; }
+    .glossary-grid { grid-template-columns: 1fr; }
+    .feature-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar-fixed"><div class="progress-fill" id="progressFill"></div></div>
+
+<!-- Sticky Top Bar -->
+<div class="top-nav">
+  <div class="nav-right">
+    <a href="../index.html" class="nav-back-btn">
+      <svg class="icon" viewBox="0 0 24 24" width="15" height="15"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      <span>بوابة المادة</span>
+    </a>
+    <span class="nav-title">Dental Anatomy I — Lab 1</span>
+  </div>
+  <button class="theme-btn" onclick="toggleTheme()" id="themeToggleBtn" title="الوضع الليلي">
+    <svg class="icon" viewBox="0 0 24 24" width="18" height="18"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+  </button>
+</div>
+
+<div class="container">
+
+<!-- Header Card -->
+<div class="lab-header">
+  <div class="lab-badge">
+    <svg class="icon" viewBox="0 0 24 24" width="14" height="14"><path d="M12 2C8.5 2 6 4 6 7c0 2.5 1 5.5 1.5 9 .5 3.5 1.5 5 2.5 5s1.5-2 2-4.5c.5 2.5 1 4.5 2 4.5s2-1.5 2.5-5c.5-3.5 1.5-6.5 1.5-9 0-3-2.5-5-6-5z"/></svg>
+    <span>تشريح الأسنان — السكاشن والمعامل (Lab 1)</span>
+  </div>
+  <h1>🦷 مصطلحات وتراكيب السن — Tooth Anatomy Terms</h1>
+  <p>شرح مبسط وواضح للشرائح من 29 إلى 40 من الداتاشو — التشريح العياني والمجهري، أنسجة السن، تجويف اللب، ومقارنة التاج التشريحي والسريري مع نطق صوتي لكل مصطلح.</p>
+  <div class="lab-meta">
+    <div class="meta-tag">📖 الشرائح 29 - 40</div>
+    <div class="meta-tag">🔊 32 تسجيل صوتي واضح</div>
+    <div class="meta-tag">🖼️ صور الشرح الأصلية</div>
+    <div class="meta-tag">💡 شرح عربي مبسط ومصطلحات إنجليزية</div>
+  </div>
+</div>
+
+<!-- Quick Navigation Bar -->
+<div class="quick-nav">
+  <a href="#sec1" class="quick-chip">1. نظرة عامة على التقسيم</a>
+  <a href="#sec2" class="quick-chip">2. التشريح العياني (Macro-anatomy)</a>
+  <a href="#sec3" class="quick-chip">3. التشريح المجهري (Microanatomy)</a>
+  <a href="#sec4" class="quick-chip">4. تجويف اللب (Pulp Cavity)</a>
+  <a href="#sec5" class="quick-chip">5. التاج التشريحي والسريري</a>
+  <a href="#sec6" class="quick-chip">6. جيب بزوغ السن (Crypt)</a>
+  <a href="#sec7" class="quick-chip">7. قاموس المصطلحات الصوتي</a>
+</div>
+
+<!-- ================= Section 1 ================= -->
+<section class="card" id="sec1">
+  <h2><span class="badge-num">1</span> مدخل إلى مصطلحات تشريح السن — Tooth Anatomy Terms</h2>
+  <p>في معمل تشريح الأسنان، بندرس السن من منظورين أساسيين:</p>
+
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="feature-title">
+        <svg class="icon" viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+        <span>Macro-anatomy (التشريح العياني)</span>
+        <button class="audio-btn" onclick="playAudio('macroanatomy')" title="استمع للنطق"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      </div>
+      <p style="font-size:14.5px;color:var(--text-secondary)">
+        دراسة الأجزاء الخارجية للسن التي يمكن رؤيتها وفحصها بالعين المجردة وبالملمس (مثل التاج، العنق، والجذر).
+      </p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-title">
+        <svg class="icon" viewBox="0 0 24 24" width="18" height="18"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <span>Microanatomy (التشريح المجهري)</span>
+        <button class="audio-btn" onclick="playAudio('microanatomy')" title="استمع للنطق"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      </div>
+      <p style="font-size:14.5px;color:var(--text-secondary)">
+        دراسة الأنسجة والطبقات الداخلية المكونة لبنية السن (المينا، العاج، اللب، والملاط).
+      </p>
+    </div>
+  </div>
+
+  <div class="slide-box">
+    <img src="images/slide_29.png" alt="Tooth Anatomy Terms Overview" class="slide-img">
+    <div class="slide-caption">
+      <svg class="icon" viewBox="0 0 24 24" width="14" height="14"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      <span>الشريحة 29: تصنيف المصطلحات التشريحية للسن</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= Section 2 ================= -->
+<section class="card" id="sec2">
+  <h2><span class="badge-num">2</span> التشريح العياني الخارجي — Macro-anatomy</h2>
+  <p>تشريحياً، يتكون كل سن في الفم من <strong>ثلاثة أجزاء رئيسية</strong>:</p>
+
+  <div class="term-card">
+    <div class="term-title">
+      <span>1. Crown (التاج)</span>
+      <button class="audio-btn" onclick="playAudio('crown')" title="استمع للنطق"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+    </div>
+    <p>
+      هو الجزء العلوي البارز من السن، المسؤول عن تقطيع وطحن الطعام (Mastication)، النطق السليم (Speech)، والمظهر الجمالي للابتسامة (Esthetics).
+    </p>
+  </div>
+
+  <div class="term-card accent">
+    <div class="term-title">
+      <span>2. The Neck / Cervix (عنق السن) & Cervical Line</span>
+      <button class="audio-btn" onclick="playAudio('neck')" title="Neck"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <button class="audio-btn" onclick="playAudio('cervix')" title="Cervix"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <button class="audio-btn" onclick="playAudio('cervical_line')" title="Cervical Line"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+    </div>
+    <p>
+      المنطقة الضيقة المحصورة بين التاج والجذر. يُرسم عليها خط مميز يسمى <strong>Cervical Line</strong> (أو <em>Cementoenamel Junction - CEJ</em>)، وهو الخط الفاصل بدقة بين طبقة المينا التي تغطي التاج وطبقة الملاط التي تغطي الجذر.
+    </p>
+  </div>
+
+  <div class="term-card">
+    <div class="term-title">
+      <span>3. Root(s) (الجذر أو الجذور)</span>
+      <button class="audio-btn" onclick="playAudio('root')" title="Root"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <button class="audio-btn" onclick="playAudio('roots')" title="Roots"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+    </div>
+    <p>
+      هو الجزء المدفون داخل عظام الفك في تجويف يسمى السنخ (Alveolar Socket)، ومغطى بالملاط (Cementum). وظيفته الأساسية تثبيت السن ونقل قوى المضغ للعظم. قد يمتلك السن جذراً واحداً (Single root) مثل القواطع والأنياب، أو جذرين، أو ثلاثة جذور مثل الضروس العلوية.
+    </p>
+  </div>
+
+  <div class="slide-box">
+    <img src="images/slide_30.png" alt="Macro-anatomy Parts of the Tooth" class="slide-img">
+    <div class="slide-caption">
+      <svg class="icon" viewBox="0 0 24 24" width="14" height="14"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      <span>الشريحة 30: الأجزاء التشريحية الثلاثة: التاج (Crown)، العنق (Neck / Cervical line)، والجذر (Root)</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= Section 3 ================= -->
+<section class="card" id="sec3">
+  <h2><span class="badge-num">3</span> التشريح المجهري وأنسجة السن — Microanatomy</h2>
+  <p>
+    عند عمل قطاع طولي في السن، نجد أنه يتكون من <strong>4 أنسجة</strong> أساسية: <strong>ثلاثة أنسجة صلبة متكلسة</strong>، و<strong>نسيج واحد رخو</strong>:
+  </p>
+
+  <div class="slide-box">
+    <img src="images/slide_31.png" alt="Microanatomy of Anterior and Posterior Teeth" class="slide-img">
+    <div class="slide-caption">
+      <svg class="icon" viewBox="0 0 24 24" width="14" height="14"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      <span>الشريحة 31 & 33: طبقات السن في الأسنان الأمامية والخلفية (Enamel, Dentin, Pulp, Cementum)</span>
+    </div>
+  </div>
+
+  <h3>الأنسجة الصلبة المتكلسة — Three Calcified Hard Tissues:</h3>
+
+  <div class="feature-card" style="margin-bottom: 12px; border-right: 4px solid #0284c7;">
+    <div class="feature-title">
+      <span>1. Enamel (المينا)</span>
+      <button class="audio-btn" onclick="playAudio('enamel')" title="استمع"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+    </div>
+    <ul style="padding-right: 20px; font-size: 14.5px; line-height: 1.8;">
+      <li><strong>أصلب نسيج في جسم الإنسان</strong> (<em>Hardest tissue in the human body</em>) نظراً لاحتوائه على نسبة معادن تفوق 96%.</li>
+      <li>يغطي التاج التشريحي (Anatomical Crown) بالكامل.</li>
+      <li>لا يحتوي على خلايا حية بعد اكتمال بزوغ السن، وبالتالي لا يمتلك القدرة على التجدد أو الالتئام التلقائي في حال تسوسه أو كسره.</li>
+    </ul>
+  </div>
+
+  <div class="feature-card" style="margin-bottom: 12px; border-right: 4px solid #0f766e;">
+    <div class="feature-title">
+      <span>2. Dentin (العاج)</span>
+      <button class="audio-btn" onclick="playAudio('dentin')" title="استمع"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+    </div>
+    <ul style="padding-right: 20px; font-size: 14.5px; line-height: 1.8;">
+      <li><strong>يمثل الكتلة والحجم الأكبر للسن</strong> (<em>Forms the main bulk of the tooth</em>).</li>
+      <li>يقع تحت طبقة المينا في التاج، وتحت طبقة الملاط في الجذر.</li>
+      <li>نسيج حيوي بلون أصفر فاتح، تتخلله قنوات مجهرية (Dentinal tubules) تنقل الإحساس بالألم والحرارة نحو اللب.</li>
+    </ul>
+  </div>
+
+  <div class="feature-card" style="margin-bottom: 16px; border-right: 4px solid #d97706;">
+    <div class="feature-title">
+      <span>3. Cementum (الملاط)</span>
+      <button class="audio-btn" onclick="playAudio('cementum')" title="استمع"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+    </div>
+    <ul style="padding-right: 20px; font-size: 14.5px; line-height: 1.8;">
+      <li><strong>نسيج صلب شبيه بالعظم</strong> (<em>A bony-like tissue</em>).</li>
+      <li>يغطي سطح الجذر (Covers the root).</li>
+      <li>يربط السن بالعظم المحيط به عن طريق تثبيت ألياف الرباط الداعم (Periodontal Ligament - PDL).</li>
+    </ul>
+  </div>
+
+  <h3>النسيج الرخو الوحيد — One Soft Tissue:</h3>
+
+  <div class="term-card warning">
+    <div class="term-title">
+      <span>Pulp (لب السن / العصب)</span>
+      <button class="audio-btn" onclick="playAudio('pulp')" title="استمع"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <button class="audio-btn" onclick="playAudio('soft_tissue')" title="Soft tissue"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <button class="audio-btn" onclick="playAudio('sensory_system')" title="Sensory system"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+    </div>
+    <p>
+      هو النسيج الرخو الوحيد الموجود في مركز السن، ومحاط بالعاج من جميع الجهات:
+    </p>
+    <ul style="padding-right: 20px; font-size: 14.5px; line-height: 1.8; margin-top: 6px;">
+      <li>يتكون من نسيج ضام (Connective tissue)، أوعية دموية لتغذية السن، أوعية ليمفاوية، وأعصاب حسية.</li>
+      <li>يمثل <strong>الجهاز الحسي للسن</strong> (<em>Sensory system of the tooth</em>) — المسؤول عن إشارات الألم التي تنبهنا لوجود تسوس أو التهاب.</li>
+    </ul>
+  </div>
+
+  <div class="slide-box">
+    <img src="images/slide_34.png" alt="Three Calcified Tissues and One Soft Tissue" class="slide-img">
+    <div class="slide-caption">
+      <svg class="icon" viewBox="0 0 24 24" width="14" height="14"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      <span>الشريحة 34: الأنسجة الصلبة الثلاثة (Enamel, Dentin, Cementum) والنسيج الرخو (Pulp)</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= Section 4 ================= -->
+<section class="card" id="sec4">
+  <h2><span class="badge-num">4</span> تجويف اللب وأقسامه — The Pulp Cavity</h2>
+  <p>
+    التجويف العظمي الداخلي الذي يحتوي على اللب يسمى <strong>Pulp Cavity</strong>
+    <button class="audio-btn" onclick="playAudio('pulp_cavity')" title="استمع"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>،
+    وينقسم إلى <strong>3 أجزاء تشريحية رئيسية</strong>:
+  </p>
+
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="feature-title">
+        <span>a. Pulp Chamber (حجرة اللب)</span>
+        <button class="audio-btn" onclick="playAudio('pulp_chamber')" title="استمع"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      </div>
+      <p style="font-size:14.5px;color:var(--text-secondary)">
+        هو التجويف الأوسع والواقع داخل تاج السن (<em>The portion of the pulp occupying the crown</em>).
+      </p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-title">
+        <span>b. Pulp Horn(s) (قرون اللب)</span>
+        <button class="audio-btn" onclick="playAudio('pulp_horns')" title="استمع"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      </div>
+      <p style="font-size:14.5px;color:var(--text-secondary)">
+        بروزات واستطالات مدببة تصعد من سقف حجرة اللب باتجاه نتوءات وحدبات التاج (<em>Projections in the roof of the pulp chamber</em>).
+      </p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-title">
+        <span>c. Pulp Canal / Root Canal (قناة الجذر)</span>
+        <button class="audio-btn" onclick="playAudio('root_canal')" title="Root Canal"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+        <button class="audio-btn" onclick="playAudio('pulp_canal')" title="Pulp Canal"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      </div>
+      <p style="font-size:14.5px;color:var(--text-secondary)">
+        القنوات الأنبوبية الدقيقة الممتدة داخل جذور السن (<em>The portion of the pulp occupying the root</em>)، وتنتهي بفتحة صغيرة (Apical foramen) تسمح بدخول الأعصاب والأوعية الدموية.
+      </p>
+    </div>
+  </div>
+
+  <div class="slide-box">
+    <img src="images/slide_32.png" alt="Pulp Cavity Structure" class="slide-img">
+    <div class="slide-caption">
+      <svg class="icon" viewBox="0 0 24 24" width="14" height="14"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      <span>الشريحة 32: أجزاء تجويف اللب: قرون اللب (Pulp horns)، حجرة اللب (Pulp chamber)، وقنوات الجذر (Root canals)</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= Section 5 ================= -->
+<section class="card" id="sec5">
+  <h2><span class="badge-num">5</span> التاج التشريحي والتاج السريري — Anatomical vs. Clinical Crown</h2>
+  <p>
+    من أهم المفاهيم في طب الأسنان السريري هو التفريق بين التاج من وجهة نظر التشريح، والتاج من وجهة نظر الرؤية السريرية داخل فم المريض:
+  </p>
+
+  <div class="feature-grid">
+    <div class="term-card">
+      <div class="term-title">
+        <span>Anatomical Crown (التاج التشريحي)</span>
+        <button class="audio-btn" onclick="playAudio('anatomical_crown')" title="استمع"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      </div>
+      <ul style="padding-right: 18px; font-size: 14.5px; line-height: 1.8;">
+        <li>هو الجزء من السن <strong>المغطى بطبقة المينا (Enamel)</strong>.</li>
+        <li><strong>طوله ثابت لا يتغير مدى الحياة</strong> (<em>It is constant in length</em>).</li>
+      </ul>
+    </div>
+
+    <div class="term-card accent">
+      <div class="term-title">
+        <span>Clinical Crown (التاج السريري)</span>
+        <button class="audio-btn" onclick="playAudio('clinical_crown')" title="استمع"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      </div>
+      <ul style="padding-right: 18px; font-size: 14.5px; line-height: 1.8;">
+        <li>هو الجزء من السن <strong>الظاهر داخل الفم فوق مستوى خط اللثة</strong> (<em>Visible in oral cavity above gum line</em>).</li>
+        <li><strong>طوله متغير طوال حياة المريض</strong> (<em>It may change in length throughout life</em>) حسب مستوى اللثة وصحة الأنسجة المحيطة.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="slide-box">
+    <img src="images/slide_35.png" alt="Anatomical and Clinical Crown Comparison" class="slide-img">
+    <div class="slide-caption">
+      <svg class="icon" viewBox="0 0 24 24" width="14" height="14"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      <span>الشريحة 35: المقارنة بين التاج التشريحي والتاج السريري</span>
+    </div>
+  </div>
+
+  <h3>الحالات الثلاث للعلاقة بين التاجين (Three Clinical Situations):</h3>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>الحالة</th>
+        <th>العلاقة الرياضية</th>
+        <th>الوصف والسبب السريري</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>الوضع الطبيعي للأسنان الشابة</td>
+        <td><strong>Clinical &lt; Anatomical</strong></td>
+        <td>التاج السريري أقصر من التشريحي؛ لأن حافة اللثة السليمة تغطي عادةً جزءاً صغيراً من المينا بالقرب من العنق.</td>
+      </tr>
+      <tr>
+        <td>انطباق مستوى اللثة على العنق</td>
+        <td><strong>Clinical = Anatomical</strong></td>
+        <td>التاج السريري يساوي التاج التشريحي تماماً؛ عندما تقع حافة اللثة بدقة متناهية عند خط الـ Cervical line (CEJ).</td>
+      </tr>
+      <tr>
+        <td>انحسار وتراجع اللثة (Gingival Recession)</td>
+        <td><strong>Clinical &gt; Anatomical</strong></td>
+        <td>التاج السريري أطول من التشريحي؛ بسبب تراجع اللثة نحو الأسفل، فينكشف التاج التشريحي كاملاً بالإضافة إلى جزء من الجذر العاري!</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="slide-box">
+    <img src="images/slide_36.png" alt="Three states of clinical and anatomical crown" class="slide-img">
+    <div class="slide-caption">
+      <svg class="icon" viewBox="0 0 24 24" width="14" height="14"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      <span>الشريحة 36: الحالات الثلاث: Clinical &lt; Anatomical و Clinical = Anatomical و Clinical &gt; Anatomical</span>
+    </div>
+  </div>
+
+  <div class="key-box">
+    <div class="key-header">
+      <svg class="icon" viewBox="0 0 24 24" width="18" height="18"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      <span>القاعدة الذهبية (Golden Rule):</span>
+    </div>
+    <p>
+      <strong>Normally, the clinical crown is slightly shorter than the anatomical crown.</strong><br>
+      في الحالة الطبيعية الصحية، التاج السريري يكون أقصر قليلاً من التاج التشريحي لأن اللثة الحرة (Free gingiva) تغطي 1 إلى 2 مم من أسفل المينا.
+    </p>
+  </div>
+
+  <div class="slide-box">
+    <img src="images/slide_37.png" alt="Normally clinical crown is shorter" class="slide-img">
+    <div class="slide-caption">
+      <svg class="icon" viewBox="0 0 24 24" width="14" height="14"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      <span>الشريحة 37: في الوضع الطبيعي يكون التاج السريري أقصر قليلاً من التاج التشريحي</span>
+    </div>
+  </div>
+
+  <h3>صور وتطبيقات سريرية من الواقع (Clinical Cases):</h3>
+
+  <div class="feature-grid">
+    <div>
+      <div class="slide-box" style="margin-top: 0;">
+        <img src="images/slide_38.png" alt="Clinical Crown including root" class="slide-img">
+        <div class="slide-caption">
+          <span>الشريحة 38: انحسار اللثة (Recession) كشف جزءاً من الجذر، فصار التاج السريري أطول من التشريحي!</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="slide-box" style="margin-top: 0;">
+        <img src="images/slide_39.png" alt="Gingiva covering anatomical crown" class="slide-img">
+        <div class="slide-caption">
+          <span>الشريحة 39: تغطية اللثة للتاج أثناء البزوغ (Eruption) أو تضخم اللثة، فصار التاج السريري أقصر بكثير!</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= Section 6 ================= -->
+<section class="card" id="sec6">
+  <h2><span class="badge-num">6</span> مصطلحات سنية عامة — جيب السن النامي (Crypt)</h2>
+  
+  <div class="term-card" style="border-right-color: #0f766e; background: var(--accent-light);">
+    <div class="term-title" style="color: var(--accent);">
+      <span>Crypt (الجيب أو الكهف العظمي للسن)</span>
+      <button class="audio-btn" onclick="playAudio('crypt')" title="Crypt"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <button class="audio-btn" onclick="playAudio('unerupted_tooth')" title="Unerupted tooth"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+    </div>
+    <p>
+      <strong>التعريف الدقيق:</strong><br>
+      هو التجويف أو الفراغ العظمي داخل عظم الفك الذي يحتوي على السن النامي قبل بزوغه في الفم.<br>
+      <em>(It is the bony space in the jaw containing the developing un-erupted tooth).</em>
+    </p>
+  </div>
+
+  <div class="note-box">
+    <div class="note-header">
+      <svg class="icon" viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <span>ملاحظة فارقة للسكاشن والامتحان الشفوي:</span>
+    </div>
+    <ul style="padding-right: 20px; font-size: 14.5px; line-height: 1.8;">
+      <li><strong>Crypt:</strong> تجويف عظمي يحتوي على سن <strong>غير بازغ لا يزال في مرحلة التكوين والنمو (Developing un-erupted tooth)</strong>.</li>
+      <li><strong>Socket / Alveolus:</strong> التجويف العظمي الذي يحتوي على جذور السن <strong>الذي بزغ بالفعل واستقر في مكانه (Erupted tooth)</strong>.</li>
+    </ul>
+  </div>
+
+  <div class="slide-box">
+    <img src="images/slide_40.png" alt="Bony Crypt with developing tooth" class="slide-img">
+    <div class="slide-caption">
+      <svg class="icon" viewBox="0 0 24 24" width="14" height="14"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      <span>الشريحة 40: الجيب العظمي (Crypt) في الأشعة السينية وعلى جمجمة تظهر براعم الأسنان غير البازغة</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= Section 7: Glossary ================= -->
+<section class="card" id="sec7">
+  <h2><span class="badge-num">7</span> قاموس المصطلحات الصوتية للسكشن 🔊</h2>
+  <p style="color:var(--text-muted);font-size:14px;margin-bottom:14px">
+    اضغط على زر الصوت بجانب أي مصطلح للاستماع إلى النطق الإنجليزي الصحيح والواضح:
+  </p>
+
+  <div class="glossary-grid">
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('macroanatomy')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Macroanatomy</strong><span>التشريح العياني الخارجي</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('microanatomy')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Microanatomy</strong><span>التشريح المجهري والأنسجة</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('crown')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Crown</strong><span>تاج السن</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('neck')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Neck</strong><span>عنق السن</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('cervix')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Cervix</strong><span>العنق التشريحي</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('cervical_line')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Cervical Line</strong><span>خط العنق الفاصل (CEJ)</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('root')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Root</strong><span>الجذر</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('enamel')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Enamel</strong><span>المينا (أصلب نسيج بالجسم)</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('dentin')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Dentin</strong><span>العاج (الكتلة الأساسية للسن)</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('cementum')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Cementum</strong><span>الملاط (نسيج عظمي يغطي الجذر)</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('pulp')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Pulp</strong><span>اللب (النسيج الرخو الحسي)</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('pulp_cavity')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Pulp Cavity</strong><span>التجويف اللبي</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('pulp_chamber')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Pulp Chamber</strong><span>حجرة اللب في التاج</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('pulp_horns')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Pulp Horns</strong><span>قرون اللب الممتدة للحدبات</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('root_canal')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Root Canal</strong><span>قناة الجذر</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('anatomical_crown')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Anatomical Crown</strong><span>التاج التشريحي (مغطى بالمينا وثابت)</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('clinical_crown')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Clinical Crown</strong><span>التاج السريري (الظاهر ومتغير)</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('gingiva')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Gingiva</strong><span>اللثة</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('crypt')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Crypt</strong><span>جيب عظمي يحوي سناً نامياً غير بازغ</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('unerupted_tooth')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Unerupted Tooth</strong><span>سن غير بازغ</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Developer Card -->
+<section class="card developer-card">
+  <div class="dev-container">
+    <div class="dev-avatar-wrap"><img src="developer.png" alt="محمد أحمد راضي" class="dev-avatar"></div>
+    <div class="dev-info">
+      <div class="dev-badge"><svg class="icon" viewBox="0 0 24 24" width="13" height="13"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg><span>إعداد وتطوير</span></div>
+      <h3 class="dev-name">محمد أحمد راضي</h3>
+      <p class="dev-role"><svg class="icon" viewBox="0 0 24 24" width="15" height="15" style="color:var(--primary)"><path d="M12 2C8.5 2 6 4 6 7c0 2.5 1 5.5 1.5 9 .5 3.5 1.5 5 2.5 5s1.5-2 2-4.5c.5 2.5 1 4.5 2 4.5s2-1.5 2.5-5c.5-3.5 1.5-6.5 1.5-9 0-3-2.5-5-6-5z"/></svg><span>طالب في طب أسنان</span></p>
+      <div class="dev-contact">
+        <a href="https://wa.me/201211648437" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">
+          <svg class="icon" viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.04 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/></svg>
+          <span>تواصل عبر واتساب (01211648437)</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<script>
+// ===== Audio Player =====
+let currentAudio = null;
+
+function playAudio(filename, element) {
+  const btn = element || (typeof event !== 'undefined' && event ? (event.currentTarget || (event.target && event.target.closest ? event.target.closest('button') : null)) : null);
+  if (currentAudio) {
+    currentAudio.pause();
+    document.querySelectorAll('.audio-btn.playing').forEach(b => b.classList.remove('playing'));
+  }
+  const audio = new Audio('audio/' + filename + '.mp3');
+  currentAudio = audio;
+  if (btn) btn.classList.add('playing');
+  audio.addEventListener('ended', () => { 
+    if (btn) btn.classList.remove('playing'); 
+    currentAudio = null; 
+  });
+  audio.addEventListener('error', () => {
+    if (btn) btn.classList.remove('playing');
+    currentAudio = null;
+    console.warn('Audio not found: audio/' + filename + '.mp3');
+  });
+  audio.play();
+}
+
+// ===== Theme Toggle =====
+function toggleTheme() {
+  const current = document.documentElement.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  updateThemeButton(next);
+}
+
+function updateThemeButton(theme) {
+  const btn = document.getElementById('themeToggleBtn');
+  if (!btn) return;
+  btn.innerHTML = theme === 'dark'
+    ? `<svg class="icon" viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line></svg>`
+    : `<svg class="icon" viewBox="0 0 24 24" width="18" height="18"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+  btn.setAttribute('title', theme === 'dark' ? 'الوضع النهاري' : 'الوضع الليلي');
+}
+
+(function(){
+  const saved = localStorage.getItem('theme') || 'light';
+  document.documentElement.setAttribute('data-theme', saved);
+  updateThemeButton(saved);
+})();
+
+// ===== Reading Progress =====
+window.addEventListener('scroll', function() {
+  const st = document.body.scrollTop || document.documentElement.scrollTop;
+  const sh = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const pct = sh > 0 ? (st / sh) * 100 : 0;
+  document.getElementById('progressFill').style.width = pct + '%';
+});
+</script>
+
+</body>
+</html>
