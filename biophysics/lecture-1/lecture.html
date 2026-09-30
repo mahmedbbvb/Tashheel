@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الفيزياء الحيوية - المحاضرة 1: الغشاء الخلوي وفيزياء الانتشار | منصة تسهيل</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-gradient: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 50%, #f8fafc 100%);
+    --card-bg: #ffffff;
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --text-muted: #64748b;
+    --primary: #7c3aed;
+    --primary-light: #f5f3ff;
+    --primary-border: #ddd6fe;
+    --primary-dark: #6d28d9;
+    --accent: #0f766e;
+    --accent-light: #f0fdfa;
+    --accent-border: #99f6e4;
+    --blue: #2563eb;
+    --blue-light: #eff6ff;
+    --success: #16a34a;
+    --success-bg: #f0fdf4;
+    --success-border: #bbf7d0;
+    --warning: #d97706;
+    --warning-bg: #fffbeb;
+    --warning-border: #fde68a;
+    --border-color: #e2e8f0;
+    --shadow-sm: 0 1px 4px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 18px rgba(0,0,0,0.06);
+    --shadow-lg: 0 10px 25px rgba(124, 58, 237, 0.09);
+  }
+
+  [data-theme="dark"] {
+    --bg-gradient: linear-gradient(135deg, #1e1136 0%, #0f172a 50%, #090e1a 100%);
+    --card-bg: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --primary: #a78bfa;
+    --primary-light: rgba(167, 139, 250, 0.12);
+    --primary-border: rgba(167, 139, 250, 0.25);
+    --primary-dark: #8b5cf6;
+    --accent: #2dd4bf;
+    --accent-light: rgba(45, 212, 191, 0.12);
+    --accent-border: rgba(45, 212, 191, 0.25);
+    --blue: #60a5fa;
+    --blue-light: rgba(96, 165, 250, 0.12);
+    --success: #34d399;
+    --success-bg: rgba(52, 211, 153, 0.12);
+    --success-border: rgba(52, 211, 153, 0.3);
+    --warning: #fbbf24;
+    --warning-bg: rgba(251, 191, 36, 0.12);
+    --warning-border: rgba(251, 191, 36, 0.3);
+    --border-color: #334155;
+    --shadow-sm: 0 1px 4px rgba(0,0,0,0.3);
+    --shadow-md: 0 4px 18px rgba(0,0,0,0.4);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.6);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Cairo', 'Segoe UI', Tahoma, Arial, sans-serif;
+    font-size: 16.5px;
+    line-height: 1.9;
+    background: var(--bg-gradient);
+    color: var(--text-primary);
+    min-height: 100vh;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  .icon {
+    display: inline-block;
+    vertical-align: middle;
+    stroke-width: 2;
+    fill: none;
+    stroke: currentColor;
+    flex-shrink: 0;
+  }
+
+  /* Progress bar */
+  .progress-bar-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: transparent;
+    z-index: 9999;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #7c3aed, #0f766e, #2563eb);
+    width: 0%;
+    transition: width 0.2s ease;
+  }
+
+  /* Top Nav */
+  .top-nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-sm);
+  }
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .nav-back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--primary-light);
+    border: 1px solid var(--primary-border);
+    color: var(--primary);
+    padding: 6px 14px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .nav-back-btn:hover {
+    background: var(--primary);
+    color: #ffffff;
+  }
+  .nav-title {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--text-primary);
+  }
+  .theme-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.2s;
+  }
+  .theme-btn:hover {
+    transform: scale(1.1);
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+
+  /* Container */
+  .container {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 24px 20px 80px;
+  }
+
+  /* Header Card */
+  .lecture-header {
+    background: linear-gradient(135deg, #5b21b6 0%, #7c3aed 50%, #0f766e 100%);
+    color: #ffffff;
+    border-radius: 22px;
+    padding: 30px 32px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+  }
+  .lec-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .lecture-header h1 {
+    font-size: 25px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    line-height: 1.35;
+  }
+  .lecture-header p {
+    font-size: 15px;
+    opacity: 0.95;
+    max-width: 720px;
+    line-height: 1.7;
+  }
+  .lec-meta {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+  .meta-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.16);
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  /* Quick Navigation */
+  .quick-nav {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 4px 2px 14px;
+    margin-bottom: 20px;
+    scrollbar-width: thin;
+  }
+  .quick-chip {
+    white-space: nowrap;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 7px 15px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s;
+    box-shadow: var(--shadow-sm);
+  }
+  .quick-chip:hover {
+    background: var(--primary);
+    color: #ffffff;
+    border-color: var(--primary);
+    transform: translateY(-2px);
+  }
+
+  /* Cards */
+  .card {
+    background: var(--card-bg);
+    border-radius: 18px;
+    padding: 26px 28px;
+    margin-bottom: 22px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+  }
+  h2 {
+    color: var(--primary);
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+    font-size: 20.5px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .badge-num {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: #ffffff;
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  h3 {
+    color: var(--text-primary);
+    margin: 18px 0 10px;
+    font-size: 17px;
+    font-weight: 800;
+  }
+
+  /* Audio button */
+  .audio-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 27px;
+    height: 27px;
+    cursor: pointer;
+    margin: 0 6px;
+    vertical-align: middle;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 6px rgba(124, 58, 237, 0.25);
+    flex-shrink: 0;
+  }
+  .audio-btn svg {
+    width: 13px;
+    height: 13px;
+    pointer-events: none;
+  }
+  .audio-btn:hover {
+    transform: scale(1.15);
+  }
+  .audio-btn.playing {
+    background: linear-gradient(135deg, var(--success), #047857) !important;
+    animation: pulse 0.6s ease-in-out infinite alternate;
+  }
+  @keyframes pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.15); }
+  }
+
+  /* Concept Box */
+  .concept-box {
+    background: var(--primary-light);
+    border-right: 4px solid var(--primary);
+    border-radius: 12px;
+    padding: 15px 18px;
+    margin: 14px 0;
+    line-height: 1.85;
+  }
+  .concept-box.accent {
+    background: var(--accent-light);
+    border-right-color: var(--accent);
+  }
+  .concept-box.blue {
+    background: var(--blue-light);
+    border-right-color: var(--blue);
+  }
+  .concept-box.warning {
+    background: var(--warning-bg);
+    border-right-color: var(--warning);
+  }
+  .concept-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+    direction: ltr;
+    text-align: left;
+  }
+  .concept-box.accent .concept-title { color: var(--accent); }
+  .concept-box.blue .concept-title { color: var(--blue); }
+  .concept-box.warning .concept-title { color: var(--warning); }
+
+  /* Diagram Images */
+  .diagram-box {
+    margin: 18px 0;
+    text-align: center;
+  }
+  .diagram-img {
+    max-width: 100%;
+    max-height: 400px;
+    border-radius: 14px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    display: block;
+    margin: 0 auto;
+    background: #000000;
+  }
+  .diagram-caption {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  /* Equation Box */
+  .equation-box {
+    background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);
+    color: #a78bfa;
+    padding: 16px 20px;
+    border-radius: 12px;
+    margin: 14px 0;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 17.5px;
+    font-weight: 700;
+    direction: ltr;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    border: 1px solid rgba(167, 139, 250, 0.25);
+  }
+  .equation-desc {
+    font-family: 'Cairo', sans-serif;
+    color: #cbd5e1;
+    font-size: 13.5px;
+    margin-top: 6px;
+    font-weight: 500;
+    direction: rtl;
+  }
+
+  /* Rule Card */
+  .rule-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-right: 5px solid var(--primary);
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.2s;
+  }
+  .rule-card:hover {
+    transform: translateX(-3px);
+    border-color: var(--primary-border);
+  }
+  .rule-badge {
+    background: var(--primary-light);
+    color: var(--primary);
+    font-weight: 800;
+    font-size: 13px;
+    padding: 4px 10px;
+    border-radius: 8px;
+    white-space: nowrap;
+    border: 1px solid var(--primary-border);
+    flex-shrink: 0;
+  }
+  .rule-text {
+    flex: 1;
+    font-size: 14.5px;
+    line-height: 1.85;
+    color: var(--text-primary);
+  }
+
+  /* Grid Features */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px;
+    margin: 14px 0;
+  }
+  .feature-box {
+    background: var(--card-bg);
+    border: 1.5px solid var(--border-color);
+    border-radius: 14px;
+    padding: 16px 18px;
+    box-shadow: var(--shadow-sm);
+  }
+  .feature-head {
+    font-size: 15.5px;
+    font-weight: 800;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+
+  /* Callouts */
+  .exam-tip {
+    background: var(--warning-bg);
+    border: 1px solid var(--warning-border);
+    border-right: 4px solid var(--warning);
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin: 14px 0;
+  }
+  .exam-tip-head {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--warning);
+    font-weight: 800;
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
+
+  .clinical-box {
+    background: var(--success-bg);
+    border: 1px solid var(--success-border);
+    border-right: 4px solid var(--success);
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin: 14px 0;
+  }
+  .clinical-head {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--success);
+    font-weight: 800;
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
+
+  /* Comparison Table */
+  .table-wrap {
+    overflow-x: auto;
+    margin: 16px 0;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+  }
+  .clean-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    text-align: center;
+  }
+  .clean-table th {
+    background: linear-gradient(135deg, var(--primary), #5b21b6);
+    color: #ffffff;
+    padding: 11px 14px;
+    font-weight: 800;
+    white-space: nowrap;
+  }
+  .clean-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--card-bg);
+  }
+  .clean-table tr:hover td {
+    background: var(--primary-light);
+  }
+  .clean-table tr:last-child td {
+    border-bottom: none;
+  }
+  .clean-table td:first-child {
+    font-weight: 800;
+    color: var(--primary);
+    text-align: right;
+  }
+
+  /* Glossary Grid */
+  .glossary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .glossary-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 11px 13px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.2s;
+  }
+  .glossary-item:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+  }
+  .glossary-info {
+    flex-grow: 1;
+    font-size: 13.5px;
+  }
+  .glossary-info strong {
+    color: var(--primary);
+    display: block;
+    font-size: 14px;
+    direction: ltr;
+    text-align: right;
+  }
+
+  /* Developer Card */
+  .developer-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 18px;
+    padding: 24px 28px;
+    margin-top: 26px;
+    box-shadow: var(--shadow-md);
+  }
+  .dev-container {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+  }
+  .dev-avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary);
+    box-shadow: 0 4px 14px rgba(124, 58, 237, 0.25);
+    display: block;
+  }
+  .dev-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--primary-light);
+    color: var(--primary);
+    border: 1px solid var(--primary-border);
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .dev-name {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 4px 0;
+  }
+  .dev-role {
+    font-size: 14.5px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+  .whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #25D366;
+    color: white;
+    text-decoration: none;
+    padding: 8px 18px;
+    border-radius: 10px;
+    font-size: 13.5px;
+    font-weight: 700;
+    box-shadow: 0 3px 10px rgba(37,211,102,0.3);
+    transition: all 0.2s;
+  }
+  .whatsapp-btn:hover {
+    background: #1ebc59;
+    transform: translateY(-2px);
+    color: white;
+  }
+
+  @media(max-width: 640px) {
+    .container { padding: 14px 12px 60px; }
+    .card { padding: 18px 16px; }
+    h2 { font-size: 18px; }
+    .lecture-header h1 { font-size: 20px; }
+    .dev-container { flex-direction: column; text-align: center; }
+    .glossary-grid { grid-template-columns: 1fr; }
+    .grid-2 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar-fixed"><div class="progress-fill" id="progressFill"></div></div>
+
+<!-- Sticky Top Bar -->
+<div class="top-nav">
+  <div class="nav-right">
+    <a href="../index.html" class="nav-back-btn">
+      <svg class="icon" viewBox="0 0 24 24" width="15" height="15"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      <span>بوابة البيوفيزياء</span>
+    </a>
+    <span class="nav-title">Biophysics — ملخص المحاضرة 1</span>
+  </div>
+  <button class="theme-btn" onclick="toggleTheme()" id="themeToggleBtn" title="الوضع الليلي">
+    <svg class="icon" viewBox="0 0 24 24" width="18" height="18"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+  </button>
+</div>
+
+<div class="container">
+
+
+
+<!-- Quick Navigation Bar -->
+<div class="quick-nav">
+  <a href="#sec1" class="quick-chip">1. تركيب الغشاء الخلوي</a>
+  <a href="#sec2" class="quick-chip">2. الدهون والكربوهيدرات</a>
+  <a href="#sec3" class="quick-chip">3. آليات النقل (السلبي والنشط)</a>
+  <a href="#sec4" class="quick-chip">4. جدول المقارنة الشامل</a>
+  <a href="#sec5" class="quick-chip">5. فيزياء الانتشار (الحركة العشوائية)</a>
+  <a href="#sec6" class="quick-chip">6. زمن الانتشار والتطبيقات السريرية</a>
+  <a href="#sec7" class="quick-chip">7. نفاذية الغشاء وسرعة التدفق</a>
+  <a href="#sec8" class="quick-chip">8. القواعد الذهبية للامتحان</a>
+  <a href="#sec9" class="quick-chip">9. قاموس النطق الصوتي</a>
+</div>
+
+<!-- ================= Section 1 ================= -->
+<section class="card" id="sec1">
+  <h2><span class="badge-num">1</span> تركيب الغشاء الخلوي — Cell Membrane Structure</h2>
+  
+  <p>
+    <strong>الغشاء الخلوي (Cell Membrane)</strong>
+    <button class="audio-btn" onclick="playAudio('cell_membrane')" title="استمع"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+    هو الجدار الحارس للخلية، مسؤوليته الحفاظ على حياتها بالتحكم في دخول وخروج المواد بين السيتوبلازم والسائل الخارجي (<strong>ECF</strong>
+    <button class="audio-btn" onclick="playAudio('extracellular_fluid')" title="ECF"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>).
+  </p>
+
+  <div class="diagram-box">
+    <img src="images/slide_10.png" alt="Cell Membrane Bilayer Diagram" class="diagram-img">
+    <div class="diagram-caption">
+      <span>رسم توضيحي للغشاء: الفوسفوليبيدات، البروتينات الناقلة، الكوليسترول، والكربوهيدرات</span>
+    </div>
+  </div>
+
+  <p>يتكون الغشاء من 4 مكونات رئيسية ظاهرة بالرسمة:</p>
+  <div class="grid-2">
+    <div class="concept-box">
+      <div class="concept-title"><span>1. Phospholipids (طبقة الدهون المزدوجة)</span></div>
+      <p>تشكل الهيكل الأساسي للغشاء (Lipid Bilayer)، تمنع مرور المواد الذائبة في الماء وتسمح فقط بمرور المواد الذائبة في الدهون والغازات.</p>
+    </div>
+
+    <div class="concept-box accent">
+      <div class="concept-title"><span>2. Membrane Proteins (البروتينات)</span></div>
+      <p>تعمل كبوابات وقنوات (Channels) ومضخات وحوامل لنقل الأيونات والجلوكوز التي لا تستطيع عبور الدهون.</p>
+    </div>
+
+    <div class="concept-box warning">
+      <div class="concept-title"><span>3. Cholesterol (الكوليسترول)</span></div>
+      <p>يستقر بين ذيول الدهون، وظيفته الحفاظ على مرونة وسيولة الغشاء (Fluidity) ومنعه من التجمد أو التفكك.</p>
+    </div>
+
+    <div class="concept-box blue">
+      <div class="concept-title"><span>4. Carbohydrates (الكربوهيدرات)</span></div>
+      <p>سلاسل سكرية متصلة بالبروتينات أو الدهون على السطح الخارجي للتعرف الخلوي والمناعي (Cell recognition).</p>
+    </div>
+  </div>
+
+  <h3>كيف تُبنى وتُهدم الجزيئات الكبيرة؟ (Macromolecules):</h3>
+  <div class="diagram-box">
+    <img src="images/slide_14.png" alt="Dehydration Synthesis vs Hydrolysis" class="diagram-img">
+    <div class="diagram-caption">
+      <span>تفاعل البناء بنزع ماء (Dehydration) مقابل تفاعل الهدم بإضافة ماء (Hydrolysis)</span>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="concept-box" style="border-right-color: var(--primary);">
+      <strong>🔹 تفاعل البناء (Dehydration Synthesis):</strong>
+      <button class="audio-btn" onclick="playAudio('dehydration_synthesis')" title="استمع"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button><br>
+      ربط وحدتين صغيرتين (Monomers) لتكوين بوليمر كبير عن طريق <strong>نزع جزيء ماء (H₂O)</strong> بمساعدة إنزيم.
+    </div>
+
+    <div class="concept-box accent">
+      <strong>🔹 تفاعل الهدم (Hydrolysis):</strong>
+      <button class="audio-btn" onclick="playAudio('hydrolysis')" title="استمع"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button><br>
+      تكسير الروابط بين الوحدات عن طريق <strong>إضافة جزيء ماء (H₂O)</strong> لإعادة فصلها.
+    </div>
+  </div>
+</section>
+
+<!-- ================= Section 2 ================= -->
+<section class="card" id="sec2">
+  <h2><span class="badge-num">2</span> دهون وكربوهيدرات الغشاء — Lipids & Carbohydrates</h2>
+
+  <h3>1. الكربوهيدرات: أنواعها ووظائفها</h3>
+  <div class="diagram-box">
+    <img src="images/slide_16.png" alt="Carbohydrates Structure" class="diagram-img">
+    <div class="diagram-caption">
+      <span>تصنيف السكريات: أحادية (طاقة سريعة)، ثنائية (نقل)، وعديدة (تخزين وبناء)</span>
+    </div>
+  </div>
+
+  <ul style="padding-right: 20px; font-size: 15px; line-height: 1.9;">
+    <li><strong>أحادية (Monosaccharides):</strong> وحدة واحدة تمثل وقود الطاقة المباشر للخلية مثل الجلوكوز (Glucose) والفركتوز (Fructose).</li>
+    <li><strong>ثنائية (Disaccharides):</strong> وحدتان مرتبطتان لنقل السكر مثل السكروز (Sucrose) والمالتوز (Maltose).</li>
+    <li><strong>معقدة عديدة (Polysaccharides):</strong> للتخزين كالجليكوجين (Glycogen) في الحيوانات والنشا (Starch) في النباتات، أو للدعم الهيكلي كالسليلوز والكايتين.</li>
+  </ul>
+
+  <h3>2. الفوسفوليبيدات — سر سيولة ومرونة الغشاء:</h3>
+  <div class="diagram-box">
+    <img src="images/slide_17.png" alt="Phospholipid Structure with bent tail" class="diagram-img">
+    <div class="diagram-caption">
+      <span>جزيء الفوسفوليبيد: رأس محب للماء + ذيلان كارهان للماء (أحدهما منحنٍ غير مشبع)</span>
+    </div>
+  </div>
+
+  <div class="exam-tip">
+    <div class="exam-tip-head">
+      <svg class="icon" viewBox="0 0 24 24" width="16" height="16"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <span>نقطة امتحانية هامة جداً:</span>
+    </div>
+    <p>
+      أحد ذيلي الفوسفوليبيد غير مشبع (<strong>Unsaturated</strong>) ويحتوي على انحناء (<strong>Bent tail</strong>) يمنع التصاق وتجمد الدهون، وهو السر الفيزيائي الذي يبقي غشاء الخلية مرناً وسائلاً في درجات حرارة الجسم!
+    </p>
+  </div>
+
+  <h3>3. الستيرويدات والكوليسترول (Steroids & Cholesterol):</h3>
+  <div class="diagram-box">
+    <img src="images/slide_19.png" alt="Steroids 4 rings structure" class="diagram-img" style="max-height: 280px;">
+    <div class="diagram-caption">
+      <span>التركيب الكيميائي للستيرويدات: أربع حلقات كربونية مدمجة في الكوليسترول والكورتيزول والتستوستيرون</span>
+    </div>
+  </div>
+  <p>
+    الستيرويدات دهون مميزة <strong>لا تحتوي على أحماض دهنية</strong>، بل تتكون من <strong>4 حلقات كربونية</strong>. الكوليسترول (Cholesterol) موجود في خلايا الحيوان والإنسان فقط (غير موجود بالنباتات)، وهو المادة الخام لتصنيع هرمونات الجسم المنظمة (كورتيزول، تستوستيرون).
+  </p>
+</section>
+
+<!-- ================= Section 3 ================= -->
+<section class="card" id="sec3">
+  <h2><span class="badge-num">3</span> آليات انتقال المواد عبر الغشاء — Transport Mechanisms</h2>
+
+  <div class="diagram-box">
+    <img src="images/slide_20.png" alt="Passive vs Active Transport Diagram" class="diagram-img">
+    <div class="diagram-caption">
+      <span>مقارنة بصرية بين الانتشار البسيط، الانتشار الميسر بالحوامل، والنقل النشط بمضخات الطاقة</span>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="concept-box blue">
+      <div class="concept-title">
+        <span>1. Passive Transport (النقل السلبي)</span>
+        <button class="audio-btn" onclick="playAudio('passive_transport')" title="استمع"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      </div>
+      <p>
+        • مع تدرج التركيز: من التركيز العالي إلى المنخفض (Down concentration gradient).<br>
+        • <strong>لا يحتاج إلى طاقة (NO ATP needed)</strong>، تتحرك الجزيئات بطاقتها الحركية الذاتية (Kinetic Energy).
+      </p>
+    </div>
+
+    <div class="concept-box warning">
+      <div class="concept-title">
+        <span>2. Active Transport (النقل النشط)</span>
+        <button class="audio-btn" onclick="playAudio('active_transport')" title="استمع"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      </div>
+      <p>
+        • ضد تدرج التركيز: من التركيز المنخفض إلى العالي (Against concentration gradient).<br>
+        • <strong>يستهلك طاقة الخلية (Consumes ATP)</strong> ويحتاج بالضرورة لمضخات أو بروتينات حاملة.
+      </p>
+    </div>
+  </div>
+
+  <h3>أنواع النقل السلبي الثلاثة:</h3>
+  <ol style="padding-right: 22px; font-size: 15px; line-height: 2;">
+    <li><strong>Simple Diffusion (الانتشار البسيط):</strong> عبور مباشر عبر دهون الغشاء للغازات (مثل الأكسجين O₂ وثاني أكسيد الكربون CO₂) والمواد الذائبة بالدهون.</li>
+    <li><strong>Osmosis (الخاصية الأسموزية):</strong> حركة الماء عبر الغشاء باتجاه المحلول الأكثر تركيزاً بالأملاح أو السكر. القاعدة الذهبية: <strong>Water follows solute (الماء يتبع المذاب)</strong>.</li>
+    <li><strong>Facilitated Diffusion (الانتشار الميسر):</strong> نزول مع التدرج وبلا طاقة، لكن عبر <strong>ممرات بروتينية</strong> (لأن الجزيئات مشحونة أو كبيرة لا تمر من الدهون).</li>
+  </ol>
+
+  <div class="diagram-box">
+    <img src="images/slide_26.png" alt="Osmosis diagram: Water follows Solute" class="diagram-img" style="max-height: 300px;">
+    <div class="diagram-caption">
+      <span>الخاصية الأسموزية: الماء يتحرك عبر الغشاء ليعادل تركيز السكر والمذاب (Water follows solute)</span>
+    </div>
+  </div>
+
+  <h3>أنواع القنوات المفتوحة والمبوبة (Gated Channels):</h3>
+  <div class="diagram-box">
+    <img src="images/slide_29.png" alt="Gated ion channels" class="diagram-img">
+    <div class="diagram-caption">
+      <span>القنوات الأيونية المبوبة: (1) بفرق الجهد، (2) بارتباط كيميائي، و(3) بالضغط الميكانيكي</span>
+    </div>
+  </div>
+
+  <p>القنوات المائية الأيونية معظمها يفتح ويغلق بإشارات محددة:</p>
+  <ul style="padding-right: 20px; font-size: 14.5px; line-height: 1.85;">
+    <li><strong>Voltage-gated:</strong> تفتح بتغير فرق الجهد الكهربي للغشاء (مثل قنوات الصوديوم والبوتاسيوم في انتقال نبضة عصب الأسنان).</li>
+    <li><strong>Ligand-gated:</strong> تفتح بارتباط مركب كيميائي (مثل ارتباط الأسيتيل كولين بالخلايا العصبية والعضلية).</li>
+    <li><strong>Stress-gated:</strong> تفتح بالشد والضغط الميكانيكي (مثل خلايا الأذن الداخلية للشعور بالصوت والتوازن).</li>
+  </ul>
+
+  <h3>النقل النشط ومضخة الصوديوم والبوتاسيوم (Na⁺/K⁺ Pump):</h3>
+  <div class="diagram-box">
+    <img src="images/slide_31.png" alt="Sodium Potassium Pump Cycle" class="diagram-img">
+    <div class="diagram-caption">
+      <span>دورة مضخة الصوديوم والبوتاسيوم: ضخ 3 صوديوم للخارج مقابل إدخال 2 بوتاسيوم للداخل باستهلاك ATP واحد</span>
+    </div>
+  </div>
+
+  <div class="clinical-box">
+    <div class="clinical-head">
+      <svg class="icon" viewBox="0 0 24 24" width="16" height="16"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      <span>قاعدة عمل المضخة الأهم في الفسيولوجيا والبيوفيزياء:</span>
+    </div>
+    <p>
+      مضخة الصوديوم والبوتاسيوم (Na⁺/K⁺ ATPase) تستهلك جزيء ATP واحد لتقوم بـ:
+      <strong style="color:var(--warning)">طرد 3 أيونات صوديوم للخارج (3 Na⁺ out)</strong>
+      مقابل
+      <strong style="color:var(--blue)">إدخال أيوني بوتاسيوم للداخل (2 K⁺ in)</strong>.<br>
+      هذا الفارق (طرد 3 شحنات موجبة وإدخال 2 فقط) يحافظ على شحنة سالبة داخل الخلية ويخلق فرق الجهد الكهربي الضروري لانتقال إشارات الألم في أعصاب الأسنان والتأثير المخدر للبنج!
+    </p>
+  </div>
+</section>
+
+<!-- ================= Section 4 ================= -->
+<section class="card" id="sec4">
+  <h2><span class="badge-num">4</span> جدول المقارنة الشامل لطرق النقل — The Types Compared</h2>
+
+  <div class="diagram-box">
+    <img src="images/slide_32.png" alt="Ways to diffuse across membrane" class="diagram-img" style="max-height: 250px;">
+    <div class="diagram-caption">
+      <span>الطرق المختلفة لعبور الغشاء: انتشار بسيط عبر الدهون، عبر قنوات، عبر حوامل، وأسموزية</span>
+    </div>
+  </div>
+
+  <div class="diagram-box">
+    <img src="images/slide_33.png" alt="The types compared table" class="diagram-img">
+    <div class="diagram-caption">
+      <span>جدول الشريحة 33: المقارنة من حيث الاحتياج لبروتين، حدوث الإشباع، واستهلاك الطاقة</span>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table class="clean-table">
+      <thead>
+        <tr>
+          <th>نوع النقل (Type)</th>
+          <th>بروتين؟ (Protein?)</th>
+          <th>يصل للإشباع؟ (Saturates?)</th>
+          <th>طاقة؟ (Energy?)</th>
+          <th>أمثلة وتطبيقات (Examples)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Simple diffusion</td>
+          <td>لا (No)</td>
+          <td>لا (No)</td>
+          <td>لا (No)</td>
+          <td>الأكسجين، ثاني أكسيد الكربون (CO₂)، الهرمونات الستيرويدية</td>
+        </tr>
+        <tr>
+          <td>Channel facilitated</td>
+          <td>نعم (قناة مائية)</td>
+          <td>لا (No)</td>
+          <td>لا (No)</td>
+          <td>أيونات الصوديوم، البوتاسيوم، الكالسيوم</td>
+        </tr>
+        <tr>
+          <td>Carrier facilitated</td>
+          <td>نعم (حامل)</td>
+          <td><strong>نعم (Yes)</strong></td>
+          <td>لا (No)</td>
+          <td>الجلوكوز، الأحماض الأمينية</td>
+        </tr>
+        <tr>
+          <td>Osmosis</td>
+          <td>جزئياً (Aquaporins)</td>
+          <td>لا (No)</td>
+          <td>لا (No)</td>
+          <td>الماء (H₂O)</td>
+        </tr>
+        <tr>
+          <td>Active transport</td>
+          <td>نعم (مضخة)</td>
+          <td><strong>نعم (Yes)</strong></td>
+          <td><strong>نعم (ATP)</strong></td>
+          <td>مضخة الصوديوم والبوتاسيوم (Na⁺/K⁺) ومضخة الكالسيوم</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="font-size:14.5px;color:var(--text-secondary)">
+    ⚡ <strong>ملاحظة سرعة:</strong> القنوات الأيونية (Channels) فائقة السرعة؛ تنقل ملايين الأيونات في الثانية الواحدة، بينما الحوامل (Carriers) أبطأ بكثير (مئات إلى آلاف الجزيئات في الثانية) لأنها تغير شكلها الفراغي في كل نقلة.
+  </p>
+</section>
+
+<!-- ================= Section 5 ================= -->
+<section class="card" id="sec5">
+  <h2><span class="badge-num">5</span> فيزياء الانتشار: فكرة الحركة العشوائية — The Random Walk</h2>
+
+  <p>
+    في السوائل وداخل السيتوبلازم، لا تسير الجزيئات في خط مستقيم، بل تصطدم بمليارات الجزيئات المجاورة لها في كل ثانية وفي كل اتجاه دون توقف. هذه الحركة المتعرجة تسمى فيزيائياً <strong>الحركة العشوائية (The Random Walk)</strong>
+    <button class="audio-btn" onclick="playAudio('random_walk')" title="استمع"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>.
+  </p>
+
+  <div class="diagram-box">
+    <img src="images/slide_36.png" alt="Random walk distance vs displacement" class="diagram-img">
+    <div class="diagram-caption">
+      <span>الحركة العشوائية (الشريحة 36): المسافة المتعرجة التي مشاها الجزيء هائلة، لكن إزاحته وبعده الحقيقي عن نقطة البداية صغير جداً!</span>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="concept-box">
+      <strong>1. المسافة الإجمالية المتعرجة (Total Path / Distance):</strong><br>
+      هي كل خطوة مشاها الجزيء متعرجاً يميناً ويساراً وللخلف. لو جمعنا خطواته ستجدها مسافة طويلة جداً ومجهوداً حركياً هائلاً.
+    </div>
+    <div class="concept-box accent">
+      <strong>2. الإزاحة الفعالة في خط مستقيم (Displacement):</strong>
+      <button class="audio-btn" onclick="playAudio('displacement')" title="استمع"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button><br>
+      هي البُعد الحقيقي المباشر بين نقطة البداية ونقطة النهاية. ولأن الجزيء يعود ويغير اتجاهه باستمرار، فإن <strong>إزاحته تكون صغيرة جداً</strong> مقارنة بالمسافة التي قطعها!
+    </div>
+  </div>
+
+  <div class="clinical-box">
+    <div class="clinical-head">
+      <span>💡 فكرة التجول العشوائي (لماذا الانتشار بطيء في المسافات الطويلة؟):</span>
+    </div>
+    <p>
+      لو تخيلت شخصاً يمشي خطوة للأمام وخطوة للخلف ولليمين ولليسار عشوائياً، فبعد آلاف الخطوات سيجد نفسه لا يزال قريباً جداً من مكانه الذي بدأ منه!<br>
+      <strong>الخلاصة الفيزيائية:</strong> الجزيء يتجول مسافة أطول بآلاف المرات من مكانه الفعلي، ولهذا السبب:
+      <br>• الانتشار <strong>فائق السرعة وممتاز</strong> في المسافات المجهرية المتناهية في الصغر (داخل الخلية).
+      <br>• الانتشار <strong>بطيء جداً وفاشل تماماً</strong> في نقل المواد لمسافات سنتيمترات أو عبر أعضاء الجسم الكبيرة.
+    </p>
+  </div>
+
+  <h3>انتشار الجزيئات وتوزيعها مع مرور الوقت (معامل الانتشار):</h3>
+  <div class="diagram-box">
+    <img src="images/slide_38.png" alt="Spread of particles with time" class="diagram-img">
+    <div class="diagram-caption">
+      <span>منحنى توزيع الجزيئات (الشريحة 38): في البداية تتجمع الجزيئات في قمة ضيقة ومرتفعة، ومع مرور الوقت تتباعد وتتسع قاعدة انتشارها ببطء</span>
+    </div>
+  </div>
+
+  <div class="concept-box blue">
+    <strong>ما هو مُعامل الانتشار (Diffusion Coefficient)؟</strong>
+    <button class="audio-btn" onclick="playAudio('diffusion_coefficient')" title="استمع"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button><br>
+    هو ببساطة <strong>مقياس لمدى سرعة وسهولة حركة الجزيء في الوسط</strong>:
+    <ul style="padding-right: 20px; margin-top: 6px;">
+      <li><strong>حجم الجزيء:</strong> الجزيئات الصغيرة والخفيفة تنتشر بحرية وسرعة أكبر، بينما الجزيئات الضخمة تنتشر ببطء.</li>
+      <li><strong>لزوجة الوسط:</strong> انتشار الجزيئات في الماء أسرع بكثير من انتشارها في السوائل اللزجة أو الهلامية.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= Section 6 ================= -->
+<section class="card" id="sec6">
+  <h2><span class="badge-num">6</span> زمن الانتشار والتطبيقات السريرية — Diffusion Time & Clinical Significance</h2>
+
+  <div class="exam-tip">
+    <div class="exam-tip-head">
+      <svg class="icon" viewBox="0 0 24 24" width="16" height="16"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <span>القاعدة الفيزيائية الأهم لزمن الانتشار (بدون قوانين معقدة):</span>
+    </div>
+    <p>
+      الزمن الذي تحتاجه الجزيئات لتصل بالانتشار لا يزيد تدريجياً، بل يتضاعف بشكل هائل مع <strong>مربع المسافة</strong>!<br>
+      • لو زادت المسافة <strong>مرتين (الضعف)</strong> &larr; يحتاج الأكسجين أو الدواء إلى <strong>4 أضعاف الوقت</strong> ليصل!<br>
+      • لو زادت المسافة <strong>3 مرات</strong> &larr; يحتاج إلى <strong>9 أضعاف الوقت</strong>!<br>
+      • لو زادت المسافة <strong>10 مرات</strong> &larr; يحتاج إلى <strong>100 ضعف الوقت</strong>!
+    </p>
+  </div>
+
+  <div class="diagram-box">
+    <img src="images/slide_40.png" alt="Diffusion time scale chart" class="diagram-img">
+    <div class="diagram-caption">
+      <span>مخطط زمن انتشار الأكسجين (الشريحة 40): لحظات مجهرية داخل الخلية الواحدة مقابل ساعات وشهور في المسافات المرئية!</span>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="concept-box blue">
+      <strong>⚡ على مستوى الميكرومتر (داخل الخلية الواحدة):</strong><br>
+      مسافة عرض خلية واحدة يقطعها الأكسجين في <strong>أقل من رمشة عين (أجزاء من الثانية)</strong>. لذلك فالانتشار وسيلة مثالية وناجحة جداً لإمداد الخلية بحاجتها داخل محيطها المجهري الصغير!
+    </div>
+    <div class="concept-box warning">
+      <strong>⏳ على مستوى السنتيمتر (المسافات في جسم الإنسان):</strong><br>
+      مسافة سنتيمتر واحد فقط تحتاج بالانتشار إلى <strong>7 ساعات كاملة</strong>، ومسافة 10 سنتيمترات تحتاج إلى <strong>شهر كامل</strong>!<br>
+      <strong>لماذا خلق الله القلب والدورة الدموية؟</strong> لأن نقل الأكسجين بالانتشار عبر جسم الإنسان مستحيل فيزيائياً، لذا يعمل جهاز الدوران على ضخ الدم سريعاً عبر الشرايين.
+    </div>
+  </div>
+
+  <h3>تطبيق سريري هام في طب الأسنان: لماذا التورم (Edema / Swelling) يعيق شفاء الجروح؟</h3>
+  <div class="clinical-box">
+    <div class="clinical-head">
+      <svg class="icon" viewBox="0 0 24 24" width="16" height="16"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      <span>السر البيوفيزيائي لكمادات الثلج ومضادات التورم بعد خلع الأسنان وجراحة الفك:</span>
+    </div>
+    <p>
+      • في اللثة الطبيعية السليمة: تكون الشعيرات الدموية قريبة جداً من خلايا اللثة، فيصل الأكسجين والغذاء في لحظة وتعيش الخلية بصحة.<br>
+      • بعد خلع الأسنان أو جراحة الفم أو التهاب اللثة: يحدث تجمع للسوائل وتورم نسيجي (<strong>Edema / Swelling</strong>)، فتتباعد الخلايا عن الشعيرات الدموية وتتضاعف المسافة بينهما.<br>
+      • وبسبب قاعدة "مربع المسافة": مضاعفة المسافة مرتين تجعل وصول الأكسجين والمغذيات <strong>أبطأ 4 مرات</strong>، مما يحرم الأنسجة من التغذية ويبطئ التئام الجروح!<br>
+      • <strong>التطبيق العملي:</strong> وضع كمادات باردة وإعطاء أدوية مضادة للالتهاب يقلل التورم فوراً ويحافظ على قصر مسافة الانتشار، مما يسرع التئام أنسجة اللثة وعظام الفك!
+    </p>
+  </div>
+
+  <h3>لماذا خلايا الكائنات الحية مجهرية وصغيرة الحجم دائماً؟ (Why Cells Are Small):</h3>
+  <div class="diagram-box">
+    <img src="images/slide_47.png" alt="Diffusion limits cell size diagram" class="diagram-img">
+    <div class="diagram-caption">
+      <span>الشريحة 47: كلما كبرت الخلية ابتعد مركزها عن السطح الخارجي، مما يجعل وصول الأكسجين بالانتشار مستحيلاً!</span>
+    </div>
+  </div>
+  <p>
+    الخلية تمتص الأكسجين والغذاء عبر سطحها الخارجي، لكنها تستهلك هذا الغذاء في كامل كتلتها الداخلية. لو زاد حجم الخلية وأصبحت كبيرة، سيبتعد قلب الخلية ومركزها عن السطح، وبالتالي سيستغرق الأكسجين مئات المرات من الوقت ليصل لقلب الخلية بالانتشار وستموت الخلية اختناقاً من الداخل! لهذا السبب تجبر الفيزياء الحيوية خلايا جسمنا على أن تظل دائماً مجهرية وصغيرة الحجم.
+  </p>
+</section>
+
+<!-- ================= Section 7 ================= -->
+<section class="card" id="sec7">
+  <h2><span class="badge-num">7</span> نفاذية الغشاء وسرعة تدفق المواد — Membrane Permeability & Flux</h2>
+
+  <p>
+    تتحكم الخلية في المواد التي تعبر إليها عبر خاصية تسمى <strong>النفاذية (Permeability)</strong>
+    <button class="audio-btn" onclick="playAudio('permeability')" title="استمع"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>.
+    ما الذي يحدد هل ستعبر مادة معينة الغشاء بسرعة وسهولة أم لا؟
+  </p>
+
+  <div class="grid-2">
+    <div class="concept-box">
+      <strong>1. الذوبان في دهون الغشاء (Lipid Solubility):</strong><br>
+      العامل الأهم على الإطلاق! بما أن الغشاء مكون من طبقة دهنية مزدوجة، فإن أي مادة <strong>تذوب في الدهون</strong> تعبر الغشاء بلمح البصر، مثل غاز الأكسجين وثاني أكسيد الكربون، وكذلك <strong>أدوية بنج الأسنان الموضعي (Local Anesthetics)</strong> التي صُممت خصيصاً لتذوب في دهون الغشاء وتخترق خلايا العصب السني وتوقف الألم فوراً!
+    </div>
+    <div class="concept-box accent">
+      <strong>2. الأيونات المشحونة والمواد الذائبة بالماء:</strong><br>
+      الأيونات مثل الصوديوم والبوتاسيوم والكالسيوم مشحونة وتذوب في الماء ولا تذوب إطلاقاً في الدهون، لذلك نفاذيتها عبر دهن الغشاء شبه معدومة، ولا يمكنها العبور إلا إذا وفرت لها الخلية <strong>قنوات بروتينية مائية خاصة</strong>.
+    </div>
+  </div>
+
+  <div class="concept-box blue">
+    <strong>3. سمك الغشاء ومساحة السطح:</strong><br>
+    كلما كان الغشاء أرق كلما كان العبور أسرع وأسهل، وكلما كانت مساحة سطح الخلية المتاحة أكبر زادت كمية الجزيئات العابرة.
+  </div>
+
+  <h3>معدل التدفق (Flux) وقانون فيك (Fick's Law):</h3>
+  <div class="concept-box warning">
+    <div class="concept-title">
+      <span>مفهوم التدفق (Flux) وقانون فيك ببساطة:</span>
+      <button class="audio-btn" onclick="playAudio('flux')" title="Flux"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <button class="audio-btn" onclick="playAudio('ficks_law')" title="Fick's Law"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+    </div>
+    <p>
+      <strong>التدفق (Flux):</strong> هو كمية وعدد الجزيئات التي تعبر مساحة معينة من الغشاء في الثانية الواحدة.<br>
+      يوضح <strong>قانون فيك (Fick's Law)</strong> أن تدفق الجزيئات ودخولها للخلية يزيد بشكل طبيعي كلما:<br>
+      • <strong>زاد فارق التركيز:</strong> كلما كان تركيز المادة بالخارج أعلى بكثير من الداخل، اندفعت الجزيئات بقوة أكبر.<br>
+      • <strong>زادت نفاذية الغشاء:</strong> كلما كانت المادة ذائبة بالدهون أو كانت القنوات مفتوحة.<br>
+      • <strong>اتسعت مساحة السطح:</strong> كلما كان سطح الخلية أكبر، استقبلت جزيئات أكثر في نفس اللحظة.
+    </p>
+  </div>
+
+  <div class="clinical-box">
+    <div class="clinical-head">
+      <span>⚡ حقيقة مدهشة في الخلية الحية:</span>
+    </div>
+    <p>
+      رغم أن حجم الخلية متناهٍ في الصغر، إلا أن سرعة حركة الجزيئات وفارق التركيز عبر غشائها يجعلان <strong>مليارات الجزيئات تعبر الغشاء الخلوي في كل ثانية واحدة</strong> لتلبي احتياجات التمثيل الغذائي والتنفس!
+    </p>
+  </div>
+</section>
+
+<!-- ================= Section 8 ================= -->
+<section class="card" id="sec8">
+  <h2><span class="badge-num">8</span> القواعد الذهبية وخلاصة الامتحان (بدون تعقيد) — Golden Takeaways</h2>
+
+  <p style="margin-bottom: 16px; color: var(--text-secondary); font-size: 15px;">
+    أهم 10 قواعد ومفاهيم بيوفيزيائية يركز عليها أساتذة المادة في أسئلة الامتحانات:
+  </p>
+
+  <div class="rule-card">
+    <span class="rule-badge">القاعدة 1</span>
+    <div class="rule-text">
+      <strong>النقل السلبي (Passive Transport):</strong> يتحرك مع تدرج التركيز (من العالي إلى المنخفض) و<strong>لا يستهلك طاقة إطلاقاً (No ATP)</strong>، بل يعتمد على الطاقة الحركية الذاتية للجزيئات.
+    </div>
+  </div>
+
+  <div class="rule-card">
+    <span class="rule-badge">القاعدة 2</span>
+    <div class="rule-text">
+      <strong>النقل النشط (Active Transport):</strong> يتحرك ضد تدرج التركيز (من المنخفض إلى العالي) و<strong>يستهلك طاقة الخلية (ATP)</strong> ويحتاج بالضرورة لمضخات أو بروتينات ناقلة.
+    </div>
+  </div>
+
+  <div class="rule-card">
+    <span class="rule-badge">القاعدة 3</span>
+    <div class="rule-text">
+      <strong>مضخة الصوديوم والبوتاسيوم (Na⁺/K⁺ Pump):</strong> تستهلك جزيء ATP واحد لتقوم بـ <strong>طرد 3 أيونات صوديوم للخارج</strong> مقابل <strong>إدخال أيوني بوتاسيوم للداخل</strong>، مما يخلق شحنة سالبة بالداخل وفرق الجهد الكهربي الضروري لانتقال نبضات الألم.
+    </div>
+  </div>
+
+  <div class="rule-card">
+    <span class="rule-badge">القاعدة 4</span>
+    <div class="rule-text">
+      <strong>ظاهرة الإشباع (Saturation):</strong> تحدث <strong>فقط</strong> في النقل بالحوامل (Carriers) والمضخات لأن عددها في الغشاء محدود؛ أما الانتشار البسيط والانتشار عبر القنوات المفتوحة فلا يصلان للإشباع.
+    </div>
+  </div>
+
+  <div class="rule-card">
+    <span class="rule-badge">القاعدة 5</span>
+    <div class="rule-text">
+      <strong>سرعة القنوات مقابل الحوامل:</strong> القنوات الأيونية (Channels) فائقة السرعة وتنقل ملايين الأيونات في الثانية لأنها مجرى مائي مفتوح، بينما الحوامل (Carriers) أبطأ بكثير لأنها تغير شكلها مع كل جزيء تنقله.
+    </div>
+  </div>
+
+  <div class="rule-card">
+    <span class="rule-badge">القاعدة 6</span>
+    <div class="rule-text">
+      <strong>الحركة العشوائية (Random Walk):</strong> الجزيء في السائل يصطدم بمليارات الجزيئات ويتحرك في مسار متعرج هائل، لكن إزاحته وبعده المباشر عن نقطة البداية صغير جداً.
+    </div>
+  </div>
+
+  <div class="rule-card">
+    <span class="rule-badge">القاعدة 7</span>
+    <div class="rule-text">
+      <strong>زمن الانتشار يتضاعف مع مربع المسافة:</strong> مضاعفة المسافة مرتين تزيد زمن وصول الغذاء والأكسجين <strong>4 أضعاف</strong>، وزيادة المسافة 10 مرات تزيد الزمن <strong>100 ضعف</strong>!
+    </div>
+  </div>
+
+  <div class="rule-card">
+    <span class="rule-badge">القاعدة 8</span>
+    <div class="rule-text">
+      <strong>تطبيق التورم بعد خلع الأسنان (Edema):</strong> تجمع السوائل والتورم يضاعف المسافة بين الشعيرات الدموية وخلايا اللثة، فيتأخر وصول الأكسجين 4 أضعاف ويبطئ التئام الجروح، لذلك نستخدم كمادات الثلج ومضادات التورم.
+    </div>
+  </div>
+
+  <div class="rule-card">
+    <span class="rule-badge">القاعدة 9</span>
+    <div class="rule-text">
+      <strong>لماذا الخلايا مجهرية صغيرة الحجم؟:</strong> لأن الانتشار فعال فقط في المسافات المتناهية في الصغر، ولو كبرت الخلية لعجز الأكسجين عن الوصول لمركزها وماتت الخلية اختناقاً.
+    </div>
+  </div>
+
+  <div class="rule-card">
+    <span class="rule-badge">القاعدة 10</span>
+    <div class="rule-text">
+      <strong>الذوبان في الدهون وبنج الأسنان:</strong> بنج الأسنان الموضعي وغاز الأكسجين يعبران الغشاء الخلوي فوراً وبسهولة لأنهما يذوبان في الدهون، بينما الأيونات كالـ Na⁺ و K⁺ لا تذوب في دهون الغشاء وتحتاج لقنوات بروتينية مائية خاصة.
+    </div>
+  </div>
+</section>
+
+<!-- ================= Section 9: Glossary ================= -->
+<section class="card" id="sec9">
+  <h2><span class="badge-num">9</span> قاموس المصطلحات الطبية الصوتية (استمع للنطق) 🔊</h2>
+  <p style="color:var(--text-muted);font-size:14px;margin-bottom:14px">
+    اضغط على زر الصوت بجانب أي مصطلح للاستماع إلى النطق الإنجليزي الواضح بصوت Jenny:
+  </p>
+
+  <div class="glossary-grid">
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('biophysics')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Biophysics</strong><span>الفيزياء الحيوية</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('cell_membrane')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Cell Membrane</strong><span>الغشاء الخلوي</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('phospholipids')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Phospholipids</strong><span>الفوسفوليبيدات</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('lipid_bilayer')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Lipid Bilayer</strong><span>طبقة الدهون الثنائية</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('cholesterol')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Cholesterol</strong><span>الكوليسترول (منظم السيولة)</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('dehydration_synthesis')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Dehydration Synthesis</strong><span>التخليق بنزع الماء (بناء)</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('hydrolysis')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Hydrolysis</strong><span>التحلل بالماء (هدم)</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('passive_transport')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Passive Transport</strong><span>النقل السلبي (مع التدرج وبلا طاقة)</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('active_transport')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Active Transport</strong><span>النقل النشط (ضد التدرج بـ ATP)</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('simple_diffusion')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Simple Diffusion</strong><span>الانتشار البسيط عبر الدهون</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('facilitated_diffusion')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Facilitated Diffusion</strong><span>الانتشار الميسر بقنوات وحوامل</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('osmosis')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Osmosis</strong><span>الخاصية الأسموزية للماء</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('voltage_gated_channel')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Voltage-gated Channel</strong><span>قناة مبوبة بفرق الجهد</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('ligand_gated_channel')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Ligand-gated Channel</strong><span>قناة مبوبة بارتباط كيميائي</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('stress_gated_channel')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Stress-gated Channel</strong><span>قناة مبوبة بالضغط والشد الميكانيكي</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('sodium_potassium_pump')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Na⁺/K⁺ ATPase Pump</strong><span>مضخة الصوديوم والبوتاسيوم (3خارج/2داخل)</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('random_walk')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Random Walk</strong><span>الحركة العشوائية للجزيئات</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('displacement')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Displacement</strong><span>الإزاحة الفعالة في خط مستقيم</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('diffusion_coefficient')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Diffusion Coefficient</strong><span>معامل الانتشار (مقياس سرعة وسهولة حركة الجزيء)</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('ficks_law')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Fick's Law</strong><span>قانون فيك (العوامل المؤثرة على تدفق الجزيئات)</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('permeability')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Permeability</strong><span>نفاذية الغشاء الخلوي للمواد المختلفة</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="playAudio('flux')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Flux</strong><span>معدل تدفق الجزيئات عبر مساحة الغشاء</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Developer Card -->
+<section class="card developer-card">
+  <div class="dev-container">
+    <div class="dev-avatar-wrap"><img src="developer.png" alt="محمد أحمد راضي" class="dev-avatar"></div>
+    <div class="dev-info">
+      <div class="dev-badge"><svg class="icon" viewBox="0 0 24 24" width="13" height="13"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg><span>إعداد وتطوير</span></div>
+      <h3 class="dev-name">محمد أحمد راضي</h3>
+      <p class="dev-role"><svg class="icon" viewBox="0 0 24 24" width="15" height="15" style="color:var(--primary)"><path d="M12 2C8.5 2 6 4 6 7c0 2.5 1 5.5 1.5 9 .5 3.5 1.5 5 2.5 5s1.5-2 2-4.5c.5 2.5 1 4.5 2 4.5s2-1.5 2.5-5c.5-3.5 1.5-6.5 1.5-9 0-3-2.5-5-6-5z"/></svg><span>طالب في طب أسنان</span></p>
+      <div class="dev-contact">
+        <a href="https://wa.me/201211648437" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">
+          <svg class="icon" viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.04 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.53 7.37C9.37 7.37 9.1 7.43 8.87 7.68C8.64 7.93 8 8.53 8 9.75C8 10.97 8.89 12.15 9.01 12.31C9.14 12.47 10.74 14.95 13.2 16C13.79 16.26 14.24 16.41 14.6 16.53C15.19 16.72 15.73 16.69 16.15 16.63C16.63 16.56 17.62 16.03 17.82 15.45C18.03 14.87 18.03 14.38 17.97 14.27C17.91 14.17 17.75 14.11 17.5 13.99C17.26 13.86 16.06 13.27 15.83 13.19C15.61 13.11 15.45 13.07 15.28 13.31C15.12 13.56 14.67 14.11 14.53 14.27C14.39 14.43 14.25 14.45 14.01 14.33C13.76 14.21 12.98 13.95 12.06 13.13C11.34 12.49 10.86 11.7 10.72 11.46C10.58 11.21 10.71 11.08 10.83 10.96C10.94 10.85 11.08 10.67 11.2 10.53C11.33 10.39 11.37 10.29 11.45 10.13C11.53 9.96 11.49 9.82 11.43 9.7C11.37 9.58 10.9 8.44 10.7 7.97C10.51 7.5 10.32 7.57 10.16 7.56C10.03 7.56 9.87 7.37 9.53 7.37Z"/></svg>
+          <span>تواصل عبر واتساب (01211648437)</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<script>
+// ===== Audio Player =====
+let currentAudio = null;
+
+function playAudio(filename, element) {
+  const btn = element || (typeof event !== 'undefined' && event ? (event.currentTarget || (event.target && event.target.closest ? event.target.closest('button') : null)) : null);
+  if (currentAudio) {
+    currentAudio.pause();
+    document.querySelectorAll('.audio-btn.playing').forEach(b => b.classList.remove('playing'));
+  }
+  const audio = new Audio('audio/' + filename + '.mp3');
+  currentAudio = audio;
+  if (btn) btn.classList.add('playing');
+  audio.addEventListener('ended', () => { 
+    if (btn) btn.classList.remove('playing'); 
+    currentAudio = null; 
+  });
+  audio.addEventListener('error', () => {
+    if (btn) btn.classList.remove('playing');
+    currentAudio = null;
+    console.warn('Audio not found: audio/' + filename + '.mp3');
+  });
+  audio.play();
+}
+
+// ===== Theme Toggle =====
+function toggleTheme() {
+  const current = document.documentElement.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  updateThemeButton(next);
+}
+
+function updateThemeButton(theme) {
+  const btn = document.getElementById('themeToggleBtn');
+  if (!btn) return;
+  btn.innerHTML = theme === 'dark'
+    ? `<svg class="icon" viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line></svg>`
+    : `<svg class="icon" viewBox="0 0 24 24" width="18" height="18"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+  btn.setAttribute('title', theme === 'dark' ? 'الوضع النهاري' : 'الوضع الليلي');
+}
+
+(function(){
+  const saved = localStorage.getItem('theme') || 'light';
+  document.documentElement.setAttribute('data-theme', saved);
+  updateThemeButton(saved);
+})();
+
+// ===== Reading Progress =====
+window.addEventListener('scroll', function() {
+  const st = document.body.scrollTop || document.documentElement.scrollTop;
+  const sh = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const pct = sh > 0 ? (st / sh) * 100 : 0;
+  document.getElementById('progressFill').style.width = pct + '%';
+});
+</script>
+
+</body>
+</html>
