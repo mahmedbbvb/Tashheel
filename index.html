@@ -20,233 +20,194 @@
       justify-content: space-between;
     }
 
-    /* ── Hero & Subject Cards ── */
-    main {
-      flex: 1;
-      max-width: 940px;
-      margin: 0 auto;
-      width: 100%;
-      padding: 48px 20px 32px;
+    /* ── Mobile-first layout ── */
+    body {
+      font-family: 'Cairo', 'Inter', system-ui, -apple-system, sans-serif;
+      background:
+        radial-gradient(circle at 50% -10%, rgba(37,99,235,.10), transparent 35%),
+        #f7f9fc;
+      color: #0f172a;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
+    }
+
+    main {
+      flex: 1;
+      width: min(100%, 980px);
+      margin: 0 auto;
+      padding: 28px 16px 32px;
+    }
+
+    .hero {
       text-align: center;
+      margin: 4px auto 24px;
+      max-width: 680px;
     }
 
     .badge-pill {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
       background: #eff6ff;
       color: #2563eb;
-      font-size: 13px;
-      font-weight: 700;
-      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 6px 12px;
       border-radius: 999px;
       border: 1px solid #dbeafe;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
 
     .hero-title {
-      font-size: 28px;
+      font-size: clamp(25px, 7vw, 34px);
+      line-height: 1.25;
       font-weight: 800;
       color: #0f172a;
-      letter-spacing: -0.02em;
+      letter-spacing: -.03em;
       margin-bottom: 8px;
     }
 
     .hero-desc {
-      font-size: 15px;
+      font-size: 14px;
       color: #64748b;
-      max-width: 480px;
-      line-height: 1.6;
+      max-width: 560px;
+      line-height: 1.8;
+      margin: auto;
     }
 
     .cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
+      grid-template-columns: 1fr;
+      gap: 12px;
       width: 100%;
-      margin-top: 36px;
+      margin-top: 22px;
     }
 
     .subject-card {
-      background: #ffffff;
-      border: 1.5px solid #e2e8f0;
-      border-radius: 20px;
-      padding: 32px 24px;
-      text-decoration: none;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
-      position: relative;
-    }
-
-    .subject-card:hover {
-      border-color: #2563eb;
-      transform: translateY(-4px);
-      box-shadow: 0 16px 32px rgba(37, 99, 235, 0.12);
-    }
-
-    .card-icon {
-      width: 60px;
-      height: 60px;
-      border-radius: 16px;
-      background: #eff6ff;
-      color: #2563eb;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 18px;
-      transition: all 0.25s ease;
-    }
-
-    .subject-card:hover .card-icon {
-      background: #2563eb;
-      color: #ffffff;
-      transform: scale(1.06);
-    }
-
-    .card-title {
-      font-family: 'Inter', sans-serif;
-      font-size: 20px;
-      font-weight: 700;
-      color: #0f172a;
-      margin-bottom: 4px;
-    }
-
-    .card-sub {
-      font-size: 14px;
-      color: #64748b;
-      font-weight: 600;
-      margin-bottom: 20px;
-    }
-
-    .card-action {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13.5px;
-      font-weight: 700;
-      color: #2563eb;
-      background: #f1f5f9;
-      padding: 9px 20px;
-      border-radius: 12px;
-      transition: all 0.2s ease;
-      width: 100%;
-      justify-content: center;
-    }
-
-    .subject-card:hover .card-action {
-      background: #2563eb;
-      color: #ffffff;
-    }
-
-    /* ── Footer ── */
-    footer {
-      border-top: 1px solid #f1f5f9;
-      background: #fafbfc;
-      padding: 28px 20px;
-      text-align: center;
-    }
-
-    .footer-content {
-      max-width: 680px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .mission-text {
-      font-size: 14.5px;
-      line-height: 1.8;
-      color: #334155;
-      font-weight: 500;
-    }
-
-    .dev-line {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .dev-meta {
-      font-size: 13.5px;
-      color: #64748b;
-      font-weight: 600;
-    }
-
-    .whatsapp-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background-color: #25d366;
-      color: #ffffff;
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 700;
-      padding: 7px 16px;
-      border-radius: 999px;
-      transition: all 0.2s ease;
-      box-shadow: 0 2px 8px rgba(37, 211, 102, 0.2);
-    }
-
-    .whatsapp-btn:hover {
-      background-color: #20ba5a;
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-    }
-
-    /* ── Banners Wrapper ── */
-    .banners-wrapper {
-      width: 100%;
-      max-width: 780px;
-      margin: 32px auto 0;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .quick-banner {
-      background: #ffffff;
+      background: rgba(255,255,255,.94);
+      border: 1px solid #e2e8f0;
       border-radius: 18px;
-      padding: 18px 24px;
+      min-height: 82px;
+      padding: 15px 16px;
+      text-decoration: none;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-      transition: all 0.2s ease;
+      gap: 14px;
+      box-shadow: 0 3px 12px rgba(15,23,42,.045);
+      position: relative;
+      overflow: hidden;
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .subject-card::before {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: #2563eb;
+      opacity: .9;
+    }
+
+    .subject-card:hover,
+    .subject-card:active {
+      border-color: #bfdbfe;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(37,99,235,.10);
+    }
+
+    .card-content {
+      min-width: 0;
+      text-align: right;
+    }
+
+    .card-title {
+      font-family: 'Inter', 'Cairo', sans-serif;
+      font-size: 17px;
+      line-height: 1.35;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 3px;
+      overflow-wrap: anywhere;
+    }
+
+    .card-sub {
+      font-size: 12.5px;
+      color: #64748b;
+      font-weight: 600;
+      line-height: 1.5;
+      overflow-wrap: anywhere;
+    }
+
+    .card-action {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 70px;
+      height: 38px;
+      padding: 0 13px;
+      border-radius: 11px;
+      font-size: 12.5px;
+      font-weight: 800;
+      color: #2563eb;
+      background: #eff6ff;
+      transition: all .18s ease;
+      white-space: nowrap;
+    }
+
+    .subject-card:hover .card-action,
+    .subject-card:active .card-action {
+      background: #2563eb;
+      color: #fff;
+    }
+
+    /* ── Quick banners ── */
+    .banners-wrapper {
+      width: 100%;
+      margin: 22px auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .quick-banner {
+      background: #fff;
+      border-radius: 16px;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 3px 12px rgba(15,23,42,.04);
     }
 
     .quick-banner.exam-banner {
-      border: 1.5px solid #dbeafe;
-      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.06);
+      border-color: #dbeafe;
+      background: linear-gradient(135deg, #fff 0%, #f8fbff 100%);
     }
 
     .banner-info {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 11px;
       text-align: right;
+      min-width: 0;
     }
 
     .banner-icon-badge {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
+      width: 40px;
+      height: 40px;
+      border-radius: 11px;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      font-size: 15px;
+      font-size: 11px;
       font-weight: 900;
     }
 
@@ -256,6 +217,7 @@
     }
 
     .banner-text-content {
+      min-width: 0;
       display: flex;
       flex-direction: column;
       gap: 2px;
@@ -263,65 +225,160 @@
 
     .banner-title {
       font-weight: 800;
-      font-size: 15.5px;
+      font-size: 14px;
       color: #0f172a;
+      line-height: 1.5;
     }
 
     .banner-desc {
-      font-size: 13px;
+      font-size: 12px;
       color: #64748b;
-      line-height: 1.5;
+      line-height: 1.55;
+    }
+
+    .banner-actions {
+      flex-shrink: 0;
+    }
+
+    .btn-timetable-action,
+    .btn-exam-action {
+      color: #fff;
+      padding: 9px 13px;
+      border-radius: 10px;
+      font-family: inherit;
+      font-weight: 800;
+      font-size: 12px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      white-space: nowrap;
+      transition: transform .18s ease, opacity .18s ease;
+    }
+
+    .btn-timetable-action:hover,
+    .btn-exam-action:hover {
+      transform: translateY(-1px);
+      opacity: .92;
     }
 
     .btn-timetable-action {
       background: #1e3a8a;
-      color: #ffffff;
-      padding: 9px 20px;
-      border-radius: 10px;
-      font-family: inherit;
-      font-weight: 700;
-      font-size: 13.5px;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.2s ease;
-      box-shadow: 0 2px 8px rgba(30, 58, 138, 0.2);
-    }
-
-    .btn-timetable-action:hover {
-      background: #172554;
-      transform: translateY(-1px);
-      box-shadow: 0 4px 14px rgba(30, 58, 138, 0.3);
+      box-shadow: 0 3px 9px rgba(30,58,138,.18);
     }
 
     .btn-exam-action {
       background: #2563eb;
-      color: #ffffff;
-      padding: 9px 18px;
-      border-radius: 10px;
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid #e2e8f0;
+      background: #fff;
+      padding: 22px 16px;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 680px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .mission-text {
+      font-size: 12.5px;
+      line-height: 1.85;
+      color: #475569;
+      font-weight: 500;
+    }
+
+    .dev-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      flex-wrap: wrap;
+    }
+
+    .dev-meta {
+      font-size: 12px;
+      color: #64748b;
+      font-weight: 600;
+    }
+
+    .whatsapp-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #25d366;
+      color: #fff;
       text-decoration: none;
-      font-weight: 700;
-      font-size: 13.5px;
-      display: inline-block;
-      transition: all 0.2s ease;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 7px 13px;
+      border-radius: 999px;
+      box-shadow: 0 2px 8px rgba(37,211,102,.18);
     }
 
-    .btn-exam-action:hover {
-      background: #1d4ed8;
-      transform: translateY(-1px);
-    }
+    @media (min-width: 600px) {
+      main {
+        padding: 42px 24px 40px;
+      }
 
-    @media (max-width: 520px) {
+      .cards-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .subject-card {
+        min-height: 92px;
+        padding: 17px 18px;
+      }
+
+      .card-title {
+        font-size: 18px;
+      }
+
+      .card-action {
+        min-width: 76px;
+      }
+
       .quick-banner {
-        padding: 16px;
-      }
-      .btn-timetable-action {
-        width: 100%;
-        justify-content: center;
+        padding: 17px 19px;
       }
     }
-  
+
+    @media (max-width: 560px) {
+      .quick-banner {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .banner-info {
+        width: 100%;
+      }
+
+      .banner-actions,
+      .btn-timetable-action,
+      .btn-exam-action {
+        width: 100%;
+      }
+    }
+
+    @media (min-width: 900px) {
+      main {
+        padding-top: 52px;
+      }
+
+      .cards-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
     /* ── WhatsApp First-Time Invite Modal ── */
     .wa-modal-overlay {
       position: fixed;
@@ -455,94 +512,53 @@
   <!-- Hero & Subject Selection -->
   <main>
 
+    <section class="hero">
     <h1 class="hero-title">منصة تسهيل التعليمية</h1>
     <p class="hero-desc">اختر المادة لبدء المذاكرة.. شروحات مبسطة، نطق للمصطلحات، واختبارات تفاعلية</p>
+    </section>
 
     <div class="cards-grid">
-      <!-- Physiology Card -->
-      <a href="physiology/index.html" class="subject-card">
-        <div class="card-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-        </div>
-        <h2 class="card-title">Physiology</h2>
-        <div class="card-sub">علم وظائف الأعضاء</div>
-        <div class="card-action">
-          <span>دخول المحاضرات</span>
-          <span>←</span>
-        </div>
-      </a>
-
-      <!-- Scientific Applications Card -->
-      <a href="scientific-applications/index.html" class="subject-card">
-        <div class="card-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-        </div>
-        <h2 class="card-title">Scientific Applications</h2>
-        <div class="card-sub">تطبيقات الحاسب العلمية (CSE012)</div>
-        <div class="card-action">
-          <span>دخول المحاضرات</span>
-          <span>←</span>
-        </div>
-      </a>
-
-      <!-- Critical Thinking Card -->
-      <a href="critical-thinking/index.html" class="subject-card">
-        <div class="card-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-        </div>
-        <h2 class="card-title">Critical Thinking</h2>
-        <div class="card-sub">التفكير النقدي (متطلب جامعي)</div>
-        <div class="card-action">
-          <span>دخول المحاضرات</span>
-          <span>←</span>
-        </div>
-      </a>
-
-      <!-- Entrepreneurship Card -->
-      <a href="entrepreneurship/index.html" class="subject-card">
-        <div class="card-icon" style="background:#f0fdfa;color:#0f766e">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
-          </svg>
-        </div>
-        <h2 class="card-title">Entrepreneurship</h2>
-        <div class="card-sub">ريادة الأعمال والابتكار</div>
-        <div class="card-action">
-          <span>دخول المحاضرات</span>
-          <span>←</span>
-        </div>
-      </a>
-
-      <!-- Dental Anatomy Card -->
       <a href="dental-anatomy/index.html" class="subject-card">
-        <div class="card-icon" style="background:#f0f9ff;color:#0284c7">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 2C8.5 2 6 4 6 7c0 2.5 1 5.5 1.5 9 .5 3.5 1.5 5 2.5 5s1.5-2 2-4.5c.5 2.5 1 4.5 2 4.5s2-1.5 2.5-5c.5-3.5 1.5-6.5 1.5-9 0-3-2.5-5-6-5z"/>
-          </svg>
+        <div class="card-content">
+          <h2 class="card-title">Dental Anatomy</h2>
+          <div class="card-sub">تشريح الأسنان (BDS121)</div>
         </div>
-        <h2 class="card-title">Dental Anatomy</h2>
-        <div class="card-sub">تشريح الأسنان (BDS121)</div>
-        <div class="card-action">
-          <span>دخول المحاضرات</span>
-          <span>←</span>
-        </div>
+        <div class="card-action">شرح</div>
       </a>
-
-      <!-- Biophysics Card -->
+      <a href="physiology/index.html" class="subject-card">
+        <div class="card-content">
+          <h2 class="card-title">Physiology</h2>
+          <div class="card-sub">علم وظائف الأعضاء</div>
+        </div>
+        <div class="card-action">شرح</div>
+      </a>
       <a href="biophysics/index.html" class="subject-card">
-        <div class="card-icon" style="background:#f5f3ff;color:#7c3aed">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="3"/>
-            <ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(30 12 12)"/>
-            <ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(-30 12 12)"/>
-          </svg>
+        <div class="card-content">
+          <h2 class="card-title">Biophysics</h2>
+          <div class="card-sub">الفيزياء الحيوية (PHY 112)</div>
         </div>
-        <h2 class="card-title">Biophysics</h2>
-        <div class="card-sub">الفيزياء الحيوية (PHY 112)</div>
-        <div class="card-action">
-          <span>دخول المحاضرات</span>
-          <span>←</span>
+        <div class="card-action">شرح</div>
+      </a>
+      <a href="scientific-applications/index.html" class="subject-card">
+        <div class="card-content">
+          <h2 class="card-title">Scientific Applications</h2>
+          <div class="card-sub">تطبيقات الحاسب العلمية (CSE012)</div>
         </div>
+        <div class="card-action">شرح</div>
+      </a>
+      <a href="critical-thinking/index.html" class="subject-card">
+        <div class="card-content">
+          <h2 class="card-title">Critical Thinking</h2>
+          <div class="card-sub">التفكير النقدي (متطلب جامعي)</div>
+        </div>
+        <div class="card-action">شرح</div>
+      </a>
+      <a href="entrepreneurship/index.html" class="subject-card">
+        <div class="card-content">
+          <h2 class="card-title">Entrepreneurship</h2>
+          <div class="card-sub">ريادة الأعمال والابتكار</div>
+        </div>
+        <div class="card-action">شرح</div>
       </a>
     </div>
 
