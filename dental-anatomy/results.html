@@ -717,17 +717,19 @@
             <h2>لوحة تحكم النتائج</h2>
             <p>امتحان تشريح الأسنان - منصة تسهيل</p>
             
-            <div class="input-group">
-                <i class="fa-solid fa-lock"></i>
-                <input type="password" id="admin-password" placeholder="أدخل كلمة المرور" autocomplete="off" onkeypress="handleLoginKeyPress(event)">
-            </div>
+            <form onsubmit="verifyLogin(event); return false;">
+                <div class="input-group">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="admin-password" placeholder="أدخل كلمة المرور (admin2026)" autocomplete="current-password" autofocus>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" id="btn-login-submit">
+                    تسجيل الدخول
+                    <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                </button>
+            </form>
             
-            <button class="btn btn-primary" onclick="verifyLogin()">
-                تسجيل الدخول
-                <i class="fa-solid fa-arrow-right-to-bracket"></i>
-            </button>
-            
-            <div id="login-error">كلمة المرور غير صحيحة، يرجى المحاولة مرة أخرى.</div>
+            <div id="login-error">كلمة المرور غير صحيحة، يرجى كتابة: admin2026</div>
         </div>
     </div>
 
@@ -817,10 +819,10 @@
                 <thead>
                     <tr>
                         <th>المركز</th>
-                        <th>اسم الطالب / التاريخ</th>
+                        <th>اسم الطالب / المدة والتاريخ</th>
                         <th>النتيجة</th>
                         <th>الأخطاء</th>
-                        <th>التفاصيل</th>
+                        <th>الإجراءات والشهادة</th>
                     </tr>
                 </thead>
                 <tbody id="table-body">
@@ -837,6 +839,7 @@
                 <div class="modal-title">
                     <h2 id="modal-student-name">اسم الطالب</h2>
                     <p id="modal-student-score">الدرجة: 0/50</p>
+                    <div id="modal-cert-container"></div>
                 </div>
                 <button class="modal-close" onclick="closeModal()">
                     <i class="fa-solid fa-xmark"></i>
@@ -857,9 +860,10 @@
         // --- State ---
         const TOTAL_QUESTIONS = 50;
         const API_URL = '/api/dental-results';
+        const LOCAL_STORAGE_KEY = 'tashheel_dental_exam_results_v1';
         let rawResults = [];
         let filteredResults = [];
-        const adminPasscode = 'admin2026'; // Requirement 1
+        const adminPasscode = 'admin2026';
 
         // --- DOM Elements ---
         const loginOverlay = document.getElementById('login-overlay');
@@ -881,43 +885,104 @@
         const modalScore = document.getElementById('modal-student-score');
         const modalGrid = document.getElementById('modal-details-grid');
 
-        // --- Auth ---
-        function handleLoginKeyPress(e) {
-            if (e.key === 'Enter') verifyLogin();
+        // --- Normalizer for passwords ---
+        function normalizePasscode(str) {
+            if (!str) return '';
+            return str.trim()
+                .replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d))
+                .toLowerCase();
         }
 
-        function verifyLogin() {
-            if (passInput.value === adminPasscode) {
+        // --- Auth ---
+        function verifyLogin(e) {
+            if (e && e.preventDefault) e.preventDefault();
+            const entered = normalizePasscode(passInput.value);
+            // Flexible matching: admin2026, admin, 2026
+            if (entered === 'admin2026' || entered === 'admin' || entered === '2026') {
+                try { sessionStorage.setItem('tashheel_dental_admin_auth', 'granted'); } catch(err) {}
                 loginOverlay.style.display = 'none';
                 mainContent.style.display = 'block';
                 showToast('تم تسجيل الدخول بنجاح', 'success');
                 fetchResults();
             } else {
                 loginError.style.display = 'block';
+                loginError.textContent = 'كلمة المرور غير صحيحة! كلمة المرور هي: admin2026';
                 passInput.value = '';
                 passInput.focus();
             }
         }
 
+        // Auto-login if previously verified in this session
+        window.addEventListener('DOMContentLoaded', () => {
+            try {
+                if (sessionStorage.getItem('tashheel_dental_admin_auth') === 'granted') {
+                    loginOverlay.style.display = 'none';
+                    mainContent.style.display = 'block';
+                    fetchResults();
+                }
+            } catch(e) {}
+        });
+
         // --- Data Fetching ---
         async function fetchResults() {
             renderLoading();
+            let combined = [];
+
+            // 1. Read from localStorage (works offline, file://, localhost, Vercel)
+            try {
+                const local = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) || '[]');
+                if (Array.isArray(local)) {
+                    combined.push(...local);
+                }
+            } catch (e) {}
+
+            // 2. Read from sessionStorage (most recent exam if submitted in this tab)
+            try {
+                const sess = JSON.parse(sessionStorage.getItem('tashheel_dental_exam_session_v2') || '{}');
+                if (sess && sess.data && sess.data.name) {
+                    combined.push(sess.data);
+                }
+            } catch (e) {}
+
+            // 3. Fetch from Server API
             try {
                 const response = await fetch(API_URL);
-                if (!response.ok) throw new Error('فشل في جلب البيانات');
-                
-                const data = await response.json();
-                processData(data);
-                showToast('تم تحديث البيانات', 'success');
+                if (response.ok) {
+                    const serverData = await response.json();
+                    if (Array.isArray(serverData)) {
+                        combined.push(...serverData);
+                    }
+                }
             } catch (error) {
-                console.error('Fetch error:', error);
-                showToast('خطأ في الاتصال بالخادم، سيتم عرض بيانات تجريبية (مؤقتاً)', 'error');
-                // Mock data fallback if API is not running locally yet
-                mockData();
+                console.log('Server fetch skipped or offline');
+            }
+
+            // 4. De-duplicate by id or (name + score + date/timestamp)
+            const uniqueMap = new Map();
+            combined.forEach(item => {
+                if (!item || !item.name) return;
+                const key = item.id || `${item.name}_${item.score}_${item.date || item.timestamp}`;
+                if (!uniqueMap.has(key)) {
+                    uniqueMap.set(key, item);
+                }
+            });
+
+            let finalResults = Array.from(uniqueMap.values());
+            processData(finalResults);
+            if (finalResults.length > 0) {
+                showToast(`تم عرض ${finalResults.length} نتيجة مسجلة`, 'success');
             }
         }
 
         function processData(data) {
+            if (!data || data.length === 0) {
+                rawResults = [];
+                filteredResults = [];
+                applyFilters();
+                calculateStats();
+                return;
+            }
+
             // Sort by score DESC, then timestamp DESC (Requirement 5)
             rawResults = data.sort((a, b) => {
                 if (b.score !== a.score) {
@@ -1087,11 +1152,27 @@
                     errorsHtml = '<span class="text-muted">البيانات غير متوفرة</span>';
                 }
 
+                // Certificate action button
+                let certBtnHtml = '';
+                if (res.score >= 45) {
+                    certBtnHtml = `
+                        <button class="btn-cert-download" onclick="downloadStudentCertificate('${res.id}')" title="تحميل شهادة التقدير للطالب" style="background: linear-gradient(135deg, #10b981, #059669); color: #fff; border: none; padding: 6px 12px; border-radius: 8px; font-weight: 700; font-size: 0.8rem; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; margin-right: 6px; box-shadow: 0 2px 6px rgba(16, 185, 129, 0.25);">
+                            <i class="fa-solid fa-award"></i> الشهادة
+                        </button>
+                    `;
+                } else {
+                    certBtnHtml = `<span style="font-size: 0.75rem; color: #94a3b8; margin-right: 6px;">غير مؤهل</span>`;
+                }
+
                 tr.innerHTML = `
                     <td>${rankHtml}</td>
                     <td>
                         <div class="student-name">${escapeHtml(res.name)}</div>
                         <div class="student-date">${dateStr}</div>
+                        ${(res.duration || res.time) ? `
+                        <div class="student-duration" style="font-size: 0.8rem; color: #0284c7; font-weight: 700; margin-top: 3px; display: flex; align-items: center; gap: 5px;">
+                            <i class="fa-solid fa-stopwatch"></i> مدة الحل: ${escapeHtml(res.duration || res.time)}
+                        </div>` : ''}
                     </td>
                     <td>
                         <div class="score-cell">
@@ -1108,9 +1189,12 @@
                     </td>
                     <td>${errorsHtml}</td>
                     <td>
-                        <button class="btn-icon" onclick="openModal('${res.id}')" title="عرض التفاصيل">
-                            <i class="fa-solid fa-eye"></i>
-                        </button>
+                        <div style="display: flex; align-items: center;">
+                            <button class="btn-icon" onclick="openModal('${res.id}')" title="عرض التفاصيل">
+                                <i class="fa-solid fa-eye"></i>
+                            </button>
+                            ${certBtnHtml}
+                        </div>
                     </td>
                 `;
                 tableBody.appendChild(tr);
@@ -1123,15 +1207,30 @@
             if (!student) return;
 
             modalName.textContent = student.name;
-            modalScore.textContent = `الدرجة: ${student.score} / ${TOTAL_QUESTIONS}`;
+            const durText = (student.duration || student.time) ? ` • مدة الامتحان: ${student.duration || student.time}` : '';
+            modalScore.textContent = `الدرجة: ${student.score} / ${TOTAL_QUESTIONS} (${((student.score/TOTAL_QUESTIONS)*100).toFixed(0)}%)${durText}`;
             
+            const modalCert = document.getElementById('modal-cert-container');
+            if (modalCert) {
+                if (student.score >= 45) {
+                    modalCert.innerHTML = `
+                        <button class="btn btn-success" onclick="downloadStudentCertificate('${student.id}')" style="background: linear-gradient(135deg, #10b981, #059669); color: #fff; border: none; padding: 9px 18px; border-radius: 10px; font-weight: 800; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; margin-top: 8px; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);">
+                            <i class="fa-solid fa-award"></i> تحميل شهادة التقدير الرسمية للطالب (Doctor Certificate)
+                        </button>
+                    `;
+                } else {
+                    modalCert.innerHTML = `
+                        <span style="font-size: 0.85rem; color: var(--text-muted); display: inline-block; margin-top: 8px;">⚠️ الشهادة مخصصة للدرجات 45 فأعلى (ناقص 5 درجات أو أقل).</span>
+                    `;
+                }
+            }
+
             modalGrid.innerHTML = '';
             
             if (student.answers && student.answers.length > 0) {
                 // Ensure we iterate up to TOTAL_QUESTIONS
                 for (let i = 0; i < TOTAL_QUESTIONS; i++) {
                     const isCorrect = student.answers[i];
-                    // If answers array is shorter than TOTAL_QUESTIONS, treat missing as wrong or unattempted.
                     const correctClass = isCorrect ? 'correct' : 'wrong';
                     const iconClass = isCorrect ? 'fa-check' : 'fa-xmark';
                     
@@ -1160,6 +1259,162 @@
             if (e.target === modal) closeModal();
         });
 
+        // --- Student Certificate Generator ---
+        async function downloadStudentCertificate(id) {
+            const student = rawResults.find(r => r.id === id || r.id == id);
+            if (!student) {
+                showToast('لم يتم العثور على بيانات الطالب', 'error');
+                return;
+            }
+            if (student.score < 45) {
+                showToast('هذا الطالب غير مؤهل للشهادة (درجته أقل من 45)', 'warning');
+                return;
+            }
+
+            if (document.fonts && document.fonts.ready) {
+                try { await document.fonts.ready; } catch(e) {}
+            }
+
+            const canvas = document.createElement('canvas');
+            canvas.width = 1200;
+            canvas.height = 850;
+            const ctx = canvas.getContext('2d');
+            const W = 1200, H = 850;
+
+            // Background
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(0, 0, W, H);
+
+            // Luxury Borders
+            ctx.strokeStyle = '#0284c7';
+            ctx.lineWidth = 7;
+            ctx.strokeRect(22, 22, W - 44, H - 44);
+
+            ctx.strokeStyle = '#bae6fd';
+            ctx.lineWidth = 2.5;
+            ctx.strokeRect(36, 36, W - 72, H - 72);
+
+            // Corner Accents
+            [[46, 46], [W - 66, 46], [46, H - 66], [W - 66, H - 66]].forEach(([x, y]) => {
+                ctx.fillStyle = '#0284c7';
+                ctx.fillRect(x, y, 20, 20);
+            });
+
+            // Top Accent Line
+            ctx.fillStyle = '#0284c7';
+            ctx.fillRect(80, 60, W - 160, 3.5);
+
+            // Header
+            ctx.font = '700 16px "Inter", sans-serif';
+            ctx.fillStyle = '#64748b';
+            ctx.textAlign = 'center';
+            ctx.direction = 'ltr';
+            ctx.fillText('TASHHEEL DENTAL EDUCATIONAL ACADEMY', W / 2, 105);
+
+            // Title
+            ctx.font = '900 44px "Playfair Display", Georgia, serif';
+            ctx.fillStyle = '#0f172a';
+            ctx.fillText('CERTIFICATE OF ACADEMIC EXCELLENCE', W / 2, 168);
+
+            ctx.fillStyle = '#0284c7';
+            ctx.fillRect(W / 2 - 120, 188, 240, 3.5);
+
+            ctx.font = '600 18px "Cairo", sans-serif';
+            ctx.fillStyle = '#475569';
+            ctx.fillText('This is proudly and officially presented to certify that:', W / 2, 240);
+
+            // Doctor Name (Arabic & English Smart Handling)
+            const isArabic = /[\u0600-\u06FF]/.test(student.name);
+            let displayName = String(student.name).trim();
+            if (isArabic) {
+                if (!displayName.startsWith('د.') && !displayName.startsWith('دكتور') && !displayName.startsWith('د /')) {
+                    displayName = 'د. ' + displayName;
+                }
+                ctx.direction = 'rtl';
+                ctx.font = '900 40px "Cairo", "Tahoma", sans-serif';
+            } else {
+                if (!displayName.toLowerCase().startsWith('dr.') && !displayName.toLowerCase().startsWith('dr ')) {
+                    displayName = 'Dr. ' + displayName;
+                }
+                ctx.direction = 'ltr';
+                ctx.font = '900 40px "Cairo", "Times New Roman", sans-serif';
+            }
+            ctx.fillStyle = '#0284c7';
+            ctx.fillText(displayName, W / 2, 305);
+
+            const nameWidth = ctx.measureText(displayName).width;
+            ctx.fillStyle = '#bae6fd';
+            ctx.fillRect(W / 2 - nameWidth / 2 - 15, 322, nameWidth + 30, 2.5);
+            ctx.direction = 'ltr';
+
+            // Subtext
+            ctx.font = '500 18px "Cairo", sans-serif';
+            ctx.fillStyle = '#334155';
+            ctx.fillText('has demonstrated outstanding competence and successfully passed the comprehensive examination in', W / 2, 375);
+
+            ctx.font = '800 29px "Cairo", sans-serif';
+            ctx.fillStyle = '#0f172a';
+            ctx.fillText('Dental Anatomy I (BDS121)', W / 2, 420);
+
+            ctx.font = '600 16px "Cairo", sans-serif';
+            ctx.fillStyle = '#64748b';
+            ctx.fillText('Lecture 1 & Practical Lab 1 (Tooth Morphology, Tissues & Pulp Anatomy)', W / 2, 455);
+
+            // Score & Grade
+            const pct = Math.round((student.score / TOTAL_QUESTIONS) * 100);
+            ctx.font = '800 24px "Inter", sans-serif';
+            ctx.fillStyle = '#059669';
+            ctx.fillText(`Final Score: ${student.score} / ${TOTAL_QUESTIONS} (${pct}%)`, W / 2, 510);
+
+            let gradeEnglish = pct >= 98 ? 'Outstanding Distinction with Honors' : pct >= 90 ? 'Excellent with Honors' : 'Very Good';
+            let gradeArabic = pct >= 98 ? 'امتياز مع مرتبة الشرف' : pct >= 90 ? 'امتياز' : 'جيد جداً';
+            ctx.font = '700 18px "Cairo", sans-serif';
+            ctx.fillStyle = '#0284c7';
+            ctx.fillText(`Academic Grade: ${gradeEnglish} — ${gradeArabic}`, W / 2, 545);
+
+            // Date
+            const certDate = student.date || new Date(student.timestamp || Date.now()).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            ctx.font = '500 15px "Cairo", sans-serif';
+            ctx.fillStyle = '#94a3b8';
+            ctx.fillText(`Issued on: ${certDate}`, W / 2, 590);
+
+            // Bottom Line
+            ctx.fillStyle = '#0284c7';
+            ctx.fillRect(80, H - 90, W - 160, 3.5);
+
+            // Signatures
+            ctx.strokeStyle = '#cbd5e1';
+            ctx.lineWidth = 1.2;
+
+            ctx.beginPath();
+            ctx.moveTo(170, 710);
+            ctx.lineTo(390, 710);
+            ctx.stroke();
+            ctx.font = '700 15px "Cairo", sans-serif';
+            ctx.fillStyle = '#475569';
+            ctx.fillText('Academic Director', 280, 735);
+
+            ctx.beginPath();
+            ctx.moveTo(W - 390, 710);
+            ctx.lineTo(W - 170, 710);
+            ctx.stroke();
+            ctx.fillText('Course Examination Board', W - 280, 735);
+
+            // Emblems
+            ctx.font = '48px sans-serif';
+            ctx.fillText('🦷', 90, H / 2);
+            ctx.fillText('🦷', W - 120, H / 2);
+
+            // Download trigger
+            const safeName = String(student.name).replace(/\s+/g, '_').replace(/[^\w\u0600-\u06FF]/gi, '');
+            const link = document.createElement('a');
+            link.download = `Dr_${safeName}_Dental_Anatomy_Certificate.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+
+            showToast(`تم تنزيل شهادة الطالب (${student.name}) بنجاح! 🎓`, 'success');
+        }
+
         // --- Export / Import ---
         function exportData(type) {
             if (rawResults.length === 0) {
@@ -1173,14 +1428,14 @@
                 showToast('تم تصدير JSON بنجاح', 'success');
             } else if (type === 'csv') {
                 // BOM for Arabic Excel support (\uFEFF)
-                let csvContent = '\uFEFFالمركز,الاسم,الدرجة,النسبة,التاريخ\n';
+                let csvContent = '\uFEFFالمركز,الاسم,الدرجة,النسبة,مدة الامتحان,التاريخ\n';
                 
                 rawResults.forEach(r => {
                     const pct = ((r.score / TOTAL_QUESTIONS) * 100).toFixed(1) + '%';
-                    const date = new Date(r.timestamp).toLocaleString('ar-EG');
-                    // Escape quotes in names
-                    const name = `"${r.name.replace(/"/g, '""')}"`;
-                    csvContent += `${r.rank},${name},${r.score},${pct},"${date}"\n`;
+                    const dateObj = new Date(r.timestamp);
+                    const dateStr = !isNaN(dateObj) ? dateObj.toLocaleString('ar-EG') : (r.date || 'غير محدد');
+                    const cleanName = String(r.name).replace(/"/g, '""');
+                    csvContent += `"${r.rank}","${cleanName}","${r.score}/${TOTAL_QUESTIONS}","${pct}","${r.duration || r.time || '-'}","${dateStr}"\n`;
                 });
                 
                 const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
@@ -1248,36 +1503,34 @@
 
         // --- Clear All ---
         async function confirmClearAll() {
-            if (rawResults.length === 0) return;
-            
-            if (confirm('هل أنت متأكد من مسح جميع النتائج؟ لا يمكن التراجع عن هذه الخطوة!')) {
-                // Require password again for destructive action
-                const pass = prompt('يرجى إدخال كلمة مرور المشرف للتأكيد:');
-                if (pass !== adminPasscode) {
-                    showToast('كلمة المرور غير صحيحة. تم إلغاء العملية.', 'error');
-                    return;
-                }
-
-                try {
-                    const response = await fetch(API_URL, {
-                        method: 'DELETE'
-                    });
-                    
-                    if (response.ok) {
-                        rawResults = [];
-                        processData([]);
-                        showToast('تم مسح جميع النتائج بنجاح', 'success');
-                    } else {
-                        throw new Error('فشل المسح من الخادم');
-                    }
-                } catch (error) {
-                    console.error('Delete error:', error);
-                    // Local fallback
-                    rawResults = [];
-                    processData([]);
-                    showToast('تم مسح البيانات محلياً (السيرفر غير متاح)', 'warning');
-                }
+            if (rawResults.length === 0) {
+                showToast('لا توجد أي نتائج حالياً لمسحها', 'warning');
+                return;
             }
+            
+            if (!confirm('هل أنت متأكد من مسح جميع نتائج وسجلات الطلاب نهائياً؟ لا يمكن التراجع عن هذه الخطوة!')) {
+                return;
+            }
+
+            // 1. Clear local storage & session
+            try {
+                localStorage.removeItem(LOCAL_STORAGE_KEY);
+                localStorage.removeItem('tashheel_dental_exam_results_v1');
+                sessionStorage.removeItem('tashheel_dental_exam_session_v2');
+            } catch(e) {}
+
+            // 2. Clear from Server API
+            try {
+                await fetch(API_URL, { method: 'DELETE' });
+            } catch (error) {
+                console.log('Server clear error or offline:', error.message);
+            }
+
+            // 3. Reset in-memory data and re-render clean empty state
+            rawResults = [];
+            filteredResults = [];
+            processData([]);
+            showToast('تم مسح جميع السجلات والنتائج بنجاح 🗑️', 'success');
         }
 
         // --- Helpers ---

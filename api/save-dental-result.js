@@ -23,6 +23,8 @@ export default async function handler(req, res) {
       score: Number(body.score),
       total: Number(body.total) || 50,
       percentage: Number(body.percentage) || Math.round((Number(body.score) / (Number(body.total) || 50)) * 100),
+      duration: body.duration || body.time || '',
+      time: body.time || body.duration || '',
       wrongQuestions: Array.isArray(body.wrongQuestions) ? body.wrongQuestions : [],
       wrongDetails: Array.isArray(body.wrongDetails) ? body.wrongDetails : [],
       date: body.date || new Date().toLocaleString('ar-EG', { timeZone: 'Africa/Cairo' }),

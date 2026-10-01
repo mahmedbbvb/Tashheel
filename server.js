@@ -6,10 +6,14 @@ const url = require('url');
 const PORT = process.env.PORT || 3000;
 const ROOT_DIR = __dirname;
 const RESULTS_FILE = path.join(ROOT_DIR, 'results.json');
+const DENTAL_RESULTS_FILE = path.join(ROOT_DIR, 'dental_results.json');
 
-// Ensure results.json exists
+// Ensure results files exist
 if (!fs.existsSync(RESULTS_FILE)) {
   fs.writeFileSync(RESULTS_FILE, JSON.stringify([], null, 2), 'utf8');
+}
+if (!fs.existsSync(DENTAL_RESULTS_FILE)) {
+  fs.writeFileSync(DENTAL_RESULTS_FILE, JSON.stringify([], null, 2), 'utf8');
 }
 
 const MIME_TYPES = {
@@ -105,6 +109,72 @@ const server = http.createServer((req, res) => {
     fs.writeFileSync(RESULTS_FILE, '[]', 'utf8');
     res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
     res.end(JSON.stringify({ success: true, message: 'تم مسح النتائج' }));
+    return;
+  }
+
+  // API: Get Dental Results
+  if (pathname === '/api/dental-results' && req.method === 'GET') {
+    fs.readFile(DENTAL_RESULTS_FILE, 'utf8', (err, data) => {
+      if (err) {
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'Failed to read dental results file' }));
+        return;
+      }
+      res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+      res.end(data || '[]');
+    });
+    return;
+  }
+
+  // API: Save Dental Exam Result
+  if (pathname === '/api/save-dental-result' && req.method === 'POST') {
+    let body = '';
+    req.on('data', chunk => { body += chunk; });
+    req.on('end', () => {
+      try {
+        const resultItem = JSON.parse(body);
+        if (!resultItem.name || resultItem.score === undefined) {
+          res.writeHead(400, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ error: 'Name and score are required' }));
+          return;
+        }
+
+        resultItem.id = resultItem.id || 'res_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5);
+        resultItem.timestamp = resultItem.timestamp || Date.now();
+        resultItem.date = resultItem.date || new Date().toLocaleString('ar-EG', { timeZone: 'Africa/Cairo' });
+
+        let currentResults = [];
+        try {
+          const raw = fs.readFileSync(DENTAL_RESULTS_FILE, 'utf8');
+          currentResults = JSON.parse(raw);
+          if (!Array.isArray(currentResults)) currentResults = [];
+        } catch (e) {
+          currentResults = [];
+        }
+
+        currentResults.unshift(resultItem);
+        fs.writeFileSync(DENTAL_RESULTS_FILE, JSON.stringify(currentResults, null, 2), 'utf8');
+
+        res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+        res.end(JSON.stringify({
+          success: true,
+          message: 'تم حفظ نتيجة تشريح الأسنان بنجاح',
+          totalRecords: currentResults.length,
+          data: resultItem
+        }));
+      } catch (err) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'Invalid JSON payload: ' + err.message }));
+      }
+    });
+    return;
+  }
+
+  // API: Clear Dental Results
+  if (pathname === '/api/dental-results' && req.method === 'DELETE') {
+    fs.writeFileSync(DENTAL_RESULTS_FILE, '[]', 'utf8');
+    res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+    res.end(JSON.stringify({ success: true, message: 'تم مسح نتائج تشريح الأسنان' }));
     return;
   }
 

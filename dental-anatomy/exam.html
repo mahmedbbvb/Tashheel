@@ -636,10 +636,10 @@
 <!-- ========== ANTI-CHEAT WARNING MODAL ========== -->
 <div class="cheat-warn" id="cheatWarn">
   <div class="cheat-warn-card">
-    <div style="font-size:46px;margin-bottom:12px;">⚠️</div>
-    <h2>تحذير أمني شديد!</h2>
-    <p id="cheatMsg">تم اكتشاف مغادرة صفحة الامتحان!<br><b>خروجك من الصفحة مرة أخرى سيؤدي فوراً إلى إنهاء الامتحان وتسليمه تلقائياً بدرجتك الحالية.</b></p>
-    <button class="warn-btn" onclick="dismissCheatWarn()">أوافق والالتزام بالقواعد 🔒</button>
+    <div style="font-size:46px;margin-bottom:12px;" id="cheatIcon">⚠️</div>
+    <h2 id="cheatTitle">تحذير أمني شديد!</h2>
+    <p id="cheatMsg">تم اكتشاف مغادرة صفحة الامتحان!</p>
+    <button class="warn-btn" id="cheatWarnBtn" onclick="dismissCheatWarn()">أوافق والالتزام بالقواعد 🔒</button>
   </div>
 </div>
 
@@ -664,9 +664,9 @@
       <b>📋 تعليمات وقواعد الامتحان:</b><br>
       • عدد الأسئلة: <b>50 سؤال اختيار من متعدد (MCQ) بالإنجليزية</b>.<br>
       • يشمل أسئلة التعرف على الأسنان من الصور والمخططات التشريحية.<br>
-      • <b>ممنوع الغش نهائياً:</b> تم حظر النسخ، أخذ لقطات الشاشة (Screenshot)، والتحويل بين التبويبات.<br>
-      • <b>تحذير مغادرة الصفحة:</b> أي خروج من صفحة الامتحان سيؤدي لقفل الامتحان فوراً وتسليمه تلقائياً.<br>
-      • <b>الشهادة التقديرية:</b> مخصصة فقط لمن يحصل على <b>45 من 50 أو أعلى</b> (ناقص 5 درجات أو أقل) باسم الدكتور بالإنجليزية.<br>
+      • <b>ممنوع الغش نهائياً:</b> تم حظر النسخ، أخذ لقطات الشاشة (Screenshot)، ومغادرة الصفحة.<br>
+      • <b>نظام محاولات الخروج (3 إنذارات):</b> عند خروجك أول مرة متبقي لك محاولتان (2)، والمرة الثانية متبقي محاولة (1)، والمرة الثالثة متبقي (0). <b>وفي المرة الرابعة (4) يتم قفل الامتحان وتسليمه تلقائياً فوراً</b>.<br>
+      • <b>الشهادة التقديرية:</b> مخصصة فقط لمن يحصل على <b>45 من 50 أو أعلى</b> (ناقص 5 درجات أو أقل) باسم الدكتور.<br>
       • الشرح التفصيلي لجميع الأسئلة يظهر مباشرة بعد التسليم باللغة العربية مع المصطلحات الطبية.
     </div>
     <form id="startForm" onsubmit="startExam(event)">
@@ -1280,38 +1280,119 @@ document.addEventListener('keydown', function(e) {
   }
 });
 
-// 2. Strict Anti-Cheating: Page exit / tab-switch detection
+// 2. Strict Anti-Cheating: Page exit / tab-switch detection (3 Warnings, 4th Auto-Submits)
+let userIsAway = false;
+let lastExitTimestamp = 0;
+
+function handlePageExit() {
+  if (examSubmitted || !examStartTime) return;
+  const now = Date.now();
+  // Prevent duplicate events within 1.5 seconds
+  if (now - lastExitTimestamp < 1500) return;
+  lastExitTimestamp = now;
+
+  if (!userIsAway) {
+    userIsAway = true;
+    tabSwitchCount++;
+    saveSession();
+
+    if (tabSwitchCount >= 4) {
+      submitExam(true);
+      try {
+        alert('🚨 تم إنهاء وقفل الامتحان وتسليمه تلقائياً بسبب مغادرة الصفحة 4 مرات واستنفاد كافة المحاولات!');
+      } catch(e) {}
+    }
+  }
+}
+
+function handlePageReturn() {
+  if (examSubmitted || !examStartTime) return;
+  if (!userIsAway) return;
+  userIsAway = false;
+
+  if (tabSwitchCount >= 4) {
+    if (!examSubmitted) submitExam(true);
+    try {
+      alert('🚨 تم إنهاء وقفل الامتحان وتسليمه تلقائياً بسبب استنفاد محاولات الخروج (4 مرات)!');
+    } catch(e) {}
+    return;
+  }
+
+  showExitWarningModal(tabSwitchCount);
+}
+
 document.addEventListener('visibilitychange', function() {
   if (examSubmitted || !examStartTime) return;
   if (document.hidden) {
-    handlePageExitAttempt();
+    handlePageExit();
+  } else {
+    handlePageReturn();
   }
 });
 
 window.addEventListener('blur', function() {
   if (examSubmitted || !examStartTime) return;
-  // Slight delay to prevent false positives from select dropdowns
+  // Delay check to prevent false positives when interacting with system controls
   setTimeout(() => {
     if (document.hidden && !examSubmitted) {
-      handlePageExitAttempt();
+      handlePageExit();
     }
   }, 300);
 });
 
-function handlePageExitAttempt() {
-  tabSwitchCount++;
-  if (tabSwitchCount >= 2) {
-    // Immediate Auto-Submit on second exit!
-    submitExam(true);
-    alert('🚨 تم إنهاء الامتحان وتسليمه تلقائياً فوراً بسبب تكرار مغادرة الصفحة ومحاولة الغش!');
-  } else {
-    // First warning modal
-    document.getElementById('cheatWarn').classList.add('show');
+window.addEventListener('focus', function() {
+  if (examSubmitted || !examStartTime) return;
+  if (!document.hidden) {
+    handlePageReturn();
   }
+});
+
+function showExitWarningModal(count) {
+  const modal = document.getElementById('cheatWarn');
+  const icon = document.getElementById('cheatIcon');
+  const title = document.getElementById('cheatTitle');
+  const msg = document.getElementById('cheatMsg');
+  const btn = document.getElementById('cheatWarnBtn');
+  if (!modal) return;
+
+  if (count === 1) {
+    if (icon) icon.textContent = '⚠️';
+    if (title) title.textContent = 'تحذير مغادرة الامتحان (المحاولة 1 من 3)';
+    if (msg) msg.innerHTML = `لقد خرجت من صفحة الامتحان <b>مرة واحدة (1)</b>.<br><b style="color:#fef08a;font-size:16px;">متبقي لك محاولتان فقط (فاضلك 2)!</b><br>احذر: في المرة الرابعة (4) سيتم قفل الامتحان فوراً وتسليمه تلقائياً بدرجتك الحالية.`;
+    if (btn) {
+      btn.textContent = 'أوافق ومتابعة الامتحان 🔒';
+      btn.style.background = '#ffffff';
+      btn.style.color = '#dc2626';
+    }
+  } else if (count === 2) {
+    if (icon) icon.textContent = '⚠️';
+    if (title) title.textContent = 'تحذير شديد: مغادرة الامتحان (المحاولة 2 من 3)';
+    if (msg) msg.innerHTML = `لقد خرجت من صفحة الامتحان <b>مرتين (2)</b>.<br><b style="color:#fef08a;font-size:16px;">متبقي لك محاولة واحدة فقط (فاضلك 1)!</b><br>أي خروج إضافي سيضعك أمام الفرصة الأخيرة قبل القفل النهائي.`;
+    if (btn) {
+      btn.textContent = 'أوافق ومتابعة الامتحان 🔒';
+      btn.style.background = '#ffffff';
+      btn.style.color = '#dc2626';
+    }
+  } else if (count === 3) {
+    if (icon) icon.textContent = '🚨';
+    if (title) title.textContent = 'إنذار أخير وحاسم! (المحاولة 3 من 3)';
+    if (msg) msg.innerHTML = `لقد خرجت من صفحة الامتحان <b>3 مرات</b>.<br><b style="color:#fef08a;font-size:17px;">متبقي لك 0 محاولات (فاضلك 0 - آخر فرصة)!</b><br>⚠️ <b>خروجك القادم (المرة الرابعة) سيؤدي إلى قفل الامتحان وتسليمه تلقائياً فوراً دون أي تراجع!</b>`;
+    if (btn) {
+      btn.textContent = 'فهمت - العودة للامتحان (آخر فرصة!) ⚠️';
+      btn.style.background = '#ef4444';
+      btn.style.color = '#ffffff';
+    }
+  } else {
+    submitExam(true);
+    return;
+  }
+
+  modal.classList.add('show');
 }
 
 function dismissCheatWarn() {
-  document.getElementById('cheatWarn').classList.remove('show');
+  const modal = document.getElementById('cheatWarn');
+  if (modal) modal.classList.remove('show');
 }
 
 // 3. Before unload warning
@@ -1455,6 +1536,7 @@ function submitExam(forced) {
 
   examSubmitted = true;
   clearInterval(timerInterval);
+  dismissCheatWarn();
 
   // Score calculation
   let score = 0;
@@ -1535,16 +1617,28 @@ function submitExam(forced) {
     score: score,
     total: questions.length,
     percentage: percentage,
+    duration: timeStr,
+    time: timeStr,
+    answers: answers.map((ans, i) => ans === questions[i].ans),
+    userAnswers: answers,
     wrongQuestions: wrongQuestions,
     wrongDetails: wrongDetails,
-    time: timeStr,
     date: dateStr,
     timestamp: Date.now(),
     tabSwitches: tabSwitchCount,
     examType: 'dental-anatomy'
   };
 
-  // Save in Session
+  // 1. Save in LocalStorage (works offline, file://, localhost, and Vercel)
+  try {
+    const existing = JSON.parse(localStorage.getItem('tashheel_dental_exam_results_v1') || '[]');
+    const updated = [resultRecord, ...existing.filter(r => r.id !== resultRecord.id)];
+    localStorage.setItem('tashheel_dental_exam_results_v1', JSON.stringify(updated));
+  } catch(e) {
+    console.warn('localStorage error:', e);
+  }
+
+  // 2. Save in Session
   try {
     sessionStorage.setItem(SESSION_KEY, JSON.stringify({
       screen: 'result',
@@ -1553,7 +1647,7 @@ function submitExam(forced) {
     }));
   } catch(e) {}
 
-  // Save to server API
+  // 3. Save to server API
   sendResultToServer(resultRecord);
 }
 
