@@ -1641,8 +1641,11 @@ function filterCorrections(type) {
 // =========================================================================
 // CERTIFICATE GENERATION (CANVAS - HIGH RESOLUTION)
 // =========================================================================
-function showCert() {
+async function showCert() {
   document.getElementById('certModal').classList.add('show');
+  if (document.fonts && document.fonts.ready) {
+    try { await document.fonts.ready; } catch(e) {}
+  }
   drawCertificate();
 }
 
@@ -1702,42 +1705,59 @@ function drawCertificate() {
   ctx.fillStyle = '#475569';
   ctx.fillText('This is proudly and officially presented to certify that:', W / 2, 240);
 
-  // Student Name with "Dr." in English
-  ctx.font = '900 38px Cairo, sans-serif';
+  // Student Name (Arabic & English Smart BiDi Handling)
+  const isArabic = /[\u0600-\u06FF]/.test(currentStudentName);
+  let displayName = currentStudentName.trim();
+  if (isArabic) {
+    if (!displayName.startsWith('د.') && !displayName.startsWith('دكتور') && !displayName.startsWith('د /')) {
+      displayName = 'د. ' + displayName;
+    }
+    ctx.direction = 'rtl';
+    ctx.font = '900 40px "Cairo", "Tahoma", sans-serif';
+  } else {
+    if (!displayName.toLowerCase().startsWith('dr.') && !displayName.toLowerCase().startsWith('dr ')) {
+      displayName = 'Dr. ' + displayName;
+    }
+    ctx.direction = 'ltr';
+    ctx.font = '900 40px "Cairo", "Times New Roman", sans-serif';
+  }
   ctx.fillStyle = '#0284c7';
-  ctx.fillText(`Dr. ${currentStudentName}`, W / 2, 305);
+  ctx.fillText(displayName, W / 2, 305);
 
   // Underline for Doctor Name
-  const nameWidth = ctx.measureText(`Dr. ${currentStudentName}`).width;
+  const nameWidth = ctx.measureText(displayName).width;
   ctx.fillStyle = '#bae6fd';
-  ctx.fillRect(W / 2 - nameWidth / 2 - 15, 320, nameWidth + 30, 2);
+  ctx.fillRect(W / 2 - nameWidth / 2 - 15, 322, nameWidth + 30, 2.5);
+  ctx.direction = 'ltr';
 
   // Recognition Statement
-  ctx.font = '500 18px Cairo, sans-serif';
+  ctx.font = '500 18px "Cairo", sans-serif';
   ctx.fillStyle = '#334155';
   ctx.fillText('has demonstrated outstanding competence and successfully passed the comprehensive examination in', W / 2, 375);
 
   // Subject
-  ctx.font = '800 29px Cairo, sans-serif';
+  ctx.font = '800 29px "Cairo", sans-serif';
   ctx.fillStyle = '#0f172a';
   ctx.fillText('Dental Anatomy I (BDS121)', W / 2, 420);
 
   // Topics
-  ctx.font = '600 16px Cairo, sans-serif';
+  ctx.font = '600 16px "Cairo", sans-serif';
   ctx.fillStyle = '#64748b';
   ctx.fillText('Lecture 1 & Practical Lab 1 (Tooth Morphology, Tissues & Pulp Anatomy)', W / 2, 455);
 
   // Score & Grade
   const score = answers.filter((a, i) => a === questions[i].ans).length;
   const pct = Math.round(score / questions.length * 100);
-  ctx.font = '800 24px Inter, sans-serif';
+  ctx.font = '800 24px "Inter", sans-serif';
   ctx.fillStyle = '#059669';
   ctx.fillText(`Final Score: ${score} / ${questions.length} (${pct}%)`, W / 2, 510);
 
-  let grade = pct >= 98 ? 'Outstanding Distinction (امتياز مع مرتبة الشرف)' : pct >= 90 ? 'Excellent with Honors (امتياز)' : 'Very Good (جيد جداً مرتفع)';
-  ctx.font = '700 18px Cairo, sans-serif';
+  let gradeEnglish = pct >= 98 ? 'Outstanding Distinction with Honors' : pct >= 90 ? 'Excellent with Honors' : 'Very Good';
+  let gradeArabic = pct >= 98 ? 'امتياز مع مرتبة الشرف' : pct >= 90 ? 'امتياز' : 'جيد جداً';
+  ctx.font = '700 18px "Cairo", sans-serif';
   ctx.fillStyle = '#0284c7';
-  ctx.fillText(`Academic Grade: ${grade}`, W / 2, 545);
+  ctx.direction = 'ltr';
+  ctx.fillText(`Academic Grade: ${gradeEnglish} — ${gradeArabic}`, W / 2, 545);
 
   // Date
   const dateStr = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
