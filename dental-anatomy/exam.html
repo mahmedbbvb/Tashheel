@@ -1,0 +1,1853 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dental Anatomy Comprehensive Exam — Tashheel Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{
+      font-family:'Cairo','Inter',system-ui,sans-serif;
+      background:#0b1329;
+      min-height:100vh;
+      color:#0f172a;
+      -webkit-user-select:none;
+      -moz-user-select:none;
+      -ms-user-select:none;
+      user-select:none;
+      -webkit-touch-callout:none;
+    }
+
+    /* === START SCREEN === */
+    .start-overlay{
+      position:fixed;
+      inset:0;
+      background:radial-gradient(circle at 50% 20%, #1e293b 0%, #0f172a 60%, #020617 100%);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:1000;
+      padding:20px;
+    }
+    .start-card{
+      background:#ffffff;
+      border-radius:28px;
+      padding:44px 38px;
+      max-width:520px;
+      width:100%;
+      text-align:center;
+      box-shadow:0 30px 80px rgba(0,0,0,.45);
+      animation:fadeUp .5s cubic-bezier(0.16, 1, 0.3, 1);
+      position:relative;
+      overflow:hidden;
+    }
+    .start-card::before{
+      content:'';
+      position:absolute;
+      top:0;left:0;right:0;
+      height:6px;
+      background:linear-gradient(90deg, #0284c7, #0ea5e9, #38bdf8);
+    }
+    @keyframes fadeUp{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
+    .start-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:6px 14px;
+      background:#f0f9ff;
+      border:1px solid #bae6fd;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:800;
+      color:#0284c7;
+      margin-bottom:18px;
+    }
+    .start-card h1{
+      font-size:23px;
+      font-weight:900;
+      color:#0f172a;
+      line-height:1.35;
+      margin-bottom:8px;
+    }
+    .start-card p{
+      font-size:13.5px;
+      color:#64748b;
+      margin-bottom:22px;
+      line-height:1.6;
+    }
+    .start-card .rules{
+      text-align:right;
+      direction:rtl;
+      background:#f8fafc;
+      border:1.5px solid #e2e8f0;
+      border-radius:18px;
+      padding:16px 20px;
+      margin-bottom:24px;
+      font-size:12.5px;
+      color:#475569;
+      line-height:1.85;
+    }
+    .start-card .rules b{color:#0f172a}
+    .start-card input{
+      width:100%;
+      padding:15px 18px;
+      border:2px solid #cbd5e1;
+      border-radius:14px;
+      font-size:16px;
+      font-weight:700;
+      font-family:inherit;
+      outline:none;
+      text-align:center;
+      transition:all .2s ease;
+      margin-bottom:16px;
+      color:#0f172a;
+    }
+    .start-card input:focus{
+      border-color:#0284c7;
+      box-shadow:0 0 0 4px rgba(2,132,199,.15);
+    }
+    .btn-start{
+      width:100%;
+      padding:16px;
+      border:none;
+      border-radius:14px;
+      background:linear-gradient(135deg,#0284c7,#0369a1);
+      color:#fff;
+      font-size:17px;
+      font-weight:800;
+      font-family:inherit;
+      cursor:pointer;
+      transition:all .2s ease;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      box-shadow:0 6px 20px rgba(2,132,199,.28);
+    }
+    .btn-start:hover{
+      transform:translateY(-2px);
+      box-shadow:0 10px 28px rgba(2,132,199,.38);
+    }
+
+    /* === EXAM SCREEN === */
+    .exam-container{
+      display:none;
+      min-height:100vh;
+      background:#f8fafc;
+      padding-bottom:110px;
+    }
+    .exam-topbar{
+      position:sticky;
+      top:0;
+      z-index:100;
+      background:#ffffff;
+      border-bottom:1px solid #e2e8f0;
+      padding:12px 24px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:12px;
+      box-shadow:0 2px 8px rgba(0,0,0,.03);
+    }
+    .topbar-item{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      font-size:13px;
+      font-weight:700;
+      color:#475569;
+    }
+    .topbar-item svg{width:18px;height:18px;color:#0284c7}
+    .topbar-item .val{color:#0f172a;font-family:'Inter',sans-serif;font-weight:800}
+    .progress-bar{width:100%;height:4px;background:#e2e8f0}
+    .progress-fill{height:100%;background:linear-gradient(90deg,#0284c7,#10b981);transition:width .3s ease}
+
+    /* Question Grid Navigator */
+    .q-grid-wrap{
+      background:#ffffff;
+      border-bottom:1px solid #e2e8f0;
+      padding:12px 20px;
+      overflow-x:auto;
+      -webkit-overflow-scrolling:touch;
+    }
+    .q-grid{
+      display:flex;
+      gap:6px;
+      justify-content:center;
+      flex-wrap:wrap;
+      max-width:850px;
+      margin:0 auto;
+    }
+    .q-dot{
+      width:34px;
+      height:34px;
+      border-radius:10px;
+      border:1.5px solid #e2e8f0;
+      background:#ffffff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:12px;
+      font-weight:800;
+      color:#64748b;
+      cursor:pointer;
+      transition:all .15s ease;
+      font-family:'Inter',sans-serif;
+      flex-shrink:0;
+    }
+    .q-dot:hover{border-color:#0284c7;color:#0284c7;transform:translateY(-1px)}
+    .q-dot.answered{background:#ecfdf5;border-color:#a7f3d0;color:#065f46}
+    .q-dot.active{background:#0284c7;border-color:#0284c7;color:#ffffff;transform:scale(1.08);box-shadow:0 3px 10px rgba(2,132,199,.3)}
+    .q-dot.flagged{background:#fffbeb;border-color:#fde68a;color:#b45309}
+
+    /* Question Card */
+    .question-area{max-width:780px;margin:28px auto;padding:0 20px}
+    .q-card{
+      background:#ffffff;
+      border-radius:22px;
+      padding:34px;
+      border:1.5px solid #e2e8f0;
+      box-shadow:0 4px 20px rgba(0,0,0,.03);
+      animation:fadeIn .25s ease;
+    }
+    @keyframes fadeIn{from{opacity:0;transform:translateX(10px)}to{opacity:1;transform:translateX(0)}}
+    .q-header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:20px;
+    }
+    .q-badge{
+      font-size:12.5px;
+      font-weight:800;
+      color:#0284c7;
+      background:#f0f9ff;
+      padding:4px 12px;
+      border-radius:8px;
+      border:1px solid #bae6fd;
+      font-family:'Inter',sans-serif;
+    }
+    .q-flag-btn{
+      border:1.5px solid #e2e8f0;
+      background:#ffffff;
+      padding:5px 12px;
+      border-radius:10px;
+      font-size:12.5px;
+      font-weight:700;
+      color:#64748b;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      gap:6px;
+      transition:all .15s ease;
+      font-family:inherit;
+    }
+    .q-flag-btn:hover,.q-flag-btn.flagged{background:#fffbeb;border-color:#fde68a;color:#b45309}
+    .q-text{
+      font-size:17px;
+      font-weight:700;
+      color:#0f172a;
+      line-height:1.65;
+      margin-bottom:14px;
+    }
+    .q-image{
+      width:100%;
+      max-width:480px;
+      border-radius:14px;
+      border:1.5px solid #e2e8f0;
+      margin:16px auto;
+      display:block;
+      box-shadow:0 4px 14px rgba(0,0,0,.04);
+      background:#f1f5f9;
+    }
+    .options-list{display:flex;flex-direction:column;gap:12px;margin-top:24px}
+    .opt-btn{
+      display:flex;
+      align-items:flex-start;
+      gap:14px;
+      padding:15px 18px;
+      border-radius:14px;
+      border:2px solid #e2e8f0;
+      background:#ffffff;
+      cursor:pointer;
+      transition:all .18s ease;
+      text-align:left;
+    }
+    .opt-btn:hover{border-color:#bae6fd;background:#f8fafc}
+    .opt-btn.selected{
+      border-color:#0284c7;
+      background:#f0f9ff;
+      box-shadow:0 0 0 3px rgba(2,132,199,.12);
+    }
+    .opt-letter{
+      width:32px;
+      height:32px;
+      border-radius:10px;
+      background:#f1f5f9;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:14px;
+      font-weight:800;
+      color:#475569;
+      flex-shrink:0;
+      font-family:'Inter',sans-serif;
+      transition:all .18s ease;
+    }
+    .opt-btn.selected .opt-letter{background:#0284c7;color:#ffffff}
+    .opt-text{font-size:15px;color:#334155;line-height:1.55;padding-top:4px;font-weight:600}
+
+    /* Fixed Navigation Bar */
+    .nav-bar{
+      position:fixed;
+      bottom:0;left:0;right:0;
+      background:#ffffff;
+      border-top:1px solid #e2e8f0;
+      padding:14px 24px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:16px;
+      z-index:100;
+      box-shadow:0 -4px 16px rgba(0,0,0,.04);
+    }
+    .nav-btn{
+      padding:12px 28px;
+      border-radius:12px;
+      border:2px solid #e2e8f0;
+      background:#ffffff;
+      font-size:14px;
+      font-weight:800;
+      color:#475569;
+      cursor:pointer;
+      font-family:inherit;
+      transition:all .15s ease;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+    }
+    .nav-btn:hover:not(:disabled){border-color:#0284c7;color:#0284c7}
+    .nav-btn.primary{
+      background:linear-gradient(135deg,#0284c7,#0369a1);
+      color:#fff;
+      border-color:transparent;
+    }
+    .nav-btn.primary:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(2,132,199,.25)}
+    .nav-btn.submit{
+      background:linear-gradient(135deg,#10b981,#059669);
+      color:#fff;
+      border-color:transparent;
+      padding:12px 32px;
+      font-size:15px;
+    }
+    .nav-btn.submit:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(16,185,129,.3)}
+    .nav-btn:disabled{opacity:.4;cursor:not-allowed;transform:none!important}
+    .q-counter{font-size:14px;font-weight:800;color:#64748b;font-family:'Inter',sans-serif}
+
+    /* === SCREEN 3: RESULTS === */
+    .result-overlay{
+      position:fixed;
+      inset:0;
+      background:#0f172a;
+      display:none;
+      z-index:2000;
+      overflow-y:auto;
+      padding:44px 20px 80px;
+    }
+    .result-content{max-width:780px;margin:0 auto}
+    .score-circle{
+      width:160px;
+      height:160px;
+      border-radius:50%;
+      background:linear-gradient(135deg,#0284c7,#10b981);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin:0 auto 20px;
+      box-shadow:0 0 50px rgba(2,132,199,.35);
+      animation:popIn .5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes popIn{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+    .score-circle.fail{background:linear-gradient(135deg,#f97316,#ef4444);box-shadow:0 0 50px rgba(239,68,68,.3)}
+    .score-inner{
+      width:140px;
+      height:140px;
+      border-radius:50%;
+      background:#0f172a;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+    }
+    .score-num{
+      font-size:44px;
+      font-weight:900;
+      color:#ffffff;
+      font-family:'Inter',sans-serif;
+      line-height:1;
+    }
+    .score-total{font-size:14px;color:#94a3b8;font-weight:700;margin-top:2px}
+    .result-msg{text-align:center;color:#ffffff;margin-bottom:28px}
+    .result-msg h2{font-size:24px;font-weight:900;margin-bottom:8px}
+    .result-msg p{font-size:14.5px;color:#94a3b8;line-height:1.6}
+
+    /* Result Action - ONLY Certificate (Retake and Results List REMOVED as requested) */
+    .result-actions{
+      display:flex;
+      gap:12px;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin-bottom:34px;
+    }
+    .cert-download-btn{
+      padding:14px 32px;
+      border-radius:14px;
+      border:none;
+      background:linear-gradient(135deg,#10b981,#059669);
+      color:#ffffff;
+      font-size:16px;
+      font-weight:800;
+      cursor:pointer;
+      font-family:inherit;
+      transition:all .2s ease;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      box-shadow:0 6px 22px rgba(16,185,129,.32);
+    }
+    .cert-download-btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 10px 30px rgba(16,185,129,.42);
+    }
+    .cert-notice{
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:12px;
+      padding:10px 18px;
+      color:#94a3b8;
+      font-size:13px;
+      text-align:center;
+      margin-bottom:24px;
+    }
+
+    /* Corrections Section */
+    .corrections-wrap{margin-top:10px}
+    .corrections-header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:18px;
+      flex-wrap:wrap;
+      gap:12px;
+      direction:rtl;
+    }
+    .corrections-header h3{color:#ffffff;font-size:19px;font-weight:900}
+    .filter-tabs{display:flex;gap:8px}
+    .filter-btn{
+      padding:8px 16px;
+      border-radius:10px;
+      border:1.5px solid rgba(255,255,255,.15);
+      background:rgba(255,255,255,.04);
+      color:#cbd5e1;
+      font-size:13px;
+      font-weight:700;
+      cursor:pointer;
+      font-family:inherit;
+      transition:all .15s ease;
+    }
+    .filter-btn:hover,.filter-btn.active{
+      background:rgba(2,132,199,.2);
+      border-color:#0284c7;
+      color:#ffffff;
+    }
+    .corr-card{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:18px;
+      padding:22px;
+      margin-bottom:16px;
+      transition:all .2s ease;
+    }
+    .corr-card.correct{border-left:5px solid #10b981}
+    .corr-card.wrong{border-left:5px solid #ef4444}
+    .corr-q{
+      font-size:15.5px;
+      font-weight:700;
+      color:#f8fafc;
+      margin-bottom:14px;
+      line-height:1.6;
+    }
+    .corr-q .corr-num{color:#38bdf8;font-weight:900;margin-right:6px}
+    .corr-opts{display:flex;flex-direction:column;gap:7px;margin-bottom:14px}
+    .corr-opt{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:9px 14px;
+      border-radius:10px;
+      font-size:13.5px;
+      color:#94a3b8;
+      background:rgba(255,255,255,.02);
+    }
+    .corr-opt.correct-answer{
+      background:rgba(16,185,129,.12);
+      border:1px solid rgba(16,185,129,.3);
+      color:#6ee7b7;
+      font-weight:700;
+    }
+    .corr-opt.wrong-answer{
+      background:rgba(239,68,68,.12);
+      border:1px solid rgba(239,68,68,.3);
+      color:#fca5a5;
+      font-weight:700;
+    }
+    .corr-explain{
+      direction:rtl;
+      text-align:right;
+      background:rgba(2,132,199,.08);
+      border:1px solid rgba(2,132,199,.25);
+      border-radius:14px;
+      padding:16px 18px;
+      font-size:13.5px;
+      color:#bae6fd;
+      line-height:1.85;
+    }
+    .corr-explain b{color:#38bdf8;font-weight:800}
+
+    /* Certificate Modal */
+    .cert-modal{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.85);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:3000;
+      padding:20px;
+      backdrop-filter:blur(6px);
+    }
+    .cert-modal.show{display:flex}
+    .cert-box{
+      background:#ffffff;
+      border-radius:24px;
+      padding:24px;
+      max-width:960px;
+      width:100%;
+      max-height:92vh;
+      overflow-y:auto;
+      text-align:center;
+      box-shadow:0 30px 80px rgba(0,0,0,.6);
+    }
+    .cert-box canvas{
+      max-width:100%;
+      height:auto;
+      border-radius:14px;
+      border:1px solid #cbd5e1;
+      box-shadow:0 8px 24px rgba(0,0,0,.08);
+    }
+    .cert-box .cert-actions-row{
+      display:flex;
+      gap:12px;
+      justify-content:center;
+      margin-top:18px;
+    }
+    .cert-box .cert-dl{
+      padding:12px 30px;
+      border-radius:12px;
+      border:none;
+      background:linear-gradient(135deg,#10b981,#059669);
+      color:#ffffff;
+      font-size:15px;
+      font-weight:800;
+      cursor:pointer;
+      font-family:inherit;
+      transition:all .15s ease;
+    }
+    .cert-box .cert-dl:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(16,185,129,.35)}
+    .cert-box .cert-close{
+      padding:12px 28px;
+      border-radius:12px;
+      border:2px solid #cbd5e1;
+      background:#ffffff;
+      color:#475569;
+      font-size:15px;
+      font-weight:800;
+      cursor:pointer;
+      font-family:inherit;
+    }
+
+    /* Anti-cheat warning overlay */
+    .cheat-warn{
+      position:fixed;
+      inset:0;
+      background:rgba(220,38,38,.96);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:5000;
+      text-align:center;
+      color:#ffffff;
+      padding:30px;
+      direction:rtl;
+    }
+    .cheat-warn.show{display:flex}
+    .cheat-warn-card{
+      max-width:480px;
+      background:rgba(0,0,0,.25);
+      border:2px solid rgba(255,255,255,.3);
+      border-radius:24px;
+      padding:36px 30px;
+    }
+    .cheat-warn h2{font-size:28px;font-weight:900;margin-bottom:12px}
+    .cheat-warn p{font-size:15.5px;margin-bottom:24px;line-height:1.7}
+    .cheat-warn .warn-btn{
+      padding:14px 34px;
+      border-radius:14px;
+      border:2px solid #ffffff;
+      background:#ffffff;
+      color:#dc2626;
+      font-size:16px;
+      font-weight:900;
+      cursor:pointer;
+      font-family:inherit;
+      transition:all .15s ease;
+    }
+    .cheat-warn .warn-btn:hover{background:transparent;color:#ffffff}
+
+    @media(max-width:600px){
+      .start-card{padding:32px 22px}
+      .q-card{padding:22px 16px}
+      .exam-topbar{padding:10px 14px}
+      .q-grid-wrap{padding:8px 10px}
+      .q-dot{width:30px;height:30px;font-size:11px}
+      .nav-btn{padding:10px 18px;font-size:13px}
+      .score-circle{width:130px;height:130px}
+      .score-inner{width:112px;height:112px}
+      .score-num{font-size:36px}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ========== ANTI-CHEAT WARNING MODAL ========== -->
+<div class="cheat-warn" id="cheatWarn">
+  <div class="cheat-warn-card">
+    <div style="font-size:46px;margin-bottom:12px;">⚠️</div>
+    <h2>تحذير أمني شديد!</h2>
+    <p id="cheatMsg">تم اكتشاف مغادرة صفحة الامتحان!<br><b>خروجك من الصفحة مرة أخرى سيؤدي فوراً إلى إنهاء الامتحان وتسليمه تلقائياً بدرجتك الحالية.</b></p>
+    <button class="warn-btn" onclick="dismissCheatWarn()">أوافق والالتزام بالقواعد 🔒</button>
+  </div>
+</div>
+
+<!-- ========== CERTIFICATE MODAL ========== -->
+<div class="cert-modal" id="certModal">
+  <div class="cert-box">
+    <canvas id="certCanvas" width="1200" height="850"></canvas>
+    <div class="cert-actions-row">
+      <button class="cert-dl" onclick="downloadCert()">📥 Download Certificate (PNG)</button>
+      <button class="cert-close" onclick="closeCert()">إغلاق</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== SCREEN 1: START SCREEN ========== -->
+<div class="start-overlay" id="startScreen">
+  <div class="start-card">
+    <div class="start-badge">🦷 BDS121 • Dental Anatomy I</div>
+    <h1>Comprehensive Dental Anatomy Exam</h1>
+    <p>امتحان شامل على المحاضرة الأولى والسكشن العملي الأول</p>
+    <div class="rules">
+      <b>📋 تعليمات وقواعد الامتحان:</b><br>
+      • عدد الأسئلة: <b>50 سؤال اختيار من متعدد (MCQ) بالإنجليزية</b>.<br>
+      • يشمل أسئلة التعرف على الأسنان من الصور والمخططات التشريحية.<br>
+      • <b>ممنوع الغش نهائياً:</b> تم حظر النسخ، أخذ لقطات الشاشة (Screenshot)، والتحويل بين التبويبات.<br>
+      • <b>تحذير مغادرة الصفحة:</b> أي خروج من صفحة الامتحان سيؤدي لقفل الامتحان فوراً وتسليمه تلقائياً.<br>
+      • <b>الشهادة التقديرية:</b> مخصصة فقط لمن يحصل على <b>45 من 50 أو أعلى</b> (ناقص 5 درجات أو أقل) باسم الدكتور بالإنجليزية.<br>
+      • الشرح التفصيلي لجميع الأسئلة يظهر مباشرة بعد التسليم باللغة العربية مع المصطلحات الطبية.
+    </div>
+    <form id="startForm" onsubmit="startExam(event)">
+      <input type="text" id="studentName" placeholder="اكتب اسمك ثلاثياً هنا (بالعربية أو الإنجليزية)" required minlength="2" autocomplete="name">
+      <button type="submit" class="btn-start">
+        <span>بدء الامتحان الآن</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- ========== SCREEN 2: ACTIVE EXAM ========== -->
+<div class="exam-container" id="examScreen">
+  <!-- Top Bar -->
+  <div class="exam-topbar">
+    <div class="topbar-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      <span>الوقت: </span>
+      <span class="val" id="examTimer">00:00</span>
+    </div>
+    <div class="topbar-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v-2"/><circle cx="8.5" cy="7" r="4"/></svg>
+      <span class="val" id="activeStudentName"></span>
+    </div>
+    <div class="topbar-item">
+      <span>تمت الإجابة: </span>
+      <span class="val"><span id="answeredCount">0</span> / 50</span>
+    </div>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+
+  <!-- Question Grid Navigator -->
+  <div class="q-grid-wrap">
+    <div class="q-grid" id="qGrid"></div>
+  </div>
+
+  <!-- Question Content Area -->
+  <div class="question-area" id="questionArea"></div>
+
+  <!-- Bottom Navigation Bar -->
+  <div class="nav-bar">
+    <button class="nav-btn" id="prevBtn" onclick="goToQuestion(currentQ - 1)" disabled>
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      السابق
+    </button>
+    <span class="q-counter" id="qCounter">1 / 50</span>
+    <button class="nav-btn primary" id="nextBtn" onclick="goToQuestion(currentQ + 1)">
+      التالي
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+    <button class="nav-btn submit" id="submitBtn" onclick="submitExam(false)" style="display:none">
+      إنهاء وتسليم الامتحان ✅
+    </button>
+  </div>
+</div>
+
+<!-- ========== SCREEN 3: RESULTS SCREEN ========== -->
+<div class="result-overlay" id="resultScreen">
+  <div class="result-content">
+    <div class="score-circle" id="scoreCircle">
+      <div class="score-inner">
+        <div class="score-num" id="scoreNum">0</div>
+        <div class="score-total">/ 50</div>
+      </div>
+    </div>
+    <div class="result-msg">
+      <h2 id="resultTitle">نتيجتك في الامتحان</h2>
+      <p id="resultSubtext"></p>
+    </div>
+
+    <!-- Actions: ONLY Certificate Button if eligible (Retake & Results List Buttons Removed) -->
+    <div class="result-actions" id="resultActions">
+      <button class="cert-download-btn" id="certBtn" onclick="showCert()" style="display:none">
+        🏆 تحميل شهادة التقدير الرسمية (Doctor Certificate)
+      </button>
+    </div>
+    <div class="cert-notice" id="certNotice" style="display:none">
+      ⚠️ للحصول على الشهادة الرسمية يلزم الحصول على 45 من 50 أو أعلى (ناقص 5 درجات أو أقل).
+    </div>
+
+    <!-- Corrections Section -->
+    <div class="corrections-wrap" id="correctionsWrap">
+      <div class="corrections-header">
+        <h3>📝 مراجعة الأسئلة والشرح الطبي المفصل</h3>
+        <div class="filter-tabs">
+          <button class="filter-btn active" id="filterAll" onclick="filterCorrections('all')">جميع الأسئلة (50)</button>
+          <button class="filter-btn" id="filterWrong" onclick="filterCorrections('wrong')">❌ الأسئلة الخاطئة فقط</button>
+        </div>
+      </div>
+      <div id="correctionsList"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// =========================================================================
+// 50 COMPREHENSIVE DENTAL ANATOMY QUESTIONS WITH INLINE ARABIC EXPLANATIONS
+// =========================================================================
+const questions = [
+  // --- Section 1: Dental Anatomy Foundations & Oral Cavity Landmarks (Q1 - Q10) ---
+  {
+    q: "What does the science of 'Dental Anatomy' primarily study?",
+    A: "Dental manufacturing materials and pharmaceutical drugs",
+    B: "Morphology, structure, form, color, function, and relations of human teeth",
+    C: "Surgical extractions and bone grafting procedures",
+    D: "Pathological micro-organisms of the oral cavity",
+    ans: "B",
+    exp: "علم تشريح الأسنان (Dental Anatomy) هو العلم الأساسي المعني بدراسة مورفولوجيا الأسنان (Tooth Morphology) بتفاصيل أشكالها (Shape & Form)، ألوانها (Color)، وظائفها (Function)، وعلاقة الأسنان ببعضها في الفك نفسه وعلاقة إطباقها مع أسنان الفك المقابل (Occlusion)."
+  },
+  {
+    q: "Which bone of the human jaws is FIXED (immovable) and structurally integrated into the skull?",
+    A: "Mandible",
+    B: "Maxilla",
+    C: "Temporal bone",
+    D: "Sphenoid bone",
+    ans: "B",
+    exp: "عظم الفك العلوي (Maxilla) هو عظم ثابت وغير متحرك (Fixed & Immovable) مدمج وملتحم مباشرة بعظام الجمجمة والوجه، ويحمل صف الأسنان العلوية (Maxillary teeth)."
+  },
+  {
+    q: "The Mandible is anatomically unique among all skull bones because it is:",
+    A: "Composed entirely of cartilage",
+    B: "The only movable bone of the skull",
+    C: "Completely toothless throughout life",
+    D: "Fused directly to the cervical vertebrae",
+    ans: "B",
+    exp: "الفك السفلي (Mandible) هو العظم الوحيد القابل للحركة (The only movable bone) في جمجمة الإنسان؛ حيث يتحرك عبر مفصل الفك الصدغي (Temporomandibular Joint - TMJ) وعضلات المضغ ليسمح بفتح وإغلاق الفم ومضغ الطعام والكلام."
+  },
+  {
+    q: "The horseshoe-shaped slit-like space between the outer surface of teeth/gums and the inner surface of lips and cheeks is called:",
+    A: "Oral cavity proper",
+    B: "Oral vestibule",
+    C: "Sublingual sulcus",
+    D: "Glosso-palatine space",
+    ans: "B",
+    exp: "دهليز الفم (Oral Vestibule) هو الفراغ أو الممر الضيق الواقع بين السطح الخارجي للأسنان واللثة (Teeth & Alveolar ridge) وبين السطح الداخلي للشفاه والخدود (Lips & Cheeks)."
+  },
+  {
+    q: "The mucosal tissue fold connecting the undersurface (ventral surface) of the tongue to the floor of the mouth is the:",
+    A: "Upper labial frenum",
+    B: "Lower labial frenum",
+    C: "Lingual frenum",
+    D: "Buccal frenum",
+    ans: "C",
+    exp: "لجام اللسان (Lingual Frenum) هو طية من الغشاء المخاطي تمتد من السطح السفلي للسان إلى أرضية الفم (Floor of the mouth) لضبط حركة اللسان. وإذا كان قصيراً بشكل مرضي يُحدث التصاق اللسان (Ankyloglossia)."
+  },
+  {
+    q: "Which tissue fold connects the inner surface of the upper lip to the labial alveolar mucosa above the central incisors?",
+    A: "Lingual frenum",
+    B: "Upper labial frenum",
+    C: "Glosso-palatine arch",
+    D: "Uvula",
+    ans: "B",
+    exp: "لجام الشفة العلوية (Upper Labial Frenum) هو طية مخاطية تربط السطح الداخلي للشفة العلوية باللثة عند خط المنتصف بين القاطعين المركزيين العلويين. وإذا كان سميكاً ومنخفضاً قد يسبب فلجة بين الأسنان (Diastema)."
+  },
+  {
+    q: "The conical muscular projection hanging downward from the posterior free border of the soft palate is the:",
+    A: "Epiglottis",
+    B: "Uvula",
+    C: "Palatine tonsil",
+    D: "Hard palate",
+    ans: "B",
+    exp: "اللهاة (Uvula) هي نتوء عضلي متدلٍ من الحافة الخلفية للحنك الرخو (Soft Palate)، وتعمل أثناء البلع مع الحنك الرخو على إغلاق البلعوم الأنفي (Nasopharynx) لمنع ارتجاع الطعام والشراب للأنف."
+  },
+  {
+    q: "The anterior bony section that forms the roof of the oral cavity and separates it from nasal cavity is the:",
+    A: "Soft palate",
+    B: "Hard palate",
+    C: "Oropharynx",
+    D: "Oral vestibule",
+    ans: "B",
+    exp: "الحنك الصلب (Hard Palate) هو الجزء الأمامي العظمي من سقف الفم (عظم الفك العلوي والحنك) الذي يفصل تجويف الفم عن تجويف الأنف، بينما الجزء الخلفي العضلي اللين يسمى الحنك الرخو (Soft Palate)."
+  },
+  {
+    q: "The oral cavity is anatomically partitioned into how many dental quadrants by the midline and occlusal planes?",
+    A: "Two quadrants",
+    B: "Three quadrants",
+    C: "Four quadrants",
+    D: "Six quadrants",
+    ans: "C",
+    exp: "يقسم الفم إلى أربعة أرباع (Four Quadrants): ربع علوي أيمن (Right Maxillary)، ربع علوي أيسر (Left Maxillary)، ربع سفلي أيمن (Right Mandibular)، وربع سفلي أيسر (Left Mandibular)."
+  },
+  {
+    q: "The imaginary vertical line that divides each dental arch and the face into two symmetrical halves is called the:",
+    A: "Cervical line",
+    B: "Midline",
+    C: "Occlusal plane",
+    D: "Curve of Spee",
+    ans: "B",
+    exp: "خط المنتصف (Midline) هو خط رأسي تخيلي يقسم القوس السني والوجه إلى نصفين متناظرين (Right & Left)، ومن هذا الخط يبدأ ترقيم الأسنان من رقم 1 حتى رقم 8 في كل ربع."
+  },
+
+  // --- Section 2: Tooth Families, Numbering & Morphology (Q11 - Q22) ---
+  {
+    q: "Which permanent tooth is the SMALLEST in size in the entire human dentition?",
+    A: "Maxillary lateral incisor",
+    B: "Mandibular central incisor",
+    C: "Mandibular lateral incisor",
+    D: "Maxillary central incisor",
+    ans: "B",
+    exp: "القاطع المركزي السفلي (Mandibular Central Incisor - السن رقم 1 بالفك السفلي) هو أصغر سن دائم في فم الإنسان، ويتميز بتاجه الضيق المتناظر وجذره المضغوط جانبياً."
+  },
+  {
+    q: "Which tooth possesses the LONGEST and STRONGEST root in the entire human mouth?",
+    A: "Maxillary central incisor",
+    B: "Mandibular canine",
+    C: "Maxillary canine",
+    D: "Maxillary first molar",
+    ans: "C",
+    exp: "الناب العلوي (Maxillary Canine - السن رقم 3) يمتلك أطول وأقوى جذر (Longest & Strongest root) في الفم البشري؛ مما يمنحه ثباتاً كبيراً في العظم ويشكل البروز العظمي المسمى بالبروز النابي (Canine Eminence)."
+  },
+  {
+    q: "The canine tooth is clinically and morphologically designated as a:",
+    A: "Bicuspid",
+    B: "Cuspid",
+    C: "Multicuspid",
+    D: "Tricuspid",
+    ans: "B",
+    exp: "يسمى الناب بـ (Cuspid) لأنه يحتوي على حدبة واحدة بارزة (Single cusp)، بينما تسمى الضواحك بـ (Bicuspids) لأن لها حدبتين، والأضراس تسمى (Multicuspids)."
+  },
+  {
+    q: "Why is the Canine famously crowned as the 'cornerstone of the dental arch'?",
+    A: "Because it is the widest tooth in the jaw",
+    B: "Because it sits at the corner turning point between anterior and posterior teeth",
+    C: "Because it has no opposing tooth in occlusion",
+    D: "Because it erupts without any deciduous predecessor",
+    ans: "B",
+    exp: "يُلقب الناب بـ 'حجر زاوية القوس السني' (Cornerstone of the dental arch) لوقوعه عند نقطة التحول والزاوية بين الأسنان الأمامية (Anterior) والخلفية (Posterior)، كما يدعم زاوية الفم ويوجه حركة الفك السفلي (Canine Guidance)."
+  },
+  {
+    q: "Congenital peg-shaped microdontia most commonly affects which permanent anterior tooth?",
+    A: "Maxillary central incisor",
+    B: "Maxillary lateral incisor",
+    C: "Mandibular central incisor",
+    D: "Mandibular canine",
+    ans: "B",
+    exp: "القاطع الجانبي العلوي (Maxillary Lateral Incisor - السن رقم 2) هو أكثر الأسنان الأمامية تعرضاً لصغر الحجم وتشوه الشكل الوتدي المخروطي (Peg-shaped lateral) أو الغياب الخلقي التام بعد ضروس العقل."
+  },
+  {
+    q: "At what age does the First Permanent Molar typically erupt into the dental arch?",
+    A: "At 3 years of age",
+    B: "At 6 years of age",
+    C: "At 9 years of age",
+    D: "At 12 years of age",
+    ans: "B",
+    exp: "يبزغ الضرس الدائم الأول في عمر 6 سنوات تقريباً، ولذلك يسمى 'ضرس الست سنوات' (6-Year Molar). وهو يبزغ خلف الأضراس اللبنية دون أن يسبقه سقوط أي سن لبني."
+  },
+  {
+    q: "The First Permanent Molar is clinically recognized as the 'Key of Occlusion' because:",
+    A: "It has the longest root in the jaw",
+    B: "It establishes the fundamental occlusal relationship and bite stability between the jaws",
+    C: "It is the only tooth with 6 cusps",
+    D: "It replaces the deciduous canine",
+    ans: "B",
+    exp: "يُعتبر الضرس الأول الدائم 'مفتاح الإطباق' (Key of Occlusion) وفق تصنيف العالم آنجل؛ لأنه أكبر ضرس وأول ضرس دائم يبزغ ويحدد الارتفاع والمسافة الإطباقية السليمة بين الفكين (Vertical dimension)."
+  },
+  {
+    q: "The developmental accessory cusp called the 'Cusp of Carabelli' is typically located on the:",
+    A: "Buccal surface of mandibular first molar",
+    B: "Mesiolingual cusp of maxillary first molar",
+    C: "Distolingual cusp of mandibular second molar",
+    D: "Incisal edge of maxillary central incisor",
+    ans: "B",
+    exp: "حدبة كارابيلي (Cusp of Carabelli) هي حدبة إضافية خامسة مميزة توجد على السطح اللساني/الحنكي للحدبة الإنسية اللسانية (Mesiolingual cusp) للضرس الأول العلوي الدائم (Maxillary First Molar)."
+  },
+  {
+    q: "The occlusal fissure groove pattern of the Mandibular Second Molar characteristically forms a:",
+    A: "Y-shaped groove pattern",
+    B: "Cross (+) groove pattern",
+    C: "Straight linear groove",
+    D: "Circular ring groove",
+    ans: "B",
+    exp: "يتميز السطح الإطباقي للضرس الثاني السفلي (Mandibular Second Molar) بنمط شقوق إطباقية متعامدة تشبه علامة الصليب (+) تفصل بين 4 حدبات متناظرة، بخلاف الضرس الأول السفلي ذي الـ 5 حدبات ونمط Y."
+  },
+  {
+    q: "Which permanent tooth has the highest statistical rate of being impacted (unerupted) in the jaw?",
+    A: "Maxillary central incisor",
+    B: "Mandibular first molar",
+    C: "Third molar (Wisdom tooth)",
+    D: "Maxillary first premolar",
+    ans: "C",
+    exp: "ضرس العقل أو الضرس الثالث (Third Molar / Wisdom Tooth) هو أكثر سن يتعرض للانطمار العظمي واللثوي (Impacted tooth)؛ لأنه آخر سن يبزغ (بين 17 - 21 سنة) وغالباً لا يجد مساحة كافية في الفك."
+  },
+  {
+    q: "Permanent incisors are morphologically engineered with what edge design for cutting and incising food?",
+    A: "Broad flattened chewing table",
+    B: "Sharp, chisel-like blade edge",
+    C: "Pointed conical spear",
+    D: "Multiple crushing nodules",
+    ans: "B",
+    exp: "تمتلك القواطع (Incisors) حافة قاطعة رقيقة كالإزميل (Chisel-like edge) لتسهيل قضم وتقطيع الطعام، بينما الأنياب إسفينية للتمزيق، والضواحك والأضراس عريضة للسحق والطحن."
+  },
+  {
+    q: "Identify Tooth #3 counting from the midline in the adult human dental arch diagram below:",
+    img: "lecture-1/images/dental_numbered_arches.webp",
+    A: "Central Incisor",
+    B: "Lateral Incisor",
+    C: "Canine (Cuspid)",
+    D: "First Premolar",
+    ans: "C",
+    exp: "في ترقيم الأسنان من خط المنتصف: السن رقم 1 هو القاطع المركزي، ورقم 2 هو القاطع الجانبي، ورقم 3 هو الناب (Canine / Cuspid) وهو الركيزة الأساسية عند زاوية الفك كما هو موضح بالمخطط."
+  },
+
+  // --- Section 3: Dentition Periods, Formula & Successor Rules (Q23 - Q32) ---
+  {
+    q: "How many total teeth are present in the complete PRIMARY (deciduous) dentition?",
+    A: "16 teeth",
+    B: "20 teeth",
+    C: "28 teeth",
+    D: "32 teeth",
+    ans: "B",
+    exp: "يحتوي فم الطفل في مرحلة الأسنان اللبنية (Primary Dentition) على 20 سناً بالتمام: 10 في الفك العلوي و 10 في الفك السفلي (5 في كل ربع: 2 قواطع + 1 ناب + 2 أضراس لبنية)."
+  },
+  {
+    q: "Which tooth family is COMPLETELY MISSING from the primary (deciduous) dentition?",
+    A: "Incisors",
+    B: "Canines",
+    C: "Premolars (Bicuspids)",
+    D: "Molars",
+    ans: "C",
+    exp: "الضواحك (Premolars) غير موجودة إطلاقاً في الأسنان اللبنية؛ فالطفل لديه قواطع وأنياب وأضراس لبنية فقط، وتظهر الضواحك في الأسنان الدائمة فقط لتحل محل الأضراس اللبنية."
+  },
+  {
+    q: "The dental formula for ONE HALF of the oral cavity in the primary dentition is written as:",
+    A: "I 2/2, C 1/1, PM 2/2, M 3/3 = 16",
+    B: "I 2/2, C 1/1, M 2/2 = 10",
+    C: "I 1/1, C 1/1, M 2/2 = 8",
+    D: "I 2/2, C 1/1, PM 1/1, M 2/2 = 12",
+    ans: "B",
+    exp: "المعادلة السنية للأسنان اللبنية (Primary Dental Formula) لنصف الفك (علوي وسفلي) هي: `I 2/2, C 1/1, M 2/2 = 10`، والمجموع لكامل الفم بضربها في 2 هو 20 سناً."
+  },
+  {
+    q: "The 'Mixed Dentition Period' (popularly called the Ugly Duckling Stage) spans from approximately:",
+    A: "Birth to 6 months",
+    B: "6 months to 6 years",
+    C: "6 years to 12 years",
+    D: "12 years to 25 years",
+    ans: "C",
+    exp: "مرحلة التسنين المختلط (Mixed Dentition) تمتد من عمر 6 إلى 12 سنة تقريباً؛ تبدأ ببزوغ أول ضرس دائم وتنتهي بسقوط آخر سن لبني، وتسمى بـ 'البطة القبيحة' (Ugly Duckling) لاجتماع أسنان لبنية ودائمة بأحجام مختلفة."
+  },
+  {
+    q: "How many total teeth make up the complete adult PERMANENT dentition?",
+    A: "20 teeth",
+    B: "28 teeth",
+    C: "30 teeth",
+    D: "32 teeth",
+    ans: "D",
+    exp: "تحتوي الأسنان الدائمة المكتملة في الإنسان البالغ على 32 سناً: 16 في الفك العلوي و 16 في الفك السفلي (8 في كل ربع: 2 قواطع + 1 ناب + 2 ضواحك + 3 أضراس)."
+  },
+  {
+    q: "The standard dental formula for ONE HALF of the adult permanent dentition is:",
+    A: "I 2/2, C 1/1, PM 2/2, M 3/3 = 16",
+    B: "I 2/2, C 1/1, M 3/3 = 12",
+    C: "I 1/1, C 1/1, PM 2/2, M 3/3 = 14",
+    D: "I 2/2, C 2/2, PM 2/2, M 2/2 = 16",
+    ans: "A",
+    exp: "المعادلة السنية الدائمة (Permanent Dental Formula) لنصف تجويف الفم هي: `I 2/2, C 1/1, PM 2/2, M 3/3 = 16`، وبحساب جانبي الفم معاً يكون الإجمالي 32 سناً."
+  },
+  {
+    q: "Humans are scientifically defined as 'Diphyodont' creatures because they:",
+    A: "Have two incisors in each quadrant",
+    B: "Develop two distinct successive sets of teeth (primary and permanent) during life",
+    C: "Chew food using both sides of the jaw simultaneously",
+    D: "Possess two roots in mandibular molars",
+    ans: "B",
+    exp: "ثنائي التسنين (Diphyodont) تعني أن الكائن يُنتج طاقمين متتابعين من الأسنان طوال حياته: طاقم الأسنان اللبنية (Primary/Deciduous) يليه طاقم الأسنان الدائمة (Permanent)، على عكس كائنات كالقروش التي تنتج أطقماً متعددة (Polyphyodont)."
+  },
+  {
+    q: "GOLDEN RULE: Which deciduous teeth do the permanent PREMOLARS succeed and replace?",
+    A: "Deciduous incisors",
+    B: "Deciduous canines",
+    C: "Deciduous molars",
+    D: "Permanent molars",
+    ans: "C",
+    exp: "القاعدة الذهبية الأكثر أهمية: الضواحك الدائمة (Premolars) تحل محل الأضراس اللبنية (Deciduous molars) وتخلفها في الفك؛ فالضاحك الأول يحل محل الضرس اللبني الأول، والضاحك الثاني يحل محل الضرس اللبني الثاني."
+  },
+  {
+    q: "Which fundamental statement regarding all 20 primary (deciduous) teeth is TRUE?",
+    A: "All deciduous teeth are successors",
+    B: "All deciduous teeth are predecessors",
+    C: "Deciduous molars have no permanent successors",
+    D: "Deciduous canines are non-succedaneous",
+    ans: "B",
+    exp: "القاعدة التشريحية: جميع الأسنان اللبنية الـ 20 بلا استثناء تعتبر أسلافاً (All deciduous teeth are predecessors)؛ لأن كلاً منها يسبق سناً دائماً بديلاً له ويسقط ليحل السن الدائم محله."
+  },
+  {
+    q: "The 12 permanent molars (1st, 2nd, and 3rd) are classified as 'Non-succedaneous' because they:",
+    A: "Never erupt into the mouth",
+    B: "Do not replace any preceding primary teeth; they erupt distal to deciduous arches",
+    C: "Are completely lost during adolescence",
+    D: "Lack pulp cavities",
+    ans: "B",
+    exp: "الأضراس الدائمة الـ 12 هي أسنان غير بديلة (Non-succedaneous teeth) لأنها تبزغ خلف الأسنان اللبنية في عظم الفك المتطاول ولا يسبقها أي سن لبني ليسقط مكانها. ومن هنا: (Not all permanent teeth are successors)."
+  },
+
+  // --- Section 4: Succedaneous Counts & Root Variations (Q33 - Q36) ---
+  {
+    q: "How many total SUCCEDANEOUS (successor) teeth are present in the permanent dentition?",
+    A: "12 teeth",
+    B: "20 teeth",
+    C: "28 teeth",
+    D: "32 teeth",
+    ans: "B",
+    exp: "عدد الأسنان الدائمة البديلة (Succedaneous teeth) هو 20 سناً فقط (8 قواطع + 4 أنياب + 8 ضواحك)، وهي التي تحل محل الأسنان اللبنية الـ 20. أما الـ 12 ضرساً دائماً الباقية فهي غير بديلة (Non-succedaneous)."
+  },
+  {
+    q: "The Maxillary First Premolar is distinct from other premolars because it typically has:",
+    A: "1 single fused root",
+    B: "2 distinct roots (one buccal and one lingual/palatal)",
+    C: "3 roots (two buccal and one lingual)",
+    D: "4 separate roots",
+    ans: "B",
+    exp: "يتميز الضاحك الأول العلوي (Maxillary First Premolar) بأنه يمتلك عادة جذرين (Two roots): جذر جهة الخد (Buccal) وجذر جهة اللسان والحنك (Lingual)، بخلاف باقي الضواحك التي تمتلك جذراً واحداً غالباً."
+  },
+  {
+    q: "The Maxillary First Molar normally anchors into the alveolar bone via how many roots?",
+    A: "1 root",
+    B: "2 roots",
+    C: "3 roots (two buccal and one palatal)",
+    D: "4 roots",
+    ans: "C",
+    exp: "يمتلك الضرس الأول العلوي (Maxillary First Molar) ثلاثة جذور متباعدة (Three roots): جذران جهة الخد (Mesiobuccal & Distobuccal) وجذر كبير جهة الحنك (Palatal root)، ليوفر أقصى مقاومة لقوى المضغ العلوية."
+  },
+  {
+    q: "Mandibular molars normally possess how many roots?",
+    A: "1 conical root",
+    B: "2 broad roots (one mesial and one distal)",
+    C: "3 divergent roots",
+    D: "4 fused roots",
+    ans: "B",
+    exp: "تمتلك أضراس الفك السفلي (Mandibular Molars) جذرين عريضين (Two roots): جذر إنسي (Mesial root) وجذر وحشي (Distal root) ممتدين عميقاً داخل السنخ العظمي للفك السفلي."
+  },
+
+  // --- Section 5: Microanatomy & Dental Tissues (Q37 - Q44) ---
+  {
+    q: "What is the HARDEST, most highly mineralized biological tissue in the human body?",
+    A: "Cortical bone",
+    B: "Dentin",
+    C: "Enamel",
+    D: "Cementum",
+    ans: "C",
+    exp: "المينا (Enamel) هي أصلب نسيج حيوي في جسم الإنسان على الإطلاق (Hardest tissue in the human body)، حيث تتجاوز نسبة المعادن غير العضوية فيها 96% من بلورات الهيدروكسي أباتيت (Hydroxyapatite)."
+  },
+  {
+    q: "After tooth eruption, why is mature enamel unable to biologically self-regenerate or repair decay?",
+    A: "Because it contains no calcium crystals",
+    B: "Because it is completely acellular; ameloblasts are lost forever after crown completion",
+    C: "Because it receives blood exclusively from saliva",
+    D: "Because pulp tissue seals it off",
+    ans: "B",
+    exp: "المينا بعد اكتمال البزوغ هو نسيج غير خلوي تماماً (Acellular)؛ فالخلايا المولدة للمينا (Ameloblasts) تفقد وظيفتها وتتلاشى للأبد عند البزوغ، مما يمنع المينا من الالتئام أو تجديد نفسه عند حدوث تسوس أو تآكل."
+  },
+  {
+    q: "Which calcified dental tissue forms the MAIN BULK (greatest volume) of both crown and root?",
+    A: "Enamel",
+    B: "Dentin",
+    C: "Cementum",
+    D: "Dental pulp",
+    ans: "B",
+    exp: "العاج (Dentin) هو النسيج الذي يُشكل الكتلة والحجم الأكبر للسن (Main bulk of the tooth). يغطيه المينا في التاج، ويغطيه الملاط في الجذر، وهو نسيج حيوي حساس أصفر اللون يتخلله قنيات عاجية."
+  },
+  {
+    q: "Identify the tissue layer forming the main bulk of the tooth indicated in the diagram below:",
+    img: "lab-1/images/slide_31.png",
+    A: "Enamel (المينا)",
+    B: "Dentin (العاج)",
+    C: "Pulp (لب السن)",
+    D: "Cementum (الملاط)",
+    ans: "B",
+    exp: "كما يُظهر المقطع العرضي في الشريحة، فإن العاج (Dentin) يمتد عبر كامل التاج والجذر ليشكل الدعامة الأساسية والكتلة الأكبر للسن محيطاً بحجرة اللب وقنوات الجذور."
+  },
+  {
+    q: "The microscopic channels traversing through the dentin that transmit sensory nerve impulses are called:",
+    A: "Haversian canals",
+    B: "Dentinal tubules",
+    C: "Volkmann canals",
+    D: "Root canals",
+    ans: "B",
+    exp: "القنيات العاجية (Dentinal Tubules) هي قنوات مجهرية دقيقة تمتد في العاج وتنقل إشارات الحرارة والبرودة واللمس إلى الأعصاب الموجودة في اللب، وهي المسؤولة عن حساسية الأسنان والألم."
+  },
+  {
+    q: "What is Cementum and what is its primary biological role?",
+    A: "A soft vascular organ in the crown",
+    B: "A bony-like calcified tissue covering the root that anchors Periodontal Ligament (PDL) fibers",
+    C: "The shiny translucent layer protecting the incisal edge",
+    D: "A sensory plexus inside the pulp chamber",
+    ans: "B",
+    exp: "الملاط (Cementum) هو نسيج متكلس شبيه بالعظم (Bony-like tissue) يغطي السطح الخارجي للجذر بالكامل، وتتمثل وظيفته الحيوية في تثبيت ألياف الرباط الداعم (Periodontal Ligament - PDL) لربط جذر السن بعظم الفك."
+  },
+  {
+    q: "What is the ONLY SOFT TISSUE present within the human tooth?",
+    A: "Enamel",
+    B: "Dentin",
+    C: "Cementum",
+    D: "Dental Pulp",
+    ans: "D",
+    exp: "لب السن (Dental Pulp / العصب) هو النسيج الرخو الوحيد (The only soft tissue) في السن، ومحاط بالعاج تماماً. يتكون من أوعية دموية وألياف عصبية ونسيج ضام، ويمثل الجهاز الحسي والمغذي للسن (Sensory system)."
+  },
+  {
+    q: "Based on the macro-anatomical diagram below, what is the boundary separating the crown from the root?",
+    img: "lab-1/images/slide_30.png",
+    A: "Dentinoenamel junction (DEJ)",
+    B: "Cementoenamel junction (CEJ / Cervical Line)",
+    C: "Mucogingival junction",
+    D: "Periodontal line",
+    ans: "B",
+    exp: "خط العنق أو ملتقى المينا بالملاط (Cementoenamel Junction - CEJ / Cervical Line) هو الحد الدقيق الفاصل بين طبقة المينا المغطية للتاج وطبقة الملاط المغطية للجذر، ويحدد عنق السن (Cervix/Neck)."
+  },
+
+  // --- Section 6: Pulp Cavity Anatomy (Q45 - Q47) ---
+  {
+    q: "The expanded coronal chamber of the pulp cavity located within the crown of the tooth is the:",
+    A: "Root canal",
+    B: "Pulp chamber",
+    C: "Apical foramen",
+    D: "Accessory foramen",
+    ans: "B",
+    exp: "حجرة اللب (Pulp Chamber) هي الجزء المتسع من التجويف اللبي المتواجد داخل تاج السن (Occupies the crown)، وتتفرع منها قنوات الجذور نزولاً نحو قمم الجذور."
+  },
+  {
+    q: "In the pulp cavity diagram below, what are the pointed coronal extensions projecting towards the cusps called?",
+    img: "lab-1/images/slide_32.png",
+    A: "Root canals",
+    B: "Pulp horns (قرون اللب)",
+    C: "Apical foramina",
+    D: "Pulp stones",
+    ans: "B",
+    exp: "قرون اللب (Pulp Horns) هي امتدادات وبروزات مدببة تصعد من سقف حجرة اللب باتجاه الحدبات (Cusps) والحواف القاطعة، وتكون واضحة وكبيرة في صغار السن مما يتطلب الحذر أثناء حفر الحشوات لتجنب كشف العصب."
+  },
+  {
+    q: "The minute opening located at the root apex through which nerves and blood vessels enter the pulp is the:",
+    A: "Pulp horn",
+    B: "Apical foramen (الثقبة القمية)",
+    C: "Cementoenamel junction",
+    D: "Mental foramen",
+    ans: "B",
+    exp: "الثقبة القمية (Apical Foramen) هي الفتحة المجهرية الدقيقة الموجودة عند قمة جذر السن (Apex)، ومن خلالها تدخل الأوعية الدموية والألياف العصبية والليمفاوية لتغذية وتعصيب لب السن."
+  },
+
+  // --- Section 7: Anatomical vs Clinical Crown & Crypt vs Socket (Q48 - Q50) ---
+  {
+    q: "The bony space within the jaw that contains a developing, UN-ERUPTED tooth is termed a:",
+    img: "lab-1/images/slide_40.png",
+    A: "Alveolar socket (السنخ)",
+    B: "Bony crypt (الجيب العظمي)",
+    C: "Pulp cavity",
+    D: "Mandibular canal",
+    ans: "B",
+    exp: "الجيب العظمي (Bony Crypt) هو التجويف داخل عظم الفك الذي يحتضن سناً نامياً لم يبزغ بعد (Developing un-erupted tooth). أما السنخ العظمي (Alveolar Socket) فهو التجويف الذي يستقر فيه جذر سن بازغ وظيفياً (Erupted tooth)."
+  },
+  {
+    q: "In the slide comparison below, which crown measurement remains CONSTANT in length throughout life?",
+    img: "lab-1/images/slide_35.png",
+    A: "Clinical crown",
+    B: "Anatomical crown (التاج التشريحي)",
+    C: "Clinical root",
+    D: "Gingival crevice depth",
+    ans: "B",
+    exp: "التاج التشريحي (Anatomical Crown) هو الجزء المغطى بالمينا، وطوله ثابت طوال حياة الإنسان (Constant in length) ولا يتغير. أما التاج السريري (Clinical Crown) فهو الجزء الظاهر بالفم فوق اللثة، وطوله متغير (Variable)."
+  },
+  {
+    q: "In the clinical condition of Gingival Recession shown below, what is the relationship between the crowns?",
+    img: "lab-1/images/slide_38.png",
+    A: "Clinical Crown < Anatomical Crown",
+    B: "Clinical Crown = Anatomical Crown",
+    C: "Clinical Crown > Anatomical Crown",
+    D: "Clinical Crown is zero",
+    ans: "C",
+    exp: "في حالة انحسار اللثة (Gingival Recession)، تتراجع اللثة باتجاه الجذر فينكشف التاج التشريحي بالكامل بالإضافة إلى جزء عارٍ من الجذر؛ وبذلك يصبح التاج السريري أكبر وأطول من التاج التشريحي (Clinical Crown > Anatomical Crown)."
+  }
+];
+
+// =========================================================================
+// STATE MANAGEMENT & ANTI-CHEAT ENGINE
+// =========================================================================
+let currentStudentName = '';
+let currentQ = 0;
+let answers = new Array(questions.length).fill(null);
+let flagged = new Array(questions.length).fill(false);
+let examStartTime = null;
+let timerInterval = null;
+let tabSwitchCount = 0;
+let examSubmitted = false;
+const SESSION_KEY = 'tashheel_dental_exam_session_v2';
+
+// 1. Strict Anti-Cheating: Prevent right-click, selection, copying, devtools shortcuts
+document.addEventListener('contextmenu', e => { if (!examSubmitted) e.preventDefault(); });
+document.addEventListener('copy', e => { if (!examSubmitted) e.preventDefault(); });
+document.addEventListener('cut', e => { if (!examSubmitted) e.preventDefault(); });
+document.addEventListener('paste', e => { if (!examSubmitted) e.preventDefault(); });
+document.addEventListener('dragstart', e => { if (!examSubmitted) e.preventDefault(); });
+
+document.addEventListener('keydown', function(e) {
+  if (examSubmitted) return;
+  // Block PrintScreen & clear clipboard
+  if (e.key === 'PrintScreen' || e.code === 'PrintScreen') {
+    e.preventDefault();
+    try { navigator.clipboard.writeText(''); } catch(err) {}
+    alert('⚠️ ممنوع التقاط لقطات الشاشة (Screenshot) أثناء الامتحان!');
+    return;
+  }
+  // Block Ctrl combinations: C, V, X, A, S, P, U
+  if (e.ctrlKey && ['c','v','x','a','s','p','u'].includes(e.key.toLowerCase())) {
+    e.preventDefault();
+    return;
+  }
+  // Block DevTools shortcuts: F12, Ctrl+Shift+I, J, C, K
+  if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && ['i','j','c','k'].includes(e.key.toLowerCase()))) {
+    e.preventDefault();
+    return;
+  }
+});
+
+// 2. Strict Anti-Cheating: Page exit / tab-switch detection
+document.addEventListener('visibilitychange', function() {
+  if (examSubmitted || !examStartTime) return;
+  if (document.hidden) {
+    handlePageExitAttempt();
+  }
+});
+
+window.addEventListener('blur', function() {
+  if (examSubmitted || !examStartTime) return;
+  // Slight delay to prevent false positives from select dropdowns
+  setTimeout(() => {
+    if (document.hidden && !examSubmitted) {
+      handlePageExitAttempt();
+    }
+  }, 300);
+});
+
+function handlePageExitAttempt() {
+  tabSwitchCount++;
+  if (tabSwitchCount >= 2) {
+    // Immediate Auto-Submit on second exit!
+    submitExam(true);
+    alert('🚨 تم إنهاء الامتحان وتسليمه تلقائياً فوراً بسبب تكرار مغادرة الصفحة ومحاولة الغش!');
+  } else {
+    // First warning modal
+    document.getElementById('cheatWarn').classList.add('show');
+  }
+}
+
+function dismissCheatWarn() {
+  document.getElementById('cheatWarn').classList.remove('show');
+}
+
+// 3. Before unload warning
+window.addEventListener('beforeunload', function(e) {
+  if (!examSubmitted && examStartTime) {
+    e.preventDefault();
+    e.returnValue = 'الامتحان قيد التشغيل! إذا أغلقت الصفحة ستفقد نتيجتك.';
+    return e.returnValue;
+  }
+});
+
+// =========================================================================
+// EXAM ENGINE LOGIC
+// =========================================================================
+function startExam(e) {
+  e.preventDefault();
+  const nameInput = document.getElementById('studentName');
+  currentStudentName = nameInput.value.trim();
+  if (currentStudentName.length < 2) return;
+
+  document.getElementById('startScreen').style.display = 'none';
+  document.getElementById('examScreen').style.display = 'block';
+  document.getElementById('activeStudentName').textContent = currentStudentName;
+
+  examStartTime = Date.now();
+  startTimer();
+  buildQGrid();
+  renderQuestion(0);
+  saveSession();
+}
+
+function startTimer() {
+  timerInterval = setInterval(() => {
+    const elapsed = Math.floor((Date.now() - examStartTime) / 1000);
+    const m = String(Math.floor(elapsed / 60)).padStart(2, '0');
+    const s = String(elapsed % 60).padStart(2, '0');
+    document.getElementById('examTimer').textContent = `${m}:${s}`;
+  }, 1000);
+}
+
+function buildQGrid() {
+  const grid = document.getElementById('qGrid');
+  grid.innerHTML = '';
+  for (let i = 0; i < questions.length; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'q-dot' + (i === 0 ? ' active' : '') + (answers[i] ? ' answered' : '') + (flagged[i] ? ' flagged' : '');
+    dot.textContent = i + 1;
+    dot.onclick = () => goToQuestion(i);
+    grid.appendChild(dot);
+  }
+}
+
+function updateQGrid() {
+  const dots = document.querySelectorAll('.q-dot');
+  dots.forEach((dot, i) => {
+    dot.className = 'q-dot';
+    if (i === currentQ) dot.classList.add('active');
+    if (answers[i]) dot.classList.add('answered');
+    if (flagged[i]) dot.classList.add('flagged');
+  });
+  const answered = answers.filter(a => a !== null).length;
+  document.getElementById('answeredCount').textContent = answered;
+  document.getElementById('progressFill').style.width = (answered / questions.length * 100) + '%';
+}
+
+function renderQuestion(idx) {
+  const q = questions[idx];
+  const area = document.getElementById('questionArea');
+  let html = `
+    <div class="q-card">
+      <div class="q-header">
+        <span class="q-badge">Question ${idx + 1} of ${questions.length}</span>
+        <button class="q-flag-btn ${flagged[idx] ? 'flagged' : ''}" onclick="toggleFlag(${idx})">
+          <span>${flagged[idx] ? '🚩 محدد للمراجعة' : '🏳️ حدد للمراجعة'}</span>
+        </button>
+      </div>
+      <div class="q-text">${q.q}</div>`;
+
+  if (q.img) {
+    html += `<img class="q-image" src="${q.img}" alt="Dental Anatomy Diagram" loading="lazy">`;
+  }
+
+  html += `<div class="options-list">`;
+  ['A', 'B', 'C', 'D'].forEach(letter => {
+    const isSelected = answers[idx] === letter;
+    html += `
+      <div class="opt-btn ${isSelected ? 'selected' : ''}" onclick="selectAnswer(${idx}, '${letter}')">
+        <span class="opt-letter">${letter}</span>
+        <span class="opt-text">${q[letter]}</span>
+      </div>`;
+  });
+  html += `</div></div>`;
+  area.innerHTML = html;
+
+  // Update navigation controls
+  document.getElementById('qCounter').textContent = `${idx + 1} / ${questions.length}`;
+  document.getElementById('prevBtn').disabled = (idx === 0);
+
+  if (idx === questions.length - 1) {
+    document.getElementById('nextBtn').style.display = 'none';
+    document.getElementById('submitBtn').style.display = 'inline-flex';
+  } else {
+    document.getElementById('nextBtn').style.display = 'inline-flex';
+    document.getElementById('submitBtn').style.display = 'none';
+  }
+}
+
+function selectAnswer(idx, letter) {
+  answers[idx] = letter;
+  renderQuestion(idx);
+  updateQGrid();
+  saveSession();
+}
+
+function toggleFlag(idx) {
+  flagged[idx] = !flagged[idx];
+  renderQuestion(idx);
+  updateQGrid();
+}
+
+function goToQuestion(idx) {
+  if (idx < 0 || idx >= questions.length) return;
+  currentQ = idx;
+  renderQuestion(idx);
+  updateQGrid();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// =========================================================================
+// SUBMISSION & RESULTS HANDLING
+// =========================================================================
+function submitExam(forced) {
+  if (examSubmitted) return;
+
+  const unanswered = answers.filter(a => a === null).length;
+  if (!forced && unanswered > 0) {
+    if (!confirm(`تنبيه: يوجد ${unanswered} سؤال لم تجب عليه بعد!\nهل أنت متأكد من تسليم الامتحان وإنهاء الاختبار؟`)) {
+      return;
+    }
+  }
+
+  examSubmitted = true;
+  clearInterval(timerInterval);
+
+  // Score calculation
+  let score = 0;
+  const wrongQuestions = [];
+  const wrongDetails = [];
+
+  questions.forEach((q, i) => {
+    if (answers[i] === q.ans) {
+      score++;
+    } else {
+      wrongQuestions.push(i + 1);
+      wrongDetails.push({
+        num: i + 1,
+        question: q.q,
+        yourAnswer: answers[i] || 'لم تجب',
+        yourAnswerText: answers[i] ? q[answers[i]] : 'لم تجب على السؤال',
+        correctAnswer: q.ans,
+        correctAnswerText: q[q.ans],
+        explanation: q.exp
+      });
+    }
+  });
+
+  const percentage = Math.round((score / questions.length) * 100);
+  const elapsed = Math.floor((Date.now() - examStartTime) / 1000);
+  const timeStr = `${Math.floor(elapsed / 60)} دقيقة و ${elapsed % 60} ثانية`;
+  const dateStr = new Date().toLocaleString('ar-EG', { timeZone: 'Africa/Cairo' });
+
+  // Render Result Screen
+  document.getElementById('examScreen').style.display = 'none';
+  const resScreen = document.getElementById('resultScreen');
+  resScreen.style.display = 'block';
+
+  document.getElementById('scoreNum').textContent = score;
+  const scoreCircle = document.getElementById('scoreCircle');
+  scoreCircle.className = 'score-circle' + (percentage < 60 ? ' fail' : '');
+
+  // Result messages
+  let title = '', sub = '';
+  if (percentage === 100) {
+    title = `🏆 الدرجة كاملة! عبقري يا دكتور ${currentStudentName}`;
+    sub = `إجاباتك صحيحة 100% بدون أي خطأ — أداء أسطوري استثنائي!`;
+  } else if (percentage >= 90) {
+    title = `⭐ أداء متميز جداً يا دكتور ${currentStudentName}!`;
+    sub = `حصلت على ${score} من 50 (${percentage}%) — استغرقت: ${timeStr}`;
+  } else if (percentage >= 75) {
+    title = `👏 نتيجة ممتازة يا دكتور ${currentStudentName}!`;
+    sub = `حصلت على ${score} من 50 (${percentage}%) — استغرقت: ${timeStr}`;
+  } else if (percentage >= 60) {
+    title = `📚 نتيجة جيدة يا ${currentStudentName}`;
+    sub = `حصلت على ${score} من 50 (${percentage}%) — يمكنك مراجعة الأسئلة الخاطئة أدناه لتقوية النقاط الضعيفة.`;
+  } else {
+    title = `💪 فرصة ممتازة للمراجعة والتعلم يا ${currentStudentName}`;
+    sub = `حصلت على ${score} من 50 (${percentage}%) — ننصح بمراجعة المحاضرة والسكشن العملي ومطالعة الشروحات أدناه.`;
+  }
+
+  document.getElementById('resultTitle').textContent = title;
+  document.getElementById('resultSubtext').textContent = sub;
+
+  // Certificate Eligibility: ONLY for scores >= 45/50 (ناقص 5 درجات أو أقل)
+  const certBtn = document.getElementById('certBtn');
+  const certNotice = document.getElementById('certNotice');
+  if (score >= 45) {
+    certBtn.style.display = 'inline-flex';
+    certNotice.style.display = 'none';
+  } else {
+    certBtn.style.display = 'none';
+    certNotice.style.display = 'block';
+  }
+
+  // Render Corrections with detailed Arabic explanations
+  renderCorrections(questions, answers, wrongDetails, 'all');
+
+  // Payload for persistence
+  const resultRecord = {
+    id: 'dental_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
+    name: currentStudentName,
+    score: score,
+    total: questions.length,
+    percentage: percentage,
+    wrongQuestions: wrongQuestions,
+    wrongDetails: wrongDetails,
+    time: timeStr,
+    date: dateStr,
+    timestamp: Date.now(),
+    tabSwitches: tabSwitchCount,
+    examType: 'dental-anatomy'
+  };
+
+  // Save in Session
+  try {
+    sessionStorage.setItem(SESSION_KEY, JSON.stringify({
+      screen: 'result',
+      data: resultRecord,
+      answers: answers
+    }));
+  } catch(e) {}
+
+  // Save to server API
+  sendResultToServer(resultRecord);
+}
+
+async function sendResultToServer(data) {
+  try {
+    await fetch('/api/save-dental-result', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+  } catch(err) {
+    console.log('Background server sync:', err.message);
+  }
+}
+
+// =========================================================================
+// CORRECTIONS & MEDICAL EXPLANATIONS (ARABIC + MEDICAL TERMS)
+// =========================================================================
+function renderCorrections(qs, userAnswers, wrongDetails, filter) {
+  const list = document.getElementById('correctionsList');
+  let html = '';
+
+  qs.forEach((q, i) => {
+    const isCorrect = (userAnswers[i] === q.ans);
+    if (filter === 'wrong' && isCorrect) return;
+
+    html += `
+      <div class="corr-card ${isCorrect ? 'correct' : 'wrong'}">
+        <div class="corr-q">
+          <span class="corr-num">Q${i + 1}.</span> ${q.q}
+        </div>`;
+
+    if (q.img) {
+      html += `<img src="${q.img}" style="max-width:320px;border-radius:10px;margin-bottom:12px;display:block;" alt="Slide">`;
+    }
+
+    html += `<div class="corr-opts">`;
+    ['A', 'B', 'C', 'D'].forEach(letter => {
+      let cls = 'corr-opt';
+      let icon = '';
+      if (letter === q.ans) {
+        cls += ' correct-answer';
+        icon = ' ✅ (الإجابة الصحيحة النموذجية)';
+      }
+      if (letter === userAnswers[i] && letter !== q.ans) {
+        cls += ' wrong-answer';
+        icon = ' ❌ (إجابتك التي اخترتها)';
+      }
+      html += `<div class="${cls}"><b>${letter}.</b> ${q[letter]}${icon}</div>`;
+    });
+    html += `</div>`;
+
+    // Detailed Arabic explanation with Medical Terminology
+    html += `
+      <div class="corr-explain">
+        <b>💡 الشرح الطبي والتعليل الأكاديمي:</b><br>
+        ${q.exp}
+      </div>
+    </div>`;
+  });
+
+  list.innerHTML = html;
+}
+
+function filterCorrections(type) {
+  document.getElementById('filterAll').classList.toggle('active', type === 'all');
+  document.getElementById('filterWrong').classList.toggle('active', type === 'wrong');
+
+  const wrongDetails = [];
+  questions.forEach((q, i) => {
+    if (answers[i] !== q.ans) {
+      wrongDetails.push({
+        num: i + 1,
+        question: q.q,
+        yourAnswer: answers[i] || 'لم تجب',
+        correctAnswer: q.ans,
+        explanation: q.exp
+      });
+    }
+  });
+
+  renderCorrections(questions, answers, wrongDetails, type);
+}
+
+// =========================================================================
+// CERTIFICATE GENERATION (CANVAS - HIGH RESOLUTION)
+// =========================================================================
+function showCert() {
+  document.getElementById('certModal').classList.add('show');
+  drawCertificate();
+}
+
+function closeCert() {
+  document.getElementById('certModal').classList.remove('show');
+}
+
+function drawCertificate() {
+  const canvas = document.getElementById('certCanvas');
+  const ctx = canvas.getContext('2d');
+  const W = 1200, H = 850;
+  canvas.width = W;
+  canvas.height = H;
+
+  // Background
+  ctx.fillStyle = '#FFFFFF';
+  ctx.fillRect(0, 0, W, H);
+
+  // Outer Luxury Border
+  ctx.strokeStyle = '#0284c7';
+  ctx.lineWidth = 7;
+  ctx.strokeRect(22, 22, W - 44, H - 44);
+
+  // Inner Elegant Border
+  ctx.strokeStyle = '#bae6fd';
+  ctx.lineWidth = 2.5;
+  ctx.strokeRect(36, 36, W - 72, H - 72);
+
+  // Corner Gold Accents
+  const corners = [[46, 46], [W - 66, 46], [46, H - 66], [W - 66, H - 66]];
+  corners.forEach(([x, y]) => {
+    ctx.fillStyle = '#0284c7';
+    ctx.fillRect(x, y, 20, 20);
+  });
+
+  // Top Accent Gradient Line
+  ctx.fillStyle = '#0284c7';
+  ctx.fillRect(80, 60, W - 160, 3.5);
+
+  // Platform Header
+  ctx.font = '700 16px Inter, sans-serif';
+  ctx.fillStyle = '#64748b';
+  ctx.textAlign = 'center';
+  ctx.fillText('TASHHEEL DENTAL EDUCATIONAL ACADEMY', W / 2, 105);
+
+  // Title
+  ctx.font = '900 44px Playfair Display, Georgia, serif';
+  ctx.fillStyle = '#0f172a';
+  ctx.fillText('CERTIFICATE OF ACADEMIC EXCELLENCE', W / 2, 168);
+
+  // Gold Separator
+  ctx.fillStyle = '#0284c7';
+  ctx.fillRect(W / 2 - 120, 188, 240, 3.5);
+
+  // Subtitle
+  ctx.font = '600 18px Cairo, sans-serif';
+  ctx.fillStyle = '#475569';
+  ctx.fillText('This is proudly and officially presented to certify that:', W / 2, 240);
+
+  // Student Name with "Dr." in English
+  ctx.font = '900 38px Cairo, sans-serif';
+  ctx.fillStyle = '#0284c7';
+  ctx.fillText(`Dr. ${currentStudentName}`, W / 2, 305);
+
+  // Underline for Doctor Name
+  const nameWidth = ctx.measureText(`Dr. ${currentStudentName}`).width;
+  ctx.fillStyle = '#bae6fd';
+  ctx.fillRect(W / 2 - nameWidth / 2 - 15, 320, nameWidth + 30, 2);
+
+  // Recognition Statement
+  ctx.font = '500 18px Cairo, sans-serif';
+  ctx.fillStyle = '#334155';
+  ctx.fillText('has demonstrated outstanding competence and successfully passed the comprehensive examination in', W / 2, 375);
+
+  // Subject
+  ctx.font = '800 29px Cairo, sans-serif';
+  ctx.fillStyle = '#0f172a';
+  ctx.fillText('Dental Anatomy I (BDS121)', W / 2, 420);
+
+  // Topics
+  ctx.font = '600 16px Cairo, sans-serif';
+  ctx.fillStyle = '#64748b';
+  ctx.fillText('Lecture 1 & Practical Lab 1 (Tooth Morphology, Tissues & Pulp Anatomy)', W / 2, 455);
+
+  // Score & Grade
+  const score = answers.filter((a, i) => a === questions[i].ans).length;
+  const pct = Math.round(score / questions.length * 100);
+  ctx.font = '800 24px Inter, sans-serif';
+  ctx.fillStyle = '#059669';
+  ctx.fillText(`Final Score: ${score} / ${questions.length} (${pct}%)`, W / 2, 510);
+
+  let grade = pct >= 98 ? 'Outstanding Distinction (امتياز مع مرتبة الشرف)' : pct >= 90 ? 'Excellent with Honors (امتياز)' : 'Very Good (جيد جداً مرتفع)';
+  ctx.font = '700 18px Cairo, sans-serif';
+  ctx.fillStyle = '#0284c7';
+  ctx.fillText(`Academic Grade: ${grade}`, W / 2, 545);
+
+  // Date
+  const dateStr = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  ctx.font = '500 15px Cairo, sans-serif';
+  ctx.fillStyle = '#94a3b8';
+  ctx.fillText(`Issued on: ${dateStr}`, W / 2, 590);
+
+  // Bottom Accent Line
+  ctx.fillStyle = '#0284c7';
+  ctx.fillRect(80, H - 90, W - 160, 3.5);
+
+  // Signatures
+  ctx.strokeStyle = '#cbd5e1';
+  ctx.lineWidth = 1.2;
+
+  // Left
+  ctx.beginPath();
+  ctx.moveTo(170, 710);
+  ctx.lineTo(390, 710);
+  ctx.stroke();
+  ctx.font = '700 15px Cairo, sans-serif';
+  ctx.fillStyle = '#475569';
+  ctx.fillText('Academic Director', 280, 735);
+
+  // Right
+  ctx.beginPath();
+  ctx.moveTo(W - 390, 710);
+  ctx.lineTo(W - 170, 710);
+  ctx.stroke();
+  ctx.fillText('Course Examination Board', W - 280, 735);
+
+  // Watermark Emblem
+  ctx.font = '48px sans-serif';
+  ctx.fillText('🦷', 90, H / 2);
+  ctx.fillText('🦷', W - 120, H / 2);
+}
+
+function downloadCert() {
+  const canvas = document.getElementById('certCanvas');
+  const link = document.createElement('a');
+  link.download = `Dr_${currentStudentName.replace(/\s+/g, '_')}_Dental_Anatomy_Certificate.png`;
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+}
+
+// =========================================================================
+// SESSION PERSISTENCE
+// =========================================================================
+function saveSession() {
+  const data = {
+    screen: 'exam',
+    name: currentStudentName,
+    answers: answers,
+    flagged: flagged,
+    startTime: examStartTime,
+    currentQ: currentQ,
+    tabSwitchCount: tabSwitchCount
+  };
+  try { sessionStorage.setItem(SESSION_KEY, JSON.stringify(data)); } catch(e) {}
+}
+
+function initFromSession() {
+  try {
+    const raw = sessionStorage.getItem(SESSION_KEY);
+    if (!raw) return false;
+    const data = JSON.parse(raw);
+    if (data.screen === 'result' && data.data) {
+      examSubmitted = true;
+      currentStudentName = data.data.name;
+      answers = data.answers || new Array(questions.length).fill(null);
+      document.getElementById('startScreen').style.display = 'none';
+      document.getElementById('resultScreen').style.display = 'block';
+      document.getElementById('scoreNum').textContent = data.data.score;
+      document.getElementById('scoreCircle').className = 'score-circle' + (data.data.percentage < 60 ? ' fail' : '');
+      document.getElementById('resultTitle').textContent = `أداء الطالب: دكتور ${data.data.name}`;
+      document.getElementById('resultSubtext').textContent = `الدرجة: ${data.data.score} من 50 (${data.data.percentage}%)`;
+
+      if (data.data.score >= 45) {
+        document.getElementById('certBtn').style.display = 'inline-flex';
+        document.getElementById('certNotice').style.display = 'none';
+      } else {
+        document.getElementById('certBtn').style.display = 'none';
+        document.getElementById('certNotice').style.display = 'block';
+      }
+      renderCorrections(questions, answers, data.data.wrongDetails || [], 'all');
+      return true;
+    }
+    if (data.screen === 'exam' && data.name && data.startTime) {
+      currentStudentName = data.name;
+      answers = data.answers || new Array(questions.length).fill(null);
+      flagged = data.flagged || new Array(questions.length).fill(false);
+      examStartTime = data.startTime;
+      currentQ = data.currentQ || 0;
+      tabSwitchCount = data.tabSwitchCount || 0;
+      document.getElementById('startScreen').style.display = 'none';
+      document.getElementById('examScreen').style.display = 'block';
+      document.getElementById('activeStudentName').textContent = currentStudentName;
+      startTimer();
+      buildQGrid();
+      renderQuestion(currentQ);
+      updateQGrid();
+      return true;
+    }
+  } catch(e) {}
+  return false;
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  initFromSession();
+});
+</script>
+</body>
+</html>
