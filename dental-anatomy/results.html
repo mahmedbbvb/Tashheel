@@ -739,8 +739,8 @@
         <div class="header">
             <div class="header-title">
                 <h1><i class="fa-solid fa-chart-line"></i> نتائج امتحان تشريح الأسنان</h1>
-                <a href="index.html" class="btn btn-outline" style="padding: 0.4rem 1rem; font-size: 0.85rem; margin-top: 0.5rem;">
-                    <i class="fa-solid fa-arrow-right"></i> العودة للامتحان
+                <a href="quiz.html" class="btn btn-outline" style="padding: 0.4rem 1rem; font-size: 0.85rem; margin-top: 0.5rem;">
+                    <i class="fa-solid fa-file-signature"></i> صفحة الاختبار التفاعلي
                 </a>
             </div>
             <div class="header-actions">
@@ -777,14 +777,14 @@
                 <div class="stat-icon green"><i class="fa-solid fa-trophy"></i></div>
                 <div class="stat-info">
                     <h3>أعلى درجة</h3>
-                    <p id="stat-high">0/50</p>
+                    <p id="stat-high">0/30</p>
                 </div>
             </div>
             <div class="stat-card">
                 <div class="stat-icon orange"><i class="fa-solid fa-chart-pie"></i></div>
                 <div class="stat-info">
                     <h3>متوسط الدرجات</h3>
-                    <p id="stat-avg">0/50</p>
+                    <p id="stat-avg">0/30</p>
                 </div>
             </div>
             <div class="stat-card">
@@ -838,7 +838,7 @@
             <div class="modal-header">
                 <div class="modal-title">
                     <h2 id="modal-student-name">اسم الطالب</h2>
-                    <p id="modal-student-score">الدرجة: 0/50</p>
+                    <p id="modal-student-score">الدرجة: 0/30</p>
                     <div id="modal-cert-container"></div>
                 </div>
                 <button class="modal-close" onclick="closeModal()">
@@ -858,7 +858,7 @@
 
     <script>
         // --- State ---
-        const TOTAL_QUESTIONS = 50;
+        const TOTAL_QUESTIONS = 30;
         const API_URL = '/api/dental-results';
         const LOCAL_STORAGE_KEY = 'tashheel_dental_exam_results_v1';
         let rawResults = [];
@@ -1048,8 +1048,8 @@
         function calculateStats() {
             if (rawResults.length === 0) {
                 statTotal.textContent = '0';
-                statHigh.textContent = '0/50';
-                statAvg.textContent = '0/50';
+                statHigh.textContent = `0/${TOTAL_QUESTIONS}`;
+                statAvg.textContent = `0/${TOTAL_QUESTIONS}`;
                 statPass.textContent = '0%';
                 return;
             }
@@ -1059,7 +1059,11 @@
             const sum = rawResults.reduce((acc, curr) => acc + curr.score, 0);
             const avg = (sum / total).toFixed(1);
             
-            const passedCount = rawResults.filter(r => (r.score / TOTAL_QUESTIONS) >= 0.6).length;
+            const passedCount = rawResults.filter(r => {
+                const maxQ = r.total || TOTAL_QUESTIONS;
+                const pct = (r.percentage !== undefined) ? r.percentage : (r.score / maxQ) * 100;
+                return pct >= 60;
+            }).length;
             const passRate = ((passedCount / total) * 100).toFixed(1);
 
             statTotal.textContent = total;
@@ -1105,6 +1109,7 @@
             
             filteredResults.forEach(res => {
                 const tr = document.createElement('tr');
+                const maxQ = res.total || TOTAL_QUESTIONS;
                 
                 // Date formatting
                 const dateObj = new Date(res.timestamp);
@@ -1114,7 +1119,7 @@
                 }) : 'غير محدد';
 
                 // Progress Bar Color
-                const percentage = (res.score / TOTAL_QUESTIONS) * 100;
+                const percentage = (res.percentage !== undefined) ? res.percentage : Math.round((res.score / maxQ) * 100);
                 let colorClass = 'color-red';
                 if (percentage >= 90) colorClass = 'color-green';
                 else if (percentage >= 75) colorClass = 'color-blue';
@@ -1128,12 +1133,11 @@
 
                 // Wrong questions calculation
                 let errorsHtml = '';
-                if (res.score === TOTAL_QUESTIONS) {
-                    errorsHtml = `<div class="perfect-badge"><i class="fa-solid fa-star"></i> الدرجة كاملة (${TOTAL_QUESTIONS}/${TOTAL_QUESTIONS})</div>`;
+                if (res.score >= maxQ) {
+                    errorsHtml = `<div class="perfect-badge"><i class="fa-solid fa-star"></i> الدرجة كاملة (${maxQ}/${maxQ})</div>`;
                 } else if (res.answers && res.answers.length > 0) {
                     const wrongIndices = [];
                     res.answers.forEach((isCorrect, idx) => {
-                        // Assuming boolean true for correct, false for wrong
                         if (!isCorrect) wrongIndices.push(idx + 1);
                     });
                     
@@ -1152,9 +1156,10 @@
                     errorsHtml = '<span class="text-muted">البيانات غير متوفرة</span>';
                 }
 
-                // Certificate action button
+                // Certificate action button (>= 85% or >= 26/30)
                 let certBtnHtml = '';
-                if (res.score >= 45) {
+                const isQualified = percentage >= 85 || res.score >= Math.round(maxQ * 0.85);
+                if (isQualified) {
                     certBtnHtml = `
                         <button class="btn-cert-download" onclick="downloadStudentCertificate('${res.id}')" title="تحميل شهادة التقدير للطالب" style="background: linear-gradient(135deg, #10b981, #059669); color: #fff; border: none; padding: 6px 12px; border-radius: 8px; font-weight: 700; font-size: 0.8rem; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; margin-right: 6px; box-shadow: 0 2px 6px rgba(16, 185, 129, 0.25);">
                             <i class="fa-solid fa-award"></i> الشهادة
@@ -1202,17 +1207,22 @@
         }
 
         // --- Modal Functions ---
+        // --- Modal Functions ---
         function openModal(id) {
             const student = rawResults.find(r => r.id === id || r.id == id);
             if (!student) return;
 
+            const maxQ = student.total || TOTAL_QUESTIONS;
+            const pct = (student.percentage !== undefined) ? student.percentage : Math.round((student.score / maxQ) * 100);
+            const isQualified = pct >= 85 || student.score >= Math.round(maxQ * 0.85);
+
             modalName.textContent = student.name;
             const durText = (student.duration || student.time) ? ` • مدة الامتحان: ${student.duration || student.time}` : '';
-            modalScore.textContent = `الدرجة: ${student.score} / ${TOTAL_QUESTIONS} (${((student.score/TOTAL_QUESTIONS)*100).toFixed(0)}%)${durText}`;
+            modalScore.textContent = `الدرجة: ${student.score} / ${maxQ} (${pct}%)${durText}`;
             
             const modalCert = document.getElementById('modal-cert-container');
             if (modalCert) {
-                if (student.score >= 45) {
+                if (isQualified) {
                     modalCert.innerHTML = `
                         <button class="btn btn-success" onclick="downloadStudentCertificate('${student.id}')" style="background: linear-gradient(135deg, #10b981, #059669); color: #fff; border: none; padding: 9px 18px; border-radius: 10px; font-weight: 800; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; margin-top: 8px; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);">
                             <i class="fa-solid fa-award"></i> تحميل شهادة التقدير الرسمية للطالب (Doctor Certificate)
@@ -1220,7 +1230,7 @@
                     `;
                 } else {
                     modalCert.innerHTML = `
-                        <span style="font-size: 0.85rem; color: var(--text-muted); display: inline-block; margin-top: 8px;">⚠️ الشهادة مخصصة للدرجات 45 فأعلى (ناقص 5 درجات أو أقل).</span>
+                        <span style="font-size: 0.85rem; color: var(--text-muted); display: inline-block; margin-top: 8px;">⚠️ الشهادة مخصصة للدرجات 85% فأعلى (${Math.round(maxQ * 0.85)} فأكثر من ${maxQ}).</span>
                     `;
                 }
             }
@@ -1228,8 +1238,8 @@
             modalGrid.innerHTML = '';
             
             if (student.answers && student.answers.length > 0) {
-                // Ensure we iterate up to TOTAL_QUESTIONS
-                for (let i = 0; i < TOTAL_QUESTIONS; i++) {
+                const totalQ = student.answers.length;
+                for (let i = 0; i < totalQ; i++) {
                     const isCorrect = student.answers[i];
                     const correctClass = isCorrect ? 'correct' : 'wrong';
                     const iconClass = isCorrect ? 'fa-check' : 'fa-xmark';
@@ -1266,8 +1276,12 @@
                 showToast('لم يتم العثور على بيانات الطالب', 'error');
                 return;
             }
-            if (student.score < 45) {
-                showToast('هذا الطالب غير مؤهل للشهادة (درجته أقل من 45)', 'warning');
+            const maxQ = student.total || TOTAL_QUESTIONS;
+            const pct = (student.percentage !== undefined) ? student.percentage : Math.round((student.score / maxQ) * 100);
+            const isQualified = pct >= 85 || student.score >= Math.round(maxQ * 0.85);
+
+            if (!isQualified) {
+                showToast(`هذا الطالب غير مؤهل للشهادة (النسبة المطلوبة 85% فأعلى، درجته ${student.score}/${maxQ})`, 'warning');
                 return;
             }
 
@@ -1361,13 +1375,13 @@
             ctx.fillText('Lecture 1 & Practical Lab 1 (Tooth Morphology, Tissues & Pulp Anatomy)', W / 2, 455);
 
             // Score & Grade
-            const pct = Math.round((student.score / TOTAL_QUESTIONS) * 100);
+            const certPct = (student.percentage !== undefined) ? student.percentage : Math.round((student.score / maxQ) * 100);
             ctx.font = '800 24px "Inter", sans-serif';
             ctx.fillStyle = '#059669';
-            ctx.fillText(`Final Score: ${student.score} / ${TOTAL_QUESTIONS} (${pct}%)`, W / 2, 510);
+            ctx.fillText(`Final Score: ${student.score} / ${maxQ} (${certPct}%)`, W / 2, 510);
 
-            let gradeEnglish = pct >= 98 ? 'Outstanding Distinction with Honors' : pct >= 90 ? 'Excellent with Honors' : 'Very Good';
-            let gradeArabic = pct >= 98 ? 'امتياز مع مرتبة الشرف' : pct >= 90 ? 'امتياز' : 'جيد جداً';
+            let gradeEnglish = certPct >= 98 ? 'Outstanding Distinction with Honors' : certPct >= 90 ? 'Excellent with Honors' : 'Very Good';
+            let gradeArabic = certPct >= 98 ? 'امتياز مع مرتبة الشرف' : certPct >= 90 ? 'امتياز' : 'جيد جداً';
             ctx.font = '700 18px "Cairo", sans-serif';
             ctx.fillStyle = '#0284c7';
             ctx.fillText(`Academic Grade: ${gradeEnglish} — ${gradeArabic}`, W / 2, 545);

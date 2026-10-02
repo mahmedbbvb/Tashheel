@@ -1,0 +1,1825 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>امتحان تشريح الأسنان الشامل — منصة تسهيل (Dental Anatomy I)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --primary-light: #e0f2fe;
+      --primary-subtle: #f0f9ff;
+      --secondary: #0f172a;
+      --success: #10b981;
+      --success-bg: #ecfdf5;
+      --danger: #ef4444;
+      --danger-bg: #fef2f2;
+      --warning: #f59e0b;
+      --warning-bg: #fffbeb;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --bg-page: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+      --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.07);
+      --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      direction: rtl;
+      line-height: 1.6;
+    }
+
+    /* Top Navigation Bar */
+    .site-header {
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      color: #334155;
+      padding: 7px 14px;
+      border-radius: 9px;
+      font-size: 13.5px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .back-btn:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+
+    .header-subject {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--secondary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .results-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      border: 1px solid #bae6fd;
+      padding: 7px 14px;
+      border-radius: 9px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .results-link-btn:hover {
+      background: #bae6fd;
+      color: #0369a1;
+    }
+
+    .container {
+      max-width: 860px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 24px 16px 70px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── SCREEN 1: Start Screen ── */
+    .start-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 70vh;
+    }
+
+    .start-card {
+      background: var(--card-bg);
+      border-radius: 24px;
+      padding: 36px 30px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-md);
+      width: 100%;
+      max-width: 480px;
+      text-align: center;
+    }
+
+    .start-icon {
+      width: 72px;
+      height: 72px;
+      background: var(--primary-light);
+      color: var(--primary);
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.15);
+    }
+
+    .start-title {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--secondary);
+      margin-bottom: 6px;
+    }
+
+    .start-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    .exam-info-badges {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .info-badge {
+      background: #f1f5f9;
+      color: #475569;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12.5px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+      text-align: right;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #334155;
+      margin-bottom: 7px;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 14px 18px;
+      font-size: 15.5px;
+      font-family: inherit;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      background: #ffffff;
+      color: var(--text-main);
+      transition: 0.2s;
+      outline: none;
+      text-align: right;
+    }
+
+    .form-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3.5px rgba(2, 132, 199, 0.15);
+    }
+
+    .btn-start {
+      width: 100%;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      border: none;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: 800;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.28);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-start:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(2, 132, 199, 0.35);
+    }
+
+    /* ── SCREEN 2: Exam In-Progress ── */
+    .exam-bar {
+      position: sticky;
+      top: 14px;
+      z-index: 99;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 14px 20px;
+      margin-bottom: 24px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .student-badge {
+      font-weight: 800;
+      font-size: 14.5px;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .exam-stats {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    .progress-wrap {
+      width: 100%;
+      height: 7px;
+      background: #f1f5f9;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #38bdf8, #0284c7);
+      border-radius: 999px;
+      transition: width 0.3s ease;
+    }
+
+    /* Question Cards */
+    .question-card {
+      background: var(--card-bg);
+      border: 1.5px solid var(--border);
+      border-radius: 18px;
+      padding: 22px 24px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-sm);
+      transition: border-color 0.2s ease;
+    }
+
+    .question-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .q-number {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--primary);
+      background: var(--primary-light);
+      padding: 3px 10px;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .q-title {
+      font-size: 16.5px;
+      font-weight: 700;
+      color: var(--secondary);
+      line-height: 1.6;
+      margin-bottom: 18px;
+      direction: ltr;
+      text-align: left;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .options-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .option-label {
+      display: flex;
+      align-items: center;
+      padding: 12px 16px;
+      background: #f8fafc;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      user-select: none;
+      direction: ltr;
+      text-align: left;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .option-label:hover {
+      background: #f0f9ff;
+      border-color: #7dd3fc;
+    }
+
+    .option-label.selected {
+      background: #e0f2fe;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 1.5px var(--primary);
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+
+    .option-label input[type="radio"] {
+      margin-right: 12px;
+      accent-color: var(--primary);
+      width: 17px;
+      height: 17px;
+    }
+
+    .submit-bar {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .btn-submit {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+      border: none;
+      padding: 16px 36px;
+      font-size: 17px;
+      font-weight: 800;
+      border-radius: 14px;
+      cursor: pointer;
+      font-family: inherit;
+      box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3);
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 22px rgba(16, 185, 129, 0.4);
+    }
+
+    /* ── SCREEN 3: Results & Correction ── */
+    .result-card {
+      background: var(--card-bg);
+      border-radius: 24px;
+      padding: 38px 24px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-md);
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .score-circle {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #f0f9ff;
+      border: 6px solid var(--primary);
+      box-shadow: 0 6px 20px rgba(2, 132, 199, 0.15);
+    }
+
+    .score-circle.perfect {
+      border-color: #10b981;
+      background: #ecfdf5;
+    }
+
+    .score-num {
+      font-size: 42px;
+      font-weight: 900;
+      color: var(--secondary);
+      line-height: 1;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .score-total {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .result-title {
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--secondary);
+      margin-bottom: 6px;
+    }
+
+    .result-subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .result-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .action-btn {
+      padding: 12px 22px;
+      border-radius: 12px;
+      font-size: 14.5px;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: none;
+    }
+
+    .btn-results-dashboard {
+      background: #0f172a;
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
+    }
+
+    .btn-results-dashboard:hover {
+      background: #1e293b;
+      transform: translateY(-2px);
+    }
+
+    .btn-cert {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+    }
+
+    .btn-cert:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(16, 185, 129, 0.35);
+    }
+
+    .btn-retake {
+      background: #f1f5f9;
+      color: #475569;
+      border: 1px solid #cbd5e1;
+    }
+
+    .btn-retake:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+
+    /* Detailed Correction Section */
+    .corrections-section {
+      margin-top: 10px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .section-header h3 {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--secondary);
+    }
+
+    .toggle-filter-btn {
+      background: #ffffff;
+      border: 1.5px solid var(--border);
+      color: #334155;
+      padding: 7px 14px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+
+    .toggle-filter-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .correction-card {
+      background: var(--card-bg);
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .correction-card.is-correct {
+      border-right: 5px solid var(--success);
+    }
+
+    .correction-card.is-wrong {
+      border-right: 5px solid var(--danger);
+    }
+
+    .correction-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .q-badge-status {
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .status-correct {
+      background: var(--success-bg);
+      color: var(--success);
+      border: 1px solid #bbf7d0;
+    }
+
+    .status-wrong {
+      background: var(--danger-bg);
+      color: var(--danger);
+      border: 1px solid #fecaca;
+    }
+
+    .q-text-en {
+      font-family: 'Inter', sans-serif;
+      direction: ltr;
+      text-align: left;
+      font-size: 15.5px;
+      font-weight: 700;
+      color: var(--secondary);
+      margin-bottom: 14px;
+    }
+
+    .answers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+      font-family: 'Inter', sans-serif;
+      direction: ltr;
+      text-align: left;
+    }
+
+    .ans-box {
+      padding: 10px 14px;
+      border-radius: 9px;
+      font-size: 13.5px;
+      font-weight: 600;
+    }
+
+    .ans-user-wrong {
+      background: #fee2e2;
+      color: #991b1b;
+      border: 1px solid #f87171;
+    }
+
+    .ans-correct-key {
+      background: #dcfce7;
+      color: #166534;
+      border: 1px solid #86efac;
+    }
+
+    /* Medical Explanation Box */
+    .medical-explanation {
+      background: #f8fafc;
+      border-right: 3.5px solid var(--primary);
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-top: 10px;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .explanation-title {
+      font-weight: 800;
+      color: var(--primary-dark);
+      font-size: 13.5px;
+      margin-bottom: 4px;
+    }
+
+    .medical-terms {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed #cbd5e1;
+      font-size: 12.5px;
+      color: #475569;
+      font-weight: 700;
+    }
+
+    /* Arabic question translation */
+    .q-text-ar {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      background: var(--primary-subtle);
+      border-right: 3px solid var(--primary);
+      border-radius: 8px;
+      padding: 8px 12px;
+      margin-bottom: 14px;
+      direction: rtl;
+      text-align: right;
+    }
+
+    /* Colour-coded option rows in correction */
+    .corr-options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+      font-family: 'Inter', sans-serif;
+      direction: ltr;
+    }
+
+    .corr-opt {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 14px;
+      border-radius: 9px;
+      font-size: 14px;
+      font-weight: 500;
+      border: 1.5px solid transparent;
+    }
+
+    .corr-opt-letter {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      font-weight: 800;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+
+    /* Neutral / unselected */
+    .corr-opt-neutral {
+      background: #f8fafc;
+      border-color: #e2e8f0;
+      color: #64748b;
+    }
+    .corr-opt-neutral .corr-opt-letter {
+      background: #e2e8f0;
+      color: #475569;
+    }
+
+    /* Correct answer (student did NOT pick it) */
+    .corr-opt-correct {
+      background: #dcfce7;
+      border-color: #86efac;
+      color: #166534;
+      font-weight: 700;
+    }
+    .corr-opt-correct .corr-opt-letter {
+      background: #22c55e;
+      color: #ffffff;
+    }
+
+    /* Correct answer (student picked it correctly) */
+    .corr-opt-correct-chosen {
+      background: #dcfce7;
+      border-color: #22c55e;
+      color: #166534;
+      font-weight: 800;
+      box-shadow: 0 0 0 2px rgba(34,197,94,0.25);
+    }
+    .corr-opt-correct-chosen .corr-opt-letter {
+      background: #16a34a;
+      color: #ffffff;
+    }
+
+    /* Wrong answer (student picked this) */
+    .corr-opt-wrong {
+      background: #fee2e2;
+      border-color: #f87171;
+      color: #991b1b;
+      font-weight: 700;
+    }
+    .corr-opt-wrong .corr-opt-letter {
+      background: #ef4444;
+      color: #ffffff;
+    }
+
+    @media (max-width: 640px) {
+      /* ── Header Mobile ── */
+      .site-header {
+        padding: 10px 14px;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .nav-right {
+        flex: 1;
+        gap: 8px;
+        min-width: 0;
+      }
+
+      .back-btn {
+        padding: 6px 10px;
+        font-size: 12.5px;
+        border-radius: 8px;
+        white-space: nowrap;
+      }
+
+      .back-btn span {
+        display: none;
+      }
+
+      .header-subject {
+        font-size: 13px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 160px;
+      }
+
+      .header-subject span {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .results-link-btn {
+        padding: 6px 10px;
+        font-size: 12px;
+        border-radius: 8px;
+        white-space: nowrap;
+      }
+
+      .results-link-btn span {
+        display: none;
+      }
+
+      /* ── Exam Bar Mobile ── */
+      .exam-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      /* ── Results Mobile ── */
+      .result-actions {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .action-btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .header-subject {
+        display: none;
+      }
+
+      .site-header {
+        padding: 8px 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Top Navigation -->
+  <header class="site-header">
+    <a href="index.html" class="back-btn">
+      <i class="fa-solid fa-arrow-right"></i>
+      <span>قسم تشريح الأسنان</span>
+    </a>
+  </header>
+
+  <div class="container">
+
+    <!-- SCREEN 1: Name Input & Start Screen -->
+    <div id="startScreen" class="start-wrapper">
+      <div class="start-card">
+        <div class="start-icon">
+          <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+        <h1 class="start-title">امتحان dental anatomy </h1>
+       
+   
+
+        <form id="startForm" onsubmit="startExam(event)">
+          <div class="form-group">
+            <label class="form-label" for="studentName">  اسمك  :</label>
+            <input type="text" id="studentName" class="form-input"  required
+              autocomplete="name" autofocus />
+          </div>
+
+          <button type="submit" id="startBtn" class="btn-start">
+            <span>بدء الامتحان الآن</span>
+            <i class="fa-solid fa-arrow-left"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- SCREEN 2: Exam In-Progress Screen -->
+    <div id="examScreen" style="display:none;">
+      <div class="exam-bar">
+        <div class="student-badge">
+          <i class="fa-solid fa-user-doctor"></i>
+          <span>الطالب: </span>
+          <span id="activeStudentName" style="color:var(--secondary);font-weight:900"></span>
+        </div>
+        <div class="exam-stats">
+          <div>تمت الإجابة: <span id="answeredCount" style="color:var(--primary);font-weight:900">0</span> / 30</div>
+          <div><i class="fa-regular fa-clock"></i> <span id="examTimer">00:00</span></div>
+        </div>
+        <div class="progress-wrap">
+          <div id="progressFill" class="progress-fill"></div>
+        </div>
+      </div>
+
+      <!-- Questions Container -->
+      <div id="questionsContainer"></div>
+
+      <div class="submit-bar">
+        <button type="button" class="btn-submit" onclick="submitExam()">
+          <i class="fa-solid fa-paper-plane"></i>
+          <span>تسليم الامتحان وإنهاء الاختبار</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- SCREEN 3: Results & Detailed Correction Screen -->
+    <div id="resultScreen" style="display:none;">
+      <div class="result-card">
+        <div class="score-circle" id="scoreCircle">
+          <div class="score-num" id="scoreDisplay">0</div>
+          <div class="score-total">من 30</div>
+        </div>
+
+        <div class="result-title" id="resultGreeting">نتيجتك في الامتحان</div>
+        <div class="result-subtitle" id="resultSubtext"></div>
+
+        <div class="result-actions">
+
+
+          <!-- Download Certificate Button (Visible if qualified) -->
+          <button type="button" id="btnDownloadCert" class="action-btn btn-cert" style="display:none;"
+            onclick="downloadCert()">
+            <i class="fa-solid fa-award"></i>
+            <span>تحميل شهادة التقدير الرسمية</span>
+          </button>
+
+
+        </div>
+      </div>
+
+      <!-- Detailed Corrections Section -->
+      <div class="corrections-section">
+        <div class="section-header">
+          <h3>تصحيح الأسئلة والشرح الطبي بالعربية</h3>
+          <button class="toggle-filter-btn" id="filterToggleBtn" onclick="toggleCorrectionFilter()">
+            عرض الأسئلة الخاطئة فقط
+          </button>
+        </div>
+
+        <div id="correctionsList"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // The 30 Dental Anatomy Questions
+    const questions = [
+      ["What is the hardest tissue in the human body?", ["Dentin", "Cementum", "Enamel", "Pulp"], "C"],
+      ["The mandibular first molar is:", ["Succedaneous", "Non-succedaneous", "A primary tooth", "A predecessor"], "B"],
+      ["Which tooth is located immediately next to the midline?", ["Lateral incisor", "Canine", "Central incisor", "First premolar"], "C"],
+      ["The part of the tooth covered by enamel is called:", ["Clinical crown", "Anatomical crown", "Root", "Cervix"], "B"],
+      ["How many teeth are present in the permanent dentition?", ["20", "24", "28", "32"], "D"],
+      ["Which structure connects the underside of the tongue to the floor of the mouth?", ["Upper labial frenum", "Lingual frenum", "Uvula", "Soft palate"], "B"],
+      ["Which tooth usually has the longest and strongest root in the mouth?", ["Central incisor", "Canine", "First premolar", "First molar"], "B"],
+      ["The pulp is:", ["A calcified hard tissue", "A tissue covering the root", "The only soft tissue of the tooth", "The hardest part of the tooth"], "C"],
+      ["How many premolars are present in each quadrant of the permanent dentition?", ["1", "2", "3", "4"], "B"],
+      ["The maxilla is:", ["The movable lower jaw", "The fixed upper jaw", "The tongue", "The soft palate"], "B"],
+      ["Which tooth is also called the “12-year molar”?", ["First molar", "Second molar", "Third molar", "First premolar"], "B"],
+      ["Which tissue forms the main bulk of the tooth?", ["Enamel", "Pulp", "Dentin", "Cementum"], "C"],
+      ["A normal healthy clinical crown is usually:", ["Longer than the anatomical crown", "Equal to the anatomical crown", "Slightly shorter than the anatomical crown", "Completely inside the bone"], "C"],
+      ["Which of the following is NOT present in primary dentition?", ["Incisors", "Canines", "Premolars", "Molars"], "C"],
+      ["The oral cavity is divided into how many quadrants?", ["2", "3", "4", "8"], "C"],
+      ["Which part of the pulp occupies the crown of the tooth?", ["Root canal", "Pulp chamber", "Apical foramen", "Crypt"], "B"],
+      ["The main function of incisors is:", ["Grinding", "Tearing", "Cutting", "Supporting the root"], "C"],
+      ["Which permanent teeth replace the primary molars?", ["Permanent molars", "Canines", "Premolars", "Incisors"], "C"],
+      ["Cementum mainly covers the:", ["Crown", "Root", "Pulp chamber", "Enamel"], "B"],
+      ["A tooth that has erupted and is located in its normal bony socket is associated with:", ["Crypt", "Alveolus / Socket", "Pulp chamber", "Pulp horn"], "B"],
+      ["Which tooth is the 8th tooth from the midline?", ["Second molar", "First molar", "Third molar", "Second premolar"], "C"],
+      ["The mixed dentition period generally occurs between:", ["Birth–6 months", "6 months–6 years", "6–12 years", "After 12 years"], "C"],
+      ["Which of the following is a soft tissue?", ["Enamel", "Dentin", "Cementum", "Pulp"], "D"],
+      ["The cervical line (CEJ) represents the junction between:", ["Dentin and pulp", "Enamel and cementum", "Enamel and pulp", "Dentin and bone"], "B"],
+      ["Which tooth is known for having a single cusp?", ["Canine", "Premolar", "Molar", "Central incisor"], "A"],
+      ["If gingival recession exposes part of the root, the clinical crown becomes:", ["Shorter than the anatomical crown", "Equal to the anatomical crown", "Longer than the anatomical crown", "Completely covered by gingiva"], "C"],
+      ["How many teeth are present in each quadrant of the permanent dentition?", ["5", "6", "8", "10"], "C"],
+      ["Which of the following is a non-succedaneous group?", ["Permanent incisors", "Permanent canines", "Permanent premolars", "Permanent molars"], "D"],
+      ["The pulp horns extend from the:", ["Root canal toward the apex", "Roof of the pulp chamber toward the cusps", "Cementum toward the root", "Enamel toward the gingiva"], "B"],
+      ["Which formula represents the permanent dentition in one half of the mouth?", ["I 2/2, C 1/1, M 2/2", "I 2/2, C 1/1, PM 2/2, M 3/3", "I 1/1, C 1/1, PM 2/2, M 2/2", "I 2/2, C 2/2, PM 2/2, M 3/3"], "B"]
+    ];
+
+    // Rich Arabic Explanations & Medical Dental Terminology
+    const explanations = {
+      0: {
+        rule: "صلابة أنسجة الأسنان (Hardness of Tooth Tissues)",
+        ar: "المينا (Enamel) هو أصلب نسيج حيوي في جسم الإنسان على الإطلاق، حيث يتكون من أكثر من 96% معادن غير عضوية (بلورات هيدروكسي أباتيت Hydroxyapatite crystals) مما يمنحه صلابة تفوق العظام، ويليه العاج ثم الملاط ثم اللب وهو نسيج رخو.",
+        terms: "Enamel (المينا) • Hardest tissue (أصلب نسيج) • Hydroxyapatite (هيدروكسي أباتيت) • 96% Inorganic"
+      },
+      1: {
+        rule: "الأسنان الخلفية الدائمة غير الخالفة (Non-succedaneous Teeth)",
+        ar: "الضروس الدائمة (Permanent Molars) بجميع أنواعها تعتبر أسنان غير خالفة (Non-succedaneous) لأنها تبزغ في الفك دون أن تحل محل أي سن لبني سابق، بينما الأسنان الخالفة (Succedaneous) هي القواطع والأنياب والضواحك التي تخلف الأسنان اللبنية.",
+        terms: "Non-succedaneous (غير خالفة) • Succedaneous (خالفة / بديلة) • Permanent molars (الضروس الدائمة)"
+      },
+      2: {
+        rule: "موقع القاطع المركزي (Central Incisor)",
+        ar: "القاطع المركزي (Central Incisor) هو السن رقم 1 في كل ربع فك، ويقع مباشرة بجوار خط منتصف الوجه والفكين (Midline) وتلتقي أسطحه الإنسية (Mesial surfaces) مع بعضها عند خط المنتصف.",
+        terms: "Central incisor (القاطع المركزي) • Midline (خط المنتصف) • Mesial surface (السطح الإنسي)"
+      },
+      3: {
+        rule: "التاج التشريحي (Anatomical Crown)",
+        ar: "التاج التشريحي (Anatomical crown) هو الجزء الكامل من السن المغطى بطبقة المينا (Enamel) ويمتد من الحافة القاطعة حتى خط عنق السن (CEJ) وهو ثابت لا يتغير طوال العمر، بخلاف التاج السريري (Clinical crown) الذي يمثل فقط الجزء الظاهر في الفم.",
+        terms: "Anatomical crown (التاج التشريحي) • Clinical crown (التاج السريري) • Enamel covered (مغطى بالمينا)"
+      },
+      4: {
+        rule: "عدد الأسنان الدائمة (Permanent Dentition)",
+        ar: "تحتوي المجموعة السنية الدائمة الكاملة عند الإنسان البالغ على 32 سناً موزعة بالتساوي (16 في الفك العلوي و16 في الفك السفلي، 8 أسنان في كل ربع فك). أما الأسنان اللبنية (Primary) فعددها 20 سناً فقط.",
+        terms: "Permanent dentition (الأسنان الدائمة - 32) • Primary dentition (الأسنان اللبنية - 20) • Quadrant (ربع فك)"
+      },
+      5: {
+        rule: "لجام اللسان (Lingual Frenum)",
+        ar: "لجام اللسان (Lingual frenum) هو طية من الغشاء المخاطي تربط السطح السفلي للسان بقاع الفم. وإذا كان قصيراً جداً يسبب حالة التصاق اللسان المعروفة بـ (Ankyloglossia / Tongue-tie).",
+        terms: "Lingual frenum (لجام اللسان) • Floor of mouth (قاع الفم) • Ankyloglossia (التصاق اللسان)"
+      },
+      6: {
+        rule: "جذور الأنياب وثباتها (Canine Roots)",
+        ar: "الناب (Canine) يمتلك أطول وأقوى جذر في الفم، ومحاط ببروز عظمي سميك يسمى البروز النابي (Canine eminence)، مما يجعله أكثر الأسنان ثباتاً وحجر الزاوية في القوس السني (Cornerstone of dental arch).",
+        terms: "Canine (الناب) • Longest root (أطول جذر) • Canine eminence (البروز النابي) • Cornerstone (حجر الزاوية)"
+      },
+      7: {
+        rule: "طبيعة لب السن (Dental Pulp)",
+        ar: "لب السن (Pulp) هو النسيج الضام الرخو الوحيد (The only soft tissue) داخل السن، ويحتوي على الأوعية الدموية والأعصاب وخلايا بناء العاج (Odontoblasts)، بينما بقية الأنسجة الثلاثة (المينا، العاج، والملاط) أنسجة متكلسة صلبة.",
+        terms: "Dental pulp (لب السن) • Soft tissue (نسيج رخو) • Calcified tissues (أنسجة متكلسة)"
+      },
+      8: {
+        rule: "عدد الضواحك في ربع الفك (Premolars per Quadrant)",
+        ar: "يوجد ضاحكان اثنان (2 Premolars) في كل ربع فك دائم: الضاحك الأول والضاحك الثاني (First & Second Premolars)، بإجمالي 8 ضواحك في كامل الفم الدائم.",
+        terms: "Premolars (الضواحك) • 2 per quadrant (اثنان في كل ربع) • 8 total (8 بالإجمالي)"
+      },
+      9: {
+        rule: "عظم الفك العلوي (Maxilla)",
+        ar: "الفك العلوي (Maxilla) هو عظم الجمجمة الثابت غير المتحرك الذي يحمل الأسنان العلوية، في حين أن الفك السفلي (Mandible) هو العظم المفصلي الوحيد المتحرك في الجمجمة.",
+        terms: "Maxilla (الفك العلوي الثابت) • Mandible (الفك السفلي المتحرك)"
+      },
+      10: {
+        rule: "ضرس الـ 12 سنة (12-Year Molar)",
+        ar: "الضرس الدائم الثاني (Second permanent molar) يبزغ عادة حول سن 12 عاماً، لذلك يطلق عليه سريرياً ضرس الـ 12 سنة (12-year molar)، بينما الضرس الأول يسمى ضرس الـ 6 سنوات (6-year molar)، والضرس الثالث هو ضرس العقل (17-21 سنة).",
+        terms: "Second molar (الضرس الثاني) • 12-year molar (ضرس الـ 12 سنة) • 6-year molar (ضرس الـ 6 سنوات)"
+      },
+      11: {
+        rule: "الكتلة الأساسية للسن (Bulk of the Tooth)",
+        ar: "العاج (Dentin) يشكل الكتلة والحجم الأساسي الأكبر للسن (Main bulk)، ويمتد في كل من التاج (مغطى بالمينا) وفي الجذر (مغطى بالملاط)، ويحيط بالحجرة اللبية وقنوات الجذور.",
+        terms: "Dentin (العاج) • Main bulk (الكتلة الأساسية) • Crown & Root (التاج والجذر)"
+      },
+      12: {
+        rule: "العلاقة الطبيعية بين التاج السريري والتشريحي",
+        ar: "في الفم السليم طبيعياً، تغطي اللثة الصحية الحافة العنقية من المينا بمقدار 1 إلى 2 ملم، لذلك يكون التاج السريري الظاهر (Clinical crown) أقصر قليلاً من التاج التشريحي الكامل (Slightly shorter than anatomical crown).",
+        terms: "Clinical crown (التاج السريري) • Anatomical crown (التاج التشريحي) • Slightly shorter (أقصر قليلاً في الحالة الطبيعية)"
+      },
+      13: {
+        rule: "غياب الضواحك في الأسنان اللبنية (No Premolars in Primary)",
+        ar: "الأسنان اللبنية (Primary dentition) لا تحتوي نهائياً على ضواحك (No Premolars)؛ بل تتكون من قواطع مركزية وجانبية، وأنياب، وأضراس أولى وثانية لبنية فقط.",
+        terms: "No Premolars (لا توجد ضواحك لبنية) • Primary teeth (الأسنان اللبنية)"
+      },
+      14: {
+        rule: "أرباع الفم الأربعة (Oral Cavity Quadrants)",
+        ar: "ينقسم تجويف الفم بواسطة الخط الأوسط (Midline) والمستوى الإطباقي (Occlusal plane) إلى أربعة أرباع (4 Quadrants): علوي أيمن، علوي أيسر، سفلي أيسر، وسفلي أيمن.",
+        terms: "4 Quadrants (أربعة أرباع) • Maxillary & Mandibular • Right & Left"
+      },
+      15: {
+        rule: "حجرة اللب التاجية (Pulp Chamber)",
+        ar: "حجرة اللب (Pulp chamber) هي التجويف الموجود داخل تاج السن ويشغله اللب التاجي (Coronal pulp)، بينما قنوات الجذور (Root canals) تشغل الجذور وتحتوي اللب الجذري (Radicular pulp).",
+        terms: "Pulp chamber (حجرة اللب) • Coronal pulp (اللب التاجي) • Root canal (قناة الجذر)"
+      },
+      16: {
+        rule: "وظيفة القواطع (Function of Incisors)",
+        ar: "الوظيفة الأساسية للقواطع (Incisors) هي قطع وقضم الطعام (Cutting / Incising) بفضل حوافها القاطعة الحادة الشبيهة بالإزميل (Chisel-shaped edges)، بينما التمزيق وظيفة الأنياب، والطحن وظيفة الأضراس.",
+        terms: "Cutting (القطع والقضم) • Incisors (القواطع) • Tearing = Canines • Grinding = Molars"
+      },
+      17: {
+        rule: "استبدال الأضراس اللبنية بالضواحك (Succedaneous Replacement)",
+        ar: "الضواحك الدائمة (Premolars) هي التي تحل مكان الأضراس اللبنية (Primary molars) عند تبديلها؛ بينما الأضراس الدائمة (Permanent molars) تبزغ خلفها في مساحة جديدة ولا تحل محل أي سن لبني.",
+        terms: "Premolars replace primary molars (الضواحك تبدل الأضراس اللبنية) • Succedaneous teeth"
+      },
+      18: {
+        rule: "موقع الملاط (Cementum Location)",
+        ar: "الملاط (Cementum) هو النسيج المعدني المتكلس المشابه للعظام وظيفته تغطية الجذر التشريحي للسن (Anatomical root)، ويوفر نقطة اتصال وتثبيت لألياف الرباط اللثوي المحيط بالسن (Periodontal Ligament - PDL) بعظم الفك.",
+        terms: "Cementum (الملاط) • Covers anatomical root (يغطي الجذر التشريحي) • PDL attachment"
+      },
+      19: {
+        rule: "السنخ العظمي (Alveolus / Bony Socket)",
+        ar: "السنخ العظمي (Alveolus أو Tooth socket) هو التجويف العظمي في الفك الذي يستقر بداخله جذر السن بعد بزوغه. أما الجريب/الكيس العظمي (Crypt) فهو التجويف العظمي الذي يحتوي برعم السن النامي قبل بزوغه.",
+        terms: "Alveolus / Socket (السنخ العظمي للسن البازغ) • Crypt (التجويف العظمي قبل البزوغ)"
+      },
+      20: {
+        rule: "ترتيب الأسنان الدائمة من خط المنتصف",
+        ar: "السن الثامن (8th tooth) من خط المنتصف هو الضرس الثالث (Third molar / ضرس العقل). الترتيب: 1-القاطع المركزي، 2-القاطع الجانبي، 3-الناب، 4-الضاحك الأول، 5-الضاحك الثاني، 6-الضرس الأول، 7-الضرس الثاني، 8-الضرس الثالث.",
+        terms: "Third molar (الضرس الثالث) • 8th tooth from midline • Wisdom tooth"
+      },
+      21: {
+        rule: "مرحلة التسنين المختلط (Mixed Dentition Period)",
+        ar: "مرحلة الإطباق/التسنين المختلط (Mixed dentition) تمتد تقريباً من سن 6 إلى 12 عاماً، وتبدأ مع بزوغ أول ضرس دائم أو تبديل القاطع السفلي، وتنتهي بسقوط آخر سن لبني (عادة الضرس اللبني الثاني) وظهور الضاحك.",
+        terms: "Mixed dentition (التسنين المختلط: 6–12 سنة) • Primary (6m–6y) • Permanent (12y+)"
+      },
+      22: {
+        rule: "النسيج الرخو بين أنسجة السن",
+        ar: "اللب (Pulp) هو النسيج الرخو (Soft tissue) الوحيد بين الأنسجة الأربعة المكونة للسن، ويحتوي على الأعصاب، الشرايين، الأوردة، والأوعية اللمفاوية وخلايا النسيج الضام، بينما المينا والعاج والملاط أنسجة صلبة متكلسة.",
+        terms: "Pulp (اللب) • Only soft tissue • Neurovascular supply"
+      },
+      23: {
+        rule: "ملتقى المينا والملاط (Cementoenamel Junction - CEJ)",
+        ar: "الخط العنقي (Cervical line) هو نفسه ملتقى المينا والملاط (Cementoenamel Junction - CEJ)، ويمثل الحد الفاصل التشريحي الدقيق بين التاج التشريحي (المغطى بالمينا) والجذر التشريحي (المغطى بالملاط).",
+        terms: "CEJ (ملتقى المينا والملاط) • Cervical line (الخط العنقي) • Anatomical crown & root junction"
+      },
+      24: {
+        rule: "شرفة الناب الوحيدة (Single Cusp of Canine)",
+        ar: "الناب (Canine) يتميز بوجود شرفة مدببة وحيدة وواضحة (Single pointed cusp)، ولهذا السبب يطلق عليه علمياً اسم (Cuspid). أما الضواحك فتمتلك شرفتين أو أكثر (Bicuspids)، والأضراس 4 إلى 5 شرفات.",
+        terms: "Canine = Cuspid (وحيد الشرفة) • Bicuspids = Premolars • Multicusped = Molars"
+      },
+      25: {
+        rule: "تأثير انحسار اللثة على التاج السريري (Gingival Recession)",
+        ar: "عند حدوث انحسار في اللثة (Gingival recession)، ينكشف جزء من جذر السن في الفم، وبالتالي يصبح التاج السريري (المرئي في الفم) أطول من التاج التشريحي (Longer than anatomical crown) لأنه يشمل التاج كاملاً مع الجزء المكشوف من الجذر.",
+        terms: "Gingival recession (انحسار اللثة) • Clinical crown becomes longer (التاج السريري يصبح أطول)"
+      },
+      26: {
+        rule: "عدد الأسنان في ربع الفك الدائم",
+        ar: "يوجد 8 أسنان في كل ربع فك من الأسنان الدائمة (2 قواطع + 1 ناب + 2 ضواحك + 3 أضراس = 8 أسنان)، ومجموع الأرباع الأربعة = 32 سناً.",
+        terms: "8 teeth per quadrant • 32 total permanent teeth"
+      },
+      27: {
+        rule: "المجموعة غير الخالفة (Non-succedaneous Group)",
+        ar: "الأضراس الدائمة (Permanent molars) هي المجموعة الوحيدة غير الخالفة (Non-succedaneous) من الخيارات؛ لأنها تبزغ خلف الأسنان اللبنية دون أن تسقط أي سن لبني سابق، بينما القواطع والأنياب والضواحك كلها أسنان خالفة (Succedaneous).",
+        terms: "Permanent molars = Non-succedaneous • Incisors/Canines/Premolars = Succedaneous"
+      },
+      28: {
+        rule: "قرون اللب (Pulp Horns)",
+        ar: "قرون اللب (Pulp horns) هي امتدادات وإسقاطات مدببة من سقف الحجرة اللبية (Roof of the pulp chamber) متجهة لأعلى نحو قمم الشرفات (Cusps) في الأسنان الخلفية أو زوايا القواطع في الأسنان الأمامية.",
+        terms: "Pulp horns (قرون اللب) • Roof of pulp chamber (سقف حجرة اللب) • Toward the cusps (نحو الشرفات)"
+      },
+      29: {
+        rule: "المعادلة السنية الدائمة (Permanent Dental Formula)",
+        ar: "المعادلة السنية لنصف الفم الدائم هي: I 2/2, C 1/1, PM 2/2, M 3/3 (قاطعان علويان/سفليان، ناب علوي/سفلي، ضاحكان علويان/سفليان، 3 أضراس علوية/سفلية = 16 في النصف = 32 في كامل الفم).",
+        terms: "Dental formula (المعادلة السنية) • I 2/2, C 1/1, PM 2/2, M 3/3"
+      }
+    };
+
+    // Arabic translations for each question (index matches questions array)
+    const questionTranslations = [
+      "ما هو أصلب نسيج في جسم الإنسان؟",
+      "الضرس الأول السفلي (mandibular first molar) هو:",
+      "أيّ سن يقع مباشرةً بجوار خط المنتصف؟",
+      "يُسمّى الجزء من السن المغطى بالمينا (Enamel):",
+      "كم عدد الأسنان في الإطباق الدائم (permanent dentition)؟",
+      "أيّ تركيب يربط الجانب السفلي من اللسان بقاع الفم؟",
+      "أيّ سن يمتلك عادةً أطول وأقوى جذر في الفم؟",
+      "لب السن (Pulp) هو:",
+      "كم عدد الضواحك في كل ربع فك من الأسنان الدائمة؟",
+      "الفك العلوي (Maxilla) هو:",
+      "أيّ سن يُعرف بـ 'ضرس الـ 12 سنة'؟",
+      "أيّ نسيج يُشكّل الكتلة الرئيسية للسن؟",
+      "التاج السريري السليم الطبيعي عادةً يكون:",
+      "أيّ مما يلي غير موجود في الأسنان اللبنية (primary dentition)؟",
+      "ينقسم تجويف الفم إلى كم ربع (quadrant)؟",
+      "أيّ جزء من اللب يشغل تاج السن؟",
+      "الوظيفة الرئيسية للقواطع (incisors) هي:",
+      "أيّ الأسنان الدائمة تحل محل الأضراس اللبنية؟",
+      "الملاط (Cementum) يغطي بصفة أساسية:",
+      "السن الذي بزغ ويقع داخل تجويفه العظمي الطبيعي مرتبط بـ:",
+      "أيّ سن هو السن الثامن من خط المنتصف؟",
+      "تمتد مرحلة الأسنان المختلطة (mixed dentition) عموماً بين:",
+      "أيّ مما يلي يُعدّ نسيجاً رخواً (soft tissue)؟",
+      "يمثل الخط العنقي (CEJ) تقاطع:",
+      "أيّ سن يُعرف بامتلاكه شرفةً واحدة فقط؟",
+      "إذا تسبّب انحسار اللثة في كشف جزء من الجذر، يصبح التاج السريري:",
+      "كم عدد الأسنان في كل ربع فك من الأسنان الدائمة؟",
+      "أيّ المجموعات التالية تُعدّ من الأسنان غير الخالفة (non-succedaneous)؟",
+      "تمتد قرون اللب (pulp horns) من:",
+      "أيّ معادلة تمثل الأسنان الدائمة في نصف واحد من الفم؟"
+    ];
+
+    const LOCAL_STORAGE_KEY = 'tashheel_dental_exam_results_v1';
+    const SESSION_STORAGE_KEY = 'tashheel_dental_exam_session_v2';
+
+    let currentStudentName = "";
+    let examStartTime = 0;
+    let timerInterval = null;
+    let onlyShowWrong = false;
+    let lastExamResult = null;
+
+    // Start Exam
+    function startExam(e) {
+      if (e) e.preventDefault();
+      const nameInput = document.getElementById("studentName");
+      currentStudentName = nameInput.value.trim();
+
+      if (currentStudentName.length < 2) {
+        nameInput.focus();
+        nameInput.setCustomValidity("يرجى إدخال اسم الطالب للبدء");
+        nameInput.reportValidity();
+        return;
+      }
+      nameInput.setCustomValidity("");
+
+      document.getElementById("startScreen").style.display = "none";
+      document.getElementById("resultScreen").style.display = "none";
+      document.getElementById("examScreen").style.display = "block";
+      document.getElementById("activeStudentName").textContent = currentStudentName;
+
+      renderQuestions();
+
+      examStartTime = Date.now();
+      timerInterval = setInterval(updateTimer, 1000);
+
+      persistSession({
+        screen: "exam",
+        studentName: currentStudentName,
+        startTime: examStartTime,
+        answers: {}
+      });
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Timer
+    function updateTimer() {
+      const elapsedSeconds = Math.floor((Date.now() - examStartTime) / 1000);
+      const m = String(Math.floor(elapsedSeconds / 60)).padStart(2, '0');
+      const s = String(elapsedSeconds % 60).padStart(2, '0');
+      document.getElementById("examTimer").textContent = `${m}:${s}`;
+    }
+
+    // Render Questions
+    function renderQuestions() {
+      const container = document.getElementById("questionsContainer");
+      container.innerHTML = "";
+
+      questions.forEach((q, i) => {
+        const card = document.createElement("div");
+        card.className = "question-card";
+        card.id = `qCard_${i}`;
+
+        let optionsHtml = "";
+        q[1].forEach((opt, j) => {
+          const letter = String.fromCharCode(65 + j);
+          optionsHtml += `
+        <label class="option-label" id="optLabel_${i}_${letter}" onclick="selectOption(${i}, '${letter}')">
+          <input type="radio" name="q_${i}" value="${letter}" />
+          <span><strong>${letter})</strong> ${opt}</span>
+        </label>
+      `;
+        });
+
+        card.innerHTML = `
+      <div class="question-top">
+        <span class="q-number">Question ${i + 1} of ${questions.length}</span>
+      </div>
+      <div class="q-title">${q[0]}</div>
+      <div class="options-list">${optionsHtml}</div>
+    `;
+
+        container.appendChild(card);
+      });
+    }
+
+    // Select Option Interaction
+    function selectOption(qIndex, letter) {
+      const card = document.getElementById(`qCard_${qIndex}`);
+      if (card) {
+        const labels = card.querySelectorAll(".option-label");
+        labels.forEach(l => l.classList.remove("selected"));
+      }
+
+      const targetLabel = document.getElementById(`optLabel_${qIndex}_${letter}`);
+      if (targetLabel) {
+        targetLabel.classList.add("selected");
+        const radio = targetLabel.querySelector('input[type="radio"]');
+        if (radio) radio.checked = true;
+      }
+
+      updateProgress();
+
+      // Persist to session
+      const session = getSession() || {};
+      const currentAnswers = session.answers || {};
+      currentAnswers[qIndex] = letter;
+      persistSession({ answers: currentAnswers });
+    }
+
+    // Update Progress Bar
+    function updateProgress() {
+      let answered = 0;
+      for (let i = 0; i < questions.length; i++) {
+        if (document.querySelector(`input[name="q_${i}"]:checked`)) {
+          answered++;
+        }
+      }
+      document.getElementById("answeredCount").textContent = answered;
+      const percent = Math.round((answered / questions.length) * 100);
+      document.getElementById("progressFill").style.width = percent + "%";
+    }
+
+    // Submit Exam
+    function submitExam() {
+      let answeredCount = 0;
+      for (let i = 0; i < questions.length; i++) {
+        if (document.querySelector(`input[name="q_${i}"]:checked`)) {
+          answeredCount++;
+        }
+      }
+
+      if (answeredCount < questions.length) {
+        const remaining = questions.length - answeredCount;
+        const confirmSubmit = confirm(`تنبيه: متبقي ${remaining} سؤال لم تقم بالإجابة عليها بعد.\n\nهل تريد تسليم الامتحان بالتأكيد وعرض النتيجة؟`);
+        if (!confirmSubmit) return;
+      }
+
+      clearInterval(timerInterval);
+
+      const elapsedSeconds = Math.max(1, Math.floor((Date.now() - examStartTime) / 1000));
+      const m = String(Math.floor(elapsedSeconds / 60)).padStart(2, '0');
+      const s = String(elapsedSeconds % 60).padStart(2, '0');
+      const durationStr = `${m}:${s}`;
+
+      let score = 0;
+      const booleanAnswers = [];
+      const wrongQuestions = [];
+      const wrongDetails = [];
+      const allResults = [];
+
+      questions.forEach((q, i) => {
+        const selected = document.querySelector(`input[name="q_${i}"]:checked`);
+        const studentAns = selected ? selected.value : null;
+        const correctAns = q[2];
+        const isCorrect = studentAns === correctAns;
+
+        booleanAnswers.push(isCorrect);
+
+        if (isCorrect) {
+          score++;
+        } else {
+          wrongQuestions.push(i + 1); // 1-indexed
+          wrongDetails.push({
+            questionNumber: i + 1,
+            question: q[0],
+            studentAnswer: studentAns || "لم تتم الإجابة",
+            correctAnswer: correctAns,
+            options: q[1]
+          });
+        }
+
+        allResults.push({
+          questionNumber: i + 1,
+          question: q[0],
+          studentAnswer: studentAns || "لم تتم الإجابة",
+          correctAnswer: correctAns,
+          isCorrect: isCorrect,
+          options: q[1]
+        });
+      });
+
+      const percentage = Math.round((score / questions.length) * 100);
+      const now = new Date();
+      const dateStr = now.toLocaleString('ar-EG', { dateStyle: 'short', timeStyle: 'short' });
+
+      const examResultData = {
+        id: "res_" + Date.now() + "_" + Math.random().toString(36).substr(2, 5),
+        name: currentStudentName,
+        score: score,
+        total: questions.length,
+        percentage: percentage,
+        duration: durationStr,
+        time: durationStr,
+        answers: booleanAnswers,
+        wrongQuestions: wrongQuestions,
+        wrongDetails: wrongDetails,
+        date: dateStr,
+        timestamp: Date.now()
+      };
+
+      lastExamResult = {
+        data: examResultData,
+        allResults: allResults
+      };
+
+      // 1. Save to localStorage (read by results.html)
+      try {
+        const existing = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) || '[]');
+        const list = Array.isArray(existing) ? existing : [];
+        // Unshift to top
+        list.unshift(examResultData);
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(list));
+      } catch (e) {
+        console.error("Local storage save error:", e);
+      }
+
+      // 2. Save to sessionStorage
+      try {
+        sessionStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify({
+          screen: "result",
+          studentName: currentStudentName,
+          score: score,
+          total: questions.length,
+          percentage: percentage,
+          duration: durationStr,
+          data: examResultData,
+          allResults: allResults,
+          wrongQuestions: wrongQuestions,
+          onlyShowWrong: false
+        }));
+      } catch (e) { }
+
+      // 3. Send quietly to Server API
+      saveResultToServer(examResultData);
+
+      // Render Result Screen
+      showResultScreen(score, percentage, allResults, wrongQuestions, examResultData);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Background sync to server API
+    async function saveResultToServer(resultData) {
+      try {
+        await fetch('/api/save-dental-result', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(resultData)
+        });
+      } catch (err) {
+        // If running offline or without active node server, localStorage ensures persistence
+      }
+    }
+
+    // Show Result Screen
+    function showResultScreen(score, percentage, allResults, wrongQuestions, recordData) {
+      document.getElementById("startScreen").style.display = "none";
+      document.getElementById("examScreen").style.display = "none";
+      document.getElementById("resultScreen").style.display = "block";
+
+      const scoreDisplay = document.getElementById("scoreDisplay");
+      scoreDisplay.textContent = score;
+
+      const scoreCircle = document.getElementById("scoreCircle");
+      if (score === questions.length) {
+        scoreCircle.classList.add("perfect");
+      } else {
+        scoreCircle.classList.remove("perfect");
+      }
+
+      const greeting = document.getElementById("resultGreeting");
+      const subtext = document.getElementById("resultSubtext");
+      const btnCert = document.getElementById("btnDownloadCert");
+
+      if (percentage >= 85) {
+        btnCert.style.display = "inline-flex";
+      } else {
+        btnCert.style.display = "none";
+      }
+
+      if (percentage === 100) {
+        greeting.textContent = `الدرجة كاملة، إبداع منقطع النظير يا ${currentStudentName}! 🎉`;
+        subtext.textContent = `أجبت على جميع الأسئلة الـ 30 بشكل صحيح تماماً بنسبة 100%. شهادة التقدير بانتظارك!`;
+      } else if (percentage >= 85) {
+        greeting.textContent = `أداء ممتاز ومشرّف يا ${currentStudentName}! 👏`;
+        subtext.textContent = `حصلت على ${score} من 30 (${percentage}%) - مؤهل رسمياً لاستلام شهادة التقدير.`;
+      } else if (percentage >= 60) {
+        greeting.textContent = `نتيجة جيدة وموفقة يا ${currentStudentName}`;
+        subtext.textContent = `حصلت على ${score} من 30 (${percentage}%) - يمكنك مراجعة الأسئلة الخاطئة أدناه لتعزيز استيعابك.`;
+      } else {
+        greeting.textContent = `فرصة للمراجعة والتحسين يا ${currentStudentName}`;
+        subtext.textContent = `حصلت على ${score} من 30 (${percentage}%) - تفحص الشروحات الطبية الدقيقة أدناه وأعد المحاولة لتحقيق الامتياز.`;
+      }
+
+      renderCorrections(allResults, onlyShowWrong);
+    }
+
+    // Render Corrections List
+    function renderCorrections(allResults, onlyWrong) {
+      const container = document.getElementById("correctionsList");
+      container.innerHTML = "";
+
+      const itemsToShow = onlyWrong ? allResults.filter(r => !r.isCorrect) : allResults;
+
+      if (itemsToShow.length === 0) {
+        container.innerHTML = `
+      <div style="background:#ecfdf5;border:1.5px solid #a7f3d0;color:#065f46;padding:22px;border-radius:14px;text-align:center;font-weight:700">
+        <i class="fa-solid fa-circle-check" style="font-size:22px;margin-bottom:6px;display:block;"></i>
+        جميع إجاباتك صحيحة تماماً! لا توجد أخطاء في هذا الاختبار.
+      </div>
+    `;
+        return;
+      }
+
+      itemsToShow.forEach(item => {
+        const qIdx = item.questionNumber - 1;
+        const exp = explanations[qIdx] || { rule: "شرح تشريحي", ar: "راجع محتوى المحاضرة والسكشن العملي", terms: "" };
+        const arTranslation = questionTranslations[qIdx] || "";
+
+        // Build all options HTML
+        let optionsHtml = "";
+        item.options.forEach((opt, j) => {
+          const letter = String.fromCharCode(65 + j);
+          const isCorrectOpt = letter === item.correctAnswer;
+          const isStudentOpt = letter === item.studentAnswer;
+          const isWrongStudentOpt = isStudentOpt && !isCorrectOpt;
+
+          let optClass = "corr-opt";
+          let icon = "";
+          if (isCorrectOpt && isStudentOpt) {
+            optClass += " corr-opt-correct-chosen";  // green — student got it right
+            icon = " ✓";
+          } else if (isCorrectOpt) {
+            optClass += " corr-opt-correct";          // green — the right answer (student didn't pick)
+            icon = " ✓";
+          } else if (isWrongStudentOpt) {
+            optClass += " corr-opt-wrong";            // red — what the student chose (wrong)
+            icon = " ✗";
+          } else {
+            optClass += " corr-opt-neutral";          // grey — other options
+          }
+
+          optionsHtml += `
+          <div class="${optClass}">
+            <span class="corr-opt-letter">${letter}</span>
+            <span class="corr-opt-text">${opt}${icon}</span>
+          </div>`;
+        });
+
+        const card = document.createElement("div");
+        card.className = `correction-card ${item.isCorrect ? 'is-correct' : 'is-wrong'}`;
+
+        card.innerHTML = `
+      <div class="correction-header">
+        <span style="font-weight:800;font-size:13.5px">السؤال ${item.questionNumber} من ${questions.length}</span>
+        <span class="q-badge-status ${item.isCorrect ? 'status-correct' : 'status-wrong'}">
+          ${item.isCorrect ? 'إجابة صحيحة ✓' : 'إجابة خاطئة ✗'}
+        </span>
+      </div>
+
+      <!-- Question text: English + Arabic translation -->
+      <div class="q-text-en">${item.question}</div>
+      ${arTranslation ? `<div class="q-text-ar">${arTranslation}</div>` : ""}
+
+      <!-- All 4 options colour-coded -->
+      <div class="corr-options-list">${optionsHtml}</div>
+
+      <!-- Arabic explanation & medical terms -->
+      <div class="medical-explanation">
+        <div class="explanation-title">${exp.rule}:</div>
+        <p>${exp.ar}</p>
+        ${exp.terms ? `<div class="medical-terms">📌 المصطلحات الطبية: ${exp.terms}</div>` : ''}
+      </div>
+    `;
+
+        container.appendChild(card);
+      });
+    }
+
+    // Toggle Correction Filter
+    function toggleCorrectionFilter() {
+      if (!lastExamResult) return;
+      onlyShowWrong = !onlyShowWrong;
+      const btn = document.getElementById("filterToggleBtn");
+      btn.textContent = onlyShowWrong ? "عرض جميع الأسئلة الـ 30" : "عرض الأسئلة الخاطئة فقط";
+      renderCorrections(lastExamResult.allResults, onlyShowWrong);
+      persistSession({ onlyShowWrong: onlyShowWrong });
+    }
+
+    // Reset Exam
+    function resetExam() {
+      if (confirm("هل تريد إعادة أداء الامتحان من جديد؟")) {
+        clearSession();
+        clearInterval(timerInterval);
+        lastExamResult = null;
+        currentStudentName = "";
+
+        document.getElementById("resultScreen").style.display = "none";
+        document.getElementById("examScreen").style.display = "none";
+        document.getElementById("startScreen").style.display = "flex";
+
+        const nameInput = document.getElementById("studentName");
+        if (nameInput) {
+          nameInput.value = "";
+          nameInput.focus();
+        }
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    // Certificate Download on the spot
+    async function downloadCert() {
+      if (!lastExamResult || !lastExamResult.data) {
+        alert("لم يتم العثور على نتيجة الامتحان الحالية");
+        return;
+      }
+      const student = lastExamResult.data;
+      if (student.percentage < 85 && student.score < 26) {
+        alert("الشهادة مخصصة للدرجات 85% فأعلى (26 فأكثر من 30).");
+        return;
+      }
+
+      if (document.fonts && document.fonts.ready) {
+        try { await document.fonts.ready; } catch (e) { }
+      }
+
+      const canvas = document.createElement('canvas');
+      canvas.width = 1200;
+      canvas.height = 850;
+      const ctx = canvas.getContext('2d');
+      const W = 1200, H = 850;
+
+      // Background
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillRect(0, 0, W, H);
+
+      // Luxury Borders
+      ctx.strokeStyle = '#0284c7';
+      ctx.lineWidth = 7;
+      ctx.strokeRect(22, 22, W - 44, H - 44);
+
+      ctx.strokeStyle = '#bae6fd';
+      ctx.lineWidth = 2.5;
+      ctx.strokeRect(36, 36, W - 72, H - 72);
+
+      // Corner Accents
+      [[46, 46], [W - 66, 46], [46, H - 66], [W - 66, H - 66]].forEach(([x, y]) => {
+        ctx.fillStyle = '#0284c7';
+        ctx.fillRect(x, y, 20, 20);
+      });
+
+      // Top Accent Line
+      ctx.fillStyle = '#0284c7';
+      ctx.fillRect(80, 60, W - 160, 3.5);
+
+      // Header
+      ctx.font = '700 16px "Inter", sans-serif';
+      ctx.fillStyle = '#64748b';
+      ctx.textAlign = 'center';
+      ctx.direction = 'ltr';
+      ctx.fillText('TASHHEEL DENTAL EDUCATIONAL ACADEMY', W / 2, 105);
+
+      // Title
+      ctx.font = '900 44px "Playfair Display", Georgia, serif';
+      ctx.fillStyle = '#0f172a';
+      ctx.fillText('CERTIFICATE OF ACADEMIC EXCELLENCE', W / 2, 168);
+
+      ctx.fillStyle = '#0284c7';
+      ctx.fillRect(W / 2 - 120, 188, 240, 3.5);
+
+      ctx.font = '600 18px "Cairo", sans-serif';
+      ctx.fillStyle = '#475569';
+      ctx.fillText('This is proudly and officially presented to certify that:', W / 2, 240);
+
+      // Doctor Name
+      const isArabic = /[\u0600-\u06FF]/.test(student.name);
+      let displayName = String(student.name).trim();
+      if (isArabic) {
+        if (!displayName.startsWith('د.') && !displayName.startsWith('دكتور') && !displayName.startsWith('د /')) {
+          displayName = 'د. ' + displayName;
+        }
+        ctx.direction = 'rtl';
+        ctx.font = '900 40px "Cairo", "Tahoma", sans-serif';
+      } else {
+        if (!displayName.toLowerCase().startsWith('dr.') && !displayName.toLowerCase().startsWith('dr ')) {
+          displayName = 'Dr. ' + displayName;
+        }
+        ctx.direction = 'ltr';
+        ctx.font = '900 40px "Cairo", "Times New Roman", sans-serif';
+      }
+      ctx.fillStyle = '#0284c7';
+      ctx.fillText(displayName, W / 2, 305);
+
+      const nameWidth = ctx.measureText(displayName).width;
+      ctx.fillStyle = '#bae6fd';
+      ctx.fillRect(W / 2 - nameWidth / 2 - 15, 322, nameWidth + 30, 2.5);
+      ctx.direction = 'ltr';
+
+      // Subtext
+      ctx.font = '500 18px "Cairo", sans-serif';
+      ctx.fillStyle = '#334155';
+      ctx.fillText('has demonstrated outstanding competence and successfully passed the comprehensive examination in', W / 2, 375);
+
+      ctx.font = '800 29px "Cairo", sans-serif';
+      ctx.fillStyle = '#0f172a';
+      ctx.fillText('Dental Anatomy I (BDS121)', W / 2, 420);
+
+      ctx.font = '600 16px "Cairo", sans-serif';
+      ctx.fillStyle = '#64748b';
+      ctx.fillText('Comprehensive 30 Questions Exam (Tooth Morphology, Tissues & Pulp Anatomy)', W / 2, 455);
+
+      // Score & Grade
+      const pct = student.percentage;
+      ctx.font = '800 24px "Inter", sans-serif';
+      ctx.fillStyle = '#059669';
+      ctx.fillText(`Final Score: ${student.score} / ${student.total || 30} (${pct}%)`, W / 2, 510);
+
+      let gradeEnglish = pct >= 98 ? 'Outstanding Distinction with Honors' : pct >= 90 ? 'Excellent with Honors' : 'Very Good';
+      let gradeArabic = pct >= 98 ? 'امتياز مع مرتبة الشرف' : pct >= 90 ? 'امتياز' : 'جيد جداً';
+      ctx.font = '700 18px "Cairo", sans-serif';
+      ctx.fillStyle = '#0284c7';
+      ctx.fillText(`Academic Grade: ${gradeEnglish} — ${gradeArabic}`, W / 2, 545);
+
+      // Date
+      const certDate = student.date || new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+      ctx.font = '500 15px "Cairo", sans-serif';
+      ctx.fillStyle = '#94a3b8';
+      ctx.fillText(`Issued on: ${certDate}`, W / 2, 590);
+
+      // Bottom Line
+      ctx.fillStyle = '#0284c7';
+      ctx.fillRect(80, H - 90, W - 160, 3.5);
+
+      // Signatures
+      ctx.strokeStyle = '#cbd5e1';
+      ctx.lineWidth = 1.2;
+
+      ctx.beginPath();
+      ctx.moveTo(170, 710);
+      ctx.lineTo(390, 710);
+      ctx.stroke();
+      ctx.font = '700 15px "Cairo", sans-serif';
+      ctx.fillStyle = '#475569';
+      ctx.fillText('Academic Director', 280, 735);
+
+      ctx.beginPath();
+      ctx.moveTo(W - 390, 710);
+      ctx.lineTo(W - 170, 710);
+      ctx.stroke();
+      ctx.fillText('Head of Dental Anatomy Dept.', W - 280, 735);
+
+      // Download Trigger
+      const link = document.createElement('a');
+      const safeName = student.name.replace(/[^a-zA-Z0-9\u0600-\u06FF]/g, '_');
+      link.download = `Certificate_${safeName}_Dental_Anatomy.png`;
+      link.href = canvas.toDataURL('image/png');
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    }
+
+    // Session Management
+    function persistSession(updates) {
+      try {
+        const raw = sessionStorage.getItem(SESSION_STORAGE_KEY);
+        const curr = raw ? JSON.parse(raw) : {};
+        const merged = { ...curr, ...updates };
+        sessionStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(merged));
+      } catch (e) { }
+    }
+
+    function getSession() {
+      try {
+        const raw = sessionStorage.getItem(SESSION_STORAGE_KEY);
+        return raw ? JSON.parse(raw) : null;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function clearSession() {
+      try {
+        sessionStorage.removeItem(SESSION_STORAGE_KEY);
+      } catch (e) { }
+    }
+
+    // Restore state on reload
+    function initFromSession() {
+      const session = getSession();
+      if (!session || !session.screen) return;
+
+      if (session.screen === "exam" && session.studentName) {
+        currentStudentName = session.studentName;
+        examStartTime = session.startTime || Date.now();
+
+        document.getElementById("startScreen").style.display = "none";
+        document.getElementById("resultScreen").style.display = "none";
+        document.getElementById("examScreen").style.display = "block";
+        document.getElementById("activeStudentName").textContent = currentStudentName;
+
+        renderQuestions();
+
+        if (session.answers) {
+          Object.entries(session.answers).forEach(([qIdx, letter]) => {
+            const targetLabel = document.getElementById(`optLabel_${qIdx}_${letter}`);
+            if (targetLabel) {
+              targetLabel.classList.add("selected");
+              const radio = targetLabel.querySelector('input[type="radio"]');
+              if (radio) radio.checked = true;
+            }
+          });
+        }
+
+        updateProgress();
+        updateTimer();
+        timerInterval = setInterval(updateTimer, 1000);
+      } else if (session.screen === "result" && session.allResults) {
+        currentStudentName = session.studentName || "";
+        onlyShowWrong = !!session.onlyShowWrong;
+
+        lastExamResult = {
+          data: session.data || {
+            name: currentStudentName,
+            score: session.score,
+            total: questions.length,
+            percentage: session.percentage,
+            wrongQuestions: session.wrongQuestions
+          },
+          allResults: session.allResults
+        };
+
+        const btn = document.getElementById("filterToggleBtn");
+        if (btn) {
+          btn.textContent = onlyShowWrong ? "عرض جميع الأسئلة الـ 30" : "عرض الأسئلة الخاطئة فقط";
+        }
+
+        showResultScreen(session.score, session.percentage, session.allResults, session.wrongQuestions, lastExamResult.data);
+      }
+    }
+
+    // Initialize
+    initFromSession();
+  </script>
+
+</body>
+
+</html>
