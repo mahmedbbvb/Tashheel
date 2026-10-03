@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لوحة نتائج امتحان تشريح الأسنان — منصة تسهيل</title>
+    <title>لوحة نتائج امتحان تشريح الأسنان الشامل (30 سؤالاً) — منصة تسهيل</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -46,6 +46,7 @@
             background-color: var(--bg-body);
             color: var(--text-main);
             line-height: 1.6;
+            min-height: 100vh;
         }
 
         /* Login Overlay */
@@ -55,33 +56,52 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: var(--bg-body);
+            background: radial-gradient(circle at 50% 20%, #1e293b 0%, #0f172a 60%, #020617 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 1000;
+            padding: 20px;
         }
 
         .login-card {
             background-color: var(--bg-card);
-            padding: 3rem;
+            padding: 3rem 2.5rem;
             border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-lg);
+            box-shadow: 0 30px 80px rgba(0,0,0,.45);
             text-align: center;
-            width: 90%;
+            width: 100%;
             max-width: 450px;
+            position: relative;
+            overflow: hidden;
+            animation: fadeUp .4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .login-card i {
+        .login-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #0284c7, #0ea5e9, #38bdf8);
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .login-card i.main-icon {
             font-size: 3rem;
             color: var(--primary-color);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
+            display: inline-block;
         }
 
         .login-card h2 {
             margin-bottom: 0.5rem;
             color: var(--secondary-color);
-            font-weight: 700;
+            font-weight: 800;
+            font-size: 1.5rem;
         }
 
         .login-card p {
@@ -104,6 +124,8 @@
             font-size: 1rem;
             transition: all 0.3s ease;
             outline: none;
+            direction: ltr;
+            text-align: center;
         }
 
         .input-group input:focus {
@@ -118,7 +140,6 @@
             transform: translateY(-50%);
             color: var(--text-muted);
             font-size: 1.2rem;
-            margin: 0;
         }
 
         .btn {
@@ -130,45 +151,48 @@
             border: none;
             border-radius: var(--radius-md);
             font-family: var(--font-arabic);
-            font-weight: 600;
-            font-size: 1rem;
+            font-weight: 700;
+            font-size: 0.95rem;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             text-decoration: none;
         }
 
         .btn-primary {
-            background-color: var(--primary-color);
+            background: linear-gradient(135deg, #0284c7, #0369a1);
             color: white;
             width: 100%;
             padding: 1rem;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
+            box-shadow: 0 4px 14px rgba(2, 132, 199, 0.28);
         }
 
         .btn-primary:hover {
-            background-color: var(--primary-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(2, 132, 199, 0.38);
         }
-        
+
         .btn-outline {
             background-color: transparent;
-            border: 1px solid var(--border-color);
+            border: 1.5px solid var(--border-color);
             color: var(--text-main);
         }
-        
+
         .btn-outline:hover {
-            background-color: var(--bg-body);
-            border-color: var(--text-muted);
+            background-color: #f1f5f9;
+            border-color: #cbd5e1;
         }
-        
+
         .btn-danger {
-            background-color: #fef2f2;
+            background-color: #fee2e2;
             color: var(--danger-color);
-            border: 1px solid #fecaca;
+            border: 1.5px solid #fecaca;
         }
-        
+
         .btn-danger:hover {
             background-color: var(--danger-color);
             color: white;
+            border-color: var(--danger-color);
         }
 
         #login-error {
@@ -176,51 +200,57 @@
             margin-top: 1rem;
             font-size: 0.9rem;
             display: none;
-            font-weight: 600;
+            font-weight: 700;
         }
 
-        /* Main Content */
+        /* Main Dashboard */
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem;
-            display: none;
+            padding: 2rem 1.5rem 5rem;
+            display: none; /* Shown after auth */
         }
 
-        /* Header */
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 2rem;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 1.25rem;
+            background: white;
+            padding: 1.5rem 2rem;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
         }
 
         .header-title h1 {
+            font-size: 1.7rem;
             color: var(--secondary-color);
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
             display: flex;
             align-items: center;
             gap: 0.75rem;
+            font-weight: 900;
         }
 
-        .header-title h1 i {
-            color: var(--primary-color);
+        .header-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
         }
 
         .header-actions {
             display: flex;
-            gap: 0.75rem;
+            gap: 0.5rem;
             flex-wrap: wrap;
         }
 
-        /* Stats Cards */
+        /* Stats Grid */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1.25rem;
             margin-bottom: 2rem;
         }
 
@@ -229,46 +259,47 @@
             padding: 1.5rem;
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-sm);
-            display: flex;
-            align-items: flex-start;
-            gap: 1.25rem;
             border: 1px solid var(--border-color);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-        
+
         .stat-card:hover {
-            transform: translateY(-3px);
+            transform: translateY(-2px);
             box-shadow: var(--shadow-md);
         }
 
         .stat-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             flex-shrink: 0;
         }
 
         .stat-icon.blue { background-color: var(--primary-light); color: var(--primary-color); }
         .stat-icon.green { background-color: #d1fae5; color: var(--success-color); }
         .stat-icon.orange { background-color: #fef3c7; color: var(--warning-color); }
-        .stat-icon.purple { background-color: #f3e8ff; color: #9333ea; }
+        .stat-icon.purple { background-color: #ede9fe; color: #8b5cf6; }
 
         .stat-info h3 {
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             color: var(--text-muted);
+            font-weight: 700;
             margin-bottom: 0.25rem;
-            font-weight: 600;
         }
 
         .stat-info p {
-            font-size: 1.8rem;
-            font-weight: 700;
+            font-size: 1.65rem;
+            font-weight: 900;
             color: var(--secondary-color);
             font-family: var(--font-english);
+            line-height: 1.2;
         }
 
         /* Controls */
@@ -276,12 +307,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: var(--bg-card);
-            padding: 1rem 1.5rem;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-sm);
             margin-bottom: 1.5rem;
-            border: 1px solid var(--border-color);
             gap: 1rem;
             flex-wrap: wrap;
         }
@@ -290,20 +316,24 @@
             position: relative;
             flex: 1;
             max-width: 400px;
+            min-width: 250px;
         }
 
         .search-box input {
             width: 100%;
             padding: 0.75rem 1rem 0.75rem 2.5rem;
-            border: 1px solid var(--border-color);
+            border: 1.5px solid var(--border-color);
             border-radius: var(--radius-md);
             font-family: var(--font-arabic);
             outline: none;
-            transition: border-color 0.3s;
+            transition: all 0.2s;
+            background: white;
+            font-size: 0.95rem;
         }
 
         .search-box input:focus {
             border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px var(--primary-light);
         }
 
         .search-box i {
@@ -315,18 +345,21 @@
         }
 
         .filter-box select {
-            padding: 0.75rem 2rem 0.75rem 1rem;
-            border: 1px solid var(--border-color);
+            padding: 0.75rem 1.5rem 0.75rem 1rem;
+            border: 1.5px solid var(--border-color);
             border-radius: var(--radius-md);
             font-family: var(--font-arabic);
             outline: none;
             background-color: white;
+            color: var(--text-main);
             cursor: pointer;
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/200.svg' fill='none' viewBox='0 0 24 24' stroke='%2364748b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: left 0.75rem center;
-            background-size: 1rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: border-color 0.2s;
+        }
+
+        .filter-box select:focus {
+            border-color: var(--primary-color);
         }
 
         /* Table */
@@ -342,70 +375,94 @@
             width: 100%;
             border-collapse: collapse;
             text-align: right;
+            min-width: 800px;
         }
 
         th {
-            background-color: #f1f5f9;
-            padding: 1.25rem 1.5rem;
-            font-weight: 700;
-            color: var(--secondary-color);
-            border-bottom: 2px solid var(--border-color);
-            white-space: nowrap;
+            background-color: #f8fafc;
+            color: var(--text-muted);
+            font-weight: 800;
+            padding: 1rem 1.25rem;
+            font-size: 0.88rem;
+            border-bottom: 1.5px solid var(--border-color);
+            letter-spacing: 0.02em;
         }
 
         td {
-            padding: 1.25rem 1.5rem;
+            padding: 1.15rem 1.25rem;
             border-bottom: 1px solid var(--border-color);
             vertical-align: middle;
+            font-size: 0.95rem;
         }
 
         tr:last-child td {
             border-bottom: none;
         }
 
-        tr:hover {
+        tr:hover td {
             background-color: #f8fafc;
         }
 
         /* Rank & Medals */
         .rank-cell {
-            font-weight: 700;
             font-family: var(--font-english);
-            text-align: center;
-            width: 80px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #f1f5f9;
         }
 
         .medal {
-            font-size: 1.5rem;
+            color: white;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow-sm);
         }
-        .medal-1 { color: var(--gold); text-shadow: 0 0 5px rgba(251, 191, 36, 0.5); }
-        .medal-2 { color: var(--silver); text-shadow: 0 0 5px rgba(148, 163, 184, 0.5); }
-        .medal-3 { color: var(--bronze); text-shadow: 0 0 5px rgba(180, 83, 9, 0.5); }
 
-        /* Student Name */
+        .medal-1 { background: linear-gradient(135deg, #fbbf24, #d97706); }
+        .medal-2 { background: linear-gradient(135deg, #94a3b8, #64748b); }
+        .medal-3 { background: linear-gradient(135deg, #d97706, #92400e); }
+
+        /* Student Cell */
         .student-name {
-            font-weight: 700;
+            font-weight: 800;
             color: var(--secondary-color);
+            font-size: 1.05rem;
         }
 
         .student-date {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-muted);
-            font-family: var(--font-english);
-            margin-top: 0.25rem;
+            margin-top: 0.2rem;
         }
 
-        /* Score & Progress */
+        .student-duration {
+            font-size: 0.8rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-top: 0.25rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Score Cell */
         .score-cell {
-            width: 250px;
+            width: 200px;
         }
 
         .score-header {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
             font-family: var(--font-english);
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 0.9rem;
         }
 
         .progress-bar-bg {
@@ -430,39 +487,40 @@
         .perfect-badge {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.4rem;
             background-color: #d1fae5;
             color: #047857;
-            padding: 0.5rem 1rem;
+            padding: 0.4rem 0.85rem;
             border-radius: 2rem;
-            font-weight: 700;
-            font-size: 0.9rem;
+            font-weight: 800;
+            font-size: 0.85rem;
             border: 1px solid #a7f3d0;
         }
 
         .wrong-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
-            max-width: 300px;
+            gap: 0.4rem;
+            max-width: 320px;
         }
 
         .wrong-tag {
             background-color: #fee2e2;
             color: #b91c1c;
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            font-weight: 600;
+            padding: 0.2rem 0.5rem;
+            border-radius: 6px;
+            font-size: 0.82rem;
+            font-weight: 700;
             font-family: var(--font-english);
             border: 1px solid #fecaca;
         }
         
         .wrong-tag-label {
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             color: var(--text-muted);
             margin-bottom: 0.25rem;
             display: block;
+            font-weight: 600;
         }
 
         /* Action Buttons */
@@ -494,13 +552,15 @@
         }
 
         .empty-state i {
-            font-size: 3rem;
+            font-size: 3.5rem;
             color: #cbd5e1;
             margin-bottom: 1rem;
+            display: block;
         }
         
         .empty-state p {
             font-size: 1.1rem;
+            font-weight: 600;
         }
 
         /* Loading Spinner */
@@ -513,8 +573,8 @@
         }
 
         .spinner {
-            width: 40px;
-            height: 40px;
+            width: 44px;
+            height: 44px;
             border: 4px solid var(--border-color);
             border-top-color: var(--primary-color);
             border-radius: 50%;
@@ -540,16 +600,17 @@
         .toast {
             background-color: white;
             color: var(--text-main);
-            padding: 1rem 1.5rem;
+            padding: 0.9rem 1.4rem;
             border-radius: var(--radius-md);
             box-shadow: var(--shadow-lg);
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.8rem;
             border-right: 4px solid var(--primary-color);
             transform: translateX(120%);
             transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 0.95rem;
         }
 
         .toast.show {
@@ -560,9 +621,7 @@
         .toast.error { border-right-color: var(--danger-color); }
         .toast.warning { border-right-color: var(--warning-color); }
 
-        .toast i {
-            font-size: 1.25rem;
-        }
+        .toast i { font-size: 1.25rem; }
         .toast.success i { color: var(--success-color); }
         .toast.error i { color: var(--danger-color); }
         .toast.warning i { color: var(--warning-color); }
@@ -574,7 +633,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(15, 23, 42, 0.6);
+            background-color: rgba(15, 23, 42, 0.65);
             backdrop-filter: blur(4px);
             display: flex;
             align-items: center;
@@ -583,6 +642,7 @@
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
+            padding: 15px;
         }
 
         .modal-overlay.active {
@@ -592,16 +652,17 @@
 
         .modal-card {
             background-color: var(--bg-body);
-            width: 90%;
-            max-width: 800px;
+            width: 100%;
+            max-width: 850px;
             max-height: 90vh;
             border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-lg);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.3);
             display: flex;
             flex-direction: column;
             transform: translateY(20px);
             transition: transform 0.3s ease;
             overflow: hidden;
+            border: 1px solid var(--border-color);
         }
 
         .modal-overlay.active .modal-card {
@@ -609,23 +670,26 @@
         }
 
         .modal-header {
-            padding: 1.5rem;
+            padding: 1.25rem 1.75rem;
             background-color: white;
             border-bottom: 1px solid var(--border-color);
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
+            gap: 1rem;
         }
 
         .modal-title h2 {
-            font-size: 1.25rem;
+            font-size: 1.35rem;
             color: var(--secondary-color);
+            font-weight: 800;
         }
         
         .modal-title p {
             color: var(--text-muted);
-            font-size: 0.9rem;
-            font-family: var(--font-english);
+            font-size: 0.92rem;
+            font-family: var(--font-arabic);
+            margin-top: 0.2rem;
         }
 
         .modal-close {
@@ -634,12 +698,12 @@
             font-size: 1.5rem;
             color: var(--text-muted);
             cursor: pointer;
-            padding: 0.5rem;
+            padding: 0.4rem;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background-color 0.2s;
+            transition: all 0.2s;
         }
 
         .modal-close:hover {
@@ -648,43 +712,291 @@
         }
 
         .modal-body {
-            padding: 1.5rem;
+            padding: 1.5rem 1.75rem;
             overflow-y: auto;
             flex: 1;
-        }
-
-        .details-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
-            gap: 0.75rem;
-        }
-
-        .q-box {
-            background-color: white;
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            padding: 0.5rem;
-            text-align: center;
             display: flex;
             flex-direction: column;
+            gap: 1.25rem;
         }
 
-        .q-num {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            font-weight: 700;
-            font-family: var(--font-english);
+        /* Modal Quick Summary & Navigation Grid */
+        .modal-overview-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .modal-overview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
             border-bottom: 1px solid var(--border-color);
-            padding-bottom: 0.25rem;
-            margin-bottom: 0.25rem;
         }
 
-        .q-status {
-            font-size: 1rem;
+        .modal-overview-title {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .q-status.correct { color: var(--success-color); }
-        .q-status.wrong { color: var(--danger-color); }
+        .modal-filter-tabs {
+            display: flex;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+        }
+
+        .modal-filter-tab {
+            background: #f1f5f9;
+            border: 1px solid var(--border-color);
+            padding: 0.35rem 0.85rem;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-family: inherit;
+            font-weight: 700;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .modal-filter-tab.active, .modal-filter-tab:hover {
+            background: var(--primary-color);
+            color: #ffffff;
+            border-color: var(--primary-color);
+        }
+
+        .q-nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(38px, 1fr));
+            gap: 0.45rem;
+        }
+
+        .q-nav-dot {
+            height: 38px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.85rem;
+            font-family: var(--font-english);
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1.5px solid transparent;
+        }
+
+        .q-nav-dot.correct {
+            background: #dcfce7;
+            color: #15803d;
+            border-color: #86efac;
+        }
+
+        .q-nav-dot.wrong {
+            background: #fee2e2;
+            color: #b91c1c;
+            border-color: #fca5a5;
+        }
+
+        .q-nav-dot.unanswered {
+            background: #f1f5f9;
+            color: #64748b;
+            border-color: #cbd5e1;
+        }
+
+        .q-nav-dot:hover {
+            transform: scale(1.08);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Review Question Cards */
+        .review-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .review-card {
+            background: #ffffff;
+            border: 1.5px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            transition: all 0.2s;
+            scroll-margin-top: 15px;
+        }
+
+        .review-card.correct {
+            border-right: 5px solid var(--success-color);
+        }
+
+        .review-card.wrong {
+            border-right: 5px solid var(--danger-color);
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.6rem;
+        }
+
+        .review-q-num {
+            font-size: 0.88rem;
+            font-weight: 800;
+            color: var(--primary-color);
+        }
+
+        .review-q-status {
+            font-size: 0.8rem;
+            font-weight: 800;
+            padding: 0.25rem 0.65rem;
+            border-radius: 6px;
+        }
+
+        .review-q-status.correct {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        .review-q-status.wrong {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+
+        .review-title-en {
+            direction: ltr;
+            text-align: left;
+            font-family: var(--font-english);
+            font-size: 1.02rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 0.35rem;
+            line-height: 1.4;
+        }
+
+        .review-title-ar {
+            direction: rtl;
+            text-align: right;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #0369a1;
+            margin-bottom: 0.85rem;
+            line-height: 1.5;
+        }
+
+        .review-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+            margin-bottom: 0.85rem;
+        }
+
+        .review-option {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.55rem 0.85rem;
+            border-radius: 8px;
+            font-size: 0.92rem;
+            border: 1px solid var(--border-color);
+            background: #f8fafc;
+            direction: ltr;
+            text-align: left;
+            font-family: var(--font-english);
+        }
+
+        .review-option.is-correct-answer {
+            background: #f0fdf4;
+            border-color: #86efac;
+            color: #166534;
+            font-weight: 700;
+        }
+
+        .review-option.is-student-wrong {
+            background: #fef2f2;
+            border-color: #fca5a5;
+            color: #991b1b;
+            font-weight: 700;
+        }
+
+        .review-opt-letter {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            background: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+            color: var(--text-main);
+        }
+
+        .review-option.is-correct-answer .review-opt-letter {
+            background: #22c55e;
+            color: #ffffff;
+        }
+
+        .review-option.is-student-wrong .review-opt-letter {
+            background: #ef4444;
+            color: #ffffff;
+        }
+
+        .review-opt-note {
+            margin-left: auto;
+            font-size: 0.78rem;
+            font-weight: 800;
+            padding: 2px 7px;
+            border-radius: 4px;
+            font-family: var(--font-arabic);
+        }
+
+        .review-option.is-correct-answer .review-opt-note {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        .review-option.is-student-wrong .review-opt-note {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+
+        .review-explain-box {
+            background: #f0f9ff;
+            border: 1.5px solid #bae6fd;
+            border-radius: 10px;
+            padding: 0.85rem 1.1rem;
+            font-size: 0.88rem;
+            color: #0c4a6e;
+            line-height: 1.65;
+            direction: rtl;
+            text-align: right;
+        }
+
+        .review-explain-box b {
+            color: #0369a1;
+        }
+
+        .review-terms-box {
+            margin-top: 0.5rem;
+            background: #ffffff;
+            border: 1px dashed #7dd3fc;
+            padding: 0.45rem 0.85rem;
+            border-radius: 6px;
+            font-size: 0.82rem;
+            color: #0284c7;
+            font-weight: 700;
+            direction: rtl;
+        }
 
         .hidden-file-input {
             display: none;
@@ -713,9 +1025,9 @@
     <!-- Login Overlay -->
     <div id="login-overlay">
         <div class="login-card">
-            <i class="fa-solid fa-tooth"></i>
-            <h2>لوحة تحكم النتائج</h2>
-            <p>امتحان تشريح الأسنان - منصة تسهيل</p>
+            <i class="fa-solid fa-tooth main-icon"></i>
+            <h2>لوحة تحكم نتائج الامتحان</h2>
+            <p>امتحان تشريح الأسنان الشامل (30 سؤالاً) — منصة تسهيل</p>
             
             <form onsubmit="verifyLogin(event); return false;">
                 <div class="input-group">
@@ -724,7 +1036,7 @@
                 </div>
                 
                 <button type="submit" class="btn btn-primary" id="btn-login-submit">
-                    تسجيل الدخول
+                    تسجيل الدخول للوحة النتائج
                     <i class="fa-solid fa-arrow-right-to-bracket"></i>
                 </button>
             </form>
@@ -738,59 +1050,65 @@
         <!-- Header -->
         <div class="header">
             <div class="header-title">
-                <h1><i class="fa-solid fa-chart-line"></i> نتائج امتحان تشريح الأسنان</h1>
-                <a href="quiz.html" class="btn btn-outline" style="padding: 0.4rem 1rem; font-size: 0.85rem; margin-top: 0.5rem;">
-                    <i class="fa-solid fa-file-signature"></i> صفحة الاختبار التفاعلي
-                </a>
+                <h1><i class="fa-solid fa-chart-line" style="color:#0284c7;"></i> نتائج امتحان تشريح الأسنان (30 سؤالاً)</h1>
+                <div class="header-subtitle">Dental Anatomy Comprehensive Exam • سجل درجات الطلاب مرتبة تنازلياً مع إمكانية مراجعة تفاصيل الإجابات والشهادات</div>
+                <div style="margin-top: 0.6rem; display: flex; gap: 8px; flex-wrap: wrap;">
+                    <a href="quiz.html" class="btn btn-outline" style="padding: 0.4rem 0.9rem; font-size: 0.85rem;">
+                        <i class="fa-solid fa-file-signature" style="color:#0284c7;"></i> صفحة الامتحان التفاعلي (30 سؤالاً)
+                    </a>
+                    <a href="index.html" class="btn btn-outline" style="padding: 0.4rem 0.9rem; font-size: 0.85rem;">
+                        <i class="fa-solid fa-graduation-cap"></i> فهرس المادة
+                    </a>
+                </div>
             </div>
             <div class="header-actions">
-                <button class="btn btn-outline" onclick="fetchResults()">
+                <button class="btn btn-outline" onclick="fetchResults()" title="تحديث النتائج من السيرفر والتخزين">
                     <i class="fa-solid fa-rotate-right"></i> تحديث
                 </button>
-                <button class="btn btn-outline" onclick="triggerFileInput()">
-                    <i class="fa-solid fa-upload"></i> استيراد
+                <button class="btn btn-outline" onclick="triggerFileInput()" title="استيراد نتائج سابقة من ملف JSON">
+                    <i class="fa-solid fa-upload"></i> استيراد JSON
                 </button>
                 <input type="file" id="import-file" class="hidden-file-input" accept=".json" onchange="handleImport(event)">
                 
-                <button class="btn btn-outline" onclick="exportData('json')">
-                    <i class="fa-solid fa-download"></i> JSON
+                <button class="btn btn-outline" onclick="exportData('json')" title="تصدير النتائج بصيغة JSON">
+                    <i class="fa-solid fa-download"></i> تصدير JSON
                 </button>
-                <button class="btn btn-outline" onclick="exportData('csv')">
-                    <i class="fa-solid fa-file-csv"></i> CSV
+                <button class="btn btn-outline" onclick="exportData('csv')" title="تصدير النتائج بصيغة Excel CSV">
+                    <i class="fa-solid fa-file-csv"></i> تصدير Excel
                 </button>
-                <button class="btn btn-danger" onclick="confirmClearAll()">
+                <button class="btn btn-danger" onclick="confirmClearAll()" title="مسح جميع السجلات">
                     <i class="fa-solid fa-trash-can"></i> مسح الكل
                 </button>
             </div>
         </div>
 
-        <!-- Stats -->
+        <!-- Stats Grid -->
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="stat-icon blue"><i class="fa-solid fa-users"></i></div>
                 <div class="stat-info">
-                    <h3>إجمالي الطلاب</h3>
+                    <h3>إجمالي الطلاب الممتحنين</h3>
                     <p id="stat-total">0</p>
                 </div>
             </div>
             <div class="stat-card">
                 <div class="stat-icon green"><i class="fa-solid fa-trophy"></i></div>
                 <div class="stat-info">
-                    <h3>أعلى درجة</h3>
+                    <h3>أعلى درجة مسجلة</h3>
                     <p id="stat-high">0/30</p>
                 </div>
             </div>
             <div class="stat-card">
                 <div class="stat-icon orange"><i class="fa-solid fa-chart-pie"></i></div>
                 <div class="stat-info">
-                    <h3>متوسط الدرجات</h3>
+                    <h3>متوسط درجات الطلاب</h3>
                     <p id="stat-avg">0/30</p>
                 </div>
             </div>
             <div class="stat-card">
                 <div class="stat-icon purple"><i class="fa-solid fa-check-double"></i></div>
                 <div class="stat-info">
-                    <h3>نسبة النجاح (60%+)</h3>
+                    <h3>نسبة النجاح (≥60%)</h3>
                     <p id="stat-pass">0%</p>
                 </div>
             </div>
@@ -804,11 +1122,11 @@
             </div>
             <div class="filter-box">
                 <select id="grade-filter" onchange="applyFilters()">
-                    <option value="all">جميع الدرجات</option>
-                    <option value="excellent">ممتاز (90%+)</option>
-                    <option value="verygood">جيد جداً (75%+)</option>
-                    <option value="pass">ناجح (60%+)</option>
-                    <option value="fail">راسب (أقل من 60%)</option>
+                    <option value="all">جميع التقديرات</option>
+                    <option value="excellent">ممتاز (90%+ • 27 فأعلى)</option>
+                    <option value="verygood">جيد جداً (75-89% • 23-26)</option>
+                    <option value="pass">ناجح (60-74% • 18-22)</option>
+                    <option value="fail">يحتاج مراجعة (أقل من 60% • أقل من 18)</option>
                 </select>
             </div>
         </div>
@@ -818,11 +1136,11 @@
             <table id="results-table">
                 <thead>
                     <tr>
-                        <th>المركز</th>
-                        <th>اسم الطالب / المدة والتاريخ</th>
-                        <th>النتيجة</th>
-                        <th>الأخطاء</th>
-                        <th>الإجراءات والشهادة</th>
+                        <th style="width: 70px; text-align: center;">المركز</th>
+                        <th>اسم الطالب / المدة وتاريخ الامتحان</th>
+                        <th>النتيجة والنسبة (من 30)</th>
+                        <th>الأسئلة الخاطئة</th>
+                        <th style="text-align: center; width: 170px;">الإجراءات والشهادة</th>
                     </tr>
                 </thead>
                 <tbody id="table-body">
@@ -837,17 +1155,36 @@
         <div class="modal-card">
             <div class="modal-header">
                 <div class="modal-title">
-                    <h2 id="modal-student-name">اسم الطالب</h2>
-                    <p id="modal-student-score">الدرجة: 0/30</p>
-                    <div id="modal-cert-container"></div>
+                    <h2 id="modal-student-name">ورقة إجابات الطالب</h2>
+                    <p id="modal-student-score">الدرجة: 0 / 30</p>
+                    <div id="modal-cert-container" style="margin-top: 6px;"></div>
                 </div>
-                <button class="modal-close" onclick="closeModal()">
+                <button class="modal-close" onclick="closeModal()" title="إغلاق">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
             <div class="modal-body">
-                <div class="details-grid" id="modal-details-grid">
-                    <!-- Q details injected here -->
+                <!-- 30-Questions Overview & Interactive Navigation -->
+                <div class="modal-overview-card">
+                    <div class="modal-overview-header">
+                        <div class="modal-overview-title" id="modal-overview-summary">
+                            <i class="fa-solid fa-list-check" style="color:#0284c7;"></i>
+                            <span>خريطة إجابات الامتحان (30 سؤالاً):</span>
+                        </div>
+                        <div class="modal-filter-tabs">
+                            <button class="modal-filter-tab active" data-filter="all" onclick="filterModalQuestions('all', this)">جميع الأسئلة (30)</button>
+                            <button class="modal-filter-tab" data-filter="wrong" onclick="filterModalQuestions('wrong', this)">الخاطئة فقط</button>
+                            <button class="modal-filter-tab" data-filter="correct" onclick="filterModalQuestions('correct', this)">الصحيحة فقط</button>
+                        </div>
+                    </div>
+                    <div class="q-nav-grid" id="modal-q-nav-grid">
+                        <!-- 30 question dots injected here -->
+                    </div>
+                </div>
+
+                <!-- Detailed Question Review Cards -->
+                <div class="review-list" id="modal-review-list">
+                    <!-- Review cards injected here -->
                 </div>
             </div>
         </div>
@@ -857,15 +1194,241 @@
     <div id="toast-container"></div>
 
     <script>
-        // --- State ---
+        // =========================================================================
+        // MASTER DENTAL ANATOMY EXAM DEFINITION (30 QUESTIONS + ARABIC EXPLANATIONS)
+        // Matches dental-anatomy/quiz.html exactly
+        // =========================================================================
         const TOTAL_QUESTIONS = 30;
         const API_URL = '/api/dental-results';
         const LOCAL_STORAGE_KEY = 'tashheel_dental_exam_results_v1';
+
+        const questions = [
+            ["What is the hardest tissue in the human body?", ["Dentin", "Cementum", "Enamel", "Pulp"], "C"],
+            ["The mandibular first molar is:", ["Succedaneous", "Non-succedaneous", "A primary tooth", "A predecessor"], "B"],
+            ["Which tooth is located immediately next to the midline?", ["Lateral incisor", "Canine", "Central incisor", "First premolar"], "C"],
+            ["The part of the tooth covered by enamel is called:", ["Clinical crown", "Anatomical crown", "Root", "Cervix"], "B"],
+            ["How many teeth are present in the permanent dentition?", ["20", "24", "28", "32"], "D"],
+            ["Which structure connects the underside of the tongue to the floor of the mouth?", ["Upper labial frenum", "Lingual frenum", "Uvula", "Soft palate"], "B"],
+            ["Which tooth usually has the longest and strongest root in the mouth?", ["Central incisor", "Canine", "First premolar", "First molar"], "B"],
+            ["The pulp is:", ["A calcified hard tissue", "A tissue covering the root", "The only soft tissue of the tooth", "The hardest part of the tooth"], "C"],
+            ["How many premolars are present in each quadrant of the permanent dentition?", ["1", "2", "3", "4"], "B"],
+            ["The maxilla is:", ["The movable lower jaw", "The fixed upper jaw", "The tongue", "The soft palate"], "B"],
+            ["Which tooth is also called the “12-year molar”?", ["First molar", "Second molar", "Third molar", "First premolar"], "B"],
+            ["Which tissue forms the main bulk of the tooth?", ["Enamel", "Pulp", "Dentin", "Cementum"], "C"],
+            ["A normal healthy clinical crown is usually:", ["Longer than the anatomical crown", "Equal to the anatomical crown", "Slightly shorter than the anatomical crown", "Completely inside the bone"], "C"],
+            ["Which of the following is NOT present in primary dentition?", ["Incisors", "Canines", "Premolars", "Molars"], "C"],
+            ["The oral cavity is divided into how many quadrants?", ["2", "3", "4", "8"], "C"],
+            ["Which part of the pulp occupies the crown of the tooth?", ["Root canal", "Pulp chamber", "Apical foramen", "Crypt"], "B"],
+            ["The main function of incisors is:", ["Grinding", "Tearing", "Cutting", "Supporting the root"], "C"],
+            ["Which permanent teeth replace the primary molars?", ["Permanent molars", "Canines", "Premolars", "Incisors"], "C"],
+            ["Cementum mainly covers the:", ["Crown", "Root", "Pulp chamber", "Enamel"], "B"],
+            ["A tooth that has erupted and is located in its normal bony socket is associated with:", ["Crypt", "Alveolus / Socket", "Pulp chamber", "Pulp horn"], "B"],
+            ["Which tooth is the 8th tooth from the midline?", ["Second molar", "First molar", "Third molar", "Second premolar"], "C"],
+            ["The mixed dentition period generally occurs between:", ["Birth–6 months", "6 months–6 years", "6–12 years", "After 12 years"], "C"],
+            ["Which of the following is a soft tissue?", ["Enamel", "Dentin", "Cementum", "Pulp"], "D"],
+            ["The cervical line (CEJ) represents the junction between:", ["Dentin and pulp", "Enamel and cementum", "Enamel and pulp", "Dentin and bone"], "B"],
+            ["Which tooth is known for having a single cusp?", ["Canine", "Premolar", "Molar", "Central incisor"], "A"],
+            ["If gingival recession exposes part of the root, the clinical crown becomes:", ["Shorter than the anatomical crown", "Equal to the anatomical crown", "Longer than the anatomical crown", "Completely covered by gingiva"], "C"],
+            ["How many teeth are present in each quadrant of the permanent dentition?", ["5", "6", "8", "10"], "C"],
+            ["Which of the following is a non-succedaneous group?", ["Permanent incisors", "Permanent canines", "Permanent premolars", "Permanent molars"], "D"],
+            ["The pulp horns extend from the:", ["Root canal toward the apex", "Roof of the pulp chamber toward the cusps", "Cementum toward the root", "Enamel toward the gingiva"], "B"],
+            ["Which formula represents the permanent dentition in one half of the mouth?", ["I 2/2, C 1/1, M 2/2", "I 2/2, C 1/1, PM 2/2, M 3/3", "I 1/1, C 1/1, PM 2/2, M 2/2", "I 2/2, C 2/2, PM 2/2, M 3/3"], "B"]
+        ];
+
+        const questionTranslations = [
+            "ما هو أصلب نسيج في جسم الإنسان؟",
+            "الضرس الأول السفلي (mandibular first molar) هو:",
+            "أيّ سن يقع مباشرةً بجوار خط المنتصف؟",
+            "يُسمّى الجزء من السن المغطى بالمينا (Enamel):",
+            "كم عدد الأسنان في الإطباق الدائم (permanent dentition)؟",
+            "أيّ تركيب يربط الجانب السفلي من اللسان بقاع الفم؟",
+            "أيّ سن يمتلك عادةً أطول وأقوى جذر في الفم؟",
+            "لب السن (Pulp) هو:",
+            "كم عدد الضواحك في كل ربع فك من الأسنان الدائمة؟",
+            "الفك العلوي (Maxilla) هو:",
+            "أيّ سن يُعرف بـ 'ضرس الـ 12 سنة'؟",
+            "أيّ نسيج يُشكّل الكتلة الرئيسية للسن؟",
+            "التاج السريري السليم الطبيعي عادةً يكون:",
+            "أيّ مما يلي غير موجود في الأسنان اللبنية (primary dentition)؟",
+            "ينقسم تجويف الفم إلى كم ربع (quadrant)؟",
+            "أيّ جزء من اللب يشغل تاج السن؟",
+            "الوظيفة الرئيسية للقواطع (incisors) هي:",
+            "أيّ الأسنان الدائمة تحل محل الأضراس اللبنية؟",
+            "الملاط (Cementum) يغطي بصفة أساسية:",
+            "السن الذي بزغ ويقع داخل تجويفه العظمي الطبيعي مرتبط بـ:",
+            "أيّ سن هو السن الثامن من خط المنتصف؟",
+            "تمتد مرحلة الأسنان المختلطة (mixed dentition) عموماً بين:",
+            "أيّ مما يلي يُعدّ نسيجاً رخواً (soft tissue)؟",
+            "يمثل الخط العنقي (CEJ) تقاطع:",
+            "أيّ سن يُعرف بامتلاكه شرفةً واحدة فقط؟",
+            "إذا تسبّب انحسار اللثة في كشف جزء من الجذر، يصبح التاج السريري:",
+            "كم عدد الأسنان في كل ربع فك من الأسنان الدائمة؟",
+            "أيّ المجموعات التالية تُعدّ من الأسنان غير الخالفة (non-succedaneous)؟",
+            "تمتد قرون اللب (pulp horns) من:",
+            "أيّ معادلة تمثل الأسنان الدائمة في نصف واحد من الفم؟"
+        ];
+
+        const explanations = {
+            0: {
+                rule: "صلابة أنسجة الأسنان (Hardness of Tooth Tissues)",
+                ar: "المينا (Enamel) هو أصلب نسيج حيوي في جسم الإنسان على الإطلاق، حيث يتكون من أكثر من 96% معادن غير عضوية (بلورات هيدروكسي أباتيت Hydroxyapatite crystals) مما يمنحه صلابة تفوق العظام، ويليه العاج ثم الملاط ثم اللب وهو نسيج رخو.",
+                terms: "Enamel (المينا) • Hardest tissue (أصلب نسيج) • Hydroxyapatite (هيدروكسي أباتيت) • 96% Inorganic"
+            },
+            1: {
+                rule: "الأسنان الخلفية الدائمة غير الخالفة (Non-succedaneous Teeth)",
+                ar: "الضروس الدائمة (Permanent Molars) بجميع أنواعها تعتبر أسنان غير خالفة (Non-succedaneous) لأنها تبزغ في الفك دون أن تحل محل أي سن لبني سابق، بينما الأسنان الخالفة (Succedaneous) هي القواطع والأنياب والضواحك التي تخلف الأسنان اللبنية.",
+                terms: "Non-succedaneous (غير خالفة) • Succedaneous (خالفة / بديلة) • Permanent molars (الضروس الدائمة)"
+            },
+            2: {
+                rule: "موقع القاطع المركزي (Central Incisor)",
+                ar: "القاطع المركزي (Central Incisor) هو السن رقم 1 في كل ربع فك، ويقع مباشرة بجوار خط منتصف الوجه والفكين (Midline) وتلتقي أسطحه الإنسية (Mesial surfaces) مع بعضها عند خط المنتصف.",
+                terms: "Central incisor (القاطع المركزي) • Midline (خط المنتصف) • Mesial surface (السطح الإنسي)"
+            },
+            3: {
+                rule: "التاج التشريحي (Anatomical Crown)",
+                ar: "التاج التشريحي (Anatomical crown) هو الجزء الكامل من السن المغطى بطبقة المينا (Enamel) ويمتد من الحافة القاطعة حتى خط عنق السن (CEJ) وهو ثابت لا يتغير طوال العمر، بخلاف التاج السريري (Clinical crown) الذي يمثل فقط الجزء الظاهر في الفم.",
+                terms: "Anatomical crown (التاج التشريحي) • Clinical crown (التاج السريري) • Enamel covered (مغطى بالمينا)"
+            },
+            4: {
+                rule: "عدد الأسنان الدائمة (Permanent Dentition)",
+                ar: "تحتوي المجموعة السنية الدائمة الكاملة عند الإنسان البالغ على 32 سناً موزعة بالتساوي (16 في الفك العلوي و16 في الفك السفلي، 8 أسنان في كل ربع فك). أما الأسنان اللبنية (Primary) فعددها 20 سناً فقط.",
+                terms: "Permanent dentition (الأسنان الدائمة - 32) • Primary dentition (الأسنان اللبنية - 20) • Quadrant (ربع فك)"
+            },
+            5: {
+                rule: "لجام اللسان (Lingual Frenum)",
+                ar: "لجام اللسان (Lingual frenum) هو طية من الغشاء المخاطي تربط السطح السفلي للسان بقاع الفم. وإذا كان قصيراً جداً يسبب حالة التصاق اللسان المعروفة بـ (Ankyloglossia / Tongue-tie).",
+                terms: "Lingual frenum (لجام اللسان) • Floor of mouth (قاع الفم) • Ankyloglossia (التصاق اللسان)"
+            },
+            6: {
+                rule: "جذور الأنياب وثباتها (Canine Roots)",
+                ar: "الناب (Canine) يمتلك أطول وأقوى جذر في الفم، ومحاط ببروز عظمي سميك يسمى البروز النابي (Canine eminence)، مما يجعله أكثر الأسنان ثباتاً وحجر الزاوية في القوس السني (Cornerstone of dental arch).",
+                terms: "Canine (الناب) • Longest root (أطول جذر) • Canine eminence (البروز النابي) • Cornerstone (حجر الزاوية)"
+            },
+            7: {
+                rule: "طبيعة لب السن (Dental Pulp)",
+                ar: "لب السن (Pulp) هو النسيج الضام الرخو الوحيد (The only soft tissue) داخل السن، ويحتوي على الأوعية الدموية والأعصاب وخلايا بناء العاج (Odontoblasts)، بينما بقية الأنسجة الثلاثة (المينا، العاج، والملاط) أنسجة متكلسة صلبة.",
+                terms: "Dental pulp (لب السن) • Soft tissue (نسيج رخو) • Calcified tissues (أنسجة متكلسة)"
+            },
+            8: {
+                rule: "عدد الضواحك في ربع الفك (Premolars per Quadrant)",
+                ar: "يوجد ضاحكان اثنان (2 Premolars) في كل ربع فك دائم: الضاحك الأول والضاحك الثاني (First & Second Premolars)، بإجمالي 8 ضواحك في كامل الفم الدائم.",
+                terms: "Premolars (الضواحك) • 2 per quadrant (اثنان في كل ربع) • 8 total (8 بالإجمالي)"
+            },
+            9: {
+                rule: "عظم الفك العلوي (Maxilla)",
+                ar: "الفك العلوي (Maxilla) هو عظم الجمجمة الثابت غير المتحرك الذي يحمل الأسنان العلوية، في حين أن الفك السفلي (Mandible) هو العظم المفصلي الوحيد المتحرك في الجمجمة.",
+                terms: "Maxilla (الفك العلوي الثابت) • Mandible (الفك السفلي المتحرك)"
+            },
+            10: {
+                rule: "ضرس الـ 12 سنة (12-Year Molar)",
+                ar: "الضرس الدائم الثاني (Second permanent molar) يبزغ عادة حول سن 12 عاماً، لذلك يطلق عليه سريرياً ضرس الـ 12 سنة (12-year molar)، بينما الضرس الأول يسمى ضرس الـ 6 سنوات (6-year molar)، والضرس الثالث هو ضرس العقل (17-21 سنة).",
+                terms: "Second molar (الضرس الثاني) • 12-year molar (ضرس الـ 12 سنة) • 6-year molar (ضرس الـ 6 سنوات)"
+            },
+            11: {
+                rule: "الكتلة الأساسية للسن (Bulk of the Tooth)",
+                ar: "العاج (Dentin) يشكل الكتلة والحجم الأساسي الأكبر للسن (Main bulk)، ويمتد في كل من التاج (مغطى بالمينا) وفي الجذر (مغطى بالملاط)، ويحيط بالحجرة اللبية وقنوات الجذور.",
+                terms: "Dentin (العاج) • Main bulk (الكتلة الأساسية) • Crown & Root (التاج والجذر)"
+            },
+            12: {
+                rule: "العلاقة الطبيعية بين التاج السريري والتشريحي",
+                ar: "في الفم السليم طبيعياً، تغطي اللثة الصحية الحافة العنقية من المينا بمقدار 1 إلى 2 ملم، لذلك يكون التاج السريري الظاهر (Clinical crown) أقصر قليلاً من التاج التشريحي الكامل (Slightly shorter than anatomical crown).",
+                terms: "Clinical crown (التاج السريري) • Anatomical crown (التاج التشريحي) • Slightly shorter (أقصر قليلاً في الحالة الطبيعية)"
+            },
+            13: {
+                rule: "غياب الضواحك في الأسنان اللبنية (No Premolars in Primary)",
+                ar: "الأسنان اللبنية (Primary dentition) لا تحتوي نهائياً على ضواحك (No Premolars)؛ بل تتكون من قواطع مركزية وجانبية، وأنياب، وأضراس أولى وثانية لبنية فقط.",
+                terms: "No Premolars (لا توجد ضواحك لبنية) • Primary teeth (الأسنان اللبنية)"
+            },
+            14: {
+                rule: "أرباع الفم الأربعة (Oral Cavity Quadrants)",
+                ar: "ينقسم تجويف الفم بواسطة الخط الأوسط (Midline) والمستوى الإطباقي (Occlusal plane) إلى أربعة أرباع (4 Quadrants): علوي أيمن، علوي أيسر، سفلي أيسر، وسفلي أيمن.",
+                terms: "4 Quadrants (أربعة أرباع) • Maxillary & Mandibular • Right & Left"
+            },
+            15: {
+                rule: "حجرة اللب التاجية (Pulp Chamber)",
+                ar: "حجرة اللب (Pulp chamber) هي التجويف الموجود داخل تاج السن ويشغله اللب التاجي (Coronal pulp)، بينما قنوات الجذور (Root canals) تشغل الجذور وتحتوي اللب الجذري (Radicular pulp).",
+                terms: "Pulp chamber (حجرة اللب) • Coronal pulp (اللب التاجي) • Root canal (قناة الجذر)"
+            },
+            16: {
+                rule: "وظيفة القواطع (Function of Incisors)",
+                ar: "الوظيفة الأساسية للقواطع (Incisors) هي قطع وقضم الطعام (Cutting / Incising) بفضل حوافها القاطعة الحادة الشبيهة بالإزميل (Chisel-shaped edges)، بينما التمزيق وظيفة الأنياب، والطحن وظيفة الأضراس.",
+                terms: "Cutting (القطع والقضم) • Incisors (القواطع) • Tearing = Canines • Grinding = Molars"
+            },
+            17: {
+                rule: "استبدال الأضراس اللبنية بالضواحك (Succedaneous Replacement)",
+                ar: "الضواحك الدائمة (Premolars) هي التي تحل مكان الأضراس اللبنية (Primary molars) عند تبديلها؛ بينما الأضراس الدائمة (Permanent molars) تبزغ خلفها في مساحة جديدة ولا تحل محل أي سن لبني.",
+                terms: "Premolars replace primary molars (الضواحك تبدل الأضراس اللبنية) • Succedaneous teeth"
+            },
+            18: {
+                rule: "موقع الملاط (Cementum Location)",
+                ar: "الملاط (Cementum) هو النسيج المعدني المتكلس المشابه للعظام وظيفته تغطية الجذر التشريحي للسن (Anatomical root)، ويوفر نقطة اتصال وتثبيت لألياف الرباط اللثوي المحيط بالسن (Periodontal Ligament - PDL) بعظم الفك.",
+                terms: "Cementum (الملاط) • Covers anatomical root (يغطي الجذر التشريحي) • PDL attachment"
+            },
+            19: {
+                rule: "السنخ العظمي (Alveolus / Bony Socket)",
+                ar: "السنخ العظمي (Alveolus أو Tooth socket) هو التجويف العظمي في الفك الذي يستقر بداخله جذر السن بعد بزوغه. أما الجريب/الكيس العظمي (Crypt) فهو التجويف العظمي الذي يحتوي برعم السن النامي قبل بزوغه.",
+                terms: "Alveolus / Socket (السنخ العظمي للسن البازغ) • Crypt (التجويف العظمي قبل البزوغ)"
+            },
+            20: {
+                rule: "ترتيب الأسنان الدائمة من خط المنتصف",
+                ar: "السن الثامن (8th tooth) من خط المنتصف هو الضرس الثالث (Third molar / ضرس العقل). الترتيب: 1-القاطع المركزي، 2-القاطع الجانبي، 3-الناب، 4-الضاحك الأول، 5-الضاحك الثاني، 6-الضرس الأول، 7-الضرس الثاني، 8-الضرس الثالث.",
+                terms: "Third molar (الضرس الثالث) • 8th tooth from midline • Wisdom tooth"
+            },
+            21: {
+                rule: "مرحلة التسنين المختلط (Mixed Dentition Period)",
+                ar: "مرحلة الإطباق/التسنين المختلط (Mixed dentition) تمتد تقريباً من سن 6 إلى 12 عاماً، وتبدأ مع بزوغ أول ضرس دائم أو تبديل القاطع السفلي، وتنتهي بسقوط آخر سن لبني (عادة الضرس اللبني الثاني) وظهور الضاحك.",
+                terms: "Mixed dentition (التسنين المختلط: 6–12 سنة) • Primary (6m–6y) • Permanent (12y+)"
+            },
+            22: {
+                rule: "النسيج الرخو بين أنسجة السن",
+                ar: "اللب (Pulp) هو النسيج الرخو (Soft tissue) الوحيد بين الأنسجة الأربعة المكونة للسن، ويحتوي على الأعصاب، الشرايين، الأوردة، والأوعية اللمفاوية وخلايا النسيج الضام، بينما المينا والعاج والملاط أنسجة صلبة متكلسة.",
+                terms: "Pulp (اللب) • Only soft tissue • Neurovascular supply"
+            },
+            23: {
+                rule: "ملتقى المينا والملاط (Cementoenamel Junction - CEJ)",
+                ar: "الخط العنقي (Cervical line) هو نفسه ملتقى المينا والملاط (Cementoenamel Junction - CEJ)، ويمثل الحد الفاصل التشريحي الدقيق بين التاج التشريحي (المغطى بالمينا) والجذر التشريحي (المغطى بالملاط).",
+                terms: "CEJ (ملتقى المينا والملاط) • Cervical line (الخط العنقي) • Anatomical crown & root junction"
+            },
+            24: {
+                rule: "شرفة الناب الوحيدة (Single Cusp of Canine)",
+                ar: "الناب (Canine) يتميز بوجود شرفة مدببة وحيدة وواضحة (Single pointed cusp)، ولهذا السبب يطلق عليه علمياً اسم (Cuspid). أما الضواحك فتمتلك شرفتين أو أكثر (Bicuspids)، والأضراس 4 إلى 5 شرفات.",
+                terms: "Canine = Cuspid (وحيد الشرفة) • Bicuspids = Premolars • Multicusped = Molars"
+            },
+            25: {
+                rule: "تأثير انحسار اللثة على التاج السريري (Gingival Recession)",
+                ar: "عند حدوث انحسار في اللثة (Gingival recession)، ينكشف جزء من جذر السن في الفم، وبالتالي يصبح التاج السريري (المرئي في الفم) أطول من التاج التشريحي (Longer than anatomical crown) لأنه يشمل التاج كاملاً مع الجزء المكشوف من الجذر.",
+                terms: "Gingival recession (انحسار اللثة) • Clinical crown becomes longer (التاج السريري يصبح أطول)"
+            },
+            26: {
+                rule: "عدد الأسنان في ربع الفك الدائم",
+                ar: "يوجد 8 أسنان في كل ربع فك من الأسنان الدائمة (2 قواطع + 1 ناب + 2 ضواحك + 3 أضراس = 8 أسنان)، ومجموع الأرباع الأربعة = 32 سناً.",
+                terms: "8 teeth per quadrant • 32 total permanent teeth"
+            },
+            27: {
+                rule: "المجموعة غير الخالفة (Non-succedaneous Group)",
+                ar: "الأضراس الدائمة (Permanent molars) هي المجموعة الوحيدة غير الخالفة (Non-succedaneous) من الخيارات؛ لأنها تبزغ خلف الأسنان اللبنية دون أن تسقط أي سن لبني سابق، بينما القواطع والأنياب والضواحك كلها أسنان خالفة (Succedaneous).",
+                terms: "Permanent molars = Non-succedaneous • Incisors/Canines/Premolars = Succedaneous"
+            },
+            28: {
+                rule: "قرون اللب (Pulp Horns)",
+                ar: "قرون اللب (Pulp horns) هي امتدادات وإسقاطات مدببة من سقف الحجرة اللبية (Roof of the pulp chamber) متجهة لأعلى نحو قمم الشرفات (Cusps) في الأسنان الخلفية أو زوايا القواطع في الأسنان الأمامية.",
+                terms: "Pulp horns (قرون اللب) • Roof of pulp chamber (سقف حجرة اللب) • Toward the cusps (نحو الشرفات)"
+            },
+            29: {
+                rule: "المعادلة السنية الدائمة (Permanent Dental Formula)",
+                ar: "المعادلة السنية لنصف الفم الدائم هي: I 2/2, C 1/1, PM 2/2, M 3/3 (قاطعان علويان/سفليان، ناب علوي/سفلي، ضاحكان علويان/سفليان، 3 أضراس علوية/سفلية = 16 في النصف = 32 في كامل الفم).",
+                terms: "Dental formula (المعادلة السنية) • I 2/2, C 1/1, PM 2/2, M 3/3"
+            }
+        };
+
+        // =========================================================================
+        // DASHBOARD STATE & ELEMENTS
+        // =========================================================================
         let rawResults = [];
         let filteredResults = [];
-        const adminPasscode = 'admin2026';
+        let activeModalStudent = null;
+        let activeModalFilter = 'all';
 
-        // --- DOM Elements ---
         const loginOverlay = document.getElementById('login-overlay');
         const mainContent = document.getElementById('main-content');
         const passInput = document.getElementById('admin-password');
@@ -883,9 +1446,12 @@
         const modal = document.getElementById('details-modal');
         const modalName = document.getElementById('modal-student-name');
         const modalScore = document.getElementById('modal-student-score');
-        const modalGrid = document.getElementById('modal-details-grid');
+        const modalCertContainer = document.getElementById('modal-cert-container');
+        const modalQNavGrid = document.getElementById('modal-q-nav-grid');
+        const modalReviewList = document.getElementById('modal-review-list');
+        const modalOverviewSummary = document.getElementById('modal-overview-summary');
 
-        // --- Normalizer for passwords ---
+        // Normalizer for passwords & input
         function normalizePasscode(str) {
             if (!str) return '';
             return str.trim()
@@ -893,7 +1459,9 @@
                 .toLowerCase();
         }
 
-        // --- Auth ---
+        // =========================================================================
+        // AUTHENTICATION
+        // =========================================================================
         function verifyLogin(e) {
             if (e && e.preventDefault) e.preventDefault();
             const entered = normalizePasscode(passInput.value);
@@ -923,26 +1491,42 @@
             } catch(e) {}
         });
 
-        // --- Data Fetching ---
+        // =========================================================================
+        // DATA FETCHING & MULTI-SOURCE INTEGRATION
+        // =========================================================================
         async function fetchResults() {
             renderLoading();
             let combined = [];
 
-            // 1. Read from localStorage (works offline, file://, localhost, Vercel)
-            try {
-                const local = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) || '[]');
-                if (Array.isArray(local)) {
-                    combined.push(...local);
-                }
-            } catch (e) {}
+            // 1. Read from localStorage across known keys
+            const storageKeys = [
+                LOCAL_STORAGE_KEY,
+                'tashheel_dental_exam_results_v1',
+                'tashheel_dental_exam_results',
+                'dental_exam_results'
+            ];
+            storageKeys.forEach(key => {
+                try {
+                    const local = JSON.parse(localStorage.getItem(key) || '[]');
+                    if (Array.isArray(local)) {
+                        combined.push(...local);
+                    }
+                } catch (e) {}
+            });
 
-            // 2. Read from sessionStorage (most recent exam if submitted in this tab)
-            try {
-                const sess = JSON.parse(sessionStorage.getItem('tashheel_dental_exam_session_v2') || '{}');
-                if (sess && sess.data && sess.data.name) {
-                    combined.push(sess.data);
-                }
-            } catch (e) {}
+            // 2. Read from sessionStorage (most recent exam if submitted in this browser tab)
+            const sessionKeys = [
+                'tashheel_dental_exam_session_v2',
+                'tashheel_dental_exam_session'
+            ];
+            sessionKeys.forEach(key => {
+                try {
+                    const sess = JSON.parse(sessionStorage.getItem(key) || '{}');
+                    if (sess && sess.data && sess.data.name) {
+                        combined.push(sess.data);
+                    }
+                } catch (e) {}
+            });
 
             // 3. Fetch from Server API
             try {
@@ -951,6 +1535,10 @@
                     const serverData = await response.json();
                     if (Array.isArray(serverData)) {
                         combined.push(...serverData);
+                    } else if (serverData && Array.isArray(serverData.data)) {
+                        combined.push(...serverData.data);
+                    } else if (serverData && Array.isArray(serverData.results)) {
+                        combined.push(...serverData.results);
                     }
                 }
             } catch (error) {
@@ -963,6 +1551,16 @@
                 if (!item || !item.name) return;
                 const key = item.id || `${item.name}_${item.score}_${item.date || item.timestamp}`;
                 if (!uniqueMap.has(key)) {
+                    // Normalize standard record fields for 30 questions
+                    const maxQ = Number(item.total) || TOTAL_QUESTIONS;
+                    const score = Number(item.score) || 0;
+                    const pct = (item.percentage !== undefined && item.percentage !== null)
+                        ? Number(item.percentage)
+                        : Math.round((score / maxQ) * 100);
+
+                    item.total = maxQ;
+                    item.score = score;
+                    item.percentage = pct;
                     uniqueMap.set(key, item);
                 }
             });
@@ -970,7 +1568,7 @@
             let finalResults = Array.from(uniqueMap.values());
             processData(finalResults);
             if (finalResults.length > 0) {
-                showToast(`تم عرض ${finalResults.length} نتيجة مسجلة`, 'success');
+                showToast(`تم عرض ${finalResults.length} نتيجة مسجلة للطلاب`, 'success');
             }
         }
 
@@ -983,7 +1581,7 @@
                 return;
             }
 
-            // Sort by score DESC, then timestamp DESC (Requirement 5)
+            // Sort by score DESC, then timestamp DESC
             rawResults = data.sort((a, b) => {
                 if (b.score !== a.score) {
                     return b.score - a.score;
@@ -996,7 +1594,6 @@
             // Assign ranks dealing with ties
             let currentRank = 1;
             let currentScore = -1;
-            let rankOffset = 0;
             
             rawResults.forEach((res, index) => {
                 if (res.score !== currentScore) {
@@ -1010,27 +1607,90 @@
             calculateStats();
         }
 
+        // Realistic 30-Question Sample Data
         function mockData() {
             const mock = [
-                { id: '1', name: 'أحمد محمود', score: 50, timestamp: new Date().toISOString(), answers: Array(50).fill(true) },
-                { id: '2', name: 'سارة خالد', score: 45, timestamp: new Date(Date.now() - 3600000).toISOString(), answers: Array(50).fill(true).map((_, i) => i !== 2 && i !== 15 && i !== 22 && i !== 41 && i !== 48) },
-                { id: '3', name: 'عمر ياسر', score: 38, timestamp: new Date(Date.now() - 7200000).toISOString(), answers: Array(50).fill(true).map((_, i) => i % 4 !== 0) },
-                { id: '4', name: 'نور علي', score: 25, timestamp: new Date(Date.now() - 86400000).toISOString(), answers: Array(50).fill(true).map((_, i) => i % 2 !== 0) }
+                {
+                    id: 'sample_1',
+                    name: 'سارة خالد المنشاوي',
+                    score: 30,
+                    total: 30,
+                    percentage: 100,
+                    duration: '09:42',
+                    time: '09:42',
+                    timestamp: new Date(Date.now() - 1800000).toISOString(),
+                    date: new Date(Date.now() - 1800000).toLocaleString('ar-EG', { dateStyle: 'short', timeStyle: 'short' }),
+                    answers: Array(30).fill(true),
+                    wrongQuestions: [],
+                    wrongDetails: []
+                },
+                {
+                    id: 'sample_2',
+                    name: 'أحمد محمود رضوان',
+                    score: 28,
+                    total: 30,
+                    percentage: 93,
+                    duration: '11:15',
+                    time: '11:15',
+                    timestamp: new Date(Date.now() - 3600000).toISOString(),
+                    date: new Date(Date.now() - 3600000).toLocaleString('ar-EG', { dateStyle: 'short', timeStyle: 'short' }),
+                    answers: Array(30).fill(true).map((_, i) => i !== 3 && i !== 22),
+                    wrongQuestions: [4, 23],
+                    wrongDetails: [
+                        { questionNumber: 4, question: questions[3][0], studentAnswer: "Clinical crown", correctAnswer: "B", options: questions[3][1] },
+                        { questionNumber: 23, question: questions[22][0], studentAnswer: "Dentin", correctAnswer: "D", options: questions[22][1] }
+                    ]
+                },
+                {
+                    id: 'sample_3',
+                    name: 'عمر ياسر إبراهيم',
+                    score: 25,
+                    total: 30,
+                    percentage: 83,
+                    duration: '14:20',
+                    time: '14:20',
+                    timestamp: new Date(Date.now() - 7200000).toISOString(),
+                    date: new Date(Date.now() - 7200000).toLocaleString('ar-EG', { dateStyle: 'short', timeStyle: 'short' }),
+                    answers: Array(30).fill(true).map((_, i) => i !== 1 && i !== 8 && i !== 13 && i !== 20 && i !== 27),
+                    wrongQuestions: [2, 9, 14, 21, 28],
+                    wrongDetails: [
+                        { questionNumber: 2, question: questions[1][0], studentAnswer: "Succedaneous", correctAnswer: "B", options: questions[1][1] },
+                        { questionNumber: 9, question: questions[8][0], studentAnswer: "1", correctAnswer: "B", options: questions[8][1] },
+                        { questionNumber: 14, question: questions[13][0], studentAnswer: "Incisors", correctAnswer: "C", options: questions[13][1] },
+                        { questionNumber: 21, question: questions[20][0], studentAnswer: "First molar", correctAnswer: "C", options: questions[20][1] },
+                        { questionNumber: 28, question: questions[27][0], studentAnswer: "Permanent canines", correctAnswer: "D", options: questions[27][1] }
+                    ]
+                },
+                {
+                    id: 'sample_4',
+                    name: 'نور علي فتحي',
+                    score: 18,
+                    total: 30,
+                    percentage: 60,
+                    duration: '18:05',
+                    time: '18:05',
+                    timestamp: new Date(Date.now() - 86400000).toISOString(),
+                    date: new Date(Date.now() - 86400000).toLocaleString('ar-EG', { dateStyle: 'short', timeStyle: 'short' }),
+                    answers: Array(30).fill(true).map((_, i) => i % 2 !== 0),
+                    wrongQuestions: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23],
+                    wrongDetails: []
+                }
             ];
             processData(mock);
         }
 
-        // --- Filtering ---
+        // =========================================================================
+        // FILTERING & SEARCH
+        // =========================================================================
         function applyFilters() {
             const searchTerm = searchInput.value.toLowerCase().trim();
             const grade = gradeFilter.value;
 
             filteredResults = rawResults.filter(res => {
-                // Name match
-                const matchName = res.name.toLowerCase().includes(searchTerm);
+                const matchName = !searchTerm || res.name.toLowerCase().includes(searchTerm);
                 
-                // Grade match (Requirement 7 logic)
-                const percentage = (res.score / TOTAL_QUESTIONS) * 100;
+                const maxQ = res.total || TOTAL_QUESTIONS;
+                const percentage = (res.percentage !== undefined) ? res.percentage : (res.score / maxQ) * 100;
                 let matchGrade = true;
                 
                 if (grade === 'excellent') matchGrade = percentage >= 90;
@@ -1044,7 +1704,9 @@
             renderTable();
         }
 
-        // --- Stats Calculation ---
+        // =========================================================================
+        // STATS CALCULATION
+        // =========================================================================
         function calculateStats() {
             if (rawResults.length === 0) {
                 statTotal.textContent = '0';
@@ -1055,8 +1717,8 @@
             }
 
             const total = rawResults.length;
-            const highest = rawResults[0].score; // Already sorted
-            const sum = rawResults.reduce((acc, curr) => acc + curr.score, 0);
+            const highest = rawResults[0].score; // Already sorted DESC
+            const sum = rawResults.reduce((acc, curr) => acc + (Number(curr.score) || 0), 0);
             const avg = (sum / total).toFixed(1);
             
             const passedCount = rawResults.filter(r => {
@@ -1072,14 +1734,16 @@
             statPass.textContent = `${passRate}%`;
         }
 
-        // --- Rendering ---
+        // =========================================================================
+        // TABLE RENDERING
+        // =========================================================================
         function renderLoading() {
             tableBody.innerHTML = `
                 <tr>
                     <td colspan="5">
                         <div class="loader-container">
                             <div class="spinner"></div>
-                            <p>جاري تحميل البيانات...</p>
+                            <p style="font-weight:700;color:var(--text-muted)">جاري تحميل نتائج امتحان تشريح الأسنان...</p>
                         </div>
                     </td>
                 </tr>
@@ -1092,7 +1756,7 @@
                     <td colspan="5">
                         <div class="empty-state">
                             <i class="fa-solid fa-folder-open"></i>
-                            <p>لا توجد نتائج مطابقة للبحث أو الفلتر الحالي.</p>
+                            <p>لا توجد نتائج مسجلة مطابقة للبحث أو الفلتر الحالي.</p>
                         </div>
                     </td>
                 </tr>
@@ -1116,9 +1780,9 @@
                 const dateStr = !isNaN(dateObj) ? dateObj.toLocaleString('ar-EG', { 
                     year: 'numeric', month: 'short', day: 'numeric', 
                     hour: '2-digit', minute:'2-digit'
-                }) : 'غير محدد';
+                }) : (res.date || 'غير محدد');
 
-                // Progress Bar Color
+                // Progress Bar Color & Percentage
                 const percentage = (res.percentage !== undefined) ? res.percentage : Math.round((res.score / maxQ) * 100);
                 let colorClass = 'color-red';
                 if (percentage >= 90) colorClass = 'color-green';
@@ -1131,29 +1795,34 @@
                 else if (res.rank === 2) rankHtml = `<div class="rank-cell medal medal-2"><i class="fa-solid fa-medal"></i></div>`;
                 else if (res.rank === 3) rankHtml = `<div class="rank-cell medal medal-3"><i class="fa-solid fa-medal"></i></div>`;
 
+                // Extract wrong question indices safely from all potential schemas
+                let wrongIndices = [];
+                if (Array.isArray(res.wrongQuestions) && res.wrongQuestions.length > 0) {
+                    wrongIndices = res.wrongQuestions.map(Number);
+                } else if (Array.isArray(res.wrongDetails) && res.wrongDetails.length > 0) {
+                    wrongIndices = res.wrongDetails.map(w => Number(w.questionNumber || w.num || w.qNum)).filter(Boolean);
+                } else if (Array.isArray(res.answers) && res.answers.length > 0) {
+                    res.answers.forEach((ans, idx) => {
+                        if (ans === false || ans === 0 || ans === 'false') {
+                            wrongIndices.push(idx + 1);
+                        }
+                    });
+                }
+
                 // Wrong questions calculation
                 let errorsHtml = '';
                 if (res.score >= maxQ) {
-                    errorsHtml = `<div class="perfect-badge"><i class="fa-solid fa-star"></i> الدرجة كاملة (${maxQ}/${maxQ})</div>`;
-                } else if (res.answers && res.answers.length > 0) {
-                    const wrongIndices = [];
-                    res.answers.forEach((isCorrect, idx) => {
-                        if (!isCorrect) wrongIndices.push(idx + 1);
-                    });
-                    
-                    if (wrongIndices.length > 0) {
-                        errorsHtml = `
-                            <span class="wrong-tag-label">أخطأ في الأسئلة:</span>
-                            <div class="wrong-tags">
-                                ${wrongIndices.slice(0, 10).map(q => `<span class="wrong-tag">س ${q}</span>`).join('')}
-                                ${wrongIndices.length > 10 ? `<span class="wrong-tag">... +${wrongIndices.length - 10}</span>` : ''}
-                            </div>
-                        `;
-                    } else {
-                        errorsHtml = '<span class="text-muted">البيانات غير متوفرة</span>';
-                    }
+                    errorsHtml = `<div class="perfect-badge"><i class="fa-solid fa-star"></i> الدرجة كاملة (${maxQ}/${maxQ}) 🏆</div>`;
+                } else if (wrongIndices.length > 0) {
+                    errorsHtml = `
+                        <span class="wrong-tag-label">أخطأ في ${wrongIndices.length} سؤال:</span>
+                        <div class="wrong-tags">
+                            ${wrongIndices.slice(0, 8).map(q => `<span class="wrong-tag">س ${q}</span>`).join('')}
+                            ${wrongIndices.length > 8 ? `<span class="wrong-tag">+${wrongIndices.length - 8} آخرين</span>` : ''}
+                        </div>
+                    `;
                 } else {
-                    errorsHtml = '<span class="text-muted">البيانات غير متوفرة</span>';
+                    errorsHtml = '<span class="text-muted" style="font-size:0.85rem">لم تسجل تفاصيل الأخطاء</span>';
                 }
 
                 // Certificate action button (>= 85% or >= 26/30)
@@ -1161,21 +1830,21 @@
                 const isQualified = percentage >= 85 || res.score >= Math.round(maxQ * 0.85);
                 if (isQualified) {
                     certBtnHtml = `
-                        <button class="btn-cert-download" onclick="downloadStudentCertificate('${res.id}')" title="تحميل شهادة التقدير للطالب" style="background: linear-gradient(135deg, #10b981, #059669); color: #fff; border: none; padding: 6px 12px; border-radius: 8px; font-weight: 700; font-size: 0.8rem; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; margin-right: 6px; box-shadow: 0 2px 6px rgba(16, 185, 129, 0.25);">
+                        <button class="btn-cert-download" onclick="downloadStudentCertificate('${res.id}')" title="تحميل شهادة التقدير الرسمية للطالب" style="background: linear-gradient(135deg, #10b981, #059669); color: #fff; border: none; padding: 6px 12px; border-radius: 8px; font-weight: 700; font-size: 0.82rem; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; margin-right: 6px; box-shadow: 0 2px 6px rgba(16, 185, 129, 0.25);">
                             <i class="fa-solid fa-award"></i> الشهادة
                         </button>
                     `;
                 } else {
-                    certBtnHtml = `<span style="font-size: 0.75rem; color: #94a3b8; margin-right: 6px;">غير مؤهل</span>`;
+                    certBtnHtml = `<span style="font-size: 0.78rem; color: #94a3b8; margin-right: 6px; font-weight: 600;">غير مؤهل</span>`;
                 }
 
                 tr.innerHTML = `
-                    <td>${rankHtml}</td>
+                    <td style="text-align: center;">${rankHtml}</td>
                     <td>
                         <div class="student-name">${escapeHtml(res.name)}</div>
-                        <div class="student-date">${dateStr}</div>
+                        <div class="student-date"><i class="fa-regular fa-clock" style="margin-left: 3px;"></i> ${dateStr}</div>
                         ${(res.duration || res.time) ? `
-                        <div class="student-duration" style="font-size: 0.8rem; color: #0284c7; font-weight: 700; margin-top: 3px; display: flex; align-items: center; gap: 5px;">
+                        <div class="student-duration">
                             <i class="fa-solid fa-stopwatch"></i> مدة الحل: ${escapeHtml(res.duration || res.time)}
                         </div>` : ''}
                     </td>
@@ -1185,7 +1854,7 @@
                                 <span class="${colorClass.split('-')[1] || ''}" style="color: var(--${colorClass === 'color-red' ? 'danger' : colorClass === 'color-orange' ? 'warning' : colorClass === 'color-green' ? 'success' : 'primary'}-color)">
                                     ${percentage.toFixed(0)}%
                                 </span>
-                                <span>${res.score} / ${TOTAL_QUESTIONS}</span>
+                                <span>${res.score} / ${maxQ}</span>
                             </div>
                             <div class="progress-bar-bg">
                                 <div class="progress-bar-fill ${colorClass}" style="width: ${percentage}%"></div>
@@ -1193,9 +1862,9 @@
                         </div>
                     </td>
                     <td>${errorsHtml}</td>
-                    <td>
-                        <div style="display: flex; align-items: center;">
-                            <button class="btn-icon" onclick="openModal('${res.id}')" title="عرض التفاصيل">
+                    <td style="text-align: center;">
+                        <div style="display: flex; align-items: center; justify-content: center;">
+                            <button class="btn-icon" onclick="openModal('${res.id}')" title="عرض ورقة إجابات الطالب وتفاصيل الأسئلة الـ 30">
                                 <i class="fa-solid fa-eye"></i>
                             </button>
                             ${certBtnHtml}
@@ -1206,76 +1875,246 @@
             });
         }
 
-        // --- Modal Functions ---
-        // --- Modal Functions ---
+        // =========================================================================
+        // DETAILS MODAL & 30-QUESTION REVIEW
+        // =========================================================================
         function openModal(id) {
             const student = rawResults.find(r => r.id === id || r.id == id);
             if (!student) return;
+
+            activeModalStudent = student;
+            activeModalFilter = 'all';
 
             const maxQ = student.total || TOTAL_QUESTIONS;
             const pct = (student.percentage !== undefined) ? student.percentage : Math.round((student.score / maxQ) * 100);
             const isQualified = pct >= 85 || student.score >= Math.round(maxQ * 0.85);
 
-            modalName.textContent = student.name;
+            modalName.textContent = `ورقة إجابات الطالب: د. ${student.name.replace(/^د[\.\s]+|^دكتور[\s]+/i, '')}`;
             const durText = (student.duration || student.time) ? ` • مدة الامتحان: ${student.duration || student.time}` : '';
-            modalScore.textContent = `الدرجة: ${student.score} / ${maxQ} (${pct}%)${durText}`;
+            const dateText = student.date ? ` • التاريخ: ${student.date}` : '';
+            modalScore.textContent = `النتيجة النهائية: ${student.score} من ${maxQ} (${pct}%)${durText}${dateText}`;
             
-            const modalCert = document.getElementById('modal-cert-container');
-            if (modalCert) {
+            // Certificate button inside modal
+            if (modalCertContainer) {
                 if (isQualified) {
-                    modalCert.innerHTML = `
-                        <button class="btn btn-success" onclick="downloadStudentCertificate('${student.id}')" style="background: linear-gradient(135deg, #10b981, #059669); color: #fff; border: none; padding: 9px 18px; border-radius: 10px; font-weight: 800; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; margin-top: 8px; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);">
-                            <i class="fa-solid fa-award"></i> تحميل شهادة التقدير الرسمية للطالب (Doctor Certificate)
+                    modalCertContainer.innerHTML = `
+                        <button class="btn btn-success" onclick="downloadStudentCertificate('${student.id}')" style="background: linear-gradient(135deg, #10b981, #059669); color: #fff; border: none; padding: 8px 16px; border-radius: 10px; font-weight: 800; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3); font-size: 0.88rem;">
+                            <i class="fa-solid fa-award"></i> تحميل شهادة التقدير الرسمية للطالب 🎓
                         </button>
                     `;
                 } else {
-                    modalCert.innerHTML = `
-                        <span style="font-size: 0.85rem; color: var(--text-muted); display: inline-block; margin-top: 8px;">⚠️ الشهادة مخصصة للدرجات 85% فأعلى (${Math.round(maxQ * 0.85)} فأكثر من ${maxQ}).</span>
+                    modalCertContainer.innerHTML = `
+                        <span style="font-size: 0.82rem; color: var(--text-muted); display: inline-block; font-weight: 600;">⚠️ الشهادة مخصصة للدرجات 85% فأعلى (${Math.round(maxQ * 0.85)} فأكثر من ${maxQ}).</span>
                     `;
                 }
             }
 
-            modalGrid.innerHTML = '';
-            
-            if (student.answers && student.answers.length > 0) {
-                const totalQ = student.answers.length;
-                for (let i = 0; i < totalQ; i++) {
-                    const isCorrect = student.answers[i];
-                    const correctClass = isCorrect ? 'correct' : 'wrong';
-                    const iconClass = isCorrect ? 'fa-check' : 'fa-xmark';
-                    
-                    modalGrid.innerHTML += `
-                        <div class="q-box">
-                            <span class="q-num">${i + 1}</span>
-                            <span class="q-status ${correctClass}"><i class="fa-solid ${iconClass}"></i></span>
-                        </div>
-                    `;
-                }
-            } else {
-                modalGrid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 2rem;">تفاصيل الإجابات غير متوفرة لهذا السجل.</div>';
+            // Summary text
+            const wrongCount = maxQ - student.score;
+            if (modalOverviewSummary) {
+                modalOverviewSummary.innerHTML = `
+                    <i class="fa-solid fa-list-check" style="color:#0284c7;"></i>
+                    <span>إجمالي 30 سؤالاً • <b style="color:#10b981">${student.score} صحيحة</b> • <b style="color:#ef4444">${wrongCount} خاطئة</b></span>
+                `;
             }
+
+            // Reset modal tabs to 'all'
+            document.querySelectorAll('.modal-filter-tab').forEach(t => {
+                t.classList.toggle('active', t.getAttribute('data-filter') === 'all');
+            });
+
+            renderModalContent();
 
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
+        function filterModalQuestions(filterType, tabBtn) {
+            activeModalFilter = filterType;
+            document.querySelectorAll('.modal-filter-tab').forEach(t => t.classList.remove('active'));
+            if (tabBtn) tabBtn.classList.add('active');
+            renderModalContent();
+        }
+
+        function renderModalContent() {
+            if (!activeModalStudent) return;
+            const student = activeModalStudent;
+            const maxQ = student.total || TOTAL_QUESTIONS;
+
+            // Determine correctness map for all 30 questions
+            // Checks answers boolean array, wrongQuestions, or wrongDetails
+            const correctnessMap = new Array(maxQ).fill(true);
+            const studentChoiceMap = {};
+
+            if (Array.isArray(student.wrongQuestions) && student.wrongQuestions.length > 0) {
+                student.wrongQuestions.forEach(qNum => {
+                    const idx = Number(qNum) - 1;
+                    if (idx >= 0 && idx < maxQ) correctnessMap[idx] = false;
+                });
+            } else if (Array.isArray(student.answers) && student.answers.length > 0) {
+                student.answers.forEach((ans, idx) => {
+                    if (idx < maxQ) {
+                        correctnessMap[idx] = (ans === true || ans === 1 || ans === 'true');
+                    }
+                });
+            } else if (student.score < maxQ) {
+                // If only score is known without answers, mark based on score
+                for (let i = student.score; i < maxQ; i++) correctnessMap[i] = false;
+            }
+
+            // Extract student answers if saved in wrongDetails
+            if (Array.isArray(student.wrongDetails)) {
+                student.wrongDetails.forEach(w => {
+                    const qNum = Number(w.questionNumber || w.num);
+                    if (qNum >= 1 && qNum <= maxQ) {
+                        correctnessMap[qNum - 1] = false;
+                        studentChoiceMap[qNum - 1] = w.studentAnswer || w.yourAnswer || w.yourAnswerText;
+                    }
+                });
+            }
+
+            // Also check userAnswers array if present (from exam.html schema)
+            if (Array.isArray(student.userAnswers)) {
+                student.userAnswers.forEach((ans, idx) => {
+                    if (ans && idx < maxQ) studentChoiceMap[idx] = ans;
+                });
+            }
+
+            // Render Navigation Grid
+            modalQNavGrid.innerHTML = '';
+            for (let i = 0; i < maxQ; i++) {
+                const isCorrect = correctnessMap[i];
+                const dot = document.createElement('div');
+                dot.className = `q-nav-dot ${isCorrect ? 'correct' : 'wrong'}`;
+                dot.textContent = i + 1;
+                dot.title = `سؤال ${i + 1}: ${isCorrect ? 'صحيح' : 'خطأ'} (اضغط للانتقال للسؤال)`;
+                dot.onclick = () => {
+                    const targetCard = document.getElementById(`review-q-${i}`);
+                    if (targetCard) {
+                        targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        targetCard.style.outline = '3px solid #0284c7';
+                        setTimeout(() => targetCard.style.outline = 'none', 1600);
+                    }
+                };
+                modalQNavGrid.appendChild(dot);
+            }
+
+            // Render Review Cards
+            modalReviewList.innerHTML = '';
+
+            let renderedCount = 0;
+
+            for (let i = 0; i < maxQ; i++) {
+                const isCorrect = correctnessMap[i];
+
+                if (activeModalFilter === 'wrong' && isCorrect) continue;
+                if (activeModalFilter === 'correct' && !isCorrect) continue;
+
+                renderedCount++;
+                const qData = questions[i] || [`Question ${i + 1}`, ["A", "B", "C", "D"], "A"];
+                const qTextEn = qData[0];
+                const qOptions = qData[1];
+                const qCorrectLetter = qData[2];
+                const qTextAr = questionTranslations[i] || '';
+                const qExp = explanations[i] || null;
+
+                const card = document.createElement('div');
+                card.className = `review-card ${isCorrect ? 'correct' : 'wrong'}`;
+                card.id = `review-q-${i}`;
+
+                let optionsHtml = '';
+                qOptions.forEach((optText, optIdx) => {
+                    const letter = String.fromCharCode(65 + optIdx);
+                    const isRightOption = (letter === qCorrectLetter);
+                    
+                    let isStudentPick = false;
+                    const studentPick = studentChoiceMap[i];
+                    if (studentPick) {
+                        if (studentPick === letter || String(studentPick).toLowerCase() === optText.toLowerCase()) {
+                            isStudentPick = true;
+                        }
+                    }
+
+                    let optClass = 'review-option';
+                    let badgeNote = '';
+
+                    if (isRightOption) {
+                        optClass += ' is-correct-answer';
+                        badgeNote = '<span class="review-opt-note">✅ الإجابة الصحيحة النموذجية</span>';
+                    }
+                    if (isStudentPick && !isRightOption) {
+                        optClass += ' is-student-wrong';
+                        badgeNote = '<span class="review-opt-note">❌ إجابة الطالب التي اختارها</span>';
+                    }
+
+                    optionsHtml += `
+                        <div class="${optClass}">
+                            <span class="review-opt-letter">${letter}</span>
+                            <span style="font-weight:600;">${escapeHtml(optText)}</span>
+                            ${badgeNote}
+                        </div>
+                    `;
+                });
+
+                let explainHtml = '';
+                if (qExp) {
+                    explainHtml = `
+                        <div class="review-explain-box">
+                            <b>💡 الشرح الطبي والتعليل الأكاديمي (${escapeHtml(qExp.rule)}):</b><br>
+                            ${escapeHtml(qExp.ar)}
+                            ${qExp.terms ? `<div class="review-terms-box">📌 أهم المصطلحات العلمية: ${escapeHtml(qExp.terms)}</div>` : ''}
+                        </div>
+                    `;
+                }
+
+                card.innerHTML = `
+                    <div class="review-header">
+                        <span class="review-q-num">Question ${i + 1} of ${maxQ}</span>
+                        <span class="review-q-status ${isCorrect ? 'correct' : 'wrong'}">
+                            ${isCorrect ? '<i class="fa-solid fa-check"></i> إجابة صحيحة' : '<i class="fa-solid fa-xmark"></i> إجابة خاطئة'}
+                        </span>
+                    </div>
+                    <div class="review-title-en">${escapeHtml(qTextEn)}</div>
+                    ${qTextAr ? `<div class="review-title-ar">${escapeHtml(qTextAr)}</div>` : ''}
+                    <div class="review-options">${optionsHtml}</div>
+                    ${explainHtml}
+                `;
+
+                modalReviewList.appendChild(card);
+            }
+
+            if (renderedCount === 0) {
+                modalReviewList.innerHTML = `
+                    <div style="text-align: center; color: var(--text-muted); padding: 2.5rem; background: white; border-radius: var(--radius-md); border: 1px dashed var(--border-color);">
+                        <i class="fa-solid fa-circle-check" style="font-size: 2.5rem; color: #10b981; margin-bottom: 0.5rem; display: block;"></i>
+                        <h4 style="color: var(--secondary-color); font-weight: 800;">لا توجد أسئلة تطابق الفلتر الحالي</h4>
+                        <p style="font-size: 0.9rem;">${activeModalFilter === 'wrong' ? 'ما شاء الله! الطالب أجاب على جميع الأسئلة بشكل صحيح 100% 🏆' : 'جميع إجابات الطالب كانت خاطئة.'}</p>
+                    </div>
+                `;
+            }
+        }
+
         function closeModal() {
             modal.classList.remove('active');
             document.body.style.overflow = '';
+            activeModalStudent = null;
         }
 
-        // Close modal on outside click
         modal.addEventListener('click', (e) => {
             if (e.target === modal) closeModal();
         });
 
-        // --- Student Certificate Generator ---
+        // =========================================================================
+        // CERTIFICATE GENERATOR (30-QUESTIONS EXAM — BDS121)
+        // High-resolution Canvas (1200 x 850) with Luxury Styling
+        // =========================================================================
         async function downloadStudentCertificate(id) {
             const student = rawResults.find(r => r.id === id || r.id == id);
             if (!student) {
                 showToast('لم يتم العثور على بيانات الطالب', 'error');
                 return;
             }
+
             const maxQ = student.total || TOTAL_QUESTIONS;
             const pct = (student.percentage !== undefined) ? student.percentage : Math.round((student.score / maxQ) * 100);
             const isQualified = pct >= 85 || student.score >= Math.round(maxQ * 0.85);
@@ -1337,7 +2176,7 @@
             ctx.fillStyle = '#475569';
             ctx.fillText('This is proudly and officially presented to certify that:', W / 2, 240);
 
-            // Doctor Name (Arabic & English Smart Handling)
+            // Doctor Name (Arabic & English Smart BiDi Handling)
             const isArabic = /[\u0600-\u06FF]/.test(student.name);
             let displayName = String(student.name).trim();
             if (isArabic) {
@@ -1372,7 +2211,7 @@
 
             ctx.font = '600 16px "Cairo", sans-serif';
             ctx.fillStyle = '#64748b';
-            ctx.fillText('Lecture 1 & Practical Lab 1 (Tooth Morphology, Tissues & Pulp Anatomy)', W / 2, 455);
+            ctx.fillText('Comprehensive 30 Questions Exam (Tooth Morphology, Tissues & Pulp Anatomy)', W / 2, 455);
 
             // Score & Grade
             const certPct = (student.percentage !== undefined) ? student.percentage : Math.round((student.score / maxQ) * 100);
@@ -1380,8 +2219,8 @@
             ctx.fillStyle = '#059669';
             ctx.fillText(`Final Score: ${student.score} / ${maxQ} (${certPct}%)`, W / 2, 510);
 
-            let gradeEnglish = certPct >= 98 ? 'Outstanding Distinction with Honors' : certPct >= 90 ? 'Excellent with Honors' : 'Very Good';
-            let gradeArabic = certPct >= 98 ? 'امتياز مع مرتبة الشرف' : certPct >= 90 ? 'امتياز' : 'جيد جداً';
+            let gradeEnglish = certPct >= 98 ? 'Outstanding Distinction with Honors' : certPct >= 90 ? 'Excellent with Honors' : 'Very Good with Distinction';
+            let gradeArabic = certPct >= 98 ? 'امتياز مع مرتبة الشرف' : certPct >= 90 ? 'ممتاز مع مرتبة الشرف' : 'جيد جداً مرتفع';
             ctx.font = '700 18px "Cairo", sans-serif';
             ctx.fillStyle = '#0284c7';
             ctx.fillText(`Academic Grade: ${gradeEnglish} — ${gradeArabic}`, W / 2, 545);
@@ -1412,7 +2251,7 @@
             ctx.moveTo(W - 390, 710);
             ctx.lineTo(W - 170, 710);
             ctx.stroke();
-            ctx.fillText('Course Examination Board', W - 280, 735);
+            ctx.fillText('Head of Dental Anatomy Dept.', W - 280, 735);
 
             // Emblems
             ctx.font = '48px sans-serif';
@@ -1422,41 +2261,62 @@
             // Download trigger
             const safeName = String(student.name).replace(/\s+/g, '_').replace(/[^\w\u0600-\u06FF]/gi, '');
             const link = document.createElement('a');
-            link.download = `Dr_${safeName}_Dental_Anatomy_Certificate.png`;
+            link.download = `Certificate_${safeName}_Dental_Anatomy_30Q.png`;
             link.href = canvas.toDataURL('image/png');
             link.click();
 
             showToast(`تم تنزيل شهادة الطالب (${student.name}) بنجاح! 🎓`, 'success');
         }
 
-        // --- Export / Import ---
+        // =========================================================================
+        // EXPORT & IMPORT (CSV & JSON)
+        // =========================================================================
         function exportData(type) {
             if (rawResults.length === 0) {
-                showToast('لا توجد بيانات للتصدير', 'warning');
+                showToast('لا توجد بيانات حالية للتصدير', 'warning');
                 return;
             }
 
             if (type === 'json') {
                 const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(rawResults, null, 2));
-                downloadFile(dataStr, `dental_anatomy_results_${formatDateForFilename()}.json`);
+                downloadFile(dataStr, `dental_anatomy_30Q_results_${formatDateForFilename()}.json`);
                 showToast('تم تصدير JSON بنجاح', 'success');
             } else if (type === 'csv') {
                 // BOM for Arabic Excel support (\uFEFF)
-                let csvContent = '\uFEFFالمركز,الاسم,الدرجة,النسبة,مدة الامتحان,التاريخ\n';
+                let csvContent = '\uFEFFالمركز,الاسم,الدرجة,النسبة,مدة الامتحان,تاريخ الامتحان,الأسئلة الخاطئة\n';
                 
                 rawResults.forEach(r => {
-                    const pct = ((r.score / TOTAL_QUESTIONS) * 100).toFixed(1) + '%';
+                    const maxQ = r.total || TOTAL_QUESTIONS;
+                    const pct = ((r.score / maxQ) * 100).toFixed(0) + '%';
                     const dateObj = new Date(r.timestamp);
                     const dateStr = !isNaN(dateObj) ? dateObj.toLocaleString('ar-EG') : (r.date || 'غير محدد');
                     const cleanName = String(r.name).replace(/"/g, '""');
-                    csvContent += `"${r.rank}","${cleanName}","${r.score}/${TOTAL_QUESTIONS}","${pct}","${r.duration || r.time || '-'}","${dateStr}"\n`;
+                    
+                    let wrongStr = '';
+                    if (r.score >= maxQ) {
+                        wrongStr = 'لا يوجد (الدرجة كاملة)';
+                    } else if (Array.isArray(r.wrongQuestions) && r.wrongQuestions.length > 0) {
+                        wrongStr = r.wrongQuestions.map(q => 'س' + q).join(' - ');
+                    } else if (Array.isArray(r.wrongDetails) && r.wrongDetails.length > 0) {
+                        wrongStr = r.wrongDetails.map(w => 'س' + (w.questionNumber || w.num)).join(' - ');
+                    } else if (Array.isArray(r.answers) && r.answers.length > 0) {
+                        const wrongNums = [];
+                        r.answers.forEach((ans, idx) => {
+                            if (ans === false || ans === 0 || ans === 'false') wrongNums.push('س' + (idx + 1));
+                        });
+                        wrongStr = wrongNums.join(' - ') || '-';
+                    } else {
+                        wrongStr = '-';
+                    }
+
+                    csvContent += `"${r.rank}","${cleanName}","${r.score}/${maxQ}","${pct}","${r.duration || r.time || '-'}","${dateStr}","${wrongStr}"\n`;
                 });
                 
                 const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
                 const url = URL.createObjectURL(blob);
-                downloadFile(url, `dental_anatomy_results_${formatDateForFilename()}.csv`);
+                downloadFile(url, `dental_anatomy_30Q_results_${formatDateForFilename()}.csv`);
                 setTimeout(() => URL.revokeObjectURL(url), 100);
-                showToast('تم تصدير CSV بنجاح', 'success');
+                showToast('تم تصدير ملف Excel (CSV) بنجاح', 'success');
             }
         }
 
@@ -1481,32 +2341,38 @@
             reader.onload = async (e) => {
                 try {
                     const data = JSON.parse(e.target.result);
-                    if (!Array.isArray(data)) throw new Error('تنسيق الملف غير صحيح. يجب أن يكون مصفوفة من النتائج.');
+                    if (!Array.isArray(data)) throw new Error('تنسيق الملف غير صحيح، يجب أن يحتوي على مصفوفة من النتائج.');
                     
-                    // In a real scenario, you'd POST this to the server.
-                    // Here we'll simulate it by updating local state, but let's try a POST first.
-                    try {
-                        const response = await fetch(API_URL, {
-                            method: 'POST', // Assuming an endpoint exists or just PUT
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ action: 'import', data: data })
-                        });
-                        if(response.ok) {
-                            showToast('تم رفع البيانات للسيرفر', 'success');
-                            fetchResults();
-                        } else {
-                            // Fallback local update for demonstration
-                            rawResults = data;
-                            processData(rawResults);
-                            showToast('تم استيراد البيانات محلياً (السيرفر لا يدعم الاستيراد المباشر)', 'warning');
+                    // Merge with existing rawResults
+                    const existingMap = new Map();
+                    rawResults.forEach(r => existingMap.set(r.id || `${r.name}_${r.score}`, r));
+                    data.forEach(item => {
+                        if (item && item.name) {
+                            const key = item.id || `${item.name}_${item.score}`;
+                            existingMap.set(key, item);
                         }
-                    } catch (err) {
-                        // Fallback local update
-                        rawResults = data;
-                        processData(rawResults);
-                        showToast('تم استيراد البيانات محلياً', 'success');
-                    }
+                    });
+
+                    const merged = Array.from(existingMap.values());
                     
+                    // Save to local storage
+                    try {
+                        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(merged));
+                    } catch(err) {}
+
+                    // Background sync imported records to server API
+                    data.forEach(rec => {
+                        try {
+                            fetch('/api/save-dental-result', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify(rec)
+                            }).catch(() => {});
+                        } catch(err) {}
+                    });
+
+                    processData(merged);
+                    showToast(`تم استيراد ${data.length} نتيجة بنجاح!`, 'success');
                 } catch (err) {
                     showToast('فشل في قراءة الملف: ' + err.message, 'error');
                 }
@@ -1515,14 +2381,16 @@
             reader.readAsText(file);
         }
 
-        // --- Clear All ---
+        // =========================================================================
+        // CLEAR ALL RECORDS
+        // =========================================================================
         async function confirmClearAll() {
             if (rawResults.length === 0) {
                 showToast('لا توجد أي نتائج حالياً لمسحها', 'warning');
                 return;
             }
             
-            if (!confirm('هل أنت متأكد من مسح جميع نتائج وسجلات الطلاب نهائياً؟ لا يمكن التراجع عن هذه الخطوة!')) {
+            if (!confirm('تحذير: هل أنت متأكد من مسح جميع نتائج وسجلات الطلاب المسجلة نهائياً؟\nلا يمكن التراجع عن هذه الخطوة!')) {
                 return;
             }
 
@@ -1530,7 +2398,9 @@
             try {
                 localStorage.removeItem(LOCAL_STORAGE_KEY);
                 localStorage.removeItem('tashheel_dental_exam_results_v1');
+                localStorage.removeItem('tashheel_dental_exam_results');
                 sessionStorage.removeItem('tashheel_dental_exam_session_v2');
+                sessionStorage.removeItem('tashheel_dental_exam_session');
             } catch(e) {}
 
             // 2. Clear from Server API
@@ -1540,14 +2410,16 @@
                 console.log('Server clear error or offline:', error.message);
             }
 
-            // 3. Reset in-memory data and re-render clean empty state
+            // 3. Reset state
             rawResults = [];
             filteredResults = [];
             processData([]);
             showToast('تم مسح جميع السجلات والنتائج بنجاح 🗑️', 'success');
         }
 
-        // --- Helpers ---
+        // =========================================================================
+        // HELPERS & TOAST
+        // =========================================================================
         function showToast(message, type = 'success') {
             const container = document.getElementById('toast-container');
             const toast = document.createElement('div');
@@ -1567,15 +2439,15 @@
             // Trigger animation
             setTimeout(() => toast.classList.add('show'), 10);
             
-            // Remove after 3 seconds
+            // Remove after 3.2 seconds
             setTimeout(() => {
                 toast.classList.remove('show');
                 setTimeout(() => toast.remove(), 300);
-            }, 3000);
+            }, 3200);
         }
 
         function escapeHtml(unsafe) {
-            if (!unsafe) return '';
+            if (unsafe === undefined || unsafe === null) return '';
             return unsafe
                  .toString()
                  .replace(/&/g, "&amp;")
