@@ -1,0 +1,1780 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dental Biomaterials I - Lecture 1: Introduction to Dental Medicine & Biomaterials | منصة تسهيل</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-gradient: linear-gradient(135deg, #f0f9ff 0%, #f1f5f9 50%, #f8fafc 100%);
+    --card-bg: #ffffff;
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --text-muted: #64748b;
+    --primary: #0284c7;
+    --primary-light: #f0f9ff;
+    --primary-border: #bae6fd;
+    --primary-dark: #0369a1;
+    --accent: #0f766e;
+    --accent-light: #f0fdfa;
+    --success: #16a34a;
+    --success-bg: #f0fdf4;
+    --warning: #d97706;
+    --warning-bg: #fffbeb;
+    --danger: #dc2626;
+    --danger-bg: #fef2f2;
+    --gold: #b45309;
+    --gold-bg: #fefce8;
+    --border-color: #e2e8f0;
+    --shadow-sm: 0 1px 4px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 18px rgba(0,0,0,0.06);
+    --shadow-lg: 0 10px 25px rgba(2, 132, 199, 0.08);
+  }
+
+  [data-theme="dark"] {
+    --bg-gradient: linear-gradient(135deg, #082f49 0%, #0f172a 50%, #032338 100%);
+    --card-bg: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --primary: #38bdf8;
+    --primary-light: rgba(56, 189, 248, 0.12);
+    --primary-border: rgba(56, 189, 248, 0.25);
+    --primary-dark: #0284c7;
+    --accent: #2dd4bf;
+    --accent-light: rgba(45, 212, 191, 0.12);
+    --success: #34d399;
+    --success-bg: rgba(52, 211, 153, 0.12);
+    --warning: #fbbf24;
+    --warning-bg: rgba(251, 191, 36, 0.12);
+    --danger: #f87171;
+    --danger-bg: rgba(248, 113, 113, 0.12);
+    --gold: #fde047;
+    --gold-bg: rgba(253, 224, 71, 0.1);
+    --border-color: #334155;
+    --shadow-sm: 0 1px 4px rgba(0,0,0,0.3);
+    --shadow-md: 0 4px 18px rgba(0,0,0,0.4);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.6);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Cairo', 'Segoe UI', Tahoma, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.9;
+    background: var(--bg-gradient);
+    color: var(--text-primary);
+    min-height: 100vh;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  p {
+    font-size: 16.5px;
+    line-height: 1.85;
+    margin: 8px 0;
+  }
+
+  /* Reading Progress Bar */
+  .progress-bar-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: transparent;
+    z-index: 9999;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #0284c7, #0d9488, #3b82f6);
+    width: 0%;
+    transition: width 0.15s ease;
+  }
+
+  /* Sticky Top Bar */
+  .top-nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-sm);
+  }
+  .nav-left, .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--primary-light);
+    color: var(--primary);
+    border: 1px solid var(--primary-border);
+    padding: 7px 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .back-btn:hover {
+    background: var(--primary);
+    color: white;
+  }
+  .nav-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--text-primary);
+  }
+
+  .theme-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .theme-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+
+  /* Main Container */
+  .container {
+    max-width: 960px;
+    margin: auto;
+    padding: 24px 20px 80px;
+  }
+
+  /* Hero Header */
+  .lecture-hero {
+    background: var(--card-bg);
+    border: 1.5px solid var(--border-color);
+    border-radius: 22px;
+    padding: 32px 28px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+  }
+  .lecture-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--primary), var(--accent));
+  }
+  .badge-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 12.5px;
+    font-weight: 700;
+  }
+  .badge-primary { background: var(--primary-light); color: var(--primary); border: 1px solid var(--primary-border); }
+  .badge-code { background: #fef3c7; color: #b45309; border: 1px solid #fde68a; font-family: 'Inter', sans-serif; }
+  .badge-accent { background: var(--accent-light); color: var(--accent); border: 1px solid rgba(45, 212, 191, 0.3); }
+
+  .hero-title {
+    font-size: clamp(22px, 4vw, 30px);
+    font-weight: 900;
+    color: var(--text-primary);
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+  .hero-subtitle {
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* Quick Navigation Chips */
+  .quick-nav {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 6px 2px 14px;
+    margin-bottom: 24px;
+    scrollbar-width: thin;
+  }
+  .quick-chip {
+    white-space: nowrap;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13.5px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-sm);
+  }
+  .quick-chip:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+  }
+
+  /* Content Sections */
+  .section-card {
+    background: var(--card-bg);
+    border: 1.5px solid var(--border-color);
+    border-radius: 20px;
+    padding: 28px 24px;
+    margin-bottom: 28px;
+    box-shadow: var(--shadow-sm);
+    transition: border-color 0.2s ease;
+  }
+  .section-card:hover {
+    border-color: var(--primary-border);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 1.5px solid var(--border-color);
+  }
+  .section-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--primary-light);
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-size: 21px;
+    font-weight: 800;
+    color: var(--text-primary);
+  }
+  .section-en-title {
+    font-size: 13.5px;
+    font-family: 'Inter', sans-serif;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+
+  /* Medical Term Box & Audio Button */
+  .term-badge {
+    display: inline-flex;
+    align-items: center;
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    border: 1px solid var(--primary-border);
+    padding: 2px 10px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    font-size: 14.5px;
+    margin: 2px 4px;
+    direction: ltr;
+    vertical-align: middle;
+  }
+  .audio-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    margin-left: 6px;
+    vertical-align: middle;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 6px rgba(2, 132, 199, 0.25);
+  }
+  .audio-btn svg {
+    width: 13px;
+    height: 13px;
+    pointer-events: none;
+    fill: currentColor;
+  }
+  .audio-btn:hover {
+    transform: scale(1.15);
+  }
+  .audio-btn.playing {
+    background: linear-gradient(135deg, var(--success), #047857);
+    animation: pulse 0.6s ease-in-out infinite alternate;
+  }
+  @keyframes pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.15); }
+  }
+
+  /* Callout Boxes */
+  .callout {
+    border-radius: 14px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    border-right: 4px solid;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .callout-info { background: var(--primary-light); border-color: var(--primary); color: var(--text-primary); }
+  .callout-tip { background: var(--success-bg); border-color: var(--success); color: var(--text-primary); }
+  .callout-warning { background: var(--warning-bg); border-color: var(--warning); color: var(--text-primary); }
+  .callout-gold { background: var(--gold-bg); border-color: #d97706; color: var(--text-primary); }
+  .callout-title {
+    font-weight: 800;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .callout-info .callout-title { color: var(--primary); }
+  .callout-tip .callout-title { color: var(--success); }
+  .callout-warning .callout-title { color: var(--warning); }
+  .callout-gold .callout-title { color: var(--gold); }
+
+  /* Grid Cards */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 18px 0;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+    margin: 18px 0;
+  }
+  .feature-box {
+    background: var(--card-bg);
+    border: 1.5px solid var(--border-color);
+    border-radius: 16px;
+    padding: 18px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.2s ease;
+  }
+  .feature-box:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  .feature-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .feature-icon {
+    font-size: 20px;
+  }
+  .feature-title {
+    font-size: 16.5px;
+    font-weight: 800;
+    color: var(--text-primary);
+  }
+
+  /* Images Display */
+  .slide-figure {
+    margin: 20px 0;
+    border: 1.5px solid var(--border-color);
+    border-radius: 18px;
+    overflow: hidden;
+    background: #ffffff;
+    box-shadow: var(--shadow-sm);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .slide-figure:hover {
+    transform: scale(1.01);
+    box-shadow: var(--shadow-md);
+  }
+  .slide-figure img {
+    width: 100%;
+    max-height: 460px;
+    object-fit: contain;
+    display: block;
+    background: #f8fafc;
+  }
+  .slide-caption {
+    padding: 12px 18px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    background: var(--primary-light);
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .zoom-hint {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+
+  /* Comparison Tables */
+  .table-wrapper {
+    overflow-x: auto;
+    margin: 20px 0;
+    border-radius: 14px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+  }
+  .custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+  }
+  .custom-table th {
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    padding: 13px 16px;
+    text-align: right;
+    font-weight: 800;
+    border-bottom: 1.5px solid var(--border-color);
+    font-size: 15.5px;
+  }
+  .custom-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+  .custom-table tr:hover td {
+    background: rgba(2, 132, 199, 0.03);
+  }
+
+  /* Caries Class Card */
+  .caries-card {
+    border: 1.5px solid var(--border-color);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 16px;
+    background: var(--card-bg);
+    transition: all 0.2s ease;
+  }
+  .caries-card:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-sm);
+  }
+  .caries-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .caries-badge {
+    background: var(--accent-light);
+    color: var(--accent);
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-weight: 800;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    border: 1px solid rgba(15, 118, 110, 0.2);
+  }
+  .caries-location {
+    font-weight: 800;
+    font-size: 16.5px;
+    color: var(--text-primary);
+  }
+
+  /* Interactive MCQ System */
+  .quiz-section {
+    background: var(--card-bg);
+    border: 2px solid var(--primary-border);
+    border-radius: 22px;
+    padding: 30px 24px;
+    margin-top: 36px;
+    box-shadow: var(--shadow-md);
+  }
+  .quiz-item {
+    background: var(--bg-gradient);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 22px;
+  }
+  .q-num {
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .q-text {
+    font-weight: 700;
+    font-size: 16.5px;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    direction: ltr;
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+  }
+  .q-arabic-text {
+    display: none;
+    background: var(--warning-bg);
+    border-right: 3px solid var(--warning);
+    padding: 9px 13px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    font-size: 14.5px;
+    color: var(--text-primary);
+  }
+  .q-arabic-text.show {
+    display: block;
+    animation: fadeIn 0.2s ease;
+  }
+  .btn-toggle-ar {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    padding: 3px 9px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-family: inherit;
+    cursor: pointer;
+    font-weight: 700;
+  }
+  .btn-toggle-ar:hover {
+    color: var(--warning);
+    border-color: var(--warning);
+  }
+
+  .mcq-opt {
+    display: block;
+    width: 100%;
+    text-align: left;
+    direction: ltr;
+    background: var(--card-bg);
+    border: 1.5px solid var(--border-color);
+    border-radius: 10px;
+    padding: 11px 16px;
+    margin: 8px 0;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--text-primary);
+    transition: all 0.2s ease;
+  }
+  .mcq-opt:hover {
+    border-color: var(--primary);
+    background: var(--primary-light);
+    transform: translateX(4px);
+  }
+  .mcq-opt.correct {
+    background: var(--success-bg) !important;
+    border-color: var(--success) !important;
+    color: var(--success) !important;
+    font-weight: 700;
+  }
+  .mcq-opt.wrong {
+    background: var(--danger-bg) !important;
+    border-color: var(--danger) !important;
+    color: var(--danger) !important;
+    font-weight: 700;
+  }
+
+  .q-feedback {
+    display: none;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    margin-top: 10px;
+    line-height: 1.7;
+  }
+  .q-feedback.show {
+    display: block;
+    animation: fadeIn 0.25s ease;
+  }
+  .q-feedback.correct-fb {
+    background: var(--success-bg);
+    border: 1px solid var(--success);
+    color: var(--text-primary);
+  }
+  .q-feedback.wrong-fb {
+    background: var(--danger-bg);
+    border: 1px solid var(--danger);
+    color: var(--text-primary);
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Floating Scroll to Top */
+  .scroll-top-btn {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: white;
+    border: none;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+    z-index: 900;
+    transition: all 0.2s ease;
+  }
+  .scroll-top-btn:hover {
+    transform: translateY(-3px);
+    background: var(--primary-dark);
+  }
+
+  /* Image Modal Lightbox */
+  .img-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(6px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.25s ease;
+  }
+  .img-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  .img-modal-content {
+    max-width: 900px;
+    max-height: 90vh;
+    background: #000;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  }
+  .img-modal-content img {
+    max-width: 100%;
+    max-height: 80vh;
+    display: block;
+    margin: auto;
+  }
+  .modal-close-btn {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .modal-caption {
+    color: #e2e8f0;
+    font-size: 14.5px;
+    padding: 10px 16px;
+    text-align: center;
+    background: #0f172a;
+    font-weight: 700;
+  }
+
+  footer {
+    text-align: center;
+    padding: 34px 20px;
+    color: var(--text-muted);
+    font-size: 14.5px;
+    border-top: 1px solid var(--border-color);
+    margin-top: 50px;
+  }
+</style>
+</head>
+<body>
+
+<!-- Progress Bar -->
+<div class="progress-bar-fixed">
+  <div class="progress-fill" id="progressFill"></div>
+</div>
+
+<!-- Top Navigation -->
+<nav class="top-nav">
+  <div class="nav-left">
+    <a href="../index.html" class="back-btn">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      <span>قائمة المحاضرات</span>
+    </a>
+    <span class="nav-title">Dental Biomaterials I - PDD131</span>
+  </div>
+  <div class="nav-right">
+    <button class="theme-btn" id="themeToggle" title="تبديل الوضع الليلي / الفاتح">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="container">
+
+
+
+  <!-- Quick Nav Chips -->
+  <div class="quick-nav">
+    <a href="#sec-dentistry" class="quick-chip">1. مفهوم طب الأسنان وأهدافه</a>
+    <a href="#sec-depts" class="quick-chip">2. أقسام كلية طب الأسنان</a>
+    <a href="#sec-biomat" class="quick-chip">3. علم المواد الحيوية للأسنان</a>
+    <a href="#sec-prosthetics" class="quick-chip">4. التركيبات والاستعاضة (ثابتة ومتحركة)</a>
+    <a href="#sec-terms" class="quick-chip">5. مصطلحات سريرية هامة</a>
+    <a href="#sec-restorations" class="quick-chip">6. الحشوات: مباشرة وغير مباشرة</a>
+    <a href="#sec-caries" class="quick-chip">7. تسوس الأسنان وتصنيف G.V. Black</a>
+    <a href="#sec-summary" class="quick-chip">8. الجداول الذهبية للمراجعة</a>
+    <a href="#sec-quiz" class="quick-chip">9. بنك الأسئلة التفاعلي (MCQ)</a>
+  </div>
+
+  <!-- SECTION 1 -->
+  <section id="sec-dentistry" class="section-card">
+    <div class="section-header">
+      <div class="section-icon">🦷</div>
+      <div>
+        <h2 class="section-title">1. ما هو طب الأسنان؟ وما هي أهدافه الجوهرية؟</h2>
+        <div class="section-en-title">Concept & Core Goals of Dentistry</div>
+      </div>
+    </div>
+
+    <p>
+      علم طب الأسنان <span class="term-badge">Dentistry<button class="audio-btn" onclick="playAudio('dentistry')" title="نطق المصطلح"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span> هو مزيج استثنائي بين <strong>العلم الطبي، والهندسة الميكانيكية، والفن الجمالي</strong>.
+      ولهذا يُطلق على طبيب الأسنان دائماً المعادلة الشهيرة:
+      <br>
+      <code style="background:var(--primary-light); color:var(--primary-dark); padding:4px 10px; border-radius:6px; font-weight:800; display:inline-block; margin-top:6px;">
+        Dentist = d (Doctor) + en (Engineer) + tist (Artist)
+      </code>
+    </p>
+
+    <div class="callout callout-info">
+      <div class="callout-title">
+        <span>🎯 الأهداف الثلاثة الكبرى لطب الأسنان (Three Primary Goals)</span>
+      </div>
+      <p>يتعامل طب الأسنان بصورة أساسية مع تحقيق ثلاث مهام علاجية متكاملة:</p>
+      <ul style="padding-right: 22px; margin-top: 6px;">
+        <li>
+          <strong>1. استعادة المظهر الجمالي <span class="term-badge">Restoring Esthetics<button class="audio-btn" onclick="playAudio('esthetics')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>:</strong>
+          إعادة الابتساعة الطبيعية وتناسق الأسنان وتطابق ألوانها، مما ينعكس مباشرة على ثقة المريض بنفسه وصحته النفسية.
+        </li>
+        <li>
+          <strong>2. تسكين وعلاج الألم <span class="term-badge">Relief Pain</span>:</strong>
+          آلام الأسنان وعصب السن تُعد من أشد الآلام التي يواجهها الإنسان؛ لذا فالتشخيص السريع وإيقاف الألم هو خط الدفاع الطبي الأول.
+        </li>
+        <li>
+          <strong>3. استعادة كفاءة المضغ <span class="term-badge">Restoring Masticatory Efficiency<button class="audio-btn" onclick="playAudio('masticatory_efficiency')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>:</strong>
+          فقدان سن واحد أو تهدمه يؤدي لخلل في عملية تقطيع وطحن الطعام (<span class="term-badge">Mastication<button class="audio-btn" onclick="playAudio('mastication')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>)، وبالتالي حدوث اضطرابات في الجهاز الهضمي والفكين.
+        </li>
+      </ul>
+    </div>
+
+    <!-- Slide 6 Figure -->
+    <div class="slide-figure" onclick="openImageModal('images/slide_06.png', 'الشريحة 6: أهداف طب الأسنان وهوية طبيب الأسنان الشاملة')">
+      <img src="images/slide_06.png" alt="Dentistry Goals & Mission" loading="lazy">
+      <div class="slide-caption">
+        <span>الشريحة 6: الأهداف الثلاثة لطب الأسنان (الجمال، تسكين الألم، كفاءة المضغ)</span>
+        <span class="zoom-hint">🔍 اضغط للتكبير</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section id="sec-depts" class="section-card">
+    <div class="section-header">
+      <div class="section-icon">🏛️</div>
+      <div>
+        <h2 class="section-title">2. أقسام كلية طب الأسنان (Faculty Departments)</h2>
+        <div class="section-en-title">Academic & Clinical Disciplines</div>
+      </div>
+    </div>
+
+    <p>
+      تنقسم دراسة طب الأسنان في كليات طب وجراحة الفم والأسنان إلى شقين متكاملين:
+      <strong>أقسام أكاديمية أساسية (Academic / Basic Sciences)</strong>،
+      و<strong>أقسام إكلينيكية علاجية (Clinical Departments)</strong>:
+    </p>
+
+    <div class="grid-2">
+      <!-- Academic -->
+      <div class="feature-box" style="border-right: 4px solid #0284c7;">
+        <div class="feature-header">
+          <span class="feature-icon">📚</span>
+          <span class="feature-title">الأقسام الأكاديمية (Academic)</span>
+        </div>
+        <ul style="padding-right: 18px;">
+          <li>
+            <strong>تشريح الأسنان <span class="term-badge">Dental Anatomy<button class="audio-btn" onclick="playAudio('dental_anatomy')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>:</strong>
+            دراسة الشكل المورفولوجي الخارجي للأسنان وتضاريسها.
+          </li>
+          <li>
+            <strong>بيولوجيا الفم <span class="term-badge">Oral Biology<button class="audio-btn" onclick="playAudio('oral_biology')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>:</strong>
+            علم أنسجة وتطور وخلايا الفم والأسنان تحت المجهر.
+          </li>
+          <li>
+            <strong>باثولوجيا الفم <span class="term-badge">Oral Pathology<button class="audio-btn" onclick="playAudio('oral_pathology')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>:</strong>
+            علم دراسة أمراض الفم والأورام والآفات النسيجية.
+          </li>
+          <li>
+            <strong>أشعة الفم والوجه والفكين <span class="term-badge">Oral Radiology<button class="audio-btn" onclick="playAudio('oral_radiology')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>:</strong>
+            تُعرف بـ <em>"عين طبيب الأسنان الثالثة (Dentists' 3rd Eye)"</em>، لأنها تكشف ما بداخل العظام والجذور تحت اللثة.
+          </li>
+        </ul>
+      </div>
+
+      <!-- Clinical -->
+      <div class="feature-box" style="border-right: 4px solid #0f766e;">
+        <div class="feature-header">
+          <span class="feature-icon">🩺</span>
+          <span class="feature-title">الأقسام الإكلينيكية (Clinical)</span>
+        </div>
+        <ul style="padding-right: 18px;">
+          <li>
+            <strong>الاستعاضة الصناعية <span class="term-badge">Prosthetic Dentistry<button class="audio-btn" onclick="playAudio('prosthetic_dentistry')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>:</strong>
+            تعويض الأسنان المفقودة (وهو القسم الذي تنتمي إليه مادتنا Dental Biomaterials).
+          </li>
+          <li>
+            <strong>العلاج التحفظي <span class="term-badge">Conservative Dentistry<button class="audio-btn" onclick="playAudio('conservative_dentistry')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>:</strong>
+            يشمل فرعين:
+            <br>
+            • علاج الأسنان والحشوات <span class="term-badge">Operative Dentistry<button class="audio-btn" onclick="playAudio('operative_dentistry')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>
+            <br>
+            • علاج الجذور وعصب السن <span class="term-badge">Endodontics<button class="audio-btn" onclick="playAudio('endodontics')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>
+          </li>
+          <li>
+            <strong>تقويم الأسنان <span class="term-badge">Orthodontics<button class="audio-btn" onclick="playAudio('orthodontics')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>:</strong>
+            تعديل عضة الفكين ورصف الأسنان المزدحمة.
+          </li>
+          <li>
+            <strong>طب أسنان الأطفال <span class="term-badge">Pedodontics<button class="audio-btn" onclick="playAudio('pedodontics')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>:</strong>
+            رعاية أسنان الأطفال اللبنية حتى اكتمال التبديل.
+          </li>
+          <li>
+            <strong>جراحة الفم والوجه والفكين <span class="term-badge">Oral & Maxillofacial Surgery<button class="audio-btn" onclick="playAudio('oral_and_maxillofacial_surgery')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>:</strong>
+            خلع الأسنان، جراحات الضروس المدفونة، الكسور والأورام.
+          </li>
+          <li>
+            <strong>طب الفم وأمراض اللثة <span class="term-badge">Oral Medicine & Periodontology<button class="audio-btn" onclick="playAudio('periodontology')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>:</strong>
+            علاج أمراض اللثة، البلاك <span class="term-badge">Dental Plaque<button class="audio-btn" onclick="playAudio('dental_plaque')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>، وانحسار اللثة <span class="term-badge">Gum Recession<button class="audio-btn" onclick="playAudio('gum_recession')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Slide Figures -->
+    <div class="grid-2">
+      <div class="slide-figure" onclick="openImageModal('images/slide_08.png', 'الشريحة 8: العلوم الأساسية وأشعة الفم (عين طبيب الأسنان الثالثة)')">
+        <img src="images/slide_08.png" alt="Basic Dental Sciences" loading="lazy">
+        <div class="slide-caption">
+          <span>الشريحة 8: Basic Dental Sciences (عين الطبيب الثالثة)</span>
+          <span class="zoom-hint">🔍 تكبير</span>
+        </div>
+      </div>
+      <div class="slide-figure" onclick="openImageModal('images/slide_09.png', 'الشريحة 9: طب الفم وأمراض اللثة وانحسارها')">
+        <img src="images/slide_09.png" alt="Periodontology & Gum Recession" loading="lazy">
+        <div class="slide-caption">
+          <span>الشريحة 9: Dental Plaque & Gum Recession</span>
+          <span class="zoom-hint">🔍 تكبير</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3 -->
+  <section id="sec-biomat" class="section-card">
+    <div class="section-header">
+      <div class="section-icon">🧪</div>
+      <div>
+        <h2 class="section-title">3. علم خواص المواد الحيوية للأسنان (Dental Biomaterials)</h2>
+        <div class="section-en-title">Definition, Core Pillars & Clinical Value</div>
+      </div>
+    </div>
+
+    <div class="callout callout-gold">
+      <div class="callout-title">
+        <span>💡 التعريف الدقيق للمادة الحيوية (Biomaterials)</span>
+      </div>
+      <p>
+        <strong>المواد الحيوية <span class="term-badge">Biomaterials<button class="audio-btn" onclick="playAudio('biomaterials')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>:</strong>
+        هي مواد مصنعة أو طبيعية مخصصة للاستخدام داخل جسم الإنسان للتعويض عن وظيفة حيوية أو استبدال نسيج مفقود أو دعمه.
+      </p>
+      <p style="margin-top: 6px;">
+        <strong>علم خواص المواد الحيوية للأسنان <span class="term-badge">Science of Dental Biomaterials<button class="audio-btn" onclick="playAudio('dental_biomaterials')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>:</strong>
+        هو العلم الذي يختص بدراسة المواد المستخدمة في تجويف الفم ومعامل الأسنان من خلال <strong>4 أركان أساسية</strong>:
+      </p>
+      <div class="grid-2" style="margin-top: 10px;">
+        <div style="background:var(--card-bg); padding:10px 14px; border-radius:10px; border:1px solid var(--border-color);">
+          <strong>1. التركيب (Composition):</strong> المكونات الكيميائية للسبائك، البوليمرات، والسيراميك.
+        </div>
+        <div style="background:var(--card-bg); padding:10px 14px; border-radius:10px; border:1px solid var(--border-color);">
+          <strong>2. الخواص (Properties):</strong> الخواص الميكانيكية، الحرارية، البصرية، والبيولوجية.
+        </div>
+        <div style="background:var(--card-bg); padding:10px 14px; border-radius:10px; border:1px solid var(--border-color);">
+          <strong>3. الاستخدامات (Uses & Indications):</strong> متى وأين تستخدم كل مادة بدقة؟
+        </div>
+        <div style="background:var(--card-bg); padding:10px 14px; border-radius:10px; border:1px solid var(--border-color);">
+          <strong>4. المعالجة والخلط (<span class="term-badge">Manipulation<button class="audio-btn" onclick="playAudio('manipulation')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>):</strong>
+          طريقة الخلط، نسب البودرة للسائل، وزمن التصلب لضمان أعلى متانة.
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 17 Figure -->
+    <div class="slide-figure" onclick="openImageModal('images/slide_17.png', 'الشريحة 17: تعريف المواد الحيوية ومجالات تطبيقها في طب الأسنان')">
+      <img src="images/slide_17.png" alt="Science of Dental Biomaterials" loading="lazy">
+      <div class="slide-caption">
+        <span>الشريحة 17: فروع طب الأسنان التي تعتمد مباشرة على المواد الحيوية</span>
+        <span class="zoom-hint">🔍 اضغط للتكبير</span>
+      </div>
+    </div>
+
+    <div class="callout callout-tip">
+      <div class="callout-title">
+        <span>🌟 لماذا ندرس خواص المواد الحيوية؟ (Benefits of Studying Dental Materials)</span>
+      </div>
+      <ul style="padding-right: 20px;">
+        <li><strong>معرفة أنواع ودواعي استعمال مواد الحشو (Types & indications of filling materials):</strong> لتعرف بدقة متى تختار الكومبوزيت، ومتى تختار الأملغم، ومتى تختار الجلاس أينومر.</li>
+        <li><strong>التعامل السليم مع المادة في العيادة (Handle materials properly):</strong> خلط المادة بنسب صحيحة وتجنب حدوث فقاعات هواء أو فشل مبكر في الالتصاق.</li>
+        <li><strong>تثقيف المريض وتوجيهه (Educate patient):</strong> شرح الخيارات العلاجية وتكلفتها ومزايا كل مادة للمريض بثقة علمية تامة.</li>
+      </ul>
+    </div>
+
+    <div class="feature-box" style="margin-top: 14px;">
+      <div class="feature-header">
+        <span class="feature-icon">🛡️</span>
+        <span class="feature-title">الهيئات والمعايير الدولية (Standards Organizations)</span>
+      </div>
+      <p>
+        لكي يتم اعتماد أي مادة أسنان واستخدامها بأمان في فم الإنسان، يجب أن تجتاز اختبارات صارمة من منظمات عالمية، وأشهرها:
+        <br>
+        • <strong>ADA:</strong> American Dental Association (جمعية طب الأسنان الأمريكية - ختم ADA Accepted).
+        <br>
+        • <strong>ANSI:</strong> American National Standards Institute (المعهد الوطني الأمريكي للمعايير القياسية).
+      </p>
+    </div>
+
+    <!-- Slide 20 & 21 Figures -->
+    <div class="grid-2">
+      <div class="slide-figure" onclick="openImageModal('images/slide_20.png', 'الشريحة 20: معايير اختيار المادة ومطابقتها لمواصفات ADA و ANSI')">
+        <img src="images/slide_20.png" alt="ADA & ANSI Standards" loading="lazy">
+        <div class="slide-caption">
+          <span>الشريحة 20: Choosing Right Materials (ADA & ANSI)</span>
+          <span class="zoom-hint">🔍 تكبير</span>
+        </div>
+      </div>
+      <div class="slide-figure" onclick="openImageModal('images/slide_21.png', 'الشريحة 21: فوائد دراسة خواص المواد والخلط السليم')">
+        <img src="images/slide_21.png" alt="Benefits of studying dental materials" loading="lazy">
+        <div class="slide-caption">
+          <span>الشريحة 21: فوائد دراسة المواد الحيوية لطبيب الأسنان</span>
+          <span class="zoom-hint">🔍 تكبير</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4 -->
+  <section id="sec-prosthetics" class="section-card">
+    <div class="section-header">
+      <div class="section-icon">👑</div>
+      <div>
+        <h2 class="section-title">4. التركيبات والاستعاضة الصناعية (Prosthetic Dentistry)</h2>
+        <div class="section-en-title">Fixed vs Removable Prosthodontics & Denture Components</div>
+      </div>
+    </div>
+
+    <p>
+      كلمة استعاضة <span class="term-badge">Prosthesis<button class="audio-btn" onclick="playAudio('prosthesis')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>
+      تعني طبياً: <strong>أي بديل صناعي لجزء مفقود في جسم الإنسان</strong> (مثل الأطراف الصناعية، أو مفاصل الركبة والحوض، أو تعويضات الأسنان).
+      وفي طب الأسنان، تنقسم الاستعاضات إلى نوعين رئيسيين:
+    </p>
+
+    <!-- Fixed vs Removable -->
+    <div class="grid-2">
+      <!-- Fixed -->
+      <div class="feature-box" style="border-top: 4px solid #0284c7;">
+        <div class="feature-header">
+          <span class="feature-icon">🔒</span>
+          <span class="feature-title">التركيبات الثابتة <span class="term-badge">Fixed Prosthodontics<button class="audio-btn" onclick="playAudio('fixed_prosthodontics')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span></span>
+        </div>
+        <p style="font-size:15px; color:var(--text-secondary);">
+          تعويض الأسنان المفقودة بتركيبة <strong>لا يستطيع المريض نزعها من فمه</strong>، وتكون مثبتة بشكل دائم على الأسنان الطبيعية أو على زرعات.
+        </p>
+        <ul style="padding-right: 18px; margin-top:8px;">
+          <li>التيجان والجسور: <span class="term-badge">Crown<button class="audio-btn" onclick="playAudio('crown')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span> & <span class="term-badge">Bridge<button class="audio-btn" onclick="playAudio('bridge')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span></li>
+          <li>زراعة الأسنان: <span class="term-badge">Dental Implants<button class="audio-btn" onclick="playAudio('dental_implants')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span></li>
+        </ul>
+        <div style="background:var(--primary-light); padding:10px; border-radius:10px; margin-top:10px; font-size:14px;">
+          <strong>مواد تصنيع التيجان والجسور:</strong>
+          <br>1. <span class="term-badge">All Ceramic<button class="audio-btn" onclick="playAudio('all_ceramic')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>: خزف بالكامل (جمالية فائقة).
+          <br>2. <span class="term-badge">All Metallic<button class="audio-btn" onclick="playAudio('all_metallic')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>: معدن بالكامل (متانة عالية، غير تجميلي).
+          <br>3. <span class="term-badge">Ceramo-metallic<button class="audio-btn" onclick="playAudio('ceramo_metallic')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>: قلب معدني مغطى بالخزف (PFM).
+        </div>
+      </div>
+
+      <!-- Removable -->
+      <div class="feature-box" style="border-top: 4px solid #0f766e;">
+        <div class="feature-header">
+          <span class="feature-icon">🔄</span>
+          <span class="feature-title">التركيبات المتحركة <span class="term-badge">Removable Prosthodontics<button class="audio-btn" onclick="playAudio('removable_prosthodontics')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span></span>
+        </div>
+        <p style="font-size:15px; color:var(--text-secondary);">
+          تعويض الأسنان المفقودة ببديل صناعي <strong>يستطيع المريض نزعه وتنظيفه وارتداءه بنفسه</strong> بكل سهولة.
+        </p>
+        <ul style="padding-right: 18px; margin-top:8px;">
+          <li>الطقم الكامل: <span class="term-badge">Complete Denture<button class="audio-btn" onclick="playAudio('complete_denture')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span> (لفقدان كامل الأسنان).</li>
+          <li>الطقم الجزئي: <span class="term-badge">Partial Denture<button class="audio-btn" onclick="playAudio('partial_denture')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span> (لفقدان بعض الأسنان).</li>
+        </ul>
+        <div style="background:var(--accent-light); padding:10px; border-radius:10px; margin-top:10px; font-size:14px;">
+          <strong>مكونات طقم الأسنان المتحرك (Denture Components):</strong>
+          <br>1. <strong>قاعدة الطقم (<span class="term-badge">Denture Base<button class="audio-btn" onclick="playAudio('denture_base')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>):</strong>
+          الجزء الوردي المستند على اللثة والعظام.
+          <br>2. <strong>الأسنان الصناعية (<span class="term-badge">Artificial Teeth<button class="audio-btn" onclick="playAudio('artificial_teeth')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>):</strong>
+          الأسنان المثبتة فوق القاعدة.
+        </div>
+      </div>
+    </div>
+
+    <!-- Materials of Denture Base & Teeth Table -->
+    <div class="table-wrapper">
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>جزء الطقم (Denture Component)</th>
+            <th>نوع المادة (Classification)</th>
+            <th>الأمثلة والمواد المستخدمة (Materials)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td rowspan="2"><strong>1. قاعدة الطقم (Denture Base)</strong></td>
+            <td><strong>غير معدنية (Non-metallic)</strong></td>
+            <td>
+              راتينج الأكريليك <span class="term-badge">Acrylic Resin<button class="audio-btn" onclick="playAudio('acrylic_resin')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span> (PMMA - وردي بلون اللثة).
+            </td>
+          </tr>
+          <tr>
+            <td><strong>معدنية (Metallic)</strong></td>
+            <td>
+              سبيكة الكوبالت كروم <span class="term-badge">Cobalt Chromium Alloy<button class="audio-btn" onclick="playAudio('cobalt_chromium_alloy')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>
+              أو سبيكة الذهب عيار IV <span class="term-badge">Gold Alloy IV<button class="audio-btn" onclick="playAudio('gold_alloy')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>.
+            </td>
+          </tr>
+          <tr>
+            <td rowspan="2"><strong>2. الأسنان الصناعية (Artificial Teeth)</strong></td>
+            <td><strong>أسنان أكريليك</strong></td>
+            <td>
+              <span class="term-badge">Acrylic Resin</span> (ترتبط كيميائياً بالقاعدة الأكريليكية، سهلة التعديل، لا تصدر صوتاً أثناء المضغ).
+            </td>
+          </tr>
+          <tr>
+            <td><strong>أسنان بورسلين</strong></td>
+            <td>
+              <span class="term-badge">Porcelain<button class="audio-btn" onclick="playAudio('porcelain')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span> (شديدة الصلابة والتألق الجمالي، لكنها قابلة للكسر وتحتاج لدبابيس تثبيت Retention Pins).
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Slide 14 & 26 Figures -->
+    <div class="grid-2">
+      <div class="slide-figure" onclick="openImageModal('images/slide_14.png', 'الشريحة 14: أنواع التيجان والجسور الثابتة وموادها')">
+        <img src="images/slide_14.png" alt="Fixed Prosthodontics Types" loading="lazy">
+        <div class="slide-caption">
+          <span>الشريحة 14: Fixed Prosthodontics (All Ceramic, Metallic, PFM)</span>
+          <span class="zoom-hint">🔍 تكبير</span>
+        </div>
+      </div>
+      <div class="slide-figure" onclick="openImageModal('images/slide_26.png', 'الشريحة 26: مواد قاعدة الطقم (أكريليك ومعدن)')">
+        <img src="images/slide_26.png" alt="Denture Base Materials" loading="lazy">
+        <div class="slide-caption">
+          <span>الشريحة 26: مواد قاعدة الطقم (Denture Base Materials)</span>
+          <span class="zoom-hint">🔍 تكبير</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5 -->
+  <section id="sec-terms" class="section-card">
+    <div class="section-header">
+      <div class="section-icon">📖</div>
+      <div>
+        <h2 class="section-title">5. مصطلحات سريرية أساسية يجب حفظها (Essential Dental Terms)</h2>
+        <div class="section-en-title">Dentulous vs Edentulous & Anterior vs Posterior</div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="feature-box">
+        <div class="feature-header">
+          <span class="feature-icon">✨</span>
+          <span class="feature-title">حالة الأسنان في الفم (Dentition Status)</span>
+        </div>
+        <ul style="padding-right: 18px;">
+          <li>
+            <strong>مريض لديه أسنان طبيعية <span class="term-badge">Dentulous Patient<button class="audio-btn" onclick="playAudio('dentulous')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>:</strong>
+            يملك أسنانه الطبيعية في الفك.
+          </li>
+          <li>
+            <strong>مريض فاقد للأسنان <span class="term-badge">Edentulous Patient<button class="audio-btn" onclick="playAudio('edentulous')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>:</strong>
+            فقد أسنانه، وينقسم إلى:
+            <br>
+            • <em>فاقد للأسنان بالكامل (Completely Edentulous):</em> لا يملك أي سن في الفك ويحتاج لطقم كامل (Complete Denture).
+            <br>
+            • <em>فاقد لبعض الأسنان (Partially Edentulous):</em> بقيت لديه بعض الأسنان ويحتاج لطقم جزئي (Partial Denture) أو جسر أو زرعة.
+          </li>
+        </ul>
+      </div>
+
+      <div class="feature-box">
+        <div class="feature-header">
+          <span class="feature-icon">📍</span>
+          <span class="feature-title">موقع الأسنان ووظيفتها الرئيسية</span>
+        </div>
+        <ul style="padding-right: 18px;">
+          <li>
+            <strong>الأسنان الأمامية <span class="term-badge">Anterior Teeth<button class="audio-btn" onclick="playAudio('anterior_teeth')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>:</strong>
+            تشمل القواطع (Central & Lateral Incisors) والأنياب (Canines).
+            <br>
+            <em>المطلب العلاجي الأهم:</em> <strong>المظهر الجمالي (<span class="term-badge">Esthetics</span>)</strong>.
+          </li>
+          <li>
+            <strong>الأسنان الخلفية <span class="term-badge">Posterior Teeth<button class="audio-btn" onclick="playAudio('posterior_teeth')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>:</strong>
+            تشمل الضواحك (Premolars) والأضراس (Molars).
+            <br>
+            <em>المطلب العلاجي الأهم:</em> <strong>القوة الميكانيكية ومقاومة المضغ (<span class="term-badge">Strength</span>)</strong>.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Slide 23 & 24 Figures -->
+    <div class="grid-2">
+      <div class="slide-figure" onclick="openImageModal('images/slide_23.png', 'الشريحة 23: Dentulous مقابل Edentulous')">
+        <img src="images/slide_23.png" alt="Dentulous vs Edentulous" loading="lazy">
+        <div class="slide-caption">
+          <span>الشريحة 23: Dentulous vs Edentulous Patient</span>
+          <span class="zoom-hint">🔍 تكبير</span>
+        </div>
+      </div>
+      <div class="slide-figure" onclick="openImageModal('images/slide_24.png', 'الشريحة 24: Completely vs Partially Edentulous')">
+        <img src="images/slide_24.png" alt="Completely vs Partially Edentulous" loading="lazy">
+        <div class="slide-caption">
+          <span>الشريحة 24: Completely vs Partially Edentulous Patients</span>
+          <span class="zoom-hint">🔍 تكبير</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6 -->
+  <section id="sec-restorations" class="section-card">
+    <div class="section-header">
+      <div class="section-icon">💎</div>
+      <div>
+        <h2 class="section-title">6. الحشوات والترميمات: مباشرة وغير مباشرة (Direct vs Indirect)</h2>
+        <div class="section-en-title">Direct vs Indirect Restorations</div>
+      </div>
+    </div>
+
+    <p>
+      عند حدوث نخر أو تسوس أو كسر في جزء من السن، يقوم طبيب الأسنان بترميم السن بإحدى طريقتين جوهريتين:
+    </p>
+
+    <div class="grid-2">
+      <!-- Direct -->
+      <div class="feature-box" style="border-right: 4px solid #16a34a;">
+        <div class="feature-header">
+          <span class="feature-icon">⚡</span>
+          <span class="feature-title">الحشوات المباشرة <span class="term-badge">Direct Restorations<button class="audio-btn" onclick="playAudio('direct_restoration')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span></span>
+        </div>
+        <p style="font-size:15px; color:var(--text-secondary);">
+          توضع المادة في تجويف السن المحضر وتتشكل وتتصلب <strong>مباشرة داخل فم المريض وفي جلسة واحدة (One Visit)</strong>.
+        </p>
+        <ul style="padding-right: 18px; margin-top:8px;">
+          <li>
+            <strong>ملغم الفضة <span class="term-badge">Dental Amalgam<button class="audio-btn" onclick="playAudio('dental_amalgam')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>:</strong>
+            سبيكة معدنية فضية فائقة القوة ومقاومة التآكل، مثالية للأسنان الخلفية ولكن يعيبها اللون الفضي المعدني.
+          </li>
+          <li>
+            <strong>الكومبوزيت <span class="term-badge">Composite Resin<button class="audio-btn" onclick="playAudio('composite_resin')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>:</strong>
+            حشوة بوليمرية تجميلية بلون السن الطبيعي، تتصلب بجهاز الضوء الأزرق (Light Curing).
+          </li>
+          <li>
+            <strong>الإينومر الزجاجي <span class="term-badge">Glass Ionomer<button class="audio-btn" onclick="playAudio('glass_ionomer')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>:</strong>
+            يرتبط كيميائياً بالسن ويفرز الفلورايد لحماية السن من عودة التسوس.
+          </li>
+        </ul>
+      </div>
+
+      <!-- Indirect -->
+      <div class="feature-box" style="border-right: 4px solid #b45309;">
+        <div class="feature-header">
+          <span class="feature-icon">🔬</span>
+          <span class="feature-title">الترميمات غير المباشرة <span class="term-badge">Indirect Restorations<button class="audio-btn" onclick="playAudio('indirect_restoration')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span></span>
+        </div>
+        <p style="font-size:15px; color:var(--text-secondary);">
+          تُصنع خارج فم المريض في <strong>معمل الأسنان (Dental Laboratory)</strong> بعد أخذ طبعة (Impression) لمقاس السن، ثم تثبت بالأسمنت في جلسة تالية.
+        </p>
+        <ul style="padding-right: 18px; margin-top:8px;">
+          <li>
+            <strong>الحشوة المصبوبة الداخلية <span class="term-badge">Inlay<button class="audio-btn" onclick="playAudio('inlay')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>:</strong>
+            توضع داخل التجاويف دون تغطية حدبات السن (Cusps)، وأنواعها:
+            <br>• <span class="term-badge">Composite Inlay</span>
+            <br>• <span class="term-badge">Gold Inlay</span>
+            <br>• <span class="term-badge">Ceramic Inlay</span>
+          </li>
+          <li>
+            <strong>الحشوة المصبوبة الفوقية <span class="term-badge">Onlay<button class="audio-btn" onclick="playAudio('onlay')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>:</strong>
+            تغطي حدبة واحدة أو أكثر من حدبات السن المتهدمة.
+          </li>
+          <li>
+            <strong>التاج الكامل <span class="term-badge">Crown</span>:</strong>
+            يغطي كامل السن من جميع أسطحه كغطاء واقٍ.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Slide 28 Figure -->
+    <div class="slide-figure" onclick="openImageModal('images/slide_28.png', 'الشريحة 28: المقارنة بين الحشوة المباشرة وغير المباشرة والفرق بين Inlay و Onlay و Crown')">
+      <img src="images/slide_28.png" alt="Direct and indirect restoration" loading="lazy">
+      <div class="slide-caption">
+        <span>الشريحة 28: Direct and Indirect Restorations (Inlay vs Onlay vs Crown)</span>
+        <span class="zoom-hint">🔍 اضغط للتكبير</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7 -->
+  <section id="sec-caries" class="section-card">
+    <div class="section-header">
+      <div class="section-icon">🦷</div>
+      <div>
+        <h2 class="section-title">7. تسوس الأسنان وتصنيف G.V. Black (Dental Caries & Classes)</h2>
+        <div class="section-en-title">Caries Etiology, Progression & Classification System</div>
+      </div>
+    </div>
+
+    <div class="callout callout-warning">
+      <div class="callout-title">
+        <span>⚠️ تعريف تسوس الأسنان (Dental Caries)</span>
+      </div>
+      <p>
+        تسوس الأسنان <span class="term-badge">Dental Caries<button class="audio-btn" onclick="playAudio('dental_caries')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>
+        هو: <strong>تهدم وتآكل غير قابل للرجوع (Irreversible destruction)</strong> في الأنسجة الصلبة للسن نتيجة الأحماض التي تفرزها بكتيريا البلاك عند تخمير السكريات.
+      </p>
+      <div style="background:var(--card-bg); padding:12px; border-radius:10px; margin-top:8px;">
+        <strong>مراحل تقدم النخر في طبقات السن (Stages of Progression):</strong>
+        <br>
+        1. <strong>المينا (Enamel)</strong>: نخر مبدئي (Incipient) يظهر كبقعة بيضاء أو تآكل سطحي.
+        <br>
+        ⬇️ 2. <strong>المينا والعاج (Enamel & Dentin)</strong>: نخر معتدل (Moderate) يصل إلى ملتقى المينا والعاج (DEJ) ويبدأ المريض بالشعور بالحساسية.
+        <br>
+        ⬇️ 3. <strong>العاج العميق (Deep Dentin)</strong>: نخر متقدم (Advanced) يقترب من اللب.
+        <br>
+        ⬇️ 4. <strong>عصب السن (Pulp)</strong>: نخر شديد (Severe) يلتهب فيه عصب السن ويحتاج لعلاج جذور (Endodontic treatment).
+      </div>
+    </div>
+
+    <!-- Slide 29 Figure -->
+    <div class="slide-figure" onclick="openImageModal('images/slide_29.png', 'الشريحة 29: مراحل تقدم تسوس الأسنان من المينا إلى اللب')">
+      <img src="images/slide_29.png" alt="Dental Caries Progression" loading="lazy">
+      <div class="slide-caption">
+        <span>الشريحة 29: Dental Caries (Enamel ➡️ Dentin ➡️ Pulp)</span>
+        <span class="zoom-hint">🔍 تكبير</span>
+      </div>
+    </div>
+
+    <h3 style="font-size: 19px; font-weight: 800; margin: 24px 0 12px; color: var(--primary);">
+      تصنيف جي في بلاك لتسوس الأسنان (G.V. Black's Classification of Caries)
+    </h3>
+    <p>
+      قام العالم <strong>G.V. Black</strong> (المعروف بوالد طب الأسنان الحديث) بوضع هذا التصنيف المعتمد عالمياً لتقسيم التجاويف التسوسية حسب موقعها على أسطح الأسنان:
+    </p>
+
+    <!-- Caries Classes List -->
+    <div class="caries-card">
+      <div class="caries-header">
+        <span class="caries-location">الوهاد والشقوق في أسطح المضغ للأسنان الخلفية والميزاب اللساني للأمامية</span>
+        <span class="caries-badge">Class I<button class="audio-btn" onclick="playAudio('class_i_caries')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>
+      </div>
+      <p style="font-size:15px; color:var(--text-secondary);">
+        <strong>الموقع:</strong> Pits and fissures on occlusal surfaces of molars and premolars, facial/lingual grooves of molars, lingual pit of maxillary incisors.
+        <br>
+        <strong>المطلب والمادة المثالية:</strong> يتطلب <strong>القوة (Strength)</strong> لمقاومة المضغ: يُستخدم <em>Dental Amalgam</em> أو <em>Composite Resin</em> أو <em>Gold Inlay</em>.
+      </p>
+    </div>
+
+    <div class="caries-card">
+      <div class="caries-header">
+        <span class="caries-location">الأسطح الملاصقة (Proximal Surfaces) للأسنان الخلفية (الضواحك والأضراس)</span>
+        <span class="caries-badge">Class II<button class="audio-btn" onclick="playAudio('class_ii_caries')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>
+      </div>
+      <p style="font-size:15px; color:var(--text-secondary);">
+        <strong>الموقع:</strong> Proximal surfaces (Mesial or Distal) of premolars and molars.
+        <br>
+        <strong>المطلب والمادة المثالية:</strong> يتطلب <strong>القوة العالية (Strength)</strong> وإعادة بناء جدار التلامس: يُستخدم <em>Dental Amalgam</em> أو <em>Gold Inlay</em> أو <em>Composite Resin</em>.
+      </p>
+    </div>
+
+    <div class="caries-card">
+      <div class="caries-header">
+        <span class="caries-location">الأسطح الملاصقة للأسنان الأمامية دون أن تشمل الزاوية القاطعة</span>
+        <span class="caries-badge">Class III<button class="audio-btn" onclick="playAudio('class_iii_caries')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>
+      </div>
+      <p style="font-size:15px; color:var(--text-secondary);">
+        <strong>الموقع:</strong> Proximal surfaces of incisors and canines NOT involving the incisal edge/angle.
+        <br>
+        <strong>المطلب والمادة المثالية:</strong> يتطلب <strong>الجمالية العالية (Esthetics)</strong>: يُستخدم <em>Composite Resin</em> أو <em>Glass Ionomer</em>.
+      </p>
+    </div>
+
+    <div class="caries-card">
+      <div class="caries-header">
+        <span class="caries-location">الأسطح الملاصقة للأسنان الأمامية مع إصابة الزاوية والحافة القاطعة</span>
+        <span class="caries-badge">Class IV<button class="audio-btn" onclick="playAudio('class_iv_caries')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>
+      </div>
+      <p style="font-size:15px; color:var(--text-secondary);">
+        <strong>الموقع:</strong> Proximal surfaces of incisors and canines INVOLVING the incisal angle (غالباً نتيجة تسوس متقدم أو كسر وحوادث).
+        <br>
+        <strong>المطلب والمادة المثالية:</strong> يتطلب <strong>الجمالية والتطابق اللوني مع قوة مقبولة للقطع (Esthetics)</strong>: يُستخدم <em>Composite Resin</em> أو <em>Glass Ionomer</em> (أو فينير وتاج خزفي).
+      </p>
+    </div>
+
+    <div class="caries-card">
+      <div class="caries-header">
+        <span class="caries-location">الثلث العنقي القريب من اللثة على السطح الوجهي أو اللساني لأي سن</span>
+        <span class="caries-badge">Class V<button class="audio-btn" onclick="playAudio('class_v_caries')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>
+      </div>
+      <p style="font-size:15px; color:var(--text-secondary);">
+        <strong>الموقع:</strong> Gingival third (cervical area) of facial or lingual surfaces of any tooth.
+        <br>
+        <strong>المطلب والمادة المثالية:</strong> منطقة قريبة جداً من اللثة ورطوبة اللعاب، وتحدث غالباً في جذور الأسنان بعد انحسار اللثة: المادة الذهبية هي <em>Glass Ionomer</em> (لقدرتها على إفراز الفلورايد والارتباط الكيميائي)، ويمكن استخدام <em>Composite Resin</em>.
+      </p>
+    </div>
+
+    <!-- Slide 30, 31, 32, 35 Figures -->
+    <div class="grid-2">
+      <div class="slide-figure" onclick="openImageModal('images/slide_30.png', 'الشريحة 30: مخطط فئات تسوس الأسنان ومراحله')">
+        <img src="images/slide_30.png" alt="G.V. Black Caries Classes Table" loading="lazy">
+        <div class="slide-caption">
+          <span>الشريحة 30: جدول ورسومات فئات تسوس الأسنان</span>
+          <span class="zoom-hint">🔍 تكبير</span>
+        </div>
+      </div>
+      <div class="slide-figure" onclick="openImageModal('images/slide_31.png', 'الشريحة 31: ترميم الأسنان الخلفية - الأولوية للقوة (Strength)')">
+        <img src="images/slide_31.png" alt="Posterior teeth restoration: Strength" loading="lazy">
+        <div class="slide-caption">
+          <span>الشريحة 31: Posterior Teeth Restoration: Strength</span>
+          <span class="zoom-hint">🔍 تكبير</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="slide-figure" onclick="openImageModal('images/slide_32.png', 'الشريحة 32: ترميم الأسنان الأمامية (Class III & IV) - الأولوية للجمال (Esthetics)')">
+        <img src="images/slide_32.png" alt="Anterior teeth restoration: Esthetics" loading="lazy">
+        <div class="slide-caption">
+          <span>الشريحة 32: Anterior Teeth Restoration: Esthetics (Class III & IV)</span>
+          <span class="zoom-hint">🔍 تكبير</span>
+        </div>
+      </div>
+      <div class="slide-figure" onclick="openImageModal('images/slide_35.png', 'الشريحة 35: المواد المختارة لترميم فئات التسوس')">
+        <img src="images/slide_35.png" alt="Restoration materials for caries classes" loading="lazy">
+        <div class="slide-caption">
+          <span>الشريحة 35: مواد حشو الأسنان المختارة لكل فئة</span>
+          <span class="zoom-hint">🔍 تكبير</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 8 -->
+  <section id="sec-summary" class="section-card">
+    <div class="section-header">
+      <div class="section-icon">⭐</div>
+      <div>
+        <h2 class="section-title">8. الجداول الذهبية للمراجعة السريعة (Golden High-Yield Review)</h2>
+        <div class="section-en-title">Mastery Summaries & Exam Notes</div>
+      </div>
+    </div>
+
+    <div class="table-wrapper">
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>فئة التسوس (Caries Class)</th>
+            <th>موقع النخر في السن</th>
+            <th>المطلب الأساسي للمادة</th>
+            <th>المواد الموصى بها (Restorative Materials)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Class I</strong></td>
+            <td>الشقوق والوهاد في أسطح المضغ (Pits & Fissures)</td>
+            <td>قوة المضغ (Strength)</td>
+            <td>Dental Amalgam, Composite Resin, Gold Inlay</td>
+          </tr>
+          <tr>
+            <td><strong>Class II</strong></td>
+            <td>الأسطح الملاصقة للأسنان الخلفية (Posterior Proximal)</td>
+            <td>قوة المضغ ونقاط التلامس (Strength)</td>
+            <td>Dental Amalgam, Gold Inlay, Composite Resin</td>
+          </tr>
+          <tr>
+            <td><strong>Class III</strong></td>
+            <td>ملاصق للأسنان الأمامية دون الحافة القاطعة</td>
+            <td>الجمال والتطابق اللوني (Esthetics)</td>
+            <td>Composite Resin, Glass Ionomer</td>
+          </tr>
+          <tr>
+            <td><strong>Class IV</strong></td>
+            <td>ملاصق للأسنان الأمامية مع كسر/إصابة الزاوية القاطعة</td>
+            <td>الجمال ومقاومة قوى القطع (Esthetics)</td>
+            <td>Composite Resin, Glass Ionomer</td>
+          </tr>
+          <tr>
+            <td><strong>Class V</strong></td>
+            <td>عنق السن بالقرب من اللثة (Gingival Third)</td>
+            <td>الالتصاق وإفراز الفلورايد</td>
+            <td>Glass Ionomer, Composite Resin</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout callout-tip" style="margin-top: 20px;">
+      <div class="callout-title">
+        <span>🧠 كبسولات ذهبية للاختبارات (High-Yield Pearls)</span>
+      </div>
+      <ul style="padding-right: 20px;">
+        <li><strong>أقسام الكلية:</strong> مادة البايوماتريالز تنتمي إدارياً وعلمياً لقسم <em>الاستعاضة الصناعية (Prosthetic Dentistry)</em>.</li>
+        <li><strong>الأسنان الخلفية:</strong> تحتاج دائماً إلى <em>Strength (قوة)</em>، بينما الأسنان الأمامية تحتاج إلى <em>Esthetics (جمال)</em>.</li>
+        <li><strong>الحشوة المباشرة:</strong> تُصنع وتتصلب داخل الفم بجلسة واحدة، بينما <strong>الحشوة غير المباشرة:</strong> تُصنع في معمل الأسنان بعد أخذ طبعة.</li>
+        <li><strong>قاعدة الطقم المتحرك:</strong> الأكريليك (<span class="term-badge">Acrylic Resin</span>) غير معدني، بينما سبيكة الكوبالت كروم (<span class="term-badge">Cobalt-Chromium</span>) معدنية.</li>
+        <li><strong>Class V:</strong> مميزة جداً بأنها تقع في الثلث العنقي المجاور للثة وتفضل فيها مادة <em>Glass Ionomer</em> لإفراز الفلورايد ومنع تكرار التسوس.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SECTION 9 -->
+  <section id="sec-quiz" class="quiz-section">
+    <div class="section-header" style="border-bottom: 2px solid var(--primary-border);">
+      <div class="section-icon" style="background:#eff6ff; color:#0284c7;">📝</div>
+      <div>
+        <h2 class="section-title">9. بنك الأسئلة التفاعلي (Interactive MCQ Quiz)</h2>
+        <div class="section-en-title">Test your understanding with instant feedback</div>
+      </div>
+    </div>
+
+    <!-- Question 1 -->
+    <div class="quiz-item" id="qitem-1">
+      <div class="q-num">
+        <span>السؤال 1 من 6</span>
+        <button class="btn-toggle-ar" onclick="toggleArabic(1)">🌐 إظهار الترجمة</button>
+      </div>
+      <div class="q-text">Which of the following is considered the primary goal when restoring anterior teeth?</div>
+      <div class="q-arabic-text" id="qar-1">أي مما يلي يُعتبر الهدف الأساسي عند ترميم الأسنان الأمامية؟</div>
+      <div class="mcq-opts">
+        <button class="mcq-opt" onclick="checkMCQ(1, false, this)">A) Maximum compressive strength only</button>
+        <button class="mcq-opt" onclick="checkMCQ(1, true, this)">B) Esthetics and natural appearance</button>
+        <button class="mcq-opt" onclick="checkMCQ(1, false, this)">C) Metallic corrosion resistance</button>
+        <button class="mcq-opt" onclick="checkMCQ(1, false, this)">D) Thermal conductivity</button>
+      </div>
+      <div class="q-feedback" id="qfb-1"></div>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="quiz-item" id="qitem-2">
+      <div class="q-num">
+        <span>السؤال 2 من 6</span>
+        <button class="btn-toggle-ar" onclick="toggleArabic(2)">🌐 إظهار الترجمة</button>
+      </div>
+      <div class="q-text">Dental Biomaterials department is classified under which clinical branch?</div>
+      <div class="q-arabic-text" id="qar-2">يُصنف قسم خواص المواد الحيوية للأسنان تحت أي فرع إكلينيكي؟</div>
+      <div class="mcq-opts">
+        <button class="mcq-opt" onclick="checkMCQ(2, false, this)">A) Conservative Dentistry</button>
+        <button class="mcq-opt" onclick="checkMCQ(2, false, this)">B) Oral & Maxillofacial Surgery</button>
+        <button class="mcq-opt" onclick="checkMCQ(2, true, this)">C) Prosthetic Dentistry</button>
+        <button class="mcq-opt" onclick="checkMCQ(2, false, this)">D) Periodontology</button>
+      </div>
+      <div class="q-feedback" id="qfb-2"></div>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="quiz-item" id="qitem-3">
+      <div class="q-num">
+        <span>السؤال 3 من 6</span>
+        <button class="btn-toggle-ar" onclick="toggleArabic(3)">🌐 إظهار الترجمة</button>
+      </div>
+      <div class="q-text">Which of the following is an example of an INDIRECT restoration?</div>
+      <div class="q-arabic-text" id="qar-3">أي من الخيارات التالية يُعتبر مثالاً على ترميم غير مباشر (Indirect Restoration)؟</div>
+      <div class="mcq-opts">
+        <button class="mcq-opt" onclick="checkMCQ(3, false, this)">A) Dental amalgam placed in one visit</button>
+        <button class="mcq-opt" onclick="checkMCQ(3, false, this)">B) Direct light-cured composite resin</button>
+        <button class="mcq-opt" onclick="checkMCQ(3, true, this)">C) Ceramic or Gold inlay fabricated in dental lab</button>
+        <button class="mcq-opt" onclick="checkMCQ(3, false, this)">D) Glass ionomer cement liner</button>
+      </div>
+      <div class="q-feedback" id="qfb-3"></div>
+    </div>
+
+    <!-- Question 4 -->
+    <div class="quiz-item" id="qitem-4">
+      <div class="q-num">
+        <span>السؤال 4 من 6</span>
+        <button class="btn-toggle-ar" onclick="toggleArabic(4)">🌐 إظهار الترجمة</button>
+      </div>
+      <div class="q-text">According to G.V. Black, a cavity on the proximal surface of an anterior tooth that INVOLVES the incisal angle is classified as:</div>
+      <div class="q-arabic-text" id="qar-4">وفقاً لتصنيف جي في بلاك، التجويف الواقع على السطح الملاصق لسن أمامي مع إصابة الزاوية القاطعة يُصنف كـ:</div>
+      <div class="mcq-opts">
+        <button class="mcq-opt" onclick="checkMCQ(4, false, this)">A) Class II</button>
+        <button class="mcq-opt" onclick="checkMCQ(4, false, this)">B) Class III</button>
+        <button class="mcq-opt" onclick="checkMCQ(4, true, this)">C) Class IV</button>
+        <button class="mcq-opt" onclick="checkMCQ(4, false, this)">D) Class V</button>
+      </div>
+      <div class="q-feedback" id="qfb-4"></div>
+    </div>
+
+    <!-- Question 5 -->
+    <div class="quiz-item" id="qitem-5">
+      <div class="q-num">
+        <span>السؤال 5 من 6</span>
+        <button class="btn-toggle-ar" onclick="toggleArabic(5)">🌐 إظهار الترجمة</button>
+      </div>
+      <div class="q-text">What is the non-metallic material most commonly used to construct the denture base?</div>
+      <div class="q-arabic-text" id="qar-5">ما هي المادة غير المعدنية الأكثر شيوعاً في تصنيع قاعدة طقم الأسنان؟</div>
+      <div class="mcq-opts">
+        <button class="mcq-opt" onclick="checkMCQ(5, true, this)">A) Acrylic resin</button>
+        <button class="mcq-opt" onclick="checkMCQ(5, false, this)">B) Cobalt chromium alloy</button>
+        <button class="mcq-opt" onclick="checkMCQ(5, false, this)">C) Dental porcelain</button>
+        <button class="mcq-opt" onclick="checkMCQ(5, false, this)">D) Gold alloy IV</button>
+      </div>
+      <div class="q-feedback" id="qfb-5"></div>
+    </div>
+
+    <!-- Question 6 -->
+    <div class="quiz-item" id="qitem-6">
+      <div class="q-num">
+        <span>السؤال 6 من 6</span>
+        <button class="btn-toggle-ar" onclick="toggleArabic(6)">🌐 إظهار الترجمة</button>
+      </div>
+      <div class="q-text">A patient who has completely lost all of their teeth in both arches is defined as:</div>
+      <div class="q-arabic-text" id="qar-6">المريض الذي فقد جميع أسنانه بالكامل في كلا الفكين يُعرّف بأنه:</div>
+      <div class="mcq-opts">
+        <button class="mcq-opt" onclick="checkMCQ(6, false, this)">A) Dentulous</button>
+        <button class="mcq-opt" onclick="checkMCQ(6, false, this)">B) Partially edentulous</button>
+        <button class="mcq-opt" onclick="checkMCQ(6, true, this)">C) Completely edentulous</button>
+        <button class="mcq-opt" onclick="checkMCQ(6, false, this)">D) Mixed dentition</button>
+      </div>
+      <div class="q-feedback" id="qfb-6"></div>
+    </div>
+  </section>
+
+</div>
+
+<!-- Scroll to Top Button -->
+<button class="scroll-top-btn" id="scrollTopBtn" onclick="window.scrollTo({top:0, behavior:'smooth'})" title="إلى أعلى الصفحة">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+
+<!-- Image Lightbox Modal -->
+<div class="img-modal-overlay" id="imgModalOverlay" onclick="closeImageModal()">
+  <div class="img-modal-content" onclick="event.stopPropagation()">
+    <button class="modal-close-btn" onclick="closeImageModal()">&times;</button>
+    <img id="modalImg" src="" alt="Zoomed Slide">
+    <div class="modal-caption" id="modalCaption"></div>
+  </div>
+</div>
+
+<script>
+// ================= Reading Progress & Scroll Top =================
+window.addEventListener('scroll', () => {
+  const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = (winScroll / height) * 100;
+  document.getElementById('progressFill').style.width = scrolled + '%';
+
+  const scrollBtn = document.getElementById('scrollTopBtn');
+  if (winScroll > 320) {
+    scrollBtn.style.display = 'flex';
+  } else {
+    scrollBtn.style.display = 'none';
+  }
+});
+
+// ================= Theme Toggle =================
+const themeToggle = document.getElementById('themeToggle');
+const savedTheme = localStorage.getItem('tasheel_theme') || 'light';
+if (savedTheme === 'dark') {
+  document.documentElement.setAttribute('data-theme', 'dark');
+}
+
+themeToggle.addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme');
+  if (current === 'dark') {
+    document.documentElement.removeAttribute('data-theme');
+    localStorage.setItem('tasheel_theme', 'light');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    localStorage.setItem('tasheel_theme', 'dark');
+  }
+});
+
+// ================= Audio Pronunciation =================
+let currentAudio = null;
+function playAudio(term) {
+  if (currentAudio) {
+    currentAudio.pause();
+    document.querySelectorAll('.audio-btn.playing').forEach(b => b.classList.remove('playing'));
+  }
+
+  const audioPath = `audio/${term}.mp3`;
+  currentAudio = new Audio(audioPath);
+
+  const btn = event.currentTarget;
+  if (btn) btn.classList.add('playing');
+
+  currentAudio.play().catch(err => {
+    console.warn('Audio playback error, falling back to Web Speech API:', err);
+    if ('speechSynthesis' in window) {
+      const utterance = new SpeechSynthesisUtterance(term.replace(/_/g, ' '));
+      utterance.lang = 'en-US';
+      utterance.rate = 0.9;
+      window.speechSynthesis.speak(utterance);
+    }
+    if (btn) btn.classList.remove('playing');
+  });
+
+  currentAudio.onended = () => {
+    if (btn) btn.classList.remove('playing');
+  };
+}
+
+// ================= Image Modal Lightbox =================
+function openImageModal(src, caption) {
+  const overlay = document.getElementById('imgModalOverlay');
+  const img = document.getElementById('modalImg');
+  const cap = document.getElementById('modalCaption');
+  img.src = src;
+  cap.textContent = caption;
+  overlay.classList.add('active');
+}
+
+function closeImageModal() {
+  const overlay = document.getElementById('imgModalOverlay');
+  overlay.classList.remove('active');
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeImageModal();
+});
+
+// ================= Interactive Quiz Logic =================
+const explanations = {
+  1: {
+    correct: "إجابة صحيحة وممتازة! في الأسنان الأمامية، الأولوية القصوى هي الجمال والمظهر الطبيعي (Esthetics) وتطابق درجات اللون.",
+    wrong: "إجابة غير دقيقة. القوة مطلوبة دائماً، ولكن في الأسنان الأمامية المطلب الأساسي هو Esthetics (الجمال والمظهر الطبيعي)."
+  },
+  2: {
+    correct: "إجابة صحيحة! قسم خواص المواد الحيوية للأسنان (Dental Biomaterials) يتبع إدارياً وعلمياً قسم الاستعاضة الصناعية (Prosthetic Dentistry).",
+    wrong: "إجابة غير صحيحة. المواد الحيوية تتبع قسم الاستعاضة الصناعية (Prosthetic Dentistry) وتخدم باقي الأقسام."
+  },
+  3: {
+    correct: "إجابة صحيحة! الترميم غير المباشر (Indirect) هو ما يُصنع في معمل الأسنان (مثل Inlay و Onlay والتيجان) ثم يتم تثبيته بالأسمنت في الفم.",
+    wrong: "إجابة غير دقيقة. الأملغم والكومبوزيت يوضعان ويتصلبان مباشرة في فم المريض (Direct)، بينما Inlay يصنع في المعمل (Indirect)."
+  },
+  4: {
+    correct: "إجابة صحيحة تماماً! الفئة الرابعة (Class IV) هي تسوس أو كسر في الأسطح الملاصقة للأسنان الأمامية مع إصابة الزاوية القاطعة (Involving incisal angle).",
+    wrong: "إجابة غير دقيقة. Class III هو الملاصق بدون الزاوية القاطعة، بينما عند إصابة الزاوية القاطعة يصبح Class IV."
+  },
+  5: {
+    correct: "إجابة صحيحة! راتينج الأكريليك (Acrylic resin - PMMA) هو المادة غير المعدنية الوردية الأكثر استخداماً في تصنيع قاعدة الطقم الكامل والجزئي.",
+    wrong: "إجابة غير صحيحة. الكوبالت كروم معدني، والبورسلين للأسنان، أما مادة قاعدة الطقم غير المعدنية فهي راتينج الأكريليك (Acrylic resin)."
+  },
+  6: {
+    correct: "إجابة صحيحة! المريض فاقد جميع الأسنان بالكامل في الفكين يسمى Completely Edentulous ويحتاج لطقم كامل (Complete Denture).",
+    wrong: "إجابة غير دقيقة. الفقدان الكامل يسمى Completely Edentulous، أما فقدان بعض الأسنان فقط فيسمى Partially Edentulous."
+  }
+};
+
+function toggleArabic(qid) {
+  const arDiv = document.getElementById(`qar-${qid}`);
+  if (arDiv) arDiv.classList.toggle('show');
+}
+
+function checkMCQ(qid, isCorrect, btn) {
+  const item = document.getElementById(`qitem-${qid}`);
+  const opts = item.querySelectorAll('.mcq-opt');
+  const fb = document.getElementById(`qfb-${qid}`);
+
+  opts.forEach(o => {
+    o.classList.remove('correct', 'wrong');
+    o.disabled = true;
+  });
+
+  if (isCorrect) {
+    btn.classList.add('correct');
+    fb.className = 'q-feedback show correct-fb';
+    fb.innerHTML = `<strong>✔️ رائع!</strong> ${explanations[qid].correct}`;
+  } else {
+    btn.classList.add('wrong');
+    fb.className = 'q-feedback show wrong-fb';
+    fb.innerHTML = `<strong>❌ للأسف!</strong> ${explanations[qid].wrong}`;
+  }
+}
+</script>
+
+<footer>
+  <p>منصة تسهيل التعليمية | تبسيط العلوم الطبية لطلاب طب وجراحة الفم والأسنان</p>
+  <p style="margin-top:6px; font-size:12.5px;">تم إعداد وتنظيم المحاضرة بأعلى المعايير الأكاديمية</p>
+</footer>
+
+</body>
+</html>
