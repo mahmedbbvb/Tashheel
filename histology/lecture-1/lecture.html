@@ -3,2201 +3,1986 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Histology - Lecture 1: Microscopy + Cytology-I | منصة تسهيل</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Histology - Lecture 1 | Microscopy + Cytology I</title>
 <style>
-  :root {
-    --bg-gradient: linear-gradient(135deg, #fdf4ff 0%, #f5f3ff 50%, #f8fafc 100%);
-    --card-bg: #ffffff;
-    --text-primary: #0f172a;
-    --text-secondary: #334155;
-    --text-muted: #64748b;
-    --primary: #7c3aed;
-    --primary-light: #f5f3ff;
-    --primary-border: #ddd6fe;
-    --primary-dark: #6d28d9;
-    --accent: #db2777;
-    --accent-light: #fdf2f8;
-    --accent-border: #fbcfe8;
-    --success: #16a34a;
-    --success-bg: #f0fdf4;
-    --warning: #d97706;
-    --warning-bg: #fffbeb;
-    --danger: #dc2626;
-    --danger-bg: #fef2f2;
-    --border-color: #e2e8f0;
-    --shadow-sm: 0 1px 4px rgba(0,0,0,0.04);
-    --shadow-md: 0 4px 18px rgba(124, 58, 237, 0.08);
-    --shadow-lg: 0 10px 25px rgba(124, 58, 237, 0.12);
-  }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-  [data-theme="dark"] {
-    --bg-gradient: linear-gradient(135deg, #1e1035 0%, #0f172a 50%, #170d2b 100%);
-    --card-bg: #1e1b2e;
-    --text-primary: #f8fafc;
-    --text-secondary: #cbd5e1;
-    --text-muted: #94a3b8;
-    --primary: #a78bfa;
-    --primary-light: rgba(167, 139, 250, 0.14);
-    --primary-border: rgba(167, 139, 250, 0.28);
-    --primary-dark: #8b5cf6;
-    --accent: #f472b6;
-    --accent-light: rgba(244, 114, 182, 0.14);
-    --accent-border: rgba(244, 114, 182, 0.28);
-    --success: #34d399;
-    --success-bg: rgba(52, 211, 153, 0.12);
-    --warning: #fbbf24;
-    --warning-bg: rgba(251, 191, 36, 0.12);
-    --danger: #f87171;
-    --danger-bg: rgba(248, 113, 113, 0.12);
-    --border-color: #332d47;
-    --shadow-sm: 0 1px 4px rgba(0,0,0,0.3);
-    --shadow-md: 0 4px 18px rgba(0,0,0,0.4);
-    --shadow-lg: 0 10px 25px rgba(0,0,0,0.6);
-  }
+body {
+  background: #eef1f5;
+  color: #1a2332;
+  font-family: 'Segoe UI', Arial, Tahoma, sans-serif;
+  line-height: 1.85;
+  font-size: 15px;
+}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+.container { max-width: 960px; margin: auto; padding: 18px; }
 
-  body {
-    font-family: 'Cairo', 'Inter', system-ui, -apple-system, sans-serif;
-    background: var(--bg-gradient);
-    color: var(--text-primary);
-    line-height: 1.7;
-    min-height: 100vh;
-    transition: background 0.3s ease, color 0.3s ease;
-  }
+/* ===== HEADER ===== */
+header {
+  background: linear-gradient(135deg, #13293d, #1e4976);
+  color: #fff;
+  border-radius: 20px;
+  padding: 28px 30px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+header::before {
+  content: '';
+  position: absolute;
+  top: -40px; left: -40px;
+  width: 200px; height: 200px;
+  background: rgba(255,255,255,.04);
+  border-radius: 50%;
+}
+header h1 { font-size: 26px; margin-bottom: 6px; }
+header p { color: #b8cfe4; font-size: 14px; }
+.badge {
+  display: inline-block;
+  background: rgba(255,255,255,.15);
+  border-radius: 30px;
+  padding: 3px 12px;
+  font-size: 12px;
+  margin-top: 10px;
+  margin-left: 6px;
+}
 
-  /* Sticky Top Nav */
-  header.nav-header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(255, 255, 255, 0.88);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border-color);
-    padding: 12px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: var(--shadow-sm);
-  }
-  [data-theme="dark"] header.nav-header {
-    background: rgba(30, 27, 46, 0.88);
-  }
+/* ===== OBJECTIVES BOX ===== */
+.objectives {
+  background: #f0f7ff;
+  border-right: 5px solid #1e4976;
+  border-radius: 14px;
+  padding: 18px 22px;
+  margin-bottom: 20px;
+}
+.objectives h2 { color: #1e4976; margin-bottom: 10px; font-size: 17px; }
+.objectives ul { padding-right: 22px; }
+.objectives li { margin: 5px 0; color: #2a3f56; }
 
-  .nav-right {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .nav-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    color: var(--text-secondary);
-    padding: 7px 14px;
-    border-radius: 10px;
-    font-size: 13.5px;
-    font-weight: 700;
-    text-decoration: none;
-    transition: all 0.2s ease;
-  }
-  .nav-btn:hover {
-    border-color: var(--primary);
-    color: var(--primary);
-  }
+/* ===== SECTION ===== */
+section {
+  background: #fff;
+  border-radius: 18px;
+  padding: 22px 24px;
+  margin-bottom: 22px;
+  box-shadow: 0 4px 18px rgba(0,0,0,.07);
+}
 
-  .nav-title {
-    font-size: 15px;
-    font-weight: 800;
-    color: var(--text-primary);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .nav-badge {
-    background: var(--primary-light);
-    color: var(--primary);
-    border: 1px solid var(--primary-border);
-    padding: 2px 8px;
-    border-radius: 6px;
-    font-size: 11px;
-    font-weight: 800;
-  }
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #eef2f6;
+}
+.section-num {
+  background: #1e4976;
+  color: #fff;
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.section-title h2 {
+  color: #13293d;
+  font-size: 19px;
+}
+.stars { color: #f4a011; font-size: 14px; }
 
-  .theme-btn {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    color: var(--text-secondary);
-    border-radius: 10px;
-    width: 38px;
-    height: 38px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-  }
-  .theme-btn:hover {
-    border-color: var(--primary);
-    color: var(--primary);
-  }
+h3 {
+  font-size: 16px;
+  color: #1e4976;
+  margin: 18px 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+h3::before {
+  content: '';
+  width: 4px; height: 16px;
+  background: #1e4976;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
 
-  /* Main Container */
-  .container {
-    max-width: 960px;
-    margin: auto;
-    padding: 24px 20px 80px;
-  }
+ul { padding-right: 22px; }
+li { margin: 5px 0; }
 
-  /* Hero Header */
-  .lecture-hero {
-    background: var(--card-bg);
-    border: 1.5px solid var(--border-color);
-    border-radius: 22px;
-    padding: 32px 28px;
-    margin-bottom: 24px;
-    box-shadow: var(--shadow-sm);
-    position: relative;
-    overflow: hidden;
-  }
-  .lecture-hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 6px;
-    height: 100%;
-    background: linear-gradient(180deg, var(--primary), var(--accent));
-  }
-  .badge-row {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-bottom: 12px;
-  }
-  .badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    padding: 4px 10px;
-    border-radius: 8px;
-    font-size: 12.5px;
-    font-weight: 700;
-  }
-  .badge-primary { background: var(--primary-light); color: var(--primary); border: 1px solid var(--primary-border); }
-  .badge-code { background: #fef3c7; color: #b45309; border: 1px solid #fde68a; font-family: 'Inter', sans-serif; }
-  .badge-accent { background: var(--accent-light); color: var(--accent); border: 1px solid var(--accent-border); }
+.en {
+  direction: ltr;
+  display: inline-block;
+  font-weight: 700;
+  color: #1e5280;
+  background: #edf4fb;
+  padding: 1px 7px;
+  border-radius: 5px;
+  font-size: 13px;
+}
 
-  .hero-title {
-    font-size: clamp(22px, 4vw, 30px);
-    font-weight: 900;
-    color: var(--text-primary);
-    line-height: 1.4;
-    margin-bottom: 10px;
-  }
-  .hero-subtitle {
-    font-size: 15px;
-    color: var(--text-muted);
-    line-height: 1.7;
-  }
+.term { font-weight: 700; color: #13293d; }
 
-  /* Quick Navigation Chips */
-  .quick-nav {
-    display: flex;
-    gap: 8px;
-    overflow-x: auto;
-    padding: 6px 2px 14px;
-    margin-bottom: 24px;
-    scrollbar-width: thin;
-  }
-  .quick-chip {
-    white-space: nowrap;
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    color: var(--text-secondary);
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 13.5px;
-    font-weight: 700;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    box-shadow: var(--shadow-sm);
-  }
-  .quick-chip:hover {
-    background: var(--primary);
-    color: white;
-    border-color: var(--primary);
-  }
+/* ===== KEY BOX ===== */
+.key {
+  background: linear-gradient(135deg, #f0f7ff, #e8f4fd);
+  border-right: 4px solid #1e4976;
+  padding: 13px 16px;
+  border-radius: 10px;
+  margin: 14px 0;
+}
+.key b { color: #13293d; }
 
-  /* Content Sections */
-  .section-card {
-    background: var(--card-bg);
-    border: 1.5px solid var(--border-color);
-    border-radius: 20px;
-    padding: 28px 24px;
-    margin-bottom: 28px;
-    box-shadow: var(--shadow-sm);
-    transition: border-color 0.2s ease;
-  }
-  .section-card:hover {
-    border-color: var(--primary-border);
-  }
+/* ===== IMPORTANT BOX ===== */
+.important {
+  background: #fff8e1;
+  border-right: 4px solid #f59e0b;
+  padding: 13px 16px;
+  border-radius: 10px;
+  margin: 14px 0;
+}
 
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 18px;
-    padding-bottom: 14px;
-    border-bottom: 1.5px solid var(--border-color);
-  }
-  .section-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    background: var(--primary-light);
-    color: var(--primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    font-weight: 800;
-    flex-shrink: 0;
-  }
-  .section-title {
-    font-size: 21px;
-    font-weight: 800;
-    color: var(--text-primary);
-  }
-  .section-en-title {
-    font-size: 13.5px;
-    font-family: 'Inter', sans-serif;
-    color: var(--text-muted);
-    font-weight: 600;
-  }
+/* ===== TABLE ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0;
+  font-size: 14px;
+}
+th, td {
+  border: 1px solid #d0dbe6;
+  padding: 10px 12px;
+  text-align: right;
+  vertical-align: top;
+}
+th {
+  background: linear-gradient(135deg, #1e4976, #2563a8);
+  color: #fff;
+  font-weight: 600;
+}
+tr:nth-child(even) td { background: #f7fafd; }
 
-  /* Medical Term Box & Audio Button */
-  .term-badge {
-    display: inline-flex;
-    align-items: center;
-    background: var(--primary-light);
-    color: var(--primary-dark);
-    border: 1px solid var(--primary-border);
-    padding: 2px 10px;
-    border-radius: 8px;
-    font-weight: 700;
-    font-family: 'Inter', sans-serif;
-    font-size: 14.5px;
-    margin: 2px 4px;
-    direction: ltr;
-    vertical-align: middle;
-  }
-  .audio-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 26px;
-    height: 26px;
-    cursor: pointer;
-    margin-left: 6px;
-    vertical-align: middle;
-    transition: all 0.2s ease;
-    box-shadow: 0 2px 6px rgba(124, 58, 237, 0.25);
-  }
-  .audio-btn svg {
-    width: 13px;
-    height: 13px;
-    pointer-events: none;
-    fill: currentColor;
-  }
-  .audio-btn:hover {
-    transform: scale(1.15);
-  }
-  .audio-btn.playing {
-    background: linear-gradient(135deg, var(--success), #047857);
-    animation: pulse 0.6s ease-in-out infinite alternate;
-  }
-  @keyframes pulse {
-    from { transform: scale(1); }
-    to { transform: scale(1.15); }
-  }
+/* ===== GRID ===== */
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0; }
+.card {
+  background: #f7fafd;
+  border: 1px solid #dce8f3;
+  border-radius: 12px;
+  padding: 15px;
+}
+.card h4 {
+  color: #1e4976;
+  font-size: 14px;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #d0dbe6;
+}
 
-  /* Callout Boxes */
-  .callout {
-    border-radius: 14px;
-    padding: 16px 20px;
-    margin: 16px 0;
-    border-right: 4px solid;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .callout-info { background: var(--primary-light); border-color: var(--primary); color: var(--text-primary); }
-  .callout-tip { background: var(--success-bg); border-color: var(--success); color: var(--text-primary); }
-  .callout-warning { background: var(--warning-bg); border-color: var(--warning); color: var(--text-primary); }
-  .callout-accent { background: var(--accent-light); border-color: var(--accent); color: var(--text-primary); }
-  .callout-title {
-    font-weight: 800;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .callout-info .callout-title { color: var(--primary); }
-  .callout-tip .callout-title { color: var(--success); }
-  .callout-warning .callout-title { color: var(--warning); }
-  .callout-accent .callout-title { color: var(--accent); }
+/* ===== IMAGE ===== */
+.img-block {
+  margin: 16px 0;
+  text-align: center;
+}
+.img-block img {
+  max-width: 100%;
+  border-radius: 12px;
+  border: 2px solid #d0dbe6;
+  box-shadow: 0 4px 14px rgba(0,0,0,.1);
+}
+.img-caption {
+  font-size: 12px;
+  color: #5a7a98;
+  margin-top: 6px;
+  font-style: italic;
+}
 
-  /* Grid Cards */
-  .grid-2 {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 16px;
-    margin: 18px 0;
-  }
-  .grid-3 {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 14px;
-    margin: 18px 0;
-  }
-  .feature-box {
-    background: var(--card-bg);
-    border: 1.5px solid var(--border-color);
-    border-radius: 16px;
-    padding: 18px;
-    box-shadow: var(--shadow-sm);
-    transition: all 0.2s ease;
-  }
-  .feature-box:hover {
-    border-color: var(--primary);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-  }
-  .feature-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 8px;
-  }
-  .feature-icon {
-    font-size: 20px;
-  }
-  .feature-title {
-    font-weight: 800;
-    font-size: 16px;
-    color: var(--text-primary);
-  }
+/* ===== MCQ ===== */
+.mcq-section {
+  background: linear-gradient(135deg, #f8fbff, #edf4fb);
+  border: 1px solid #c8ddf0;
+  border-radius: 14px;
+  padding: 18px;
+  margin-top: 22px;
+}
+.mcq-section h3 {
+  color: #1e4976;
+  margin-bottom: 14px;
+  font-size: 15px;
+}
+.mcq-section h3::before { display: none; }
 
-  /* Comparison Table */
-  .table-responsive {
-    overflow-x: auto;
-    margin: 20px 0;
-    border-radius: 14px;
-    border: 1.5px solid var(--border-color);
-  }
-  table.comp-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 14px;
-    text-align: right;
-  }
-  table.comp-table th {
-    background: var(--primary-light);
-    color: var(--primary-dark);
-    padding: 14px 16px;
-    font-weight: 800;
-    border-bottom: 1.5px solid var(--border-color);
-  }
-  table.comp-table td {
-    padding: 12px 16px;
-    border-bottom: 1px solid var(--border-color);
-    color: var(--text-secondary);
-  }
-  table.comp-table tr:last-child td {
-    border-bottom: none;
-  }
-  table.comp-table tr:hover td {
-    background: rgba(124, 58, 237, 0.03);
-  }
+.mcq {
+  background: #fff;
+  border: 1px solid #d8e8f4;
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+}
+.mcq-q {
+  font-weight: 700;
+  color: #13293d;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+.mcq-options { list-style: none; padding: 0; }
+.mcq-options li {
+  padding: 7px 12px;
+  margin: 4px 0;
+  border-radius: 7px;
+  cursor: pointer;
+  border: 1px solid #e0eaf4;
+  transition: all .2s;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  direction: rtl;
+}
+.mcq-options li:hover { background: #edf4fb; }
+.mcq-options li.correct { background: #d1fae5; border-color: #059669; color: #065f46; }
+.mcq-options li.wrong { background: #fee2e2; border-color: #dc2626; color: #7f1d1d; }
+.mcq-options li.revealed { background: #d1fae5; border-color: #059669; color: #065f46; }
+.mcq-letter {
+  background: #e0eaf4;
+  color: #1e4976;
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+.correct .mcq-letter { background: #059669; color: #fff; }
+.wrong .mcq-letter { background: #dc2626; color: #fff; }
+.revealed .mcq-letter { background: #059669; color: #fff; }
+.mcq-explain {
+  display: none;
+  background: #f0fdf4;
+  border-right: 3px solid #059669;
+  border-radius: 7px;
+  padding: 10px 12px;
+  margin-top: 8px;
+  font-size: 13px;
+  color: #14532d;
+}
+.mcq-explain.show { display: block; }
 
-  /* Slide Figure Preview */
-  .slide-figure {
-    border: 1.5px solid var(--border-color);
-    border-radius: 14px;
-    overflow: hidden;
-    background: var(--card-bg);
-    cursor: pointer;
-    transition: all 0.2s ease;
-    margin: 12px 0;
-  }
-  .slide-figure:hover {
-    border-color: var(--primary);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-  }
-  .slide-figure img {
-    width: 100%;
-    height: auto;
-    display: block;
-    background: #000;
-  }
-  .slide-caption {
-    padding: 10px 14px;
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--text-muted);
-    background: var(--card-bg);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid var(--border-color);
-  }
-  .zoom-hint {
-    color: var(--primary);
-    font-size: 12px;
-  }
+/* ===== DOCTOR QUESTIONS ===== */
+.doctor-q {
+  background: #fff;
+  border: 1px solid #d0dbe6;
+  border-right: 4px solid #1e4976;
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin: 8px 0;
+  font-size: 14px;
+}
+.doctor-q.warning {
+  border-right-color: #f59e0b;
+  background: #fffbeb;
+}
 
-  /* Practical Spot Diagnosis Flashcards */
-  .spot-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-    gap: 18px;
-    margin: 20px 0;
-  }
-  .spot-card {
-    background: var(--card-bg);
-    border: 1.5px solid var(--border-color);
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: var(--shadow-sm);
-    transition: all 0.2s ease;
-    display: flex;
-    flex-direction: column;
-  }
-  .spot-card:hover {
-    border-color: var(--primary);
-    box-shadow: var(--shadow-md);
-  }
-  .spot-img-wrap {
-    cursor: pointer;
-    position: relative;
-    background: #000;
-  }
-  .spot-img-wrap img {
-    width: 100%;
-    height: 220px;
-    object-fit: contain;
-    display: block;
-  }
-  .spot-overlay-hint {
-    position: absolute;
-    bottom: 8px;
-    right: 8px;
-    background: rgba(0,0,0,0.7);
-    color: #fff;
-    padding: 2px 8px;
-    border-radius: 6px;
-    font-size: 11px;
-    font-weight: 700;
-  }
-  .spot-body {
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    flex: 1;
-  }
-  .spot-header-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .spot-badge {
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 3px 8px;
-    border-radius: 6px;
-    background: var(--primary-light);
-    color: var(--primary);
-  }
-  .btn-reveal-answer {
-    background: var(--primary-light);
-    border: 1px solid var(--primary-border);
-    color: var(--primary-dark);
-    font-family: inherit;
-    font-weight: 800;
-    font-size: 13px;
-    padding: 8px 14px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    width: 100%;
-  }
-  .btn-reveal-answer:hover {
-    background: var(--primary);
-    color: #fff;
-  }
-  .spot-answer {
-    display: none;
-    background: var(--success-bg);
-    border: 1px solid rgba(22, 163, 74, 0.3);
-    color: var(--text-primary);
-    padding: 12px 14px;
-    border-radius: 10px;
-    font-size: 13.5px;
-    line-height: 1.6;
-    animation: fadeIn 0.3s ease;
-  }
-  .spot-answer.revealed {
-    display: block;
-  }
+/* ===== AUDIO BUTTON ===== */
+.audio-btn {
+  background: none;
+  border: 1px solid #1e4976;
+  color: #1e4976;
+  border-radius: 20px;
+  padding: 2px 10px;
+  font-size: 11px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all .2s;
+  vertical-align: middle;
+  margin-right: 4px;
+}
+.audio-btn:hover { background: #1e4976; color: #fff; }
+.audio-btn svg { width: 11px; height: 11px; fill: currentColor; }
 
-  /* Interactive MCQ System */
-  .quiz-section {
-    background: var(--card-bg);
-    border: 2px solid var(--primary-border);
-    border-radius: 22px;
-    padding: 30px 24px;
-    margin-top: 36px;
-    box-shadow: var(--shadow-md);
-  }
-  .quiz-item {
-    background: var(--bg-gradient);
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    padding: 20px;
-    margin-bottom: 22px;
-  }
-  .q-num {
-    font-weight: 800;
-    color: var(--primary);
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .q-text {
-    font-weight: 700;
-    font-size: 16px;
-    color: var(--text-primary);
-    margin-bottom: 12px;
-    direction: ltr;
-    text-align: left;
-    font-family: 'Inter', sans-serif;
-  }
-  .q-arabic-text {
-    display: none;
-    background: var(--warning-bg);
-    border-right: 3px solid var(--warning);
-    padding: 9px 13px;
-    border-radius: 8px;
-    margin-bottom: 12px;
-    font-size: 14px;
-    color: var(--text-primary);
-  }
-  .q-arabic-text.show {
-    display: block;
-    animation: fadeIn 0.2s ease;
-  }
-  .btn-toggle-ar {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    color: var(--text-muted);
-    padding: 3px 9px;
-    border-radius: 6px;
-    font-size: 12px;
-    font-family: inherit;
-    cursor: pointer;
-    font-weight: 700;
-  }
-  .btn-toggle-ar:hover {
-    color: var(--warning);
-    border-color: var(--warning);
-  }
+/* ===== GLOSSARY ===== */
+.glossary-table th { text-align: center; }
+.glossary-table td { vertical-align: middle; }
+.pronunciation { font-style: italic; color: #5a7a98; font-size: 13px; direction: ltr; }
 
-  .mcq-opt {
-    display: block;
-    width: 100%;
-    text-align: left;
-    direction: ltr;
-    background: var(--card-bg);
-    border: 1.5px solid var(--border-color);
-    border-radius: 10px;
-    padding: 11px 16px;
-    margin: 8px 0;
-    cursor: pointer;
-    font-family: 'Inter', sans-serif;
-    font-size: 14.5px;
-    font-weight: 600;
-    color: var(--text-primary);
-    transition: all 0.2s ease;
-  }
-  .mcq-opt:hover {
-    border-color: var(--primary);
-    background: var(--primary-light);
-    transform: translateX(4px);
-  }
-  .mcq-opt.correct {
-    background: var(--success-bg) !important;
-    border-color: var(--success) !important;
-    color: #15803d !important;
-    font-weight: 800;
-  }
-  .mcq-opt.wrong {
-    background: var(--danger-bg) !important;
-    border-color: var(--danger) !important;
-    color: #b91c1c !important;
-  }
+/* ===== PRACTICAL ===== */
+.slide-quiz {
+  background: #1e2d3d;
+  color: #e8edf2;
+  border-radius: 14px;
+  padding: 20px;
+  margin: 14px 0;
+}
+.slide-quiz img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 14px;
+  display: block;
+}
+.slide-reveal-btn {
+  background: #1e4976;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 18px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background .2s;
+}
+.slide-reveal-btn:hover { background: #2563a8; }
+.slide-answer {
+  display: none;
+  margin-top: 12px;
+  background: rgba(255,255,255,.08);
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.slide-answer.show { display: block; }
 
-  .q-feedback {
-    display: none;
-    margin-top: 12px;
-    padding: 12px 16px;
-    border-radius: 10px;
-    font-size: 14px;
-    line-height: 1.6;
-  }
-  .q-feedback.show {
-    display: block;
-    animation: fadeIn 0.3s ease;
-  }
-  .q-feedback.correct-fb {
-    background: var(--success-bg);
-    border-right: 4px solid var(--success);
-    color: #15803d;
-  }
-  .q-feedback.wrong-fb {
-    background: var(--danger-bg);
-    border-right: 4px solid var(--danger);
-    color: #b91c1c;
-  }
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
+  color: #8095a8;
+  font-size: 13px;
+  padding: 16px;
+  margin-top: 8px;
+}
 
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-4px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #eef1f5; }
+::-webkit-scrollbar-thumb { background: #a0b4c8; border-radius: 3px; }
 
-  /* Lightbox Modal */
-  .img-modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(15, 23, 42, 0.85);
-    backdrop-filter: blur(8px);
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-  }
-  .img-modal-overlay.active {
-    opacity: 1;
-    visibility: visible;
-  }
-  .img-modal-content {
-    max-width: 92vw;
-    max-height: 90vh;
-    background: var(--card-bg);
-    border-radius: 16px;
-    overflow: hidden;
-    position: relative;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-  }
-  .img-modal-content img {
-    max-width: 100%;
-    max-height: 80vh;
-    display: block;
-    margin: auto;
-  }
-  .modal-close-btn {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    background: rgba(0, 0, 0, 0.6);
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    font-size: 20px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .modal-caption {
-    color: #e2e8f0;
-    font-size: 14.5px;
-    padding: 10px 16px;
-    text-align: center;
-    background: #0f172a;
-    font-weight: 700;
-  }
-
-  footer {
-    text-align: center;
-    padding: 34px 20px;
-    color: var(--text-muted);
-    font-size: 14.5px;
-    border-top: 1px solid var(--border-color);
-    background: var(--card-bg);
-    margin-top: 40px;
-  }
+/* ===== RESPONSIVE ===== */
+@media (max-width: 650px) {
+  .container { padding: 10px; }
+  section { padding: 16px; }
+  .grid { grid-template-columns: 1fr; }
+  header h1 { font-size: 21px; }
+  table { font-size: 12px; }
+  th, td { padding: 7px; }
+}
 </style>
 </head>
 <body>
+<div class="container">
 
-<!-- Top Navigation -->
-<header class="nav-header">
-  <div class="nav-right">
-    <a href="../index.html" class="nav-btn">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-      <span>محاضرات الهستولوجي</span>
-    </a>
-    <a href="../../index.html" class="nav-btn">
-      <span>الرئيسية</span>
-    </a>
-  </div>
-  <div class="nav-title">
-    <span>Histology I</span>
-    <span class="nav-badge">Lecture 1</span>
-  </div>
-  <div>
-    <button class="theme-btn" id="themeToggle" title="تبديل الوضع الليلي / الفاتح">🌓</button>
-  </div>
+<!-- ====== HEADER ====== -->
+<header>
+  <h1>Histology — Lecture 1</h1>
+  <p>Microscopy + Cytology I &nbsp;|&nbsp; شرح عربي مبسط + اسئلة MCQ + نطق المصطلحات</p>
+  <span class="badge">Dr. Sarwat L. A. Abdel-Latif</span>
+  <span class="badge">2026/2027</span>
 </header>
 
-<main class="container">
-
-  <!-- Hero Header -->
-  <div class="lecture-hero">
-    <div class="badge-row">
-      <span class="badge badge-primary">كلية الطب البشري وطب الأسنان</span>
-      <span class="badge badge-code">Faculty of Medicine - Histology</span>
-      <span class="badge badge-accent">العام الجامعي 2026 / 2027</span>
-    </div>
-    <h1 class="hero-title">Lecture -1: Microscopy + Cytology-I</h1>
-    <p class="hero-subtitle">
-      أستاذ المادة: <strong>د. ثروت لطفي عبد اللطيف (Dr. Sarwat L. A. Abdel-Latif)</strong>
-      <br>
-      شرح تفصيلي ومبسط يغطي بدقة كامل محتوى ملف المحاضرة: أساسيات الميكروسكوبات الضوئية والإلكترونية، وحدات القياس، مكونات الخلية والسيتوبلازم، الغشاء الخلوي، الميتوكوندريا، الشبكة الإندوبلازمية بنوعيها، وجهاز جولجي، مع نطق المصطلحات الطبية وصور السلايدات وبنك أسئلة العملي والنظري.
-    </p>
-  </div>
-
-  <!-- Quick Navigation Chips -->
-  <div class="quick-nav">
-    <a href="#sec-objectives" class="quick-chip">🎯 الأهداف التعليمية</a>
-    <a href="#sec-microscopy" class="quick-chip">🔬 الميكروسكوبات والقياسات</a>
-    <a href="#sec-cytology" class="quick-chip">🧬 الخلية والسيتوبلازم</a>
-    <a href="#sec-membrane" class="quick-chip">🛡️ غشاء الخلية والغلاف الخلوي</a>
-    <a href="#sec-mitochondria" class="quick-chip">⚡ الميتوكوندريا</a>
-    <a href="#sec-er" class="quick-chip">🌐 الشبكة الإندوبلازمية (rER & sER)</a>
-    <a href="#sec-golgi" class="quick-chip">📦 جهاز جولجي</a>
-    <a href="#sec-practical" class="quick-chip">🔍 شرائح العملي والتعرف</a>
-    <a href="#sec-quiz" class="quick-chip">📝 بنك الأسئلة والاختبار</a>
-  </div>
-
-  <!-- SECTION 0: OBJECTIVES -->
-  <section id="sec-objectives" class="section-card">
-    <div class="section-header">
-      <div class="section-icon">🎯</div>
-      <div>
-        <h2 class="section-title">الأهداف التعليمية للمحاضرة</h2>
-        <div class="section-en-title">Lecture Objectives</div>
-      </div>
-    </div>
-    <p style="margin-bottom: 14px; font-weight: 700; color: var(--text-secondary);">
-      بناءً على الشريحة 2 من المحاضرة، بنهاية هذا الدرس يكون الطالب قادراً على:
-    </p>
-    <div class="grid-2">
-      <div class="feature-box" style="border-right: 4px solid var(--primary);">
-        <div class="feature-header">
-          <span class="feature-icon">1️⃣</span>
-          <span class="feature-title">المقارنة بين الميكروسكوبات</span>
-        </div>
-        <p style="font-size: 13.5px; color: var(--text-muted);">
-          المقارنة الدقيقة بين الميكروسكوب الضوئي (Light) والإلكتروني (Electron).
-        </p>
-      </div>
-      <div class="feature-box" style="border-right: 4px solid var(--accent);">
-        <div class="feature-header">
-          <span class="feature-icon">2️⃣</span>
-          <span class="feature-title">تصنيف عضيات السيتوبلازم</span>
-        </div>
-        <p style="font-size: 13.5px; color: var(--text-muted);">
-          تصنيف العضيات السيتوبلازمية إلى غشائية (Membranous) وغير غشائية (Non-membranous).
-        </p>
-      </div>
-      <div class="feature-box" style="border-right: 4px solid #0284c7;">
-        <div class="feature-header">
-          <span class="feature-icon">3️⃣</span>
-          <span class="feature-title">التركيب الجزيئي لغشاء الخلية</span>
-        </div>
-        <p style="font-size: 13.5px; color: var(--text-muted);">
-          وصف التركيب الجزيئي لغشاء الخلية وتحديد النسبة المئوية الدقيقة لكل مكون.
-        </p>
-      </div>
-      <div class="feature-box" style="border-right: 4px solid #16a34a;">
-        <div class="feature-header">
-          <span class="feature-icon">4️⃣</span>
-          <span class="feature-title">غلاف الخلية والميتوكوندريا</span>
-        </div>
-        <p style="font-size: 13.5px; color: var(--text-muted);">
-          التعرف على تركيب ووظيفة غلاف الخلية (Cell coat) والربط بين تركيب الميتوكوندريا ووظيفتها.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION 1: HISTOLOGY & MICROSCOPY -->
-  <section id="sec-microscopy" class="section-card">
-    <div class="section-header">
-      <div class="section-icon">🔬</div>
-      <div>
-        <h2 class="section-title">علم الأنسجة، الميكروسكوبات، ووحدات القياس</h2>
-        <div class="section-en-title">Histology, Measurements & Microscopy</div>
-      </div>
-    </div>
-
-    <div class="callout callout-info">
-      <div class="callout-title">
-        <span>ما هو علم الأنسجة؟</span>
-        <span class="term-badge">Histology<button class="audio-btn" onclick="playAudio('histology')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>
-      </div>
-      <p style="font-size: 14.5px;">
-        هو دراسة <strong>التركيب المجهري الدقيق للأنسجة السليمة الطبيعية</strong> (<span class="term-badge">Microscopic Structure of normal tissue</span>).
-      </p>
-    </div>
-
-    <h3 style="font-size: 17px; font-weight: 800; margin: 18px 0 10px; color: var(--text-primary);">
-      التدرج التركيبي لجسم الإنسان (Human Body Hierarchy)
-    </h3>
-    <p style="margin-bottom: 12px; color: var(--text-secondary);">
-      كما توضح الشريحة 12، يتدرج بناء جسم الإنسان من الوحدة الأساسية حتى الجسم الكامل:
-    </p>
-    <div style="background: var(--primary-light); border: 1.5px solid var(--primary-border); border-radius: 14px; padding: 14px 18px; text-align: center; font-weight: 800; font-size: 15px; color: var(--primary-dark); margin-bottom: 18px;">
-      Cells (الخلايا) ➔ Tissues (الأنسجة) ➔ Organs (الأعضاء) ➔ Systems (الأجهزة) ➔ Human Body (جسم الإنسان)
-    </div>
-
-    <h3 style="font-size: 17px; font-weight: 800; margin: 18px 0 10px; color: var(--text-primary);">
-      وحدات القياس المجهرية (Measurements & Units)
-    </h3>
-    <p style="color: var(--text-secondary); margin-bottom: 10px;">
-      وفقاً للشريحة 5، التحويلات الرياضية الدقيقة للوحدات المجهرية هي:
-    </p>
-    <div class="grid-3">
-      <div class="feature-box" style="text-align: center;">
-        <div style="font-weight: 800; color: var(--primary); font-size: 16px; margin-bottom: 4px;">السنتيمتر (cm)</div>
-        <div style="font-size: 14.5px; font-weight: 700;">1 cm = 10 mm</div>
-        <div style="font-size: 12.5px; color: var(--text-muted); margin-top: 4px;">10 ملليمتر</div>
-      </div>
-      <div class="feature-box" style="text-align: center;">
-        <div style="font-weight: 800; color: var(--accent); font-size: 16px; margin-bottom: 4px;">الملليمتر (mm)</div>
-        <div style="font-size: 14.5px; font-weight: 700;">1 mm = 1000 µm</div>
-        <div style="font-size: 12.5px; color: var(--text-muted); margin-top: 4px;">1000 ميكروميتر</div>
-      </div>
-      <div class="feature-box" style="text-align: center;">
-        <div style="font-weight: 800; color: #0284c7; font-size: 16px; margin-bottom: 4px;">الميكروميتر (µm)</div>
-        <div style="font-size: 14.5px; font-weight: 700;">1 µm = 1000 nm</div>
-        <div style="font-size: 12.5px; color: var(--text-muted); margin-top: 4px;">1000 نانوميتر</div>
-      </div>
-    </div>
-
-    <!-- Slide 05 Preview -->
-    <div class="slide-figure" onclick="openImageModal('images/slide_05.png', 'الشريحة 5: وحدات القياس المجهرية Measurements & Units')">
-      <img src="images/slide_05.png" alt="Measurements and Units" loading="lazy">
-      <div class="slide-caption">
-        <span>الشريحة 5: Measurements & Units</span>
-        <span class="zoom-hint">🔍 تكبير الشريحة</span>
-      </div>
-    </div>
-
-    <h3 style="font-size: 17px; font-weight: 800; margin: 24px 0 12px; color: var(--text-primary);">
-      المقارنة الشاملة بين الميكروسكوب الضوئي والإلكتروني (L.M vs E.M)
-    </h3>
-    <p style="color: var(--text-secondary); margin-bottom: 12px;">
-      جدول المقارنة المعتمد نصياً من الشريحة 7:
-    </p>
-
-    <div class="table-responsive">
-      <table class="comp-table">
-        <thead>
-          <tr>
-            <th>وجه المقارنة</th>
-            <th>الميكروسكوب الضوئي <span class="term-badge">Light Microscope (L.M)<button class="audio-btn" onclick="playAudio('light_microscope')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span></th>
-            <th>الميكروسكوب الإلكتروني <span class="term-badge">Electron Microscope (E.M)<button class="audio-btn" onclick="playAudio('electron_microscope')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>مصدر الإضاءة (Source of illumination)</strong></td>
-            <td>أشعة الضوء (Light rays)</td>
-            <td>حزمة إلكترونات (Electrons beam)</td>
-          </tr>
-          <tr>
-            <td><strong>قوة التكبير (Magnifying power)</strong></td>
-            <td>تصل إلى 1500 - 2000 ضعف (up to x 1500-2000)</td>
-            <td>10,000 ضعف وأكبر بكثير (x 10,000 & MUCH larger)</td>
-          </tr>
-          <tr>
-            <td><strong>مجال الفحص والاستخدام (Used for examination of)</strong></td>
-            <td>الخلايا الكاملة والأنسجة (Whole cells & tissues)</td>
-            <td>العضيات الداخلية الدقيقة (<span class="term-badge">Intracellular Organelles<button class="audio-btn" onclick="playAudio('intracellular_organelles')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>)</td>
-          </tr>
-          <tr>
-            <td><strong>الأنواع (Types)</strong></td>
-            <td>نوع واحد فقط (Only one type)</td>
-            <td>نوعان: نافذ (<span class="term-badge">Transmission E.M<button class="audio-btn" onclick="playAudio('transmission_electron_microscope')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>) / ماسح (<span class="term-badge">Scanning E.M<button class="audio-btn" onclick="playAudio('scanning_electron_microscope')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>)</td>
-          </tr>
-          <tr>
-            <td><strong>معالجة وصبغ العينة (Specimen treated with)</strong></td>
-            <td>صبغة الهيماتوكسيلين والإيوسين في الغالب (<span class="term-badge">H&E [Hematoxylin + Eosin]<button class="audio-btn" onclick="playAudio('hematoxylin_and_eosin')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>)</td>
-            <td>بودرة المعادن الثقيلة (Metal powder)</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- Slide 07 Preview -->
-    <div class="slide-figure" onclick="openImageModal('images/slide_07.png', 'الشريحة 7: جدول المقارنة الرسمي بين L.M و E.M')">
-      <img src="images/slide_07.png" alt="L.M vs E.M Difference" loading="lazy">
-      <div class="slide-caption">
-        <span>الشريحة 7: Difference between L.M & E.M</span>
-        <span class="zoom-hint">🔍 تكبير الشريحة</span>
-      </div>
-    </div>
-
-    <div class="callout callout-warning">
-      <div class="callout-title">⚠️ تنبيه امتحاني هام جداً بخصوص الميتوكوندريا (شريحة 11):</div>
-      <p style="font-size: 14.5px; line-height: 1.8;">
-        <strong>"Mitochondria, as such, can NOT be seen with light microscopy. But their site can be highlighted with special stains. The way to visualize mitochondria directly is ONLY through electron microscopy."</strong>
-        <br>
-        <em>التعريب:</em> لا يمكن رؤية الميتوكوندريا بذاتها تحت الميكروسكوب الضوئي، ولكن يمكن تحديد موقعها بصبغات خاصة. والسبيل الوحيد لرؤيتها وفحصها مباشرة هو عبر الميكروسكوب الإلكتروني حصراً.
-      </p>
-    </div>
-
-    <div class="grid-2">
-      <div class="slide-figure" onclick="openImageModal('images/slide_08.png', 'الشريحة 8: Transmission E.M صورة الميتوكوندريا بدقة نافذة ثنائية الأبعاد')">
-        <img src="images/slide_08.png" alt="Transmission EM" loading="lazy">
-        <div class="slide-caption">
-          <span>الشريحة 8: Transmission - E.M</span>
-          <span class="zoom-hint">🔍 تكبير</span>
-        </div>
-      </div>
-      <div class="slide-figure" onclick="openImageModal('images/slide_09.png', 'الشريحة 9: Scanning E.M صورة ثلاثية الأبعاد للتضاريس السطحية')">
-        <img src="images/slide_09.png" alt="Scanning EM" loading="lazy">
-        <div class="slide-caption">
-          <span>الشريحة 9: Scanning - E.M</span>
-          <span class="zoom-hint">🔍 تكبير</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION 2: CYTOLOGY & CYTOPLASM -->
-  <section id="sec-cytology" class="section-card">
-    <div class="section-header">
-      <div class="section-icon">🧬</div>
-      <div>
-        <h2 class="section-title">علم الخلية ومكونات السيتوبلازم</h2>
-        <div class="section-en-title">Cytology & Cytoplasmic Components</div>
-      </div>
-    </div>
-
-    <div class="callout callout-info">
-      <div class="callout-title">
-        <span>الخلية</span>
-        <span class="term-badge">Cytology [The Cell]<button class="audio-btn" onclick="playAudio('cytology')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>
-      </div>
-      <p style="font-size: 14.5px;">
-        الخلية هي <strong>الوحدة التركيبية والوظيفية</strong> لجسم الإنسان (Structural & functional unit)، وتتميز بأشكال وأحجام متعددة ومتباينة (Different shapes & sizes).
-        <br>
-        تتكون الخلية الحية من: <strong>السيتوبلازم (<span class="term-badge">Cytoplasm<button class="audio-btn" onclick="playAudio('cytoplasm')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>) + النواة والعضيات (Nucleus & organelles)</strong>.
-      </p>
-    </div>
-
-    <h3 style="font-size: 17px; font-weight: 800; margin: 18px 0 10px; color: var(--text-primary);">
-      مكونات السيتوبلازم الثلاثة (الشريحة 16)
-    </h3>
-    <p style="color: var(--text-secondary); margin-bottom: 12px;">
-      ينقسم السيتوبلازم إلى 3 مكونات رئيسية:
-    </p>
-
-    <div class="grid-3">
-      <!-- Matrix -->
-      <div class="feature-box" style="border-right: 4px solid var(--primary);">
-        <div class="feature-header">
-          <span class="feature-icon">1️⃣</span>
-          <span class="feature-title">المادة الخلالية السيتوبلازمية</span>
-        </div>
-        <div style="font-size: 12px; margin-bottom: 6px;">
-          <span class="term-badge">Cytoplasmic Matrix<button class="audio-btn" onclick="playAudio('cytoplasmic_matrix')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>
-        </div>
-        <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.6;">
-          <strong>محلول غروي (Colloid solution)</strong> يحتوي على:
-          <br>• بروتينات (Proteins)
-          <br>• كربوهيدرات (Carbohydrates)
-          <br>• دهون (Lipids)
-          <br>• معادن (Minerals)
-          <br>• إنزيمات (Enzymes)
-        </p>
-      </div>
-
-      <!-- Organelles -->
-      <div class="feature-box" style="border-right: 4px solid #16a34a;">
-        <div class="feature-header">
-          <span class="feature-icon">2️⃣</span>
-          <span class="feature-title">العضيات السيتوبلازمية</span>
-        </div>
-        <div style="font-size: 12px; margin-bottom: 6px;">
-          <span class="term-badge">Cytoplasmic Organelles<button class="audio-btn" onclick="playAudio('cytoplasmic_organelles')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>
-        </div>
-        <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.6;">
-          <strong>حية ودائمة ودقيقة:</strong>
-          <br>• تراكيب حية دقيقة دائمة (<span class="term-badge">Living & Permanent</span>)
-          <br>• <strong>ضرورية لحياة الخلية</strong> للعمليات الحيوية كالتنفس والإفراز والهضم.
-          <br>• <em>أمثلة:</em> الميتوكوندريا، جهاز جولجي، الليسوسومات.
-        </p>
-      </div>
-
-      <!-- Inclusions -->
-      <div class="feature-box" style="border-right: 4px solid var(--accent);">
-        <div class="feature-header">
-          <span class="feature-icon">3️⃣</span>
-          <span class="feature-title">المشتملات السيتوبلازمية</span>
-        </div>
-        <div style="font-size: 12px; margin-bottom: 6px;">
-          <span class="term-badge">Cytoplasmic Inclusions<button class="audio-btn" onclick="playAudio('cytoplasmic_inclusions')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>
-        </div>
-        <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.6;">
-          <strong>غير حية ومؤقتة:</strong>
-          <br>• تراكيب غير حية مؤقتة (<span class="term-badge">Non-living & Temporary</span>)
-          <br>• <strong>غير ضرورية لحياة الخلية</strong>.
-          <br>• <em>أمثلة:</em> مواد مخزنة كالنشا الحيواني (Glycogen)، الدهون (Fat)، والصبغات (Pigments).
-        </p>
-      </div>
-    </div>
-
-    <!-- Slide 16 & 18 Preview -->
-    <div class="grid-2">
-      <div class="slide-figure" onclick="openImageModal('images/slide_16.png', 'الشريحة 16: مكونات السيتوبلازم الثلاثة')">
-        <img src="images/slide_16.png" alt="Cytoplasm Components" loading="lazy">
-        <div class="slide-caption">
-          <span>الشريحة 16: Cytoplasm Components</span>
-          <span class="zoom-hint">🔍 تكبير</span>
-        </div>
-      </div>
-      <div class="slide-figure" onclick="openImageModal('images/slide_18.png', 'الشريحة 18: مقارنة Organelles مقابل Inclusions')">
-        <img src="images/slide_18.png" alt="Organelles vs Inclusions" loading="lazy">
-        <div class="slide-caption">
-          <span>الشريحة 18: Organelles vs Inclusions</span>
-          <span class="zoom-hint">🔍 تكبير</span>
-        </div>
-      </div>
-    </div>
-
-    <h3 style="font-size: 17px; font-weight: 800; margin: 24px 0 12px; color: var(--text-primary);">
-      تصنيف العضيات السيتوبلازمية (Types of Cytoplasmic Organelles)
-    </h3>
-    <p style="color: var(--text-secondary); margin-bottom: 12px;">
-      وفقاً للشريحة 19، تُصنف العضيات السيتوبلازمية بحسب وجود غشاء يحيط بها إلى:
-    </p>
-
-    <div class="grid-2">
-      <div class="feature-box" style="border-right: 4px solid var(--primary);">
-        <div class="feature-header">
-          <span class="feature-icon">🛡️</span>
-          <span class="feature-title">عضيات غشائية (Membranous Organelles)</span>
-        </div>
-        <div style="font-size: 12px; margin-bottom: 8px;">
-          <span class="term-badge">Membranous<button class="audio-btn" onclick="playAudio('membranous_organelles')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>
-        </div>
-        <ul style="padding-right: 20px; font-size: 14px; line-height: 1.8;">
-          <li>غشاء الخلية (<span class="term-badge">Cell membrane</span>)</li>
-          <li>الميتوكوندريا (<span class="term-badge">Mitochondria</span>)</li>
-          <li>الشبكة الإندوبلازمية الخشنة والملساء (<span class="term-badge">Endoplasmic reticulum - rough & smooth</span>)</li>
-          <li>جهاز جولجي (<span class="term-badge">Golgi apparatus</span>)</li>
-          <li>الليسوسومات (<span class="term-badge">Lysosomes</span>)</li>
-        </ul>
-      </div>
-
-      <div class="feature-box" style="border-right: 4px solid var(--accent);">
-        <div class="feature-header">
-          <span class="feature-icon">⚙️</span>
-          <span class="feature-title">عضيات غير غشائية (Non-membranous Organelles)</span>
-        </div>
-        <div style="font-size: 12px; margin-bottom: 8px;">
-          <span class="term-badge">Non-membranous<button class="audio-btn" onclick="playAudio('non_membranous_organelles')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>
-        </div>
-        <ul style="padding-right: 20px; font-size: 14px; line-height: 1.8;">
-          <li>الريبوسومات (<span class="term-badge">Ribosomes</span>)</li>
-          <li>الهيكل الخلوي (<span class="term-badge">Cytoskeleton</span>):
-            <br>a. الأنيبيبات الدقيقة (<span class="term-badge">Microtubules</span>) كالأجسام المركزية (<span class="term-badge">Centrioles</span>) والأهداب (<span class="term-badge">Cilia</span>).
-            <br>b. الخيوط الدقيقة (<span class="term-badge">Filaments</span>) بأنواعها: الرفيعة والمتوسطة والسميكة (Thin, Intermediate & Thick).
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Slide 19 Preview -->
-    <div class="slide-figure" onclick="openImageModal('images/slide_19.png', 'الشريحة 19: التصنيف الرسمي للعضيات الغشائية وغير الغشائية')">
-      <img src="images/slide_19.png" alt="Organelles Classification" loading="lazy">
-      <div class="slide-caption">
-        <span>الشريحة 19: Types of Cytoplasmic Organelles</span>
-        <span class="zoom-hint">🔍 تكبير الشريحة</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION 3: CELL MEMBRANE -->
-  <section id="sec-membrane" class="section-card">
-    <div class="section-header">
-      <div class="section-icon">🛡️</div>
-      <div>
-        <h2 class="section-title">1. غشاء الخلية والغلاف الخلوي</h2>
-        <div class="section-en-title">1- Cell Membrane & Glycocalyx</div>
-      </div>
-    </div>
-
-    <h3 style="font-size: 17px; font-weight: 800; margin-bottom: 10px; color: var(--text-primary);">
-      المظهر المجهري لغشاء الخلية تحت L.M و E.M
-    </h3>
-    <div class="grid-2">
-      <div class="feature-box">
-        <div class="feature-header">
-          <span class="feature-icon">🔬</span>
-          <span class="feature-title">تحت الميكروسكوب الضوئي (L.M)</span>
-        </div>
-        <p style="font-size: 14px; line-height: 1.7;">
-          • <strong>غير مرئي (Invisible)</strong> لأنه شديد الرقة؛ سمكه يتراوح بين <strong>8 إلى 10 نانوميتر فقط (8-10 nm)</strong>.
-          <br>• <strong>لكن يمكن صبغه بصبغات خاصة:</strong> صبغة PAS أو صبغة الفضة Ag (<span class="term-badge">Special stains: PAS or Ag</span>).
-        </p>
-      </div>
-      <div class="feature-box">
-        <div class="feature-header">
-          <span class="feature-icon">⚡</span>
-          <span class="feature-title">تحت الميكروسكوب الإلكتروني (E.M)</span>
-        </div>
-        <p style="font-size: 14px; line-height: 1.7;">
-          • يظهر كغشاء <strong>ثلاثي الصفائح</strong> (<span class="term-badge">Trilamellar membrane<button class="audio-btn" onclick="playAudio('trilamellar_membrane')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>):
-          <br>عبارة عن <strong>خطين داكنين متوازيين تفصل بينهما طبقة فاتحة</strong> (2 dark parallel lines, separated by light one).
-        </p>
-      </div>
-    </div>
-
-    <!-- Slide 21 & 22 Preview -->
-    <div class="grid-2">
-      <div class="slide-figure" onclick="openImageModal('images/slide_21.png', 'الشريحة 21: غشاء الخلية تحت L.M بالصبغات الخاصة PAS و Ag')">
-        <img src="images/slide_21.png" alt="Cell Membrane LM" loading="lazy">
-        <div class="slide-caption">
-          <span>الشريحة 21: Cell Membrane under L.M</span>
-          <span class="zoom-hint">🔍 تكبير</span>
-        </div>
-      </div>
-      <div class="slide-figure" onclick="openImageModal('images/slide_22.png', 'الشريحة 22: غشاء الخلية تحت E.M ثلاثي الصفائح Trilamellar')">
-        <img src="images/slide_22.png" alt="Cell Membrane EM Trilamellar" loading="lazy">
-        <div class="slide-caption">
-          <span>الشريحة 22: Cell Membrane E.M Trilamellar</span>
-          <span class="zoom-hint">🔍 تكبير</span>
-        </div>
-      </div>
-    </div>
-
-    <h3 style="font-size: 17px; font-weight: 800; margin: 22px 0 10px; color: var(--text-primary);">
-      التركيب الجزيئي ونسب مكونات غشاء الخلية (Molecular Structure)
-    </h3>
-    <p style="color: var(--text-secondary); margin-bottom: 12px;">
-      كما ورد في الشريحة 23، يتكون غشاء الخلية من ثلاث نسب مئوية محددة:
-    </p>
-
-    <div class="grid-3">
-      <div class="feature-box" style="text-align: center; border-bottom: 4px solid var(--primary);">
-        <div style="font-size: 28px; font-weight: 900; color: var(--primary);">60%</div>
-        <div style="font-weight: 800; font-size: 15px; margin-top: 4px;">مكون البروتين</div>
-        <div style="font-size: 12.5px; color: var(--text-muted); font-family: 'Inter', sans-serif;">Protein Component [60%]</div>
-      </div>
-      <div class="feature-box" style="text-align: center; border-bottom: 4px solid var(--accent);">
-        <div style="font-size: 28px; font-weight: 900; color: var(--accent);">30%</div>
-        <div style="font-weight: 800; font-size: 15px; margin-top: 4px;">مكون الدهون</div>
-        <div style="font-size: 12.5px; color: var(--text-muted); font-family: 'Inter', sans-serif;">Lipid Component [30%]</div>
-      </div>
-      <div class="feature-box" style="text-align: center; border-bottom: 4px solid #16a34a;">
-        <div style="font-size: 28px; font-weight: 900; color: #16a34a;">10%</div>
-        <div style="font-weight: 800; font-size: 15px; margin-top: 4px;">مكون الكربوهيدرات</div>
-        <div style="font-size: 12.5px; color: var(--text-muted); font-family: 'Inter', sans-serif;">Carbohydrate Component [10%]</div>
-      </div>
-    </div>
-
-    <!-- Slide 23 Preview -->
-    <div class="slide-figure" onclick="openImageModal('images/slide_23.png', 'الشريحة 23: النسب المئوية للتركيب الجزيئي لغشاء الخلية')">
-      <img src="images/slide_23.png" alt="Molecular structure of cell membrane" loading="lazy">
-      <div class="slide-caption">
-        <span>الشريحة 23: Molecular structure of cell membrane</span>
-        <span class="zoom-hint">🔍 تكبير الشريحة</span>
-      </div>
-    </div>
-
-    <div class="callout callout-accent">
-      <div class="callout-title">
-        <span>غلاف الخلية أو الجليكوكاليكس</span>
-        <span class="term-badge">Cell Coat or Glycocalyx<button class="audio-btn" onclick="playAudio('glycocalyx')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>
-      </div>
-      <p style="font-size: 14.5px; line-height: 1.8;">
-        وفقاً للشريحة 24:
-        <br>• مكون الكربوهيدرات (10%) عبارة عن سكريات متعددة (<span class="term-badge">Polysaccharides</span>).
-        <br>• ترتبط إما بالبروتين فتسمى بروتينات سكرية (<span class="term-badge">Glycoprotein<button class="audio-btn" onclick="playAudio('glycoprotein')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>) أو بالدهون فتسمى دهون سكرية (<span class="term-badge">Glycolipid<button class="audio-btn" onclick="playAudio('glycolipid')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>).
-        <br>• مجموع <strong>Glycolipid + Glycoprotein</strong> يشكل ما يُعرف بـ <strong>غلاف الخلية (<span class="term-badge">Cell coat or Glycocalyx</span>)</strong>.
-      </p>
-    </div>
-
-    <!-- Slide 24 Preview -->
-    <div class="slide-figure" onclick="openImageModal('images/slide_24.png', 'الشريحة 24: تركيب غلاف الخلية Cell Coat أو Glycocalyx')">
-      <img src="images/slide_24.png" alt="Carbohydrate Component and Glycocalyx" loading="lazy">
-      <div class="slide-caption">
-        <span>الشريحة 24: Carbohydrate Component & Cell Coat</span>
-        <span class="zoom-hint">🔍 تكبير الشريحة</span>
-      </div>
-    </div>
-
-    <h3 style="font-size: 17px; font-weight: 800; margin: 22px 0 10px; color: var(--text-primary);">
-      وظائف غشاء الخلية وغلافها (Functions of Cell Membrane)
-    </h3>
-    <p style="color: var(--text-secondary); margin-bottom: 10px;">
-      كما تم تلخيصها في الشريحة 25:
-    </p>
-    <div class="grid-2">
-      <div class="feature-box">
-        <div class="feature-header">
-          <span class="feature-icon">🚪</span>
-          <span class="feature-title">1. تنظيم مرور المواد (Regulate passage)</span>
-        </div>
-        <p style="font-size: 14px; line-height: 1.7;">
-          تنظيم دخول وخروج المواد من وإلى الخلية عبر عدة آليات:
-          <br>• النقل السلبي (<span class="term-badge">Passive transport<button class="audio-btn" onclick="playAudio('passive_transport')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>)
-          <br>• النقل النشط (<span class="term-badge">Active transport<button class="audio-btn" onclick="playAudio('active_transport')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>)
-          <br>• النقل الميسر (<span class="term-badge">Facilitated transport<button class="audio-btn" onclick="playAudio('facilitated_transport')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>)
-        </p>
-      </div>
-
-      <div class="feature-box">
-        <div class="feature-header">
-          <span class="feature-icon">🛡️</span>
-          <span class="feature-title">2. وظائف غلاف الخلية (Cell coat)</span>
-        </div>
-        <p style="font-size: 14px; line-height: 1.7;">
-          • <strong>الحماية الميكانيكية للخلية</strong> (<span class="term-badge">Mechanical protection</span>).
-          <br>• <strong>المناعة الخلوية والحساسية</strong> عبر المستقبلات (<span class="term-badge">Cell immunity & allergy through receptors</span>).
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION 4: MITOCHONDRIA -->
-  <section id="sec-mitochondria" class="section-card">
-    <div class="section-header">
-      <div class="section-icon">⚡</div>
-      <div>
-        <h2 class="section-title">2. الميتوكوندريا (محطات الطاقة)</h2>
-        <div class="section-en-title">2- Mitochondria (Powerhouses of the Cell)</div>
-      </div>
-    </div>
-
-    <div class="callout callout-info">
-      <div class="callout-title">
-        <span>العدد والتوزيع (Number):</span>
-        <span class="term-badge">Mitochondria<button class="audio-btn" onclick="playAudio('mitochondria')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>
-      </div>
-      <p style="font-size: 14.5px;">
-        توجد بأعداد وفيرة في الخلايا النشطة الأيضية (Numerous in active cells).
-        <br>
-        <strong>مثال هام من الشريحة 27:</strong> تحتوي خلية الكبد على ما يصل إلى <strong>2000 ميتوكوندريا في الخلية الواحدة</strong> (<span class="term-badge">liver cells contain up to 2000/cell</span>).
-      </p>
-    </div>
-
-    <!-- Slide 27 Preview -->
-    <div class="slide-figure" onclick="openImageModal('images/slide_27.png', 'الشريحة 27: أعداد الميتوكوندريا في الخلايا النشطة كالكبد')">
-      <img src="images/slide_27.png" alt="Mitochondria Number" loading="lazy">
-      <div class="slide-caption">
-        <span>الشريحة 27: Mitochondria Number in Active Cells</span>
-        <span class="zoom-hint">🔍 تكبير الشريحة</span>
-      </div>
-    </div>
-
-    <h3 style="font-size: 17px; font-weight: 800; margin: 20px 0 10px; color: var(--text-primary);">
-      التركيب الدقيق للميتوكوندريا تحت E.M (الشريحة 28)
-    </h3>
-    <div class="grid-2">
-      <div class="feature-box">
-        <div class="feature-header">
-          <span class="feature-icon">🔍</span>
-          <span class="feature-title">الشكل والأغشية</span>
-        </div>
-        <ul style="padding-right: 18px; font-size: 14px; line-height: 1.8;">
-          <li>حويصلات دائرية أو بيضاوية أو مستطيلة (Round, oval or elongated vesicles).</li>
-          <li>محاطة بغشاء مزدوج (<span class="term-badge">Covered with double membranes</span>):
-            <br>• <strong>الغشاء الخارجي أملس</strong> (<span class="term-badge">Outer membrane is smooth</span>).
-            <br>• <strong>الغشاء الداخلي يشكل ثنيات تُسمى الأعراف</strong> (<span class="term-badge">Inner membrane forms folds [Cristae]<button class="audio-btn" onclick="playAudio('cristae')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>).
-          </li>
-        </ul>
-      </div>
-
-      <div class="feature-box">
-        <div class="feature-header">
-          <span class="feature-icon">🧪</span>
-          <span class="feature-title">الحشوة الداخلية (Matrix) والوظيفة</span>
-        </div>
-        <ul style="padding-right: 18px; font-size: 14px; line-height: 1.8;">
-          <li>الحشوة (<span class="term-badge">Matrix<button class="audio-btn" onclick="playAudio('mitochondrial_matrix')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>) تملأ التجويف الداخلي وتحتوي على: دهون، بروتينات، كربوهيدرات، Ca، Mg، و DNA، و RNA، وإنزيمات أكسدة (Oxidative enzymes).</li>
-          <li><strong>الوظيفة الحيوية:</strong> تكوين جزيئات الطاقة <span class="term-badge">ATP [Adenosine Triphosphate]<button class="audio-btn" onclick="playAudio('adenosine_triphosphate')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span> التي تعد مصدر الطاقة الأساسي، ولذلك تسمى <strong>محطات الطاقة في الخلية (Powerhouses of living cells)</strong>.</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Slide 28 & 29 Preview -->
-    <div class="grid-2">
-      <div class="slide-figure" onclick="openImageModal('images/slide_28.png', 'الشريحة 28: تركيب ووظيفة الميتوكوندريا تحت E.M')">
-        <img src="images/slide_28.png" alt="Mitochondria EM Details" loading="lazy">
-        <div class="slide-caption">
-          <span>الشريحة 28: Mitochondria E.M & Function</span>
-          <span class="zoom-hint">🔍 تكبير</span>
-        </div>
-      </div>
-      <div class="slide-figure" onclick="openImageModal('images/slide_29.png', 'الشريحة 29: صورة حقيقية بالميكروسكوب الإلكتروني للأعراف والحشوة بالميتوكوندريا')">
-        <img src="images/slide_29.png" alt="Mitochondria EM Picture" loading="lazy">
-        <div class="slide-caption">
-          <span>الشريحة 29: Mitochondria [E.M Picture]</span>
-          <span class="zoom-hint">🔍 تكبير</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION 5: ENDOPLASMIC RETICULUM -->
-  <section id="sec-er" class="section-card">
-    <div class="section-header">
-      <div class="section-icon">🌐</div>
-      <div>
-        <h2 class="section-title">3. الشبكة الإندوبلازمية (rER مقابل sER)</h2>
-        <div class="section-en-title">3- Endoplasmic Reticulum: Rough (rER) vs Smooth (sER)</div>
-      </div>
-    </div>
-
-    <div class="callout callout-info">
-      <div class="callout-title">
-        <span>التعريف والأنواع:</span>
-        <span class="term-badge">Endoplasmic Reticulum<button class="audio-btn" onclick="playAudio('endoplasmic_reticulum')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>
-      </div>
-      <p style="font-size: 14.5px;">
-        <strong>التعريف (Def):</strong> شبكة من القنوات المتصلة ببعضها البعض داخل السيتوبلازم (<span class="term-badge">Network [reticulum] of intercommunicating channels in cytoplasm</span>).
-        <br>
-        <strong>النوعان:</strong>
-        <br>A. خشنة rough (لوجود ريبوسومات ملتصقة بها).
-        <br>B. ملساء smooth (لعدم وجود ريبوسومات).
-      </p>
-    </div>
-
-    <!-- Slide 31 Preview -->
-    <div class="slide-figure" onclick="openImageModal('images/slide_31.png', 'الشريحة 31: تعريف الشبكة الإندوبلازمية ونوعاها')">
-      <img src="images/slide_31.png" alt="Endoplasmic Reticulum Def" loading="lazy">
-      <div class="slide-caption">
-        <span>الشريحة 31: Endoplasmic Reticulum Types</span>
-        <span class="zoom-hint">🔍 تكبير الشريحة</span>
-      </div>
-    </div>
-
-    <h3 style="font-size: 17px; font-weight: 800; margin: 24px 0 12px; color: var(--text-primary);">
-      المقارنة الحاسمة بين rER و sER (الشرائح 32 و 33)
-    </h3>
-
-    <div class="table-responsive">
-      <table class="comp-table">
-        <thead>
-          <tr>
-            <th>وجه المقارنة</th>
-            <th>الشبكة الإندوبلازمية الخشنة <span class="term-badge">rER<button class="audio-btn" onclick="playAudio('rough_endoplasmic_reticulum')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span></th>
-            <th>الشبكة الإندوبلازمية الملساء <span class="term-badge">sER<button class="audio-btn" onclick="playAudio('smooth_endoplasmic_reticulum')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>الموقع والتواجد (Site)</strong></td>
-            <td>
-              توجد في <strong>الخلايا المصنعة للبروتين</strong> (Protein forming cells):
-              <br>• خلايا البلازما (<span class="term-badge">Plasma cells</span>)
-              <br>• بانيات العظم (<span class="term-badge">Osteoblasts</span>)
-              <br>• خلايا البنكرياس (<span class="term-badge">Pancreas</span>)
-            </td>
-            <td>
-              توجد في <strong>الخلايا المصنعة للدهون والغدد الصماء</strong>:
-              <br>• خلايا الكبد (<span class="term-badge">Liver</span>)
-              <br>• الغدة الكظرية / فوق الكلوية (<span class="term-badge">Suprarenal gland</span>)
-            </td>
-          </tr>
-          <tr>
-            <td><strong>تحت الميكروسكوب الإلكتروني (E.M)</strong></td>
-            <td>ريبوسومات ملتصقة بالسطح تعطي مظهراً خشناً (<span class="term-badge">Attached ribosomes → Rough surface</span>)</td>
-            <td>خالية من الريبوسومات ولها سطح أملس (<span class="term-badge">No ribosomes → Smooth surface</span>)</td>
-          </tr>
-          <tr>
-            <td><strong>الوظائف الحيوية (Functions)</strong></td>
-            <td>
-              <strong>تصنيع البروتين</strong> بواسطة الريبوسومات، ثم نقل هذا البروتين إلى جهاز جولجي (<span class="term-badge">Synthesis of protein → transfer to Golgi</span>).
-            </td>
-            <td>
-              <strong>5 وظائف رئيسية:</strong>
-              <br>1. تصنيع الدهون والهرمونات الستيرويدية (<span class="term-badge">Synthesis of Lipids & steroid hormones</span>).
-              <br>2. تخزين الجليكوجين في الكبد والعضلات (<span class="term-badge">Storage of glycogen</span>).
-              <br>3. تخزين وضخ الكالسيوم لانقباض العضلات (<span class="term-badge">Storage & pump of Ca → muscle contraction</span>).
-              <br>4. إزالة سمية الكحول وبعض الأدوية في الكبد (<span class="term-badge">Detoxification of alcohol & drugs<button class="audio-btn" onclick="playAudio('detoxification')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>).
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- Slide 32, 33, 34 Preview -->
-    <div class="grid-3">
-      <div class="slide-figure" onclick="openImageModal('images/slide_32.png', 'الشريحة 32: مواقع وجود rER و sER في الخلايا')">
-        <img src="images/slide_32.png" alt="rER vs sER Sites" loading="lazy">
-        <div class="slide-caption">
-          <span>الشريحة 32: rER & sER Sites</span>
-          <span class="zoom-hint">🔍 تكبير</span>
-        </div>
-      </div>
-      <div class="slide-figure" onclick="openImageModal('images/slide_33.png', 'الشريحة 33: مظهر ووظائف rER و sER')">
-        <img src="images/slide_33.png" alt="rER vs sER Functions" loading="lazy">
-        <div class="slide-caption">
-          <span>الشريحة 33: rER & sER Functions</span>
-          <span class="zoom-hint">🔍 تكبير</span>
-        </div>
-      </div>
-      <div class="slide-figure" onclick="openImageModal('images/slide_34.png', 'الشريحة 34: صورة مجهرية بالـ EM لـ rER و sER')">
-        <img src="images/slide_34.png" alt="EM Picture of rER and sER" loading="lazy">
-        <div class="slide-caption">
-          <span>الشريحة 34: EM pictures of rER & sER</span>
-          <span class="zoom-hint">🔍 تكبير</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION 6: GOLGI APPARATUS -->
-  <section id="sec-golgi" class="section-card">
-    <div class="section-header">
-      <div class="section-icon">📦</div>
-      <div>
-        <h2 class="section-title">4. جهاز جولجي (الجهاز الإفرازي)</h2>
-        <div class="section-en-title">4- Golgi Apparatus (The Secretory System)</div>
-      </div>
-    </div>
-
-    <div class="callout callout-info">
-      <div class="callout-title">
-        <span>التعريف والتسمية التاريخية:</span>
-        <span class="term-badge">Golgi Apparatus<button class="audio-btn" onclick="playAudio('golgi_apparatus')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>
-      </div>
-      <p style="font-size: 14.5px;">
-        • يُعرف بـ <strong>الجهاز الإفرازي للخلية</strong> (<span class="term-badge">The secretory system of the cell</span>).
-        <br>• سُمي تيمناً بعالم الأنسجة الإيطالي <strong>كاميلو جولجي (<span class="term-badge">Camillo Golgi<button class="audio-btn" onclick="playAudio('camillo_golgi')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>)</strong> الذي اكتشفه عام <strong>1898</strong>.
-        <br>• يكون متطوراً وبارزاً جداً في الخلايا الإفرازية (<span class="term-badge">Well developed in secretory cells</span>).
-      </p>
-    </div>
-
-    <!-- Slide 37 Preview -->
-    <div class="slide-figure" onclick="openImageModal('images/slide_37.png', 'الشريحة 37: اكتشاف جهاز جولجي بواسطة كاميلو جولجي 1898')">
-      <img src="images/slide_37.png" alt="Camillo Golgi 1898" loading="lazy">
-      <div class="slide-caption">
-        <span>الشريحة 37: Camillo Golgi (1898)</span>
-        <span class="zoom-hint">🔍 تكبير الشريحة</span>
-      </div>
-    </div>
-
-    <div class="callout callout-warning">
-      <div class="callout-title">
-        <span>المظهر تحت الميكروسكوب الضوئي (L.M):</span>
-        <span class="term-badge">Negative Golgi image<button class="audio-btn" onclick="playAudio('negative_golgi_image')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>
-      </div>
-      <p style="font-size: 14.5px; line-height: 1.8;">
-        <strong>لا يصبغ بصبغة H&E</strong> (لأنه يذوب أثناء خطوات تحضير الشريحة بسبب محتواه العالي من الدهون في أغشيته).
-        <br>
-        ➔ فيترك منطقة باهتة وفارغة في السيتوبلازم تُسمى <strong>"صورة جولجي السلبية" (<span class="term-badge">Negative Golgi image</span>)</strong> أو <strong>"شبح جولجي" (<span class="term-badge">Golgi ghost</span>)</strong>.
-      </p>
-    </div>
-
-    <!-- Slide 38 Preview -->
-    <div class="slide-figure" onclick="openImageModal('images/slide_38.png', 'الشريحة 38: صورة جولجي السلبية Negative Golgi Image تحت L.M')">
-      <img src="images/slide_38.png" alt="Negative Golgi Image LM" loading="lazy">
-      <div class="slide-caption">
-        <span>الشريحة 38: Negative Golgi Image (Golgi Ghost) under L.M</span>
-        <span class="zoom-hint">🔍 تكبير الشريحة</span>
-      </div>
-    </div>
-
-    <h3 style="font-size: 17px; font-weight: 800; margin: 22px 0 10px; color: var(--text-primary);">
-      التركيب الدقيق لجهاز جولجي تحت E.M (الشرائح 39 و 40)
-    </h3>
-    <div class="grid-2">
-      <div class="feature-box">
-        <div class="feature-header">
-          <span class="feature-icon">🥞</span>
-          <span class="feature-title">الأكياس الغشائية (Saccules)</span>
-        </div>
-        <p style="font-size: 14px; line-height: 1.8;">
-          يتكون من <strong>أكياس غشائية منحنية ومسطحة متعددة متراصة فوق بعضها</strong> كالأطباق (<span class="term-badge">Many flat curved membranous saccules stacked over each other</span>).
-        </p>
-      </div>
-
-      <div class="feature-box">
-        <div class="feature-header">
-          <span class="feature-icon">🔄</span>
-          <span class="feature-title">وجهي جهاز جولجي (Two Faces)</span>
-        </div>
-        <div style="font-size: 13.5px; line-height: 1.8;">
-          • <strong>الوجه غير الناضج (<span class="term-badge">Immature / Cis face<button class="audio-btn" onclick="playAudio('cis_face')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>):</strong>
-          <br>هو الوجه المستقبل، يستقبل حويصلات النقل القادمة من rER.
-          <br><br>
-          • <strong>الوجه الناضج (<span class="term-badge">Mature / Trans face<button class="audio-btn" onclick="playAudio('trans_face')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>):</strong>
-          <br>هو <strong>منطقة الشحن والتصدير</strong> (<span class="term-badge">Shipping area</span>)، وينتج نوعين من الحويصلات:
-          <br>1. حويصلات إفرازية للإخراج الخلوي (<span class="term-badge">Secretory vesicles for exocytosis<button class="audio-btn" onclick="playAudio('secretory_vesicles')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>)
-          <br>2. الليسوسومات (<span class="term-badge">Lysosomes<button class="audio-btn" onclick="playAudio('lysosomes')" title="نطق"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></span>)
-        </div>
-      </div>
-    </div>
-
-    <!-- Slide 39 & 40 Preview -->
-    <div class="grid-2">
-      <div class="slide-figure" onclick="openImageModal('images/slide_39.png', 'الشريحة 39: أكياس جهاز جولجي المتراصة تحت E.M')">
-        <img src="images/slide_39.png" alt="Golgi Saccules EM" loading="lazy">
-        <div class="slide-caption">
-          <span>الشريحة 39: Golgi Saccules under E.M</span>
-          <span class="zoom-hint">🔍 تكبير</span>
-        </div>
-      </div>
-      <div class="slide-figure" onclick="openImageModal('images/slide_40.png', 'الشريحة 40: Cis Face المستقبل و Trans Face الشاحن للإفرازات والليسوسومات')">
-        <img src="images/slide_40.png" alt="Golgi Cis and Trans Faces" loading="lazy">
-        <div class="slide-caption">
-          <span>الشريحة 40: Cis face vs Trans face (Shipping Area)</span>
-          <span class="zoom-hint">🔍 تكبير</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="callout callout-tip">
-      <div class="callout-title">
-        <span>وظائف جهاز جولجي (Functions of Golgi Apparatus - شريحة 43):</span>
-      </div>
-      <p style="font-size: 14.5px; line-height: 1.8;">
-        يكمل وظيفة الشبكة الخشنة rER عبر أمرين رئيسيين:
-        <br>1. <strong>تعديل البروتينات</strong> المصنوعة بواسطة rER ثم إفرازها خارج الخلية (<span class="term-badge">Modification of proteins formed by rER → Discharged as secretions</span>).
-        <br>2. <strong>تكوين الليسوسومات</strong> وعزل إنزيماتها الهاضمة (<span class="term-badge">Formation of lysosomes & isolation of their enzymes</span>).
-      </p>
-    </div>
-
-    <div class="grid-2">
-      <div class="slide-figure" onclick="openImageModal('images/slide_41.png', 'الشريحة 41: صورة E.M حقيقية لجهاز جولجي')">
-        <img src="images/slide_41.png" alt="EM Picture of Golgi" loading="lazy">
-        <div class="slide-caption">
-          <span>الشريحة 41: E.M picture of Golgi Apparatus</span>
-          <span class="zoom-hint">🔍 تكبير</span>
-        </div>
-      </div>
-      <div class="slide-figure" onclick="openImageModal('images/slide_42.png', 'الشريحة 42: صورة مجهرية تفصيلية لجهاز جولجي')">
-        <img src="images/slide_42.png" alt="Detailed EM of Golgi" loading="lazy">
-        <div class="slide-caption">
-          <span>الشريحة 42: Detailed E.M of Golgi</span>
-          <span class="zoom-hint">🔍 تكبير</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION 7: PRACTICAL SLIDES (SPOT DIAGNOSIS) -->
-  <section id="sec-practical" class="section-card">
-    <div class="section-header">
-      <div class="section-icon">🔍</div>
-      <div>
-        <h2 class="section-title">شرائح العملي والتعرف المجهري (Spot Diagnosis)</h2>
-        <div class="section-en-title">Practical Slides of this Session (Slides 45-64)</div>
-      </div>
-    </div>
-    <p style="color: var(--text-secondary); margin-bottom: 16px;">
-      اختبر قدرتك على التعرف على شرائح العملي الواردة في نهاية ملف المحاضرة (مع إمكانية الضغط على "إظهار التشخيص" للتحقق):
-    </p>
-
-    <div class="spot-grid">
-      <!-- Spot 1: Slide 45 -> 46 -->
-      <div class="spot-card">
-        <div class="spot-img-wrap" onclick="openImageModal('images/slide_46.png', 'شريحة العملي: EM picture of Golgi Apparatus')">
-          <img src="images/slide_46.png" alt="Spot Diagnosis 1" loading="lazy">
-          <span class="spot-overlay-hint">🔍 تكبير الصورة</span>
-        </div>
-        <div class="spot-body">
-          <div class="spot-header-row">
-            <span class="spot-badge">الشريحة 45 / 46</span>
-            <span style="font-weight: 700; font-size: 13px;">Identify the structure?</span>
-          </div>
-          <button class="btn-reveal-answer" onclick="toggleSpotAnswer('ans-1', this)">
-            <span>👁️ إظهار التشخيص الصحيح</span>
-          </button>
-          <div id="ans-1" class="spot-answer">
-            <strong>التشخيص:</strong> EM picture of Golgi Apparatus
-            <br>
-            <em>ملاحظة:</em> أكياس غشائية مسطحة ومنحنية متراصة (stacked curved saccules) مع حويصلات عند أطرافها.
-          </div>
-        </div>
-      </div>
-
-      <!-- Spot 2: Slide 47 -> 48 -->
-      <div class="spot-card">
-        <div class="spot-img-wrap" onclick="openImageModal('images/slide_48.png', 'شريحة العملي: LM picture of negative Golgi Image')">
-          <img src="images/slide_48.png" alt="Spot Diagnosis 2" loading="lazy">
-          <span class="spot-overlay-hint">🔍 تكبير الصورة</span>
-        </div>
-        <div class="spot-body">
-          <div class="spot-header-row">
-            <span class="spot-badge">الشريحة 47 / 48</span>
-            <span style="font-weight: 700; font-size: 13px;">Identify the structure?</span>
-          </div>
-          <button class="btn-reveal-answer" onclick="toggleSpotAnswer('ans-2', this)">
-            <span>👁️ إظهار التشخيص الصحيح</span>
-          </button>
-          <div id="ans-2" class="spot-answer">
-            <strong>التشخيص:</strong> LM picture of negative Golgi Image
-            <br>
-            <em>ملاحظة:</em> منطقة شاحبة باهتة مجاورة للنواة في السيتوبلازم (Golgi Ghost) لا تصبغ بـ H&E.
-          </div>
-        </div>
-      </div>
-
-      <!-- Spot 3: Slide 49 -> 50 -->
-      <div class="spot-card">
-        <div class="spot-img-wrap" onclick="openImageModal('images/slide_50.png', 'شريحة العملي: EM picture of rough ER')">
-          <img src="images/slide_50.png" alt="Spot Diagnosis 3" loading="lazy">
-          <span class="spot-overlay-hint">🔍 تكبير الصورة</span>
-        </div>
-        <div class="spot-body">
-          <div class="spot-header-row">
-            <span class="spot-badge">الشريحة 49 / 50</span>
-            <span style="font-weight: 700; font-size: 13px;">Identify the structure?</span>
-          </div>
-          <button class="btn-reveal-answer" onclick="toggleSpotAnswer('ans-3', this)">
-            <span>👁️ إظهار التشخيص الصحيح</span>
-          </button>
-          <div id="ans-3" class="spot-answer">
-            <strong>التشخيص:</strong> EM picture of rough ER (rER)
-            <br>
-            <em>ملاحظة:</em> قنوات صفائحية متوازية مغطاة بحبيبات داكنة تمثل الريبوسومات (Attached ribosomes).
-          </div>
-        </div>
-      </div>
-
-      <!-- Spot 4: Slide 51 -> 52 -->
-      <div class="spot-card">
-        <div class="spot-img-wrap" onclick="openImageModal('images/slide_52.png', 'شريحة العملي: EM picture of smooth ER')">
-          <img src="images/slide_52.png" alt="Spot Diagnosis 4" loading="lazy">
-          <span class="spot-overlay-hint">🔍 تكبير الصورة</span>
-        </div>
-        <div class="spot-body">
-          <div class="spot-header-row">
-            <span class="spot-badge">الشريحة 51 / 52</span>
-            <span style="font-weight: 700; font-size: 13px;">Identify the structure?</span>
-          </div>
-          <button class="btn-reveal-answer" onclick="toggleSpotAnswer('ans-4', this)">
-            <span>👁️ إظهار التشخيص الصحيح</span>
-          </button>
-          <div id="ans-4" class="spot-answer">
-            <strong>التشخيص:</strong> EM picture of smooth ER (sER)
-            <br>
-            <em>ملاحظة:</em> شبكة من الأنيبيبات المتفرعة الملساء بدون أي ريبوسومات ملتصقة.
-          </div>
-        </div>
-      </div>
-
-      <!-- Spot 5: Slide 53 -> 54 -->
-      <div class="spot-card">
-        <div class="spot-img-wrap" onclick="openImageModal('images/slide_54.png', 'شريحة العملي: EM picture of mitochondrion')">
-          <img src="images/slide_54.png" alt="Spot Diagnosis 5" loading="lazy">
-          <span class="spot-overlay-hint">🔍 تكبير الصورة</span>
-        </div>
-        <div class="spot-body">
-          <div class="spot-header-row">
-            <span class="spot-badge">الشريحة 53 / 54</span>
-            <span style="font-weight: 700; font-size: 13px;">Identify the structure?</span>
-          </div>
-          <button class="btn-reveal-answer" onclick="toggleSpotAnswer('ans-5', this)">
-            <span>👁️ إظهار التشخيص الصحيح</span>
-          </button>
-          <div id="ans-5" class="spot-answer">
-            <strong>التشخيص:</strong> EM picture of mitochondrion
-            <br>
-            <em>ملاحظة:</em> حويصلة بغشاء مزدوج خارجي أملس وثنيات داخلية عريضة (Cristae) تحيط بالحشوة.
-          </div>
-        </div>
-      </div>
-
-      <!-- Spot 6: Slide 55 -> 56 -->
-      <div class="spot-card">
-        <div class="spot-img-wrap" onclick="openImageModal('images/slide_56.png', 'شريحة العملي: EM picture of cell membrane')">
-          <img src="images/slide_56.png" alt="Spot Diagnosis 6" loading="lazy">
-          <span class="spot-overlay-hint">🔍 تكبير الصورة</span>
-        </div>
-        <div class="spot-body">
-          <div class="spot-header-row">
-            <span class="spot-badge">الشريحة 55 / 56</span>
-            <span style="font-weight: 700; font-size: 13px;">Identify the structure?</span>
-          </div>
-          <button class="btn-reveal-answer" onclick="toggleSpotAnswer('ans-6', this)">
-            <span>👁️ إظهار التشخيص الصحيح</span>
-          </button>
-          <div id="ans-6" class="spot-answer">
-            <strong>التشخيص:</strong> EM picture of cell membrane
-            <br>
-            <em>ملاحظة:</em> غشاء ثلاثي الصفائح (Trilamellar): خطان داكنان متوازيان بينهما خط فاتح.
-          </div>
-        </div>
-      </div>
-
-      <!-- Spot 7: Slide 57 -> 58 -->
-      <div class="spot-card">
-        <div class="spot-img-wrap" onclick="openImageModal('images/slide_58.png', 'شريحة العملي: LM picture of cells')">
-          <img src="images/slide_58.png" alt="Spot Diagnosis 7" loading="lazy">
-          <span class="spot-overlay-hint">🔍 تكبير الصورة</span>
-        </div>
-        <div class="spot-body">
-          <div class="spot-header-row">
-            <span class="spot-badge">الشريحة 57 / 58</span>
-            <span style="font-weight: 700; font-size: 13px;">Identify the structure?</span>
-          </div>
-          <button class="btn-reveal-answer" onclick="toggleSpotAnswer('ans-7', this)">
-            <span>👁️ إظهار التشخيص الصحيح</span>
-          </button>
-          <div id="ans-7" class="spot-answer">
-            <strong>التشخيص:</strong> LM picture of cells
-            <br>
-            <em>ملاحظة:</em> خلايا تحت الميكروسكوب الضوئي توضح النواة والسيتوبلازم والحدود الخلوية.
-          </div>
-        </div>
-      </div>
-
-      <!-- Spot 8: Slide 59 -> 60 -->
-      <div class="spot-card">
-        <div class="spot-img-wrap" onclick="openImageModal('images/slide_60.png', 'شريحة العملي: Scanning EM picture of mitochondria and ER')">
-          <img src="images/slide_60.png" alt="Spot Diagnosis 8" loading="lazy">
-          <span class="spot-overlay-hint">🔍 تكبير الصورة</span>
-        </div>
-        <div class="spot-body">
-          <div class="spot-header-row">
-            <span class="spot-badge">الشريحة 59 / 60</span>
-            <span style="font-weight: 700; font-size: 13px;">Identify the structure?</span>
-          </div>
-          <button class="btn-reveal-answer" onclick="toggleSpotAnswer('ans-8', this)">
-            <span>👁️ إظهار التشخيص الصحيح</span>
-          </button>
-          <div id="ans-8" class="spot-answer">
-            <strong>التشخيص:</strong> Scanning EM picture of mitochondria and ER
-            <br>
-            <em>ملاحظة:</em> صورة ثلاثية الأبعاد بالميكروسكوب الإلكتروني الماسح توضح الميتوكوندريا والشبكة الإندوبلازمية.
-          </div>
-        </div>
-      </div>
-
-      <!-- Spot 9: Slide 61 -> 62 -->
-      <div class="spot-card">
-        <div class="spot-img-wrap" onclick="openImageModal('images/slide_62.png', 'شريحة العملي: Scanning EM picture of a mitochondrion')">
-          <img src="images/slide_62.png" alt="Spot Diagnosis 9" loading="lazy">
-          <span class="spot-overlay-hint">🔍 تكبير الصورة</span>
-        </div>
-        <div class="spot-body">
-          <div class="spot-header-row">
-            <span class="spot-badge">الشريحة 61 / 62</span>
-            <span style="font-weight: 700; font-size: 13px;">Identify the structure?</span>
-          </div>
-          <button class="btn-reveal-answer" onclick="toggleSpotAnswer('ans-9', this)">
-            <span>👁️ إظهار التشخيص الصحيح</span>
-          </button>
-          <div id="ans-9" class="spot-answer">
-            <strong>التشخيص:</strong> Scanning EM picture of a mitochondrion
-            <br>
-            <em>ملاحظة:</em> ميتوكوندريا مجسمة ثلاثية الأبعاد بوضوح فائق بواسطة Scanning EM.
-          </div>
-        </div>
-      </div>
-
-      <!-- Spot 10: Slide 63 -> 64 -->
-      <div class="spot-card">
-        <div class="spot-img-wrap" onclick="openImageModal('images/slide_64.png', 'شريحة العملي: EM picture of a mitochondrion')">
-          <img src="images/slide_64.png" alt="Spot Diagnosis 10" loading="lazy">
-          <span class="spot-overlay-hint">🔍 تكبير الصورة</span>
-        </div>
-        <div class="spot-body">
-          <div class="spot-header-row">
-            <span class="spot-badge">الشريحة 63 / 64</span>
-            <span style="font-weight: 700; font-size: 13px;">Identify the structure?</span>
-          </div>
-          <button class="btn-reveal-answer" onclick="toggleSpotAnswer('ans-10', this)">
-            <span>👁️ إظهار التشخيص الصحيح</span>
-          </button>
-          <div id="ans-10" class="spot-answer">
-            <strong>التشخيص:</strong> EM picture of a mitochondrion
-            <br>
-            <em>ملاحظة:</em> ميتوكوندريا موضحة الأعراف الداخلية المعترضة (Cristae) والحشوة.
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION 8: INTERACTIVE MCQ QUIZ -->
-  <section id="sec-quiz" class="quiz-section">
-    <div class="section-header" style="border-bottom-color: var(--primary-border);">
-      <div class="section-icon" style="background: var(--primary); color: white;">📝</div>
-      <div>
-        <h2 class="section-title">الاختبار التفاعلي الشامل (MCQ Quiz)</h2>
-        <div class="section-en-title">10 Comprehensive Questions Strictly from Lecture Content</div>
-      </div>
-    </div>
-    <p style="color: var(--text-secondary); margin-bottom: 24px; font-weight: 600;">
-      جميع الأسئلة مستخلصة بنسبة 100% من نص ومعلومات ملف المحاضرة. اضغط على الإجابة لتصحيحها فوراً مع الشرح والتعليل بالعربية:
-    </p>
-
-    <!-- Q1 -->
-    <div class="quiz-item" id="qitem-1">
-      <div class="q-num">
-        <span>السؤال الأول (Question 1)</span>
-        <button class="btn-toggle-ar" onclick="toggleArabic(1)">🌐 إظهار / إخفاء الترجمة</button>
-      </div>
-      <div class="q-text">What is the source of illumination in the Electron Microscope (E.M)?</div>
-      <div class="q-arabic-text" id="qar-1">ما هو مصدر الإضاءة المستخدم في الميكروسكوب الإلكتروني؟</div>
-      <button class="mcq-opt" onclick="checkMCQ(1, false, this)">A) Light rays</button>
-      <button class="mcq-opt" onclick="checkMCQ(1, true, this)">B) Electrons beam</button>
-      <button class="mcq-opt" onclick="checkMCQ(1, false, this)">C) Ultraviolet radiation</button>
-      <button class="mcq-opt" onclick="checkMCQ(1, false, this)">D) Infrared rays</button>
-      <div class="q-feedback" id="qfb-1"></div>
-    </div>
-
-    <!-- Q2 -->
-    <div class="quiz-item" id="qitem-2">
-      <div class="q-num">
-        <span>السؤال الثاني (Question 2)</span>
-        <button class="btn-toggle-ar" onclick="toggleArabic(2)">🌐 إظهار / إخفاء الترجمة</button>
-      </div>
-      <div class="q-text">How many nanometers (nm) are there in one micrometer (µm)?</div>
-      <div class="q-arabic-text" id="qar-2">كم نانوميتر يوجد في الميكروميتر الواحد طبقاً لوحدات القياس؟</div>
-      <button class="mcq-opt" onclick="checkMCQ(2, false, this)">A) 10 nm</button>
-      <button class="mcq-opt" onclick="checkMCQ(2, false, this)">B) 100 nm</button>
-      <button class="mcq-opt" onclick="checkMCQ(2, true, this)">C) 1000 nm</button>
-      <button class="mcq-opt" onclick="checkMCQ(2, false, this)">D) 10,000 nm</button>
-      <div class="q-feedback" id="qfb-2"></div>
-    </div>
-
-    <!-- Q3 -->
-    <div class="quiz-item" id="qitem-3">
-      <div class="q-num">
-        <span>السؤال الثالث (Question 3)</span>
-        <button class="btn-toggle-ar" onclick="toggleArabic(3)">🌐 إظهار / إخفاء الترجمة</button>
-      </div>
-      <div class="q-text">Which of the following cytoplasmic organelles is NON-membranous?</div>
-      <div class="q-arabic-text" id="qar-3">أي من العضيات السيتوبلازمية التالية يُعد من العضيات غير الغشائية؟</div>
-      <button class="mcq-opt" onclick="checkMCQ(3, false, this)">A) Mitochondria</button>
-      <button class="mcq-opt" onclick="checkMCQ(3, false, this)">B) Golgi apparatus</button>
-      <button class="mcq-opt" onclick="checkMCQ(3, false, this)">C) Lysosomes</button>
-      <button class="mcq-opt" onclick="checkMCQ(3, true, this)">D) Ribosomes</button>
-      <div class="q-feedback" id="qfb-3"></div>
-    </div>
-
-    <!-- Q4 -->
-    <div class="quiz-item" id="qitem-4">
-      <div class="q-num">
-        <span>السؤال الرابع (Question 4)</span>
-        <button class="btn-toggle-ar" onclick="toggleArabic(4)">🌐 إظهار / إخفاء الترجمة</button>
-      </div>
-      <div class="q-text">Under light microscopy (L.M), the cell membrane is invisible because it is very thin, but it can be stained with:</div>
-      <div class="q-arabic-text" id="qar-4">غشاء الخلية غير مرئي بالميكروسكوب الضوئي لدقته، ولكن يمكن صبغه بـ:</div>
-      <button class="mcq-opt" onclick="checkMCQ(4, true, this)">A) PAS or Ag (Silver)</button>
-      <button class="mcq-opt" onclick="checkMCQ(4, false, this)">B) Routine H&E stain</button>
-      <button class="mcq-opt" onclick="checkMCQ(4, false, this)">C) Metal powder</button>
-      <button class="mcq-opt" onclick="checkMCQ(4, false, this)">D) Methylene blue only</button>
-      <div class="q-feedback" id="qfb-4"></div>
-    </div>
-
-    <!-- Q5 -->
-    <div class="quiz-item" id="qitem-5">
-      <div class="q-num">
-        <span>السؤال الخامس (Question 5)</span>
-        <button class="btn-toggle-ar" onclick="toggleArabic(5)">🌐 إظهار / إخفاء الترجمة</button>
-      </div>
-      <div class="q-text">What is the exact percentage of the Protein component in the molecular structure of the cell membrane?</div>
-      <div class="q-arabic-text" id="qar-5">ما هي النسبة المئوية المحددة لمكون البروتين في التركيب الجزيئي لغشاء الخلية؟</div>
-      <button class="mcq-opt" onclick="checkMCQ(5, false, this)">A) 10%</button>
-      <button class="mcq-opt" onclick="checkMCQ(5, false, this)">B) 30%</button>
-      <button class="mcq-opt" onclick="checkMCQ(5, true, this)">C) 60%</button>
-      <button class="mcq-opt" onclick="checkMCQ(5, false, this)">D) 90%</button>
-      <div class="q-feedback" id="qfb-5"></div>
-    </div>
-
-    <!-- Q6 -->
-    <div class="quiz-item" id="qitem-6">
-      <div class="q-num">
-        <span>السؤال السادس (Question 6)</span>
-        <button class="btn-toggle-ar" onclick="toggleArabic(6)">🌐 إظهار / إخفاء الترجمة</button>
-      </div>
-      <div class="q-text">The Cell coat (Glycocalyx) is formed by:</div>
-      <div class="q-arabic-text" id="qar-6">يتكون غلاف الخلية (Glycocalyx) من اتحاد:</div>
-      <button class="mcq-opt" onclick="checkMCQ(6, false, this)">A) Phospholipids + Cholesterol</button>
-      <button class="mcq-opt" onclick="checkMCQ(6, true, this)">B) Glycolipid + Glycoprotein</button>
-      <button class="mcq-opt" onclick="checkMCQ(6, false, this)">C) DNA + RNA</button>
-      <button class="mcq-opt" onclick="checkMCQ(6, false, this)">D) Microtubules + Filaments</button>
-      <div class="q-feedback" id="qfb-6"></div>
-    </div>
-
-    <!-- Q7 -->
-    <div class="quiz-item" id="qitem-7">
-      <div class="q-num">
-        <span>السؤال السابع (Question 7)</span>
-        <button class="btn-toggle-ar" onclick="toggleArabic(7)">🌐 إظهار / إخفاء الترجمة</button>
-      </div>
-      <div class="q-text">In which type of cells is the rough endoplasmic reticulum (rER) particularly abundant?</div>
-      <div class="q-arabic-text" id="qar-7">في أي نوع من الخلايا تكثر وتنتشر الشبكة الإندوبلازمية الخشنة (rER)؟</div>
-      <button class="mcq-opt" onclick="checkMCQ(7, true, this)">A) Protein forming cells (e.g. Plasma cells, Osteoblasts, Pancreas)</button>
-      <button class="mcq-opt" onclick="checkMCQ(7, false, this)">B) Lipid forming cells (Liver)</button>
-      <button class="mcq-opt" onclick="checkMCQ(7, false, this)">C) Suprarenal gland only</button>
-      <button class="mcq-opt" onclick="checkMCQ(7, false, this)">D) Red blood cells</button>
-      <div class="q-feedback" id="qfb-7"></div>
-    </div>
-
-    <!-- Q8 -->
-    <div class="quiz-item" id="qitem-8">
-      <div class="q-num">
-        <span>السؤال الثامن (Question 8)</span>
-        <button class="btn-toggle-ar" onclick="toggleArabic(8)">🌐 إظهار / إخفاء الترجمة</button>
-      </div>
-      <div class="q-text">Detoxification of alcohol and some drugs in the liver is a vital function of:</div>
-      <div class="q-arabic-text" id="qar-8">إزالة سمية الكحول وبعض الأدوية في الكبد هي وظيفة حيوية خاصة بـ:</div>
-      <button class="mcq-opt" onclick="checkMCQ(8, false, this)">A) Rough endoplasmic reticulum (rER)</button>
-      <button class="mcq-opt" onclick="checkMCQ(8, true, this)">B) Smooth endoplasmic reticulum (sER)</button>
-      <button class="mcq-opt" onclick="checkMCQ(8, false, this)">C) Mitochondria</button>
-      <button class="mcq-opt" onclick="checkMCQ(8, false, this)">D) Ribosomes</button>
-      <div class="q-feedback" id="qfb-8"></div>
-    </div>
-
-    <!-- Q9 -->
-    <div class="quiz-item" id="qitem-9">
-      <div class="q-num">
-        <span>السؤال التاسع (Question 9)</span>
-        <button class="btn-toggle-ar" onclick="toggleArabic(9)">🌐 إظهار / إخفاء الترجمة</button>
-      </div>
-      <div class="q-text">Why does the Golgi apparatus appear as a pale "negative Golgi image" under light microscopy with H&E?</div>
-      <div class="q-arabic-text" id="qar-9">لماذا يظهر جهاز جولجي كمنطقة باهتة (Negative Golgi image) تحت الميكروسكوب الضوئي بصبغة H&E؟</div>
-      <button class="mcq-opt" onclick="checkMCQ(9, true, this)">A) Because it dissolves during preparation due to high lipid content in its membranes</button>
-      <button class="mcq-opt" onclick="checkMCQ(9, false, this)">B) Because it lacks double membranes</button>
-      <button class="mcq-opt" onclick="checkMCQ(9, false, this)">C) Because it only exists in plant cells</button>
-      <button class="mcq-opt" onclick="checkMCQ(9, false, this)">D) Because it is covered with dense ribosomes</button>
-      <div class="q-feedback" id="qfb-9"></div>
-    </div>
-
-    <!-- Q10 -->
-    <div class="quiz-item" id="qitem-10">
-      <div class="q-num">
-        <span>السؤال العاشر (Question 10)</span>
-        <button class="btn-toggle-ar" onclick="toggleArabic(10)">🌐 إظهار / إخفاء الترجمة</button>
-      </div>
-      <div class="q-text">Which face of the Golgi apparatus acts as the "shipping area" that produces secretory vesicles and lysosomes?</div>
-      <div class="q-arabic-text" id="qar-10">أي وجه من وجهي جهاز جولجي يمثل "منطقة الشحن والتصدير" التي تُطلق الحويصلات الإفرازية والليسوسومات؟</div>
-      <button class="mcq-opt" onclick="checkMCQ(10, false, this)">A) Immature (Cis) face</button>
-      <button class="mcq-opt" onclick="checkMCQ(10, true, this)">B) Mature (Trans) face</button>
-      <button class="mcq-opt" onclick="checkMCQ(10, false, this)">C) Lateral face</button>
-      <button class="mcq-opt" onclick="checkMCQ(10, false, this)">D) Basal face</button>
-      <div class="q-feedback" id="qfb-10"></div>
-    </div>
-  </section>
-
-</main>
-
-<!-- Lightbox Modal for Images -->
-<div class="img-modal-overlay" id="imgModalOverlay" onclick="closeImageModal()">
-  <div class="img-modal-content" onclick="event.stopPropagation()">
-    <button class="modal-close-btn" onclick="closeImageModal()">&times;</button>
-    <img id="modalImg" src="" alt="Slide Preview">
-    <div class="modal-caption" id="modalCaption"></div>
-  </div>
+<!-- ====== OBJECTIVES ====== -->
+<div class="objectives">
+  <h2>اهداف المحاضرة — Learning Objectives</h2>
+  <ul>
+    <li>المقارنة بين المجهر الضوئي والمجهر الإلكتروني — Compare between Light and Electron Microscopes</li>
+    <li>تصنيف العضيات السيتوبلازمية — Classify cytoplasmic organelles</li>
+    <li>وصف التركيب الجزيئي لغشاء الخلية — Describe the molecular structure of the cell membrane</li>
+    <li>تعداد النسبة المئوية لكل مكون من مكونات غشاء الخلية</li>
+    <li>التعرف على تركيب ووظيفة غلاف الخلية — Cell coat</li>
+    <li>ربط تركيب Mitochondria بوظيفتها</li>
+  </ul>
 </div>
 
-<footer>
-  <p>منصة تسهيل التعليمية | تبسيط المواد الطبية لطلاب كليات الطب وطب الأسنان</p>
-  <p style="margin-top:6px; font-size:12.5px;">تم إعداد وتنظيم المحاضرة بنسبة 100% وفقاً لملف المحاضرة الرسمي للدكتور ثروت لطفي عبد اللطيف</p>
-</footer>
+<!-- ====== SECTION 1: Histology & Microscopy ====== -->
+<section>
+  <div class="section-title">
+    <div class="section-num">1</div>
+    <div>
+      <h2>علم الأنسجة والمجهر <span class="stars">★★★</span></h2>
+      <small style="color:#5a7a98">Histology &amp; Microscopy — مهم جدا</small>
+    </div>
+  </div>
+
+  <h3>ما هو علم الأنسجة؟ <button class="audio-btn" onclick="playAudio('audio/histology.mp3')" title="نطق histology"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg> نطق</button></h3>
+  <p>
+    علم الأنسجة <span class="en">Histology</span> هو دراسة
+    <b>التركيب المجهري للأنسجة الطبيعية</b>
+    <span class="en">Microscopic Structure of normal tissue</span>.
+  </p>
+  <div class="key">
+    <b>المجهر <span class="en">Microscopy</span></b>: هو الاداة الاساسية في علم الأنسجة. هناك نوعان رئيسيان يجب حفظهما.
+  </div>
+
+  <h3>انواع المجاهر
+    <button class="audio-btn" onclick="playAudio('audio/light_microscope.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg> نطق L.M</button>
+    <button class="audio-btn" onclick="playAudio('audio/electron_microscope.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg> نطق E.M</button>
+  </h3>
+
+  <div class="img-block">
+    <img src="images/slide_06.png" alt="أنواع المجاهر - Slide 6">
+    <div class="img-caption">سلايد المحاضرة (Slide 6): Types of Microscopy (L.M vs E.M)</div>
+  </div>
+
+  <div class="img-block">
+    <img src="images/slide_07.png" alt="مقارنة بين المجاهر - Slide 7">
+    <div class="img-caption">سلايد المحاضرة (Slide 7): Difference between L.M &amp; E.M</div>
+  </div>
+
+  <table>
+    <tr>
+      <th>وجه المقارنة</th>
+      <th>المجهر الضوئي <br><span style="font-weight:normal;font-size:12px">Light Microscope (L.M)</span></th>
+      <th>المجهر الإلكتروني <br><span style="font-weight:normal;font-size:12px">Electron Microscope (E.M)</span></th>
+    </tr>
+    <tr>
+      <td>مصدر الإضاءة <span class="en">Source of illumination</span></td>
+      <td>Light rays <span class="en">Light rays</span></td>
+      <td>Electron beam <span class="en">Electron beam</span></td>
+    </tr>
+    <tr>
+      <td>قوة التكبير <span class="en">Magnifying power</span></td>
+      <td>حتى ×1500–2000</td>
+      <td>×10,000 وأكبر بكثير</td>
+    </tr>
+    <tr>
+      <td>الاستخدام <span class="en">Used for</span></td>
+      <td>الخلايا وWhole tissues <span class="en">Whole cells &amp; tissues</span></td>
+      <td>فحص العضيات داخل الخلية <span class="en">Intracellular organelles</span></td>
+    </tr>
+    <tr>
+      <td>الانواع <span class="en">Types</span></td>
+      <td>نوع واحد</td>
+      <td>
+        Transmission E.M
+        <button class="audio-btn" onclick="playAudio('audio/transmission_electron_microscope.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button><br>
+        Scanning E.M
+        <button class="audio-btn" onclick="playAudio('audio/scanning_electron_microscope.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </td>
+    </tr>
+    <tr>
+      <td>معالجة العينة</td>
+      <td>صبغة H&amp;E: Hematoxylin + Eosin
+        <button class="audio-btn" onclick="playAudio('audio/hematoxylin_and_eosin.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </td>
+      <td>تعامل بمسحوق معدني <span class="en">Metal powder</span></td>
+    </tr>
+  </table>
+
+  <div class="grid">
+    <div class="img-block">
+      <img src="images/slide_08.png" alt="Transmission E.M - Slide 8">
+      <div class="img-caption">سلايد المحاضرة (Slide 8): Transmission - E.M</div>
+    </div>
+    <div class="img-block">
+      <img src="images/slide_09.png" alt="Scanning E.M - Slide 9">
+      <div class="img-caption">سلايد المحاضرة (Slide 9): Scanning - E.M</div>
+    </div>
+  </div>
+
+  <div class="img-block">
+    <img src="images/slide_10.png" alt="Mitochondria TEM vs SEM - Slide 10">
+    <div class="img-caption">سلايد المحاضرة (Slide 10): Transmission EM vs Scanning EM pictures of mitochondria</div>
+  </div>
+
+  <div class="important">
+    <b>نقطة مهمة من الدكتورة:</b> Mitochondria
+    <span class="en">Mitochondria</span>
+    <b>لا يمكن رؤيتها</b> مباشرة بالمجهر الضوئي. يمكن فقط تحديد مكانها بصبغات خاصة.
+    اما رؤيتها مباشرة فتكون <b>بالمجهر الإلكتروني فقط</b>.
+  </div>
+
+  <h3>وحدات القياس <span class="en">Measurements &amp; Units</span></h3>
+  <ul>
+    <li>1 cm = 10 mm (Millimeter)</li>
+    <li>1 mm = 1000 μm (Micrometer)</li>
+    <li>1 μm = 1000 nm (Nanometer)</li>
+  </ul>
+
+  <!-- MCQ Section 1 -->
+  <div class="mcq-section">
+    <h3>MCQ Questions — Microscopy &amp; Histology</h3>
+
+    <div class="mcq" id="q1">
+      <div class="mcq-q">1. What is the source of illumination in the Electron Microscope?</div>
+      <ul class="mcq-options">
+        <li onclick="checkMCQ(this,'wrong','q1')"><span class="mcq-letter">A</span> Light rays</li>
+        <li onclick="checkMCQ(this,'correct','q1')"><span class="mcq-letter">B</span> Electron beam</li>
+        <li onclick="checkMCQ(this,'wrong','q1')"><span class="mcq-letter">C</span> Infrared rays</li>
+        <li onclick="checkMCQ(this,'wrong','q1')"><span class="mcq-letter">D</span> Ultraviolet rays</li>
+      </ul>
+      <div class="mcq-explain" id="q1-ex">الصواب: المجهر الإلكتروني يستخدم <b>Electron beam (Electron beam)</b>، بينما المجهر الضوئي يستخدم الاشعة الضوئية.</div>
+    </div>
+
+    <div class="mcq" id="q2">
+      <div class="mcq-q">2. What is the maximum magnifying power of the Light Microscope?</div>
+      <ul class="mcq-options">
+        <li onclick="checkMCQ(this,'wrong','q2')"><span class="mcq-letter">A</span> x 500</li>
+        <li onclick="checkMCQ(this,'wrong','q2')"><span class="mcq-letter">B</span> x 5000</li>
+        <li onclick="checkMCQ(this,'correct','q2')"><span class="mcq-letter">C</span> x 1500–2000</li>
+        <li onclick="checkMCQ(this,'wrong','q2')"><span class="mcq-letter">D</span> x 10,000</li>
+      </ul>
+      <div class="mcq-explain" id="q2-ex">The Light Microscope magnifies up to <b>×1500–2000</b>, while the Electron Microscope reaches ×10,000 and much more.</div>
+    </div>
+
+    <div class="mcq" id="q3">
+      <div class="mcq-q">3. What is the Electron Microscope used to examine?</div>
+      <ul class="mcq-options">
+        <li onclick="checkMCQ(this,'wrong','q3')"><span class="mcq-letter">A</span> Whole tissues</li>
+        <li onclick="checkMCQ(this,'wrong','q3')"><span class="mcq-letter">B</span> Whole cells</li>
+        <li onclick="checkMCQ(this,'correct','q3')"><span class="mcq-letter">C</span> Intracellular organelles</li>
+        <li onclick="checkMCQ(this,'wrong','q3')"><span class="mcq-letter">D</span> Organs with the naked eye</li>
+      </ul>
+      <div class="mcq-explain" id="q3-ex">The Electron Microscope is used to examine <b>Intracellular organelles</b> because it magnifies much more.</div>
+    </div>
+
+    <div class="mcq" id="q4">
+      <div class="mcq-q">4. What is the main stain used with the Light Microscope?</div>
+      <ul class="mcq-options">
+        <li onclick="checkMCQ(this,'correct','q4')"><span class="mcq-letter">A</span> Hematoxylin &amp; Eosin (H&amp;E)</li>
+        <li onclick="checkMCQ(this,'wrong','q4')"><span class="mcq-letter">B</span> Metal powder</li>
+        <li onclick="checkMCQ(this,'wrong','q4')"><span class="mcq-letter">C</span> PAS stain</li>
+        <li onclick="checkMCQ(this,'wrong','q4')"><span class="mcq-letter">D</span> Silver stain (Ag)</li>
+      </ul>
+      <div class="mcq-explain" id="q4-ex">The main stain for the Light Microscope is <b>H&amp;E (Hematoxylin + Eosin)</b>.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== SECTION 2: Organization Levels ====== -->
+<section>
+  <div class="section-title">
+    <div class="section-num">2</div>
+    <div>
+      <h2>ترتيب مستويات جسم الإنسان <span class="stars">★★★</span></h2>
+    </div>
+  </div>
+
+  <div class="img-block">
+    <img src="images/slide_12.png" alt="مستويات التنظيم في جسم الإنسان - Slide 12">
+    <div class="img-caption">سلايد المحاضرة (Slide 12): Cells → Tissues → Organs → Systems → Human Body</div>
+  </div>
+
+  <div class="key" dir="ltr" style="text-align:center; font-size:16px; font-weight:bold; display:flex; align-items:center; justify-content:center; gap:8px; flex-wrap:wrap">
+    <span style="color:#e65100; background:#fff3e0; padding:4px 10px; border-radius:6px">Cells (الخلايا)</span> ➔
+    <span style="color:#37474f; background:#eceff1; padding:4px 10px; border-radius:6px">Tissues (الأنسجة)</span> ➔
+    <span style="color:#f57f17; background:#fffde7; padding:4px 10px; border-radius:6px">Organs (الأعضاء)</span> ➔
+    <span style="color:#1565c0; background:#e3f2fd; padding:4px 10px; border-radius:6px">Systems (الأجهزة)</span> ➔
+    <span style="color:#2e7d32; background:#e8f5e9; padding:4px 10px; border-radius:6px">Human Body (جسم الإنسان)</span>
+  </div>
+  <p style="text-align:center; margin-top:10px; color:#5a7a98; font-size:13px">من الأصغر إلى الأكبر — From smallest to largest</p>
+
+  <!-- MCQ Section 2 -->
+  <div class="mcq-section">
+    <h3>MCQ Questions — Levels of Human Body Organization</h3>
+    <div class="mcq" id="q5">
+      <div class="mcq-q">5. What is the correct order from smallest to largest in human body organization?</div>
+      <ul class="mcq-options">
+        <li onclick="checkMCQ(this,'wrong','q5')"><span class="mcq-letter">A</span> Organs → Tissues → Cells → Systems → Body</li>
+        <li onclick="checkMCQ(this,'correct','q5')"><span class="mcq-letter">B</span> Cells → Tissues → Organs → Systems → Body</li>
+        <li onclick="checkMCQ(this,'wrong','q5')"><span class="mcq-letter">C</span> Tissues → Cells → Organs → Body → Systems</li>
+        <li onclick="checkMCQ(this,'wrong','q5')"><span class="mcq-letter">D</span> Systems → Organs → Tissues → Cells → Body</li>
+      </ul>
+      <div class="mcq-explain" id="q5-ex">Correct order: <b dir="ltr">Cells → Tissues → Organs → Systems → Human Body</b>. The cell is the smallest unit and the human body is the largest.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== SECTION 3: The Cell ====== -->
+<section>
+  <div class="section-title">
+    <div class="section-num">3</div>
+    <div>
+      <h2>الخلية <span class="stars">★★★</span></h2>
+      <small style="color:#5a7a98">The Cell — Cytology</small>
+    </div>
+  </div>
+
+  <div class="img-block">
+    <img src="images/animal_cell.jpeg" alt="الخلية الحيوانية">
+    <div class="img-caption">صورة من المحاضرة: الخلية الحيوانية بمكوناتها</div>
+  </div>
+
+  <p>
+    الخلية <span class="en">Cell</span> هي
+    <b>الوحدة التركيبية والوظيفية</b>
+    <span class="en">Structural &amp; Functional Unit</span>
+    لجسم الإنسان، ولها اشكال واحجام مختلفة.
+  </p>
+
+  <h3>مكونات الخلية الرئيسية</h3>
+  <div class="grid">
+    <div class="card">
+      <h4>السيتوبلازم <button class="audio-btn" onclick="playAudio('audio/cytoplasm.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></h4>
+      <p>يحتوي على المصفوفة والعضيات والاحتواءات</p>
+    </div>
+    <div class="card">
+      <h4>النواة والعضيات</h4>
+      <p><span class="en">Nucleus &amp; Organelles</span></p>
+    </div>
+  </div>
+
+  <h3>مكونات السيتوبلازم الثلاثة</h3>
+  <div class="img-block">
+    <img src="images/slide_16.png" alt="مكونات السيتوبلازم - Slide 16">
+    <div class="img-caption">سلايد المحاضرة (Slide 16): Cytoplasm Components (Matrix, Organelles, Inclusions)</div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h4>1. المصفوفة السيتوبلازمية
+        <button class="audio-btn" onclick="playAudio('audio/cytoplasmic_matrix.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </h4>
+      <p><span class="en">Cytoplasmic Matrix</span></p>
+      <p>محلول غروي <span class="en">Colloid solution</span> يحتوي على:</p>
+      <ul style="font-size:13px">
+        <li>Proteins</li>
+        <li>Carbohydrates</li>
+        <li>Lipids</li>
+        <li>Minerals</li>
+        <li>Enzymes</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>2. العضيات السيتوبلازمية
+        <button class="audio-btn" onclick="playAudio('audio/cytoplasmic_organelles.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </h4>
+      <p><span class="en">Cytoplasmic Organelles</span></p>
+      <ul style="font-size:13px">
+        <li>حية <span class="en">Living</span></li>
+        <li>دائمة <span class="en">Permanent</span></li>
+        <li>ضرورية للعمليات الحيوية</li>
+        <li>مثل: Mitochondria, Golgi</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="img-block">
+    <img src="images/slide_18.png" alt="العضيات مقابل الاحتواءات - Slide 18">
+    <div class="img-caption">سلايد المحاضرة (Slide 18): Cytoplasmic Organelles vs Cytoplasmic Inclusions</div>
+  </div>
+
+  <div class="key">
+    <b>3. الاحتواءات السيتوبلازمية
+      <button class="audio-btn" onclick="playAudio('audio/cytoplasmic_inclusions.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      Cytoplasmic Inclusions:
+    </b>
+    غير حية (Non-living) — مؤقتة (Temporary) — ليست ضرورية لحيوية الخلية.
+    امثلة: <b>Glycogen, Fat &amp; Pigments</b>
+  </div>
+
+  <div class="important">
+    <b>الفرق المهم:</b>
+    العضيات = حية + دائمة + ضرورية للحياة.
+    الاحتواءات = غير حية + مؤقتة + غير ضرورية.
+  </div>
+
+  <!-- MCQ Section 3 -->
+  <div class="mcq-section">
+    <h3>MCQ Questions — The Cell &amp; Its Components</h3>
+
+    <div class="mcq" id="q6">
+      <div class="mcq-q">6. What are the constituents of the Cytoplasmic Matrix?</div>
+      <ul class="mcq-options">
+        <li onclick="checkMCQ(this,'wrong','q6')"><span class="mcq-letter">A</span> DNA, RNA, Enzymes only</li>
+        <li onclick="checkMCQ(this,'correct','q6')"><span class="mcq-letter">B</span> Proteins, Carbohydrates, Lipids, Minerals, Enzymes</li>
+        <li onclick="checkMCQ(this,'wrong','q6')"><span class="mcq-letter">C</span> Glycogen, Fat &amp; Pigments</li>
+        <li onclick="checkMCQ(this,'wrong','q6')"><span class="mcq-letter">D</span> Mitochondria, Ribosomes, Golgi</li>
+      </ul>
+      <div class="mcq-explain" id="q6-ex">The Cytoplasmic Matrix is a colloid solution containing: <b>Proteins, Carbohydrates, Lipids, Minerals, Enzymes</b>.</div>
+    </div>
+
+    <div class="mcq" id="q7">
+      <div class="mcq-q">7. Which of the following is a Cytoplasmic Inclusion?</div>
+      <ul class="mcq-options">
+        <li onclick="checkMCQ(this,'wrong','q7')"><span class="mcq-letter">A</span> Mitochondria</li>
+        <li onclick="checkMCQ(this,'wrong','q7')"><span class="mcq-letter">B</span> Lysosomes</li>
+        <li onclick="checkMCQ(this,'correct','q7')"><span class="mcq-letter">C</span> Glycogen</li>
+        <li onclick="checkMCQ(this,'wrong','q7')"><span class="mcq-letter">D</span> Golgi apparatus</li>
+      </ul>
+      <div class="mcq-explain" id="q7-ex"><b>Glycogen</b> من الاحتواءات السيتوبلازمية (غير حي، مؤقت). Mitochondria وجولجي وLysosomes كلها عضيات.</div>
+    </div>
+
+    <div class="mcq" id="q8">
+      <div class="mcq-q">8. What is the key feature that distinguishes Organelles from Cytoplasmic Inclusions?</div>
+      <ul class="mcq-options">
+        <li onclick="checkMCQ(this,'wrong','q8')"><span class="mcq-letter">A</span> Organelles are temporary and inclusions are permanent</li>
+        <li onclick="checkMCQ(this,'correct','q8')"><span class="mcq-letter">B</span> Organelles are living and essential for vital processes</li>
+        <li onclick="checkMCQ(this,'wrong','q8')"><span class="mcq-letter">C</span> Organelles have no membrane</li>
+        <li onclick="checkMCQ(this,'wrong','q8')"><span class="mcq-letter">D</span> Organelles are stored substances</li>
+      </ul>
+      <div class="mcq-explain" id="q8-ex">Organelles are: <b>living, permanent, essential for vital processes</b> (respiration, secretion, digestion). Inclusions are: non-living, temporary, non-essential.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== SECTION 4: Types of Organelles ====== -->
+<section>
+  <div class="section-title">
+    <div class="section-num">4</div>
+    <div>
+      <h2>تصنيف العضيات السيتوبلازمية <span class="stars">★★★</span></h2>
+    </div>
+  </div>
+
+  <div class="img-block">
+    <img src="images/slide_19.png" alt="تصنيف العضيات السيتوبلازمية - Slide 19">
+    <div class="img-caption">سلايد المحاضرة (Slide 19): Types of Cytoplasmic Organelles (Membranous &amp; Non-membranous)</div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h4>عضيات غشائية
+        <button class="audio-btn" onclick="playAudio('audio/membranous_organelles.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        <br><small style="font-weight:normal;color:#5a7a98">Membranous Organelles</small>
+      </h4>
+      <ul>
+        <li>غشاء الخلية <span class="en">Cell membrane</span></li>
+        <li>Mitochondria <span class="en">Mitochondria</span></li>
+        <li>الشبكة الاندوبلازمية الخشنة <span class="en">Rough ER</span></li>
+        <li>الشبكة الاندوبلازمية الملساء <span class="en">Smooth ER</span></li>
+        <li>Golgi apparatus <span class="en">Golgi apparatus</span></li>
+        <li>Lysosomes <span class="en">Lysosomes</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>عضيات غير غشائية
+        <button class="audio-btn" onclick="playAudio('audio/non_membranous_organelles.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        <br><small style="font-weight:normal;color:#5a7a98">Non-membranous Organelles</small>
+      </h4>
+      <ul>
+        <li>Ribosomes <span class="en">Ribosomes</span></li>
+        <li>الهيكل الخلوي
+          <span class="en">Cytoskeleton</span>
+          <ul style="font-size:13px; margin-top:5px">
+            <li>Microtubules: Centrioles &amp; Cilia</li>
+            <li>Filaments: Thin, Intermediate &amp; Thick</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- MCQ Section 4 -->
+  <div class="mcq-section">
+    <h3>MCQ Questions — Classification of Organelles</h3>
+
+    <div class="mcq" id="q9">
+      <div class="mcq-q">9. Which of the following is a Non-membranous Organelle?</div>
+      <ul class="mcq-options">
+        <li onclick="checkMCQ(this,'wrong','q9')"><span class="mcq-letter">A</span> Mitochondria</li>
+        <li onclick="checkMCQ(this,'wrong','q9')"><span class="mcq-letter">B</span> Golgi apparatus</li>
+        <li onclick="checkMCQ(this,'correct','q9')"><span class="mcq-letter">C</span> Ribosomes</li>
+        <li onclick="checkMCQ(this,'wrong','q9')"><span class="mcq-letter">D</span> Lysosomes</li>
+      </ul>
+      <div class="mcq-explain" id="q9-ex"><b>Ribosomes and the Cytoskeleton</b> are the non-membranous organelles. All others are membranous.</div>
+    </div>
+
+    <div class="mcq" id="q10">
+      <div class="mcq-q">10. Centrioles and Cilia are types of which structure?</div>
+      <ul class="mcq-options">
+        <li onclick="checkMCQ(this,'wrong','q10')"><span class="mcq-letter">A</span> Filaments</li>
+        <li onclick="checkMCQ(this,'correct','q10')"><span class="mcq-letter">B</span> Microtubules</li>
+        <li onclick="checkMCQ(this,'wrong','q10')"><span class="mcq-letter">C</span> Rough ER</li>
+        <li onclick="checkMCQ(this,'wrong','q10')"><span class="mcq-letter">D</span> Ribosomes</li>
+      </ul>
+      <div class="mcq-explain" id="q10-ex"><b>Centrioles and Cilia</b> are types of <b>Microtubules</b>, which are part of the Cytoskeleton.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== SECTION 5: Cell Membrane ====== -->
+<section>
+  <div class="section-title">
+    <div class="section-num">5</div>
+    <div>
+      <h2>غشاء الخلية <span class="stars">★★★</span></h2>
+      <small style="color:#5a7a98">Cell Membrane — سؤال مهم جدا للدكتورة</small>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div>
+      <h3>بالمجهر الضوئي L.M</h3>
+      <div class="img-block">
+        <img src="images/slide_21.png" alt="Cell Membrane LM - Slide 21">
+        <div class="img-caption">سلايد المحاضرة (Slide 21): 1- Cell Membrane (L.M)</div>
+      </div>
+      <ul>
+        <li>غير مرئي لانه رفيع جدا — سمكه <b>8–10 nm</b></li>
+        <li>يمكن اظهاره بصبغات خاصة: <b>PAS</b> او <b>Ag (Silver)</b></li>
+      </ul>
+    </div>
+    <div>
+      <h3>بالمجهر الإلكتروني E.M</h3>
+      <div class="img-block">
+        <img src="images/slide_22.png" alt="Cell Membrane EM - Slide 22">
+        <div class="img-caption">سلايد المحاضرة (Slide 22): 1- Cell Membrane (E.M: Trilamellar)</div>
+      </div>
+      <p>يظهر كغشاء ثلاثي الطبقات <span class="en">Trilamellar membrane</span>
+        <button class="audio-btn" onclick="playAudio('audio/trilamellar_membrane.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg> نطق</button>
+        <br>خطان داكنان متوازيان يفصل بينهما خط فاتح (2 dark parallel lines separated by light one).</p>
+    </div>
+  </div>
+
+  <h3>التركيب الجزيئي لغشاء الخلية</h3>
+  <div class="img-block">
+    <img src="images/slide_23.png" alt="التركيب الجزيئي لغشاء الخلية - Slide 23">
+    <div class="img-caption">سلايد المحاضرة (Slide 23): Molecular structure of cell membrane (60% Protein, 30% Lipid, 10% Carbohydrate)</div>
+  </div>
+
+  <table>
+    <tr>
+      <th>المكون</th>
+      <th>النسبة</th>
+      <th>التفاصيل</th>
+    </tr>
+    <tr>
+      <td>البروتين <span class="en">Protein</span></td>
+      <td><b>60%</b></td>
+      <td>اكبر مكون — مهم للوظائف</td>
+    </tr>
+    <tr>
+      <td>الدهون <span class="en">Lipid</span></td>
+      <td><b>30%</b></td>
+      <td>ثنائي الطبقة الدهنية</td>
+    </tr>
+    <tr>
+      <td>الكربوهيدرات <span class="en">Carbohydrate</span></td>
+      <td><b>10%</b></td>
+      <td>سكريات متعددة — Polysaccharides</td>
+    </tr>
+  </table>
+
+  <h3>مكون الكربوهيدرات وتكوين Glycocalyx</h3>
+  <div class="img-block">
+    <img src="images/slide_24.png" alt="كربوهيدرات غشاء الخلية والغلاف الخلوي - Slide 24">
+    <div class="img-caption">سلايد المحاضرة (Slide 24): Carbohydrate Component [10%] &amp; Cell coat / Glycocalyx</div>
+  </div>
+  <ul>
+    <li>السكريات المتعددة (Polysaccharides) + بروتين → <b>Glycoprotein</b></li>
+    <li>السكريات المتعددة (Polysaccharides) + دهون → <b>Glycolipid</b></li>
+    <li>Glycolipid + Glycoprotein → <b>Cell coat / Glycocalyx</b>
+      <button class="audio-btn" onclick="playAudio('audio/glycocalyx.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg> نطق</button>
+    </li>
+  </ul>
+
+  <h3>وظائف غشاء الخلية</h3>
+  <ul>
+    <li>تنظيم مرور المواد الى داخل وخارج الخلية عبر:
+      <ul>
+        <li>النقل السلبي <span class="en">Passive transport</span>
+          <button class="audio-btn" onclick="playAudio('audio/passive_transport.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        </li>
+        <li>النقل النشط <span class="en">Active transport</span>
+          <button class="audio-btn" onclick="playAudio('audio/active_transport.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        </li>
+        <li>النقل الميسر <span class="en">Facilitated transport</span>
+          <button class="audio-btn" onclick="playAudio('audio/facilitated_transport.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+        </li>
+      </ul>
+    </li>
+    <li>وظائف Cell coat — Glycocalyx:
+      <ul>
+        <li>الحماية الميكانيكية للخلية <span class="en">Mechanical protection</span></li>
+        <li>المناعة والحساسية الخلوية <span class="en">Cell immunity &amp; allergy</span> — من خلال المستقبلات (Receptors)</li>
+      </ul>
+    </li>
+  </ul>
+
+  <!-- MCQ Section 5 -->
+  <div class="mcq-section">
+    <h3>MCQ Questions — Cell Membrane</h3>
+
+    <div class="mcq" id="q11">
+      <div class="mcq-q">11. What is the thickness of the Cell Membrane?</div>
+      <ul class="mcq-options">
+        <li onclick="checkMCQ(this,'wrong','q11')"><span class="mcq-letter">A</span> 1–2 nm</li>
+        <li onclick="checkMCQ(this,'wrong','q11')"><span class="mcq-letter">B</span> 50–100 nm</li>
+        <li onclick="checkMCQ(this,'correct','q11')"><span class="mcq-letter">C</span> 8–10 nm</li>
+        <li onclick="checkMCQ(this,'wrong','q11')"><span class="mcq-letter">D</span> 1 μm</li>
+      </ul>
+      <div class="mcq-explain" id="q11-ex">The Cell Membrane is <b>8–10 nm</b> thick — that is why it is invisible under the Light Microscope.</div>
+    </div>
+
+    <div class="mcq" id="q12">
+      <div class="mcq-q">12. What is the percentage of Protein in the Cell Membrane?</div>
+      <ul class="mcq-options">
+        <li onclick="checkMCQ(this,'wrong','q12')"><span class="mcq-letter">A</span> 10%</li>
+        <li onclick="checkMCQ(this,'wrong','q12')"><span class="mcq-letter">B</span> 30%</li>
+        <li onclick="checkMCQ(this,'correct','q12')"><span class="mcq-letter">C</span> 60%</li>
+        <li onclick="checkMCQ(this,'wrong','q12')"><span class="mcq-letter">D</span> 75%</li>
+      </ul>
+      <div class="mcq-explain" id="q12-ex">Protein = <b>60%</b>, Lipid = 30%, Carbohydrate = 10%.</div>
+    </div>
+
+    <div class="mcq" id="q13">
+      <div class="mcq-q">13. What is formed by the combination of Glycolipid + Glycoprotein?</div>
+      <ul class="mcq-options">
+        <li onclick="checkMCQ(this,'wrong','q13')"><span class="mcq-letter">A</span> Trilamellar membrane</li>
+        <li onclick="checkMCQ(this,'wrong','q13')"><span class="mcq-letter">B</span> Polysaccharide</li>
+        <li onclick="checkMCQ(this,'correct','q13')"><span class="mcq-letter">C</span> Cell coat / Glycocalyx</li>
+        <li onclick="checkMCQ(this,'wrong','q13')"><span class="mcq-letter">D</span> Cytoplasmic matrix</li>
+      </ul>
+      <div class="mcq-explain" id="q13-ex">Glycolipid + Glycoprotein = <b>Cell coat / Glycocalyx</b>. It is responsible for mechanical protection and cell immunity.</div>
+    </div>
+
+    <div class="mcq" id="q14">
+      <div class="mcq-q">14. How does the Cell Membrane appear under the Electron Microscope?</div>
+      <ul class="mcq-options">
+        <li onclick="checkMCQ(this,'wrong','q14')"><span class="mcq-letter">A</span> A single dark line</li>
+        <li onclick="checkMCQ(this,'wrong','q14')"><span class="mcq-letter">B</span> Three dark lines</li>
+        <li onclick="checkMCQ(this,'correct','q14')"><span class="mcq-letter">C</span> Trilamellar membrane — two dark parallel lines separated by a light line</li>
+        <li onclick="checkMCQ(this,'wrong','q14')"><span class="mcq-letter">D</span> It does not appear</li>
+      </ul>
+      <div class="mcq-explain" id="q14-ex">Under E.M it appears as a <b>Trilamellar membrane</b>: two dark lines (outer &amp; inner) separated by a light line.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== SECTION 6: Mitochondria ====== -->
+<section>
+  <div class="section-title">
+    <div class="section-num">6</div>
+    <div>
+      <h2>Mitochondria <span class="stars">★★★</span></h2>
+      <small style="color:#5a7a98">Mitochondria — محطة الطاقة</small>
+    </div>
+  </div>
+
+  <div class="img-block">
+    <img src="images/slide_27.png" alt="عدد الميتوكندريا وتركيبها - Slide 27">
+    <div class="img-caption">سلايد المحاضرة (Slide 27): Mitochondria Number &amp; Structure</div>
+  </div>
+
+  <h3>العدد
+    <button class="audio-btn" onclick="playAudio('audio/mitochondria.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg> نطق</button>
+  </h3>
+  <p>كثيرة في الخلايا النشطة. خلايا الكبد قد تحتوي على <b>2000 mitochondria/cell</b>.</p>
+
+  <div class="img-block">
+    <img src="images/slide_28.png" alt="تركيب الميتوكندريا ووظيفتها - Slide 28">
+    <div class="img-caption">سلايد المحاضرة (Slide 28): Mitochondria E.M &amp; Function (ATP Powerhouses)</div>
+  </div>
+
+  <h3>التركيب بالمجهر الإلكتروني E.M</h3>
+  <ul>
+    <li>قد تكون مستديرة او بيضاوية او ممدودة <span class="en">Round, oval or elongated</span></li>
+    <li>محاطة بغشائين <span class="en">Double membranes</span></li>
+    <li>الغشاء الخارجي <span class="en">Outer membrane</span> — املس</li>
+    <li>الغشاء الداخلي <span class="en">Inner membrane</span> — يكوّن طيات تسمى <b>Cristae</b>
+      <button class="audio-btn" onclick="playAudio('audio/cristae.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg> نطق</button>
+    </li>
+    <li>المصفوفة <span class="en">Matrix</span>
+      <button class="audio-btn" onclick="playAudio('audio/mitochondrial_matrix.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg> نطق</button>
+      — تملا التجويف الداخلي، تحتوي على: Lipid, Protein, Carbohydrate, Ca, Mg, <b>DNA, RNA</b>, Oxidative enzymes
+    </li>
+  </ul>
+
+  <div class="img-block">
+    <img src="images/slide_29.png" alt="Mitochondria E.M picture - Slide 29">
+    <div class="img-caption">سلايد المحاضرة (Slide 29): Mitochondria [E.M] picture</div>
+  </div>
+
+  <div class="key">
+    <b>الوظيفة:</b> تكوين
+    <b>ATP</b>
+    <button class="audio-btn" onclick="playAudio('audio/adenosine_triphosphate.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg> نطق ATP</button>
+    — المصدر الرئيسي للطاقة.
+    لذلك توصف Mitochondria بانها:
+    <b>"Powerhouses of living cells"</b> — محطة الطاقة في الخلايا الحية.
+  </div>
+
+  <!-- MCQ Section 6 -->
+  <div class="mcq-section">
+    <h3>MCQ Questions — Mitochondria</h3>
+
+    <div class="mcq" id="q15">
+      <div class="mcq-q">15. What is the function of Mitochondria?</div>
+      <ul class="mcq-options">
+        <li onclick="checkMCQ(this,'wrong','q15')"><span class="mcq-letter">A</span> Protein synthesis</li>
+        <li onclick="checkMCQ(this,'correct','q15')"><span class="mcq-letter">B</span> Formation of ATP — the main source of energy</li>
+        <li onclick="checkMCQ(this,'wrong','q15')"><span class="mcq-letter">C</span> Detoxification</li>
+        <li onclick="checkMCQ(this,'wrong','q15')"><span class="mcq-letter">D</span> Hormone synthesis</li>
+      </ul>
+      <div class="mcq-explain" id="q15-ex">Mitochondria = <b>Powerhouses of living cells</b>. They produce ATP, the main source of energy.</div>
+    </div>
+
+    <div class="mcq" id="q16">
+      <div class="mcq-q">16. What are the folds formed by the inner membrane of Mitochondria called?</div>
+      <ul class="mcq-options">
+        <li onclick="checkMCQ(this,'wrong','q16')"><span class="mcq-letter">A</span> Matrix</li>
+        <li onclick="checkMCQ(this,'wrong','q16')"><span class="mcq-letter">B</span> Saccules</li>
+        <li onclick="checkMCQ(this,'correct','q16')"><span class="mcq-letter">C</span> Cristae</li>
+        <li onclick="checkMCQ(this,'wrong','q16')"><span class="mcq-letter">D</span> Cisternae</li>
+      </ul>
+      <div class="mcq-explain" id="q16-ex">The inner membrane of Mitochondria forms folds called <b>Cristae</b>, which increase the surface area for energy production.</div>
+    </div>
+
+    <div class="mcq" id="q17">
+      <div class="mcq-q">17. How many membranes surround Mitochondria?</div>
+      <ul class="mcq-options">
+        <li onclick="checkMCQ(this,'wrong','q17')"><span class="mcq-letter">A</span> A single membrane</li>
+        <li onclick="checkMCQ(this,'correct','q17')"><span class="mcq-letter">B</span> Two membranes (Double membranes)</li>
+        <li onclick="checkMCQ(this,'wrong','q17')"><span class="mcq-letter">C</span> Three membranes</li>
+        <li onclick="checkMCQ(this,'wrong','q17')"><span class="mcq-letter">D</span> No membrane</li>
+      </ul>
+      <div class="mcq-explain" id="q17-ex">Mitochondria are surrounded by <b>Double membranes</b>: a smooth outer membrane and an inner membrane that forms Cristae.</div>
+    </div>
+
+    <div class="mcq" id="q18">
+      <div class="mcq-q">18. What does the Mitochondrial Matrix contain?</div>
+      <ul class="mcq-options">
+        <li onclick="checkMCQ(this,'wrong','q18')"><span class="mcq-letter">A</span> Glycogen only</li>
+        <li onclick="checkMCQ(this,'wrong','q18')"><span class="mcq-letter">B</span> Protein and lipids only</li>
+        <li onclick="checkMCQ(this,'correct','q18')"><span class="mcq-letter">C</span> Lipid, Protein, Carbohydrate, Ca, Mg, DNA, RNA, Oxidative enzymes</li>
+        <li onclick="checkMCQ(this,'wrong','q18')"><span class="mcq-letter">D</span> Water only</li>
+      </ul>
+      <div class="mcq-explain" id="q18-ex">The Matrix contains: <b>Lipid, Protein, Carbohydrate, Ca, Mg, DNA, RNA, Oxidative enzymes</b> — note that Mitochondria have their own DNA!</div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== SECTION 7: Endoplasmic Reticulum ====== -->
+<section>
+  <div class="section-title">
+    <div class="section-num">7</div>
+    <div>
+      <h2>الشبكة الإندوبلازمية <span class="stars">★★★</span></h2>
+      <small style="color:#5a7a98">Endoplasmic Reticulum (ER)</small>
+    </div>
+  </div>
+
+  <p>
+    <b>التعريف:</b> شبكة من القنوات المترابطة
+    <span class="en">Network of intercommunicating channels</span>
+    <button class="audio-btn" onclick="playAudio('audio/endoplasmic_reticulum.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg> نطق</button>
+    الموجودة في السيتوبلازم.
+  </p>
+
+  <div class="img-block">
+    <img src="images/slide_31.png" alt="الشبكة الإندوبلازمية - Slide 31">
+    <div class="img-caption">سلايد المحاضرة (Slide 31): Endoplasmic Reticulum (Definition &amp; Types)</div>
+  </div>
+
+  <div class="grid">
+    <div class="img-block">
+      <img src="images/slide_32.png" alt="أنواع ومواقع تواجد ER - Slide 32">
+      <div class="img-caption">سلايد المحاضرة (Slide 32): Types &amp; Sites of rER &amp; sER</div>
+    </div>
+    <div class="img-block">
+      <img src="images/slide_33.png" alt="وظائف rER و sER - Slide 33">
+      <div class="img-caption">سلايد المحاضرة (Slide 33): E.M &amp; Functions of rER &amp; sER</div>
+    </div>
+  </div>
+
+  <div class="img-block">
+    <img src="images/slide_34.png" alt="صورة EM لشبكة rER و sER - Slide 34">
+    <div class="img-caption">سلايد المحاضرة (Slide 34): EM pictures of rER &amp; sER</div>
+  </div>
+
+  <table>
+    <tr>
+      <th>وجه المقارنة</th>
+      <th>Rough ER (rER)
+        <button class="audio-btn" onclick="playAudio('audio/rough_endoplasmic_reticulum.mp3')"><svg viewBox="0 0 24 24" style="fill:#fff"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </th>
+      <th>Smooth ER (sER)
+        <button class="audio-btn" onclick="playAudio('audio/smooth_endoplasmic_reticulum.mp3')"><svg viewBox="0 0 24 24" style="fill:#fff"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button>
+      </th>
+    </tr>
+    <tr>
+      <td>بالـ E.M</td>
+      <td>عليه Ribosomes على السطح الخارجي</td>
+      <td>لا توجد عليه Ribosomes</td>
+    </tr>
+    <tr>
+      <td>يوجد في</td>
+      <td>
+        خلايا مكوِّنة للبروتين:
+        <ul>
+          <li>Plasma cells</li>
+          <li>Osteoblasts</li>
+          <li>Pancreas</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>خلايا مكوِّنة للدهون: <b>Liver</b></li>
+          <li>الغدد الصماء: <b>Suprarenal gland</b></li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>الوظائف</td>
+      <td>
+        <ul>
+          <li>Protein synthesis بواسطة Ribosomes</li>
+          <li>نقل البروتين الى Golgi apparatus</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>تصنيع الدهون والهرمونات الستيرويدية</li>
+          <li>تخزين Glycogen (في الكبد والعضلات)</li>
+          <li>تخزين وضخ Ca — مساعدة انقباض العضلات</li>
+          <li>Detoxification — ازالة سمية الكحول والادوية في الكبد</li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+
+  <div class="key">
+    <b>قاعدة سهلة للتذكر:</b><br>
+    Rough ER = له Ribosomes = يصنع البروتين<br>
+    Smooth ER = بدون Ribosomes = يصنع الدهون والهرمونات + Detoxification + Ca storage
+  </div>
+
+  <!-- MCQ Section 7 -->
+  <div class="mcq-section">
+    <h3>MCQ Questions — Endoplasmic Reticulum</h3>
+
+    <div class="mcq" id="q19">
+      <div class="mcq-q">19. What is the main difference between Rough ER and Smooth ER?</div>
+      <ul class="mcq-options">
+        <li onclick="checkMCQ(this,'wrong','q19')"><span class="mcq-letter">A</span> rER is larger in size</li>
+        <li onclick="checkMCQ(this,'correct','q19')"><span class="mcq-letter">B</span> rER has Ribosomes on its surface, sER does not</li>
+        <li onclick="checkMCQ(this,'wrong','q19')"><span class="mcq-letter">C</span> sER has Ribosomes, rER does not</li>
+        <li onclick="checkMCQ(this,'wrong','q19')"><span class="mcq-letter">D</span> Both carry Ribosomes</li>
+      </ul>
+      <div class="mcq-explain" id="q19-ex"><b>rER (Rough ER)</b> has Ribosomes on its outer surface (hence it appears rough). <b>sER (Smooth ER)</b> has no Ribosomes.</div>
+    </div>
+
+    <div class="mcq" id="q20">
+      <div class="mcq-q">20. In which cells is rER (Rough ER) most abundant?</div>
+      <ul class="mcq-options">
+        <li onclick="checkMCQ(this,'wrong','q20')"><span class="mcq-letter">A</span> Liver cells</li>
+        <li onclick="checkMCQ(this,'correct','q20')"><span class="mcq-letter">B</span> Plasma cells, Osteoblasts, Pancreas</li>
+        <li onclick="checkMCQ(this,'wrong','q20')"><span class="mcq-letter">C</span> Endocrine gland cells</li>
+        <li onclick="checkMCQ(this,'wrong','q20')"><span class="mcq-letter">D</span> Muscle cells</li>
+      </ul>
+      <div class="mcq-explain" id="q20-ex"><b>rER</b> is found in protein-forming cells: <b>Plasma cells, Osteoblasts, and Pancreas</b>.</div>
+    </div>
+
+    <div class="mcq" id="q21">
+      <div class="mcq-q">21. What is the function of Smooth ER in the Liver?</div>
+      <ul class="mcq-options">
+        <li onclick="checkMCQ(this,'wrong','q21')"><span class="mcq-letter">A</span> Protein synthesis</li>
+        <li onclick="checkMCQ(this,'wrong','q21')"><span class="mcq-letter">B</span> ATP synthesis</li>
+        <li onclick="checkMCQ(this,'correct','q21')"><span class="mcq-letter">C</span> Detoxification of alcohol &amp; drugs, and storage of Glycogen</li>
+        <li onclick="checkMCQ(this,'wrong','q21')"><span class="mcq-letter">D</span> Formation of Lysosomes</li>
+      </ul>
+      <div class="mcq-explain" id="q21-ex">In the liver: <b>sER performs Detoxification</b> (removes toxicity of alcohol &amp; drugs) and stores Glycogen.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== SECTION 8: Golgi Apparatus ====== -->
+<section>
+  <div class="section-title">
+    <div class="section-num">8</div>
+    <div>
+      <h2>Golgi apparatus <span class="stars">★★★</span></h2>
+      <small style="color:#5a7a98">Golgi Apparatus — الجهاز الإفرازي للخلية</small>
+    </div>
+  </div>
+
+  <div class="key">
+    <b>تعريف:</b> هو <b>الجهاز الإفرازي للخلية</b>
+    <span class="en">Secretory system of the cell</span>
+    <button class="audio-btn" onclick="playAudio('audio/golgi_apparatus.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg> نطق</button>.
+    سُمي على اسم عالم الانسجة الإيطالي <b>Camillo Golgi</b> الذي اكتشفه عام 1898.
+  </div>
+
+  <div class="img-block">
+    <img src="images/slide_37.png" alt="جهاز جولجي التعريف - Slide 37">
+    <div class="img-caption">سلايد المحاضرة (Slide 37): Golgi Apparatus Definition &amp; Discovery (Camillo Golgi 1898)</div>
+  </div>
+
+  <div class="grid">
+    <div>
+      <h3>بالمجهر الضوئي L.M</h3>
+      <div class="img-block">
+        <img src="images/slide_38.png" alt="جهاز جولجي بالمجهر الضوئي - Slide 38">
+        <div class="img-caption">سلايد المحاضرة (Slide 38): Negative Golgi Image / Golgi Ghost under L.M</div>
+      </div>
+      <ul>
+        <li>لا يصطبغ بـ H&amp;E لان احتواه الدهني العالي يذيبه اثناء التحضير</li>
+        <li>يظهر كمنطقة شاحبة في السيتوبلازم تسمى:
+          <b>Negative Golgi image</b> او <b>Golgi ghost</b>
+          <button class="audio-btn" onclick="playAudio('audio/negative_golgi_image.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg> نطق</button>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h3>بالمجهر الإلكتروني E.M</h3>
+      <div class="img-block">
+        <img src="images/slide_39.png" alt="جهاز جولجي بالمجهر الإلكتروني - Slide 39">
+        <div class="img-caption">سلايد المحاضرة (Slide 39): Flat curved membranous saccules stacked over each other</div>
+      </div>
+      <ul>
+        <li>اكياس غشائية مسطحة ومنحنية <span class="en">Flat curved membranous saccules</span></li>
+        <li>متراصة فوق بعضها <span class="en">Stacked</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="img-block">
+    <img src="images/slide_40.png" alt="أوجه جهاز جولجي - Slide 40">
+    <div class="img-caption">سلايد المحاضرة (Slide 40): Immature (Cis) face &amp; Mature (Trans) face</div>
+  </div>
+
+  <div class="grid">
+    <div class="img-block">
+      <img src="images/slide_41.png" alt="EM picture of Golgi Apparatus - Slide 41">
+      <div class="img-caption">سلايد المحاضرة (Slide 41): E.M picture of Golgi Apparatus (Cis &amp; Trans Face labeled)</div>
+    </div>
+    <div class="img-block">
+      <img src="images/slide_42.png" alt="EM picture of Golgi Apparatus - Slide 42">
+      <div class="img-caption">سلايد المحاضرة (Slide 42): E.M picture of Golgi Apparatus</div>
+    </div>
+  </div>
+
+  <h3>وظائف Golgi apparatus</h3>
+  <div class="img-block">
+    <img src="images/slide_43.png" alt="وظائف جهاز جولجي - Slide 43">
+    <div class="img-caption">سلايد المحاضرة (Slide 43): Functions of Golgi Apparatus</div>
+  </div>
+  <ul>
+    <li>يكمل وظيفة rER: يعدّل البروتينات التي صنعها rER ثم يفرزها كـ Secretions</li>
+    <li>Formation of Lysosomes وعزل انزيماتها</li>
+  </ul>
+
+  <!-- MCQ Section 8 -->
+  <div class="mcq-section">
+    <h3>MCQ Questions — Golgi Apparatus</h3>
+
+    <div class="mcq" id="q22">
+      <div class="mcq-q">22. لماذا It does not appear Golgi apparatus بصبغة H&amp;E؟</div>
+      <ul class="mcq-options">
+        <li onclick="checkMCQ(this,'wrong','q22')"><span class="mcq-letter">A</span> Because it is too small</li>
+        <li onclick="checkMCQ(this,'wrong','q22')"><span class="mcq-letter">B</span> Because it has a high protein content</li>
+        <li onclick="checkMCQ(this,'correct','q22')"><span class="mcq-letter">C</span> Because its high lipid content causes it to dissolve during specimen preparation</li>
+        <li onclick="checkMCQ(this,'wrong','q22')"><span class="mcq-letter">D</span> Because its membrane is too thick</li>
+      </ul>
+      <div class="mcq-explain" id="q22-ex">Golgi apparatus يذوب اثناء تحضير العينة بسبب <b>المحتوى الدهني العالي</b> في اغشيته، لذلك يظهر كمنطقة شاحبة = <b>Negative Golgi image</b>.</div>
+    </div>
+
+    <div class="mcq" id="q23">
+      <div class="mcq-q">23. ما الوجه الذي يستقبل حويصلات النقل من Rough ER في Golgi apparatus؟</div>
+      <ul class="mcq-options">
+        <li onclick="checkMCQ(this,'correct','q23')"><span class="mcq-letter">A</span> Cis face (immature face)</li>
+        <li onclick="checkMCQ(this,'wrong','q23')"><span class="mcq-letter">B</span> Trans face (mature face)</li>
+        <li onclick="checkMCQ(this,'wrong','q23')"><span class="mcq-letter">C</span> Both faces</li>
+        <li onclick="checkMCQ(this,'wrong','q23')"><span class="mcq-letter">D</span> It does not receive from rER</li>
+      </ul>
+      <div class="mcq-explain" id="q23-ex"><b>Cis face</b> is the immature face that receives from rER. The <b>Trans face</b> is the shipping area that sends secretory vesicles and Lysosomes.</div>
+    </div>
+
+    <div class="mcq" id="q24">
+      <div class="mcq-q">24. ماذا ينتج Trans face في Golgi apparatus؟</div>
+      <ul class="mcq-options">
+        <li onclick="checkMCQ(this,'wrong','q24')"><span class="mcq-letter">A</span> Transport vesicles only</li>
+        <li onclick="checkMCQ(this,'wrong','q24')"><span class="mcq-letter">B</span> Ribosomes only</li>
+        <li onclick="checkMCQ(this,'correct','q24')"><span class="mcq-letter">C</span> Secretory vesicles (Exocytosis) + Lysosomes</li>
+        <li onclick="checkMCQ(this,'wrong','q24')"><span class="mcq-letter">D</span> ATP</li>
+      </ul>
+      <div class="mcq-explain" id="q24-ex">The <b>Trans face</b> produces: <b>Secretory vesicles for Exocytosis</b> and <b>Lysosomes</b>.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== SECTION 9: Doctor Questions ====== -->
+<section>
+  <div class="section-title">
+    <div class="section-num">9</div>
+    <div>
+      <h2>اسئلة الدكتورة المتوقعة <span class="stars">★★★</span></h2>
+      <small style="color:#dc2626; font-weight:bold">احفظ هذه الاسئلة بالإجابات</small>
+    </div>
+  </div>
+
+  <div class="important" style="margin-bottom:16px">
+    <b>تنبيه من الدكتورة:</b> كل العضيات مهمة جدا للامتحان العملي (Practical exam).
+  </div>
+
+  <!-- ====== DOCTOR MCQ CONVERTED SECTION ====== -->
+  <div class="mcq-section" style="margin-top:14px; background:#f0f7ff; border:2px solid #1e4976">
+    <h3 style="color:#1e4976; font-size:16px; margin-bottom:14px">🎯 أسئلة الدكتورة المقالية المحوّلة إلى أسئلة MCQ تفاعلية (Doctor Essay Questions as Interactive MCQs)</h3>
+
+    <div class="mcq" id="dq1">
+      <div class="mcq-q">1. Which of the following statements correctly compares Light Microscope (L.M) and Electron Microscope (E.M)?</div>
+      <ul class="mcq-options">
+        <li onclick="checkMCQ(this,'wrong','dq1')"><span class="mcq-letter">A</span> L.M uses electron beam, E.M uses light rays</li>
+        <li onclick="checkMCQ(this,'wrong','dq1')"><span class="mcq-letter">B</span> L.M magnifies x10,000, E.M magnifies up to x1500–2000</li>
+        <li onclick="checkMCQ(this,'correct','dq1')"><span class="mcq-letter">C</span> L.M uses light rays (up to x1500–2000), while E.M uses electron beam (x10,000 &amp; MUCH larger)</li>
+        <li onclick="checkMCQ(this,'wrong','dq1')"><span class="mcq-letter">D</span> Both microscopes use metal powder treatment</li>
+      </ul>
+      <div class="mcq-explain" id="dq1-ex">الصواب: المجهر الضوئي يستعمل ضوءاً بقوة تكبير حتى 2000، بينما الإلكتروني يستعمل شعاع إلكترونات بقوة تكبير 10000 فأعلى.</div>
+    </div>
+
+    <div class="mcq" id="dq2">
+      <div class="mcq-q">2. What is the Electron Microscope primarily used to examine?</div>
+      <ul class="mcq-options">
+        <li onclick="checkMCQ(this,'wrong','dq2')"><span class="mcq-letter">A</span> Whole organs with naked eye</li>
+        <li onclick="checkMCQ(this,'wrong','dq2')"><span class="mcq-letter">B</span> Whole tissues under low power</li>
+        <li onclick="checkMCQ(this,'correct','dq2')"><span class="mcq-letter">C</span> Intracellular organelles inside the cell</li>
+        <li onclick="checkMCQ(this,'wrong','dq2')"><span class="mcq-letter">D</span> Gross body anatomy</li>
+      </ul>
+      <div class="mcq-explain" id="dq2-ex">المجهر الإلكتروني مخصص لفحص العضيات داخل الخلية (Intracellular organelles).</div>
+    </div>
+
+    <div class="mcq" id="dq3">
+      <div class="mcq-q">3. What is the correct structural organization sequence of the human body from smallest to largest?</div>
+      <ul class="mcq-options">
+        <li onclick="checkMCQ(this,'wrong','dq3')"><span class="mcq-letter">A</span> Organs → Tissues → Cells → Systems → Body</li>
+        <li onclick="checkMCQ(this,'correct','dq3')"><span class="mcq-letter">B</span> Cells → Tissues → Organs → Systems → Human Body</li>
+        <li onclick="checkMCQ(this,'wrong','dq3')"><span class="mcq-letter">C</span> Tissues → Cells → Organs → Systems → Body</li>
+        <li onclick="checkMCQ(this,'wrong','dq3')"><span class="mcq-letter">D</span> Systems → Organs → Tissues → Cells → Body</li>
+      </ul>
+      <div class="mcq-explain" id="dq3-ex">الترتيب من الأصغر للأكبر: <span dir="ltr"><b>Cells → Tissues → Organs → Systems → Human Body</b></span>.</div>
+    </div>
+
+    <div class="mcq" id="dq4">
+      <div class="mcq-q">4. What are the constituents of the Cytoplasmic Matrix?</div>
+      <ul class="mcq-options">
+        <li onclick="checkMCQ(this,'wrong','dq4')"><span class="mcq-letter">A</span> DNA and RNA only</li>
+        <li onclick="checkMCQ(this,'correct','dq4')"><span class="mcq-letter">B</span> Proteins, Carbohydrates, Lipids, Minerals, and Enzymes in a colloid solution</li>
+        <li onclick="checkMCQ(this,'wrong','dq4')"><span class="mcq-letter">C</span> Glycogen, Fat, and Pigments only</li>
+        <li onclick="checkMCQ(this,'wrong','dq4')"><span class="mcq-letter">D</span> Mitochondria and Ribosomes</li>
+      </ul>
+      <div class="mcq-explain" id="dq4-ex">المصفوفة هي محلول غروي يحتوي على: Proteins, Carbohydrates, Lipids, Minerals, Enzymes.</div>
+    </div>
+
+    <div class="mcq" id="dq5">
+      <div class="mcq-q">5. Which group consists ENTIRELY of membranous organelles?</div>
+      <ul class="mcq-options">
+        <li onclick="checkMCQ(this,'wrong','dq5')"><span class="mcq-letter">A</span> Ribosomes, Centrioles, Cilia, Filaments</li>
+        <li onclick="checkMCQ(this,'correct','dq5')"><span class="mcq-letter">B</span> Cell membrane, Mitochondria, Endoplasmic reticulum, Golgi apparatus, Lysosomes</li>
+        <li onclick="checkMCQ(this,'wrong','dq5')"><span class="mcq-letter">C</span> Ribosomes, Mitochondria, Glycogen</li>
+        <li onclick="checkMCQ(this,'wrong','dq5')"><span class="mcq-letter">D</span> Microtubules, Lysosomes, Pigments</li>
+      </ul>
+      <div class="mcq-explain" id="dq5-ex">العضيات الغشائية: Cell membrane, Mitochondria, ER, Golgi, Lysosomes.</div>
+    </div>
+
+    <div class="mcq" id="dq6">
+      <div class="mcq-q">6. Why is the Cell Membrane invisible under L.M with standard H&amp;E stain, and how can it be visualized?</div>
+      <ul class="mcq-options">
+        <li onclick="checkMCQ(this,'wrong','dq6')"><span class="mcq-letter">A</span> Because it is 1 mm thick</li>
+        <li onclick="checkMCQ(this,'correct','dq6')"><span class="mcq-letter">B</span> Because it is very thin (8–10 nm) and can be visualized using PAS or Ag (Silver) special stains</li>
+        <li onclick="checkMCQ(this,'wrong','dq6')"><span class="mcq-letter">C</span> Because it dissolves completely in water</li>
+        <li onclick="checkMCQ(this,'wrong','dq6')"><span class="mcq-letter">D</span> Because it has no lipid content</li>
+      </ul>
+      <div class="mcq-explain" id="dq6-ex">سمك الغشاء الخلوي (8-10 نانومتر) رقيق جداً، ويحتاج صبغات خاصة مثل PAS أو صبغة الفضة Ag.</div>
+    </div>
+
+    <div class="mcq" id="dq7">
+      <div class="mcq-q">7. Under E.M, how does the Cell Membrane appear?</div>
+      <ul class="mcq-options">
+        <li onclick="checkMCQ(this,'wrong','dq7')"><span class="mcq-letter">A</span> A single thick dark line</li>
+        <li onclick="checkMCQ(this,'correct','dq7')"><span class="mcq-letter">B</span> Trilamellar membrane (2 dark parallel lines separated by a light line)</li>
+        <li onclick="checkMCQ(this,'wrong','dq7')"><span class="mcq-letter">C</span> Three dark parallel lines</li>
+        <li onclick="checkMCQ(this,'wrong','dq7')"><span class="mcq-letter">D</span> Invisible under E.M</li>
+      </ul>
+      <div class="mcq-explain" id="dq7-ex">تحت E.M يظهر غشاء ثلاثي الطبقات: Trilamellar membrane.</div>
+    </div>
+
+    <div class="mcq" id="dq8">
+      <div class="mcq-q">8. What are the exact percentages of components in the Cell Membrane?</div>
+      <ul class="mcq-options">
+        <li onclick="checkMCQ(this,'wrong','dq8')"><span class="mcq-letter">A</span> 50% Lipid, 50% Protein</li>
+        <li onclick="checkMCQ(this,'correct','dq8')"><span class="mcq-letter">B</span> 60% Protein, 30% Lipid, 10% Carbohydrate</li>
+        <li onclick="checkMCQ(this,'wrong','dq8')"><span class="mcq-letter">C</span> 80% Carbohydrate, 10% Lipid, 10% Protein</li>
+        <li onclick="checkMCQ(this,'wrong','dq8')"><span class="mcq-letter">D</span> 40% Protein, 40% Lipid, 20% Water</li>
+      </ul>
+      <div class="mcq-explain" id="dq8-ex">التركيب: 60% بروتين، 30% دهون، 10% كربوهيدرات.</div>
+    </div>
+
+    <div class="mcq" id="dq9">
+      <div class="mcq-q">9. What forms the Cell Coat (Glycocalyx), and what is its main function?</div>
+      <ul class="mcq-options">
+        <li onclick="checkMCQ(this,'wrong','dq9')"><span class="mcq-letter">A</span> Cholesterol; Energy generation</li>
+        <li onclick="checkMCQ(this,'correct','dq9')"><span class="mcq-letter">B</span> Glycolipid + Glycoprotein; Mechanical protection &amp; Cell immunity/allergy</li>
+        <li onclick="checkMCQ(this,'wrong','dq9')"><span class="mcq-letter">C</span> Ribosomes; Protein synthesis</li>
+        <li onclick="checkMCQ(this,'wrong','dq9')"><span class="mcq-letter">D</span> Microtubules; Cell motility</li>
+      </ul>
+      <div class="mcq-explain" id="dq9-ex">الغلاف الخلوي = Glycolipid + Glycoprotein، ووظيفته الحماية الميكانيكية ومناعة وحساسية الخلية عبر المستقبلات.</div>
+    </div>
+
+    <div class="mcq" id="dq10">
+      <div class="mcq-q">10. Which of the following is a Non-membranous organelle?</div>
+      <ul class="mcq-options">
+        <li onclick="checkMCQ(this,'wrong','dq10')"><span class="mcq-letter">A</span> Lysosomes</li>
+        <li onclick="checkMCQ(this,'wrong','dq10')"><span class="mcq-letter">B</span> Golgi apparatus</li>
+        <li onclick="checkMCQ(this,'correct','dq10')"><span class="mcq-letter">C</span> Ribosomes &amp; Cytoskeleton</li>
+        <li onclick="checkMCQ(this,'wrong','dq10')"><span class="mcq-letter">D</span> Mitochondria</li>
+      </ul>
+      <div class="mcq-explain" id="dq10-ex">العضيات غير الغشائية: الريبوسومات وهيكل الخلية (Cytoskeleton).</div>
+    </div>
+
+    <div class="mcq" id="dq11">
+      <div class="mcq-q">11. Microtubules belong to the Cytoskeleton and include:</div>
+      <ul class="mcq-options">
+        <li onclick="checkMCQ(this,'wrong','dq11')"><span class="mcq-letter">A</span> Thin, Intermediate &amp; Thick filaments</li>
+        <li onclick="checkMCQ(this,'correct','dq11')"><span class="mcq-letter">B</span> Centrioles &amp; Cilia</li>
+        <li onclick="checkMCQ(this,'wrong','dq11')"><span class="mcq-letter">C</span> Rough and Smooth ER</li>
+        <li onclick="checkMCQ(this,'wrong','dq11')"><span class="mcq-letter">D</span> Cristae &amp; Matrix</li>
+      </ul>
+      <div class="mcq-explain" id="dq11-ex">الـ Microtubules تشتمل على Centrioles &amp; Cilia.</div>
+    </div>
+
+    <div class="mcq" id="dq12">
+      <div class="mcq-q">12. The inner membrane folds of Mitochondria are called:</div>
+      <ul class="mcq-options">
+        <li onclick="checkMCQ(this,'wrong','dq12')"><span class="mcq-letter">A</span> Matrix</li>
+        <li onclick="checkMCQ(this,'correct','dq12')"><span class="mcq-letter">B</span> Cristae</li>
+        <li onclick="checkMCQ(this,'wrong','dq12')"><span class="mcq-letter">C</span> Cisternae</li>
+        <li onclick="checkMCQ(this,'wrong','dq12')"><span class="mcq-letter">D</span> Saccules</li>
+      </ul>
+      <div class="mcq-explain" id="dq12-ex">ثنيات الغشاء الداخلي للميتوكندريا تُسمى Cristae.</div>
+    </div>
+
+    <div class="mcq" id="dq13">
+      <div class="mcq-q">13. Which organelle is responsible for lipid synthesis, glycogen storage, Ca storage/pump, and detoxification in liver?</div>
+      <ul class="mcq-options">
+        <li onclick="checkMCQ(this,'wrong','dq13')"><span class="mcq-letter">A</span> Rough ER (rER)</li>
+        <li onclick="checkMCQ(this,'correct','dq13')"><span class="mcq-letter">B</span> Smooth ER (sER)</li>
+        <li onclick="checkMCQ(this,'wrong','dq13')"><span class="mcq-letter">C</span> Golgi apparatus</li>
+        <li onclick="checkMCQ(this,'wrong','dq13')"><span class="mcq-letter">D</span> Lysosomes</li>
+      </ul>
+      <div class="mcq-explain" id="dq13-ex">الشبكة الملساء sER هي المسؤولة عن تصنيع الدهون وتخزين الجليكوجين والكالسيوم وإزالة السموم بالبد.</div>
+    </div>
+
+    <div class="mcq" id="dq14">
+      <div class="mcq-q">14. Why does Golgi apparatus give a pale "Negative Golgi image" under L.M with H&amp;E stain?</div>
+      <ul class="mcq-options">
+        <li onclick="checkMCQ(this,'wrong','dq14')"><span class="mcq-letter">A</span> Because it lacks a membrane</li>
+        <li onclick="checkMCQ(this,'correct','dq14')"><span class="mcq-letter">B</span> Because its high lipid content in membranes dissolves during specimen preparation</li>
+        <li onclick="checkMCQ(this,'wrong','dq14')"><span class="mcq-letter">C</span> Because it produces ATP</li>
+        <li onclick="checkMCQ(this,'wrong','dq14')"><span class="mcq-letter">D</span> Because it is outside the cytoplasm</li>
+      </ul>
+      <div class="mcq-explain" id="dq14-ex">المحتوى الدهني العالي في أغشية جهاز جولجي يذوب أثناء التحضير فيظهر كمنطقة شاحبة Negative Golgi image.</div>
+    </div>
+
+    <div class="mcq" id="dq15">
+      <div class="mcq-q">15. What is the process of releasing secretory vesicles formed by Trans face of Golgi to outside the cell?</div>
+      <ul class="mcq-options">
+        <li onclick="checkMCQ(this,'wrong','dq15')"><span class="mcq-letter">A</span> Phagocytosis (Cell eating)</li>
+        <li onclick="checkMCQ(this,'wrong','dq15')"><span class="mcq-letter">B</span> Pinocytosis (Cell drinking)</li>
+        <li onclick="checkMCQ(this,'correct','dq15')"><span class="mcq-letter">C</span> Exocytosis</li>
+        <li onclick="checkMCQ(this,'wrong','dq15')"><span class="mcq-letter">D</span> Endocytosis</li>
+      </ul>
+      <div class="mcq-explain" id="dq15-ex">الإخراج الخلوي (Exocytosis) هو طرد الإفرازات والحويصلات خارج الخلية.</div>
+    </div>
+
+    <div class="mcq" id="dq16">
+      <div class="mcq-q">16. Which of the following features describes Cytoplasmic Inclusions?</div>
+      <ul class="mcq-options">
+        <li onclick="checkMCQ(this,'wrong','dq16')"><span class="mcq-letter">A</span> Living, permanent, essential for vital processes</li>
+        <li onclick="checkMCQ(this,'correct','dq16')"><span class="mcq-letter">B</span> Non-living, temporary, not essential for cell vitality (e.g. Glycogen, Fat, Pigments)</li>
+        <li onclick="checkMCQ(this,'wrong','dq16')"><span class="mcq-letter">C</span> Membranous organelles producing ATP</li>
+        <li onclick="checkMCQ(this,'wrong','dq16')"><span class="mcq-letter">D</span> Network of channels synthesizing proteins</li>
+      </ul>
+      <div class="mcq-explain" id="dq16-ex">الاحتواءات السيتوبلازمية: غير حية، مؤقتة، وغير أساسية للحياة (مثل الجليكوجين والدهون والصبغات المخزنة).</div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== SECTION 10: Practical Slides ====== -->
+<section>
+  <div class="section-title">
+    <div class="section-num">10</div>
+    <div>
+      <h2>الامتحان العملي — Practical Slides <span class="stars">★★★</span></h2>
+      <small style="color:#5a7a98">اضغط "اظهر الاجابة" بعد التعرف على الصورة</small>
+    </div>
+  </div>
+
+  <div class="slide-quiz">
+    <p style="margin-bottom:10px; font-size:14px; color:#8fa8c4">صورة 1 — ما هذه الصورة؟</p>
+    <img src="images/golgi_em.jpeg" alt="سؤال عملي">
+    <button class="slide-reveal-btn" onclick="revealSlide(this)">اظهر الاجابة</button>
+    <div class="slide-answer">
+      <b>E.M picture of Golgi Apparatus</b><br>
+      يظهر: اكياس غشائية مسطحة ومنحنية (Flat curved membranous saccules) متراصة فوق بعضها (Stacked).<br>
+      Cis face: يستقبل من rER — Trans face: يرسل Secretory vesicles + Lysosomes.
+    </div>
+  </div>
+
+  <div class="slide-quiz">
+    <p style="margin-bottom:10px; font-size:14px; color:#8fa8c4">صورة 2 — ما هذه الصورة؟</p>
+    <img src="images/golgi_lm_negative.jpeg" alt="سؤال عملي">
+    <button class="slide-reveal-btn" onclick="revealSlide(this)">اظهر الاجابة</button>
+    <div class="slide-answer">
+      <b>LM picture of Negative Golgi Image (Golgi ghost)</b><br>
+      يظهر كمنطقة شاحبة في السيتوبلازم بالمجهر الضوئي.<br>
+      السبب: Golgi apparatus يذوب اثناء تحضير العينة بسبب المحتوى الدهني العالي.
+    </div>
+  </div>
+
+  <div class="slide-quiz">
+    <p style="margin-bottom:10px; font-size:14px; color:#8fa8c4">صورة 3 — ما هذه الصورة؟</p>
+    <img src="images/rough_er_em.jpeg" alt="سؤال عملي">
+    <button class="slide-reveal-btn" onclick="revealSlide(this)">اظهر الاجابة</button>
+    <div class="slide-answer">
+      <b>E.M picture of Rough Endoplasmic Reticulum (rER)</b><br>
+      يظهر: قنوات غشائية مع Ribosomes على السطح الخارجي.<br>
+      الوظيفة: Protein synthesis ونقله الى Golgi apparatus.
+    </div>
+  </div>
+
+  <div class="slide-quiz">
+    <p style="margin-bottom:10px; font-size:14px; color:#8fa8c4">صورة 4 — ما هذه الصورة؟</p>
+    <img src="images/smooth_er_em.jpeg" alt="سؤال عملي">
+    <button class="slide-reveal-btn" onclick="revealSlide(this)">اظهر الاجابة</button>
+    <div class="slide-answer">
+      <b>E.M picture of Smooth Endoplasmic Reticulum (sER)</b><br>
+      يظهر: قنوات غشائية بدون Ribosomes على السطح.<br>
+      الوظيفة: تصنيع الدهون والهرمونات — Detoxification — تخزين Ca وGlycogen.
+    </div>
+  </div>
+
+  <div class="slide-quiz">
+    <p style="margin-bottom:10px; font-size:14px; color:#8fa8c4">صورة 5 — ما هذه الصورة؟</p>
+    <img src="images/mitochondria_em.jpeg" alt="سؤال عملي">
+    <button class="slide-reveal-btn" onclick="revealSlide(this)">اظهر الاجابة</button>
+    <div class="slide-answer">
+      <b>E.M picture of Mitochondrion (Mitochondria)</b><br>
+      يظهر: Double membranes — Outer membrane (املس) — Inner membrane يكوّن Cristae — Matrix داخلية.<br>
+      الوظيفة: ATP synthesis (Powerhouse of the cell).
+    </div>
+  </div>
+
+  <div class="slide-quiz">
+    <p style="margin-bottom:10px; font-size:14px; color:#8fa8c4">صورة 6 — ما هذه الصورة؟</p>
+    <img src="images/cell_membrane_em.jpeg" alt="سؤال عملي">
+    <button class="slide-reveal-btn" onclick="revealSlide(this)">اظهر الاجابة</button>
+    <div class="slide-answer">
+      <b>E.M picture of Cell Membrane</b><br>
+      يظهر: Trilamellar membrane — خطان داكنان (outer &amp; inner layers) يفصلهما خط فاتح.<br>
+      السمك: 8–10 nm.
+    </div>
+  </div>
+
+  <div class="slide-quiz">
+    <p style="margin-bottom:10px; font-size:14px; color:#8fa8c4">صورة 7 — ما هذه الصورة؟</p>
+    <img src="images/cells_lm.jpeg" alt="سؤال عملي">
+    <button class="slide-reveal-btn" onclick="revealSlide(this)">اظهر الاجابة</button>
+    <div class="slide-answer">
+      <b>LM picture of Cells</b><br>
+      صورة بالمجهر الضوئي لخلايا مصبوغة بـ H&amp;E.<br>
+      تذكر: الخلية هي الوحدة التركيبية والوظيفية لجسم الإنسان.
+    </div>
+  </div>
+
+  <div class="slide-quiz">
+    <p style="margin-bottom:10px; font-size:14px; color:#8fa8c4">صورة 8 — ما هذه الصورة؟</p>
+    <img src="images/mitochondria_er_scanning_em.jpeg" alt="سؤال عملي">
+    <button class="slide-reveal-btn" onclick="revealSlide(this)">اظهر الاجابة</button>
+    <div class="slide-answer">
+      <b>Scanning EM picture of Mitochondria and Endoplasmic Reticulum</b><br>
+      يظهر السطح الخارجي لكل من Mitochondria والشبكة الاندوبلازمية معا.
+    </div>
+  </div>
+</section>
+
+<!-- ====== SECTION 11: Terminology Glossary ====== -->
+<section>
+  <div class="section-title">
+    <div class="section-num">11</div>
+    <div>
+      <h2>اهم المصطلحات — Key Terminology</h2>
+      <small style="color:#5a7a98">مع النطق والترجمة</small>
+    </div>
+  </div>
+
+  <table class="glossary-table">
+    <tr>
+      <th>المصطلح بالانجليزية</th>
+      <th>النطق</th>
+      <th>الترجمة العربية</th>
+      <th>صوت</th>
+    </tr>
+    <tr>
+      <td><b>Histology</b></td>
+      <td class="pronunciation">his-TOL-uh-jee</td>
+      <td>علم الأنسجة</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/histology.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Microscopy</b></td>
+      <td class="pronunciation">my-KROS-kuh-pee</td>
+      <td>علم المجاهر</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/microscopy.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Light Microscope (L.M)</b></td>
+      <td class="pronunciation">LYT MY-kruh-skohp</td>
+      <td>المجهر الضوئي</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/light_microscope.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Electron Microscope (E.M)</b></td>
+      <td class="pronunciation">ih-LEK-tron MY-kruh-skohp</td>
+      <td>المجهر الإلكتروني</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/electron_microscope.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Transmission E.M</b></td>
+      <td class="pronunciation">trans-MISH-un ee-em</td>
+      <td>المجهر الإلكتروني النافذ</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/transmission_electron_microscope.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Scanning E.M</b></td>
+      <td class="pronunciation">SKAN-ing ee-em</td>
+      <td>المجهر الإلكتروني الماسح</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/scanning_electron_microscope.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Hematoxylin &amp; Eosin (H&amp;E)</b></td>
+      <td class="pronunciation">hee-muh-TOK-sih-lin &amp; EE-oh-sin</td>
+      <td>صبغة الهيماتوكسيلين والايوسين</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/hematoxylin_and_eosin.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Cytology</b></td>
+      <td class="pronunciation">sy-TOL-uh-jee</td>
+      <td>علم الخلية</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/cytology.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Cytoplasm</b></td>
+      <td class="pronunciation">SY-toh-plaz-um</td>
+      <td>السيتوبلازم / هيولى الخلية</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/cytoplasm.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Cytoplasmic Matrix</b></td>
+      <td class="pronunciation">sy-toh-PLAZ-mik MAY-triks</td>
+      <td>المصفوفة السيتوبلازمية</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/cytoplasmic_matrix.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Cytoplasmic Organelles</b></td>
+      <td class="pronunciation">sy-toh-PLAZ-mik or-guh-NELZ</td>
+      <td>العضيات السيتوبلازمية</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/cytoplasmic_organelles.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Cytoplasmic Inclusions</b></td>
+      <td class="pronunciation">sy-toh-PLAZ-mik in-KLOO-zhunz</td>
+      <td>الاحتواءات السيتوبلازمية</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/cytoplasmic_inclusions.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Membranous Organelles</b></td>
+      <td class="pronunciation">MEM-bray-nus or-guh-NELZ</td>
+      <td>العضيات الغشائية</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/membranous_organelles.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Non-membranous Organelles</b></td>
+      <td class="pronunciation">non-MEM-bray-nus or-guh-NELZ</td>
+      <td>العضيات غير الغشائية</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/non_membranous_organelles.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Cell Membrane</b></td>
+      <td class="pronunciation">SEL MEM-brayn</td>
+      <td>غشاء الخلية</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/cell_membrane.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Trilamellar Membrane</b></td>
+      <td class="pronunciation">try-luh-MEL-ur MEM-brayn</td>
+      <td>غشاء ثلاثي الطبقات</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/trilamellar_membrane.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Glycocalyx</b></td>
+      <td class="pronunciation">gly-koh-KAY-liks</td>
+      <td>غلاف السكر / غطاء الخلية</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/glycocalyx.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Glycoprotein</b></td>
+      <td class="pronunciation">gly-koh-PROH-teen</td>
+      <td>بروتين سكري</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/glycoprotein.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Glycolipid</b></td>
+      <td class="pronunciation">gly-koh-LIP-id</td>
+      <td>دهن سكري</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/glycolipid.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Mitochondria</b></td>
+      <td class="pronunciation">my-toh-KON-dree-uh</td>
+      <td>Mitochondria</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/mitochondria.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Cristae</b></td>
+      <td class="pronunciation">KRIS-tee</td>
+      <td>الطيات الداخلية للميتوكوندريا</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/cristae.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Mitochondrial Matrix</b></td>
+      <td class="pronunciation">my-toh-KON-dree-ul MAY-triks</td>
+      <td>مصفوفة Mitochondria</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/mitochondrial_matrix.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>ATP (Adenosine Triphosphate)</b></td>
+      <td class="pronunciation">ay-dee-uh-SEEN try-FOS-fayt</td>
+      <td>ثلاثي فوسفات الادينوسين — مخزن الطاقة</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/adenosine_triphosphate.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Endoplasmic Reticulum (ER)</b></td>
+      <td class="pronunciation">en-doh-PLAZ-mik reh-TIK-yuh-lum</td>
+      <td>الشبكة الاندوبلازمية</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/endoplasmic_reticulum.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Rough ER (rER)</b></td>
+      <td class="pronunciation">ruf en-doh-PLAZ-mik reh-TIK-yuh-lum</td>
+      <td>الشبكة الاندوبلازمية الخشنة</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/rough_endoplasmic_reticulum.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Smooth ER (sER)</b></td>
+      <td class="pronunciation">smoothh en-doh-PLAZ-mik reh-TIK-yuh-lum</td>
+      <td>الشبكة الاندوبلازمية الملساء</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/smooth_endoplasmic_reticulum.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Ribosomes</b></td>
+      <td class="pronunciation">RY-boh-sohmz</td>
+      <td>Ribosomes</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/ribosomes.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Golgi Apparatus</b></td>
+      <td class="pronunciation">GOL-jee ap-uh-RAY-tus</td>
+      <td>Golgi apparatus</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/golgi_apparatus.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Negative Golgi Image</b></td>
+      <td class="pronunciation">NEG-uh-tiv GOL-jee IM-ij</td>
+      <td>الصورة السلبية لجولجي</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/negative_golgi_image.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Lysosomes</b></td>
+      <td class="pronunciation">LY-soh-sohmz</td>
+      <td>Lysosomes — عضيات الهضم</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/lysosomes.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Cytoskeleton</b></td>
+      <td class="pronunciation">sy-toh-SKEL-ih-ton</td>
+      <td>الهيكل الخلوي</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/cytoskeleton.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Microtubules</b></td>
+      <td class="pronunciation">my-kroh-TYOOB-yoolz</td>
+      <td>الانيبيبات الدقيقة</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/microtubules.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Centrioles</b></td>
+      <td class="pronunciation">SEN-tree-ohlz</td>
+      <td>المريكزات</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/centrioles.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Cilia</b></td>
+      <td class="pronunciation">SIL-ee-uh</td>
+      <td>الاهداب</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/cilia.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Filaments</b></td>
+      <td class="pronunciation">FIL-uh-ments</td>
+      <td>الخيوط البروتينية</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/filaments.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Exocytosis</b></td>
+      <td class="pronunciation">ek-soh-sy-TOH-sis</td>
+      <td>الإخراج الخلوي</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/exocytosis.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Secretory Vesicles</b></td>
+      <td class="pronunciation">SEE-kruh-tor-ee VES-ih-kulz</td>
+      <td>الحويصلات الإفرازية</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/secretory_vesicles.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Cis face</b></td>
+      <td class="pronunciation">SIS fayss</td>
+      <td>الوجه غير الناضج (استقبال)</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/cis_face.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Trans face</b></td>
+      <td class="pronunciation">TRANZ fayss</td>
+      <td>الوجه الناضج (شحن وإرسال)</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/trans_face.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Detoxification</b></td>
+      <td class="pronunciation">dee-tok-sih-fih-KAY-shun</td>
+      <td>ازالة السمية</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/detoxification.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Passive Transport</b></td>
+      <td class="pronunciation">PAS-iv TRANS-port</td>
+      <td>النقل السلبي (بدون طاقة)</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/passive_transport.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Active Transport</b></td>
+      <td class="pronunciation">AK-tiv TRANS-port</td>
+      <td>النقل النشط (يحتاج طاقة)</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/active_transport.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Facilitated Transport</b></td>
+      <td class="pronunciation">fuh-SIL-ih-tay-tid TRANS-port</td>
+      <td>النقل الميسر</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/facilitated_transport.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Intracellular Organelles</b></td>
+      <td class="pronunciation">in-truh-SEL-yoo-ler or-guh-NELZ</td>
+      <td>العضيات داخل الخلية</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/intracellular_organelles.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Cell coat</b></td>
+      <td class="pronunciation">SEL koht</td>
+      <td>غلاف الخلية</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/cell_coat.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+    <tr>
+      <td><b>Camillo Golgi</b></td>
+      <td class="pronunciation">kuh-MIL-oh GOL-jee</td>
+      <td>العالم الذي اكتشف Golgi apparatus (1898)</td>
+      <td><button class="audio-btn" onclick="playAudio('audio/camillo_golgi.mp3')"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></button></td>
+    </tr>
+  </table>
+</section>
+
+<footer>Histology — Lecture 1: Microscopy + Cytology I &nbsp;|&nbsp; Dr. Sarwat L. A. Abdel-Latif &nbsp;|&nbsp; 2026/2027</footer>
+
+</div>
 
 <script>
-// ================= Dark / Light Theme Toggle =================
-const themeToggle = document.getElementById('themeToggle');
-const savedTheme = localStorage.getItem('tasheel_theme');
-if (savedTheme === 'dark') {
-  document.documentElement.setAttribute('data-theme', 'dark');
+// ===== AUDIO =====
+function playAudio(src) {
+  var a = new Audio(src);
+  a.play().catch(function() {});
 }
 
-themeToggle.addEventListener('click', () => {
-  const current = document.documentElement.getAttribute('data-theme');
-  if (current === 'dark') {
-    document.documentElement.removeAttribute('data-theme');
-    localStorage.setItem('tasheel_theme', 'light');
+// ===== MCQ =====
+function checkMCQ(el, result, qId) {
+  var parent = document.getElementById(qId);
+  var opts = parent.querySelectorAll('.mcq-options li');
+  opts.forEach(function(o) { o.onclick = null; });
+
+  if (result === 'correct') {
+    el.classList.add('correct');
   } else {
-    document.documentElement.setAttribute('data-theme', 'dark');
-    localStorage.setItem('tasheel_theme', 'dark');
+    el.classList.add('wrong');
+    opts.forEach(function(o) {
+      if (o.getAttribute('onclick') === null && !o.classList.contains('wrong')) {
+        var origOnclick = o.getAttribute('data-orig');
+      }
+    });
+    // reveal correct answer
+    opts.forEach(function(o) {
+      var txt = o.getAttribute('onclick-data') || '';
+      if (!o.classList.contains('wrong')) {
+        // find the correct one by re-checking
+      }
+    });
+    // mark correct answer for user
+    opts.forEach(function(o) {
+      if (o.textContent.trim() !== el.textContent.trim()) {
+        // check via data
+        var onc = o.getAttribute('data-answer');
+        if (onc === 'correct') {
+          o.classList.add('revealed');
+        }
+      }
+    });
   }
-});
+  var explain = document.getElementById(qId + '-ex');
+  if (explain) { explain.classList.add('show'); }
+}
 
-// ================= Audio Pronunciation =================
-let currentAudio = null;
-function playAudio(term) {
-  if (currentAudio) {
-    currentAudio.pause();
-    document.querySelectorAll('.audio-btn.playing').forEach(b => b.classList.remove('playing'));
-  }
+// Store correct info on page load
+document.addEventListener('DOMContentLoaded', function() {
+  var allMcq = document.querySelectorAll('.mcq');
+  allMcq.forEach(function(mcq) {
+    var opts = mcq.querySelectorAll('.mcq-options li');
+    opts.forEach(function(li) {
+      var oc = li.getAttribute('onclick') || '';
+      if (oc.indexOf("'correct'") !== -1) {
+        li.setAttribute('data-answer', 'correct');
+      } else {
+        li.setAttribute('data-answer', 'wrong');
+      }
+    });
+  });
 
-  const audioPath = `audio/${term}.mp3`;
-  currentAudio = new Audio(audioPath);
+  // Re-wire checkMCQ to use data-answer
+  window.checkMCQ = function(el, result, qId) {
+    var parent = document.getElementById(qId);
+    var opts = parent.querySelectorAll('.mcq-options li');
 
-  const btn = event.currentTarget;
-  if (btn) btn.classList.add('playing');
+    // disable all
+    opts.forEach(function(o) {
+      o.style.pointerEvents = 'none';
+      o.onclick = null;
+    });
 
-  currentAudio.play().catch(err => {
-    console.warn('Audio playback error, falling back to Web Speech API:', err);
-    if ('speechSynthesis' in window) {
-      const utterance = new SpeechSynthesisUtterance(term.replace(/_/g, ' '));
-      utterance.lang = 'en-US';
-      utterance.rate = 0.9;
-      window.speechSynthesis.speak(utterance);
+    if (result === 'correct') {
+      el.classList.add('correct');
+    } else {
+      el.classList.add('wrong');
+      // highlight the real correct one
+      opts.forEach(function(o) {
+        if (o.getAttribute('data-answer') === 'correct') {
+          o.classList.add('revealed');
+        }
+      });
     }
-    if (btn) btn.classList.remove('playing');
-  });
 
-  currentAudio.onended = () => {
-    if (btn) btn.classList.remove('playing');
+    var explain = document.getElementById(qId + '-ex');
+    if (explain) { explain.classList.add('show'); }
   };
-}
-
-// ================= Image Modal Lightbox =================
-function openImageModal(src, caption) {
-  const overlay = document.getElementById('imgModalOverlay');
-  const img = document.getElementById('modalImg');
-  const cap = document.getElementById('modalCaption');
-  img.src = src;
-  cap.textContent = caption;
-  overlay.classList.add('active');
-}
-
-function closeImageModal() {
-  const overlay = document.getElementById('imgModalOverlay');
-  overlay.classList.remove('active');
-}
-
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') closeImageModal();
 });
 
-// ================= Spot Diagnosis Reveal Answer =================
-function toggleSpotAnswer(ansId, btn) {
-  const ansDiv = document.getElementById(ansId);
-  if (!ansDiv) return;
-  const isShown = ansDiv.classList.contains('revealed');
-  if (isShown) {
-    ansDiv.classList.remove('revealed');
-    btn.innerHTML = '<span>👁️ إظهار التشخيص الصحيح</span>';
-  } else {
-    ansDiv.classList.add('revealed');
-    btn.innerHTML = '<span>🙈 إخفاء التشخيص</span>';
-  }
-}
-
-// ================= Interactive Quiz Logic =================
-const explanations = {
-  1: {
-    correct: "إجابة صحيحة وممتازة! في الميكروسكوب الإلكتروني (E.M) مصدر الإضاءة هو حزمة من الإلكترونات (Electrons beam)، بينما في الضوئي (L.M) هو أشعة الضوء.",
-    wrong: "إجابة غير صحيحة. مصدر الإضاءة في الميكروسكوب الإلكتروني هو حزمة إلكترونات (Electrons beam)."
-  },
-  2: {
-    correct: "إجابة صحيحة تماماً! طبقاً للشريحة 5: 1 Micrometer (µm) = 1000 Nanometer (nm).",
-    wrong: "إجابة غير دقيقة. الميكروميتر الواحد يحتوي على 1000 نانوميتر (1 µm = 1000 nm)."
-  },
-  3: {
-    correct: "إجابة صحيحة! الريبوسومات (Ribosomes) والهيكل الخلوي (Cytoskeleton) هي عضيات غير غشائية (Non-membranous)، بينما الميتوكوندريا وجولجي والليسوسومات غشائية.",
-    wrong: "إجابة غير صحيحة. الميتوكوندريا وجولجي والليسوسومات محاطة بأغشية، أما الريبوسومات (Ribosomes) فهي غير غشائية."
-  },
-  4: {
-    correct: "إجابة صحيحة وممتازة! غشاء الخلية رقيق جداً (8-10 nm) ولا يظهر بـ H&E، لكن يصبغ بصبغات خاصة هي PAS أو الفضة Ag (شريحة 21).",
-    wrong: "إجابة غير دقيقة. الصبغات الخاصة المذكورة في المحاضرة لغشاء الخلية هي PAS أو نترات الفضة Ag."
-  },
-  5: {
-    correct: "إجابة صحيحة! التركيب الجزيئي لغشاء الخلية هو: 60% بروتينات، 30% دهون، و 10% كربوهيدرات (شريحة 23).",
-    wrong: "إجابة غير صحيحة. نسبة البروتين في غشاء الخلية هي 60%، والدهون 30%، والكربوهيدرات 10%."
-  },
-  6: {
-    correct: "إجابة صحيحة! يتكون غلاف الخلية (Glycocalyx) من اتحاد الدهون السكرية والبروتينات السكرية (Glycolipid + Glycoprotein) من مكون الكربوهيدرات (شريحة 24).",
-    wrong: "إجابة غير صحيحة. غلاف الخلية أو الجليكوكاليكس ناتج عن Glycolipid + Glycoprotein."
-  },
-  7: {
-    correct: "إجابة صحيحة وممتازة! الشبكة الخشنة تكثر في الخلايا المصنعة للبروتين كالخلايا البلازمية وبانيات العظم وخلايا البنكرياس (شريحة 32).",
-    wrong: "إجابة غير صحيحة. خلايا تصنيع الدهون تتبعها الشبكة الملساء sER، بينما الشبكة الخشنة rER تكثر في الخلايا المصنعة للبروتين كالخلايا البلازمية والبنكرياس."
-  },
-  8: {
-    correct: "إجابة صحيحة! إزالة السمية (Detoxification) في الكبد من الوظائف الحيوية الخمس الأساسية للشبكة الملساء sER (شريحة 33).",
-    wrong: "إجابة غير صحيحة. إزالة سمية الكحول والأدوية في الكبد من اختصاص الشبكة الإندوبلازمية الملساء (Smooth ER)."
-  },
-  9: {
-    correct: "إجابة صحيحة! يذوب جهاز جولجي أثناء تحضير الشريحة بسبب محتواه الدهني العالي فيعطي منطقة باهتة تُسمى Negative Golgi Image (شريحة 38).",
-    wrong: "إجابة غير صحيحة. يذوب جهاز جولجي أثناء التحضير بسبب ارتفاع نسبة الدهون في أغشيته، مما يترك منطقة باهتة في السيتوبلازم."
-  },
-  10: {
-    correct: "إجابة صحيحة تماماً! الوجه الناضج Mature (Trans) face يمثل منطقة الشحن والتصدير (Shipping area) ويُطلق الحويصلات الإفرازية والليسوسومات (شريحة 40).",
-    wrong: "إجابة غير دقيقة. الوجه Cis هو المستقبل للحويصلات من rER، أما الوجه الشاحن للإفرازات والليسوسومات فهو الوجه Trans face."
-  }
-};
-
-function toggleArabic(qid) {
-  const arDiv = document.getElementById(`qar-${qid}`);
-  if (arDiv) arDiv.classList.toggle('show');
-}
-
-function checkMCQ(qid, isCorrect, btn) {
-  const item = document.getElementById(`qitem-${qid}`);
-  const opts = item.querySelectorAll('.mcq-opt');
-  const fb = document.getElementById(`qfb-${qid}`);
-
-  opts.forEach(o => {
-    o.classList.remove('correct', 'wrong');
-    o.disabled = true;
-  });
-
-  if (isCorrect) {
-    btn.classList.add('correct');
-    fb.className = 'q-feedback show correct-fb';
-    fb.innerHTML = `<strong>✔️ رائع!</strong> ${explanations[qid].correct}`;
-  } else {
-    btn.classList.add('wrong');
-    fb.className = 'q-feedback show wrong-fb';
-    fb.innerHTML = `<strong>❌ غير صحيح!</strong> ${explanations[qid].wrong}`;
+// ===== PRACTICAL SLIDES =====
+function revealSlide(btn) {
+  var answer = btn.nextElementSibling;
+  if (answer) {
+    answer.classList.add('show');
+    btn.style.display = 'none';
   }
 }
 </script>
-
 </body>
 </html>
