@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>علم الأنسجة — المحاضرة الثانية: Cytology-II</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-gradient: linear-gradient(135deg, #f0fdf4 0%, #eff6ff 50%, #f8fafc 100%);
+    --card-bg: #ffffff;
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --text-muted: #64748b;
+    --primary: #0284c7;
+    --primary-light: #e0f2fe;
+    --primary-dark: #0369a1;
+    --accent: #6366f1;
+    --accent-light: #e0e7ff;
+    --success: #059669;
+    --success-bg: #ecfdf5;
+    --warning: #d97706;
+    --warning-bg: #fffbeb;
+    --danger: #dc2626;
+    --danger-bg: #fef2f2;
+    --border-color: #e2e8f0;
+    --shadow-sm: 0 1px 4px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 18px rgba(0,0,0,0.06);
+    --shadow-lg: 0 12px 28px rgba(0,0,0,0.1);
+  }
+
+  [data-theme="dark"] {
+    --bg-gradient: linear-gradient(135deg, #0b1120 0%, #0f172a 50%, #111827 100%);
+    --card-bg: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --primary: #38bdf8;
+    --primary-light: rgba(56, 189, 248, 0.12);
+    --primary-dark: #0284c7;
+    --accent: #818cf8;
+    --accent-light: rgba(129, 140, 248, 0.15);
+    --success: #34d399;
+    --success-bg: rgba(52, 211, 153, 0.12);
+    --warning: #fbbf24;
+    --warning-bg: rgba(251, 191, 36, 0.12);
+    --danger: #f87171;
+    --danger-bg: rgba(248, 113, 113, 0.12);
+    --border-color: #334155;
+    --shadow-sm: 0 1px 4px rgba(0,0,0,0.3);
+    --shadow-md: 0 4px 18px rgba(0,0,0,0.4);
+    --shadow-lg: 0 12px 28px rgba(0,0,0,0.6);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+    background: var(--bg-gradient);
+    color: var(--text-primary);
+    line-height: 1.8;
+    min-height: 100vh;
+    padding-bottom: 70px;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  .progress-bar-fixed {
+    position: fixed; top: 0; left: 0; right: 0; height: 5px;
+    background: rgba(0,0,0,0.06); z-index: 9999;
+  }
+  .progress-fill {
+    height: 100%; width: 0%;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transition: width 0.15s ease;
+  }
+
+  .theme-floating-btn {
+    position: fixed; bottom: 25px; left: 25px; z-index: 999;
+    width: 48px; height: 48px; border-radius: 50%;
+    background: var(--card-bg); border: 2px solid var(--border-color);
+    box-shadow: var(--shadow-lg); cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-primary); transition: all 0.25s;
+  }
+  .theme-floating-btn:hover { transform: scale(1.1); }
+
+  .container { max-width: 1050px; margin: 0 auto; padding: 25px 20px; }
+
+  /* Header */
+  .lecture-header {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 25px;
+    box-shadow: var(--shadow-md);
+    text-align: center;
+  }
+  .lec-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--primary-light); color: var(--primary);
+    padding: 6px 16px; border-radius: 30px; font-weight: 700; font-size: 13.5px;
+    margin-bottom: 12px;
+  }
+  .lecture-header h1 {
+    font-size: 26px; font-weight: 900; color: var(--text-primary);
+    margin-bottom: 10px; line-height: 1.4;
+  }
+  .lecture-header .doc-tag {
+    font-size: 15px; color: var(--text-secondary); margin-bottom: 15px;
+  }
+  .lec-stats {
+    display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 15px;
+  }
+  .stat-item {
+    background: var(--primary-light); color: var(--primary);
+    padding: 5px 14px; border-radius: 12px; font-size: 13px; font-weight: 700;
+  }
+
+  /* Quick Nav */
+  .quick-nav {
+    display: flex; gap: 8px; overflow-x: auto; padding: 10px 0 20px;
+    scrollbar-width: thin; margin-bottom: 15px;
+  }
+  .quick-chip {
+    white-space: nowrap; background: var(--card-bg);
+    border: 1px solid var(--border-color); color: var(--text-secondary);
+    padding: 8px 16px; border-radius: 25px; font-size: 13px; font-weight: 700;
+    text-decoration: none; transition: all 0.2s; box-shadow: var(--shadow-sm);
+  }
+  .quick-chip:hover {
+    background: var(--primary); color: white; border-color: var(--primary);
+    transform: translateY(-2px);
+  }
+
+  /* Cards & Sections */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 18px;
+    padding: 28px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-md);
+  }
+  h2 {
+    font-size: 21px; font-weight: 800; color: var(--primary);
+    margin-bottom: 18px; display: flex; align-items: center; gap: 10px;
+    border-bottom: 2px solid var(--border-color); padding-bottom: 10px;
+  }
+  h3 {
+    font-size: 17px; font-weight: 700; color: var(--text-primary);
+    margin: 22px 0 10px; display: flex; align-items: center; gap: 8px;
+  }
+  p { margin-bottom: 12px; color: var(--text-secondary); }
+
+  /* Doctor Speech Box */
+  .doctor-note {
+    background: linear-gradient(135deg, rgba(2,132,199,0.07), rgba(99,102,241,0.07));
+    border-right: 4px solid var(--primary);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-size: 14.5px;
+  }
+  .doc-title {
+    font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 6px;
+    margin-bottom: 6px;
+  }
+
+  /* Term card */
+  .term {
+    background: var(--primary-light);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin: 12px 0;
+    line-height: 1.7;
+    position: relative;
+  }
+  .term .en {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    color: var(--primary);
+    font-size: 16px;
+    display: inline-block;
+    direction: ltr;
+    margin-left: 8px;
+  }
+  .audio-btn {
+    background: var(--card-bg);
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center;
+    vertical-align: middle;
+    margin-left: 6px;
+    transition: all 0.2s;
+  }
+  .audio-btn:hover { background: var(--primary); color: white; transform: scale(1.1); }
+  .audio-btn.playing {
+    background: var(--success) !important; color: white !important;
+    border-color: var(--success) !important;
+    animation: pulse 0.7s infinite alternate;
+  }
+  @keyframes pulse { from { transform: scale(1); } to { transform: scale(1.18); } }
+
+  .pronounce-tag {
+    background: #fef3c7; color: #b45309;
+    border: 1px solid #fde68a;
+    padding: 1px 8px; border-radius: 6px;
+    font-size: 13px; font-weight: 700;
+  }
+
+  /* Slide Image Card */
+  .slide-img-card {
+    text-align: center;
+    margin: 20px 0;
+    background: var(--bg-gradient);
+    padding: 14px;
+    border-radius: 14px;
+    border: 1px solid var(--border-color);
+  }
+  .slide-img-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: var(--shadow-sm);
+  }
+  .slide-img-caption {
+    margin-top: 8px; font-size: 13px; color: var(--text-muted); font-weight: 600;
+  }
+
+  /* Compare table */
+  .compare-table {
+    width: 100%; border-collapse: separate; border-spacing: 0;
+    margin: 18px 0; border-radius: 12px; overflow: hidden;
+    box-shadow: var(--shadow-sm); font-size: 14px;
+  }
+  .compare-table th {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white; padding: 12px 16px; font-weight: 700; text-align: center;
+  }
+  .compare-table td {
+    padding: 12px 16px; border-bottom: 1px solid var(--border-color);
+    text-align: center; background: var(--card-bg);
+  }
+  .compare-table tr:hover td { background: var(--primary-light); }
+  .compare-table td:first-child { font-weight: 700; color: var(--primary); text-align: right; }
+
+  /* Questions & MCQs */
+  .question {
+    background: var(--warning-bg);
+    border: 1px solid rgba(217,119,6,0.25);
+    border-right: 4px solid var(--warning);
+    padding: 18px 20px; border-radius: 14px; margin: 18px 0;
+  }
+  .q-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 12px; margin-bottom: 10px;
+  }
+  .q-english {
+    font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 700;
+    color: var(--text-primary); direction: ltr; text-align: left; line-height: 1.5; flex-grow: 1;
+  }
+  .q-speech-btn {
+    background: var(--card-bg); color: var(--primary);
+    border: 1px solid var(--primary); border-radius: 8px;
+    padding: 4px 10px; font-size: 12px; cursor: pointer;
+    font-family: inherit; display: inline-flex; align-items: center; gap: 5px;
+    transition: all 0.2s;
+  }
+  .q-speech-btn:hover { background: var(--primary); color: white; }
+  .q-arabic-toggle {
+    background: linear-gradient(135deg, var(--warning), #b45309);
+    color: white; border: none; border-radius: 8px;
+    padding: 5px 12px; cursor: pointer; font-family: inherit;
+    font-size: 12px; font-weight: 700; margin: 6px 0;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .q-arabic-text {
+    display: none; background: rgba(217,119,6,0.08);
+    border-right: 3px solid var(--warning); padding: 8px 12px;
+    border-radius: 6px; margin: 8px 0; font-size: 13.5px;
+  }
+  .q-arabic-text.show { display: block; }
+
+  .mcq-option {
+    display: flex; align-items: center; justify-content: space-between;
+    width: 100%; text-align: left; direction: ltr;
+    background: var(--card-bg); border: 2px solid var(--border-color);
+    border-radius: 10px; padding: 10px 16px; margin: 8px 0;
+    cursor: pointer; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600;
+    color: var(--text-primary); transition: all 0.2s;
+  }
+  .mcq-option:hover { border-color: var(--accent); background: var(--accent-light); }
+  .mcq-option.selected-correct {
+    background: var(--success-bg) !important; border-color: var(--success) !important;
+    color: var(--success) !important;
+  }
+  .mcq-option.selected-wrong {
+    background: var(--danger-bg) !important; border-color: var(--danger) !important;
+    color: var(--danger) !important;
+  }
+  .mcq-result {
+    margin-top: 12px; padding: 12px 16px; border-radius: 10px;
+    font-size: 13.5px; line-height: 1.7; display: none;
+  }
+  .mcq-result.show { display: block; }
+  .mcq-result.correct-msg { background: var(--success-bg); border: 1px solid var(--success); }
+  .mcq-result.wrong-msg { background: var(--danger-bg); border: 1px solid var(--danger); }
+
+  /* Practical Cards */
+  .practical-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+    gap: 16px; margin: 18px 0;
+  }
+  .practical-card {
+    background: var(--card-bg); border: 1px solid var(--border-color);
+    border-radius: 14px; padding: 14px; box-shadow: var(--shadow-sm);
+    text-align: center;
+  }
+  .practical-card img {
+    width: 100%; height: 210px; object-fit: contain;
+    background: #f1f5f9; border-radius: 8px; margin-bottom: 10px;
+  }
+  .practical-title {
+    font-weight: 800; font-size: 14.5px; color: var(--primary);
+    direction: ltr; margin-bottom: 4px;
+  }
+  .practical-desc {
+    font-size: 13px; color: var(--text-secondary); line-height: 1.6;
+  }
+
+  /* Glossary */
+  .glossary-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px; margin-top: 15px;
+  }
+  .glossary-item {
+    background: var(--card-bg); border: 1px solid var(--border-color);
+    border-radius: 10px; padding: 10px 14px; display: flex; align-items: center;
+    gap: 10px; transition: all 0.2s;
+  }
+  .glossary-item:hover { border-color: var(--primary); transform: translateY(-2px); }
+  .glossary-info { flex-grow: 1; font-size: 13px; }
+  .glossary-info strong {
+    color: var(--primary); display: block; font-size: 14px; direction: ltr; text-align: left;
+  }
+
+  .icon { width: 16px; height: 16px; stroke-width: 2; fill: none; stroke: currentColor; }
+</style>
+</head>
+<body>
+
+<div class="progress-bar-fixed"><div class="progress-fill" id="progressFill"></div></div>
+
+<button class="theme-floating-btn" onclick="toggleTheme()" id="themeToggleBtn" title="الوضع الليلي">
+  <svg class="icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+</button>
+
+<div class="container">
+
+
+
+  <!-- Quick Navigation -->
+  <nav class="quick-nav">
+    <a href="#sec1" class="quick-chip">1. تنظيم الخلية</a>
+    <a href="#sec2" class="quick-chip">2. الليسوسومات (Lysosomes)</a>
+    <a href="#sec3" class="quick-chip">3. المشتملات الخلوية (Inclusions)</a>
+    <a href="#sec4" class="quick-chip">4. النواة (The Nucleus)</a>
+    <a href="#sec5" class="quick-chip">5. شرائح العملي (Practical)</a>
+    <a href="#sec6" class="quick-chip">6. بنك الأسئلة التفاعلي</a>
+    <a href="#sec7" class="quick-chip">7. القاموس الصوتي الشامل</a>
+  </nav>
+
+  <!-- Section 1 -->
+  <section class="card" id="sec1">
+    <h2><span>1️⃣</span> تنظيم الخلية وعضيات السيتوبلازم</h2>
+    
+    <div class="doctor-note">
+      <div class="doc-title">👨‍🏫 كلام الدكتور في المدرج:</div>
+      "يا شباب، في المحاضرة الأولى اتكلمنا عن الغشاء والميتوكوندريا، النهاردة بنكمّل الخلية. الخلية ببساطة عبارة عن جزأين رئيسيين: <strong>السيتوبلازم والنواة</strong>. والسيتوبلازم فيه 3 حاجات: سائل خلالي، عضيات شغالة ليل نهار، ومشتملات مخزنة. ولازم تفرّقوا كويس جداً بين العضيات الغشائية وغير الغشائية!"
+    </div>
+
+    <div class="slide-img-card">
+      <img src="images/secondary_lysosomes_scheme.png" alt="Cell Organelles">
+      <div class="slide-img-caption">مخطط تنظيم محتويات الخلية ومسارات الليسوسومات</div>
+    </div>
+
+    <div class="term">
+      <span class="en">The Cell</span>
+      <button class="audio-btn" onclick="playAudio('cell', this)" title="استمع للنطق">🔊</button>
+      <span class="pronounce-tag">ذا سيل</span><br>
+      <strong>الخلية:</strong> تتكون من <span class="en">Cytoplasm</span> <button class="audio-btn" onclick="playAudio('cytoplasm', this)">🔊</button> (سيتوبلازم) و <span class="en">Nucleus</span> <button class="audio-btn" onclick="playAudio('nucleus', this)">🔊</button> (نيوكليَس).
+    </div>
+
+    <div class="term">
+      <span class="en">Cytoplasm</span>
+      <button class="audio-btn" onclick="playAudio('cytoplasm', this)">🔊</button>
+      <span class="pronounce-tag">سيتوبلازم</span><br>
+      يتكون من 3 عناصر رئيسية:
+      <ul>
+        <li><span class="en">Cytoplasmic Matrix</span> <button class="audio-btn" onclick="playAudio('cytoplasmic_matrix', this)">🔊</button> (سيتوبلازميك ماتركس): المادة السائلة الخلالية.</li>
+        <li><span class="en">Cytoplasmic Organelles</span> <button class="audio-btn" onclick="playAudio('cytoplasmic_organelles', this)">🔊</button> (سيتوبلازميك أورجانيلز): العضيات الحية الفعالة.</li>
+        <li><span class="en">Cytoplasmic Inclusions</span> <button class="audio-btn" onclick="playAudio('cytoplasmic_inclusions', this)">🔊</button> (سيتوبلازميك إنكلوجنز): المشتملات الخلوية المؤقتة.</li>
+      </ul>
+    </div>
+
+    <h3>تصنيف العضيات السيتوبلازمية (Organelles Classification):</h3>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>عضيات غشائية <span class="en">Membranous</span> <button class="audio-btn" onclick="playAudio('membranous_organelles', this)">🔊</button></th>
+          <th>عضيات لا غشائية <span class="en">Non-membranous</span> <button class="audio-btn" onclick="playAudio('non_membranous_organelles', this)">🔊</button></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            • <span class="en">Cell membrane</span> <button class="audio-btn" onclick="playAudio('cell_membrane', this)">🔊</button><br>
+            • <span class="en">Mitochondria</span> <button class="audio-btn" onclick="playAudio('mitochondria', this)">🔊</button><br>
+            • <span class="en">Endoplasmic reticulum</span> <button class="audio-btn" onclick="playAudio('endoplasmic_reticulum', this)">🔊</button> (rough &amp; smooth)<br>
+            • <span class="en">Golgi apparatus</span> <button class="audio-btn" onclick="playAudio('golgi_apparatus', this)">🔊</button><br>
+            • <span class="en">Lysosomes</span> <button class="audio-btn" onclick="playAudio('lysosomes', this)">🔊</button>
+          </td>
+          <td>
+            • <span class="en">Ribosomes</span> <button class="audio-btn" onclick="playAudio('ribosomes', this)">🔊</button><br>
+            • <span class="en">Cytoskeleton</span> <button class="audio-btn" onclick="playAudio('cytoskeleton', this)">🔊</button>:<br>
+            &nbsp;&nbsp;a) <span class="en">Microtubules</span> <button class="audio-btn" onclick="playAudio('microtubules', this)">🔊</button> (<span class="en">Centrioles</span> <button class="audio-btn" onclick="playAudio('centrioles', this)">🔊</button> &amp; <span class="en">Cilia</span> <button class="audio-btn" onclick="playAudio('cilia', this)">🔊</button>)<br>
+            &nbsp;&nbsp;b) <span class="en">Filaments</span> <button class="audio-btn" onclick="playAudio('filaments', this)">🔊</button> (Thin, Intermediate &amp; Thick)
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Section 2 -->
+  <section class="card" id="sec2">
+    <h2><span>2️⃣</span> الليسوسومات (Lysosomes - لايسوسومز)</h2>
+
+    <div class="doctor-note">
+      <div class="doc-title">👨‍🏫 توضيح الدكتور للمفهوم:</div>
+      "الـ <strong>Lysosomes</strong> هي معدة الخلية والجهاز الهضمي بتاعها (Digestive system of the cell). مين اللي بيعملها؟ شراكة بين الـ rER اللي بيصنع الإنزيمات البروتينية، وجهاز جولجي اللي بيحط التعديل النهائي ويعبيها في حويصلات. وبالمجهر الإلكتروني بتظهر غامقة ومعتمة (Electron-dense) لأنها مليانة إنزيمات هاضمة هيدروليكية."
+    </div>
+
+    <div class="slide-img-card">
+      <img src="images/lysosomes_formation_structure.png" alt="Lysosome Formation">
+      <div class="slide-img-caption">الشريحة 6: منشأ وتكوين الليسوسوم ومسارات الإنزيمات من rER وجولجي</div>
+    </div>
+
+
+
+    <div class="term">
+      <span class="en">Lysosomes</span>
+      <button class="audio-btn" onclick="playAudio('lysosomes', this)">🔊</button>
+      <span class="pronounce-tag">لايسوسومز</span><br>
+      • <strong>التعريف:</strong> <span class="en">Digestive system of the cell</span> <button class="audio-btn" onclick="playAudio('digestive_system_of_the_cell', this)">🔊</button> (الجهاز الهضمي للخلية).<br>
+      • <strong>المنشأ:</strong> تتكون بواسطة <span class="en">rER</span> و <span class="en">Golgi apparatus</span>.<br>
+      • <strong>المحتوى:</strong> تحتوي على العديد من الإنزيمات الهاضمة المحللة <span class="en">Hydrolytic enzymes</span> <button class="audio-btn" onclick="playAudio('hydrolytic_enzymes', this)">🔊</button> مثل:
+      <span class="en">Phospholipases</span> <button class="audio-btn" onclick="playAudio('phospholipases', this)">🔊</button>،
+      <span class="en">Proteases</span> <button class="audio-btn" onclick="playAudio('proteases', this)">🔊</button>، و
+      <span class="en">Nucleases</span> <button class="audio-btn" onclick="playAudio('nucleases', this)">🔊</button>.<br>
+      • <strong>الوفرة:</strong> غنية جداً في الخلايا الأكولة <span class="en">Phagocytic cells</span> <button class="audio-btn" onclick="playAudio('phagocytic_cells', this)">🔊</button> وخاصة خلايا الدم البيضاء <span class="en">WBCs</span> <button class="audio-btn" onclick="playAudio('white_blood_cells', this)">🔊</button>.
+    </div>
+
+    <h3>فحص المجهر الإلكتروني (E.M) ومراحل الليسوسوم:</h3>
+    <div class="term">
+      <span class="en">Electron-dense</span>
+      <button class="audio-btn" onclick="playAudio('electron_dense', this)">🔊</button>
+      <span class="pronounce-tag">إلكترون دينس</span><br>
+      مظهر معتم وكثيف للإلكترونات تحت الـ E.M. ويميز نوعين:
+      <ol>
+        <li>
+          <strong><span class="en">Primary lysosomes (1ry)</span> <button class="audio-btn" onclick="playAudio('primary_lysosomes', this)">🔊</button></strong>:
+          حديثة التكوين (<span class="en">Newly formed</span>)، وتظهر كحويصلات صغيرة ومتجانسة المحتوى (<span class="en">Small homogenous vesicles</span> <button class="audio-btn" onclick="playAudio('homogenous_vesicles', this)">🔊</button>).
+        </li>
+        <li>
+          <strong><span class="en">Secondary lysosomes (2ry)</span> <button class="audio-btn" onclick="playAudio('secondary_lysosomes', this)">🔊</button></strong>:
+          تنتج من اندماج الليسوسوم الأولي مع جزيئات خلوية، وتكون حويصلات غير متجانسة المظهر (<span class="en">Heterogeneous vesicles</span> <button class="audio-btn" onclick="playAudio('heterogeneous_vesicles', this)">🔊</button>).
+        </li>
+      </ol>
+    </div>
+
+    <div class="slide-img-card">
+      <img src="images/lysosomes_types_em.png" alt="Primary and Secondary Lysosomes">
+      <div class="slide-img-caption">الشريحة 7: مقارنة الليسوسوم الأولي 1ry المتجانس والثانوي 2ry غير المتجانس</div>
+    </div>
+
+    <h3>أنواع الليسوسومات الثانوية (Types of Secondary Lysosomes):</h3>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>النوع</th>
+          <th>كيف يتكون؟</th>
+          <th>العملية الخلوية المرتبطة</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="en">Heterolysosomes</span> <button class="audio-btn" onclick="playAudio('heterolysosomes', this)">🔊</button></td>
+          <td>اندماج ليسوسوم أولي + طعام صلب أو بكتيريا التهمتها الخلية</td>
+          <td><span class="en">Phagocytosis</span> <button class="audio-btn" onclick="playAudio('phagocytosis', this)">🔊</button> (البلعمة)</td>
+        </tr>
+        <tr>
+          <td><span class="en">Multivesicular bodies</span> <button class="audio-btn" onclick="playAudio('multivesicular_bodies', this)">🔊</button></td>
+          <td>اندماج ليسوسوم أولي + قطرات سائلة ممتصة</td>
+          <td><span class="en">Pinocytosis</span> <button class="audio-btn" onclick="playAudio('pinocytosis', this)">🔊</button> (الشرب الخلوي)</td>
+        </tr>
+        <tr>
+          <td><span class="en">Autolysosomes</span> <button class="audio-btn" onclick="playAudio('autolysosomes', this)">🔊</button></td>
+          <td>اندماج ليسوسوم أولي + عضيات مسنة ميتة (ميتوكوندريا، rER)</td>
+          <td><span class="en">Autophagy</span> <button class="audio-btn" onclick="playAudio('autophagy', this)">🔊</button> (الالتهام الذاتي)</td>
+        </tr>
+        <tr>
+          <td><span class="en">Residual bodies</span> <button class="audio-btn" onclick="playAudio('residual_bodies', this)">🔊</button></td>
+          <td>ليسوسومات ثانوية تحوي فضلات غير قابلة للهضم (<span class="en">Indigestible remnants</span>)</td>
+          <td>تطرد بـ <span class="en">Exocytosis</span> <button class="audio-btn" onclick="playAudio('exocytosis', this)">🔊</button> أو تترسب</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>وظائف الليسوسومات الخمس (Functions of Lysosomes):</h3>
+    <ul>
+      <li>1. هضم المغذيات داخل السيتوبلازم (Digestion of nutrients in cytoplasm).</li>
+      <li>2. هضم الأجسام الغريبة (البكتيريا والفيروسات) مما يمنحها وظيفة مناعية دفاعية مهمة (<span class="en">Immune function</span>).</li>
+      <li>3. هضم قطرات السوائل.</li>
+      <li>4. هضم العضيات القديمة والتالفة (<span class="en">Autophagy</span>).</li>
+      <li>5. هضم الخلية بأكملها بالتحلل الذاتي (<span class="en">Autolysis</span> <button class="audio-btn" onclick="playAudio('autolysis', this)">🔊</button>) بعد موت الخلية المبرمج (<span class="en">Programmed cell-death</span> <button class="audio-btn" onclick="playAudio('programmed_cell_death', this)">🔊</button>).</li>
+    </ul>
+  </section>
+
+  <!-- Section 3 -->
+  <section class="card" id="sec3">
+    <h2><span>3️⃣</span> المشتملات الخلوية (Cell Inclusions - سيل إنكلوجنز)</h2>
+
+    <div class="doctor-note">
+      <div class="doc-title">👨‍🏫 نصيحة الدكتور للامتحان:</div>
+      "المشتملات دي مش عضيات حية! دي مجرد مخازن وصبغات: <strong>طعام مخزن (Stored Food)</strong> و <strong>صبغات (Pigments)</strong>. ركزوا جداً في صبغات الجليكوجين والدهون لأنها بتيجي في العملي والنظري!"
+    </div>
+
+    <div class="slide-img-card">
+      <img src="images/inclusions_classification.png" alt="Inclusions Classification">
+      <div class="slide-img-caption">الشريحة 15: خريطة تقسيم المشتملات (غذاء مخزن وصبغات)</div>
+    </div>
+
+    <h3>أ) الكربوهيدرات: الجليكوجين <span class="en">Carbohydrates [Glycogen]</span> <button class="audio-btn" onclick="playAudio('glycogen', this)">🔊</button></h3>
+    <div class="term">
+      • <strong>الموقع:</strong> في الكبد والعضلات (<span class="en">Liver &amp; Muscles</span>).<br>
+      • <strong>بالمجهر الضوئي (L.M):</strong> 
+      <span style="color:var(--danger); font-weight:700;">غير مرئي بصبغة H&amp;E</span> لأنه يذوب في الماء أثناء التحضير (<span class="en">Water soluble</span>).<br>
+      • <strong>الصبغات الخاصة:</strong>
+      <ul>
+        <li><span class="en">Best's Carmine</span> <button class="audio-btn" onclick="playAudio('bests_carmine', this)">🔊</button>: تظهره كحبيبات حمراء (<span style="color:#dc2626; font-weight:700;">Red granules</span>).</li>
+        <li><span class="en">PAS</span> <button class="audio-btn" onclick="playAudio('pas', this)">🔊</button>: تصبغه باللون البنفسجي (<span style="color:#7c3aed; font-weight:700;">Purple</span>).</li>
+      </ul>
+      • <strong>بالمجهر الإلكتروني (E.M):</strong> حبيبات معتمة للإلكترونات تتركز قرب الشبكة الملساء (sER) وتوجد في شكلين:
+      <ul>
+        <li><span class="en">α Granules</span> <button class="audio-btn" onclick="playAudio('alpha_granules', this)">🔊</button>: حبيبات مفردة (Single).</li>
+        <li><span class="en">β Granules</span> <button class="audio-btn" onclick="playAudio('beta_granules', this)">🔊</button>: تجمعات في عناقيد تشبه الورد (Rosette-shaped groups).</li>
+      </ul>
+    </div>
+
+    <div class="slide-img-card">
+      <img src="images/glycogen_lm_carmine.png" alt="Glycogen in Liver">
+      <div class="slide-img-caption">الشريحة 16: جليكوجين الكبد مصبوغ بحبيبات حمراء بصبغة Best's Carmine</div>
+    </div>
+
+    <h3>ب) الدهون <span class="en">Fats [Lipids]</span> <button class="audio-btn" onclick="playAudio('lipids', this)">🔊</button></h3>
+    <div class="term">
+      • <strong>الموقع:</strong> الخلايا الدهنية والكبد (<span class="en">Fat cells &amp; Liver</span>).<br>
+      • <strong>بالمجهر الضوئي (L.M):</strong> في صبغة H&amp;E تظهر كفجوات بيضاء فارغة (<span class="en">Empty vacuoles</span> <button class="audio-btn" onclick="playAudio('empty_vacuoles', this)">🔊</button>) لأن الدهون تذوب بفعل المذيبات أثناء التجهيز (<span class="en">Dissolve during preparation</span>).<br>
+      • <strong>الصبغات الخاصة بالدهون:</strong>
+      <ul>
+        <li><span class="en">Sudan III</span> <button class="audio-btn" onclick="playAudio('sudan_iii', this)">🔊</button>: يصبغ الدهون بلون برتقالي (<span style="color:#ea580c; font-weight:700;">Orange vacuoles</span>).</li>
+        <li><span class="en">Sudan Black</span> <button class="audio-btn" onclick="playAudio('sudan_black', this)">🔊</button>: يصبغ الدهون بلون أسود (<span style="color:#0f172a; font-weight:700;">Black vacuoles</span>).</li>
+      </ul>
+    </div>
+
+    <div class="slide-img-card">
+      <img src="images/fat_lm_stains.png" alt="Fat stains comparison">
+      <div class="slide-img-caption">الشريحة 18: مقارنة صبغات الدهون (H&amp;E فارغة، Sudan III برتقالي، Sudan Black أسود)</div>
+    </div>
+
+    <h3>ج) الصبغات الخلوية (Pigments - بيجمنتس):</h3>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>صبغات داخلية المنشأ <span class="en">Endogenous</span> <button class="audio-btn" onclick="playAudio('endogenous_pigments', this)">🔊</button></th>
+          <th>صبغات خارجية المنشأ <span class="en">Exogenous</span> <button class="audio-btn" onclick="playAudio('exogenous_pigments', this)">🔊</button></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            • <span class="en">Hemoglobin</span> <button class="audio-btn" onclick="playAudio('hemoglobin', this)">🔊</button>: في كرات الدم الحمراء RBCs.<br>
+            • <span class="en">Melanin</span> <button class="audio-btn" onclick="playAudio('melanin', this)">🔊</button>: في الجلد والشعر والعين.<br>
+            • <span class="en">Lipofuscin granules</span> <button class="audio-btn" onclick="playAudio('lipofuscin_granules', this)">🔊</button>: في الخلايا المعمرة (الخلايا العصبية وعضلة القلب).
+          </td>
+          <td>
+            • جزيئات الكربون والغبار: تبتلعها خلايا الغبار الرئوية (<span class="en">Dust cells</span> <button class="audio-btn" onclick="playAudio('dust_cells', this)">🔊</button>) مسببة رئة سوداء (<span class="en">Black lungs</span> <button class="audio-btn" onclick="playAudio('black_lungs', this)">🔊</button>).<br>
+            • <span class="en">Carotene</span> <button class="audio-btn" onclick="playAudio('carotene', this)">🔊</button>: صبغة الجزر تعطي دهناً أصفر.<br>
+            • <span class="en">Tattoo marks</span> <button class="audio-btn" onclick="playAudio('tattoo_marks', this)">🔊</button>: صبغات كالحبر الهندي (<span class="en">India ink</span> <button class="audio-btn" onclick="playAudio('india_ink', this)">🔊</button>) تبتلعها الخلايا الأكولة بالجلد.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Section 4 -->
+  <section class="card" id="sec4">
+    <h2><span>4️⃣</span> النواة (The Nucleus - ذا نيوكليَس)</h2>
+
+    <div class="doctor-note">
+      <div class="doc-title">👨‍🏫 الدقة العلمية مع الدكتور:</div>
+      "النواة هي غرفة القيادة (The command center of the cell). بتظهر زرقاء قاعدية (Basophilic) تحت المجهر الضوئي بسبب كثرة الـ DNA والـ RNA. وتحت الـ E.M عندنا 4 أجزاء لازم تحفظوهم بالترتيب: الغلاف النووي، السائل النووي، الكروماتين بنوعيه، والنوية. وانتبهوا: <strong>الريبوسومات بتتجمع في السيتوبلازم مش جوة النوية!</strong>"
+    </div>
+
+    <div class="slide-img-card">
+      <img src="images/nucleus_structure_em.png" alt="Nucleus EM Structure">
+      <div class="slide-img-caption">الشريحة 24: تركيب النواة بالمجهر الإلكتروني (الغلاف، السائل، الكروماتين، والنوية)</div>
+    </div>
+
+
+
+    <div class="term">
+      <span class="en">The Nucleus</span>
+      <button class="audio-btn" onclick="playAudio('nucleus', this)">🔊</button>
+      <span class="pronounce-tag">ذا نيوكليَس</span><br>
+      • <strong>التعريف:</strong> <span class="en">The command center of the cell</span> <button class="audio-btn" onclick="playAudio('command_center', this)">🔊</button> (مركز قيادة الخلية).<br>
+      • <strong>بالمجهر الضوئي (L.M):</strong> مظهر محب للقواعد <span class="en">Basophilic structure</span> <button class="audio-btn" onclick="playAudio('basophilic_structure', this)">🔊</button> بسبب الأحماض النووية (DNA &amp; RNA).
+    </div>
+
+    <h3>مكونات النواة الأربعة تحت المجهر الإلكتروني (E.M):</h3>
+    <ol>
+      <li style="margin-bottom:14px;">
+        <strong>الغلاف النووي <span class="en">Nuclear Envelope</span> <button class="audio-btn" onclick="playAudio('nuclear_envelope', this)">🔊</button>:</strong>
+        غشاء مزدوج تفصله مسافة <span class="en">Perinuclear space</span> <button class="audio-btn" onclick="playAudio('perinuclear_space', this)">🔊</button> [30-50 نانومتر] متصلة بالـ rER. يلتحم الغشاءان على فترات لإنشاء ثقوب نووية <span class="en">Nuclear pores</span> <button class="audio-btn" onclick="playAudio('nuclear_pores', this)">🔊</button> [3000-4000 ثقب في الخلية الواحدة النامية] مغلقة بحجاب <span class="en">Diaphragms</span> <button class="audio-btn" onclick="playAudio('diaphragms', this)">🔊</button> لتنظيم عبور المواد بالاتجاهين.
+      </li>
+      <li style="margin-bottom:14px;">
+        <strong>السائل النووي <span class="en">Nucleoplasm [Nuclear sap]</span> <button class="audio-btn" onclick="playAudio('nucleoplasm', this)">🔊</button>:</strong>
+        سائل متجانس ورائق يمثل وسطاً ناقلاً (<span class="en">Transport medium</span>) لحمل الريبوسومات و <span class="en">mRNA</span> من النواة للسيتوبلازم.
+      </li>
+      <li style="margin-bottom:14px;">
+        <strong>الكروماتين <span class="en">Chromatin</span> <button class="audio-btn" onclick="playAudio('chromatin', this)">🔊</button>:</strong>
+        المادة الوراثية المكونة من بروتين نووي (<span class="en">Nucleoprotein</span> <button class="audio-btn" onclick="playAudio('nucleoprotein', this)">🔊</button>)، ويتكثف أثناء الانقسام ليكون كروموسومات (<span class="en">Chromosomes</span> <button class="audio-btn" onclick="playAudio('chromosomes', this)">🔊</button>).
+      </li>
+      <li style="margin-bottom:14px;">
+        <strong>النوية <span class="en">Nucleolus</span> <button class="audio-btn" onclick="playAudio('nucleolus', this)">🔊</button>:</strong>
+        كتلة غامقة داكنة الصبغ (<span class="en">Dark basophilic</span>)، تحتوي خيوط DNA تحمل جينات الـ rRNA. وهي <strong>مكان تصنيع الـ rRNA</strong>.
+        <div style="background:var(--warning-bg); border-right:3px solid var(--warning); padding:8px 12px; border-radius:6px; margin-top:6px; font-weight:700;">
+          ⚠️ ملحوظة امتحانية: أجزاء الرنا الريبوسومي تُصنع هنا، ثم تخرج للسيتوبلازم لتتحد مع البروتين لتكوين الريبوسومات (ليس داخل النوية!).
+        </div>
+      </li>
+    </ol>
+
+    <h3>مقارنة نوعي الكروماتين (Euchromatin vs Heterochromatin):</h3>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>وجه المقارنة</th>
+          <th>الكروماتين النشط <span class="en">Euchromatin</span> <button class="audio-btn" onclick="playAudio('euchromatin', this)">🔊</button></th>
+          <th>الكروماتين المكثف <span class="en">Heterochromatin</span> <button class="audio-btn" onclick="playAudio('heterochromatin', this)">🔊</button></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>بالمجهر الإلكتروني (E.M)</td>
+          <td>مادة ممتدة محببة بدقة (<span class="en">Extended finely granular</span>)</td>
+          <td>كتل خشنة كثيفة للإلكترونات (<span class="en">Coarse electron-dense</span>)</td>
+        </tr>
+        <tr>
+          <td>بالمجهر الضوئي (L.M)</td>
+          <td>شاحب الزرقة (<span class="en">Pale basophilic</span>)</td>
+          <td>داكن الزرقة (<span class="en">Dark basophilic</span>)</td>
+        </tr>
+        <tr>
+          <td>نشاط الجينات</td>
+          <td>يحمل جينات نشطة لتصنيع البروتين (<span class="en">Active genes</span>)</td>
+          <td>يحمل جينات خاملة غير مفعلة (<span class="en">Inactive genes</span>)</td>
+        </tr>
+        <tr>
+          <td>نوع الخلايا السائد فيها</td>
+          <td>يسود في الخلايا النشطة (<span class="en">Active cells</span>)</td>
+          <td>يسود في الخلايا غير النشطة (<span class="en">Inactive cells</span>)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>وظائف النواة (Functions of the Nucleus):</h3>
+    <ul>
+      <li>1. التحكم في جميع وظائف الخلية وخاصة تصنيع البروتين (<span class="en">Protein synthesis</span>).</li>
+      <li>2. حفظ وتخزين المعلومات الوراثية (<span class="en">Storage of genetic information</span>).</li>
+      <li>3. تكوين الأنواع الثلاثة للرنا: <span class="en">mRNA</span> <button class="audio-btn" onclick="playAudio('mrna', this)">🔊</button>، <span class="en">tRNA</span> <button class="audio-btn" onclick="playAudio('trna', this)">🔊</button>، و <span class="en">rRNA</span> <button class="audio-btn" onclick="playAudio('rrna', this)">🔊</button>.</li>
+      <li>4. التحكم في انقسام الخلية (<span class="en">Controls cell division</span>).</li>
+      <li>5. وظيفة النوية في إنتاج الريبوسومات (<span class="en">Function of the nucleolus</span>).</li>
+    </ul>
+  </section>
+
+  <!-- Section 5: Practical Slides -->
+  <section class="card" id="sec5">
+    <h2><span>5️⃣</span> معمل التعرف العملي (Practical Slides Revision)</h2>
+    <p>هذه هي الشرائح المجهرية الفعلية الواردة في تدريبات المحاضرة (الشرائح 34 إلى 59) مع التشخيص والتعليق النموذجي:</p>
+
+    <div class="practical-grid">
+      <div class="practical-card">
+        <img src="images/heterolysosome_em.png" alt="Heterolysosome EM">
+        <div class="practical-title">EM of Heterolysosome</div>
+        <div class="practical-desc">حويصلة غير متجانسة محتوية على مواد بلعمية وبكتيريا ممتصة من الخارج (Phagocytosis).</div>
+      </div>
+
+      <div class="practical-card">
+        <img src="images/multivesicular_body_em.png" alt="Multivesicular body EM">
+        <div class="practical-title">EM of Multivesicular Body</div>
+        <div class="practical-desc">حويصلة كبيرة تحوي بداخلها حويصلات صغيرة ممتلئة بسوائل (Pinocytosis).</div>
+      </div>
+
+      <div class="practical-card">
+        <img src="images/autolysosome_em.png" alt="Autolysosome EM">
+        <div class="practical-title">EM of Autolysosome</div>
+        <div class="practical-desc">فجوة تحوي بقايا عضيات خلوية متحللة كالميتوكوندريا (Autophagy).</div>
+      </div>
+
+      <div class="practical-card">
+        <img src="images/glycogen_lm_carmine.png" alt="Glycogen Best Carmine">
+        <div class="practical-title">LM of Glycogen (Best's Carmine)</div>
+        <div class="practical-desc">خلايا كبد مليئة بحبيبات جليكوجين حمراء واضحة (Red granules).</div>
+      </div>
+
+      <div class="practical-card">
+        <img src="images/glycogen_em_alpha_beta.png" alt="Glycogen Granules EM">
+        <div class="practical-title">EM of α &amp; β Glycogen</div>
+        <div class="practical-desc">حبيبات جليكوجين معتمة: مفردة (Alpha) أو متجمعة في عناقيد تشبه الورد (Beta rosettes).</div>
+      </div>
+
+      <div class="practical-card">
+        <img src="images/fat_lm_stains.png" alt="Fat Cells H&E">
+        <div class="practical-title">LM of Fat Cells (H&amp;E &amp; Sudans)</div>
+        <div class="practical-desc">تظهر فجوات فارغة بـ H&amp;E، وفجوات برتقالية بـ Sudan III، وفجوات سوداء بـ Sudan Black.</div>
+      </div>
+
+      <div class="practical-card">
+        <img src="images/nucleus_em_full.png" alt="Nucleus EM Full">
+        <div class="practical-title">EM of Cell Nucleus</div>
+        <div class="practical-desc">صورة مجهر إلكتروني للنواة تظهر الغلاف المزدوج، النوية، والكروماتين بشقيه.</div>
+      </div>
+
+      <div class="practical-card">
+        <img src="images/chromatin_em.png" alt="Heterochromatin and Euchromatin">
+        <div class="practical-title">EM of Chromatin Types</div>
+        <div class="practical-desc">الكتل المعتمة على الحواف هي Heterochromatin، والمناطق الفاتحة في المنتصف هي Euchromatin.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: Interactive MCQs -->
+  <section class="card" id="sec6">
+    <h2><span>6️⃣</span> بنك الأسئلة والاختبارات التفاعلية (MCQs)</h2>
+    <p>اختبر فهمك لمفاهيم المحاضرة مع تصحيح فوري وتوضيح لسبب الإجابة:</p>
+
+    <!-- Q1 -->
+    <div class="question" data-qid="q1">
+      <div class="q-header">
+        <div class="q-english">Q1: Which organelles collaborate to form Lysosomes?</div>
+        <button class="q-speech-btn" onclick="speakText('Which organelles collaborate to form Lysosomes?')">🔊 استمع</button>
+      </div>
+      <button class="q-arabic-toggle" onclick="toggleArabic(this)">عرض الترجمة العربية</button>
+      <div class="q-arabic-text">ما هي العضيات التي تتعاون لتكوين الليسوسومات؟</div>
+      <div class="inline-mcq" data-correct="2" data-explanations='["الميتوكوندريا تنتج الطاقة فقط وليست مسؤولة عن تصنيع الليسوسومات.","الشبكة الملساء مسؤولة عن تصنيع الدهون وليس إنزيمات الليسوسوم البروتينية.","إجابة صحيحة وممتازة! إنزيمات الليسوسوم تُصنع في rER ثم تُغلف وتفرز من جهاز جولجي.","الريبوسومات الحرة تصنع بروتينات داخلية وليس إنزيمات مغلفة."]'>
+        <button class="mcq-option" onclick="checkAnswer(this,0)"><span>A) Mitochondria and sER</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this,1)"><span>B) sER and Golgi apparatus</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this,2)"><span>C) rER and Golgi apparatus</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this,3)"><span>D) Free ribosomes and Cell membrane</span></button>
+        <div class="mcq-result"></div>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question" data-qid="q2">
+      <div class="q-header">
+        <div class="q-english">Q2: Why does Glycogen not appear in standard H&amp;E staining under LM?</div>
+        <button class="q-speech-btn" onclick="speakText('Why does Glycogen not appear in standard H and E staining under LM?')">🔊 استمع</button>
+      </div>
+      <button class="q-arabic-toggle" onclick="toggleArabic(this)">عرض الترجمة العربية</button>
+      <div class="q-arabic-text">لماذا لا يظهر الجليكوجين بصبغة H&amp;E العادية تحت المجهر الضوئي؟</div>
+      <div class="inline-mcq" data-correct="1" data-explanations='["الدهون هي التي تذوب في المذيبات العضوية مثل الزايلين، وليس الجليكوجين.","إجابة صحيحة! الجليكوجين يذوب في الماء (Water soluble) أثناء التحضير المائي لصبغة H&E.","الجليكوجين ليس عضية غشائية بل مادة كيميائية مخزنة.","الجليكوجين له حجم جزيئي كبير يتجمع في حبيبات."]'>
+        <button class="mcq-option" onclick="checkAnswer(this,0)"><span>A) Because it dissolves in organic solvents</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this,1)"><span>B) Because it is water soluble</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this,2)"><span>C) Because it lacks a membrane</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this,3)"><span>D) Because it is too small to be seen</span></button>
+        <div class="mcq-result"></div>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question" data-qid="q3">
+      <div class="q-header">
+        <div class="q-english">Q3: Which type of chromatin predominates in metabolically active cells?</div>
+        <button class="q-speech-btn" onclick="speakText('Which type of chromatin predominates in metabolically active cells?')">🔊 استمع</button>
+      </div>
+      <button class="q-arabic-toggle" onclick="toggleArabic(this)">عرض الترجمة العربية</button>
+      <div class="q-arabic-text">أي نوع من الكروماتين يسود في الخلايا عالية النشاط الأيضي؟</div>
+      <div class="inline-mcq" data-correct="0" data-explanations='["إجابة صحيحة تماماً! الـ Euchromatin مفرود ومحبب بدقة ويحمل الجينات النشطة لتصنيع البروتين.","الـ Heterochromatin مكثف وخامل ويسود في الخلايا غير النشطة.","الكروموسومات تظهر فقط أثناء انقسام الخلية.","الكروماتين النووي يتكون من هذين النوعين فقط."]'>
+        <button class="mcq-option" onclick="checkAnswer(this,0)"><span>A) Euchromatin (Pale basophilic, active genes)</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this,1)"><span>B) Heterochromatin (Dark basophilic, inactive genes)</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this,2)"><span>C) Metaphase chromosomes</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this,3)"><span>D) Nuclear lamins</span></button>
+        <div class="mcq-result"></div>
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="question" data-qid="q4">
+      <div class="q-header">
+        <div class="q-english">Q4: Where does the final assembly of Ribosomes take place?</div>
+        <button class="q-speech-btn" onclick="speakText('Where does the final assembly of Ribosomes take place?')">🔊 استمع</button>
+      </div>
+      <button class="q-arabic-toggle" onclick="toggleArabic(this)">عرض الترجمة العربية</button>
+      <div class="q-arabic-text">أين يحدث التجميع النهائي للريبوسومات الناضجة؟</div>
+      <div class="inline-mcq" data-correct="1" data-explanations='["في النوية يُصنع الـ rRNA فقط، ولا يحدث التجميع النهائي هناك!","إجابة عبقرية! الدكتور أكد في الشريحة 30: وحدات الرنا تخرج للسيتوبلازم وتتحد مع البروتين هناك (not in nucleolus!).","الغلاف النووي يحتوي ثقوباً لمرور المواد فقط.","جهاز جولجي يقوم بتعديل البروتينات وليس تجميع الريبوسومات."]'>
+        <button class="mcq-option" onclick="checkAnswer(this,0)"><span>A) Inside the nucleolus</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this,1)"><span>B) In the cytoplasm (outside the nucleolus)</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this,2)"><span>C) Inside the perinuclear space</span></button>
+        <button class="mcq-option" onclick="checkAnswer(this,3)"><span>D) Inside the Golgi apparatus</span></button>
+        <div class="mcq-result"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 7: Audio Glossary -->
+  <section class="card" id="sec7">
+    <h2><span>7️⃣</span> القاموس الصوتي الشامل لمصطلحات المحاضرة (Glossary)</h2>
+    <p>استمع للنطق الصوتي النقي باللغة الإنجليزية لأي مصطلح ورد في المحاضرة بنقرة واحدة:</p>
+
+    <div class="glossary-grid" id="glossaryGrid">
+      <!-- Terms populated by JS -->
+    </div>
+  </section>
+
+</div>
+
+<script>
+// ===== Audio Engine =====
+let currentAudio = null;
+
+function playAudio(filename, btnElement) {
+  if (currentAudio) {
+    currentAudio.pause();
+    document.querySelectorAll('.audio-btn.playing').forEach(b => b.classList.remove('playing'));
+  }
+  const audio = new Audio('audio/' + filename + '.mp3');
+  currentAudio = audio;
+  if (btnElement) btnElement.classList.add('playing');
+  
+  audio.addEventListener('ended', () => {
+    if (btnElement) btnElement.classList.remove('playing');
+    currentAudio = null;
+  });
+  audio.addEventListener('error', () => {
+    if (btnElement) btnElement.classList.remove('playing');
+    currentAudio = null;
+    // Fallback to Web Speech API
+    speakText(filename.replace(/_/g, ' '));
+  });
+  audio.play();
+}
+
+function speakText(text) {
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'en-US';
+    u.rate = 0.9;
+    window.speechSynthesis.speak(u);
+  }
+}
+
+// ===== Theme Toggle =====
+function toggleTheme() {
+  const current = document.documentElement.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+}
+(function(){
+  const saved = localStorage.getItem('theme') || 'light';
+  document.documentElement.setAttribute('data-theme', saved);
+})();
+
+// ===== Toggle Arabic Translation =====
+function toggleArabic(btn) {
+  const textDiv = btn.nextElementSibling;
+  textDiv.classList.toggle('show');
+  btn.textContent = textDiv.classList.contains('show') ? 'إخفاء الترجمة' : 'عرض الترجمة العربية';
+}
+
+// ===== MCQ Checker =====
+function checkAnswer(btn, index) {
+  const mcq = btn.closest('.inline-mcq');
+  const correct = parseInt(mcq.getAttribute('data-correct'));
+  const explanations = JSON.parse(mcq.getAttribute('data-explanations') || '[]');
+  const resultDiv = mcq.querySelector('.mcq-result');
+  
+  mcq.querySelectorAll('.mcq-option').forEach(o => o.classList.remove('selected-correct', 'selected-wrong'));
+  
+  if (index === correct) {
+    btn.classList.add('selected-correct');
+    resultDiv.className = 'mcq-result show correct-msg';
+    resultDiv.innerHTML = `<strong>✅ إجابة صحيحة:</strong> ${explanations[index] || ''}`;
+  } else {
+    btn.classList.add('selected-wrong');
+    resultDiv.className = 'mcq-result show wrong-msg';
+    resultDiv.innerHTML = `<strong>❌ إجابة غير صحيحة:</strong> ${explanations[index] || ''}`;
+  }
+}
+
+// ===== Scroll Progress =====
+window.addEventListener('scroll', () => {
+  const s = document.documentElement.scrollTop || document.body.scrollTop;
+  const h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  document.getElementById('progressFill').style.width = (s / h * 100) + '%';
+});
+
+// ===== Populate Glossary =====
+const GLOSSARY_TERMS = [
+  { id: 'cell', en: 'The Cell', ar: 'الخلية' },
+  { id: 'cytoplasm', en: 'Cytoplasm', ar: 'السيتوبلازم' },
+  { id: 'nucleus', en: 'Nucleus', ar: 'النواة' },
+  { id: 'cytoplasmic_matrix', en: 'Cytoplasmic Matrix', ar: 'المادة الخلالية للسيتوبلازم' },
+  { id: 'cytoplasmic_organelles', en: 'Cytoplasmic Organelles', ar: 'عضيات السيتوبلازم' },
+  { id: 'cytoplasmic_inclusions', en: 'Cytoplasmic Inclusions', ar: 'مشتملات السيتوبلازم' },
+  { id: 'membranous_organelles', en: 'Membranous Organelles', ar: 'العضيات الغشائية' },
+  { id: 'non_membranous_organelles', en: 'Non-membranous Organelles', ar: 'العضيات غير الغشائية' },
+  { id: 'cell_membrane', en: 'Cell Membrane', ar: 'غشاء الخلية' },
+  { id: 'mitochondria', en: 'Mitochondria', ar: 'الميتوكوندريا' },
+  { id: 'endoplasmic_reticulum', en: 'Endoplasmic Reticulum', ar: 'الشبكة الإندوبلازمية' },
+  { id: 'rough_endoplasmic_reticulum', en: 'Rough ER (rER)', ar: 'الشبكة الإندوبلازمية الخشنة' },
+  { id: 'smooth_endoplasmic_reticulum', en: 'Smooth ER (sER)', ar: 'الشبكة الإندوبلازمية الملساء' },
+  { id: 'golgi_apparatus', en: 'Golgi Apparatus', ar: 'جهاز جولجي' },
+  { id: 'lysosomes', en: 'Lysosomes', ar: 'الليسوسومات (الجسيمات الهاضمة)' },
+  { id: 'ribosomes', en: 'Ribosomes', ar: 'الريبوسومات' },
+  { id: 'cytoskeleton', en: 'Cytoskeleton', ar: 'هيكل الخلية' },
+  { id: 'microtubules', en: 'Microtubules', ar: 'الأنابيب الدقيقة' },
+  { id: 'centrioles', en: 'Centrioles', ar: 'الجسيمات المركزية' },
+  { id: 'cilia', en: 'Cilia', ar: 'الأهداب' },
+  { id: 'filaments', en: 'Filaments', ar: 'الخيوط الخلوية' },
+  { id: 'hydrolytic_enzymes', en: 'Hydrolytic Enzymes', ar: 'إنزيمات هاضمة محللة' },
+  { id: 'phospholipases', en: 'Phospholipases', ar: 'إنزيمات هضم الدهون الفوسفاتية' },
+  { id: 'proteases', en: 'Proteases', ar: 'إنزيمات هضم البروتين' },
+  { id: 'nucleases', en: 'Nucleases', ar: 'إنزيمات هضم الأحماض النووية' },
+  { id: 'phagocytic_cells', en: 'Phagocytic Cells', ar: 'خلايا بلعمية أكولة' },
+  { id: 'white_blood_cells', en: 'White Blood Cells', ar: 'خلايا الدم البيضاء' },
+  { id: 'electron_dense', en: 'Electron-dense', ar: 'كثيف ومعتم إلكترونياً' },
+  { id: 'primary_lysosomes', en: 'Primary Lysosomes', ar: 'ليسوسومات أولية' },
+  { id: 'secondary_lysosomes', en: 'Secondary Lysosomes', ar: 'ليسوسومات ثانوية' },
+  { id: 'heterolysosomes', en: 'Heterolysosomes', ar: 'ليسوسوم ثانوي لطعام أو بكتيريا مبلعمة' },
+  { id: 'multivesicular_bodies', en: 'Multivesicular Bodies', ar: 'أجسام متعددة الحويصلات لسوائل ممتصة' },
+  { id: 'autolysosomes', en: 'Autolysosomes', ar: 'ليسوسوم التهام العضيات التالفة' },
+  { id: 'autophagy', en: 'Autophagy', ar: 'الالتهام الذاتي' },
+  { id: 'residual_bodies', en: 'Residual Bodies', ar: 'الأجسام المتبقية من الهضم' },
+  { id: 'phagocytosis', en: 'Phagocytosis', ar: 'البلعمة الخلوية (طعام صلب)' },
+  { id: 'pinocytosis', en: 'Pinocytosis', ar: 'الشرب الخلوي (قطرات سوائل)' },
+  { id: 'exocytosis', en: 'Exocytosis', ar: 'الإخراج الخلوي' },
+  { id: 'autolysis', en: 'Autolysis', ar: 'التحلل الذاتي للخلية' },
+  { id: 'stored_food', en: 'Stored Food', ar: 'غذاء مخزن' },
+  { id: 'glycogen', en: 'Glycogen', ar: 'الجليكوجين (كربوهيدرات مخزنة)' },
+  { id: 'bests_carmine', en: "Best's Carmine", ar: 'صبغة بيست كارمين الحمراء للجليكوجين' },
+  { id: 'pas', en: 'PAS Stain', ar: 'صبغة بي إيه إس البنفسجية للجليكوجين' },
+  { id: 'alpha_granules', en: 'α Granules', ar: 'حبيبات جليكوجين مفردة' },
+  { id: 'beta_granules', en: 'β Granules', ar: 'حبيبات جليكوجين وردية مجمعة' },
+  { id: 'lipids', en: 'Fats / Lipids', ar: 'الدهون' },
+  { id: 'sudan_iii', en: 'Sudan III', ar: 'صبغة سودان 3 البرتقالية للدهن' },
+  { id: 'sudan_black', en: 'Sudan Black', ar: 'صبغة سودان بلاك السوداء للدهن' },
+  { id: 'empty_vacuoles', en: 'Empty Vacuoles', ar: 'فجوات بيضاء فارغة بـ H&E' },
+  { id: 'pigments', en: 'Pigments', ar: 'الصبغات الخلوية' },
+  { id: 'endogenous_pigments', en: 'Endogenous Pigments', ar: 'صبغات داخلية المنشأ' },
+  { id: 'exogenous_pigments', en: 'Exogenous Pigments', ar: 'صبغات خارجية المنشأ' },
+  { id: 'hemoglobin', en: 'Hemoglobin', ar: 'هيموجلوبين الدم' },
+  { id: 'melanin', en: 'Melanin', ar: 'صبغة الميلانين' },
+  { id: 'lipofuscin_granules', en: 'Lipofuscin Granules', ar: 'حبيبات الشيخوخة المعمرة' },
+  { id: 'dust_cells', en: 'Dust Cells', ar: 'خلايا الغبار البلعمية بالرئة' },
+  { id: 'black_lungs', en: 'Black Lungs', ar: 'الرئة السوداء من الكربون' },
+  { id: 'carotene', en: 'Carotene', ar: 'صبغة الكاروتين الصفراء' },
+  { id: 'tattoo_marks', en: 'Tattoo Marks', ar: 'علامات الوشم' },
+  { id: 'nuclear_envelope', en: 'Nuclear Envelope', ar: 'الغلاف النووي المزدوج' },
+  { id: 'perinuclear_space', en: 'Perinuclear Space', ar: 'المسافة بين غشائي النواة' },
+  { id: 'nuclear_pores', en: 'Nuclear Pores', ar: 'الثقوب النووية' },
+  { id: 'diaphragms', en: 'Diaphragms', ar: 'حواجز الثقوب النووية' },
+  { id: 'nucleoplasm', en: 'Nucleoplasm', ar: 'السائل النووي (الوسط الناقل)' },
+  { id: 'chromatin', en: 'Chromatin', ar: 'الكروماتين (المادة الوراثية)' },
+  { id: 'euchromatin', en: 'Euchromatin', ar: 'الكروماتين النشط ممتد شاحب' },
+  { id: 'heterochromatin', en: 'Heterochromatin', ar: 'الكروماتين المكثف الخامل داكن' },
+  { id: 'nucleolus', en: 'Nucleolus', ar: 'النوية (مصنع rRNA)' },
+  { id: 'rrna', en: 'rRNA', ar: 'الرنا الريبوسومي' },
+  { id: 'mrna', en: 'mRNA', ar: 'الرنا الرسول' },
+  { id: 'trna', en: 'tRNA', ar: 'الرنا الناقل' }
+];
+
+const grid = document.getElementById('glossaryGrid');
+GLOSSARY_TERMS.forEach(t => {
+  const item = document.createElement('div');
+  item.className = 'glossary-item';
+  item.innerHTML = `
+    <button class="audio-btn" onclick="playAudio('${t.id}', this)" title="استمع للنطق">🔊</button>
+    <div class="glossary-info">
+      <strong>${t.en}</strong>
+      <span>${t.ar}</span>
+    </div>
+  `;
+  grid.appendChild(item);
+});
+</script>
+
+</body>
+</html>
