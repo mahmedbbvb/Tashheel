@@ -1,0 +1,163 @@
+[
+  {
+    "num": 1,
+    "texts": [
+      "Field of Dentistry",
+      "Physiology for dental students I",
+      "Lecture : (Autonomic Nervous System 3 )",
+      "Date :   /10  /2026",
+      "Dr : (Mohamed Talal)"
+    ],
+    "images": [],
+    "tables": [],
+    "has_diagram": false,
+    "rendered_image": "slide_1_rendered.png"
+  },
+  {
+    "num": 2,
+    "texts": [
+      "sympathetic nervous system :"
+    ],
+    "images": [
+      "slide_2_img_1.png"
+    ],
+    "tables": [],
+    "has_diagram": false,
+    "rendered_image": "slide_2_rendered.png"
+  },
+  {
+    "num": 3,
+    "texts": [
+      "sympathetic nervous system:",
+      "(Biology – forums , copy rights )"
+    ],
+    "images": [
+      "slide_3_img_1.png"
+    ],
+    "tables": [],
+    "has_diagram": false,
+    "rendered_image": "slide_3_rendered.png"
+  },
+  {
+    "num": 4,
+    "texts": [
+      "sympathetic nervous system:",
+      "Chemical neurotransmitter:",
+      "Acetyl choline",
+      "Noradrenaline",
+      "(Biology – forums , copy rights )"
+    ],
+    "images": [
+      "slide_4_img_1.png"
+    ],
+    "tables": [],
+    "has_diagram": false,
+    "rendered_image": "slide_4_rendered.png"
+  },
+  {
+    "num": 5,
+    "texts": [
+      "sympathetic nervous system:",
+      "Acetyl choline :",
+      "Formation:",
+      "Acetate + Co-enzyme A",
+      "Acetyl Co-A + choline",
+      "Acetyl choline"
+    ],
+    "images": [
+      "slide_5_img_1.png"
+    ],
+    "tables": [],
+    "has_diagram": false,
+    "rendered_image": "slide_5_rendered.png"
+  },
+  {
+    "num": 6,
+    "texts": [
+      "sympathetic nervous system:",
+      "Acetyl choline :",
+      "Removal:",
+      "By choline esterase enzyme"
+    ],
+    "images": [
+      "slide_6_img_1.png"
+    ],
+    "tables": [],
+    "has_diagram": false,
+    "rendered_image": "slide_6_rendered.png"
+  },
+  {
+    "num": 7,
+    "texts": [
+      "sympathetic nervous system:",
+      "Nicotinic receptors :",
+      "Site : Autonomic ganglia",
+      "Stimulated by : Nicotine small dose – anti-choline esterase",
+      "Blocked by :  Nicotine large dose – hexamethonium – tetraethyl ammonium"
+    ],
+    "images": [
+      "slide_7_img_1.png"
+    ],
+    "tables": [],
+    "has_diagram": false,
+    "rendered_image": "slide_7_rendered.png"
+  },
+  {
+    "num": 8,
+    "texts": [
+      "sympathetic nervous system:",
+      "Noradrenaline :",
+      "Tyrosine",
+      "L -Dopa",
+      "Dopamine",
+      "Noradrenaline"
+    ],
+    "images": [
+      "slide_8_img_1.png"
+    ],
+    "tables": [],
+    "has_diagram": false,
+    "rendered_image": "slide_8_rendered.png"
+  },
+  {
+    "num": 9,
+    "texts": [
+      "sympathetic nervous system:",
+      "Noradrenaline :",
+      "Removal: by",
+      "50 – 80% by active reuptake into nerve ending",
+      "destruction by :"
+    ],
+    "images": [
+      "slide_9_img_1.png"
+    ],
+    "tables": [
+      [
+        [
+          "MAO ( monoamine oxidase )",
+          "COMT ( catechol-O- methyl transferase )"
+        ]
+      ]
+    ],
+    "has_diagram": false,
+    "rendered_image": "slide_9_rendered.png"
+  },
+  {
+    "num": 10,
+    "texts": [
+      "sympathetic nervous system:"
+    ],
+    "images": [],
+    "tables": [],
+    "has_diagram": true,
+    "rendered_image": "slide_10_rendered.png"
+  },
+  {
+    "num": 11,
+    "texts": [],
+    "images": [],
+    "tables": [],
+    "has_diagram": false,
+    "rendered_image": "slide_11_rendered.png"
+  }
+]

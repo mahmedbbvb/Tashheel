@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الجهاز العصبي الذاتي 3 — Sympathetic Nervous System | فسيولوجي طب أسنان</title>
+<style>
+  :root {
+    --bg-gradient: linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 50%, #f5f0ff 100%);
+    --card-bg: #ffffff;
+    --text-primary: #1f2937;
+    --text-secondary: #4b5563;
+    --text-muted: #6b7280;
+    --primary: #1769aa;
+    --primary-light: #eef6ff;
+    --primary-dark: #0d4f80;
+    --accent: #6366f1;
+    --accent-light: #e0e7ff;
+    --success: #059669;
+    --success-bg: #ecfdf5;
+    --success-border: #a7f3d0;
+    --warning: #d97706;
+    --warning-bg: #fffbeb;
+    --danger: #dc2626;
+    --danger-bg: #fef2f2;
+    --border-color: #e5e7eb;
+    --shadow-sm: 0 1px 4px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 18px rgba(0,0,0,0.06);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+  }
+  [data-theme="dark"] {
+    --bg-gradient: linear-gradient(135deg, #0b1120 0%, #111827 50%, #0f172a 100%);
+    --card-bg: #1e293b;
+    --text-primary: #f3f4f6;
+    --text-secondary: #d1d5db;
+    --text-muted: #9ca3af;
+    --primary: #38bdf8;
+    --primary-light: rgba(56,189,248,0.12);
+    --primary-dark: #0284c7;
+    --accent: #818cf8;
+    --accent-light: rgba(129,140,248,0.15);
+    --success: #34d399;
+    --success-bg: rgba(52,211,153,0.12);
+    --success-border: rgba(52,211,153,0.3);
+    --warning: #fbbf24;
+    --warning-bg: rgba(251,191,36,0.12);
+    --danger: #f87171;
+    --danger-bg: rgba(248,113,113,0.12);
+    --border-color: #334155;
+    --shadow-sm: 0 1px 4px rgba(0,0,0,0.3);
+    --shadow-md: 0 4px 18px rgba(0,0,0,0.4);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.6);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; line-height: 1.9; background: var(--bg-gradient); color: var(--text-primary); min-height: 100vh; transition: background 0.3s, color 0.3s; }
+  .icon { display:inline-block; vertical-align:middle; stroke-width:2; fill:none; stroke:currentColor; flex-shrink:0; }
+
+  /* Theme button */
+  .theme-floating-btn { position:fixed; top:16px; left:18px; z-index:9999; width:42px; height:42px; border-radius:50%; background:var(--card-bg); border:1px solid var(--border-color); color:var(--text-primary); display:inline-flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 4px 14px rgba(0,0,0,0.12); transition:all 0.25s; }
+  .theme-floating-btn:hover { transform:scale(1.12); border-color:var(--accent); color:var(--accent); }
+
+  /* Progress bar */
+  .progress-bar-fixed { position:fixed; top:0; left:0; width:100%; height:3.5px; background:transparent; z-index:9998; }
+  .progress-fill { height:100%; background:linear-gradient(90deg,#1769aa,#6366f1,#10b981); width:0%; transition:width 0.2s ease-out; }
+
+  .container { max-width:980px; margin:auto; padding:24px 20px 80px; }
+
+  /* Header */
+  .lecture-header { background:linear-gradient(135deg,#0f4c81,#3730a3); color:white; border-radius:20px; padding:28px 32px; margin-bottom:24px; box-shadow:var(--shadow-lg); position:relative; overflow:hidden; }
+  .lecture-header::before { content:''; position:absolute; top:-40px; right:-40px; width:180px; height:180px; border-radius:50%; background:rgba(255,255,255,0.06); }
+  .lec-badge { display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.3); padding:4px 14px; border-radius:20px; font-size:13px; font-weight:600; margin-bottom:10px; }
+  .lecture-header h1 { font-size:26px; font-weight:800; margin-bottom:6px; line-height:1.3; }
+  .lecture-header p { font-size:14.5px; opacity:0.9; max-width:680px; line-height:1.7; }
+  .lec-stats { display:flex; gap:14px; margin-top:18px; flex-wrap:wrap; }
+  .stat-item { display:flex; align-items:center; gap:6px; background:rgba(255,255,255,0.15); padding:6px 14px; border-radius:10px; font-size:13px; font-weight:600; }
+
+  /* Quick Nav */
+  .quick-nav { display:flex; gap:8px; overflow-x:auto; padding:4px 2px 14px; margin-bottom:16px; scrollbar-width:thin; }
+  .quick-chip { white-space:nowrap; background:var(--card-bg); border:1px solid var(--border-color); color:var(--text-secondary); padding:6px 14px; border-radius:20px; font-size:13px; text-decoration:none; transition:all 0.2s; box-shadow:var(--shadow-sm); }
+  .quick-chip:hover { background:var(--primary); color:white; border-color:var(--primary); transform:translateY(-2px); }
+
+  /* Cards */
+  .card { background:var(--card-bg); border-radius:18px; padding:26px 28px; margin-bottom:22px; box-shadow:var(--shadow-md); border:1px solid var(--border-color); }
+  h2 { color:var(--primary); padding-bottom:12px; margin-bottom:18px; font-size:21px; display:flex; align-items:center; gap:12px; border-bottom:1px solid var(--border-color); }
+  .section-badge { background:linear-gradient(135deg,var(--primary),var(--accent)); color:white; width:32px; height:32px; border-radius:10px; display:inline-flex; align-items:center; justify-content:center; font-size:14px; font-weight:700; flex-shrink:0; }
+  h3 { color:var(--text-primary); margin:18px 0 10px; font-size:17px; font-weight:700; }
+
+  /* Slide Images */
+  .slide-img-box { background:#f8fafc; border:1px solid var(--border-color); border-radius:14px; padding:10px; margin:16px 0 10px; text-align:center; box-shadow:var(--shadow-sm); }
+  [data-theme="dark"] .slide-img-box { background:#0f172a; }
+  .slide-img { max-width:100%; max-height:420px; height:auto; object-fit:contain; border-radius:8px; display:inline-block; }
+  .slide-img-caption { text-align:center; font-size:13px; color:var(--text-muted); margin-bottom:16px; font-weight:500; }
+
+  /* Audio button */
+  .audio-btn { display:inline-flex; align-items:center; justify-content:center; background:linear-gradient(135deg,var(--primary),var(--accent)); color:white; border:none; border-radius:50%; width:28px; height:28px; cursor:pointer; margin:0 6px; vertical-align:middle; transition:all 0.25s; box-shadow:0 2px 6px rgba(23,105,170,0.25); flex-shrink:0; }
+  .audio-btn svg { width:14px; height:14px; pointer-events:none; }
+  .audio-btn:hover { transform:scale(1.15); }
+  .audio-btn.playing { background:linear-gradient(135deg,var(--success),#047857); animation:pulse 0.6s ease-in-out infinite alternate; }
+  @keyframes pulse { from{transform:scale(1);} to{transform:scale(1.18);} }
+
+  /* Term card */
+  .term { background:var(--primary-light); border-right:4px solid var(--primary); padding:14px 18px; border-radius:12px; margin:14px 0; }
+  .term-header { display:flex; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:6px; }
+  .en { font-weight:800; color:var(--primary); font-size:16.5px; }
+
+  /* Chemical Formula / Pathway Diagram */
+  .diagram { background:linear-gradient(135deg,#0f172a,#1e293b); color:#38bdf8; padding:16px 20px; border-radius:14px; text-align:center; font-size:15px; font-weight:700; margin:16px 0; direction:ltr; letter-spacing:0.5px; box-shadow:0 4px 16px rgba(0,0,0,0.15); border:1px solid rgba(56,189,248,0.25); }
+  .diagram-step { display:inline-block; background:rgba(56,189,248,0.15); padding:4px 12px; border-radius:8px; margin:4px; border:1px solid rgba(56,189,248,0.3); }
+  .diagram-arrow { color:#fbbf24; margin:0 6px; font-weight:bold; }
+
+  /* Key box */
+  .key { background:var(--success-bg); border:1px solid var(--success-border); border-right:4px solid var(--success); padding:14px 18px; border-radius:12px; margin:16px 0; color:var(--text-primary); }
+  .key-header { display:flex; align-items:center; gap:8px; color:var(--success); font-weight:700; margin-bottom:6px; font-size:15px; }
+
+  /* Note box */
+  .note-box { background:var(--warning-bg); border:1px solid rgba(217,119,6,0.25); border-right:4px solid var(--warning); padding:14px 18px; border-radius:12px; margin:14px 0; color:var(--text-primary); }
+  .note-header { display:flex; align-items:center; gap:8px; color:var(--warning); font-weight:700; margin-bottom:6px; font-size:15px; }
+
+  /* Dental Clinical Alert */
+  .dental-alert { background:linear-gradient(135deg, rgba(99,102,241,0.08), rgba(23,105,170,0.08)); border:1px solid rgba(99,102,241,0.3); border-right:4px solid var(--accent); padding:16px 18px; border-radius:12px; margin:16px 0; }
+  .dental-alert-header { display:flex; align-items:center; gap:8px; color:var(--accent); font-weight:800; font-size:15px; margin-bottom:6px; }
+
+  /* Comparison table */
+  .compare-table { width:100%; border-collapse:separate; border-spacing:0; margin:16px 0; border-radius:12px; overflow:hidden; box-shadow:var(--shadow-sm); border:1px solid var(--border-color); }
+  .compare-table th { background:linear-gradient(135deg,var(--primary),var(--accent)); color:white; padding:12px 16px; font-size:14.5px; font-weight:700; text-align:center; }
+  .compare-table td { padding:11px 16px; border-bottom:1px solid var(--border-color); font-size:14px; text-align:center; background:var(--card-bg); transition:background 0.2s; }
+  .compare-table tr:hover td { background:var(--primary-light); }
+  .compare-table tr:last-child td { border-bottom:none; }
+  .compare-table td:first-child { font-weight:700; color:var(--primary); text-align:right; }
+
+  /* Receptors Interactive Tree */
+  .receptor-tree { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:18px 0; }
+  .receptor-col { border-radius:14px; padding:18px; border:2px solid; }
+  .receptor-col.alpha { background:rgba(220,38,38,0.04); border-color:#ef4444; }
+  .receptor-col.beta { background:rgba(16,185,129,0.04); border-color:#10b981; }
+  .rec-col-title { font-size:18px; font-weight:800; display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; }
+  .alpha .rec-col-title { color:#dc2626; }
+  .beta .rec-col-title { color:#059669; }
+  .rec-subcard { background:var(--card-bg); border-radius:10px; padding:12px 14px; margin-bottom:10px; border:1px solid var(--border-color); box-shadow:var(--shadow-sm); }
+  .rec-subcard h4 { font-size:15px; font-weight:700; margin-bottom:4px; display:flex; align-items:center; gap:6px; }
+  .alpha .rec-subcard h4 { color:#b91c1c; }
+  .beta .rec-subcard h4 { color:#047857; }
+  .rec-subcard p { font-size:13.5px; color:var(--text-secondary); margin:2px 0; }
+
+  /* Question / MCQ */
+  .question { background:var(--warning-bg); border:1px solid rgba(217,119,6,0.25); border-right:4px solid var(--warning); padding:18px 20px; border-radius:14px; margin:16px 0; }
+  .q-header { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; margin-bottom:10px; }
+  .q-english { font-size:15.5px; font-weight:700; color:var(--text-primary); direction:ltr; text-align:left; line-height:1.6; flex-grow:1; }
+  .q-speech-btn { background:var(--primary-light); color:var(--primary); border:1px solid var(--primary); border-radius:8px; padding:4px 10px; font-size:12.5px; cursor:pointer; font-family:inherit; flex-shrink:0; display:inline-flex; align-items:center; gap:6px; transition:all 0.2s; }
+  .q-speech-btn:hover { background:var(--primary); color:white; }
+  .q-speech-btn.playing { background:linear-gradient(135deg,var(--success),#047857)!important; color:white!important; border-color:var(--success)!important; animation:pulse 0.6s ease-in-out infinite alternate; }
+  .q-arabic-toggle { background:linear-gradient(135deg,var(--warning),#b45309); color:white; border:none; border-radius:8px; padding:6px 14px; cursor:pointer; font-family:inherit; font-size:12.5px; font-weight:600; margin:8px 0; display:inline-flex; align-items:center; gap:6px; transition:all 0.25s; }
+  .q-arabic-toggle:hover { transform:translateY(-1px); }
+  .q-arabic-text { display:none; background:rgba(217,119,6,0.1); border-right:3px solid var(--warning); padding:10px 14px; border-radius:8px; margin:10px 0; color:var(--text-primary); font-size:14px; }
+  .q-arabic-text.show { display:block; animation:fadeIn 0.25s ease; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(-4px);} to{opacity:1;transform:translateY(0);} }
+  .inline-mcq { margin:12px 0 4px; }
+  .mcq-option { display:flex; align-items:center; justify-content:space-between; width:100%; text-align:left; direction:ltr; background:var(--card-bg); border:2px solid var(--border-color); border-radius:10px; padding:11px 16px; margin:8px 0; cursor:pointer; font-family:inherit; font-size:14.5px; font-weight:600; color:var(--text-primary); transition:all 0.2s; box-shadow:var(--shadow-sm); }
+  .mcq-option:hover { border-color:var(--accent); background:var(--accent-light); transform:translateX(3px); }
+  .mcq-option.selected-correct { background:var(--success-bg)!important; border-color:var(--success)!important; color:var(--success)!important; }
+  .mcq-option.selected-wrong { background:var(--danger-bg)!important; border-color:var(--danger)!important; color:var(--danger)!important; animation:shake 0.4s ease; }
+  @keyframes shake { 0%,100%{transform:translateX(0);} 25%{transform:translateX(-4px);} 50%{transform:translateX(4px);} 75%{transform:translateX(-2px);} }
+  .opt-badge { font-size:11.5px; padding:2px 7px; border-radius:5px; font-weight:700; display:none; }
+  .mcq-option.selected-correct .opt-badge { display:inline-block; background:var(--success); color:white; }
+  .mcq-option.selected-wrong .opt-badge { display:inline-block; background:var(--danger); color:white; }
+  .mcq-result { margin-top:12px; padding:14px 16px; border-radius:10px; font-size:14px; line-height:1.8; display:none; }
+  .mcq-result.show { display:block; animation:fadeIn 0.25s ease; }
+  .mcq-result.correct-msg { background:var(--success-bg); color:var(--text-primary); border:1px solid var(--success); }
+  .mcq-result.wrong-msg { background:var(--danger-bg); color:var(--text-primary); border:1px solid var(--danger); }
+  .result-title { font-size:15px; font-weight:700; margin-bottom:6px; display:flex; align-items:center; gap:8px; }
+  .correct-msg .result-title { color:var(--success); }
+  .wrong-msg .result-title { color:var(--danger); }
+  .result-explanation { margin:8px 0; padding-top:6px; border-top:1px dashed rgba(0,0,0,0.12); }
+  .explanation-title { display:flex; align-items:center; gap:6px; font-weight:700; margin-bottom:4px; }
+  .result-hint { font-size:12.5px; color:var(--text-muted); margin-top:6px; }
+  .mcq-actions { display:flex; gap:10px; align-items:center; margin-top:10px; }
+  .reset-btn { background:var(--card-bg); border:1px solid var(--border-color); color:var(--text-secondary); border-radius:8px; padding:5px 12px; font-size:12.5px; font-family:inherit; cursor:pointer; display:inline-flex; align-items:center; gap:5px; transition:all 0.2s; }
+  .reset-btn:hover { background:var(--border-color); color:var(--text-primary); }
+
+  /* Quiz Dashboard */
+  .quiz-dashboard { background:linear-gradient(135deg,#1e293b,#334155); color:white; border-radius:16px; padding:20px 24px; margin:18px 0 24px; box-shadow:0 4px 20px rgba(0,0,0,0.15); display:flex; justify-content:space-around; align-items:center; flex-wrap:wrap; gap:16px; text-align:center; }
+  .score-item h4 { font-size:13px; opacity:0.8; margin-bottom:4px; }
+  .score-val { font-size:32px; font-weight:800; color:#38bdf8; }
+  .score-feedback { font-size:14px; background:rgba(255,255,255,0.12); padding:6px 16px; border-radius:20px; display:flex; align-items:center; gap:6px; }
+
+  /* Glossary */
+  .glossary-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:12px; margin-top:14px; }
+  .glossary-item { background:var(--card-bg); border:1px solid var(--border-color); border-radius:12px; padding:12px 16px; display:flex; align-items:center; gap:12px; transition:all 0.2s; box-shadow:var(--shadow-sm); }
+  .glossary-item:hover { border-color:var(--primary); transform:translateY(-2px); box-shadow:var(--shadow-md); }
+  .glossary-info { flex-grow:1; font-size:13.5px; }
+  .glossary-info strong { color:var(--primary); display:block; font-size:14.5px; margin-bottom:2px; }
+
+  /* Developer */
+  .developer-card { background:var(--card-bg); border:1px solid var(--border-color); border-radius:18px; padding:24px 28px; margin-top:24px; box-shadow:var(--shadow-md); }
+  .dev-container { display:flex; align-items:center; gap:22px; }
+  .dev-avatar { width:90px; height:90px; border-radius:50%; object-fit:cover; border:3px solid var(--primary); box-shadow:0 4px 14px rgba(23,105,170,0.25); display:block; }
+  .dev-badge { display:inline-flex; align-items:center; gap:6px; background:var(--primary-light); color:var(--primary); border:1px solid var(--primary); padding:2px 10px; border-radius:20px; font-size:12px; font-weight:700; margin-bottom:4px; }
+  .dev-name { font-size:21px; font-weight:800; color:var(--text-primary); margin:4px 0; }
+  .dev-role { font-size:14.5px; color:var(--text-muted); display:flex; align-items:center; gap:6px; margin-bottom:12px; }
+  .dev-contact { display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .whatsapp-btn { display:inline-flex; align-items:center; gap:8px; background:#25D366; color:white; text-decoration:none; padding:8px 18px; border-radius:10px; font-size:13.5px; font-weight:700; box-shadow:0 3px 10px rgba(37,211,102,0.3); transition:all 0.25s; }
+  .whatsapp-btn:hover { background:#1ebc59; transform:translateY(-2px); color:white; }
+
+  /* Modal */
+  #celebrationModal { display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.6); backdrop-filter:blur(6px); z-index:10000; align-items:center; justify-content:center; padding:20px; }
+  .modal-box { background:var(--card-bg); color:var(--text-primary); border-radius:20px; padding:32px 28px; max-width:440px; text-align:center; box-shadow:0 20px 50px rgba(0,0,0,0.3); animation:scaleUp 0.3s ease; }
+  @keyframes scaleUp { from{transform:scale(0.9);opacity:0;} to{transform:scale(1);opacity:1;} }
+  .modal-icon-wrap { width:64px; height:64px; margin:0 auto 14px; background:var(--success-bg); border-radius:50%; display:flex; align-items:center; justify-content:center; }
+  .modal-box h2 { color:var(--success); justify-content:center; border:none; font-size:22px; padding-bottom:0; margin-bottom:10px; }
+
+  @media(max-width:768px) {
+    .container { padding:14px 12px 60px; }
+    .card { padding:18px 14px; }
+    h2 { font-size:18px; }
+    .receptor-tree { grid-template-columns:1fr; }
+    .glossary-grid { grid-template-columns:1fr; }
+    .dev-container { flex-direction:column; text-align:center; }
+    .lecture-header h1 { font-size:20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar-fixed"><div class="progress-fill" id="progressFill"></div></div>
+
+<button class="theme-floating-btn" onclick="toggleTheme()" id="themeToggleBtn" title="الوضع الليلي">
+  <svg class="icon" viewBox="0 0 24 24" width="20" height="20"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+</button>
+
+<div class="container">
+
+
+
+<!-- Quick Navigation -->
+<div class="quick-nav">
+  <a href="#sec-overview" class="quick-chip">1. التشريح والمسار</a>
+  <a href="#sec-comparison" class="quick-chip">2. مقارنة المسارين</a>
+  <a href="#sec-neurotransmitters" class="quick-chip">3. النواقل العصبية</a>
+  <a href="#sec-ach-formation" class="quick-chip">4. تصنيع الأسيتيل كولين</a>
+  <a href="#sec-ach-removal" class="quick-chip">5. تكسير الأسيتيل كولين</a>
+  <a href="#sec-nicotinic" class="quick-chip">6. المستقبلات النيكوتينية</a>
+  <a href="#sec-ne-formation" class="quick-chip">7. تصنيع النورأدرينالين</a>
+  <a href="#sec-ne-removal" class="quick-chip">8. إزالة النورأدرينالين</a>
+  <a href="#sec-adrenergic" class="quick-chip">9. المستقبلات الأدرينالية (α & β)</a>
+  <a href="#sec-quiz" class="quick-chip">10. بنك الأسئلة التفاعلي</a>
+  <a href="#sec-glossary" class="quick-chip">11. قاموس المصطلحات</a>
+</div>
+
+<!-- ==================== SECTION 1 ==================== -->
+<section class="card" id="sec-overview">
+  <h2><span class="section-badge">1</span> البنية التشريحية للمسار السمبثاوي (Anatomy of Sympathetic Pathway)</h2>
+  
+  <p>يبدأ مسار الجهاز السمبثاوي <span class="term-inline"><strong>Sympathetic Nervous System</strong> <button class="audio-btn" onclick="speak('Sympathetic Nervous System')" title="استمع للنطق"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button></span> من الحبل الشوكي في المنطقة الصدرية والقطنية (Thoracolumbar Outflow).</p>
+
+  <div class="slide-img-box">
+    <img src="images/slide_2_img_1.png" alt="Sympathetic Anatomy Diagram" class="slide-img">
+  </div>
+  <p class="slide-img-caption">الشريحة 2: المخطط التشريحي لمسار الجهاز العصبي السمبثاوي (Preganglionic vs Postganglionic)</p>
+
+  <div class="term">
+    <div class="term-header">
+      <span class="en">Preganglionic Neuron</span>
+      <button class="audio-btn" onclick="speak('Preganglionic neuron')" title="استمع للنطق"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+    </div>
+    <strong>المعنى بالعربية:</strong> العصبون قبل العقدة.<br>
+    <strong>الخصائص في السمبثاوي:</strong> يكون <em>قصير الطول (Short)</em> لأن العقد السمبثاوية تقع بالقرب من العمود الفقري (Paravertebral chain). ينشأ جسمه من القرن الوحشي (Lateral horn) للنخاع الشوكي الصدري والقطني (T1 - L3).
+  </div>
+
+  <div class="term">
+    <div class="term-header">
+      <span class="en">Autonomic Ganglion</span>
+      <button class="audio-btn" onclick="speak('Autonomic ganglion')" title="استمع للنطق"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+    </div>
+    <strong>المعنى بالعربية:</strong> العقدة العصبية الذاتية.<br>
+    محطة التقاء وتشابك (Synapse) بين العصبون قبل العقدة والعصبون بعد العقدة. يتم إفراز الأسيتيل كولين فيها ليرتبط بمستقبلات نيكوتينية.
+  </div>
+
+  <div class="term">
+    <div class="term-header">
+      <span class="en">Postganglionic Neuron</span>
+      <button class="audio-btn" onclick="speak('Postganglionic neuron')" title="استمع للنطق"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+    </div>
+    <strong>المعنى بالعربية:</strong> العصبون بعد العقدة.<br>
+    <strong>الخصائص في السمبثاوي:</strong> يكون <em>طويل الألياف (Long)</em> ويمتد من العقدة وصولاً إلى الخلية الهدف أو العضو المستجيب (Target cell / Effector organ).
+  </div>
+
+  <div class="diagram">
+    <span class="diagram-step">Thoracic & Lumbar Spinal Cord</span>
+    <span class="diagram-arrow">➔ (Short Preganglionic) ➔</span>
+    <span class="diagram-step">Ganglion</span>
+    <span class="diagram-arrow">➔ (Long Postganglionic) ➔</span>
+    <span class="diagram-step">Target Cell</span>
+  </div>
+
+  <div class="key">
+    <div class="key-header">
+      <svg class="icon" viewBox="0 0 24 24" width="16" height="16"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+      <span>قاعدة ذهبية للامتحان:</span>
+    </div>
+    في الجهاز السمبثاوي: <strong>Preganglionic = قصير</strong> و <strong>Postganglionic = طويل</strong>. عكس الجهاز الباراسمبثاوي تماماً حيث يكون الـ Preganglionic طويلاً والـ Postganglionic قصيراً جداً داخل جدار العضو.
+  </div>
+</section>
+
+<!-- ==================== SECTION 2 ==================== -->
+<section class="card" id="sec-comparison">
+  <h2><span class="section-badge">2</span> مقارنة مسارات الجهاز الذاتي (Sympathetic vs Parasympathetic Pathways)</h2>
+  
+  <p>توضح الشريحة 3 المقارنة الكلاسيكية الحاسمة بين المسار السمبثاوي والمسار الباراسمبثاوي من حيث النواقل العصبية والمستقبلات في العقد وفي الأعضاء المستهدفة:</p>
+
+  <div class="slide-img-box">
+    <img src="images/slide_3_img_1.png" alt="Sympathetic vs Parasympathetic Pathways" class="slide-img">
+  </div>
+  <p class="slide-img-caption">الشريحة 3: مقارنة دقيقة بين المسار السمبثاوي والمسار الباراسمبثاوي (Biology Forums)</p>
+
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>وجه المقارنة</th>
+        <th>المسار السمبثاوي (Sympathetic)</th>
+        <th>المسار الباراسمبثاوي (Parasympathetic)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>الناقل في العقدة (Ganglia)</td>
+        <td><strong>Acetylcholine (ACh)</strong></td>
+        <td><strong>Acetylcholine (ACh)</strong></td>
+      </tr>
+      <tr>
+        <td>المستقبل في العقدة</td>
+        <td><strong>Nicotinic Receptor</strong> (كولينيرجي)</td>
+        <td><strong>Nicotinic Receptor</strong> (كولينيرجي)</td>
+      </tr>
+      <tr>
+        <td>الناقل عند العضو المستهدف</td>
+        <td><strong>Noradrenaline (NE / Norepinephrine)</strong><br><small style="color:var(--text-muted)">*باستثناء الغدد العرقية (ACh)</small></td>
+        <td><strong>Acetylcholine (ACh)</strong></td>
+      </tr>
+      <tr>
+        <td>المستقبل عند العضو المستهدف</td>
+        <td><strong>Adrenergic Receptors (α أو β)</strong></td>
+        <td><strong>Muscarinic Receptors (M)</strong></td>
+      </tr>
+      <tr>
+        <td>طول الألياف العصبية</td>
+        <td>Preganglionic قصير / Postganglionic طويل</td>
+        <td>Preganglionic طويل / Postganglionic قصير</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="note-box">
+    <div class="note-header">
+      <svg class="icon" viewBox="0 0 24 24" width="16" height="16"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+      <span>ملاحظة جوهرية:</span>
+    </div>
+    لاحظ أن <strong>جميع العقد الذاتية بلا استثناء (All Autonomic Ganglia)</strong> تستخدم <strong>Acetylcholine</strong> على مستقبلات <strong>Nicotinic</strong>، سواء كانت سمبثاوية أو باراسمبثاوية! الاختلاف الحقيقي يكمن في النهاية الطرفية عند العضو المستهدف.
+  </div>
+</section>
+
+<!-- ==================== SECTION 3 ==================== -->
+<section class="card" id="sec-neurotransmitters">
+  <h2><span class="section-badge">3</span> النواقل العصبية الكيميائية (Chemical Neurotransmitters)</h2>
+
+  <p>يعتمد الجهاز العصبي السمبثاوي على ناقلين كيميائيين رئيسيين لنقل الإشارات الكهربائية وتحويلها إلى استجابات خلوية:</p>
+
+  <div class="slide-img-box">
+    <img src="images/slide_4_img_1.png" alt="Chemical Neurotransmitters" class="slide-img">
+  </div>
+  <p class="slide-img-caption">الشريحة 4: النواقل العصبية الكيميائية في الجهاز السمبثاوي (Acetylcholine & Noradrenaline)</p>
+
+  <div class="term">
+    <div class="term-header">
+      <span class="en">Chemical Neurotransmitter</span>
+      <button class="audio-btn" onclick="speak('Chemical Neurotransmitter')" title="استمع للنطق"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+    </div>
+    <strong>المعنى:</strong> ناقل كيميائي عصبي — مادة جزيئية كيميائية تفرزها النهايات العصبية لنقل الإشارة عبر الشق التشابكي (Synaptic Cleft).
+  </div>
+
+  <div class="term">
+    <div class="term-header">
+      <span class="en">Acetylcholine (ACh)</span>
+      <button class="audio-btn" onclick="speak('Acetylcholine')" title="استمع للنطق"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+    </div>
+    <strong>موقعه في الجهاز السمبثاوي:</strong> يُفرز فقط من الألياف قبل العقدة (Preganglionic fibers) داخل العقد العصبية، وكذلك في نخاع الغدة الكظرية (Adrenal Medulla) والغدد العرقية (Sweat glands).
+  </div>
+
+  <div class="term">
+    <div class="term-header">
+      <span class="en">Noradrenaline (Norepinephrine / NE)</span>
+      <button class="audio-btn" onclick="speak('Noradrenaline')" title="استمع للنطق"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+    </div>
+    <strong>موقعه في الجهاز السمبثاوي:</strong> هو الناقل الرئيسي المفرز من النهايات العصبية بعد العقدة (Postganglionic sympathetic fibers) مباشرة على الأعضاء المستهدفة (القلب، الأوعية الدموية، القصبات، الحدقة، إلخ).
+  </div>
+</section>
+
+<!-- ==================== SECTION 4 ==================== -->
+<section class="card" id="sec-ach-formation">
+  <h2><span class="section-badge">4</span> تصنيع الأسيتيل كولين (Acetylcholine Formation)</h2>
+
+  <p>يتم تصنيع ناقل الأسيتيل كولين في سيتوبلازم النهاية العصبية قبل التشابكية عبر خطوات كيميائية حيوية دقيقة ومحددة:</p>
+
+  <div class="slide-img-box">
+    <img src="images/slide_5_img_1.png" alt="Acetylcholine Formation and Lifecycle" class="slide-img">
+  </div>
+  <p class="slide-img-caption">الشريحة 5: دورة حياة وتصنيع الأسيتيل كولين داخل النهاية العصبية (Choline + Acetyl CoA)</p>
+
+  <div class="diagram">
+    <span class="diagram-step">Acetate + Co-enzyme A</span>
+    <span class="diagram-arrow">➔</span>
+    <span class="diagram-step">Acetyl Co-A + Choline</span>
+    <span class="diagram-arrow">➔</span>
+    <span class="diagram-step" style="color:#a7f3d0;border-color:#10b981">Acetylcholine (ACh)</span>
+  </div>
+
+  <h3>المعادلة والخطوات بالتفصيل:</h3>
+  <ol style="margin-right:24px;margin-top:8px;line-height:2">
+    <li><strong>تكوين Acetyl Co-A:</strong> يتحد جزيء الأسيتات (Acetate) القادم من دورات الأيض الخلوي في الميتوكوندريا مع مرافق الإنزيم أ <span class="term-inline"><strong>Co-enzyme A</strong> <button class="audio-btn" onclick="speak('Co-enzyme A')" title="استمع للنطق"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button></span> لإنتاج <strong>Acetyl Co-A</strong>.</li>
+    <li><strong>التفاعل مع الكولين:</strong> يتحد <strong>Acetyl Co-A</strong> مع جزيء <strong>Choline</strong> المنقول من السائل خارج الخلوي بواسطة ناقل نشط (Choline transporter).</li>
+    <li><strong>الإنزيم المحفز:</strong> يقوم إنزيم كولين أسيتيل ترانسفيراز (Choline Acetyltransferase / ChAT) بدمج مجموعة الأسيتيل مع الكولين لتكوين <strong>Acetylcholine</strong>.</li>
+    <li><strong>التعبئة في حويصلات:</strong> يتم نقل الأسيتيل كولين وتعبئته داخل حويصلات تشابكية (Synaptic vesicles) لحمايته وتجهيزه للإطلاق عند وصول جهد الفعل (Action potential).</li>
+  </ol>
+</section>
+
+<!-- ==================== SECTION 5 ==================== -->
+<section class="card" id="sec-ach-removal">
+  <h2><span class="section-badge">5</span> إزالة وتكسير الأسيتيل كولين (Acetylcholine Removal)</h2>
+
+  <p>لكي لا تظل الإشارة العصبية مستمرة بدون توقف، يجب إنهاء مفعول الأسيتيل كولين بسرعة فائقة في غضون أجزاء من الألف من الثانية بمجرد ارتباطه بالمستقبل.</p>
+
+  <div class="slide-img-box">
+    <img src="images/slide_6_img_1.png" alt="Acetylcholine Removal by Acetylcholinesterase" class="slide-img">
+  </div>
+  <p class="slide-img-caption">الشريحة 6: تكسير الأسيتيل كولين بواسطة إنزيم الكولين إستيريز (Choline Esterase)</p>
+
+  <div class="term">
+    <div class="term-header">
+      <span class="en">Choline Esterase (Acetylcholinesterase / AChE)</span>
+      <button class="audio-btn" onclick="speak('Choline Esterase')" title="استمع للنطق"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+    </div>
+    <strong>آلية الإزالة:</strong> يتم تكسير الأسيتيل كولين حصرياً بالتحلل المائي (Hydrolysis) بواسطة إنزيم <strong>Choline Esterase</strong> الموجود في الشق التشابكي وعلى الغشاء البعد تشابكي.
+  </div>
+
+  <div class="diagram">
+    <span class="diagram-step">Acetylcholine</span>
+    <span class="diagram-arrow">➔ [Choline Esterase] ➔</span>
+    <span class="diagram-step">Acetate (يُمتص في الدم)</span>
+    <span class="diagram-arrow">+</span>
+    <span class="diagram-step">Choline (يُعاد امتصاصه)</span>
+  </div>
+
+  <div class="key">
+    <div class="key-header">
+      <svg class="icon" viewBox="0 0 24 24" width="16" height="16"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+      <span>إعادة تدوير الكولين (Choline Recycling):</span>
+    </div>
+    يتم سحب جزيء <strong>الكولين (Choline)</strong> الناتج مجدداً إلى داخل النهاية العصبية عبر مضخة خاصة (Active Reuptake) ليعاد تصنيع دفعة جديدة من الأسيتيل كولين بها! هذه من أعظم آليات الاقتصاد البيولوجي في جسم الإنسان.
+  </div>
+</section>
+
+<!-- ==================== SECTION 6 ==================== -->
+<section class="card" id="sec-nicotinic">
+  <h2><span class="section-badge">6</span> المستقبلات النيكوتينية في العقد الذاتية (Nicotinic Receptors)</h2>
+
+  <p>تعتبر المستقبلات النيكوتينية البوابة الكيميائية الرئيسية لاستقبال الإشارات العصبية داخل جميع العقد الذاتية (Sympathetic & Parasympathetic Ganglia).</p>
+
+  <div class="slide-img-box">
+    <img src="images/slide_7_img_1.png" alt="Nicotinic Receptors in Autonomic Ganglia" class="slide-img">
+  </div>
+  <p class="slide-img-caption">الشريحة 7: موقع ومثبطات ومنشطات المستقبلات النيكوتينية (Nicotinic Receptors)</p>
+
+  <div class="term">
+    <div class="term-header">
+      <span class="en">Nicotinic Receptors</span>
+      <button class="audio-btn" onclick="speak('Nicotinic Receptors')" title="استمع للنطق"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+    </div>
+    <strong>الموقع (Site):</strong> <span class="term-inline"><strong>Autonomic Ganglia</strong> <button class="audio-btn" onclick="speak('Autonomic Ganglia')" title="استمع للنطق"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button></span> (العقد الذاتية السمبثاوية والباراسمبثاوية)، وكذلك الوصل العضلي العصبي (Neuromuscular junction). النوع الموجود في العقد هو <strong>N<sub>N</sub> (Nicotinic Neuronal)</strong>.
+  </div>
+
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>الحالة</th>
+        <th>المواد المؤثرة</th>
+        <th>الآلية والتأثير</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="color:var(--success)">التحفيز والتنشيط (Stimulated by)</td>
+        <td>
+          • <strong>جرعة صغيرة من النيكوتين (Nicotine small dose)</strong><br>
+          • <strong>مضادات الكولين إستيريز <span class="term-inline">Anti-choline esterase <button class="audio-btn" onclick="speak('Anti-choline esterase')" title="استمع للنطق"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button></span></strong>
+        </td>
+        <td>تفتح قنوات الصوديوم وتزيل الاستقطاب (Depolarization)، ومضادات الكولين إستيريز تمنع تكسير ACh فيزداد تركيزه ويطول تنبيه العقدة.</td>
+      </tr>
+      <tr>
+        <td style="color:var(--danger)">التثبيط والحجب (Blocked by)</td>
+        <td>
+          • <strong>جرعة كبيرة من النيكوتين (Nicotine large dose)</strong><br>
+          • <strong><span class="term-inline">Hexamethonium <button class="audio-btn" onclick="speak('Hexamethonium')" title="استمع للنطق"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button></span></strong> (C6)<br>
+          • <strong><span class="term-inline">Tetraethyl Ammonium <button class="audio-btn" onclick="speak('Tetraethyl Ammonium')" title="استمع للنطق"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button></span> (TEA)</strong>
+        </td>
+        <td>الجرعة الكبيرة من النيكوتين تسبب إزالة استقطاب مستمرة ومزمنة (Depolarization block) تؤدي لشلل العقدة، بينما Hexamethonium و TEA يقفلان المستقبل تنافسياً كمثبطات عقدية (Ganglionic blockers).</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="note-box">
+    <div class="note-header">
+      <svg class="icon" viewBox="0 0 24 24" width="16" height="16"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+      <span>مفارقة النيكوتين (Nicotine Dual Effect):</span>
+    </div>
+    النيكوتين سلاح ذو وجهين: <strong>الجرعة الصغيرة (Small dose) تحفز وتنشط العقد الذاتية</strong>، بينما <strong>الجرعة العالية (Large dose) تشل وتثبط العقد الذاتية</strong>! وهذا سؤال متكرر جداً في الامتحانات.
+  </div>
+</section>
+
+<!-- ==================== SECTION 7 ==================== -->
+<section class="card" id="sec-ne-formation">
+  <h2><span class="section-badge">7</span> تصنيع النورأدرينالين (Noradrenaline Biosynthesis)</h2>
+
+  <p>يتم تصنيع النورأدرينالين (المعروف أيضاً باسم النورإبينفرين Norepinephrine) انطلاقاً من الحمض الأميني الأساسي التيروزين (Tyrosine) عبر سلسلة تفاعلات كيميائية حيوية إنزيمية متتالية:</p>
+
+  <div class="slide-img-box">
+    <img src="images/slide_8_img_1.png" alt="Noradrenaline Synthesis Pathway" class="slide-img">
+  </div>
+  <p class="slide-img-caption">الشريحة 8: مسار تصنيع النورأدرينالين من التيروزين وصولاً إلى النهاية العصبية</p>
+
+  <div class="diagram">
+    <span class="diagram-step">Tyrosine</span>
+    <span class="diagram-arrow">➔</span>
+    <span class="diagram-step">L-Dopa</span>
+    <span class="diagram-arrow">➔</span>
+    <span class="diagram-step">Dopamine</span>
+    <span class="diagram-arrow">➔</span>
+    <span class="diagram-step" style="color:#a7f3d0;border-color:#10b981">Noradrenaline</span>
+  </div>
+
+  <h3>خطوات التصنيع الأربعة ومصطلحاتها:</h3>
+
+  <div class="term">
+    <div class="term-header">
+      <span class="en">1. Tyrosine</span>
+      <button class="audio-btn" onclick="speak('Tyrosine')" title="استمع للنطق"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+    </div>
+    الحمض الأميني البادئ (المادة الخام). يدخل الخلية العصبية عبر ناقل نشط، ويتحول بفعل إنزيم <em>Tyrosine Hydroxylase</em> (وهو الإنزيم المحدد لسرعة التفاعل Rate-limiting step) إلى L-Dopa.
+  </div>
+
+  <div class="term">
+    <div class="term-header">
+      <span class="en">2. L-Dopa (Levodopa)</span>
+      <button class="audio-btn" onclick="speak('L-Dopa')" title="استمع للنطق"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+    </div>
+    المركب الوسيط الأول (ثنائي هيدروكسي فينيل ألانين). يتحول بفعل إنزيم <em>Dopa Decarboxylase</em> بنزع جزيء ثاني أكسيد الكربون إلى الدوبامين.
+  </div>
+
+  <div class="term">
+    <div class="term-header">
+      <span class="en">3. Dopamine</span>
+      <button class="audio-btn" onclick="speak('Dopamine')" title="استمع للنطق"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+    </div>
+    ناقل عصبي مهم، يتم ضخه إلى داخل الحويصلات التشابكية (Vesicles)، وحيثما يدخل الحويصلة يتحول بفعل إنزيم <em>Dopamine β-hydroxylase</em> إلى نورأدرينالين.
+  </div>
+
+  <div class="term">
+    <div class="term-header">
+      <span class="en">4. Noradrenaline (Norepinephrine)</span>
+      <button class="audio-btn" onclick="speak('Noradrenaline')" title="استمع للنطق"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+    </div>
+    المنتج النهائي المخزن في الحويصلات بانتظار الإشارة العصبية للخروج إلى الشق التشابكي. (في نخاع الغدة الكظرية يُضاف ميثيل ليصبح Adrenaline).
+  </div>
+</section>
+
+<!-- ==================== SECTION 8 ==================== -->
+<section class="card" id="sec-ne-removal">
+  <h2><span class="section-badge">8</span> إزالة وتكسير النورأدرينالين (Noradrenaline Removal)</h2>
+
+  <p>على عكس الأسيتيل كولين الذي يعتمد 100% على التكسير الإنزيمي الفوري، فإن النورأدرينالين يمتلك طريقتين رئيسيتين لإيقاف عمله، مع سيطرة واضحة لآلية إعادة الامتصاص:</p>
+
+  <div class="slide-img-box">
+    <img src="images/slide_9_img_1.png" alt="Noradrenaline Removal by Reuptake and Enzymes" class="slide-img">
+  </div>
+  <p class="slide-img-caption">الشريحة 9: إزالة النورأدرينالين — إعادة الامتصاص النشط (50-80%) والتكسير بواسطة MAO و COMT</p>
+
+  <div class="key">
+    <div class="key-header">
+      <svg class="icon" viewBox="0 0 24 24" width="16" height="16"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+      <span>الطريقة الأساسية: إعادة الامتصاص النشط (Active Reuptake):</span>
+    </div>
+    ما بين <strong>50% إلى 80%</strong> من النورأدرينالين تتم إزالته عن طريق <strong><span class="term-inline">Reuptake <button class="audio-btn" onclick="speak('Reuptake')" title="استمع للنطق"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button></span></strong> نشط بواسطة مضخات خاصة (NET - Norepinephrine Transporter) على النهاية العصبية قبل التشابكية، ليعاد تخزينه في الحويصلات واستخدامه مجدداً.
+  </div>
+
+  <h3>الطريقة الثانية: التكسير والتدمير الإنزيمي (Destruction by Enzymes):</h3>
+  <p>النسبة المتبقية (أو النورأدرينالين الزائد المتسرب في السيتوبلازم والدم) يتم تكسيرها بواسطة إنزيمين أساسيين:</p>
+
+  <div class="term">
+    <div class="term-header">
+      <span class="en">1. MAO (Monoamine Oxidase)</span>
+      <button class="audio-btn" onclick="speak('Monoamine Oxidase')" title="استمع للنطق"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+    </div>
+    <strong>الموقع:</strong> موجود أساساً <em>داخل الخلية العصبية</em> على الغشاء الخارجي للميتوكوندريا (Intracellular / Mitochondrial enzyme).<br>
+    <strong>الوظيفة:</strong> يقوم بأكسدة وتكسير أي نورأدرينالين حر موجود في السيتوبلازم غير محمي داخل الحويصلات.
+  </div>
+
+  <div class="term">
+    <div class="term-header">
+      <span class="en">2. COMT (Catechol-O-Methyl Transferase)</span>
+      <button class="audio-btn" onclick="speak('Catechol O Methyl Transferase')" title="استمع للنطق"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+    </div>
+    <strong>الموقع:</strong> موجود <em>خارج الخلية العصبية</em> في الشق التشابكي (Synaptic cleft)، في الأنسجة المستهدفة، وفي الكبد والكلى.<br>
+    <strong>الوظيفة:</strong> يقوم بنقل مجموعة ميثيل إلى حلقة الكاتيكول لتثبيط النورأدرينالين والإبينفرين الدائر في الدم والأنسجة.
+  </div>
+
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>الإنزيم</th>
+        <th>الموقع الرئيسي</th>
+        <th>نوع التفاعل</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>MAO</strong> (Monoamine Oxidase)</td>
+        <td>داخلي (Intracellular) — ميتوكوندريا النهاية العصبية</td>
+        <td>أكسدة ونزع الأمين (Oxidative deamination)</td>
+      </tr>
+      <tr>
+        <td><strong>COMT</strong> (Catechol-O-Methyl Transferase)</td>
+        <td>خارجي (Extracellular) — الشق التشابكي، الكبد، الأنسجة</td>
+        <td>إضافة مجموعة ميثيل (O-methylation)</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ==================== SECTION 9 ==================== -->
+<section class="card" id="sec-adrenergic">
+  <h2><span class="section-badge">9</span> المستقبلات الأدرينالية (Adrenergic Receptors: Alpha & Beta)</h2>
+
+  <p>تستجيب الخلايا المستهدفة للنورأدرينالين والأدرينالين عن طريق عائلتين كبيرتين من المستقبلات البروتينية الغشائية المقترنة ببروتين G (G-protein coupled receptors):</p>
+
+  <div style="text-align:center;margin:16px 0;">
+    <span class="term-inline" style="font-size:18px"><strong>Adrenergic Receptors</strong> <button class="audio-btn" onclick="speak('Adrenergic Receptors')" title="استمع للنطق"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button></span>
+  </div>
+
+  <!-- Interactive visual tree of Adrenergic Receptors -->
+  <div class="receptor-tree">
+    <!-- Alpha Column -->
+    <div class="receptor-col alpha">
+      <div class="rec-col-title">
+        <span>🔴 Alpha Receptors (α)</span>
+        <button class="audio-btn" onclick="speak('Alpha Receptors')" title="استمع للنطق"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      </div>
+
+      <div class="rec-subcard">
+        <h4>
+          <span>α1 Receptors</span>
+          <button class="audio-btn" onclick="speak('Alpha 1 receptor')" title="استمع للنطق" style="width:22px;height:22px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+        </h4>
+        <p><strong>الموقع الرئيسي:</strong> العضلات الملساء للأوعية الدموية في الجلد والغشاء المخاطي والأحشاء، وعضلة الحدقة الموسعة (Pupillary dilator muscle).</p>
+        <p><strong>الوظيفة الأساسية:</strong> <strong>انقباض الأوعية الدموية (Vasoconstriction)</strong> ➔ رفع ضغط الدم، وتوسيع حدقة العين (Mydriasis).</p>
+      </div>
+
+      <div class="rec-subcard">
+        <h4>
+          <span>α2 Receptors</span>
+          <button class="audio-btn" onclick="speak('Alpha 2 receptor')" title="استمع للنطق" style="width:22px;height:22px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+        </h4>
+        <p><strong>الموقع الرئيسي:</strong> غشاء النهاية العصبية قبل التشابكية (Presynaptic nerve terminals) وفي خلايا بيتا في البنكرياس.</p>
+        <p><strong>الوظيفة الأساسية:</strong> <strong>تغذية راجعة سلبية (Autoreceptor / Negative feedback)</strong> ➔ تثبيط إفراز المزيد من النورأدرينالين، وتقليل إفراز الإنسولين.</p>
+      </div>
+    </div>
+
+    <!-- Beta Column -->
+    <div class="receptor-col beta">
+      <div class="rec-col-title">
+        <span>🟢 Beta Receptors (β)</span>
+        <button class="audio-btn" onclick="speak('Beta Receptors')" title="استمع للنطق"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      </div>
+
+      <div class="rec-subcard">
+        <h4>
+          <span>β1 Receptors</span>
+          <button class="audio-btn" onclick="speak('Beta 1 receptor')" title="استمع للنطق" style="width:22px;height:22px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+        </h4>
+        <p><strong>الموقع الرئيسي:</strong> القلب (عضلة القلب وعقدة SA وعقدة AV) وخلايا الكلى (Juxtaglomerular cells).</p>
+        <p><strong>الوظيفة الأساسية:</strong> <strong>زيادة جميع خواص القلب:</strong> زيادة سرعة ضربات القلب (+Chronotropic) وقوة الانقباض (+Inotropic) وزيادة إفراز الرينين (Renin).</p>
+      </div>
+
+      <div class="rec-subcard">
+        <h4>
+          <span>β2 Receptors</span>
+          <button class="audio-btn" onclick="speak('Beta 2 receptor')" title="استمع للنطق" style="width:22px;height:22px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+        </h4>
+        <p><strong>الموقع الرئيسي:</strong> القصبات الهوائية في الرئة، وأوعية العضلات الهيكلية، وجدار الجهاز الهضمي والرحم.</p>
+        <p><strong>الوظيفة الأساسية:</strong> <strong>ارتخاء العضلات الملساء:</strong> توسيع القصبات (Bronchodilatation) وتوسيع أوعية العضلات الهيكلية.</p>
+      </div>
+
+      <div class="rec-subcard">
+        <h4>
+          <span>β3 Receptors</span>
+          <button class="audio-btn" onclick="speak('Beta 3 receptor')" title="استمع للنطق" style="width:22px;height:22px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+        </h4>
+        <p><strong>الموقع الرئيسي:</strong> النسيج الدهني (Adipose tissue) والمثانة البولية.</p>
+        <p><strong>الوظيفة الأساسية:</strong> <strong>تحلل الدهون (Lipolysis)</strong> وإنتاج الحرارة وارتخاء عضلة المثانة البولية.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dental Clinical Connection -->
+  <div class="dental-alert">
+    <div class="dental-alert-header">
+      <svg class="icon" viewBox="0 0 24 24" width="18" height="18"><path d="M12 2a4 4 0 0 0-4 4c0 2 2 3.5 2 5.5V17a3 3 0 0 0 6 0v-5.5c0-2 2-3.5 2-5.5a4 4 0 0 0-4-4z"></path></svg>
+      <span>أهمية بالغة لطبيب الأسنان (Dental Clinical Relevance):</span>
+    </div>
+    <p>في عيادة طب الأسنان، يتم دمج <strong>الأدرينالين (Epinephrine) بتركيز 1:100,000 أو 1:200,000</strong> مع المخدر الموضعي (مثل الليدوكائين Lidocaine):</p>
+    <ul style="margin-right:20px;margin-top:6px;line-height:1.8">
+      <li><strong>تحفيز مستقبلات α1:</strong> يؤدي لانقباض الأوعية الدموية الموضعية في اللثة (Vasoconstriction)، مما يقلل النزيف أثناء الخلع والعمليات الجراحية (Hemostasis).</li>
+      <li><strong>إطالة مدة التخدير:</strong> منع امتصاص المخدر السريع في مجرى الدم مما يحفظه في موقع السن لفترة أطول ويقلل السمية الجهازية (Systemic Toxicity).</li>
+      <li><strong>تنبيه للحالات المرضية:</strong> مرضى ارتفاع ضغط الدم الشديد أو مرضى الذبحة الصدرية يجب الحذر معهم لتجنب تحفيز مستقبلات <strong>β1</strong> في القلب التي قد ترفع معدل ضربات القلب وضغط الدم بشكل مفاجئ!</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ==================== SECTION 10 ==================== -->
+<section class="card" id="sec-quiz">
+  <h2><span class="section-badge">10</span> بنك الأسئلة التفاعلي والاختبار الذاتي (Interactive Practice Quiz)</h2>
+
+  <p>اختبر فهمك لمفاهيم المحاضرة الثالثة مع التفسير العلمي الفوري لكل خيار ونطق السؤال باللغة الإنجليزية:</p>
+
+  <div class="quiz-dashboard">
+    <div class="score-item">
+      <h4>درجتك الحالية</h4>
+      <div class="score-val" id="scoreDisplay">0 / 6</div>
+    </div>
+    <div class="score-item">
+      <h4>نسبة الإنجاز</h4>
+      <div class="score-val" id="scorePercent">0%</div>
+    </div>
+    <div class="score-feedback">
+      <svg class="icon" viewBox="0 0 24 24" width="18" height="18"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+      <span id="scoreFeedbackText">ابدأ بحل الأسئلة لاختبار معلوماتك</span>
+    </div>
+  </div>
+
+  <!-- Question 1 -->
+  <div class="question" data-qid="q1">
+    <div class="q-header">
+      <div class="q-english">Q1: In the sympathetic nervous system, the preganglionic fibers are:</div>
+      <button class="q-speech-btn" onclick="speak('In the sympathetic nervous system, the preganglionic fibers are')"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg><span>استمع</span></button>
+    </div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)"><svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg><span>عرض السؤال بالعربية</span></button>
+    <div class="q-arabic-text">في الجهاز العصبي السمبثاوي، تكون الألياف قبل العقدة (Preganglionic fibers):</div>
+    <div class="inline-mcq" data-correct="1" data-explanations='["الألياف الطويلة قبل العقدة هي سمة مميزة للجهاز الباراسمبثاوي، وليس السمبثاوي.","إجابة صحيحة وممتازة! في الجهاز السمبثاوي تكون الألياف قبل العقدة قصيرة (Short) لأن العقد السمبثاوية قريبة جداً من النخاع الشوكي.","الألياف غير متساوية، حيث إن الألياف بعد العقدة تكون أطول بكثير في الجهاز السمبثاوي."]'>
+      <button class="mcq-option" onclick="checkAnswer(this,0)"><span>A) Long and unmyelinated</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,1)"><span>B) Short</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,2)"><span>C) Equal in length to postganglionic fibers</span><span class="opt-badge">اختيارك</span></button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>إعادة المحاولة</span></button></div>
+    </div>
+  </div>
+
+  <!-- Question 2 -->
+  <div class="question" data-qid="q2">
+    <div class="q-header">
+      <div class="q-english">Q2: Acetylcholine is synthesized from Acetate and Choline with the help of:</div>
+      <button class="q-speech-btn" onclick="speak('Acetylcholine is synthesized from Acetate and Choline with the help of')"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg><span>استمع</span></button>
+    </div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)"><svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg><span>عرض السؤال بالعربية</span></button>
+    <div class="q-arabic-text">يتم تصنيع الأسيتيل كولين من الأسيتات والكولين بمساعدة:</div>
+    <div class="inline-mcq" data-correct="0" data-explanations='["إجابة ممتازة! يتحد الأسيتات مع Co-enzyme A لإنتاج Acetyl Co-A الذي يتحد مع الكولين لتكوين Acetylcholine.","Monoamine oxidase (MAO) هو إنزيم تكسير النورأدرينالين داخل الميتوكوندريا ولا يشارك في تصنيع الأسيتيل كولين.","Choline esterase هو الإنزيم المسؤول عن تكسير وهدم الأسيتيل كولين وليس تصنيعه."]'>
+      <button class="mcq-option" onclick="checkAnswer(this,0)"><span>A) Co-enzyme A (forming Acetyl Co-A)</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,1)"><span>B) Monoamine oxidase (MAO)</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,2)"><span>C) Choline esterase</span><span class="opt-badge">اختيارك</span></button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>إعادة المحاولة</span></button></div>
+    </div>
+  </div>
+
+  <!-- Question 3 -->
+  <div class="question" data-qid="q3">
+    <div class="q-header">
+      <div class="q-english">Q3: Nicotinic receptors in autonomic ganglia are blocked by:</div>
+      <button class="q-speech-btn" onclick="speak('Nicotinic receptors in autonomic ganglia are blocked by')"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg><span>استمع</span></button>
+    </div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)"><svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg><span>عرض السؤال بالعربية</span></button>
+    <div class="q-arabic-text">تُثبّط المستقبلات النيكوتينية في العقد الذاتية بواسطة:</div>
+    <div class="inline-mcq" data-correct="2" data-explanations='["الجرعة الصغيرة من النيكوتين تحفز وتنشط العقدة (Stimulates).","مضادات الكولين إستيريز تزيد تركيز الأسيتيل كولين وتنشط العقدة.","إجابة صحيحة تماماً! تُقفل وتُثبط المستقبلات النيكوتينية بجرعة كبيرة من النيكوتين، وكذلك بـ Hexamethonium و Tetraethyl ammonium (TEA)."]'>
+      <button class="mcq-option" onclick="checkAnswer(this,0)"><span>A) Nicotine small dose</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,1)"><span>B) Anti-choline esterase drugs</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,2)"><span>C) Nicotine large dose and Hexamethonium</span><span class="opt-badge">اختيارك</span></button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>إعادة المحاولة</span></button></div>
+    </div>
+  </div>
+
+  <!-- Question 4 -->
+  <div class="question" data-qid="q4">
+    <div class="q-header">
+      <div class="q-english">Q4: The correct sequence for noradrenaline biosynthesis is:</div>
+      <button class="q-speech-btn" onclick="speak('The correct sequence for noradrenaline biosynthesis is')"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg><span>استمع</span></button>
+    </div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)"><svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg><span>عرض السؤال بالعربية</span></button>
+    <div class="q-arabic-text">الترتيب الصحيح لخطوات تصنيع النورأدرينالين هو:</div>
+    <div class="inline-mcq" data-correct="1" data-explanations='["الدوبامين لا يتكون مباشرة من التيروزين بل يمر بمرحلة L-Dopa أولاً.","إجابة صحيحة 100%! الترتيب البيولوجي هو: Tyrosine ➔ L-Dopa ➔ Dopamine ➔ Noradrenaline.","الكولين يشارك في تصنيع الأسيتيل كولين وليس النورأدرينالين."]'>
+      <button class="mcq-option" onclick="checkAnswer(this,0)"><span>A) Tyrosine ➔ Dopamine ➔ L-Dopa ➔ Noradrenaline</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,1)"><span>B) Tyrosine ➔ L-Dopa ➔ Dopamine ➔ Noradrenaline</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,2)"><span>C) Choline ➔ Dopamine ➔ Tyrosine ➔ Noradrenaline</span><span class="opt-badge">اختيارك</span></button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>إعادة المحاولة</span></button></div>
+    </div>
+  </div>
+
+  <!-- Question 5 -->
+  <div class="question" data-qid="q5">
+    <div class="q-header">
+      <div class="q-english">Q5: What is the primary mechanism for noradrenaline removal from the synaptic cleft?</div>
+      <button class="q-speech-btn" onclick="speak('What is the primary mechanism for noradrenaline removal from the synaptic cleft')"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button><span>استمع</span></button>
+    </div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)"><svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg><span>عرض السؤال بالعربية</span></button>
+    <div class="q-arabic-text">ما هي الآلية الأساسية والرئيسية لإزالة النورأدرينالين من الشق التشابكي؟</div>
+    <div class="inline-mcq" data-correct="0" data-explanations='["إجابة عبقرية! بين 50% إلى 80% من النورأدرينالين يُعاد امتصاصه بنشاط إلى داخل النهاية العصبية، بينما الإنزيمات مسؤولة عن النسبة المتبقية.","التحلل المائي بـ Choline esterase خاص بالأسيتيل كولين فقط.","الانتشار والتدمير بالدم لا يمثل سوى نسبة ضئيلة جداً مقارنة بإعادة الامتصاص النشط."]'>
+      <button class="mcq-option" onclick="checkAnswer(this,0)"><span>A) Active reuptake (50–80%) into nerve terminals</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,1)"><span>B) 100% hydrolysis by Choline esterase</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,2)"><span>C) Passive diffusion into the bloodstream only</span><span class="opt-badge">اختيارك</span></button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>إعادة المحاولة</span></button></div>
+    </div>
+  </div>
+
+  <!-- Question 6 -->
+  <div class="question" data-qid="q6">
+    <div class="q-header">
+      <div class="q-english">Q6: In dental local anesthesia, epinephrine stimulates which receptor to cause vasoconstriction?</div>
+      <button class="q-speech-btn" onclick="speak('In dental local anesthesia, epinephrine stimulates which receptor to cause vasoconstriction')"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button><span>استمع</span></button>
+    </div>
+    <button class="q-arabic-toggle" onclick="toggleArabic(this)"><svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg><span>عرض السؤال بالعربية</span></button>
+    <div class="q-arabic-text">في التخدير الموضعي لطب الأسنان، يحفز الأدرينالين أي مستقبل لإحداث انقباض الأوعية الدموية في اللثة؟</div>
+    <div class="inline-mcq" data-correct="0" data-explanations='["إجابة صحيحة 100%! مستقبلات Alpha-1 (α1) هي المسؤولة عن انقباض الأوعية الدموية المحيطية، مما يحافظ على المخدر موضعياً ويمنع النزيف.","مستقبلات Beta-2 (β2) تسبب توسيع الأوعية الدموية وارتخاء القصبات وليس انقباض الأوعية.","مستقبلات Beta-1 (β1) تزيد معدل وقوة ضربات القلب ولا تسبب انقباض الأوعية."]'>
+      <button class="mcq-option" onclick="checkAnswer(this,0)"><span>A) Alpha-1 (α1) receptors</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,1)"><span>B) Beta-2 (β2) receptors</span><span class="opt-badge">اختيارك</span></button>
+      <button class="mcq-option" onclick="checkAnswer(this,2)"><span>C) Beta-1 (β1) receptors</span><span class="opt-badge">اختيارك</span></button>
+      <div class="mcq-result"></div>
+      <div class="mcq-actions"><button class="reset-btn" onclick="resetQuestion(this)"><svg viewBox="0 0 24 24" class="icon" width="13" height="13"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><span>إعادة المحاولة</span></button></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECTION 11 ==================== -->
+<section class="card" id="sec-glossary">
+  <h2><span class="section-badge">11</span> قاموس المصطلحات الطبية الشامل (Medical Glossary)</h2>
+  <p>اضغط على أيقونة الصوت <span style="display:inline-block;vertical-align:middle;color:var(--primary)">🔊</span> للاستماع إلى النطق الإنجليزي الصحيح للمصطلح الطبي فوراً:</p>
+
+  <div class="glossary-grid">
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="speak('Sympathetic Nervous System')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Sympathetic Nervous System</strong><span>الجهاز العصبي الودي / السمبثاوي</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="speak('Acetylcholine')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Acetylcholine (ACh)</strong><span>أسيتيل كولين — ناقل العقد الذاتية</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="speak('Noradrenaline')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Noradrenaline (Norepinephrine)</strong><span>نورأدرينالين — ناقل السمبثاوي النهائي</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="speak('Co-enzyme A')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Co-enzyme A</strong><span>مرافق الإنزيم أ لتصنيع الأسيتيل كولين</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="speak('Choline Esterase')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Choline Esterase (AChE)</strong><span>إنزيم تكسير وهدم الأسيتيل كولين</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="speak('Nicotinic Receptors')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Nicotinic Receptors</strong><span>المستقبلات النيكوتينية في العقد الذاتية</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="speak('Autonomic Ganglia')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Autonomic Ganglia</strong><span>العقد العصبية الذاتية</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="speak('Hexamethonium')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Hexamethonium</strong><span>مُحصر ومُثبط المستقبلات النيكوتينية بالعقد</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="speak('Tetraethyl Ammonium')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Tetraethyl Ammonium (TEA)</strong><span>مُثبط ومُحصر تنافسي للعقد الذاتية</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="speak('Anti-choline esterase')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Anti-choline esterase</strong><span>مضادات إنزيم الكولين إستيريز المنشطة</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="speak('Tyrosine')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Tyrosine</strong><span>الحمض الأميني البادئ لتصنيع النورأدرينالين</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="speak('L-Dopa')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>L-Dopa (Levodopa)</strong><span>مركب وسيط في تصنيع الكاتيكولامينات</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="speak('Dopamine')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Dopamine</strong><span>الدوبامين — طليعة النورأدرينالين بالحويصلة</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="speak('Monoamine Oxidase')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>MAO (Monoamine Oxidase)</strong><span>إنزيم تكسير داخلي على الميتوكوندريا</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="speak('Catechol-O-Methyl Transferase')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>COMT (Catechol-O-Methyl Transferase)</strong><span>إنزيم تكسير خارجي بالشق التشابكي والكبد</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="speak('Adrenergic Receptors')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Adrenergic Receptors</strong><span>المستقبلات الأدرينالية (ألفا وبيتا)</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="speak('Alpha Receptors')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Alpha Receptors (α1, α2)</strong><span>مستقبلات ألفا الأدرينالية</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="speak('Beta Receptors')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Beta Receptors (β1, β2, β3)</strong><span>مستقبلات بيتا الأدرينالية</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="speak('Preganglionic fiber')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Preganglionic Fiber</strong><span>الألياف قبل العقدية (قصيرة في السمبثاوي)</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="speak('Postganglionic fiber')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Postganglionic Fiber</strong><span>الألياف بعد العقدية (طويلة في السمبثاوي)</span></div>
+    </div>
+
+    <div class="glossary-item">
+      <button class="audio-btn" onclick="speak('Reuptake')"><svg viewBox="0 0 24 24" class="icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></button>
+      <div class="glossary-info"><strong>Reuptake</strong><span>إعادة الامتصاص النشط (50-80% للـ NE)</span></div>
+    </div>
+  </div>
+
+  <div class="key" style="margin-top:24px">
+    <div class="key-header">
+      <svg class="icon" viewBox="0 0 24 24" width="16" height="16"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+      <span>خلاصة المحاضرة الثالثة في نقاط محددة:</span>
+    </div>
+    <ol style="margin-right:20px;margin-top:8px;line-height:2">
+      <li><strong>السمبثاوي التشريحي:</strong> عصبون قبل العقدة قصير + عصبون بعد العقدة طويل.</li>
+      <li><strong>الناقل في العقد:</strong> دائمًا <strong>Acetylcholine</strong> يرتبط بمستقبل <strong>Nicotinic</strong>.</li>
+      <li><strong>الناقل في الأعضاء:</strong> في السمبثاوي <strong>Noradrenaline</strong> يرتبط بمستقبلات <strong>Adrenergic (α & β)</strong>.</li>
+      <li><strong>تكسير ACh:</strong> 100% بواسطة إنزيم <strong>Choline esterase</strong> إلى Acetate + Choline.</li>
+      <li><strong>إزالة Noradrenaline:</strong> النسبة العظمى <strong>50–80% Reuptake</strong>، والباقي بتدمير إنزيمي بواسطة <strong>MAO</strong> (داخلي) و <strong>COMT</strong> (خارجي).</li>
+      <li><strong>المستقبلات الأدرينالية:</strong> α1 (انقباض أوعية)، α2 (تغذية راجعة سالبة)، β1 (تحفيز القلب)، β2 (توسيع القصبات)، β3 (تحلل الدهون).</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ==================== DEVELOPER WATERMARK ==================== -->
+<section class="card developer-card">
+  <div class="dev-container">
+    <div class="dev-avatar-wrap"><img src="developer.png" alt="محمد أحمد راضي" class="dev-avatar"></div>
+    <div class="dev-info">
+      <div class="dev-badge">
+        <svg class="icon" viewBox="0 0 24 24" width="13" height="13"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+        <span>المطور</span>
+      </div>
+      <h3 class="dev-name">محمد أحمد راضي</h3>
+      <p class="dev-role">
+        <svg class="icon" viewBox="0 0 24 24" width="15" height="15" style="color:var(--primary)"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+        <span>طالب في طب أسنان</span>
+      </p>
+      <div class="dev-contact">
+        <a href="https://wa.me/201211648437" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">
+          <svg class="icon" viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.04 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/></svg>
+          <span>تواصل عبر واتساب (01211648437)</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- Celebration Modal -->
+<div id="celebrationModal">
+  <div class="modal-box">
+    <div class="modal-icon-wrap">
+      <svg viewBox="0 0 24 24" width="36" height="36" class="icon" style="color:var(--success)"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+    </div>
+    <h2>🎉 إنجاز رائع ومثالي! 6 / 6</h2>
+    <p style="margin:14px 0 20px;font-size:15px;line-height:1.7;color:var(--text-secondary)">أجبت على جميع أسئلة الجهاز السمبثاوي والنواقل العصبية بشكل صحيح 100%! أنت الآن جاهز ومستعد تماماً للامتحان.</p>
+    <button style="background:var(--success);color:white;border:none;padding:9px 24px;font-size:14px;border-radius:10px;cursor:pointer;font-family:inherit;font-weight:700" onclick="closeModal()">إغلاق ومتابعة</button>
+  </div>
+</div>
+
+<script>
+// ===== Web Speech API (English pronunciation) =====
+function speak(text) {
+  if (!('speechSynthesis' in window)) {
+    alert('متصفحك لا يدعم خاصية نطق الصوت.');
+    return;
+  }
+  window.speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = 'en-US';
+  utterance.rate = 0.88;
+  utterance.pitch = 1.0;
+
+  // Visual feedback on clicked button
+  const btn = (typeof event !== 'undefined' && event) ? (event.currentTarget || (event.target && event.target.closest ? event.target.closest('button') : null)) : null;
+  if (btn) btn.classList.add('playing');
+
+  utterance.onend = function() {
+    if (btn) btn.classList.remove('playing');
+  };
+  utterance.onerror = function() {
+    if (btn) btn.classList.remove('playing');
+  };
+
+  window.speechSynthesis.speak(utterance);
+}
+
+// ===== Theme Toggle =====
+function toggleTheme() {
+  const current = document.documentElement.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  updateThemeButton(next);
+}
+
+function updateThemeButton(theme) {
+  const btn = document.getElementById('themeToggleBtn');
+  if (!btn) return;
+  btn.innerHTML = theme === 'dark'
+    ? `<svg class="icon" viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line></svg>`
+    : `<svg class="icon" viewBox="0 0 24 24" width="20" height="20"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+  btn.setAttribute('title', theme === 'dark' ? 'الوضع النهاري' : 'الوضع الليلي');
+}
+
+// Initialize theme from storage
+(function() {
+  const saved = localStorage.getItem('theme') || 'light';
+  document.documentElement.setAttribute('data-theme', saved);
+  updateThemeButton(saved);
+})();
+
+// ===== Scroll Progress Bar =====
+window.addEventListener('scroll', function() {
+  const scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+  const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  const bar = document.getElementById('progressFill');
+  if (bar) bar.style.width = percent + '%';
+});
+
+// ===== Arabic Translation Toggle for Questions =====
+function toggleArabic(btn) {
+  const textDiv = btn.nextElementSibling;
+  textDiv.classList.toggle('show');
+  const isShown = textDiv.classList.contains('show');
+  btn.innerHTML = isShown
+    ? `<svg viewBox="0 0 24 24" class="icon" width="14" height="14"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>إخفاء الترجمة</span>`
+    : `<svg viewBox="0 0 24 24" class="icon" width="14" height="14"><path d="m5 8 6 6"></path><path d="m4 14 6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="m22 22-5-10-5 10"></path><path d="M14 18h6"></path></svg><span>عرض السؤال بالعربية</span>`;
+}
+
+// ===== Interactive Quiz Engine =====
+const quizResults = {};
+const TOTAL_QUESTIONS = 6;
+let modalShown = false;
+
+function updateQuizScore() {
+  let count = 0;
+  for (let q in quizResults) {
+    if (quizResults[q]) count++;
+  }
+  const scoreElem = document.getElementById('scoreDisplay');
+  const percentElem = document.getElementById('scorePercent');
+  const feedbackElem = document.getElementById('scoreFeedbackText');
+  
+  if (scoreElem) scoreElem.textContent = count + ' / ' + TOTAL_QUESTIONS;
+  const pct = Math.round((count / TOTAL_QUESTIONS) * 100);
+  if (percentElem) percentElem.textContent = pct + '%';
+  
+  if (feedbackElem) {
+    if (count === 0) feedbackElem.textContent = 'ابدأ بحل الأسئلة لاختبار معلوماتك';
+    else if (count < 3) feedbackElem.textContent = 'بداية جيدة، واصل الإجابة!';
+    else if (count < 5) feedbackElem.textContent = 'أداء متميز، بقي القليل!';
+    else if (count < 6) feedbackElem.textContent = 'رائع جداً، سؤال أخير على الدرجة النهائية!';
+    else {
+      feedbackElem.textContent = 'الدرجة الكاملة 6 / 6 🎉 مبروك!';
+      if (!modalShown) {
+        modalShown = true;
+        document.getElementById('celebrationModal').style.display = 'flex';
+      }
+    }
+  }
+}
+
+function checkAnswer(button, selectedIndex) {
+  const mcq = button.closest('.inline-mcq');
+  const qCard = button.closest('.question');
+  const correct = parseInt(mcq.getAttribute('data-correct'));
+  const explanations = JSON.parse(mcq.getAttribute('data-explanations') || '[]');
+  const options = mcq.querySelectorAll('.mcq-option');
+  const resultDiv = mcq.querySelector('.mcq-result');
+
+  options.forEach(o => o.classList.remove('selected-correct', 'selected-wrong'));
+
+  const isCorrect = (selectedIndex === correct);
+  const qid = qCard.getAttribute('data-qid');
+  const optText = button.querySelector('span:first-child').textContent.trim();
+  const explanation = explanations[selectedIndex] || '';
+
+  if (isCorrect) {
+    button.classList.add('selected-correct');
+    resultDiv.className = 'mcq-result show correct-msg';
+    resultDiv.innerHTML = `
+      <div class="result-title">
+        <svg viewBox="0 0 24 24" class="icon" width="18" height="18"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        <span>إجابة صحيحة وممتازة (${optText})</span>
+      </div>
+      <div class="result-explanation">
+        <div class="explanation-title">
+          <svg viewBox="0 0 24 24" class="icon" width="15" height="15"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+          <strong>التفسير العلمي:</strong>
+        </div>
+        <p>${explanation}</p>
+      </div>
+      <div class="result-hint">يمكنك النقر على الخيارات الأخرى لمعرفة سبب خطئها.</div>
+    `;
+    if (qid) quizResults[qid] = true;
+    updateQuizScore();
+  } else {
+    button.classList.add('selected-wrong');
+    resultDiv.className = 'mcq-result show wrong-msg';
+    resultDiv.innerHTML = `
+      <div class="result-title">
+        <svg viewBox="0 0 24 24" class="icon" width="18" height="18"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+        <span>اختيار غير صحيح (${optText})</span>
+      </div>
+      <div class="result-explanation">
+        <div class="explanation-title">
+          <svg viewBox="0 0 24 24" class="icon" width="15" height="15"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+          <strong>سبب الخطأ:</strong>
+        </div>
+        <p>${explanation}</p>
+      </div>
+      <div class="result-hint">حاول اختيار إجابة أخرى.</div>
+    `;
+  }
+}
+
+function resetQuestion(btn) {
+  const mcq = btn.closest('.inline-mcq');
+  const qCard = btn.closest('.question');
+  mcq.querySelectorAll('.mcq-option').forEach(o => o.classList.remove('selected-correct', 'selected-wrong'));
+  const res = mcq.querySelector('.mcq-result');
+  res.className = 'mcq-result';
+  res.innerHTML = '';
+  const qid = qCard.getAttribute('data-qid');
+  if (qid && quizResults[qid]) {
+    delete quizResults[qid];
+    updateQuizScore();
+  }
+}
+
+function closeModal() {
+  document.getElementById('celebrationModal').style.display = 'none';
+}
+</script>
+</body>
+</html>

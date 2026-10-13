@@ -1,0 +1,202 @@
+[
+  {
+    "num": 1,
+    "texts": [
+      "Field of Medicine",
+      "Medicine Program",
+      "Lecture : (Autonomic Nervous System 2 )",
+      "Date: / 10 / 2026",
+      "Dr : (Mohamed Talal)"
+    ],
+    "images": [],
+    "tables": [],
+    "has_diagram": false,
+    "rendered_image": "slide_1_rendered.png"
+  },
+  {
+    "num": 2,
+    "texts": [
+      "Divisions of Autonomic nervous system",
+      "Parasympathetic nervous system :"
+    ],
+    "images": [
+      "slide_2_img_1.png"
+    ],
+    "tables": [],
+    "has_diagram": false,
+    "rendered_image": "slide_2_rendered.png"
+  },
+  {
+    "num": 3,
+    "texts": [
+      "parasympathetic nervous system",
+      "Origin :",
+      "cranio-sacral"
+    ],
+    "images": [
+      "slide_3_img_1.png"
+    ],
+    "tables": [
+      [
+        [
+          "Cranial outflow",
+          "Sacral outflow"
+        ],
+        [
+          "Oculomotor nerve (head and neck) \nFacial nerve (head and neck)\nGlossopharyngeal nerve (head and neck)\nVagus nerve ( thorax – abdomen )",
+          "pelvic branches of S2-S3 and S4 (pelvis )"
+        ]
+      ]
+    ],
+    "has_diagram": false,
+    "rendered_image": "slide_3_rendered.png"
+  },
+  {
+    "num": 4,
+    "texts": [
+      "Parasympathetic nervous system",
+      "Effect on head and neck :",
+      "Oculomotor nerve (3rd cranial nerve):",
+      "origin : Edinger – Westphal nucleus of midbrain",
+      "relay : ciliary ganglion",
+      "Action :",
+      "eye :  pupil constriction ( contraction of constrictor pupillae muscle )"
+    ],
+    "images": [
+      "slide_4_img_1.png",
+      "slide_4_img_2.png"
+    ],
+    "tables": [],
+    "has_diagram": false,
+    "rendered_image": "slide_4_rendered.png"
+  },
+  {
+    "num": 5,
+    "texts": [
+      "Parasympathetic nervous system",
+      "Effect on head and neck :",
+      "Facial nerve: (7th cranial nerve)",
+      "origin :  superior salivary nucleus in pons",
+      "relay :  sphenopalatine ganglion",
+      "Action :  On sublingual and submandibular glands :",
+      "Increases their secretions"
+    ],
+    "images": [
+      "slide_5_img_1.png",
+      "slide_5_img_2.png"
+    ],
+    "tables": [],
+    "has_diagram": false,
+    "rendered_image": "slide_5_rendered.png"
+  },
+  {
+    "num": 6,
+    "texts": [
+      "Parasympathetic nervous system",
+      "Effect on head and neck :",
+      "Glossopharyngeal nerve : ( 9th cranial nerve )",
+      "origin :   inferior salivary nucleus in medulla",
+      "relay :  otic ganglia",
+      "Action :  On parotid gland :",
+      "Increases its secretions"
+    ],
+    "images": [
+      "slide_6_img_1.png",
+      "slide_6_img_2.png"
+    ],
+    "tables": [],
+    "has_diagram": false,
+    "rendered_image": "slide_6_rendered.png"
+  },
+  {
+    "num": 7,
+    "texts": [
+      "Parasympathetic nervous system",
+      "Effect on thorax and abdomen :",
+      "vagus nerve : ( 10th cranial nerve )",
+      "origin :  vagal nucleus in medulla",
+      "relay :  terminal ganglia",
+      "Action :  on Thorax",
+      "Heart",
+      "-ve inotropic effect",
+      "-ve chronotropic effect",
+      "decrease coronary blood flow and O2 consumption",
+      "Lung",
+      "bronchial constriction",
+      "vasodilatation of pulmonary blood vessels"
+    ],
+    "images": [
+      "slide_7_img_1.png"
+    ],
+    "tables": [],
+    "has_diagram": false,
+    "rendered_image": "slide_7_rendered.png"
+  },
+  {
+    "num": 8,
+    "texts": [
+      "Parasympathetic nervous system",
+      "Effect on thorax and abdomen :",
+      "vagus nerve : ( 10th cranial nerve )",
+      "Action :  on abdomen",
+      "GIT :",
+      "motor to the wall",
+      "inhibitory to sphincters",
+      "gall bladder : ( evacuation )",
+      "motor to the wall",
+      "inhibitory to sphincter of oddi"
+    ],
+    "images": [
+      "slide_8_img_1.png",
+      "slide_8_img_2.png"
+    ],
+    "tables": [],
+    "has_diagram": false,
+    "rendered_image": "slide_8_rendered.png"
+  },
+  {
+    "num": 9,
+    "texts": [
+      "Parasympathetic nervous system",
+      "Effect on pelvis :",
+      "Origin: S2, 3, 4",
+      "Course: pelvic nerve",
+      "Relay: terminal ganglia",
+      "On the rectum : (defecation )",
+      "contraction of wall",
+      "inhibition of internal anal sphincter"
+    ],
+    "images": [
+      "slide_9_img_1.png"
+    ],
+    "tables": [],
+    "has_diagram": false,
+    "rendered_image": "slide_9_rendered.png"
+  },
+  {
+    "num": 10,
+    "texts": [
+      "Parasympathetic nervous system",
+      "Effect on pelvis :",
+      "on the urinary bladder : ( micturition )",
+      "contraction of wall",
+      "inhibition of internal urethral sphincter",
+      "On male genitalia :",
+      "erection"
+    ],
+    "images": [
+      "slide_10_img_1.png"
+    ],
+    "tables": [],
+    "has_diagram": false,
+    "rendered_image": "slide_10_rendered.png"
+  },
+  {
+    "num": 11,
+    "texts": [],
+    "images": [],
+    "tables": [],
+    "has_diagram": false,
+    "rendered_image": "slide_11_rendered.png"
+  }
+]
